@@ -1,0 +1,54 @@
+
+*********************************
+*********************************
+******OpenWeb Usage Guide********
+*********************************
+*********************************
+
+
+Default URL:
+gisgate.co.clark.nv.us/ow
+
+URL after location resolve:
+gisgate.co.clark.nv.us/ow/@State Plane (default)
+gisgate.co.clark.nv.us/ow/@Lat Long (alternative)
+
+URL can also come in as parcel/address/cross-street
+&& then be redirected to location
+
+
+      //-Config Settings-
+
+      //Parcel: @=13933710002
+      //Address: @=500 Grand Central
+      //State Plane Ft: @=782826,26762144
+      //Lat/Long: @=35.8378134,-115.6509992
+      //Map View: view=clark county zoning
+      //Legend: legend=t/f
+      //Weather: weather=t/f
+      //Active Tab: tab=display
+      //Full Map: fullmap=t/f
+
+      //Examples of usage
+      //http://gisgate.co.clark.nv.us/ow/?@=500 Grand Central
+      //http://gisgate.co.clark.nv.us/ow/?@=13933305021
+      //http://gisgate.co.clark.nv.us/ow?@=782826,26762144/
+      //http://gisgate.co.clark.nv.us/ow/?@=13933305021
+      //http://gisgate.co.clark.nv.us/ow?tab=resources
+      //http://gisgate.co.clark.nv.us/ow?legend=t/
+      //http://gisgate.co.clark.nv.us/ow?owner
+      //http://gisgate.co.clark.nv.us/ow/?fullmap=t
+
+      //Chaining
+      //http://gisgate.co.clark.nv.us/ow/?@=1525 Pinto&view=clark county zoning&legend=t&tab=display&fullmap=t
+
+
+
+
+
+-Hotkeys-
+Esc: Used for closing active windows
+Arrow Keys: Used for nagivating map
+Enter: Used for executing a search
+
+

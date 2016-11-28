@@ -1,0 +1,133 @@
+/* openweb feedback form styles */
+
+body {
+	font-family:'Open Sans', sans-serif;
+
+}
+
+#wrapper {
+	width:960px;
+	margin: 0 auto;
+}
+
+header {
+	background-color:#222;
+	margin: 0 auto;
+	padding:15px;
+	margin-top:-17px;
+	margin-left:-22px;
+	width:100%;
+}
+
+.logos {
+	margin:0 auto;
+	width:100%;
+	text-align:center;
+}
+
+.input {
+	padding:5px;
+}
+
+#scaleref {
+	float:left;
+	width:72%;
+	margin-left:5%;
+}
+
+#one, #three, #five {
+	text-align:center;
+	float:left;
+	margin-left:80px;
+	margin-right:70px;
+}
+
+#five {
+	margin-left:88px;
+}
+
+#scale {
+	clear:both;
+	margin-bottom:10px;
+	width:70%;
+}
+
+.scale {
+	margin-left: 50px;
+	margin-right:50px;
+	float:right;
+}
+
+.submit {
+	margin-top:30px;
+}
+
+.textinput {
+	float:right;
+}
+
+#textinputs {
+	width:60%;
+}
+
+input[type=text] {
+	width:300px;
+}
+
+textarea {
+	width:300px;
+}
+
+#mobileref {
+	display:none;
+	visibility:hidden;
+}
+
+@media screen and (max-width:470px) {
+
+	#wrapper {
+		width:100%;
+	}
+
+	body {
+		font-size:14px;
+	}
+
+	h1 {
+		font-size:16px;
+	}
+
+	#textinputs {
+		width:95%;
+	}
+
+	input[type="text"] {
+		width:180px;
+	}
+
+	textarea {
+		width:250px;
+	}
+
+
+	#scaleref {
+	display:none;
+	visibility:hidden;
+	}
+
+	.scale {
+		margin-left:10%;
+		margin-right:2%;
+	}
+
+	#scale { 
+		width:92%;
+
+	}
+
+	#mobileref{
+		visibility:visible;
+		display:block;
+	}
+
+}

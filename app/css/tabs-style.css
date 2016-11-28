@@ -1,0 +1,868 @@
+
+
+
+
+
+
+
+/* SIDE PANEL BOTTOM TAB ICONS */
+
+/* custom tab overrides */
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus
+{
+/*  background-color: #d9edf7;*/
+/*  background-color: #111;*/
+ /* border-radius: 0px !important;*/
+/* border-radius: 5px !important;*/
+
+
+  /*background-color: #232323;*/
+
+  background-color: transparent;
+
+
+/*  -webkit-transition: all 0.30s linear;
+  -moz-transition: all 0.30s linear;
+  -ms-transition: all 0.30s linear;
+  -o-transition: all 0.30s linear;
+  transition: all 0.30s linear;*/
+
+  -webkit-transition: all 0.40s linear;
+  -moz-transition: all 0.40s linear;
+  -ms-transition: all 0.40s linear;
+  -o-transition: all 0.40s linear;
+  transition: all 0.40s linear;
+
+}
+.nav-tabs > li {
+  border-radius: 0px !important;
+
+}
+
+
+
+
+
+
+
+
+
+
+/* custom inclusion of right, left and below tabs */
+
+.tabs-below > .nav-tabs,
+.tabs-right > .nav-tabs,
+.tabs-left > .nav-tabs {
+  border-bottom: 0;
+}
+
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
+}
+
+.tab-content > .active,
+.pill-content > .active {
+  display: block;
+}
+
+.tabs-below > .nav-tabs {
+/*  border-top: 1px solid #ddd;*/
+/*  border-top: 0px solid #ddd;*/
+
+}
+
+.tabs-below > .nav-tabs > li {
+  margin-top: -1px;
+/*  margin-top: -5px !important;*/
+  margin-bottom: 0;
+/*  border-top: 1px solid #ddd;*/
+
+/*  margin-left:-1px !important;*/
+
+/*  border-right:0px !important;*/
+
+/*margin-left:-4px !important;*/
+
+/*border: 1px solid #EEE !important;
+*/
+
+
+/*width:45px !important;*/
+/*width:43.5px !important;*/
+
+/*width:45px !important;*/
+
+float:left !important;
+
+/*margin-left:1px;
+margin-right:1px;*/
+margin-left:1px;
+}
+
+
+/*.tabs-below > .nav-tabs > li { 
+
+height:30px;
+}
+#mainTabs > ul {
+  height:30px;
+}*/
+
+
+.tabs-below > .nav-tabs > li > a {
+/*  -webkit-border-radius: 0 0 4px 4px;
+     -moz-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px;*/
+
+/*          border-radius: 0 0 2px 2px !important;*/
+border-radius: 0 0 0px 0px !important;
+
+/*          height:35px;*/
+/*          width:55px;*/
+
+/*          margin-top: 5px;*/
+
+/*border-top: 1px solid #ddd;*/
+
+/*border-top: 1px solid #3c8ed2;*/
+/*border-top: 1px solid #3c8ed2;*/
+
+/*border-top: 1px solid #428bca;*/
+/*border-left: 1px solid transparent;
+border-right: 1px solid transparent;*/
+border-left: 1px solid transparent;
+border-right: 1px solid transparent;
+
+border-top: 1px solid #ddd;
+
+/*margin-top: -1px !important;*/
+margin-top:-2px !important;
+
+
+margin-left: -1px !important;
+margin-right: -1px !important;
+
+
+/*height:35px;*/
+/*height:33px;*/
+/*height:33px;*/
+height:33.5px;
+}
+
+.tabs-below > .nav-tabs > li > a:hover,
+.tabs-below > .nav-tabs > li > a:focus {
+/*  border-top-color: #ddd;
+  border-bottom-color: transparent;*/
+
+  /*border-color: #232323 #eeeeee #eeeeee #eeeeee;*/
+  border-color: transparent #eeeeee #eeeeee #eeeeee;
+  /*background: #232323 !important;*/
+  background: transparent !important;
+
+  /*  -webkit-transition: all 0.30s linear;
+    -moz-transition: all 0.30s linear;
+    -ms-transition: all 0.30s linear;
+    -o-transition: all 0.30s linear;
+    transition: all 0.30s linear;*/
+
+/*    -webkit-transition: all 0.40s linear;
+    -moz-transition: all 0.40s linear;
+    -ms-transition: all 0.40s linear;
+    -o-transition: all 0.40s linear;
+    transition: all 0.40s linear;*/
+
+    -webkit-transition: all 0.30s linear;
+    -moz-transition: all 0.30s linear;
+    -ms-transition: all 0.30s linear;
+    -o-transition: all 0.30s linear;
+    transition: all 0.30s linear;
+
+
+/*    margin-top: 2px !important;*/
+
+/*border-bottom: 2px solid #ddd;*/
+/*border-left: 2px solid #3c8ed2;
+border-right: 2px solid #3c8ed2;*/
+
+
+/*border-bottom: 2px solid #ddd;*/
+
+
+
+}
+
+.tabs-below > .nav-tabs > .active > a,
+.tabs-below > .nav-tabs > .active > a:hover,
+.tabs-below > .nav-tabs > .active > a:focus {
+  border-color: transparent #ddd #ddd #ddd;
+  
+/*  border-color: 1px transparent #3c8ed2 #3c8ed2 #3c8ed2;*/
+
+/*  border-top: 0px solid transparent;*/
+
+
+/*border-top: 2px solid #ddd;*/
+
+/*height:35px;*/
+
+margin-top:-2px !important;
+
+
+/*margin-top:-2px !important;*/
+border-top: 1px solid transparent;
+/*border-bottom: 2px solid #3c8ed2;*/
+/*border-bottom: 2px solid #3971B6;*/
+/*border-bottom: 2px solid #3c8ed2;*/
+
+border-left: 1px solid #ddd;
+border-right: 1px solid #ddd;
+
+/*border-left: 2px solid #3c8ed2;
+border-right: 2px solid #3c8ed2;*/
+
+/*border-bottom: 2px solid #DD1B16;*/
+
+}
+
+
+
+
+.tabs-below > .nav-tabs > li > a#tackTab:hover{ 
+/*  border-bottom: 2px solid #046DD5;*/
+/*border-bottom: 2px solid #3c8ed2;*/
+border-bottom: 2px solid #0053AE;
+}
+.tabs-below > .nav-tabs > li > a#compassTab:hover{ 
+/*    border-bottom: 2px solid #F4655F;*/
+/*border-bottom: 2px solid #3c8ed2;*/
+border-bottom: 2px solid #0053AE;
+}
+.tabs-below > .nav-tabs > li > a#pencilTab:hover{ 
+/*    border-bottom: 2px solid #80BD01;*/
+/*border-bottom: 2px solid #3c8ed2;*/
+border-bottom: 2px solid #0053AE;
+}
+.tabs-below > .nav-tabs > li > a#gearTab:hover{ 
+/*  border-bottom: 2px solid #DD1B16;*/
+/*border-bottom: 2px solid #3c8ed2;*/
+border-bottom: 2px solid #0053AE;
+}
+
+
+
+.tabs-below > .nav-tabs > .active > a#tackTab,
+.tabs-below > .nav-tabs > .active > a#tackTab:focus {
+
+/*border-bottom: 2px solid #3c8ed2;*/
+/*border-bottom: 2px solid #3c8ed2;*/
+/*border-bottom: 2px solid #0053AE;*/
+border-bottom: 2px solid #2CA9E1;
+}
+
+.tabs-below > .nav-tabs > .active > a#compassTab,
+.tabs-below > .nav-tabs > .active > a#compassTab:focus {
+
+/*  border-bottom: 2px solid #F4655F;*/
+/*  border-bottom: 2px solid #80BD01;*/
+/*border-bottom: 2px solid #3c8ed2;*/
+/*border-bottom: 2px solid #0053AE;*/
+border-bottom: 2px solid #2CA9E1;
+}
+
+.tabs-below > .nav-tabs > .active > a#pencilTab,
+.tabs-below > .nav-tabs > .active > a#pencilTab:focus {
+
+/*  border-bottom: 2px solid #80BD01;*/
+/*  border-bottom: 2px solid #F4655F;*/
+/*border-bottom: 2px solid #3c8ed2;*/
+/*border-bottom: 2px solid #0053AE;*/
+border-bottom: 2px solid #2CA9E1;
+}
+
+
+.tabs-below > .nav-tabs > .active > a#gearTab,
+.tabs-below > .nav-tabs > .active > a#gearTab:focus {
+
+/*  border-bottom: 2px solid #DD1B16;*/
+/*border-bottom: 2px solid #3c8ed2;*/
+/*border-bottom: 2px solid #0053AE;*/
+border-bottom: 2px solid #2CA9E1;
+}
+
+
+
+
+/* rainbow ribbon */
+/*a#tackTab, a#tackTab:hover, a#tackTab:focus {*/
+/*  a#tackTab:focus {
+
+  border-bottom: 2px solid #DD1B16;
+
+  }
+*/
+/*a#compassTab, a#compassTab:hover, a#compassTab:focus {
+
+  border-bottom: 2px solid #DD1B16 !important;
+
+  }
+
+a#pencilTab, a#pencilTab:hover, a#pencilTab:focus {
+
+  border-bottom: 2px solid #DD1B16 !important;
+
+  }
+
+a#gearTab, a#gearTab:hover, a#gearTab:focus {
+
+  border-bottom: 2px solid #DD1B16 !important;
+
+  }
+*/
+
+
+/*
+  .tabs-below > .nav-tabs > .active .compassTab > a,
+  .tabs-below > .nav-tabs > .active .compassTab > a:hover,
+  .tabs-below > .nav-tabs > .active .compassTab > a:focus {
+
+    border-bottom: 2px solid #80BD01;
+
+    }
+
+
+    .tabs-below > .nav-tabs > .active .pencilTab > a,
+    .tabs-below > .nav-tabs > .active .pencilTab > a:hover,
+    .tabs-below > .nav-tabs > .active .pencilTab > a:focus {
+
+      border-bottom: 2px solid #F4655F;
+
+      }
+
+
+.tabs-below > .nav-tabs > .active .gearTab > a,
+.tabs-below > .nav-tabs > .active .gearTab > a:hover,
+.tabs-below > .nav-tabs > .active .gearTab > a:focus {
+
+  border-bottom: 2px solid #046DD5;
+
+
+
+  }*/
+
+  /*  #2CA9E1*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+.tabs-left > .nav-tabs > li,
+.tabs-right > .nav-tabs > li {
+  float: none;
+  background: #111 !important;
+}
+
+.tabs-left > .nav-tabs > li > a,
+.tabs-right > .nav-tabs > li > a {
+/*  min-width: 74px;*/
+  margin-right: 0;
+  margin-bottom: 3px;
+}
+
+.tabs-left > .nav-tabs {
+  float: left;
+  margin-right: 19px;
+  border-right: 1px solid #ddd;
+}
+
+.tabs-left > .nav-tabs > li > a {
+  margin-right: -1px;
+  -webkit-border-radius: 4px 0 0 4px;
+     -moz-border-radius: 4px 0 0 4px;
+          border-radius: 4px 0 0 4px;
+}
+
+.tabs-left > .nav-tabs > li > a:hover,
+.tabs-left > .nav-tabs > li > a:focus {
+  border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+}
+
+.tabs-left > .nav-tabs .active > a,
+.tabs-left > .nav-tabs .active > a:hover,
+.tabs-left > .nav-tabs .active > a:focus {
+  border-color: #ddd transparent #ddd #ddd;
+  *border-right-color: #ffffff;
+}
+
+.tabs-right > .nav-tabs {
+  float: right;
+  margin-left: 19px;
+  border-left: 1px solid #ddd;
+}
+
+.tabs-right > .nav-tabs > li > a {
+  margin-left: -1px;
+  -webkit-border-radius: 0 4px 4px 0;
+     -moz-border-radius: 0 4px 4px 0;
+          border-radius: 0 4px 4px 0;
+}
+
+.tabs-right > .nav-tabs > li > a:hover,
+.tabs-right > .nav-tabs > li > a:focus {
+/*  border-color: #eeeeee #eeeeee #eeeeee #dddddd;*/
+border-color: #eeeeee #eeeeee #eeeeee #232323;
+  background: #232323 !important;
+
+  -webkit-transition: all 0.30s linear;
+  -moz-transition: all 0.30s linear;
+  -ms-transition: all 0.30s linear;
+  -o-transition: all 0.30s linear;
+  transition: all 0.30s linear;
+
+
+}
+
+.tabs-right > .nav-tabs .active > a,
+.tabs-right > .nav-tabs .active > a:hover,
+.tabs-right > .nav-tabs .active > a:focus {
+  border-color: #ddd #ddd #ddd transparent;
+  *border-left-color: #ffffff;
+
+
+}
+
+/* the main tab navi element */
+
+#mainTabs {
+
+  /*background-color:#222;*/
+  background-color:transparent;
+
+  position: relative;
+/*  margin-left:15px !important;
+  margin-right:15px !important;*/ /* both of these commented out */
+
+/*  margin-left:19px !important;
+  margin-right:19px !important;
+  margin-bottom:15px !important;*/
+
+
+
+/*  margin-left:28px !important;
+  margin-right:28px !important;*/
+/*  margin-left:30px !important;
+  margin-right:30px !important;*/
+  margin-left:32px !important;
+  margin-right:32px !important;
+  margin-bottom:10px !important;
+
+/*  margin-left:29.5px !important;
+  margin-right:28px !important;
+
+  margin-bottom:10px !important;*/
+
+
+
+
+}
+
+#mainTabs > ul li {
+/*  width:46.5px !important;*/
+float:left !important;
+/*border:0px !Important;*/
+}
+
+#mainTabs > ul li:first-child {
+/*  margin-left:28px !important;*/
+/*  width:46.5px !important;*/
+/*float:right !important;*/
+/*border:0px !Important;*/
+}
+
+#mainTabs > ul li:last-child {
+/*  margin-right:28px !important;*/
+/*  width:46.5px !important;*/
+/*float:right !important;*/
+/*border:0px !Important;*/
+}
+
+
+
+#mainTabs > ul li:last-child {
+/*  width:46.5px !important;*/
+/*float:right !important;*/
+/*border:0px !Important;*/
+}
+
+
+#mainTabs > ul {
+  /* for right vert tabs */
+/*position: absolute;
+left:160px !important;
+bottom:162px !important;
+z-index: 999999;
+width:50px !important;*/
+
+
+
+
+
+
+/* for bottom hor tabs */ /* OLD */
+/*position: absolute;
+left:30px !important;
+bottom:162px !important;
+z-index: 999999;*/
+
+
+/*position: absolute;
+left:30px !important;
+bottom:162px !important;
+z-index: 999999;*/
+
+
+
+
+/*position: relative;
+margin-left:15px !important;
+margin-right:15px !important;
+margin-bottom:15px !important;*/
+
+/*position: relative;
+margin-left:27px !important;
+margin-right:29px !important;
+margin-bottom:6px !important;
+*/
+
+
+
+/*margin: 6em auto;*/
+/*margin: .2em auto;*/
+/*font-size: 10px;*/
+/*position: relative;
+margin-left:15px !important;
+margin-right:15px !important;
+margin-bottom:15px !important;*/
+/*text-indent: -9999em;*/
+/*border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+border-left: 1.1em solid #ffffff;*/
+/*-webkit-transform: translateZ(0);
+-ms-transform: translateZ(0);
+transform: translateZ(0);
+-webkit-animation: load8 1.1s infinite linear;
+animation: load8 1.1s infinite linear;
+*/
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* the main tab navi element */
+
+#mainTabs {
+
+  /*background-color:#222;*/
+  background-color:transparent;
+
+  position: relative;
+/*  margin-left:15px !important;
+  margin-right:15px !important;*/ /* both of these commented out */
+
+/*  margin-left:19px !important;
+  margin-right:19px !important;
+  margin-bottom:15px !important;*/
+
+
+
+/*  margin-left:28px !important;
+  margin-right:28px !important;*/
+/*  margin-left:30px !important;
+  margin-right:30px !important;*/
+  margin-left:32px !important;
+  margin-right:32px !important;
+  margin-bottom:10px !important;
+
+/*  margin-left:29.5px !important;
+  margin-right:28px !important;
+
+  margin-bottom:10px !important;*/
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+  .badge {
+    background-color: #777;
+  }
+
+  .tabs-left { margin-top: 3rem; }
+
+  .nav-tabs {
+    float: left;
+    border-bottom: 0;
+    
+
+    li {
+      float: none;
+      margin: 0;
+      
+      a {
+        margin-right: 0;
+        border: 0;
+        background-color: #333;
+        
+        &:hover {
+          background-color: #444;
+        }
+      }
+    }
+    
+    .glyphicon {
+      color: #fff;
+    }
+    
+    .active .glyphicon {
+      color: #333;
+    }
+  }
+
+  .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    border:0;
+  }
+
+  .tab-content {
+    margin-left: 45px;
+    
+    .tab-pane {
+      display: none;
+      background-color: #fff;
+      padding: 1.6rem;
+      overflow-y: auto;
+    }
+    
+    .active { display: block; }
+  }
+
+  .list-group {
+    width: 100%;
+    
+    .list-group-item {
+      height: 50px;
+      
+      h4, span {
+        line-height: 11px;
+      }
+    }
+  }
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* custom inclusion of right, left and below tabs */
+/*
+  .tabs-below > .nav-tabs,
+  .tabs-right > .nav-tabs,
+  .tabs-left > .nav-tabs {
+    border-bottom: 0;
+  }
+
+  .tab-content > .tab-pane,
+  .pill-content > .pill-pane {
+    display: none;
+  }
+
+  .tab-content > .active,
+  .pill-content > .active {
+    display: block;
+  }
+
+  .tabs-below > .nav-tabs {
+    border-top: 1px solid #ddd;
+  }
+
+  .tabs-below > .nav-tabs > li {
+    margin-top: -1px;
+    margin-bottom: 0;
+  }
+
+  .tabs-below > .nav-tabs > li > a {
+    -webkit-border-radius: 0 0 4px 4px;
+       -moz-border-radius: 0 0 4px 4px;
+            border-radius: 0 0 4px 4px;
+  }
+
+  .tabs-below > .nav-tabs > li > a:hover,
+  .tabs-below > .nav-tabs > li > a:focus {
+    border-top-color: #ddd;
+    border-bottom-color: transparent;
+  }
+
+  .tabs-below > .nav-tabs > .active > a,
+  .tabs-below > .nav-tabs > .active > a:hover,
+  .tabs-below > .nav-tabs > .active > a:focus {
+    border-color: transparent #ddd #ddd #ddd;
+  }
+
+  .tabs-left > .nav-tabs > li,
+  .tabs-right > .nav-tabs > li {
+    float: none;
+  }
+
+  .tabs-left > .nav-tabs > li > a,
+  .tabs-right > .nav-tabs > li > a {
+    min-width: 74px;
+    margin-right: 0;
+    margin-bottom: 3px;
+  }
+
+  .tabs-left > .nav-tabs {
+    float: left;
+    margin-right: 19px;
+    border-right: 1px solid #ddd;
+  }
+
+  .tabs-left > .nav-tabs > li > a {
+    margin-right: -1px;
+    -webkit-border-radius: 4px 0 0 4px;
+       -moz-border-radius: 4px 0 0 4px;
+            border-radius: 4px 0 0 4px;
+  }
+
+  .tabs-left > .nav-tabs > li > a:hover,
+  .tabs-left > .nav-tabs > li > a:focus {
+    border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+  }
+
+  .tabs-left > .nav-tabs .active > a,
+  .tabs-left > .nav-tabs .active > a:hover,
+  .tabs-left > .nav-tabs .active > a:focus {
+    border-color: #ddd transparent #ddd #ddd;
+    *border-right-color: #ffffff;
+  }
+
+  .tabs-right > .nav-tabs {
+    float: right;
+    margin-left: 19px;
+    border-left: 1px solid #ddd;
+  }
+
+  .tabs-right > .nav-tabs > li > a {
+    margin-left: -1px;
+    -webkit-border-radius: 0 4px 4px 0;
+       -moz-border-radius: 0 4px 4px 0;
+            border-radius: 0 4px 4px 0;
+  }
+
+  .tabs-right > .nav-tabs > li > a:hover,
+  .tabs-right > .nav-tabs > li > a:focus {
+    border-color: #eeeeee #eeeeee #eeeeee #dddddd;
+  }
+
+  .tabs-right > .nav-tabs .active > a,
+  .tabs-right > .nav-tabs .active > a:hover,
+  .tabs-right > .nav-tabs .active > a:focus {
+    border-color: #ddd #ddd #ddd transparent;
+    *border-left-color: #ffffff;
+  }
+
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+

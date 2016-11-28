@@ -1,0 +1,586 @@
+
+
+
+#slidepanel {
+    height: 100%;
+    width: 240px;
+    float: left;
+    /* background-color: #222; */
+    /*background: #232323;*/
+    /*background-color: #759EC9;*/
+
+    background-color: rgb(17, 63, 112);
+/*    background-color: #3f51b5;*/
+    
+    /*background-color: rgb(17, 63, 112);*/
+    /* background: #232f3e; */
+    /* border-color: #080808; */
+    z-index: 1000;
+    margin-top: 50px !important;
+}
+.sliderStyle {
+  background-color: rgb(17, 63, 112);
+  border-color: rgb(17, 63, 112);
+/*  background-color: #3f51b5;
+  border-color: #3f51b5;*/
+
+    /*background-color: #222;*/
+    /* background-color: #232f3e; */
+    /*border-color: #080808;*/
+
+}
+
+
+
+
+
+
+.navbar-inverse {
+/*    background: #232323 !important;
+    border-color: #232323 !important;*/
+
+    background-color: rgb(17, 63, 112) !important;
+    border-color: rgb(17, 63, 112) !important;
+/*    background-color: #3f51b5 !important;
+    border-color: #3f51b5 !important;*/
+}
+.navbar-inverse .navbar-form {
+  border-color: rgb(17, 63, 112) !important;
+/*  border-color: #3f51b5 !important;*/
+
+    /* border-color: #101010; */
+    /* border-bottom: 1px solid #dddddc; */
+    /* border-color: #dddddc; */
+    /* border-color: #47a3da; */
+    /* border-color: #cccccc; */
+    /*border-color: #333;*/
+    /* float: left; */
+    /* border-top: 0px solid #dddddc; */
+    /* border-bottom: 1px solid #dddddc; */
+}
+
+
+
+
+
+
+
+
+
+.alert-info {
+  /*background: #0D2E56 !important;*/
+  background: rgb(37, 83, 132) !important;
+/*  background: #303f9f !important;*/
+
+/*    background: #759EC9 !important;
+
+    0D2E56
+
+    #88bfe8;*/
+
+    
+
+    /*background: #0B2249 !important;*/
+
+    
+
+}
+
+
+
+.cards-strong {
+  background: #0D2E56;
+/*  background: #303f9f;*/
+
+color: #DEDEDE !important;
+
+box-shadow: 0 2px 6px rgba(0,0,0,0);
+}
+
+
+
+
+
+
+.introButton-variant:hover {
+  color: #fef4f4 !important;
+  border-color: #fef4f4 !important;
+
+}
+.introButton-variant {
+
+  background: transparent !important;
+/*  border-color: #505050 !important;*/
+border-color: #AAA !important;
+
+  color: #AAA;
+  display: block;
+
+    padding: 9px 15px;
+
+    border: 2px solid #CCC;
+/*    color: #999;*/
+    transition: .3s ease all;
+
+    margin-top: 10px !important;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* theme select box */
+.styleBox-variant {
+
+  color: #DEDEDE;
+
+
+  /*-webkit-appearance: none;*/
+
+  /*border-radius: 3px;*/
+  border-radius: 0px;
+
+/*  background: #222 !important;*/
+  /*border-color: #505050 !important;*/
+  /*border-color: transparent !important;*/
+/*  border-color: 1px #fff !important;*/
+
+
+
+  /*background: #222 !important;*/
+  background: rgb(17, 63, 112) !important;
+  border-color: rgb(37, 83, 132) !important;
+
+  /*border-radius: 4px;*/
+
+/*  color: #AAA;*/
+
+
+
+  display: block;
+
+    border: 2px solid rgb(37, 83, 132);
+
+    /*color: #999;*/
+    transition: .3s ease all;
+
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold !important;
+
+
+
+    font-size: 14px !important;
+
+
+}
+
+.styleBox-variant:hover {
+  color: #fef4f4 !important;
+  /*border-color: #fef4f4 !important;*/
+/*  background-color:transparent;*/
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.blue-streak {
+}
+.blue-streak li {
+/*  border-left: 2px solid #232323;
+  border-radius: 0px;*/
+}
+
+/*external list items */
+.blue-streak li:hover {
+/*  border-left: 2px solid #2CA9E1;*/
+
+  /*background: #111 !important; *//* COMMENTED */
+  /*background: #333 !important; */
+  /*background: #ADADAD !important; */
+  background: rgb(37, 83, 132) !important;
+/*  background-color: #fff;*/
+/*  background-color: #333 !important;*/
+
+
+
+/*  background-color: #333 !important;*/
+
+}
+/* internal list items */
+.blue-streak a:hover {
+    /*background: #333 !important; */
+    /*background: #ADADAD !important; */
+    background: rgb(37, 83, 132) !important;
+
+/*  background-color: #333 !important;*/
+/*color: #DEDEDE;*/
+}
+.blue-streak a:focus {
+/*  background: #333 !important; */
+/*background-color: #222 !important;
+  color: white !important;
+*/
+/*  background-color: #333 !important;*/
+/*color: #DEDEDE;*/
+/*background-color: #BBB !important;*/
+/*color: #262626 !important;
+background-color: #eeeeee !important;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main-nav .nav-text a:hover {
+/*  color: #ffffff;*/
+/*  color: #EEE;
+  background: #232323;*/
+/*  -webkit-transition: .3s ease all;*/
+
+/*color: #ffffff;*/ /* COMMENTED */
+color: #fef4f4;
+
+transition: .3s ease all;
+-moz-transition: .3s ease all;
+-webkit-transition: .3s ease all;
+
+
+}
+
+.main-nav .nav-text li:hover {
+/*  color: #ffffff;*/
+/*  color: #EEE;*/
+/*  background: #232323;*/
+/*background: #111; */
+background: #ADADAD; 
+/*  -webkit-transition: .3s ease all;*/
+
+transition: .3s ease all;
+-moz-transition: .3s ease all;
+-webkit-transition: .3s ease all;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.open > .dropdown-menu {
+  /*background-color: #222;*/
+  background-color: rgb(17, 63, 112);
+    /*color: #DEDEDE !important;*/
+    color: #fff !important;
+
+    /*border: #C1C1C1;*/
+
+    outline: 6px solid rgb(17, 63, 112);
+
+
+/*    background-color: black !important;*/
+}
+
+
+
+
+.open > .dropdown-menu a {
+  /*background-color: #222;*/
+  background-color: rgb(17, 63, 112);
+    /*color: #DEDEDE !important;*/
+/*    color: #fff !important;
+*/
+    color: #DEDEDE !important;
+
+
+/*    background-color: black !important;*/
+}
+
+
+
+
+
+.open > .dropdown-menu a:hover {
+/*  color: #ffffff;
+
+  transition: .3s ease all;
+  -moz-transition: .3s ease all;
+  -webkit-transition: .3s ease all;*/
+
+  /*  color: #fef4f4 !important;*/
+  color: #fff !important;
+
+/*  background-color: #111 !important;*/
+
+  transition: .3s ease all;
+  -moz-transition: .3s ease all;
+  -webkit-transition: .3s ease all;
+
+}
+
+.open > .dropdown-menu a:focus {
+  /*background-color: #333 !important;*/
+  /*background: #ADADAD !important;*/
+  background: rgb(37, 83, 132) !important;
+
+  color: white !important;
+  
+/*background-color: #333 !important;
+  color: white !important;*/
+
+}
+
+
+
+
+.open > .dropdown-menu li:hover {
+/*  background: #111 !important;
+
+
+  transition: .3s ease all;
+  -moz-transition: .3s ease all;
+  -webkit-transition: .3s ease all;*/
+
+/*  color: #fef4f4 !important;*/
+color: #ADADAD !important;
+
+  /*background: #111 !important; */
+  background: #ADADAD !important; 
+
+/*  background: #333 !important; */
+/*  background-color: #fff;*/
+  /*background-color: #111 !important;*/
+  background-color: #ADADAD !important;
+  transition: .3s ease all;
+  -moz-transition: .3s ease all;
+  -webkit-transition: .3s ease all;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.esriSimpleSlider {
+/*    background-color: rgb(37, 83, 132);
+        border-color: rgb(37, 83, 132);*/
+
+/*        background-color: #0D2E56;
+            border-color: #0D2E56;*/
+
+            background-color: rgb(17, 63, 112);
+                border-color: rgb(17, 63, 112);
+
+            
+
+
+        /*#0D2E56*/
+}
+
+.esriSimpleSliderDecrementButton:hover, .esriSimpleSliderIncrementButton:hover {
+        background-color: #0D2E56;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-tabs > li > a {
+  /*color: #DEDEDE;*/
+
+  /*color: #CECECE;*/
+
+  /*color: #BCBCBC;*/
+
+  /*color: #B5B5B5;*/
+
+  color: #AAAAAA;
+
+  
+
+  
+
+  
+
+  
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#weatherDivCasing, #legendDivCasing {
+
+  background-color: rgba(17, 63, 112, 0.96);
+}
+
+
+
+

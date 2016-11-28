@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="open" ng-controller="mapController">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../bootstrap_v3/docs-assets/ico/favicon.png">
+    <title>OpenWeb</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/lib/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap-map-js & custom styles -->
+    <link rel="stylesheet" type="text/css" href="//js.arcgis.com/3.11/esri/css/esri.css"> <!-- esri style -->
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrapmap.css"> <!-- bootstrap-map style -->
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.css"> <!-- bootstrap style -->
+    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <!-- Overrides -->
+    <link rel="stylesheet" type="text/css" href="css/media-queries.css"> <!-- responsive ui -->
+    <link rel="stylesheet" type="text/css" href="css/main-style.css"> <!-- main ui -->
+    <link rel="stylesheet" type="text/css" href="css/propinfo-style.css"> <!-- propinfo -->
+    <link rel="stylesheet" type="text/css" href="css/navbar-style.css"> <!-- navbar -->
+    <link rel="stylesheet" type="text/css" href="css/slider-style.css"> <!-- slidemenu -->
+    <link rel="stylesheet" type="text/css" href="css/tabs-style.css"> <!-- tabs -->
+    <link rel="stylesheet" type="text/css" href="css/html5cntrl-style.css"> <!-- html5 cntrls -->
+    <link rel="stylesheet" type="text/css" href="css/loader-style.css"> <!-- loading -->
+    <link rel="stylesheet" type="text/css" href="css/tour-style.css"> <!-- bootstrap tour -->
+    <!-- Custom Theme Override -->
+    <link rel="stylesheet" ng-href="css/themes/layout-{{layout}}.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../bootstrap_v3/docs-assets/js/html5shiv.js"></script>
+      <script src="../bootstrap_v3/docs-assets/js/respond.min.js"></script>
+    <![endif]-->
+    <!-- <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> -->
+    <!-- <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> -->
+  </head>
+  <!--**********************************************************************************************************-->
+  <!--**********************************************************************************************************-->
+  <!--**********************************************************************************************************-->
+  <body>
+
+    <!-- Navbar -->
+    <div class='navbar navbar-inverse navbar-fixed-top'>
+     <div id="innerNav" class='navbar-inner'>
+        <div class='container-fluid'>
+
+          <!-- Navbar Header -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle conditionalShow" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+          <!-- Main Search -->
+          <div id="search-holder" class="col-sm-5 searchSize" ng-controller="TypeaheadCtrl">
+
+            <!-- Logos -->
+            <a id="title" class="navbar-brand" href="#" style=" " > 
+                <div id='logoTitle' style="display:inline-block;">
+                  <img id="CountyLogo" title="OpenWeb" alt="OpenWeb" src="images/county/33logobrightened.png" class="conditionalShow" />
+                      <img id="imgLogo" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/ow3.5.png" />
+                      <img id="imgLogo_mobile" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/compass.png" />
+                </div>     
+            </a>
+
+            <form class="navbar-form" ng-submit="search(asyncSelected)" id="search-form"> 
+                  <div id="tester" class="input-group" style="border:none !important;">
+                    <!-- placeholder="Search OpenWeb" -->
+                    <input id="search-form" autofocus autocomplete="off" type="text" class="form-control closeIcon" 
+                    ng-keyup="keyUp($event, $index, asyncSelected)" 
+                    ng-change="updateSync($index)"
+                    ng-model="asyncSelected"
+                    typeahead-on-select='onSelect($item, $model, $label)'
+                    typeahead-focus-first="false"
+                    typeahead-template-url="views/tempAutocomplete.html"
+                    typeahead="address for address in getLocation($viewValue) | filter:$viewValue"
+                    typeahead-loading="loadingLocations" 
+                    typeahead-min-length="3" >  
+                    <!-- Close Icon -->
+                    <img id="closeIcon" border="0" src="css/images/icon-close2.png">
+                    <!-- Search Btn -->
+                     <span class="input-group-btn">
+                          <button id="searchBtn" class="btn btn-primary" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                          </button>
+                     </span>
+                  </div>
+              </form>
+
+            </div><!-- /.search-holder -->
+
+            <!-- Select Property Window -->
+            <sel-property></sel-property>
+
+            <!-- .nav-collapse -->
+            <div class="collapse navbar-collapse"> <!-- pull-left --> <!-- <i class="fa fa-wrench"></i>  -->
+              <!-- ********************************** -->
+              <!-- Future add mobile display options -->
+<!--               <ul class="nav navbar-nav">
+                <li><a id="displayLink" href="#">Display</a></li>
+                <li class="dropdown" > 
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                  <ul class="dropdown-menu alert-dropdown" id="myDropdown">
+                    <li><a href="#"><i class="fa fa-hand-o-up" style="margin-right:8px;" ></i>Select Property</a></li>
+                    <li><a id="drawLink" href="#"><i class="fa fa-pencil" style="margin-right:8px;" ></i>Draw / Measure</a></li>
+                    <li><a href="#"><i class="fa fa-dot-circle-o" style="margin-right:8px;" ></i>Buffer</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="fa fa-print" style="margin-right:8px;" ></i>Print Map</a></li>
+                    <li><a href="#"><i class="fa fa-share-square" style="margin-right:8px;" ></i>Export Map</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown" >
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                  <ul class="dropdown-menu collapse" id="myDropdown">
+                    <li><a href="#"><i class="fa fa-comments" style="margin-right:8px;" ></i>Comments</a></li>
+                    <li><a href="#"><i class="fa fa-users" style="margin-right:8px;" ></i>Survey</a></li>
+                    <li><a href="#"><i class="fa fa-list-alt" style="margin-right:8px;" ></i>Show Legend</a></li>
+                    <li class="divider"></li>
+                    <li><a id="introLink" href="#"><i class="fa fa-info-circle" style="margin-right:8px;" ></i>Introduction</a></li>
+                    <li><a href="javascript:window.open('http://gisgate.co.clark.nv.us/gismo/pdf/OpenWebQuickGuide.pdf','mywindowtitle','width=800,height=600')" style="margin-top:2px;">
+                      <i class="fa fa-bookmark" style="margin-right:8px;" ></i>Quick Guide</a></li>
+                  </ul>
+                </li>
+              </ul> -->
+              <!-- ********************************** -->
+            </div><!--/.nav-collapse -->
+         </div><!--/.navbar-header -->
+      </div><!--/.container-fluid -->
+    </div><!--/.navbar-inner -->
+    </div><!--/.navbar -->
+
+    <!-- Side Panel -->
+    <div id="slidepanel" class="conditionalShow right-edge-shadow gradient sliderStyle">
+      <!-- tabs content -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="introTab" style="width:240px;">
+          <!-- Intro View -->
+          <intro-view></intro-view>
+        </div>
+        <div class="tab-pane" id="displayTab">
+          <!-- Display View -->
+          <display-view></display-view>
+        </div>
+        <div class="tab-pane" id="toolsTab">
+          <!-- Tools View -->
+          <tools-view></tools-view>
+        </div>
+        <div class="tab-pane" id="resourcesTab">
+          <!-- Resources View -->
+          <resources-view></resources-view>
+        </div>
+      </div>
+    </div><!-- /.Slide Panel -->
+
+    <!-- Bootstrap-map-js -->
+    <div id="mapDiv">
+      <div id="LocateButton"></div>
+    </div>
+
+    <!-- Disclaimer -->
+    <disclaim-block></disclaim-block>
+    <!-- Share/Embed -->
+    <share-block></share-block>
+    <!-- Help Assistant -->
+    <assistant-block></assistant-block>
+    <!-- InfoBlock (incl. tabs) -->
+    <info-block></info-block>
+    <!-- Legend -->
+    <leg-block></leg-block>
+    <!-- Weather -->
+    <weather-block></weather-block>
+
+    <!-- Loading Screen -->
+    <div id="loading">
+         <div id="loading-image" class="loader"></div>
+    </div>
+
+    <!--**********************************************************************************************************-->
+    <!--**********************************************************************************************************-->
+    <!--**********************************************************************************************************-->
+    <!-- vendor libs -->
+    <script src="js/lib/dojo-config.js"></script> <!-- dojo config -->
+    <script src="//js.arcgis.com/3.11/"></script> <!-- esri -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script> <!-- angular -->
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script> <!-- angular: uiBootstrap -->
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script> <!-- jquery -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0snxr42vLcUDQ0W4WBmn4ROEMWDYmfG0"></script> <!-- g.api -->
+    <!-- ui libs -->
+    <script src="js/lib/bootstrap.min.js"></script> <!-- bootstrap -->
+    <script src="js/lib/bootstrap-tour.js"></script> <!-- bootstrap tour -->
+    <script src="js/lib/jqueryui-1.10.4.min.js"></script> <!-- jqueryUI -->
+    <!-- script imports -->
+    <script src="js/app/map.js"></script> <!-- map -->
+    <script src="js/app/ai.js"></script> <!-- ai -->
+    <script src="js/app/slidemenu.js"></script> <!-- slidemenu -->
+    <script src="js/app/modernizr.custom.js"></script> <!-- slidemenu depen. -->
+    <script src="js/app/display.js"></script> <!-- display -->
+    <script src="js/app/layout.js"></script> <!-- layout -->
+    <script src="js/app/services/factory.js"></script> <!-- factory --> 
+    <script src="js/app/controllers/controllers.js"></script> <!-- controller -->
+    <script src="js/app/directives/dirDisclaimer.js"></script> <!-- directive -->
+    <script src="js/app/directives/dirShare.js"></script> <!-- directive -->
+    <script src="js/app/directives/dirAssistant.js"></script> <!-- directive -->
+    <script src="js/app/directives/dirIntroduction.js"></script> <!-- directive -->
+    <script src="js/app/directives/dirDisplay.js"></script> <!-- directive -->
+    <script src="js/app/directives/dirTools.js"></script> <!-- directive -->
+    <script src="js/app/directives/dirResources.js"></script> <!-- directive -->
+    <script src="js/app/directives/dirInformation.js"></script> <!-- directive -->
+    <script src="js/app/directives/dirSelectProp.js"></script> <!-- directive -->
+    <script src="js/app/directives/dirLegend.js"></script> <!-- directive -->
+    <script src="js/app/directives/dirWeather.js"></script> <!-- directive -->
+    <!-- move to directive -->
+    <script>
+     $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <!-- Analytics - move to js file -->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-33526539-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>

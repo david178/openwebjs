@@ -1,0 +1,1548 @@
+      
+      <div id='displayDirective' style='padding:7px; border:white;'>
+        <!-- Title -->
+        <div id='displayHeader' class='alert alert-info conditionalShow' role='alert' style='padding:7px;'>Map Display
+          <span id='displayToggle' class='fa fa-chevron-left'></span>
+        </div>
+
+
+
+<!--         <div id="aerialSlider_Box" class="conditionalShow" style="position: absolute; top:180px; padding: 1px !important; left:90px; background-color:white; z-index:9999;">
+            <input id="aerialSlider" style="padding: 1px !important;" type="range" min="0" max="1" value="1" step=.1 />
+        </div> -->
+
+
+
+
+        <!-- CONTENT -->
+        <div style="margin-top:60px;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <nav class="main-nav main-nav-desktop">
+
+
+<!--             <div>
+                <input type="checkbox" />
+                <input type="checkbox" />
+                <input type="checkbox" />
+            </div>   
+            <div>
+                <input type="checkbox" />
+                <input type="checkbox" />
+                <input type="checkbox" />
+            </div> -->
+
+
+              <ul class="nav-text blue-streak">
+              
+                <li class='dropdown' id='mapviewList'>
+                  <a class='dropdown-toggle' data-toggle='dropdown' href="#">Map View</a>
+
+
+
+                  <!-- 
+
+                  ------------------------------
+                  Checkboxes that function as radio buttons:
+
+
+                  http://jsfiddle.net/X597P/9/
+
+                  > Wrap checkboxes in div's, and then:
+
+                  $('input[type="checkbox"]').on('change', function() {
+                     $(this).siblings('input[type="checkbox"]').not(this).prop('checked', false);
+                  });
+
+
+
+
+                  ------------------------------
+
+
+
+
+
+
+
+
+
+                  > This example along w/ it's CSS:
+                  http://www.bootply.com/126254
+
+                  > modify it's CSS to match app CSS, & add for single checkbox behavior:
+
+                  / the selector will match all input controls of type :checkbox
+                  // and attach a click event handler 
+                  $("input:checkbox").on('click', function() {
+                    // in the handler, 'this' refers to the box clicked on
+                    var $box = $(this);
+                    if ($box.is(":checked")) {
+                      // the name of the box is retrieved using the .attr() method
+                      // as it is assumed and expected to be immutable
+                      var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                      // the checked state of the group/box on the other hand will change
+                      // and the current value is retrieved using .prop() method
+                      $(group).prop("checked", false);
+                      $box.prop("checked", true);
+                    } else {
+                      $box.prop("checked", false);
+                    }
+                  });
+
+                  OR 
+
+                  $("input:checkbox").click(function() {
+                      if ($(this).is(":checked")) {
+                          var group = "input:checkbox[name='" + $(this).attr("name") + "']";
+                          $(group).prop("checked", false);
+                          $(this).prop("checked", true);
+                      } else {
+                          $(this).prop("checked", false);
+                      }
+                  });
+
+
+
+
+                  Additional:
+                  http://stackoverflow.com/questions/9709209/html-select-only-one-checkbox-in-a-group
+
+                  http://www.bootply.com/amP6Ov0yuT
+                  http://stackoverflow.com/questions/10887893/twitter-bootstrap-checkbox-columns-columns-within-form
+                  http://getbootstrap.com/javascript/#buttons-stateful
+                  http://bootsnipp.com/snippets/featured/checked-list-group
+                  http://stackoverflow.com/questions/19356928/checkbox-list-in-twitter-bootstrap
+                  http://stackoverflow.com/questions/8531279/twitter-bootstrap-and-checkboxlist-or-radiobutton-list?rq=1
+
+                  IE 9 & earlier multi col browser support: http://stackoverflow.com/questions/14745297/how-to-display-an-unordered-list-in-two-columns
+
+                -->
+
+
+
+<!--                 <div class="checkbox"><input type="checkbox" class="radio" value="1" name="fooby[1][]"> Ham</div>
+                <div class="checkbox"><input type="checkbox" class="radio" value="1" name="fooby[1][]"> Egg</div>
+                <div class="checkbox"><input type="checkbox" class="radio" value="1" name="fooby[1][]"> Cheese</div>
+                <p>&nbsp;</p>
+                <div class="checkbox"><input type="checkbox" class="radio" value="1" name="fooby[2][]"> Coffee</div>
+                <div class="checkbox"><input type="checkbox" class="radio" value="1" name="fooby[2][]"> Tea</div>
+                <div class="checkbox"><input type="checkbox" class="radio" value="1" name="fooby[2][]"> Coke</div> -->
+
+
+
+
+
+
+
+
+
+<!--                   <ul class='dropdown-menu dropdown-menu-form' style="width:300px !important;"> -->
+<!--                       <ul class='dropdown-menu dropdown-menu-form' style="width:300px !important;">  -->
+                  <ul class='dropdown-menu newspaper2 dropdown-menu-form' data-columns="2" style="width:550px !important;">
+
+
+
+
+                      <!--  MAP VIEWS -->
+                      <li ng-repeat="result in Views| orderBy:'mainName'">
+
+                        <a href="#">
+                        <input id="{{result.id1}}" class="icon-checkbox ViewChecks" type="checkbox" 
+                        ng-model="result.name3" ng-click="viewChange(result.mainName)" /> 
+                        <label for="{{result.id1}}">
+                          <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                          <span style="margin-right:4.7px !important;" class='glyphicon glyphicon-ok checked chkPadding'></span>
+                          {{result.mainName}}
+                        </label>
+
+                      </a>
+
+<!--                       <li ng-repeat="result in Views| orderBy:'id'">
+
+                          <a href="#">
+                          <input id="{{result.id}}" class="icon-checkbox ViewsChecks" type="checkbox" 
+                          ng-model="result.alias" ng-click="viewChange(result)" /> 
+                          <label for="{{result.id}}">
+                            <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                            <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                            {{result.name}}
+                          </label>
+
+                      </a> -->
+
+
+
+
+<!--                       <li ng-repeat="result in Views| orderBy:'id'">
+
+                          <a href="#">
+                          <input id="{{result.id}}" class="icon-checkbox ViewsChecks" type="checkbox" 
+                          ng-model="result.alias" ng-click="viewChange(result)" /> 
+                          <label for="{{result.id}}">
+                            <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                            <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                            {{result.name}}
+                          </label>
+
+                      </a> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--                         <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Assessor Map</a></li>
+                        <li><a href='#'>Boulder City Zoning</a></li>
+                        <li><a href='#'>Clark County Planned Landuse</a></li>
+                        <li><a href='#'>Clark County Zoning</a></li>
+                        <li><a href='#'>Contours 50 Meter</a></li>
+                        <li><a href='#'>Contours 2003 5ft (Valley)</a></li>
+                        <li><a href='#'>Contours 1996 5ft (Valley)</a></li>
+                        <li><a href='#'>Default</a></li>
+                        <li><a href='#'>Henderson Zoning</a></li>
+                        <li><a href='#'>Las Vegas Zoning</a></li>
+                        <li><a href='#'>Mesquite Zoning</a></li>
+                        <li><a href='#'>North Las Vegas Zoning</a></li>
+                        <li><a href='#'>Seismic</a></li>
+                        <li><a href='#'>Soil Guideline</a></li> -->
+
+
+
+
+<!--                         <ul class="list2col"> -->
+
+ <!--                      <div class="newspaper"> -->
+<!--                         <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li>
+                        <li><a href='#'>Aerial Imagery Only</a></li> -->
+
+<!--                       </div> -->
+<!--                         </ul> -->
+
+
+
+<!--                         <ul class='dropdown-menu'>
+                          <li><a href='#'>Aerial Imagery Only</a></li>
+                          <li><a href='#'>Assessor Map</a></li>
+                          <li><a href='#'>Boulder City Zoning</a></li>
+                          <li><a href='#'>Clark County Planned Landuse</a></li>
+                          <li><a href='#'>Clark County Zoning</a></li>
+                          <li><a href='#'>Contours 50 Meter</a></li>
+                          <li><a href='#'>Contours 2003 5ft (Valley)</a></li>
+                          <li><a href='#'>Contours 1996 5ft (Valley)</a></li>
+                          <li><a href='#'>Default</a></li>
+                          <li><a href='#'>Henderson Zoning</a></li>
+                          <li><a href='#'>Las Vegas Zoning</a></li>
+                          <li><a href='#'>Mesquite Zoning</a></li>
+                          <li><a href='#'>North Las Vegas Zoning</a></li>
+                          <li><a href='#'>Seismic</a></li>
+                          <li><a href='#'>Soil Guideline</a></li>
+                        </ul> -->
+
+
+
+
+
+
+
+
+
+<!--                     <div class="container">
+                      <div class="row">
+                            <div class="col-md-12 text-center"><h3>Pick List Example</h3></div>
+                          <div class="col-sm-4 col-sm-offset-1">
+                              <div class="list-group" id="list1">
+                              <a href="#" class="list-group-item active">List 1 <input title="toggle all" type="checkbox" class="all pull-right"></a>
+                              <a href="#" class="list-group-item">Second item <input type="checkbox" class="pull-right"></a>
+                              <a href="#" class="list-group-item">Third item <input type="checkbox" class="pull-right"></a>
+                              <a href="#" class="list-group-item">More item <input type="checkbox" class="pull-right"></a>
+                              <a href="#" class="list-group-item">Another <input type="checkbox" class="pull-right"></a>
+                              </div>
+                            </div>
+                            <div class="col-md-2 v-center">
+                            <button title="Send to list 2" class="btn btn-default center-block add"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                                <button title="Send to list 1" class="btn btn-default center-block remove"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                            </div>
+                            <div class="col-sm-4">
+                            <div class="list-group" id="list2">
+                              <a href="#" class="list-group-item active">List 2 <input title="toggle all" type="checkbox" class="all pull-right"></a>
+                              <a href="#" class="list-group-item">Alpha <input type="checkbox" class="pull-right"></a>
+                              <a href="#" class="list-group-item">Charlie <input type="checkbox" class="pull-right"></a>
+                              <a href="#" class="list-group-item">Bravo <input type="checkbox" class="pull-right"></a>
+                              </div>
+                            </div>
+                      </div>
+                    </div> -->
+
+<!--                     <div>
+                        <span>Group 1:</span>
+                        <input type="checkbox" class="group1" checked />
+                        <input type="checkbox" class="group1" />
+                        <input type="checkbox" class="group1" />
+                    </div> -->
+
+
+
+
+<!--                     <div>
+                    <li><label>Aerial Imagery Only<input type="checkbox" id="chk1" name="chk1"></label></li>
+                    <li><label>Assessor Map<input type="checkbox" id="chk2" name="chk2"></label></li>
+                    <li><label>Aerial Imagery Only<input type="checkbox" id="chk1" name="chk1"></label></li>
+                    <li><label>Assessor Map<input type="checkbox" id="chk2" name="chk2"></label></li>
+                    </div>                                              
+
+
+                    <li><a href='#'>Aerial Imagery Only</a></li>
+                    <li><a href='#'>Assessor Map</a></li>
+                    <li><a href='#'>Boulder City Zoning</a></li>
+                    <li><a href='#'>Clark County PLU</a></li>
+                    <li><a href='#'>Clark County Zoning</a></li> -->
+
+
+
+
+
+<!--                     <div>
+                    <li><a href="#">
+                    <input id="legendBox2" class="icon-checkbox" type="checkbox" ng-model="theLegend2" />
+                    <label for="legendBox2">
+                      <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                      Aerial Imagery Only
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="legendBox3" class="icon-checkbox" type="checkbox" ng-model="theLegend3" />
+                    <label for="legendBox3">
+                      <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                      Assessor Map
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="legendBox4" class="icon-checkbox" type="checkbox" ng-model="theLegend4" />
+                    <label for="legendBox4">
+                      <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                      Boulder City Zoning
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="legendBox5" class="icon-checkbox" type="checkbox" ng-model="theLegend5" />
+                    <label for="legendBox5">
+                      <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                      Clark County Planned Landuse
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="legendBox6" class="icon-checkbox" type="checkbox" ng-model="theLegend6" />
+                    <label for="legendBox6">
+                      <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                      Clark County Zoning
+                    </label>
+                    </a></li>
+
+                  </div>
+ -->
+
+
+
+
+
+
+                <!-- Unordered List formatting resources:
+                https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=2%20column%20ul%20li%20element
+                http://csswizardry.com/2010/02/mutiple-column-lists-using-one-ul/
+                http://stackoverflow.com/questions/14745297/how-to-display-an-unordered-list-in-two-columns
+                http://stackoverflow.com/questions/17005407/creating-a-two-column-unordered-list
+                https://www.sitepoint.com/community/t/how-to-create-a-2-column-unordered-list/5024/5
+
+                Glyicphons:
+                http://www.w3schools.com/bootstrap/bootstrap_ref_comp_glyphs.asp
+
+              -->
+
+
+
+
+
+
+<!--                   <li><a href="#">
+                  <input id="place1" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView1"      
+                   ng-click='mapviewChange("mapView1", mapView1)' />
+                  <label class="label-for-check" for="place1">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Aerial Imagery Only
+                  </label>
+                  </a></li>
+                  <li><a href="#">
+                  <input id="place2" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView2"
+                  ng-click='mapviewChange("mapView2", mapView2)' />
+                  <label for="place2">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Assessor Map
+                  </label>
+                  </a></li>
+                  <li><a href="#">
+                  <input id="place3" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView3"
+                  ng-click='mapviewChange("mapView3", mapView3)' />
+                  <label class="label-for-check" for="place3">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Boulder City Zoning
+                  </label>
+                  </a></li>
+                  <li><a href="#">
+                  <input id="place4" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView4" 
+                  ng-click='mapviewChange("mapView4", mapView4)' />
+                  <label class="label-for-check" for="place4">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Clark County PLU
+                  </label>
+                  </a></li>
+                  <li><a href="#">
+                  <input id="place5" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView5" 
+                  ng-click='mapviewChange("mapView5", mapView5)' />
+                  <label class="label-for-check" for="place5">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Clark County Zoning
+                  </label>
+                  </a></li>
+
+
+                  <li><a href="#">
+                  <input id="place6" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView6" 
+                  ng-click='mapviewChange("mapView6", mapView6)' />
+                  <label class="label-for-check" for="place6">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Contours 50 Meter
+                  </label>
+                  </a></li>
+                  <li><a href="#">
+                  <input id="place7" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView7" 
+                  ng-click='mapviewChange("mapView7", mapView7)' />
+                  <label class="label-for-check" for="place7">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Contours 2003 5ft <small>(Valley)</small>
+                  </label>
+                  </a></li>
+                  <li><a href="#">
+                  <input id="place8" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView8" 
+                  ng-click='mapviewChange("mapView8", mapView8)' />
+                  <label class="label-for-check" for="place8">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Contours 1996 5ft <small>(Valley)</small>
+                  </label>
+                  </a></li>
+                  <li><a href="#">
+                  <input id="place9" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView9" 
+                  ng-click='mapviewChange("mapView9", mapView9)' />
+                  <label class="label-for-check" for="place9">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Default
+                  </label>
+                  </a></li>
+                  <li><a href="#">
+                  <input id="place10" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView10" 
+                  ng-click='mapviewChange("mapView10", mapView10)' />
+                  <label class="label-for-check" for="place10">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Henderson Zoning
+                  </label>
+                  </a></li>
+
+
+                  <li><a href="#">
+                  <input id="place11" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView11" 
+                  ng-click='mapviewChange("mapView11", mapView11)' />
+                  <label class="label-for-check" for="place11">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Las Vegas Zoning
+                  </label>
+                  </a></li>
+                  <li><a href="#">
+                  <input id="place12" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView12" 
+                  ng-click='mapviewChange("mapView12", mapView12)' />
+                  <label class="label-for-check" for="place12">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Mesquite Zoning
+                  </label>
+                  </a></li>
+                  <li><a href="#">
+                  <input id="place13" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView13" 
+                  ng-click='mapviewChange("mapView13", mapView13)' />
+                  <label class="label-for-check" for="place13">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    North Las Vegas Zoning
+                  </label>
+                  </a></li>
+                  <li><a href="#">
+                  <input id="place14" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView14" 
+                  ng-click='mapviewChange("mapView14", mapView14)' />
+                  <label class="label-for-check" for="place14">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Seismic
+                  </label>
+                  </a></li>
+                  <li><a href="#">
+                  <input id="place15" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView15" 
+                  ng-click='mapviewChange("mapView15", mapView15)' />
+                  <label class="label-for-check" for="place15">
+                    <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                    <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                    Soil Guideline
+                  </label>
+                  </a></li> -->
+
+
+
+
+<!--                     <li ng-repeat="result in searchResults| orderBy:'name'">
+                      <span data="{{result.name}}" ng-click="catchEvent(result.name)"><b class="nameTag" style="color:black; font-size:16px;">{{result.name}} </b>
+
+                        <span style="background-color:#5c85d6; color:white; border-radius:2px; font-size:12px;" class="">
+                         &nbsp;{{result.size}} size {{result.industry}} firm seeking {{result.seeking}}&nbsp; </span> 
+                       </span>
+                    </li> -->
+
+<!--                     <li ng-repeat="result in searchResults| orderBy:'name'">
+                      <span data="{{result.name}}" ng-click="catchEvent(result.name)"><b class="nameTag" style="color:black; font-size:16px;">{{result.name}} </b>
+                        
+                        <span style="background-color:#5c85d6; color:white; border-radius:2px; font-size:12px;" class="">
+                         &nbsp;{{result.size}} first {{result.industry}} second {{result.seeking}}&nbsp; </span> 
+                       </span>
+                    </li> -->
+
+                    
+
+                
+                  </ul> 
+
+
+
+
+
+
+
+
+
+<!--                   <ul class='dropdown-menu'>
+                    <li><a href='#'>Aerial Imagery Only</a></li>
+                    <li><a href='#'>Assessor Map</a></li>
+                    <li><a href='#'>Boulder City Zoning</a></li>
+                    <li><a href='#'>Clark County Planned Landuse</a></li>
+                    <li><a href='#'>Clark County Zoning</a></li>
+                    <li><a href='#'>Contours 50 Meter</a></li>
+                    <li><a href='#'>Contours 2003 5ft (Valley)</a></li>
+                    <li><a href='#'>Contours 1996 5ft (Valley)</a></li>
+                    <li><a href='#'>Default</a></li>
+                    <li><a href='#'>Henderson Zoning</a></li>
+                    <li><a href='#'>Las Vegas Zoning</a></li>
+                    <li><a href='#'>Mesquite Zoning</a></li>
+                    <li><a href='#'>North Las Vegas Zoning</a></li>
+                    <li><a href='#'>Seismic</a></li>
+                    <li><a href='#'>Soil Guideline</a></li>
+                  </ul> -->
+                </li>
+
+
+
+                <li class='dropdown' id='flightdateList'>
+                  <a class='dropdown-toggle' data-toggle='dropdown' href="#">Flight Date</a>
+<!--                   <ul class='dropdown-menu two-col-special dropdown-menu-form'> -->
+<!--                     <ul class='dropdown-menu two-col-special dropdown-menu-form'> -->
+                        <ul class='dropdown-menu newspaper3 dropdown-menu-form' data-columns="3" style="width:605px !important;">
+
+
+
+
+
+
+
+                  <!-- FLIGHTS -->
+                  <li ng-repeat="result in Flights| orderBy:'id'">
+
+<!--                       <span data="{{result.name}}" ng-click="flightChange(result)">
+-->
+                      <a href="#">
+                      <input id="{{result.id}}" class="icon-checkbox FlightsChecks" type="checkbox" 
+                      ng-model="result.alias" ng-click="flightChange(result)" /> 
+                      <label for="{{result.id}}">
+                        <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                        <span style="margin-right:4.7px !important;" class='glyphicon glyphicon-ok checked chkPadding'></span>
+                        {{result.name}}
+                      </label>
+
+                      </a>
+
+<!--                       </span> -->
+                    
+
+
+
+<!--                     <li ng-repeat="result in Flights| orderBy:'id'">
+                     <span data="{{result.name}}" ng-click="flightChange(result)"><b class="nameTag" style="color:black; font-size:16px;">{{result.name}} </b>
+                    </li> 
+ -->
+
+                      <!-- works with bad format -->
+<!--                     <li ng-repeat="result in Views| orderBy:'id'">
+
+                      <span data="{{result.name}}" ng-click="viewChange(result)">
+
+                        <a href="#">
+                        <input id="{{result.id}}" class="icon-checkbox check-color-click" type="checkbox"/> 
+                        <label class="label-for-check" for="{{result.id}}">
+                          <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                          <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                          {{result.name}}
+                        </label>
+                        </a>
+
+                      </span>
+
+                    </li>  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          <!-- 31 -->
+
+                            <!-- placeholder -->
+      <!--                     <li><a href='#'>NAIP 2013</a></li>
+                          <li><a href='#'>Spring 2013</a></li>
+                          <li><a href='#'>Spring 2012</a></li>
+                          <li><a href='#'>Fall 2011</a></li>
+                          <li><a href='#'>Spring 2011 (6 in.)</a></li>
+                          <li><a href='#'>Fall 2010 (6 in.)</a></li>
+                          <li><a href='#'>NAIP 2010</a></li>
+                          <li><a href='#'>Spring 2010</a></li>
+                          <li><a href='#'>Fall 2009</a></li>
+                          <li><a href='#'>Spring 2009</a></li>
+                          <li><a href='#'>Fall 2008</a></li>
+                          <li><a href='#'>Spring 2008</a></li>
+                          <li><a href='#'>Fall 2007</a></li>
+                          <li><a href='#'>Spring 2007</a></li>
+                          <li><a href='#'>Fall 2006</a></li>
+                          <li><a href='#'>Spring 2006</a></li>
+                          <li><a href='#'>Fall 2005</a></li>
+                          <li><a href='#'>Spring 2005</a></li>
+                          <li><a href='#'>Fall 2004</a></li>
+                          <li><a href='#'>Spring 2004</a></li>
+                          <li><a href='#'>Fall 2003</a></li>
+                          <li><a href='#'>Spring 2003</a></li>
+                          <li><a href='#'>Fall 2002</a></li>
+                          <li><a href='#'>Spring 2002</a></li>
+                          <li><a href='#'>Fall 2001</a></li>
+                          <li><a href='#'>Spring 2001</a></li>
+                          <li><a href='#'>Fall 2000</a></li>
+                          <li><a href='#'>Spring 2000</a></li>
+                          <li><a href='#'>Fall 1999</a></li>
+                          <li><a href='#'>Spring 1999</a></li>
+                          <li><a href='#'>Fall 1998</a></li>
+       -->
+
+                          <!-- http://stackoverflow.com/questions/32377632/how-to-pass-angular-js-variable-inside-onclick-function-as-parameter -->
+
+
+
+
+
+
+
+<!--                 <li>
+                      <a href="#">
+                      <input id="place1b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle1" 
+                       ng-click='flightChange("place1b", FlightToggle1)' /> 
+                      <label class="label-for-check" for="place1b">
+                        <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                        <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                        NAIP 2013
+                      </label>
+                      </a>
+                    </li>
+
+                    <li><a href="#">
+                    <input id="place2b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle2"       ng-click='flightChange("place2b", FlightToggle2)' />
+                    <label class="label-for-check" for="place2b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2013
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place3b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle3"  onclick='flightChange()' />
+                    <label class="label-for-check" for="place3b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2012
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place4b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle4"  onclick='flightChange()' />
+                    <label class="label-for-check" for="place4b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 2011
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place5b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle5"  onclick='flightChange()' />
+                    <label class="label-for-check" for="place5b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2011 <small>(6 in.)</small>
+                    </label>
+                    </a></li>
+
+
+                    <li><a href="#">
+                    <input id="place6b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle6"  onclick='flightChange()' />
+                    <label class="label-for-check" for="place6b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 2010 <small>(6 in.)</small>
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place7b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle7"  onclick='flightChange()' />
+                    <label class="label-for-check" for="place7b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      NAIP 2010
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place8b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle8"  onclick='flightChange()' />
+                    <label class="label-for-check" for="place8b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2010
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place9b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle9"  onclick='flightChange()' />
+                    <label class="label-for-check" for="place9b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 2009
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place10b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle10" onclick='flightChange()' />
+                    <label class="label-for-check" for="place10b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2009
+                    </label>
+                    </a></li>
+
+
+                    <li><a href="#">
+                    <input id="place11b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle11" onclick='flightChange()' />
+                    <label class="label-for-check" for="place11b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 2008
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place12b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle12" onclick='flightChange()' />
+                    <label class="label-for-check" for="place12b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2008
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place13b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle13" onclick='flightChange()' />
+                    <label class="label-for-check" for="place13b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 2007
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place14b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle14" onclick='flightChange()' />
+                    <label class="label-for-check" for="place14b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2007
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place15b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle15" onclick='flightChange()' />
+                    <label class="label-for-check" for="place15b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 2006
+                    </label>
+                    </a></li>
+
+                    <li><a href="#">
+                    <input id="place16b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle16" onclick='flightChange()' />
+                    <label class="label-for-check" for="place16b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2006
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place17b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle17" onclick='flightChange()' />
+                    <label class="label-for-check" for="place17b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 2005
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place18b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle18" onclick='flightChange()' />
+                    <label class="label-for-check" for="place18b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2005
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place19b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle19" onclick='flightChange()' />
+                    <label class="label-for-check" for="place19b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 2004
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place20b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle20" onclick='flightChange()' />
+                    <label class="label-for-check" for="place20b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2004
+                    </label>
+                    </a></li>
+
+
+                    <li><a href="#">
+                    <input id="place21b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle21" onclick='flightChange()' />
+                    <label class="label-for-check" for="place21b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 2003
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place22b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle22" onclick='flightChange()' />
+                    <label class="label-for-check" for="place22b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2003
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place23b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle23" onclick='flightChange()' />
+                    <label class="label-for-check" for="place23b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 2002
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place24b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle24" onclick='flightChange()' />
+                    <label class="label-for-check" for="place24b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2002
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place25b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle25" onclick='flightChange()' />
+                    <label class="label-for-check" for="place25b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 2001
+                    </label>
+                    </a></li>
+
+
+                    <li><a href="#">
+                    <input id="place26b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle26" onclick='flightChange()' />
+                    <label class="label-for-check" for="place26b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2001
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place27b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle27" onclick='flightChange()' />
+                    <label class="label-for-check" for="place27b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 2000
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place28b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle28" onclick='flightChange()' />
+                    <label class="label-for-check" for="place28b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 2000
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place29b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle29" onclick='flightChange()' />
+                    <label class="label-for-check" for="place29b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 1999
+                    </label>
+                    </a></li>
+                    <li><a href="#">
+                    <input id="place30b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle30" onclick='flightChange()' />
+                    <label class="label-for-check" for="place30b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Spring 1999
+                    </label>
+                    </a></li>
+
+                    <li><a href="#">
+                    <input id="place31b" class="icon-checkbox check-color-click" type="checkbox" ng-model="FlightToggle31" onclick='flightChange()' />
+                    <label class="label-for-check" for="place31b">
+                      <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                      Fall 1998
+                    </label>
+                    </a></li> -->
+
+
+
+
+              <!--  <li>
+                      <a href="#">
+                       <input id="place1" class="icon-checkbox check-color-click" type="checkbox" ng-model="mapView1"      
+                        ng-click='mapviewChange("mapView1", mapView1)' />
+                       <label class="label-for-check" for="place1">
+                         <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                         <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                         Aerial Imagery Only
+                       </label>
+                       </a>
+                    </li> -->
+
+
+                    <!-- working -->
+<!--                     <li ng-repeat="result in searchResults| orderBy:'id'">
+                      <span data="{{result.name}}" ng-click="mChange(result.name)"><b class="nameTag" style="color:black; font-size:16px;">{{result.name}} </b>
+                    </li> -->
+
+<!--                     <li ng-repeat="result in searchResults| orderBy:'id'">
+                     <span data="{{result.name}}" ng-click="flightChange(result)"><b class="nameTag" style="color:black; font-size:16px;">{{result.name}} </b>
+                    </li>  -->
+
+
+<!--                     <li ng-repeat="result in searchResults| orderBy:'id'">
+                      <a href="#">
+                       <input id="result.id" ng-model="result.name" class="icon-checkbox check-color-click" type="checkbox"      
+                        ng-click='mChange(result)' >
+                       <label class="label-for-check" for="result.id" >
+                         <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                         <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                         {{result.name}}
+                       </label></input>
+                       </a>
+                    </li> -->
+
+
+<!--                     <li ng-repeat="result in searchResults| orderBy:'id'">
+                      <a href="#">
+                       <input data="{{result.name}}" class="icon-checkbox check-color-click" type="checkbox" ng-model="{{result.name}}"      
+                        ng-click='mapviewChange(result.name)' />
+                       <label class="label-for-check" for="place1">
+                         <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
+                         <span class='glyphicon glyphicon-ok checked chkPadding'></span>
+                         {{result.name}}
+                       </label>
+                       </a>
+                    </li> -->
+
+
+                  </ul>
+                </li>
+
+
+
+<!--                                 <li class="divider"></li> 
+
+
+  <input id="aerialSlider" style="margin-top:-16px !important; margin-left:82px !important;" type="range" min="0" max="1" value="1" step=.1>
+</input>
+<output style="display:inline-block; margin-left:171px; !important; margin-top:-40.75px !important;" for="aerialSlider" id=aerialLevel>100</output>
+
+-->
+
+
+            <div style="padding: 8px 8px 0;"></div>
+
+
+
+              <!-- works well but not in IE -->
+                    <li style="height:29px !important;"> 
+<!--                   <li style="">  -->
+<!--                       <a for="aerialSlider" style=" pointer-events:none; font-size:17px;" href=""> 
+                        Aerial
+                      </a>
+                      <input id="aerialSlider" style="margin-top:-16px !important; margin-left:82px !important;" type="range" min="0" max="1" value="1" step=.1>
+                        <output style="display:inline-block; margin-left:161px; !important; margin-top:-40.75px !important;" for="aerialSlider" id="aerialLevel">100</output>
+                      </input> -->
+
+
+
+
+
+<!--                       <div id="aerialLevel" for="aerialSlider">0</div>
+                      <input id="aerialSlider" type="range" min="0" max="50" value="24.5" step="1" /> -->
+
+<!--                       <div style="position:relative; float:right;"> -->
+<!--                       <div id="aerialLevel" for="aerialSlider" style="">0</div>
+                      <input id="aerialSlider" type="range" min="0" max="1" value="1" step=.1 
+                      style="" /> -->
+<!--                       </div> -->
+
+
+
+
+
+
+
+
+<!--                         <a for="aerialSlider" style=" pointer-events:none;" href=""> 
+                          Aerial
+                        </a>
+                        <div id="aerialLevel" for="aerialSlider">100</div>
+                        <input id="aerialSlider" type="range" min="0" max="1" value="1" step=.1 /> -->
+
+
+
+
+<!--                         <a id="aerialLbl" for="aerialSlider" href=""> 
+                          Aerial
+                          <div id="aerialLevel" for="aerialSlider">100</div>
+                          <input id="aerialSlider" type="range" min="0" max="1" value="1" step=.1 />
+                        </a> -->
+
+<!--                         <a id="aerialLbl" for="aerialSlider" href=""> 
+                          Aerial </a>
+                          <div id="aerialLevel" for="aerialSlider">100</div>
+                          <input id="aerialSlider" type="range" min="0" max="1" value="1" step=.1 /> -->
+                        
+
+                          <a id="aerialLbl" href=""> 
+                            Aerial </a>
+                            <div id="aerialLevel" for="aerialSlider">100</div>
+<!--                             <input id="aerialSlider" style="padding: 5px !important;" type="range" min="0" max="1" value="1" step=.1 /> -->
+
+
+                            <!-- <input id="aerialSlider"  style="margin-top:-20px !important; margin-left:100px !important; padding: 3px !important;"  type="range" min="0" max="1" value="1" step=.1 /> -->
+
+
+
+                            <div style="margin-top:-26px !important; margin-left:75px !important; padding: 0px !important; background-color:transparent;">
+
+
+                              <input id="aerialSlider"  style="padding: 0px !important;"  type="range" min="0" max="1" value="1" step=.1 />
+
+                              </div>
+
+
+
+<!-- <div id="aerialSlider_Box" class="conditionalShow" style="position: absolute; top:180px; padding: 1px !important; left:90px; background-color:white; z-index:9999;">
+    <input id="aerialSlider" style="padding: 1px !important;" type="range" min="0" max="1" value="1" step=.1 />
+</div> -->
+                            
+
+
+
+
+
+                    </li>
+
+
+
+
+
+
+
+
+
+
+
+                    
+
+
+
+<!--     <br/><br/><br/> -->
+
+                    <div style="padding: 8px 8px 0;"></div>
+
+
+<!--                 <li><a href="#"><input type="checkbox" ng-model="theWeather" value="">&nbsp;&nbsp;Weather</a></li> -->
+
+
+                    <!-- alt range -->
+
+                    <!--                  <li style="height:29px !important;"> 
+                                      <a for="aerialSlider" style="display:inline-block; float:left; pointer-events:none; font-size:17px;" href=""> Aerial</a>
+                                        <div id="opacSlideContainer" style="position:absolute; margin-top:10px !important; margin-left:52px !important;">
+                                          <input id="aerialSlider" type="range" min="0" max="1" value="1" step=.1>
+                                          <output for="aerialSlider" id=aerialLevel style="display:inline-block; float:right; margin-top:-21px !important;">100</output>
+                                          </input>
+                                        </div>
+                                    </li>  -->
+
+
+
+                    <!--                  <li style="height:29px !important;"> 
+                                      <a for="aerialSlider" style="display:inline-block; float:left; pointer-events:none; font-size:17px;" href=""> Aerial</a>
+                                      </li>  -->
+
+                    <!--                 <p id="opacSlideContainer" style="position:absolute; margin-top:-20px !important; margin-left:52px !important;">
+                                      <input id="aerialSlider" type="range" min="0" max="1" value="1" step=.1 />
+                                      <div for="aerialSlider" id=aerialLevel style="display:inline-block; float:right; margin-top:-21px !important;">100</div>
+                                    </p> -->
+
+
+<!--                      <li style="height:29px !important;"> 
+                      <a for="aerialSlider" style="display:inline-block; float:left; pointer-events:none; font-size:17px;" href=""> Aerial</a>
+                        <div id="opacSlideContainer" style="position:absolute; margin-top:10px !important; margin-left:52px !important;">
+                          <input id="aerialSlider" type="range" min="0" max="1" value="1" step=.1>
+                          <output for="aerialSlider" id=aerialLevel style="display:inline-block; float:right; margin-top:-21px !important;">100</output>
+                          </input>
+                        </div>
+                    </li> 
+ -->
+
+
+
+
+
+                    <!-- old worked -->
+<!--                     <li><a href="#"><input type="checkbox" value="">&nbsp;&nbsp;Right-of-Way</a></li> -->
+<!--                     <li><a href="#"><input type="checkbox" ng-model="theLegend" value="">&nbsp;&nbsp;Legend</a></li> -->
+
+
+
+                <!-- new works -->
+<!--                 <li><a href="#">
+                  <input id="mapinfoBox" type="checkbox" class="glyphicon glyphicon-unchecked" ng-model="theInfo" checked 
+                  value="">
+                  <label for="mapinfoBox">Map Information</label>
+                </a></li>
+
+                <li><a href="#">
+                  <input id="rightwayBox" type="checkbox" class="glyphicon glyphicon-unchecked" ng-model="theRight" value="">
+                  <label for="rightwayBox">Right-of-Way</label>
+                </a></li>
+
+                 <li><a href="#">
+                   <input id="legendBox" type="checkbox" class="glyphicon glyphicon-unchecked" ng-model="theLegend" value="">
+                   <label for="legendBox">Legend</label>
+                 </a></li>
+
+                 <li><a href="#">
+                   <input id="trafficBox" type="checkbox" class="glyphicon glyphicon-unchecked" ng-model="theTraffic" value="">
+                   <label for="trafficBox">Traffic</label>
+                 </a></li>
+
+                 <li><a href="#">
+                   <input id="weatherBox" type="checkbox" class="glyphicon glyphicon-unchecked" ng-model="theWeather" value="">
+                   <label for="weatherBox">Weather</label>
+                 </a></li> -->
+
+
+
+
+
+
+
+                 <!-- New checks -->
+
+<!--                  <li><a href="#">
+                 <input id="mapinfoBox" class="icon-checkbox" type="checkbox" checked />
+                 <label for="mapinfoBox">
+                   <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                   <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                   Map Information
+                 </label>
+                 </a></li> -->
+
+                 <li><a href="#">
+                 <input id="rightwayBox" class="icon-checkbox addremoveROW" type="checkbox" /> <!-- onchange='addremoveROW()' --><!-- onchange='addremoveROW(this)'  onclick='addremoveROW(this)' -->  <!-- rightofwayLayer --> <!-- ng-model="theRight" -->
+                 <label for="rightwayBox">
+                   <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                   <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                   Right-of-Way
+                 </label>
+                 </a></li>
+
+                 <li id="streetViewList" class="StreetList"><a href="#">
+                 <input id="streetviewBox" class="icon-checkbox strViewOverrides" type="checkbox" ng-model="toggle" />
+                 <label for="streetviewBox">
+                   <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                   <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                   Street View
+                 </label>
+                 </a></li>
+
+                 <li class="LegList"><a href="#">
+                 <input id="legendBox" class="icon-checkbox legPosOverrides" type="checkbox" ng-model="theLegend" ng-click="saveLegBlock(theLegend)" />
+                 <label for="legendBox">
+                   <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                   <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                   Legend
+                 </label>
+                 </a></li>
+
+                 <li class="WeatherList"><a href="#">
+                 <input id="weatherBox" class="icon-checkbox weatherPosOverrides" type="checkbox" ng-model="theWeather" />
+                 <!-- onclick='blockPositionChk()' -->
+                 <label for="weatherBox">
+                   <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                   <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                   Weather
+                 </label>
+                 </a></li>
+
+
+
+
+
+
+
+
+
+<!--                     <li><a href="#"><input type="checkbox" class="glyphicon glyphicon-star-empty" ng-model="theLegend" value="">&nbsp;&nbsp;Legend</a></li> -->
+
+<!-- <li><a href="#"><input type="checkbox" class="glyphicon glyphicon-unchecked" ng-model="theLegend" value="">&nbsp;&nbsp;Legend</a></li> -->
+
+
+<!--                     <input type="checkbox" class="glyphicon glyphicon-star-empty" > -->
+
+
+
+
+
+
+<!-- <li><a href="#">
+
+  <input id="testing" type="checkbox" class="glyphicon glyphicon-unchecked" ng-model="theLegend" value="">
+
+  <label for="testing">Legend</label>
+
+</a></li> -->
+
+
+
+
+
+
+
+
+
+<!-- 
+                   <li class="customCheckItem"><a href="#"><input type="checkbox" value="">&nbsp;&nbsp;Right-of-Way</a></li>
+                   <li class="customCheckItem"><input type="checkbox" ng-model="theLegend" value="">&nbsp;&nbsp;Legend</li>
+ -->
+
+<!--                    <li class="customCheckItem"><input type="checkbox" ng-model="theLegend" />&nbsp;&nbsp;Legend</li> -->
+<!--                     <li class="customCheckItem">&nbsp;&nbsp;Legend</li> -->
+
+
+
+
+
+
+
+<!-- <li><div class="layout"><input type="checkbox" id="330424974746.8886" checked="checked"><label for="330424974746.8886">Forever.</label></div></li> -->
+
+<!-- <li><div class=""><input type="checkbox" id="330424974746.8886" checked="checked"><label for="330424974746.8886">Forever.</label></div></li>
+
+<li><div class="layout"><input type="checkbox" value="">&nbsp;&nbsp;Right-of-Way</div></li>
+ -->
+
+
+
+<!--  <li class="list-group-item"><input type="checkbox" value="">&nbsp;&nbsp;Right-of-Way</li>
+ <li class="list-group-item"><input type="checkbox" ng-model="theLegend" value="...">&nbsp;&nbsp;Legend</li> -->
+
+
+<!--  <ul class="list-group checked-list-box"> -->
+<!--        <li class="customCheckItem">Cras justo odio</li>
+       <li class="list-group-item" data-checked="true">Dapibus ac facilisis in</li>
+       <li class="list-group-item">Morbi leo risus</li>
+       <li class="list-group-item">Porta ac consectetur ac</li>
+       <li class="list-group-item">Vestibulum at eros</li>
+       <li class="list-group-item">Cras justo odio</li>
+       <li class="list-group-item">Dapibus ac facilisis in</li>
+       <li class="list-group-item">Morbi leo risus</li>
+       <li class="list-group-item">Porta ac consectetur ac</li>
+       <li class="list-group-item">Vestibulum at eros</li> -->
+<!--      </ul> -->
+
+
+
+
+
+              </ul>
+
+              <!-- http://stackoverflow.com/questions/23793737/twitter-bootstrap-radio-checkbox-how-to-put-glyphicon -->
+              <!-- http://getbootstrap.com/javascript/#buttons -->
+
+
+
+
+
+<!--               <br/><br/>
+ -->
+
+
+
+<!--               <ul class="nav-text btn-link" data-toggle="buttons">
+                <li>
+                  <label for="mapinfoBox" >
+                    <input id="mapinfoBox" type="checkbox" class="icon-checkbox" autocomplete="off" checked>
+                    <span class='glyphicon glyphicon-unchecked unchecked'></span>
+                    <span class='glyphicon glyphicon-check checked'></span>
+                    Map Information
+                  </label>
+                </li>
+                <li>
+                  <label for="rightwayBox" >
+                    <input id="rightwayBox" type="checkbox" class="icon-checkbox" autocomplete="off"> Right-of-Way
+                    <span class='glyphicon glyphicon-unchecked unchecked'></span>
+                    <span class='glyphicon glyphicon-check checked'></span>
+                  </label>
+                </li>
+                <li>
+                  <label for="legendBox" >
+                    <input id="legendBox" type="checkbox" class="icon-checkbox" autocomplete="off"> Legend
+                    <span class='glyphicon glyphicon-unchecked unchecked'></span>
+                    <span class='glyphicon glyphicon-check checked'></span>
+                  </label>
+                </li>
+              </ul> -->
+
+
+<!--               <ul class="nav-text btn-group" data-toggle="buttons">
+                <li>
+                  <label class="btn btn-primary active">
+                    <input type="checkbox" autocomplete="off" checked> Map Information
+                  </label>
+                </li>
+                <li>
+                  <label class="btn btn-primary">
+                    <input type="checkbox" autocomplete="off"> Right-of-Way
+                  </label>
+                </li>
+                <li>
+                  <label class="btn btn-primary">
+                    <input type="checkbox" autocomplete="off"> Legend
+                  </label>
+                </li>
+              </ul> -->
+
+
+
+
+
+                <!-- examples -->
+
+<!--               <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary active">
+                  <input type="checkbox" autocomplete="off" checked> Checkbox 1 (pre-checked)
+                </label>
+                <label class="btn btn-primary">
+                  <input type="checkbox" autocomplete="off"> Checkbox 2
+                </label>
+                <label class="btn btn-primary">
+                  <input type="checkbox" autocomplete="off"> Checkbox 3
+                </label>
+              </div> -->
+
+
+
+<!--               <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary active">
+                  <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="options" id="option2" autocomplete="off"> Radio 2
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="options" id="option3" autocomplete="off"> Radio 3
+                </label>
+              </div> -->
+
+
+
+
+
+
+<!--                   <div class="well" style="max-height: 300px;overflow: auto;">
+                  <ul class="list-group checked-list-box">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item" data-checked="true">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                      </ul>
+                  </div> -->
+
+
+<!--                   <ul class="list-group checked-list-box">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item" data-checked="true">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                      </ul> -->
+
+
+
+
+
+
+            </nav>
+
+
+
+<!--             <p for="aerialSlider" id="aerialLevel" style="">100</p>
+            <input id="aerialSlider" type="range" min="0" max="1" value="1" step=.1 style="" /> -->
+
+
+
+<!--             <div style="position: absolute; top:10px; right:10px; background-color:white; z-index:9999;">
+              <div id="range">0</div>
+              <input id="slider" type="range" min="0" max="50" value="24.5" step="1" />
+            </div> -->
+
+
+
+
+
+
+
+
+
+        </div> <!--END CONTENT -->
+
+
+      </div>

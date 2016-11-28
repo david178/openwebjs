@@ -1,0 +1,46 @@
+
+Release Notes for 4.2
+
+Upgrades, Bug Fixes & Enchancements:
+-Restructured navbar to allow mobile/tablet users ability to click logo for disclaimer
+-Updated disclaimer window mobile display size
+-Removed 'string' msg from OW logo click
+-Updated API lib refs to http secured
+-Added Google Analytics metrics
+-Updated mobile infoWindow hiding process - close window on 'X' searchbox 
+click to match desktop functionality
+-Added 'Maximize' button for expanded Mobile Property Information
+-Fixed Streetview pano display intermittent issues
+-Added default county theme
+-Added custom Theme options, saves to storage
+-Updated additional property information for mobile
+-Added Persistent States (URL Parms as @State Plane, @lat/long, || @address/parcel)
+-Added Persistent Application-wide Coordinate System Synching - 
+Lat/lon, st plane for saving the map locations along with lods
+(Ex: 
+
+State Plane (Default)
+openweb/?@781994,26761960,6 (where the first 2 numerical values delineate state plane coords, and the final
+integer is the level of detail)
+
+Lat/Lon
+openweb/?@36.1645079,-115.1570102,6 (where the first 2 numerical values delineate lat/lon coords, and the final
+integer is the level of detail)
+
+)
+-Added custom url bookmarking (Ex: view=clark county zoning, legend=t/f, tab=display, fullmap=t/f)
+(Chain Ex: http://gisgate.co.clark.nv.us/ow/?@1525%20Pinto&view=clark%20county%20zoning&legend=t&fullmap=t )
+-Added ability to change coordinate system through information block (state plane, lat/long)
+-Updates to: coordSys dropdown & streetview elements
+-Removed zoom to parcel on Select Property resolves
+-Added OpenWeb Advanced usage guide documentation (Resources)
+-Applied Fix for info window expanded (content panel) for mobile
+-Added Geolocation widget
+-Revamped & added new Resources sections
+-Revamped modal window system
+-Added additional help and assistant
+-Added Recorders Office Link Info
+-Added ability to select more than one property information panel at a time
+
+
+

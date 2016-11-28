@@ -1,0 +1,213 @@
+<!DOCTYPE html public>
+<html>
+
+	<head>
+		<title>OpenWeb Feedback Form</title>
+    	<link rel="stylesheet" type="text/css" href="styles.css">
+    	<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+
+		<header>
+			<div class="logos">
+				<a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/#"><img src="county.png"/><img src="logo.png"/></a>
+			</div>
+		</header>
+
+	<div id="wrapper">
+
+		<div id="main">
+
+			<h1>OpenWeb Feedback Form</h1>
+
+			<p>Please let us know what we can improve on!</p>
+
+
+
+			<div id="textinputs">
+				<p class="input">Name: <input type="text" required class="textinput" id="nameField"></p>
+				<p class="input">Email: <input type="text" required class="textinput" id="emailField"></p>
+				<p class="input">Reason for Using OpenWeb: <input type="text" class="textinput" id="reasonField"></p>
+				<p class="input">How did you find OpenWeb? <input type="text" class="textinput" id="foundField"></p>
+				<p class="input">Other Comments <input style="height:50px;" type="text" class="textinput" id="commentField"></p>
+			</div><!--end textinputs-->
+
+			<br>
+			<hr>
+
+
+			<p>Please rate OpenWeb on a scale from 1 to 5</p>
+
+			
+			<div id="scaleref">
+				<div id="one">Confusing<br>1</div>
+				<div id="three">Navigable<br>3</div>
+				<div id="five">Efficient<br>5</div>
+			</div><!--end scaleref -->
+
+			<div id="mobileref">
+				<p>Confusing = 1, Navigable = 3, Efficient = 5</p>
+			</div>
+
+
+			<div id="scale">
+			<div id="functionality">Functionality
+				<input type="radio" name="functionality" value="5" class="scale">
+				<input type="radio" name="functionality" value="4" class="scale">
+				<input type="radio" name="functionality" value="3" class="scale">
+				<input type="radio" name="functionality" value="2" class="scale">
+				<input type="radio" name="functionality" value="1" class="scale">
+			</div>
+
+			<div id="easeofuse">Ease of Use
+				<input type="radio" name="ease" value="5" class="scale">
+				<input type="radio" name="ease" value="4" class="scale">
+				<input type="radio" name="ease" value="3" class="scale">
+				<input type="radio" name="ease" value="2" class="scale">
+				<input type="radio" name="ease" value="1" class="scale">
+			</div>
+
+			<div id="design">Design
+				<input type="radio" name="design" value="5" class="scale">
+				<input type="radio" name="design" value="4" class="scale">
+				<input type="radio" name="design" value="3" class="scale">
+				<input type="radio" name="design" value="2" class="scale">
+				<input type="radio" name="design" value="1" class="scale">
+			</div>
+			</div> <!--end scale-->
+
+			<input onClick="serviceCall()" type="submit" name="submit" value="Submit" class="submit" id="submit"></input>
+
+
+		</div> <!--end main-->
+
+	</div> <!--end wrapper-->
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>
+
+		           function serviceCall() {
+
+
+		             //--------------------------------------------
+		             //Variable collection
+
+		             //comment fields (need to replace with actual values)
+		             var theEmail = $('#emailField').val();
+		             var theUser = $('#nameField').val();
+		             var theID = "2005093";
+		             var theReason = $('#reasonField').val();
+		             var theFind = $('#foundField').val();
+		             var theComment = $('#commentField').val();
+		             var Comment = "Reason: " + theReason + " | Found: " + theFind + " | Comment: " + theComment;
+
+		             //radio fields (need to replace with actual values)
+		             var functionality = $('input[name="functionality"]:checked').val();
+		             var easeofuse = $('input[name="ease"]:checked').val();
+		             var design = $('input[name="design"]:checked').val();
+
+
+		             //--------------------------------------------
+		             //URL String construction
+
+		             // var commentURL = 'http://gisgate.co.clark.nv.us/proxy/proxy.ashx?http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/addUserQuestion?appname=openwebQA&useremail=theemail&username=thename&userid=2005093&question=thecomment?';
+
+		             // var surveyURL = 'http://gisgate.co.clark.nv.us/proxy/proxy.ashx?http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/addUserFeedback?appname=openwebQA&useremail=&username=&userid=2005093&question=Functionality&answer=5?';
+
+		             //comment URL
+		             var commentURL = 'http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/addUserQuestion?appname=openwebQA&useremail=' + 'theEmail' + '&username=' + 'theUser' + '&userid=' + theID + '&question=' + Comment;
+		            
+		             //survey URL
+		             var func_surveyURL = 'http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/addUserFeedback?appname=openwebQA&useremail=&username=&userid=' + theID + '&question=Functionality&answer=' + functionality;
+		             var ease_surveyURL = 'http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/addUserFeedback?appname=openwebQA&useremail=&username=&userid=' + theID + '&question=EaseOfUse&answer=' + easeofuse;
+		             var design_surveyURL = 'http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/addUserFeedback?appname=openwebQA&useremail=&username=&userid=' + theID + '&question=Design&answer=' + design;
+
+
+
+
+		             //--------------------------------------------
+		             //Service calls
+
+		             //comment post
+		               $.ajax({
+		                 url : commentURL,
+		                         dataType:"jsonp",
+		                         // jsonp:"resolve",
+		                         success:function(data)
+		                         {
+		                           //logic to reset email, name, comment fields
+		                           $('#emailField').val('');
+		                           $('#nameField').val('');
+		                           $('#reasonField').val('');
+		                           $('#foundField').val('');
+		                           $('#commentField').val('');
+
+		                           alert('Thank you for your feedback!')
+
+		                         },
+		                         error: function () {
+		                             alert('error during comment submission')
+		                         },
+		                     });
+
+					   //survey posts
+		               $.ajax({
+		                 url : func_surveyURL,
+		                         dataType:"jsonp",
+		                         // jsonp:"resolve",
+		                         success:function(data)
+		                         {
+		                           //logic to reset radio buttons
+		                           $('input[name="functionality"]').prop('checked', false);
+
+		                         },
+		                         error: function () {
+		                           alert('error during survey submission')
+		                         },
+		                     });
+
+		               $.ajax({
+		                 url : ease_surveyURL,
+		                         dataType:"jsonp",
+		                         // jsonp:"resolve",
+		                         success:function(data)
+		                         {
+		                           //logic to reset radio buttons
+		                           $('input[name="ease"]').prop('checked', false);
+
+		                         },
+		                         error: function () {
+		                           alert('error during survey submission')
+		                         },
+		                     });
+
+
+		               $.ajax({
+		                 url : design_surveyURL,
+		                         dataType:"jsonp",
+		                         // jsonp:"resolve",
+		                         success:function(data)
+		                         {
+		                           //logic to reset radio buttons
+		                           $('input[name="design"]').prop('checked', false);
+
+		                         },
+		                         error: function () {
+		                           alert('error during survey submission')
+		                         },
+		                     });
+
+
+		           }
+
+
+
+
+
+		</script>
+
+
+</body>
+</html>

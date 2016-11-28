@@ -1,0 +1,216 @@
+
+  <div class="modal fade" id="assistantModal" role="dialog">
+    <div class="modal-dialog">
+
+    	    <div id='assistantDialog' class="container">
+    	    	<div class="row">
+    		        <div class="col-md-6">
+    		        <!-- Nav tabs -->
+    		        <div class="card">
+    		        <ul class="nav share-tabs nav-tabs" role="tablist">
+    		            <li role="presentation" class="active"><a href="#assistant" aria-controls="assistant" role="tab" data-toggle="tab">Help Agent</a></li>
+
+    		            <!-- Close Icon -->
+    		            <img class="modalCloseIcon" border="0" data-dismiss="modal" src="css/images/icon-close2.png">
+
+
+    		        </ul>
+
+    		        <!-- Tab panes -->
+    		        <div class="share-tab-content tab-content">
+    		            <div role="tabpanel" class="share-pane tab-pane active" id="assistant">
+
+                      <!-- search examples -->
+                      <!-- http://bootsnipp.com/tags/search -->
+
+
+    		            	<input class="form-control" id="assistantInputBox" value=""  placeholder="Search Help" type="text">
+
+    		            	<p class="share-link-message"> Type your question in natural language. </p>
+    		      
+    		            </div>
+
+
+                    <!-- list -->
+                    <div class="list-group">
+<!--                       <a href="#" class="list-group-item active">
+                        How to use OpenWeb
+                      </a> -->
+
+                      <a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OW_QuickGuide.pdf" target="_blank" class="list-group-item active list-group-item-action"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; How to use OpenWeb</a>
+                      <a href="../resources/AdvancedUseGuide.txt" target="_blank" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; OpenWeb Advanced Features and Functionality</a>
+                      <a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/feedback/form.html" target="_blank" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; Send us Feedback</a>
+                      <a href="#" class="list-group-item disabled"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; Measure distance between points</a>
+                      <a href="#" class="list-group-item disabled"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; Adding graphics to the map</a>
+                    </div>
+
+
+
+                    <!-- how to use OpenWeb -->
+                    <!-- OpenWeb Advanced Features and Functionality -->
+                    <!-- Send us feedback -->
+                    <!-- Measure distance between points -->
+                    <!-- Adding graphics to the map -->
+
+
+
+
+
+    		            <div role="tabpanel" class="share-pane tab-pane" id="embed">
+
+
+
+
+	<!-- 
+		            	 <form class="form-horizontal">
+		            	   <div class="form-group">
+		            	     <select class="form-control-static col-sm-2" data-style="btn-primary" ng-options="size as size.name for size in sizes " ng-model="selectedEmbed" ng-change="updateEmbed()"></select> 
+		            	     <div class="col-sm-10">
+		            	       <input class="form-control" id="embedInputBox" ng-value="{{theEmbedLink}}" type="text">
+		            	     </div>
+		            	   </div>
+
+		            	  </form> -->
+
+
+<!-- 
+		            	 <div class="form-horizontal">
+		            	   <div class="input-group">
+
+		            	   	<span class="input-group-btn col-sm-offset-0 col-sm-2">
+		            	   		<select class="form-control" data-style="btn-primary" ng-options="size as size.name for size in sizes" ng-model="selectedEmbed" ng-change="updateEmbed()"></select> 
+		            	   	</span>
+
+		            	     <div class="col-sm-8">
+		            	       <input class="form-control" id="embedInputBox" value="{{theEmbedLink}}" type="text">
+		            	     </div>
+
+		            	   	</div>
+		            	   </div> -->
+
+
+
+    		            	 <div class="form-horizontal">
+    		            	   <div class="form-group">
+
+    		            	   	<span class="input-group-select col-sm-2" style="width:21% !important; margin-right:-20px !important;">
+    		            	   		<select class="form-control" data-style="btn-primary" ng-options="size as size.name for size in sizes" ng-model="selectedEmbed" ng-change="updateEmbed()"></select> 
+    		            	   	</span>
+ 
+    		            	     <div class="col-sm-9">
+    		            	      <!--  <input class="form-control" id="embedInputBox" value="{{theEmbedLink}}" type="text"> -->
+
+    		            	      <input class="form-control" id="embedInputBox" value="<iframe src='{{theShareLink}}' width='{{embedWidth}}' height='{{embedHeight}}' frameborder='0' style='border:1' allowfullscreen></iframe>" type="text">
+
+
+
+    		            	      
+
+    		            	     </div>
+
+    		            	   	</div>
+    		            	   </div>
+  
+
+
+
+
+
+    		            	
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    		            	<!-- Below: iframe w/ an iframe preview of the embed version of openweb -->
+    		            	<!-- <p class="share-link-message"> Preview: </p> -->
+
+    		            	<!-- <iframe style="display:none;" src="{{theEmbedLink}}" width="400" height="300" frameborder="0" style="border:0" allowfullscreen=""></iframe> -->
+
+    		            	<!-- <iframe style="display:none;" ng-src="{{theEmbedLink}}" width="{{embedWidth}}" height="{{embedHeight}}" frameborder="0" style="border:0" allowfullscreen=""></iframe> -->
+
+    		            	<!-- <iframe style="display:none;" ng-src="{{theEmbedLink}}" width="{{embedWidth}}" height="{{embedHeight}}" frameborder="0" style="border:0" allowfullscreen=""></iframe> -->
+    		            	
+
+			            	<!-- {{theEmbedLink}} -->
+
+    		            	<!-- <iframe ng-src="" width="{{embedWidth}}" height="{{embedHeight}}" frameborder="0" style="border:1" allowfullscreen=""></iframe> --> <!-- {{theShareLink}} -->
+
+
+    		            </div>
+    		            <!-- <div role="tabpanel" class="share-pane tab-pane" id="messages">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+    		            <div role="tabpanel" class="share-pane tab-pane" id="settings">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div> -->
+    		        </div>
+
+
+    		    </div>
+    		   </div>
+    		  </div>
+    		 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <!-- Modal content-->
+<!--       <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-paperclip"></span> Share or Embed Map</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="" checked>Remember me</label>
+            </div>
+              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+          </form>
+        </div> -->
+
+        <!-- <div class="modal-footer"> -->
+
+<!--           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <p>Not a member? <a href="#">Sign Up</a></p>
+          <p>Forgot <a href="#">Password?</a></p> -->
+
+
+
+
+
+        <!-- </div> -->
+
+      <!-- </div> -->
+      
+
+      <!-- </div> -->
+    </div>
+  </div>

@@ -1,0 +1,158 @@
+
+ <div id='resourcesDirective' style='padding:7px; border:white;'>
+   <!-- Title -->
+   <div id='resourcesHeader' class='alert alert-info conditionalShow' role='alert' style='padding:7px;'>Resources
+     <!-- <span id='introToggle' class='fa fa-times'></span> -->
+     <span id='resourcesToggle' class='fa fa-chevron-left'></span>
+   </div>
+
+
+   <!-- CONTENT -->
+   <div style="margin-top:60px;">
+
+        <nav class="main-nav main-nav-desktop">
+          <ul class="nav-text blue-streak">
+
+
+
+            <!-- Share -->
+            <li class='dropdown' id='shareembedList'>
+              <a id='shareembedListItem' class='dropdown-toggle' data-toggle="modal" data-target="#shareModal" href="#">Share or embed map</a>
+<!--               <ul class='dropdown-menu dropdown-menu-form'>
+                <li style="" class="">
+
+                  <div class="widget-share-link-url-container"> <input id="last-focusable-in-modal" value="https://www.google.com/maps/dir///@36.1524687,-115.0923856,14z" type="text" jstcache="1219" jsaction="copy:share.shareLink;cut:share.shareLink" class="widget-share-link-url" jsan="7.widget-share-link-url,0.id,0.value,0.type,22.jsaction"> </div>
+
+
+
+              </ul> -->
+            </li>
+
+
+
+
+
+
+
+
+
+            <!-- Print -->
+            <li class='dropdown' id='printList'>
+              <a class='dropdown-toggle' data-toggle='dropdown' href="#">Print</a>
+              <ul class='dropdown-menu dropdown-menu-form'>
+
+                <!-- Print 'As PDF' (PDF w legend) -->
+                <li>   
+                  <a id="printMapLink_PDFleg" href="#" target="_blank"> As PDF</a>
+                  <!-- Loading Shade -->           
+                  <div id="loading2">
+                     <div id="loading-image2" class="loader2"></div>
+                     <div id="loading-readyPDFleg" >Ready</div>
+                  </div>
+                </li>
+
+                <!-- Print 'As Map' (PDF w.o legend) -->
+                <li>
+                  <a id="printMapLink_PDF" href="#" target="_blank"> As Map</a>    
+                  <div id="loading3">
+                    <div id="loading-image3" class="loader3"></div>
+                    <div id="loading-readyPDF" >Ready</div>
+                  </div>
+                </li>
+
+              </ul>
+            </li>
+
+
+
+            <!-- Export -->
+            <li class='dropdown' id='exportList'>
+              <a class='dropdown-toggle' data-toggle='dropdown' href="#">Export</a>
+              <ul class='dropdown-menu dropdown-menu-form'>
+
+                <!-- Export 'As PNG' (PNG w.o legend) -->
+                <li>
+                  <a id="exportMapLink_PNG" href="#" target="_blank">As PNG</a>
+                  <div id="loading4">
+                    <div id="loading-image4" class="loader4"></div>
+                    <div id="loading-readyPNG" >Ready</div>
+                  </div>
+              </li>
+              </ul>
+            </li>
+
+
+
+
+
+
+            <!-- <hr> -->
+            <div style="padding: 8px 8px 0;"></div>
+
+
+            <!-- Tour -->
+            <li><a id="tourButtonListItem" href="">Take a tour</a></li>
+
+            <!-- Theme -->
+            <li class='dropdown' id='settingsList'>
+              <a class='dropdown-toggle' data-toggle='dropdown' href="#">Theme</a>
+              <ul class='dropdown-menu dropdown-menu-form'>
+                <li style="" class=""><select style="background-color: #222;" class="form-control btn btn-primary styleBox-variant" ng-model="layout" ng-change="saveTheme()" ng-options="layout.url as layout.name for layout in layouts"></select></li>
+              </ul>
+            </li>
+
+            <!-- Help -->
+            <li class='dropdown' id='helpList' >
+              <a class='dropdown-toggle' data-toggle='dropdown' href="#">Get help</a>
+              <ul class='dropdown-menu'>
+                <li><a id='assistantListItem' class='dropdown-toggle' data-toggle="modal" data-target="#assistantModal" href="#">Help Agent</a></li>
+                <li><a id="qGuideLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OW_QuickGuide.pdf" target="_blank">Quick Guide</a></li>
+                <li><a id="aGuideLink" href="../resources/AdvancedUseGuide.txt" target="_blank">Advanced Guide</a></li>
+              </ul>
+            </li>
+
+            <!-- Send feedback -->
+            <li><a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/feedback/form.html" target="_blank">Send feedback</a></li>
+
+
+
+            <!-- <hr> -->
+            <div style="padding: 8px 8px 0;"></div>
+
+
+
+            <!-- Version -->
+            <li class='dropdown'>
+              <a class='dropdown-toggle' data-toggle='dropdown' href="#">Version</a>
+              <ul class='dropdown-menu'>
+                <li><a href="#" target="_blank"> 4.2</a></li>
+              </ul>
+            </li>
+
+            <!-- GISMO apps -->
+            <li class='dropdown' id='appsList'>
+              <a class='dropdown-toggle' data-toggle='dropdown' href="#">GISMO apps</a>
+              <ul class='dropdown-menu'>
+                <li><a href="http://gisgate.co.clark.nv.us/openweb/" target="_blank">OpenWeb SL</a></li>
+                <li><a href="http://gisgate.co.clark.nv.us/opendoor/" target="_blank">OpenDoor SL</a></li>
+                <li><a href="http://gisgate.co.clark.nv.us/owmobile/" target="_blank">OpenWeb Mobile</a></li>
+                <li><a href="http://ccgisqa01m.co.clark.nv.us/gisplot/" target="_blank">GISPlot</a></li>
+              </ul>
+            </li>
+
+
+          </ul>
+
+        </nav>
+
+
+
+
+
+
+
+
+
+   </div> <!--END CONTENT -->
+
+ </div>

@@ -1,0 +1,210 @@
+     
+<!-- examples 
+http://www.w3schools.com/bootstrap/bootstrap_ref_js_modal.asp
+http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_modal2&stacked=h
+-->
+
+
+
+  <!-- <h2>Modal Login Example</h2> -->
+  <!-- Trigger the modal with a button -->
+<!--   <button type="button" class="btn btn-default btn-lg" id="myBtn">Share or Embed Map</button>
+ -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="shareModal" role="dialog">
+    <div class="modal-dialog">
+
+    	<!-- <div class="share-container"> -->
+
+    	    <div id='shareDialog' class="container">
+    	    	<div class="row">
+    		        <div class="col-md-6">
+    		        <!-- Nav tabs -->
+    		        <div class="card">
+    		        <ul class="nav share-tabs nav-tabs" role="tablist">
+    		            <li role="presentation" class="active"><a href="#share" aria-controls="share" role="tab" data-toggle="tab">Share</a></li>
+    		            <li role="presentation"><a href="#embed" aria-controls="embed" role="tab" data-toggle="tab">Embed</a></li>
+    		            <!-- <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+    		            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li> -->
+
+    		            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+
+    		            <!-- Close Icon -->
+    		            <img class="modalCloseIcon" border="0" data-dismiss="modal" src="css/images/icon-close2.png">
+
+
+    		        </ul>
+
+    		        <!-- Tab panes -->
+    		        <div class="share-tab-content tab-content">
+    		            <div role="tabpanel" class="share-pane tab-pane active" id="share">
+
+    		            	<input class="form-control" id="shareInputBox" value="{{theShareLink}}" type="text">
+
+    		            	<p class="share-link-message"> You can also copy the link from your browser's address bar. </p>
+    		      
+    		            </div>
+
+
+
+
+
+    		            <div role="tabpanel" class="share-pane tab-pane" id="embed">
+
+
+
+
+	<!-- 
+		            	 <form class="form-horizontal">
+		            	   <div class="form-group">
+		            	     <select class="form-control-static col-sm-2" data-style="btn-primary" ng-options="size as size.name for size in sizes " ng-model="selectedEmbed" ng-change="updateEmbed()"></select> 
+		            	     <div class="col-sm-10">
+		            	       <input class="form-control" id="embedInputBox" ng-value="{{theEmbedLink}}" type="text">
+		            	     </div>
+		            	   </div>
+
+		            	  </form> -->
+
+
+<!-- 
+		            	 <div class="form-horizontal">
+		            	   <div class="input-group">
+
+		            	   	<span class="input-group-btn col-sm-offset-0 col-sm-2">
+		            	   		<select class="form-control" data-style="btn-primary" ng-options="size as size.name for size in sizes" ng-model="selectedEmbed" ng-change="updateEmbed()"></select> 
+		            	   	</span>
+
+		            	     <div class="col-sm-8">
+		            	       <input class="form-control" id="embedInputBox" value="{{theEmbedLink}}" type="text">
+		            	     </div>
+
+		            	   	</div>
+		            	   </div> -->
+
+
+
+    		            	 <div class="form-horizontal">
+    		            	   <div class="form-group">
+
+    		            	   	<span class="input-group-select col-sm-2" style="width:21% !important; margin-right:-20px !important;">
+    		            	   		<select class="form-control" data-style="btn-primary" ng-options="size as size.name for size in sizes" ng-model="selectedEmbed" ng-change="updateEmbed()"></select> 
+    		            	   	</span>
+ 
+    		            	     <div class="col-sm-9">
+    		            	      <!--  <input class="form-control" id="embedInputBox" value="{{theEmbedLink}}" type="text"> -->
+
+    		            	      <input class="form-control" id="embedInputBox" value="<iframe src='{{theShareLink}}' width='{{embedWidth}}' height='{{embedHeight}}' frameborder='0' style='border:1' allowfullscreen></iframe>" type="text">
+
+
+
+    		            	      
+
+    		            	     </div>
+
+    		            	   	</div>
+    		            	   </div>
+  
+
+
+
+
+
+    		            	
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    		            	<!-- Below: iframe w/ an iframe preview of the embed version of openweb -->
+    		            	<!-- <p class="share-link-message"> Preview: </p> -->
+
+    		            	<!-- <iframe style="display:none;" src="{{theEmbedLink}}" width="400" height="300" frameborder="0" style="border:0" allowfullscreen=""></iframe> -->
+
+    		            	<!-- <iframe style="display:none;" ng-src="{{theEmbedLink}}" width="{{embedWidth}}" height="{{embedHeight}}" frameborder="0" style="border:0" allowfullscreen=""></iframe> -->
+
+    		            	<!-- <iframe style="display:none;" ng-src="{{theEmbedLink}}" width="{{embedWidth}}" height="{{embedHeight}}" frameborder="0" style="border:0" allowfullscreen=""></iframe> -->
+    		            	
+
+			            	<!-- {{theEmbedLink}} -->
+
+    		            	<!-- <iframe ng-src="" width="{{embedWidth}}" height="{{embedHeight}}" frameborder="0" style="border:1" allowfullscreen=""></iframe> --> <!-- {{theShareLink}} -->
+
+
+    		            </div>
+    		            <!-- <div role="tabpanel" class="share-pane tab-pane" id="messages">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+    		            <div role="tabpanel" class="share-pane tab-pane" id="settings">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div> -->
+    		        </div>
+
+
+    		    </div>
+    		   </div>
+    		  </div>
+    		 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <!-- Modal content-->
+<!--       <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-paperclip"></span> Share or Embed Map</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="" checked>Remember me</label>
+            </div>
+              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+          </form>
+        </div> -->
+
+        <!-- <div class="modal-footer"> -->
+
+<!--           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <p>Not a member? <a href="#">Sign Up</a></p>
+          <p>Forgot <a href="#">Password?</a></p> -->
+
+
+
+
+
+        <!-- </div> -->
+
+      <!-- </div> -->
+      
+
+      <!-- </div> -->
+    </div>
+  </div>

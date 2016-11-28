@@ -1,0 +1,112 @@
+
+
+
+    <!-- ********************************** -->
+    <!-- Convert to directive & template -->
+    <!-- Legend Window -->
+    <!--     <legend-window></legend-window> -->
+    <div id="weatherDivCasing" ng-show="theWeather" class="conditionalShow_LegWeather blockFade" > <!-- cssFade -->
+<!--       <div style="color: #8ED1E9; font-size:17px; font-family: "verb","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;"> </div> -->
+
+      <h6>Weather<img class="widgetClose pull-right closeWeatherIcon" ng-click="theWeather=false" border="0" src="css/images/icon-close2.png" style="display: inline;"></h6>
+
+        <!-- <button ng-click="theLegend=false">Hide</button> -->
+<!--       <input class="pull-right" type="button" ng-click="theLegend" value="x"> -->
+      <div id="weatherDiv">
+
+
+        <!-- http://getbootstrap.com/javascript/#buttons-single-toggle -->
+
+        <!-- http://stackoverflow.com/questions/13511368/how-to-create-a-toggle-button-in-bootstrap -->
+        <!-- https://ghinda.net/css-toggle-switch/bootstrap.html -->
+
+
+
+<!--         <div style="position:absolute; top:10px; right 5px; " class="btn-group-vertical" role="group" aria-label="...">
+          <button style="color:white !important;" type="button" class="btn btn-default">f</button>
+          <button type="button" class="btn btn-default">c</button>
+        </div> -->
+<!-- 
+        <label class="switch-light" onclick="">
+          <input type="checkbox">
+
+          <span class="well">
+            <span>f</span>
+            <span>c</span>
+            <a class="btn btn-primary"></a>
+          </span>
+        </label>
+ -->
+
+
+
+<!--         <div class="btn-group-vertical" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="options" id="myToggle1" autocomplete="off" checked> Radio 1 (preselected)
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="options" id="myToggle2" autocomplete="off"> Radio 2
+          </label>
+
+        </div> -->
+
+
+
+<!--         <button class="btn btn-default" id="myToggleButton">Press me</button>
+
+        <script>
+
+        var $button = $('#myToggleButton'),
+            $body = $('body');
+
+        $button.on('click', function () {
+          $button.toggleClass('active');
+          
+        });
+
+
+
+        </script>
+ -->
+
+
+
+
+<!--         <p>Las Vegas, NV</p>
+        <p style="float:left;">52 F &nbsp;&nbsp;</p><p style="float:left;">54 / 43</p> -->
+
+
+
+        <div id="wxWrap">
+            <!-- <p>Las Vegas, NV</p> -->
+
+            <p>{{zoning.jurisdiction}} - {{data.ZipCode}}</p>
+            <span id="wxInitial">Select a property</span>
+<!--             <span id="wxIntro">
+                Las Vegas, NV
+            </span> -->
+<!--             <span style="display:inline-block;" id="wxZone">{{zoning.jurisdiction}} <p id="wxZip" ></p></span> -->
+<!--           </br> -->
+
+            <span id="wxIcon2"></span> &nbsp;
+            <span id="wxTemp"></span>
+
+            
+
+        </div>
+
+
+        </div>
+    </div>
+
+        <!-- Weather Window -->
+    <!--     <weather-window></weather-window> -->
+<!--         <div id="weatherDivCasing" ng-show="theWeather" class="conditionalShow cssFade"  > -->
+      <!--           <div style="color: #8ED1E9; font-size:17px; font-family: "verb","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;">Weather</div> -->
+<!--       <div style="color: #8ED1E9; font-size:17px; font-family: "verb","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;">Weather</div>
+          <div id="weatherDiv"></div>
+        </div> -->
+    <!-- ********************************** -->
+
+
+
