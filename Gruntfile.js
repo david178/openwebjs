@@ -2,7 +2,8 @@
 'use strict';
 
 // helper variables and functions borrowed from generator-ember
-var LIVERELOAD_PORT = 35729;
+var LIVERELOAD_PORT = 9876; //ORIG
+//var LIVERELOAD_PORT = 8000; //test
 var liveReloadSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
@@ -160,9 +161,10 @@ module.exports = function (grunt) {
         },
         connect: {
             options: {
-                port: 8000,
-                // port: 9876,
-                open: true,
+                //port: 8000, //ORIG
+                // port: 9876, //test
+                port: 8000, //test2
+                open: false, //was true
                 hostname: 'localhost' // set to 0.0.0.0 if want access from external
             },
             livereload: {
