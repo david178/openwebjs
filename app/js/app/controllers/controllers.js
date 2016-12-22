@@ -22,7 +22,6 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) {  //lim
   console.log("C [[ selected: " + $scope.selected + " ]]");
 
 
-//test
 
 
   // $scope.onTheKeyUp = function ($event, $item, $model, $label, $viewValue) {
