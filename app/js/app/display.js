@@ -164,9 +164,21 @@ function viewChange(viewName) {
 
 
 
-    abMain = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/AB142/MapServer';
+    // abMain = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/AB142/MapServer';
 
-    var abLayer = new esri.layers.ArcGISDynamicMapServiceLayer(abMain,{id:'abLayer'});
+    // var abLayer = new esri.layers.ArcGISDynamicMapServiceLayer(abMain,{id:'abLayer'});
+
+    var assessorannoServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/AssessorAnno/MapServer", { id: 'assessorannoServiceLayer' });
+
+    var abLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/AB142/MapServer", { id: 'abLayer' });
+
+
+
+
+        //     //AssesorAnno Layer
+        // // transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/Transportation/MapServer",{id:'transportationServiceLayer'});
+        // assessorannoServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/AssessorAnno/MapServer", { id: 'assessorannoServiceLayer' });
+
     
 
 
@@ -218,7 +230,7 @@ function viewChange(viewName) {
 
           
 
-           map.addLayers([basemap, assessorServiceLayer, transportationServiceLayer, abLayer]);
+           map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, abLayer]);
 
 
 
@@ -296,7 +308,7 @@ function viewChange(viewName) {
                      "imageParameters": imageParameters
                     });
 
-                   map.addLayers([basemap, assessorServiceLayer, transportationServiceLayer, bcLayer, abLayer]);
+                   map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, bcLayer, abLayer]);
 
                  });
 
@@ -333,7 +345,7 @@ function viewChange(viewName) {
             // "imageParameters" : imageParameters
            });
 
-             map.addLayers([basemap, PLULayer, abLayer]);
+             map.addLayers([basemap, PLULayer, assessorannoServiceLayer, abLayer]);
 
 
 
@@ -398,7 +410,7 @@ function viewChange(viewName) {
                  "imageParameters": imageParameters
                 });
 
-               map.addLayers([basemap, assessorServiceLayer, transportationServiceLayer, CCZoningLayer, abLayer]);
+               map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, CCZoningLayer, abLayer]);
 
              });
 
@@ -423,7 +435,7 @@ function viewChange(viewName) {
            C50Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'C50Layer'});
 
 
-             map.addLayers([basemap, C50Layer, abLayer]);
+             map.addLayers([basemap, C50Layer, assessorannoServiceLayer, abLayer]);
 
            break;
 
@@ -446,7 +458,7 @@ function viewChange(viewName) {
            C2003Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'C2003Layer'});
 
 
-          map.addLayers([basemap, C2003Layer, abLayer]);
+          map.addLayers([basemap, C2003Layer, assessorannoServiceLayer, abLayer]);
 
            break;
 
@@ -468,7 +480,7 @@ function viewChange(viewName) {
            C1996Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'C1996Layer'});
 
 
-          map.addLayers([basemap, C1996Layer, abLayer]);
+          map.addLayers([basemap, C1996Layer, assessorannoServiceLayer, abLayer]);
 
            break;
 
@@ -499,7 +511,7 @@ function viewChange(viewName) {
 
            
 
-            map.addLayers([basemap, assessorServiceLayer, transportationServiceLayer, abLayer]);
+            map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, abLayer]);
 
 
            break;
@@ -542,7 +554,7 @@ function viewChange(viewName) {
                  "imageParameters": imageParameters
                 });
 
-               map.addLayers([basemap, assessorServiceLayer, transportationServiceLayer, hendersonZoningLayer, abLayer]);
+               map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, hendersonZoningLayer, abLayer]);
 
              });
 
@@ -609,7 +621,7 @@ function viewChange(viewName) {
                  "imageParameters": imageParameters
                 });
 
-               map.addLayers([basemap, assessorServiceLayer, transportationServiceLayer, lasVegasZoningLayer, abLayer]);
+               map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, lasVegasZoningLayer, abLayer]);
 
              });
 
@@ -674,7 +686,7 @@ function viewChange(viewName) {
                  "imageParameters": imageParameters
                 });
 
-               map.addLayers([basemap, assessorServiceLayer, transportationServiceLayer, mesquiteZoningLayer, abLayer]);
+               map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, mesquiteZoningLayer, abLayer]);
 
              });
 
@@ -742,7 +754,7 @@ function viewChange(viewName) {
                  "imageParameters": imageParameters
                 });
 
-               map.addLayers([basemap, assessorServiceLayer, transportationServiceLayer, nlvZoningLayer, abLayer]);
+               map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, nlvZoningLayer, abLayer]);
 
              });
 
@@ -808,7 +820,7 @@ function viewChange(viewName) {
                  "imageParameters": imageParameters
                 });
 
-               map.addLayers([basemap, assessorServiceLayer, transportationServiceLayer, seismicLayer, abLayer]);
+               map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, seismicLayer, abLayer]);
 
              });
 
@@ -843,7 +855,7 @@ function viewChange(viewName) {
 
 
 
-          map.addLayers([basemap, SoilLayer, abLayer]);
+          map.addLayers([basemap, SoilLayer, assessorannoServiceLayer, abLayer]);
 
 
            break;
@@ -874,7 +886,7 @@ function viewChange(viewName) {
 
          
 
-          map.addLayers([basemap, assessorServiceLayer, transportationServiceLayer, abLayer]);
+          map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, abLayer]);
             
           break;
    }

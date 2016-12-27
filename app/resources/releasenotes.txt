@@ -1,5 +1,6 @@
 
-Release Notes for 4.2
+----------------------------------------------------------------------------------------------
+[Release Notes for 4.2]
 
 Upgrades, Bug Fixes & Enchancements:
 -Restructured navbar to allow mobile/tablet users ability to click logo for disclaimer
@@ -41,6 +42,26 @@ integer is the level of detail)
 -Added additional help and assistant
 -Added Recorders Office Link Info
 -Added ability to select more than one property information panel at a time
+-Added Assessor Annotation layer
+-Fixed the blue tab highlighting on hover issue that occurs from conflict between
+added modal window css
+
+
+-Update mobile popup info window header color depending upon theme selected [ ]
+-Update dropdown arrow icon for cross browser (important for IE) [ ]
+-Fix the issue that occurs now when an @Address/APN is put into browser url - 
+the map coords are no longer saved (need to update browser url update logic) [ ]
+-Fix export to PNG (exporting as PDF only) [ ]
+-Fix issue with mobile pop up that's occuring after consecutive select properties [ ]
+-Fix mobile popup y overflow to scroll (put in a content panel?) [ ]
+
+-If there is a lat/lng or a state plane: then update to add x/y vals in infoblock by default [ ]
+-Fix the inconsistency issue between the lat/lon values from info-block & lat/lon in browser url
+that gets resolved on mouse move evt [ ]
+-Fix the issue where search resolve for address/apn no longer zooms in to location at all /
+Updated executeQueryTask for listening to the 'propselect' to pan/zoom to location without 
+highlighting parcel/selecting property [ ]
+-Remove zoom to parcel onSelectProp (keep onSearch) [ ]
 
 
 

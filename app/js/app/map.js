@@ -1,4 +1,3 @@
-
 //************************************************
 //******************* MAP ************************
 //************************************************
@@ -21,7 +20,7 @@ var functionMode = 'identify';
 var slidePanelOpen; // flag set if panel is open or closed
 var disclaimerFlag; //localStorage 
 //basemap / layer defaults 
-var basemap, abLayer, assessorServiceLayer, transportationServiceLayer;
+var basemap, abLayer, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer;
 var bcLayer, PLULayer, CCZoningLayer, C50Layer, C2003Layer, C1996Layer,
     hendersonZoningLayer, lasVegasZoningLayer, mesquiteZoningLayer,
     nlvZoningLayer, seismicLayer, SoilLayer, rightofwayLayer;
@@ -76,30 +75,30 @@ var coordSystem; //state-plane-ft || lat-long
 
 require(["esri/map",
 
-       // "esri/toolbars/draw", //added for tools
-       // "esri/graphic", //added for tools
-       // "esri/layers/ArcGISDynamicMapServiceLayer", //added for image layers
-       // "esri/layers/ImageParameters", //added for image layers
+        // "esri/toolbars/draw", //added for tools
+        // "esri/graphic", //added for tools
+        // "esri/layers/ArcGISDynamicMapServiceLayer", //added for image layers
+        // "esri/layers/ImageParameters", //added for image layers
 
-       "esri/geometry/Point",
+        "esri/geometry/Point",
 
-       "esri/geometry/webMercatorUtils",
-       "esri/tasks/ProjectParameters",
-       "esri/geometry/Geometry",
-       "esri/geometry/Extent",
-       "esri/SpatialReference",
-       "esri/tasks/GeometryService",
+        "esri/geometry/webMercatorUtils",
+        "esri/tasks/ProjectParameters",
+        "esri/geometry/Geometry",
+        "esri/geometry/Extent",
+        "esri/SpatialReference",
+        "esri/tasks/GeometryService",
 
-       //https://developers.arcgis.com/javascript/jssamples/toolbar_draw.html
-       "esri/toolbars/draw", //added for tools
-       "esri/graphic", //added for tools
-       "esri/symbols/SimpleMarkerSymbol", //added for tools
-       "esri/symbols/SimpleLineSymbol", //added for tools
-       "esri/symbols/SimpleFillSymbol", //added for tools
+        //https://developers.arcgis.com/javascript/jssamples/toolbar_draw.html
+        "esri/toolbars/draw", //added for tools
+        "esri/graphic", //added for tools
+        "esri/symbols/SimpleMarkerSymbol", //added for tools
+        "esri/symbols/SimpleLineSymbol", //added for tools
+        "esri/symbols/SimpleFillSymbol", //added for tools
 
         "esri/dijit/Print", //added for print
         "esri/tasks/PrintTask", //added for print
-        "esri/tasks/PrintTemplate",  //added for print
+        "esri/tasks/PrintTemplate", //added for print
 
         "esri/dijit/Scalebar",
         "application/bootstrapmap",
@@ -110,28 +109,29 @@ require(["esri/map",
         "dojo/_base/array", //added for legend
         "dojo/parser", //added for legend
 
-        "dojo/domReady!"],
+        "dojo/domReady!"
+    ],
 
-    function (Map, Point, webMercatorUtils, ProjectParameters, geometry, Extent, SpatialReference, GeometryService, Draw, Graphic, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Print, PrintTask, PrintTemplate, Scalebar, BootstrapMap, LocateButton, FeatureLayer, Legend, arrayUtils, parser) { //ADDED LEGEND FeatureLayer, Legend, arrayUtils, parser
+    function(Map, Point, webMercatorUtils, ProjectParameters, geometry, Extent, SpatialReference, GeometryService, Draw, Graphic, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Print, PrintTask, PrintTemplate, Scalebar, BootstrapMap, LocateButton, FeatureLayer, Legend, arrayUtils, parser) { //ADDED LEGEND FeatureLayer, Legend, arrayUtils, parser
 
         parser.parse(); //ADDED LEGEND
 
         //Starting Extent
-       // initExtentSet();
+        // initExtentSet();
 
-       // if(localStorage.disclaim === "nodisclaim") {
-       //     return;
-       // } else { $("#disclaimerDialog").dialog("open"); }
+        // if(localStorage.disclaim === "nodisclaim") {
+        //     return;
+        // } else { $("#disclaimerDialog").dialog("open"); }
 
 
-     //  //Proxy location
-     // esri.config.defaults.io.proxyUrl = "http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/js/app/proxy/proxy.ashx";
-      //Proxy location
-     esri.config.defaults.io.proxyUrl = "/proxy/proxy.ashx";
+        //  //Proxy location
+        // esri.config.defaults.io.proxyUrl = "http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/js/app/proxy/proxy.ashx";
+        //Proxy location
+        esri.config.defaults.io.proxyUrl = "/proxy/proxy.ashx";
 
-     //Default geometry service (to be used by LocateButton to project geometry)
-     // esriConfig.defaults.geometryService = new GeometryService("http://yourdomain.com/geometryService");  
-     esriConfig.defaults.geometryService = new GeometryService("http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/");  
+        //Default geometry service (to be used by LocateButton to project geometry)
+        // esriConfig.defaults.geometryService = new GeometryService("http://yourdomain.com/geometryService");  
+        esriConfig.defaults.geometryService = new GeometryService("http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/");
 
 
         //no extent in memory
@@ -194,12 +194,12 @@ require(["esri/map",
 
         //if using @ params for saving extent
         initialExtent = new esri.geometry.Extent({
-            "xmin" : 779321,
-            "ymin" : 26759729,
-            "xmax" : 786446,
-            "ymax" : 26764499,
-            "spatialReference" : {
-                "wkid" : 102707
+            "xmin": 779321,
+            "ymin": 26759729,
+            "xmax": 786446,
+            "ymax": 26764499,
+            "spatialReference": {
+                "wkid": 102707
             }
         });
 
@@ -215,26 +215,26 @@ require(["esri/map",
 
         //Map Constructor
         map = BootstrapMap.create("mapDiv", {
-              //  extent : initialExtent,
-                logo : false,
-                scrollWheelZoom: true,
-                // sliderPosition: "top-right"//,
-               sliderPosition: "bottom-right"//,
-              // sliderOrientation: "horizontal",
-              // sliderStyle: "large"
+            //  extent : initialExtent,
+            logo: false,
+            scrollWheelZoom: true,
+            // sliderPosition: "top-right"//,
+            sliderPosition: "bottom-right" //,
+                // sliderOrientation: "horizontal",
+                // sliderStyle: "large"
 
         });
         //disable arrow key panning
-        map.on("load", function(){
-          console.log("M [[ map loaded ]]");  
-          // map.disableMapNavigation();  
-          map.disableKeyboardNavigation();  
-          // map.disablePan();  
-          // map.disableRubberBandZoom();  
-          // map.disableScrollWheelZoom();  
+        map.on("load", function() {
+            console.log("M [[ map loaded ]]");
+            // map.disableMapNavigation();  
+            map.disableKeyboardNavigation();
+            // map.disablePan();  
+            // map.disableRubberBandZoom();  
+            // map.disableScrollWheelZoom();  
 
-          //call to create tools toolbar
-          initToolbar();
+            //call to create tools toolbar
+            initToolbar();
 
         });
 
@@ -267,57 +267,57 @@ require(["esri/map",
         // );
 
         function initToolbar(themap) {
-          toolbar = new Draw(map);
-          toolbar.on("draw-end", addToMap);
+            toolbar = new Draw(map);
+            toolbar.on("draw-end", addToMap);
         }
 
         function addToMap(evt) {
-          var symbol;
-          toolbar.deactivate();
-          // map.showZoomSlider();
-          switch (evt.geometry.type) {
-            case "point":
-            case "multipoint":
-              symbol = new SimpleMarkerSymbol();
-              break;
-            case "polyline":
-              symbol = new SimpleLineSymbol();
-              break;
-            default:
-              symbol = new SimpleFillSymbol();
-              break;
-          }
-          var graphic = new Graphic(evt.geometry, symbol);
-          // map.graphics.add(graphic);
-          graphic.id = "highlight";
+            var symbol;
+            toolbar.deactivate();
+            // map.showZoomSlider();
+            switch (evt.geometry.type) {
+                case "point":
+                case "multipoint":
+                    symbol = new SimpleMarkerSymbol();
+                    break;
+                case "polyline":
+                    symbol = new SimpleLineSymbol();
+                    break;
+                default:
+                    symbol = new SimpleFillSymbol();
+                    break;
+            }
+            var graphic = new Graphic(evt.geometry, symbol);
+            // map.graphics.add(graphic);
+            graphic.id = "highlight";
 
-          console.log(graphic.id);
+            console.log(graphic.id);
 
-          // var graphic = new Graphic(evt.geometry, symbol);
-          // map.graphics.add(graphic);
-          addTheGraphics(graphic);
+            // var graphic = new Graphic(evt.geometry, symbol);
+            // map.graphics.add(graphic);
+            addTheGraphics(graphic);
         }
 
 
-        function addTheGraphics (graphic) {
-          // var graphic = new Graphic(evt.geometry, symbol);
-          map.graphics.add(graphic);
+        function addTheGraphics(graphic) {
+            // var graphic = new Graphic(evt.geometry, symbol);
+            map.graphics.add(graphic);
         }
         //Erase Graphics
         $('#eraseBtn').click(function() {
-           // console.log('ihtrs');
-           // map.graphics.remove('highlight');
-           // map.graphics.clear();
-           clearGraphics();
+            // console.log('ihtrs');
+            // map.graphics.remove('highlight');
+            // map.graphics.clear();
+            clearGraphics();
         });
         //Finish Graphics
         $('#finishDrawBtn').click(function() {
-           // console.log('ihtrs');
-           // map.graphics.remove('highlight');
-           // map.graphics.clear();
-           functionMode = "identify";
-           $("#currentToolTag").text('Select Property');
-           toolbar.deactivate();
+            // console.log('ihtrs');
+            // map.graphics.remove('highlight');
+            // map.graphics.clear();
+            functionMode = "identify";
+            $("#currentToolTag").text('Select Property');
+            toolbar.deactivate();
         });
 
         //http://gis.stackexchange.com/questions/110060/remove-geometry-from-map-using-arcgis-api-for-javascript
@@ -440,16 +440,16 @@ require(["esri/map",
         var template = new esri.tasks.PrintTemplate();
 
         template.layoutOptions = {
-            "titleText": "Southern Nevada GIS - OpenWeb",
-            "scalebarUnit": "Kilometers",
-            // "copyrightText": "",
-            "showAttribution": true
-        }
-        //Req. when layoutTemplate set to 'MAP_ONLY'
+                "titleText": "Southern Nevada GIS - OpenWeb",
+                "scalebarUnit": "Kilometers",
+                // "copyrightText": "",
+                "showAttribution": true
+            }
+            //Req. when layoutTemplate set to 'MAP_ONLY'
         template.exportOptions = {
-          width: 800,
-          height: 600,
-          dpi: 96
+            width: 800,
+            height: 600,
+            dpi: 96
         }
 
         template.preserveScale = true;
@@ -474,13 +474,13 @@ require(["esri/map",
         //          {"marketVal" : 'marketVal'}
         //      ]
         //  };
-            
+
         var params = new esri.tasks.PrintParameters();
         params.map = map;
         params.template = template;
         var printTask = new esri.tasks.PrintTask("http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task");
 
-      
+
         // var tiledLayer = new esri.layers.ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer");
         // map.addLayer(tiledLayer);
 
@@ -527,32 +527,32 @@ require(["esri/map",
 
         //------------------------------------------------
         //export map only pdf
-        $( "#exportList" ).click(function() {
+        $("#exportList").click(function() {
 
-         // var template = new esri.tasks.PrintTemplate();
-          template.format = exportFormat;
-          template.layout = exportLayout;
+            // var template = new esri.tasks.PrintTemplate();
+            template.format = exportFormat;
+            template.layout = exportLayout;
 
-          //Re-show map print & export load
-          $("#loading-readyPNG").hide();
-          $("#loading-image4").show();
+            //Re-show map print & export load
+            $("#loading-readyPNG").hide();
+            $("#loading-image4").show();
 
 
             //working
-           printTask.execute(params, exportResult);
+            printTask.execute(params, exportResult);
 
 
-          //export resolve
-          function exportResult(result){
-              console.log("M [[ export: " + result.url + " ]]");
-              // window.open('http://www.google.com', "_blank");
+            //export resolve
+            function exportResult(result) {
+                console.log("M [[ export: " + result.url + " ]]");
+                // window.open('http://www.google.com', "_blank");
 
-              $("#exportMapLink_PNG").attr("href", result.url)
+                $("#exportMapLink_PNG").attr("href", result.url)
 
-              $("#loading-readyPNG").show();
-              $("#loading-image4").hide();
+                $("#loading-readyPNG").show();
+                $("#loading-image4").hide();
 
-          };
+            };
 
         });
         //------------------------------------------------
@@ -560,9 +560,9 @@ require(["esri/map",
 
         //------------------------------------------------
         // $( "#printMapLink" ).click(function() {
-        $( "#printList" ).click(function() {
+        $("#printList").click(function() {
 
-          //  var template = new esri.tasks.PrintTemplate();
+            //  var template = new esri.tasks.PrintTemplate();
             template.format = printPDFFormat;
             template.layout = printPDFLayout;
 
@@ -584,58 +584,58 @@ require(["esri/map",
 
 
             //Pause a few seconds then call the print task      
-         //  setTimeout(function(){
-              console.log("M [[ printing to PDF ]]");
-              // printTask.execute(params, printResult, printError);
+            //  setTimeout(function(){
+            console.log("M [[ printing to PDF ]]");
+            // printTask.execute(params, printResult, printError);
 
-              //working
-             printTask.execute(params, printResult);
+            //working
+            printTask.execute(params, printResult);
             // $("#loading-readyPDF").show();
             // $("#loading-image2").hide();
 
-          //  },2000);
+            //  },2000);
 
-          // //export to png resolve
-          // setTimeout(function(){
-          //    console.log("printing to PNG");
-          //    // printTask.execute(params, printResult, printError);
+            // //export to png resolve
+            // setTimeout(function(){
+            //    console.log("printing to PNG");
+            //    // printTask.execute(params, printResult, printError);
 
-          //    //Re-show map print & export load
-          //    $("#loading-image3").show();
-          //    $("#loading-readyPNG").hide();
-             
-          //  // $("#loading-readyPDF").show();
-          //  // $("#loading-image2").hide();
+            //    //Re-show map print & export load
+            //    $("#loading-image3").show();
+            //    $("#loading-readyPNG").hide();
 
-          //  },2000);
+            //  // $("#loading-readyPDF").show();
+            //  // $("#loading-image2").hide();
+
+            //  },2000);
 
 
-        //print resolve
-        function printResult(result){
-            console.log("M [[ print: " + result.url + " ]]");
-            // window.open('http://www.google.com', "_blank");
+            //print resolve
+            function printResult(result) {
+                console.log("M [[ print: " + result.url + " ]]");
+                // window.open('http://www.google.com', "_blank");
 
-            $("#printMapLink_PDFleg").attr("href", result.url)
+                $("#printMapLink_PDFleg").attr("href", result.url)
 
-            $("#printMapLink_PDF").attr("href", result.url)
+                $("#printMapLink_PDF").attr("href", result.url)
 
-            
-            $("#loading-readyPDFleg").show();
-            $("#loading-image2").hide();
 
-            $("#loading-readyPDF").show();
-            $("#loading-image3").hide();
+                $("#loading-readyPDFleg").show();
+                $("#loading-image2").hide();
 
-            // var _open = window.open(result.url, "_blank");
-            //  if (_open == null || typeof(_open)=='undefined') {
+                $("#loading-readyPDF").show();
+                $("#loading-image3").hide();
 
-            //     alert("Turn off your pop-up blocker!");
-            //  }
-               
-             // else
+                // var _open = window.open(result.url, "_blank");
+                //  if (_open == null || typeof(_open)=='undefined') {
 
-            ///document.url(result.url)
-        };
+                //     alert("Turn off your pop-up blocker!");
+                //  }
+
+                // else
+
+                ///document.url(result.url)
+            };
 
         });
         //------------------------------------------------
@@ -647,8 +647,8 @@ require(["esri/map",
 
 
         //Basemap Layer (default)
-        basemap = new esri.layers.ArcGISTiledMapServiceLayer("http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer",{id:'basemap'});
-      //  mostcurrentflight2 = new esri.layers.ArcGISTiledMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS13/MapServer",{id:'mostcurrentflight2'});
+        basemap = new esri.layers.ArcGISTiledMapServiceLayer("http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", { id: 'basemap' });
+        //  mostcurrentflight2 = new esri.layers.ArcGISTiledMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS13/MapServer",{id:'mostcurrentflight2'});
 
         // imagesF98 = new esri.layers.ArcGISTiledMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF98/MapServer/0",{id:'imagesF98'});
 
@@ -663,47 +663,52 @@ require(["esri/map",
 
         //Dynamic Map layers (default)
         //Assessor Layer
-        assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/AssessorMap/MapServer",{id:'assessorServiceLayer'});
+        assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/AssessorMap/MapServer", { id: 'assessorServiceLayer' });
         // map.addLayer(assessorServiceLayer);
+
+        //AssesorAnno Layer
+        // transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/Transportation/MapServer",{id:'transportationServiceLayer'});
+        assessorannoServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/AssessorAnno/MapServer", { id: 'assessorannoServiceLayer' });
 
         //Transportation Layer
         // transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/Transportation/MapServer",{id:'transportationServiceLayer'});
-        transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/scl/MapServer",{id:'transportationServiceLayer'});
+        transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/scl/MapServer", { id: 'transportationServiceLayer' });
+
 
         //abLayer
-        abLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/AB142/MapServer",{id:'abLayer'});
-        
+        abLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/AB142/MapServer", { id: 'abLayer' });
+
         //add map layers
-        map.addLayers([basemap, assessorServiceLayer, transportationServiceLayer, abLayer]);
+        map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, abLayer]);
 
 
         //Boulder City Zoning Layer
-        bcLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/5",{id:'bcLayer'});
+        bcLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/5", { id: 'bcLayer' });
         //Clark County Planned Landuse Layer
-        PLULayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/PlanedLandUse/MapServer",{id:'PLULayer'});
+        PLULayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/PlanedLandUse/MapServer", { id: 'PLULayer' });
         //Clark County Zoning Layer
-        CCZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/8",{id:'CCZoningLayer'});
+        CCZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/8", { id: 'CCZoningLayer' });
         //Contours 50 Meter Layer
-        C50Layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_50M/MapServer",{id:'C50Layer'});
+        C50Layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_50M/MapServer", { id: 'C50Layer' });
         //Contours 2003 5ft (Valley) Layer
-        C2003Layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_03_5ft/MapServer",{id:'C2003Layer'});
+        C2003Layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_03_5ft/MapServer", { id: 'C2003Layer' });
         //Contours 1996 5ft (Valley) Layer
-        C1996Layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_96_5ft/MapServer",{id:'C1996Layer'});
+        C1996Layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_96_5ft/MapServer", { id: 'C1996Layer' });
         //Henderson Zoning Layer
-        hendersonZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/6",{id:'lasVegasZoningLayer'});
+        hendersonZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/6", { id: 'lasVegasZoningLayer' });
         //Las Vegas Zoning Layer
-        lasVegasZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/4",{id:'lasVegasZoningLayer'});
+        lasVegasZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/4", { id: 'lasVegasZoningLayer' });
         //Mesquite Zoning Layer
-        mesquiteZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/9",{id:'mesquiteZoningLayer'});
+        mesquiteZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/9", { id: 'mesquiteZoningLayer' });
         //NLV Zoning Layer
-        nlvZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/7",{id:'nlvZoningLayer'});
+        nlvZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/7", { id: 'nlvZoningLayer' });
         //Seismic Layer
-        seismicLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/SoilsGuideline/MapServer/5",{id:'seismicLayer'});
+        seismicLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/SoilsGuideline/MapServer/5", { id: 'seismicLayer' });
         //Soil Guideline Layer
-        SoilLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/SoilsGuideline/MapServer",{id:'SoilLayer'});
+        SoilLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/SoilsGuideline/MapServer", { id: 'SoilLayer' });
         //Right-of-Way Layer
-        rightofwayLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/RightOfWay/MapServer",{id:'rightofwayLayer'});
-        
+        rightofwayLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/RightOfWay/MapServer", { id: 'rightofwayLayer' });
+
 
         // //geolocate
         // //https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=esri+js+api+locate+button+Geometry+cannot+be+converted+to+spatial+reference+of+the+map
@@ -729,20 +734,19 @@ require(["esri/map",
         // });
 
         var geoLocate = new LocateButton({
-          map: map,
-          highlightLocation: false
-          }, "LocateButton"
-        );
+            map: map,
+            highlightLocation: false
+        }, "LocateButton");
         geoLocate.startup();
 
 
 
 
         //ready
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             //Resize call [repo: Reposition & Resize Map | adjustmapwidth: Update map width | sized: Expand/Retract slide panel for mob optimize]
-            window.onresize = function () { sized();  }; //dynamicHeight(); COMMENTED OUT
+            window.onresize = function() { sized(); }; //dynamicHeight(); COMMENTED OUT
 
             //desktop & mobile layout optimizations
             sized();
@@ -756,35 +760,36 @@ require(["esri/map",
 
                 if (functionMode == "identify") {
 
-                     //Call to executeQueryTask
-                     //Call the 'mapController' controller found on map element (pass in evt param)
+                    //Call to executeQueryTask
+                    //Call the 'mapController' controller found on map element (pass in evt param)
                     // angular.element($('#mapDiv')).scope().executeQueryTask(evt);
-                    angular.element($('#mapDiv')).scope().executeQueryTask(evt.mapPoint.x, evt.mapPoint.y,'select'); 
+                    angular.element($('#mapDiv')).scope().executeQueryTask(evt.mapPoint.x, evt.mapPoint.y, 'select');
                     //true flag quantifies a select property call
                     //resolveAs: select | search
 
                     console.log(evt.mapPoint)
 
-                     // //ADDED FOR MOBILE**************************************
-                     // map.infoWindow.show(evt.screenPoint, map.getInfoWindowAnchor(evt.screenPoint));
+                    // //ADDED FOR MOBILE**************************************
+                    // map.infoWindow.show(evt.screenPoint, map.getInfoWindowAnchor(evt.screenPoint));
 
-                     //ADDED FOR MOBILE**************************************
-                     map.infoWindow.show(evt.screenPoint, map.getInfoWindowAnchor(evt.screenPoint));
+                    //ADDED FOR MOBILE**************************************
+                    map.infoWindow.show(evt.screenPoint, map.getInfoWindowAnchor(evt.screenPoint));
 
 
                     //log metric
-                    postMetric(productCode,sessionNumber + ":Select Property");
+                    postMetric(productCode, sessionNumber + ":Select Property");
 
                 }
                 if (functionMode == "draw") {
                     //Add stops
-                  //  addStop(evt);
-                } 
+                    //  addStop(evt);
+                }
                 // if (functionMode == "route") {
                 //     //Add stops
                 //     addStop(evt);
                 // } 
-                else { return; }
+                else {
+                    return; }
 
 
             });
@@ -792,27 +797,27 @@ require(["esri/map",
             //Listen for mousemove
             dojo.connect(map, "onMouseMove", function(evt) {
 
-                angular.element($('#mapDiv')).scope().mapevtMouseMove(evt.mapPoint.x,evt.mapPoint.y);
+                angular.element($('#mapDiv')).scope().mapevtMouseMove(evt.mapPoint.x, evt.mapPoint.y);
 
             });
 
             //Listen for extentchange
-            map.on("extent-change", function (evt) {
+            map.on("extent-change", function(evt) {
 
                 var point = map.extent.getCenter();
                 var thelevel = map.getLevel(); //added
-                angular.element($('#mapDiv')).scope().mapevtExtentChange(point.x,point.y,thelevel);
+                angular.element($('#mapDiv')).scope().mapevtExtentChange(point.x, point.y, thelevel);
 
-               // console.log(thelevel);
+                // console.log(thelevel);
 
-               // saveExtent();
+                // saveExtent();
 
-              // console.log('save extent called ' + point.x + ' ' + point.y)
+                // console.log('save extent called ' + point.x + ' ' + point.y)
 
                 // propInfoRepo_Second();
-                setTimeout(function(){
-                   //call to repo
-                   propInfoRepo_Second();
+                setTimeout(function() {
+                    //call to repo
+                    propInfoRepo_Second();
                 }, 100);
 
 
@@ -836,17 +841,17 @@ require(["esri/map",
             //   outFields:["*"]
             // });
 
-            map.on("layers-add-result", function (evt) {
-              var layerInfo = arrayUtils.map(evt.layers, function (layer, index) {
-                return {layer:layer.layer, title:layer.layer.name};
-              });
-              if (layerInfo.length > 0) {
-                var legendDijit = new Legend({
-                  map: map,
-                  layerInfos: layerInfo
-                }, "legendDiv");
-                legendDijit.startup();
-              }
+            map.on("layers-add-result", function(evt) {
+                var layerInfo = arrayUtils.map(evt.layers, function(layer, index) {
+                    return { layer: layer.layer, title: layer.layer.name };
+                });
+                if (layerInfo.length > 0) {
+                    var legendDijit = new Legend({
+                        map: map,
+                        layerInfos: layerInfo
+                    }, "legendDiv");
+                    legendDijit.startup();
+                }
             });
 
             // map.on("load", function() { ShowLocation(-81.3765, 28.54175); });
@@ -983,7 +988,7 @@ require(["esri/map",
             //     //     } else {
             //     //          // Disable submit button
 
-                         
+
             //     //     }
 
 
@@ -1096,7 +1101,7 @@ require(["esri/map",
 
 
             //listening on search 'x' close icon click
-            $("#closeIcon").click(function (e) {
+            $("#closeIcon").click(function(e) {
 
                 //clear the field
                 $('#search-form input').val('');
@@ -1115,510 +1120,509 @@ require(["esri/map",
             initStreetView();
 
             //log metric
-            postMetric(productCode,'UserAgent:' + navigator.userAgent.toString().toLowerCase());
+            postMetric(productCode, 'UserAgent:' + navigator.userAgent.toString().toLowerCase());
 
         }); //end ready
 
     }); //end require
-    //************************************************************************
+//************************************************************************
 
-    //***************************Config***************************************
-    function config() {
-      angular.element($('#mapDiv')).scope().configLoad();
-    }
-    //************************************************************************
+//***************************Config***************************************
+function config() {
+    angular.element($('#mapDiv')).scope().configLoad();
+}
+//************************************************************************
 
-   //  //***********************Parcel Redirect***********************************
+//  //***********************Parcel Redirect***********************************
 
-   //  // function getParameterByName(name, url) {
+//  // function getParameterByName(name, url) {
 
-   //  //   //http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
-   //  //     if (!url) url = window.location.href;
-   //  //     name = name.replace(/[\[\]]/g, "\\$&");
-   //  //     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-   //  //         results = regex.exec(url);
-   //  //     if (!results) return null;
-   //  //     if (!results[2]) return '';
-   //  //     return decodeURIComponent(results[2].replace(/\+/g, " "));
-   //  // }
+//  //   //http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+//  //     if (!url) url = window.location.href;
+//  //     name = name.replace(/[\[\]]/g, "\\$&");
+//  //     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+//  //         results = regex.exec(url);
+//  //     if (!results) return null;
+//  //     if (!results[2]) return '';
+//  //     return decodeURIComponent(results[2].replace(/\+/g, " "));
+//  // }
 
-   //  //Make the call to find querystring "@" params 
-   //  function parcelRedirect()
-   //  {
+//  //Make the call to find querystring "@" params 
+//  function parcelRedirect()
+//  {
 
 
-   //    // //?@782826,26762144&legend=t
+//    // //?@782826,26762144&legend=t
 
-   //    // // query string: ?foo=lorem&bar=&baz
-   //    // // var foo = getParameterByName('foo'); // "lorem"
-   //    // // var bar = getParameterByName('bar'); // "" (present with empty value)
-   //    // // var baz = getParameterByName('baz'); // "" (present with no value)
-   //    // // var qux = getParameterByName('qux'); // null (absent)
+//    // // query string: ?foo=lorem&bar=&baz
+//    // // var foo = getParameterByName('foo'); // "lorem"
+//    // // var bar = getParameterByName('bar'); // "" (present with empty value)
+//    // // var baz = getParameterByName('baz'); // "" (present with no value)
+//    // // var qux = getParameterByName('qux'); // null (absent)
 
-   //    // //?foo=lorem&tester=ipsum
-   //    // var foo = getParameterByName('@'); // "lorem"
-   //    // var bar = getParameterByName('tester'); // "" (present with empty value)
-   //    // // var baz = getParameterByName('baz'); // "" (present with no value)
-   //    // // var qux = getParameterByName('qux'); // null (absent)
+//    // //?foo=lorem&tester=ipsum
+//    // var foo = getParameterByName('@'); // "lorem"
+//    // var bar = getParameterByName('tester'); // "" (present with empty value)
+//    // // var baz = getParameterByName('baz'); // "" (present with no value)
+//    // // var qux = getParameterByName('qux'); // null (absent)
 
-   //    // console.log(foo)
-   //    // console.log(bar)
-   //    // // console.log(baz)
-   //    // // console.log(qux)
+//    // console.log(foo)
+//    // console.log(bar)
+//    // // console.log(baz)
+//    // // console.log(qux)
 
 
-   //    var queryString = window.location.search;
-   //    //craft locale (lat/lng, parcel, address, owner)
-   //    queryString = queryString.substring(1).split("@");
-   //    //craft legend (t/f)
+//    var queryString = window.location.search;
+//    //craft locale (lat/lng, parcel, address, owner)
+//    queryString = queryString.substring(1).split("@");
+//    //craft legend (t/f)
 
-   //  //   legendString = queryString.substring(1).split("legend=");
+//  //   legendString = queryString.substring(1).split("legend=");
 
-   //  //   // console.log('legend is' + localeString[1].split("=")[0])
-   //  // // console.log('legend is' + localeString)
+//  //   // console.log('legend is' + localeString[1].split("=")[0])
+//  // // console.log('legend is' + localeString)
 
 
 
-   //  //  var params = {}, queries, temp, i, l;
-   //  //   // Split into key/value pairs
-   //  //   queries = queryString.split("&amp;");
-   //  //   // Convert the array of strings into an object
-   //  //   for ( i = 0, l = queries.length; i < l; i++ ) {
-   //  //       temp = queries[i].split('=');
-   //  //       params[temp[0]] = temp[1];
-   //  //   }
+//  //  var params = {}, queries, temp, i, l;
+//  //   // Split into key/value pairs
+//  //   queries = queryString.split("&amp;");
+//  //   // Convert the array of strings into an object
+//  //   for ( i = 0, l = queries.length; i < l; i++ ) {
+//  //       temp = queries[i].split('=');
+//  //       params[temp[0]] = temp[1];
+//  //   }
 
-   //  //  // console.log(params[1].split(",")[0])
+//  //  // console.log(params[1].split(",")[0])
 
 
-   //  // console.log(queryString)
+//  // console.log(queryString)
 
 
 
-   //    // //filter out undefined
-   //    // if (queryString[1]) {
+//    // //filter out undefined
+//    // if (queryString[1]) {
 
-   //    //   //lat/long & state plane
-   //    //   if (queryString[1].indexOf(",") > -1)
-   //    //   {
-   //    //     //lat/long
-   //    //     if (queryString[1].split(",")[0] < 0 || queryString[1].split(",")[1] < 0) {
+//    //   //lat/long & state plane
+//    //   if (queryString[1].indexOf(",") > -1)
+//    //   {
+//    //     //lat/long
+//    //     if (queryString[1].split(",")[0] < 0 || queryString[1].split(",")[1] < 0) {
 
-   //    //     }
-   //    //     else //State plane ft
-   //    //     {
-   //    //       angular.element($('#mapDiv')).scope().executeQueryTask(queryString[1].split(",")[0],queryString[1].split(",")[1]);
-   //    //     }
-   //    //   }
-   //    //   //parcel, address, owner
-   //    //   else if (!queryString[1].indexOf(",") > -1)
-   //    //   {
-   //    //     angular.element($('#mapDiv')).scope().executeSearch(queryString[1]);
-   //    //   }
-   //    //   else { }
+//    //     }
+//    //     else //State plane ft
+//    //     {
+//    //       angular.element($('#mapDiv')).scope().executeQueryTask(queryString[1].split(",")[0],queryString[1].split(",")[1]);
+//    //     }
+//    //   }
+//    //   //parcel, address, owner
+//    //   else if (!queryString[1].indexOf(",") > -1)
+//    //   {
+//    //     angular.element($('#mapDiv')).scope().executeSearch(queryString[1]);
+//    //   }
+//    //   else { }
 
-   //    // }
+//    // }
 
-   //  //works
-   // // angular.element($('#mapDiv')).scope().theLegend = true;
+//  //works
+// // angular.element($('#mapDiv')).scope().theLegend = true;
 
 
 
-   //  //legendBlock ------------------------------------------------------
-   //  //(querystring)
+//  //legendBlock ------------------------------------------------------
+//  //(querystring)
 
-   //  // if(localStorage.legBlock) {
-   //  //  //console.log(localStorage.legBlock)
+//  // if(localStorage.legBlock) {
+//  //  //console.log(localStorage.legBlock)
 
-   //  //  //make apprpriate call to switch the scope.theLegend lag to true - calling the controller
-   //  //  // $scope.theLegend = true; //county, bright
-   //  // }
+//  //  //make apprpriate call to switch the scope.theLegend lag to true - calling the controller
+//  //  // $scope.theLegend = true; //county, bright
+//  // }
 
 
 
-   //  // console.log(localStorage.legBlock)
-   //  // // if(localStorage.theme === "dark") {
+//  // console.log(localStorage.legBlock)
+//  // // if(localStorage.theme === "dark") {
 
 
-   //  // // if(localStorage.legBlock) {
-   //  // //  console.log(localStorage.legBlock)
+//  // // if(localStorage.legBlock) {
+//  // //  console.log(localStorage.legBlock)
 
-   //  // //  //make apprpriate call to switch the scope.theLegend lag to true - calling the controller
-   //  // //  // $scope.theLegend = true; //county, bright
-   //  // // }
+//  // //  //make apprpriate call to switch the scope.theLegend lag to true - calling the controller
+//  // //  // $scope.theLegend = true; //county, bright
+//  // // }
 
 
 
 
-   //    //mainTab ------------------------------------------------------
+//    //mainTab ------------------------------------------------------
 
-   //    //http://stackoverflow.com/questions/12131273/twitter-bootstrap-tabs-url-doesnt-change
+//    //http://stackoverflow.com/questions/12131273/twitter-bootstrap-tabs-url-doesnt-change
 
-   //    //loadTab (bookmark) ----------------------
+//    //loadTab (bookmark) ----------------------
 
 
-   //    //   var hash = window.location.hash;
-   //    //   hash && $('ul.nav a[href="' + hash + '"]').tab('show');
-   //    //  // console.log('ul.nav a[href="' + hash + 'Tab' + '"]')
+//    //   var hash = window.location.hash;
+//    //   hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+//    //  // console.log('ul.nav a[href="' + hash + 'Tab' + '"]')
 
-   //    //  if(hash === "#display") {
+//    //  if(hash === "#display") {
 
-   //    //   $('#intro').removeClass('active');
-   //    //   $('#display').addClass('active');
-   //    //   $('#tools').removeClass('active');
-   //    //   $('#resources').removeClass('active');
+//    //   $('#intro').removeClass('active');
+//    //   $('#display').addClass('active');
+//    //   $('#tools').removeClass('active');
+//    //   $('#resources').removeClass('active');
 
-           
-   //    //      console.log("M [[ " + localStorage.theme + " theme applied ]]");
-   //    //  } 
-   //    //  else if (hash === "#tools") {
 
-   //    //   $('#intro').removeClass('active');
-   //    //   $('#display').removeClass('active');
-   //    //   $('#tools').addClass('active');
-   //    //   $('#resources').removeClass('active');
+//    //      console.log("M [[ " + localStorage.theme + " theme applied ]]");
+//    //  } 
+//    //  else if (hash === "#tools") {
 
-   //    //  }
-   //    //  else if (hash === "#resources") {
+//    //   $('#intro').removeClass('active');
+//    //   $('#display').removeClass('active');
+//    //   $('#tools').addClass('active');
+//    //   $('#resources').removeClass('active');
 
-   //    //   $('#intro').removeClass('active');
-   //    //   $('#display').removeClass('active');
-   //    //   $('#tools').removeClass('active');
-   //    //   $('#resources').addClass('active');
+//    //  }
+//    //  else if (hash === "#resources") {
 
-   //    //  }
-   //    //  else {
+//    //   $('#intro').removeClass('active');
+//    //   $('#display').removeClass('active');
+//    //   $('#tools').removeClass('active');
+//    //   $('#resources').addClass('active');
 
-   //    // }
+//    //  }
+//    //  else {
 
+//    // }
 
 
-   //      // $('.nav-tabs a').click(function (e) {
-   //      //   // $(this).tab('show');
-   //      //   // var scrollmem = $('body').scrollTop() || $('html').scrollTop();
-   //      //   window.location.hash = this.hash;
-   //      //   // $('html,body').scrollTop(scrollmem);
-   //      // });
 
+//      // $('.nav-tabs a').click(function (e) {
+//      //   // $(this).tab('show');
+//      //   // var scrollmem = $('body').scrollTop() || $('html').scrollTop();
+//      //   window.location.hash = this.hash;
+//      //   // $('html,body').scrollTop(scrollmem);
+//      // });
 
-   //      // $('.theMainTabs a').click(function (e) {
-   //      //   // $(this).tab('show');
-   //      //   // var scrollmem = $('body').scrollTop() || $('html').scrollTop();
-   //      //  window.location.hash = this.hash;
-   //      //   // $('html,body').scrollTop(scrollmem);
 
-   //      //   console.log(this.hash)
-   //      // });
+//      // $('.theMainTabs a').click(function (e) {
+//      //   // $(this).tab('show');
+//      //   // var scrollmem = $('body').scrollTop() || $('html').scrollTop();
+//      //  window.location.hash = this.hash;
+//      //   // $('html,body').scrollTop(scrollmem);
 
+//      //   console.log(this.hash)
+//      // });
 
-   //    //-----------------------------------------
 
+//    //-----------------------------------------
 
-   //  //   var hash = window.location.hash;
-   //  //   hash && $('ul.nav a[href="' + hash + '"]').tab('show');
 
-   //  //   // $('ul.nav a[href="' + hash + '"]').tab('show');
+//  //   var hash = window.location.hash;
+//  //   hash && $('ul.nav a[href="' + hash + '"]').tab('show');
 
-   //  //   // // $('ul.nav a[href="' + hash + '"]').tab('show');
+//  //   // $('ul.nav a[href="' + hash + '"]').tab('show');
 
-   //  //   // console.log(hash)
+//  //   // // $('ul.nav a[href="' + hash + '"]').tab('show');
 
-   //  //   // // if (hash )
+//  //   // console.log(hash)
 
+//  //   // // if (hash )
 
-   //  //  if(hash === "#display") {
 
-   //  //   $('#a_intro').removeClass('active');
-   //  //   $('#b_display').addClass('active');
-   //  //   $('#c_tools').removeClass('active');
-   //  //   $('#d_resources').removeClass('active');
+//  //  if(hash === "#display") {
 
-         
-   //  //      console.log("M [[ " + localStorage.theme + " theme applied ]]");
-   //  //  } 
-   //  //  else if (hash === "#tools") {
+//  //   $('#a_intro').removeClass('active');
+//  //   $('#b_display').addClass('active');
+//  //   $('#c_tools').removeClass('active');
+//  //   $('#d_resources').removeClass('active');
 
-   //  //    $('#a_intro').removeClass('active');
-   //  //    $('#b_display').removeClass('active');
-   //  //    $('#c_tools').addClass('active');
-   //  //    $('#d_resources').removeClass('active');
 
-   //  //  }
-   //  //  else if (hash === "#resources") {
+//  //      console.log("M [[ " + localStorage.theme + " theme applied ]]");
+//  //  } 
+//  //  else if (hash === "#tools") {
 
-   //  //   $('#a_intro').removeClass('active');
-   //  //   $('#b_display').removeClass('active');
-   //  //   $('#c_tools').removeClass('active');
-   //  //   $('#d_resources').addClass('active');
+//  //    $('#a_intro').removeClass('active');
+//  //    $('#b_display').removeClass('active');
+//  //    $('#c_tools').addClass('active');
+//  //    $('#d_resources').removeClass('active');
 
-   //  //  }
-   //  //  else {
+//  //  }
+//  //  else if (hash === "#resources") {
 
-   //  // }
+//  //   $('#a_intro').removeClass('active');
+//  //   $('#b_display').removeClass('active');
+//  //   $('#c_tools').removeClass('active');
+//  //   $('#d_resources').addClass('active');
 
+//  //  }
+//  //  else {
 
-   //  //   // a_intro
+//  // }
 
 
+//  //   // a_intro
 
-   //  //   $('.nav-tabs a').click(function (e) {
-   //  //     // $(this).tab('show');
-   //  //     // var scrollmem = $('body').scrollTop() || $('html').scrollTop();
-   //  //     window.location.hash = this.hash;
-   //  //     // $('html,body').scrollTop(scrollmem);
-   //  //   });
 
 
+//  //   $('.nav-tabs a').click(function (e) {
+//  //     // $(this).tab('show');
+//  //     // var scrollmem = $('body').scrollTop() || $('html').scrollTop();
+//  //     window.location.hash = this.hash;
+//  //     // $('html,body').scrollTop(scrollmem);
+//  //   });
 
 
 
-   //    // //update appropriate links to active class
-   //    // $('li.tackLi').removeClass('active');
-   //    // $('li.compassLi').addClass('active');
-   //    // $('li.pencilLi').removeClass('active');
-   //    // $('li.gearLi').removeClass('active');
 
 
-   //    // //update appropriate links to active class
-   //    // $('#a.tab-pane').removeClass('active');
-   //    // $('#b.tab-pane').addClass('active');
-   //    // $('#c.tab-pane').removeClass('active');
-   //    // $('#d.tab-pane').removeClass('active');
+//    // //update appropriate links to active class
+//    // $('li.tackLi').removeClass('active');
+//    // $('li.compassLi').addClass('active');
+//    // $('li.pencilLi').removeClass('active');
+//    // $('li.gearLi').removeClass('active');
 
 
+//    // //update appropriate links to active class
+//    // $('#a.tab-pane').removeClass('active');
+//    // $('#b.tab-pane').addClass('active');
+//    // $('#c.tab-pane').removeClass('active');
+//    // $('#d.tab-pane').removeClass('active');
 
-   //    // // var queryString2 = window.location.search;
-   //    // // queryString2 = queryString2.substring(1).split("?");
 
-   //    // // console.log(queryString2[1]);
 
-   //    // var queryString2 = window.location.pathname;
-   //    // // queryString2 = queryString2.substring(1).split("@");
+//    // // var queryString2 = window.location.search;
+//    // // queryString2 = queryString2.substring(1).split("?");
 
-   //    // console.log(queryString2);
+//    // // console.log(queryString2[1]);
 
+//    // var queryString2 = window.location.pathname;
+//    // // queryString2 = queryString2.substring(1).split("@");
 
+//    // console.log(queryString2);
 
 
-   //    // var hash = window.location.hash;
-   //    // hash = hash.substring(1).split("#");
 
-   //    // //console.log(queryString[1]);
 
-   //    // //
-   //    // if (hash[0].indexOf("tab") > -1) 
-   //    // {
-   //    //   console.log(hash[0])
+//    // var hash = window.location.hash;
+//    // hash = hash.substring(1).split("#");
 
-   //    // }
+//    // //console.log(queryString[1]);
 
+//    // //
+//    // if (hash[0].indexOf("tab") > -1) 
+//    // {
+//    //   console.log(hash[0])
 
-   //  }
-   //  //************************************************************************
+//    // }
 
-   //  // //***********************Init Streetview**********************************
-   //  // function getParameterByName(name, url) {
-   //  //     if (!url) url = window.location.href;
-   //  //     name = name.replace(/[\[\]]/g, "\\$&");
-   //  //     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-   //  //         results = regex.exec(url);
-   //  //     if (!results) return null;
-   //  //     if (!results[2]) return '';
-   //  //     return decodeURIComponent(results[2].replace(/\+/g, " "));
-   //  // }
-   //  // //************************************************************************
 
-    //***********************Init Streetview**********************************
+//  }
+//  //************************************************************************
 
-    //Initialize Google StreetView
-    function initStreetView()
-    {
-      //init Google streetview
-      sv = new google.maps.StreetViewService();
-      panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
+//  // //***********************Init Streetview**********************************
+//  // function getParameterByName(name, url) {
+//  //     if (!url) url = window.location.href;
+//  //     name = name.replace(/[\[\]]/g, "\\$&");
+//  //     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+//  //         results = regex.exec(url);
+//  //     if (!results) return null;
+//  //     if (!results[2]) return '';
+//  //     return decodeURIComponent(results[2].replace(/\+/g, " "));
+//  // }
+//  // //************************************************************************
 
-    }
-    //***********************************************************************
+//***********************Init Streetview**********************************
 
-    //***********************Post Metric*************************************
+//Initialize Google StreetView
+function initStreetView() {
+    //init Google streetview
+    sv = new google.maps.StreetViewService();
+    panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
 
-    //Log Metrics
-    function postMetric(rApp, rAction)
-    {
+}
+//***********************************************************************
 
-      $.ajax({
-        // method: "POST",
-        url: "http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/addMetric",
-        data: { app: rApp, RecordedAction: rAction }
-      })
-        .done(function( response ) {
-          // alert( "Data Saved: " + msg );
+//***********************Post Metric*************************************
 
-          if(rAction.substring(0,10)=='UserAgent:')
-          {
-          sessionNumber = response;
-          }
+//Log Metrics
+function postMetric(rApp, rAction) {
 
-        //  console.log('metric post success')
-        //  console.log(sessionNumber)
+    $.ajax({
+            // method: "POST",
+            url: "http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/addMetric",
+            data: { app: rApp, RecordedAction: rAction }
         })
-        .fail(function( response ) {
-         // console.log('metric post fail')
+        .done(function(response) {
+            // alert( "Data Saved: " + msg );
+
+            if (rAction.substring(0, 10) == 'UserAgent:') {
+                sessionNumber = response;
+            }
+
+            //  console.log('metric post success')
+            //  console.log(sessionNumber)
+        })
+        .fail(function(response) {
+            // console.log('metric post fail')
         });
 
-    }
-    //************************************************************************
+}
+//************************************************************************
 
-    // //******************* Street View Projections ****************************
+// //******************* Street View Projections ****************************
 
-    // function projectToLatLong(evt) {
+// function projectToLatLong(evt) {
 
-    //   //grab input params
-    //   var pt = evt.mapPoint;
+//   //grab input params
+//   var pt = evt.mapPoint;
 
-    //   var x_coor =  pt.x;
-    //   var y_coor =  pt.y;
+//   var x_coor =  pt.x;
+//   var y_coor =  pt.y;
 
 
-    //   var findProjection_requestHandle = esri.request({
-    //     url: 'http://gisgate.co.clark.nv.us/gisdal/GISService.svc/jsonep/projectPoint',
-    //     // url: 'http://ccgisqa01m.co.clark.nv.us/gisdal/gisservice.svc/jsonep/projectPoint',
-    //     // url: 'http://ccgisqa01m.co.clark.nv.us/gisdal/gisservice.svc/jsonep/projectPoint',
-    //     content:
-    //     {
-    //       inputWKID: "3421",
-    //       outwkid : "4326",
-    //       Xcoordinate : x_coor,
-    //       Ycoordinate : y_coor
+//   var findProjection_requestHandle = esri.request({
+//     url: 'http://gisgate.co.clark.nv.us/gisdal/GISService.svc/jsonep/projectPoint',
+//     // url: 'http://ccgisqa01m.co.clark.nv.us/gisdal/gisservice.svc/jsonep/projectPoint',
+//     // url: 'http://ccgisqa01m.co.clark.nv.us/gisdal/gisservice.svc/jsonep/projectPoint',
+//     content:
+//     {
+//       inputWKID: "3421",
+//       outwkid : "4326",
+//       Xcoordinate : x_coor,
+//       Ycoordinate : y_coor
 
-    //     },
-    //     handleAs: "json",
-    //     load: projectToLatLongSucceeded,
-    //     error: function projectToLatLongFailed(error, io) { toast(error); }
-    //     }, true);
+//     },
+//     handleAs: "json",
+//     load: projectToLatLongSucceeded,
+//     error: function projectToLatLongFailed(error, io) { toast(error); }
+//     }, true);
+// }
+
+// function projectToLatLongSucceeded(response, io) {
+
+//   //On Lat/Long grab success, call to get panoid
+//   panoidStreetview(response.yCoordinate,response.xCoordinate);
+
+// }
+
+// http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project
+
+//************************************************************************
+
+//************************* Repo Map *************************************
+
+//Takes care of checking if currentView is 'mapView'
+//if it is, repo & resize the map
+function repoMap() {
+    map.reposition();
+    map.resize();
+    console.log('M [[ repo was hit ]]');
+}
+
+function resizeMap() {
+    //   map.reposition();
+    map.resize();
+    console.log('M [[ resize was hit ]]');
+}
+
+//************************************************************************
+
+//*************************** Theme *********************************
+//check the theme
+function themeCheck() {
+    //  // if(localStorage.disclaim === "nodisclaim") {
+    //  //     console.log("M [[ " + localStorage.disclaim + " ]]");
+    //  //     return;
+    //  // } else {
+    //  //  $("#disclaimerDialog").dialog("open");
+    //  //  console.log("M [[ fresh disclaimer ]]"); }
+
+    //  if(localStorage.disclaim === "nodisclaim") {
+    //      console.log("M [[ " + localStorage.disclaim + " ]]");
+    //      return;
+    //  } else {
+    //   $("#disclaimerDialog").dialog("open");
+    //   console.log("M [[ theme applied ]]"); 
+
     // }
+}
+//************************************************************************
 
-    // function projectToLatLongSucceeded(response, io) {
-
-    //   //On Lat/Long grab success, call to get panoid
-    //   panoidStreetview(response.yCoordinate,response.xCoordinate);
-
-    // }
-
-    // http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project
-
-    //************************************************************************
-
-    //************************* Repo Map *************************************
-
-    //Takes care of checking if currentView is 'mapView'
-    //if it is, repo & resize the map
-    function repoMap() {
-        map.reposition();
-        map.resize();
-        console.log('M [[ repo was hit ]]');
+//*************************** Disclaimer *********************************
+//throw the disclaimer
+function disclaimerCheck() {
+    if (localStorage.disclaim === "nodisclaim") {
+        console.log("M [[ " + localStorage.disclaim + " ]]");
+        return;
+    } else {
+        $("#disclaimerDialog").dialog("open");
+        console.log("M [[ fresh disclaimer ]]");
     }
-    function resizeMap() {
-     //   map.reposition();
-        map.resize();
-        console.log('M [[ resize was hit ]]');
+}
+//************************************************************************
+
+// //*************************** Persist Extent *****************************
+// //set the initialExtent variable
+// function saveExtent() {
+//     //create new extent object for storage
+//     var spatialRef = new esri.SpatialReference({wkid:102707});
+//       newExtent = new esri.geometry.Extent();
+//       newExtent.xmin = map.extent.xmin;
+//       newExtent.ymin = map.extent.ymin;
+//       newExtent.xmax = map.extent.xmax;
+//       newExtent.ymax = map.extent.ymax;
+//       newExtent.spatialReference = spatialRef;
+
+//       //Save in storage
+//        localStorage.setItem("Xmin", map.extent.xmin);
+//        localStorage.setItem("Ymin", map.extent.ymin);
+//        localStorage.setItem("Xmax", map.extent.xmax);
+//        localStorage.setItem("Ymax", map.extent.ymax);
+// }
+
+// extentInMem = true;
+
+// function extentCheck() {
+//     alert(JSON.stringify(localStorage.Xmin));
+// }
+// //************************************************************************
+
+//********************************* Ready ********************************
+$(function() {
+    ieBrowser = detectIE();
+    console.log("M [[ ieBrowser: " + ieBrowser + " ]]");
+});
+//************************************************************************
+
+//*************************** Detect IE ***********************************
+/**
+ * detect IE
+ * returns version of IE or false, if browser is not Internet Explorer
+ */
+function detectIE() {
+    var ua = window.navigator.userAgent;
+
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+        // IE 10 or older => return version number
+        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
     }
 
-    //************************************************************************
-
-    //*************************** Theme *********************************
-    //check the theme
-    function themeCheck() {
-       //  // if(localStorage.disclaim === "nodisclaim") {
-       //  //     console.log("M [[ " + localStorage.disclaim + " ]]");
-       //  //     return;
-       //  // } else {
-       //  //  $("#disclaimerDialog").dialog("open");
-       //  //  console.log("M [[ fresh disclaimer ]]"); }
-
-       //  if(localStorage.disclaim === "nodisclaim") {
-       //      console.log("M [[ " + localStorage.disclaim + " ]]");
-       //      return;
-       //  } else {
-       //   $("#disclaimerDialog").dialog("open");
-       //   console.log("M [[ theme applied ]]"); 
-
-       // }
+    var trident = ua.indexOf('Trident/');
+    if (trident > 0) {
+        // IE 11 => return version number
+        var rv = ua.indexOf('rv:');
+        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
     }
-    //************************************************************************
 
-    //*************************** Disclaimer *********************************
-    //throw the disclaimer
-    function disclaimerCheck() {
-        if(localStorage.disclaim === "nodisclaim") {
-            console.log("M [[ " + localStorage.disclaim + " ]]");
-            return;
-        } else {
-         $("#disclaimerDialog").dialog("open");
-         console.log("M [[ fresh disclaimer ]]"); }
+    var edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+        // IE 12 => return version number
+        return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
     }
-    //************************************************************************
-
-    // //*************************** Persist Extent *****************************
-    // //set the initialExtent variable
-    // function saveExtent() {
-    //     //create new extent object for storage
-    //     var spatialRef = new esri.SpatialReference({wkid:102707});
-    //       newExtent = new esri.geometry.Extent();
-    //       newExtent.xmin = map.extent.xmin;
-    //       newExtent.ymin = map.extent.ymin;
-    //       newExtent.xmax = map.extent.xmax;
-    //       newExtent.ymax = map.extent.ymax;
-    //       newExtent.spatialReference = spatialRef;
-
-    //       //Save in storage
-    //        localStorage.setItem("Xmin", map.extent.xmin);
-    //        localStorage.setItem("Ymin", map.extent.ymin);
-    //        localStorage.setItem("Xmax", map.extent.xmax);
-    //        localStorage.setItem("Ymax", map.extent.ymax);
-    // }
-
-    // extentInMem = true;
-
-    // function extentCheck() {
-    //     alert(JSON.stringify(localStorage.Xmin));
-    // }
-    // //************************************************************************
-
-    //********************************* Ready ********************************
-    $(function() {
-        ieBrowser = detectIE();
-        console.log("M [[ ieBrowser: " + ieBrowser + " ]]");
-    });
-    //************************************************************************
-
-    //*************************** Detect IE ***********************************
-    /**
-     * detect IE
-     * returns version of IE or false, if browser is not Internet Explorer
-     */
-    function detectIE() {
-        var ua = window.navigator.userAgent;
-
-        var msie = ua.indexOf('MSIE ');
-        if (msie > 0) {
-            // IE 10 or older => return version number
-            return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-        }
-
-        var trident = ua.indexOf('Trident/');
-        if (trident > 0) {
-            // IE 11 => return version number
-            var rv = ua.indexOf('rv:');
-            return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
-        }
-
-        var edge = ua.indexOf('Edge/');
-        if (edge > 0) {
-           // IE 12 => return version number
-           return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
-        }
-        // other browser
-        return false;
-    }
-    //************************************************************************
+    // other browser
+    return false;
+}
+//************************************************************************
