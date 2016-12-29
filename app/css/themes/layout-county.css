@@ -508,6 +508,15 @@ color: #ADADAD !important;
 }
 
 
+.esriSimpleSliderDisabledButton, .esriSimpleSliderDisabledButton:active, .esriSimpleSliderDisabledButton:hover {
+    cursor: default;
+    /*background-color: #262020;*/
+    background-color: #0D2E56 !important;
+    /*border-color: #333;*/
+    border-color: #0D2E56;
+    border-radius: 0px;
+}
+
 
 
 
@@ -559,23 +568,6 @@ color: #ADADAD !important;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #weatherDivCasing, #legendDivCasing {
 
   background-color: rgba(17, 63, 112, 0.96);
@@ -584,3 +576,24 @@ color: #ADADAD !important;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.esriPopup .titlePane {
+/*    background-color: #0D2E56 !important;*/
+    background-color: rgb(17, 63, 112) !important;
+
+/*    color: white !important;
+    font-weight: 700;*/
+}

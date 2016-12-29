@@ -73,12 +73,15 @@ var isMax = 0;
 var coordSystem; //state-plane-ft || lat-long
 
 
-require(["esri/map",
+require([
 
-        // "esri/toolbars/draw", //added for tools
-        // "esri/graphic", //added for tools
-        // "esri/layers/ArcGISDynamicMapServiceLayer", //added for image layers
-        // "esri/layers/ImageParameters", //added for image layers
+        //dojo includes
+        "dojo/dom",
+        "dojo/dom-attr",
+        "dojo/number",
+
+        //esri includes
+        "esri/map",
 
         "esri/geometry/Point",
 
@@ -89,12 +92,14 @@ require(["esri/map",
         "esri/SpatialReference",
         "esri/tasks/GeometryService",
 
-        //https://developers.arcgis.com/javascript/jssamples/toolbar_draw.html
-        "esri/toolbars/draw", //added for tools
         "esri/graphic", //added for tools
+        "esri/toolbars/draw", //added for tools
         "esri/symbols/SimpleMarkerSymbol", //added for tools
         "esri/symbols/SimpleLineSymbol", //added for tools
         "esri/symbols/SimpleFillSymbol", //added for tools
+        "esri/symbols/Font",
+        "esri/symbols/TextSymbol", //added for annotation tools
+        "esri/Color",
 
         "esri/dijit/Print", //added for print
         "esri/tasks/PrintTask", //added for print
@@ -107,12 +112,14 @@ require(["esri/map",
         "esri/layers/FeatureLayer", //added for legend
         "esri/dijit/Legend", //added for legend
         "dojo/_base/array", //added for legend
-        "dojo/parser", //added for legend
 
+        "dijit/registry", //added for 'registry.byId' event listening functionality for colors
+
+        "dojo/parser", //added for legend
         "dojo/domReady!"
     ],
 
-    function(Map, Point, webMercatorUtils, ProjectParameters, geometry, Extent, SpatialReference, GeometryService, Draw, Graphic, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Print, PrintTask, PrintTemplate, Scalebar, BootstrapMap, LocateButton, FeatureLayer, Legend, arrayUtils, parser) { //ADDED LEGEND FeatureLayer, Legend, arrayUtils, parser
+    function(dom, domAttr, number, Map, Point, webMercatorUtils, ProjectParameters, geometry, Extent, SpatialReference, GeometryService, Graphic, Draw, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Font, TextSymbol, Color, Print, PrintTask, PrintTemplate, Scalebar, BootstrapMap, LocateButton, FeatureLayer, Legend, arrayUtils, registry, parser) { //ADDED LEGEND FeatureLayer, Legend, arrayUtils, parser
 
         parser.parse(); //ADDED LEGEND
 
@@ -293,16 +300,76 @@ require(["esri/map",
 
             console.log(graphic.id);
 
+
+
+            // //ADDED -------------------------
+            // //Craft the symbol
+            // // add the drawn graphic to the map
+            // var symbol = new SimpleFillSymbol(
+            //   SimpleFillSymbol.STYLE_SOLID,
+            //   new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0, 0, 0]), 2),
+            //   // new Color([0, 0, 255, 0.5]));
+            //   new Color([249, 198, 103, 0.5]));
+            // //---------------------------------
+
+
+
             // var graphic = new Graphic(evt.geometry, symbol);
-            // map.graphics.add(graphic);
+           // map.graphics.add(graphic);
             addTheGraphics(graphic);
+            // addTheGraphics(graphic, symbol);
         }
 
-
+        //Add Graphics
         function addTheGraphics(graphic) {
-            // var graphic = new Graphic(evt.geometry, symbol);
-            map.graphics.add(graphic);
+       // function addTheGraphics(graphic, symbol) {
+
+            //https://developers.arcgis.com/javascript/3/sandbox/sandbox.html?sample=util_label_point
+            //https://developers.arcgis.com/javascript/3/sandbox/sandbox.html?sample=toolbar_edit
+            //https://developers.arcgis.com/javascript/3/jssamples/util_label_point.html
+            //https://developers.arcgis.com/javascript/3/jssamples/search_without_ui.html
+
+            // //add pre-defined geometries to map
+            // var polygonSymbol = new SimpleFillSymbol();
+            // var polylineSymbol = new SimpleLineSymbol();
+            // var text = new TextSymbol("Editable Text");
+            // text.font.setSize("20pt");
+
+
+
+            // var text = new TextSymbol("Editable Text");
+            // text.font.setSize("20pt");
+
+
+            // if (showMeasure)
+
+            //     // var graphic = new Graphic(evt.geometry, symbol);
+            //     map.graphics.add(graphic);
+
+            // else {
+
+            //     // var graphic = new Graphic(evt.geometry, symbol);
+            //     map.graphics.add(graphic, text);
+
+
+            // }
+
+
+            // map.graphics.add(graphic, symbol)
+
+            map.graphics.add(graphic)
+
+
+
+
         }
+
+        // registry.byId("clear").on("click", function() {
+        //   map.graphics.clear();
+        // });
+
+
+
         //Erase Graphics
         $('#eraseBtn').click(function() {
             // console.log('ihtrs');
@@ -335,6 +402,61 @@ require(["esri/map",
             }
         }
         //-------------------------------------------------
+
+
+
+
+
+
+
+
+
+        // function addTheGraphics (graphic) {
+        //   // var graphic = new Graphic(evt.geometry, symbol);
+        //   map.graphics.add(graphic);
+        // }
+        // //Erase Graphics
+        // $('#eraseBtn').click(function() {
+        //    // console.log('ihtrs');
+        //    // map.graphics.remove('highlight');
+        //    // map.graphics.clear();
+        //    clearGraphics();
+        // });
+        // //Finish Graphics
+        // $('#finishDrawBtn').click(function() {
+        //    // console.log('ihtrs');
+        //    // map.graphics.remove('highlight');
+        //    // map.graphics.clear();
+        //    functionMode = "identify";
+        //    $("#currentToolTag").text('Select Property');
+        //    toolbar.deactivate();
+        // });
+
+        // //http://gis.stackexchange.com/questions/110060/remove-geometry-from-map-using-arcgis-api-for-javascript
+        // function clearGraphics() {
+        //     //first remove all graphics added directly to map
+        //     map.graphics.clear();
+
+        //     //now go into each graphic layer and clear it
+        //     var graphicLayerIds = map.graphicsLayerIds;
+        //     var len = graphicLayerIds.length;
+        //     for (var i = 0; i < len; i++) {
+        //         var gLayer = map.getLayer(graphicLayerIds[i]);
+        //         //clear this Layer
+        //         gLayer.clear();
+        //     }
+        // }
+        // //-------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 
 
         // map.on("load", createToolbar);

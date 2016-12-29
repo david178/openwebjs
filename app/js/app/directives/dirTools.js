@@ -3,7 +3,7 @@
 open.directive('toolsView', function() {
 
  return {
-   restrict:'E',
+   // restrict:'E',
    link:function(scope,e,a){
 
      //Tools logic
@@ -15,6 +15,44 @@ open.directive('toolsView', function() {
                   e.stopPropagation();
               }
       });
+
+
+
+
+
+      // //Tool specific (references tempTools.html)
+      // //Erase Graphics
+      // $('#eraseBtn').click(function() {
+
+      //   // map.clearGraphics();
+      //   map.graphics.clear();
+        
+      //     // console.log('ihtrs');
+      //     // map.graphics.remove('highlight');
+      //     // map.graphics.clear();
+      //     //first remove all graphics added directly to map
+      //     // map.graphics.clear();
+
+      //     // //now go into each graphic layer and clear it
+      //     // var graphicLayerIds = map.graphicsLayerIds;
+      //     // var len = graphicLayerIds.length;
+      //     // for (var i = 0; i < len; i++) {
+      //     //     var gLayer = map.getLayer(graphicLayerIds[i]);
+      //     //     //clear this Layer
+      //     //     gLayer.clear();
+      //     // }
+      // });
+
+
+
+
+
+
+
+
+
+
+
 
 
 

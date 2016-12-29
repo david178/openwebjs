@@ -1,0 +1,20 @@
+/* custom media queries */
+
+
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* under 767 (small - phone & tablet) */
+@media (max-width: 767px) {
+
+
+              #tester > .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
+  /*                color:black !important;*/
+                  /*background-color: #333 !important;*/
+
+/*                  background-color: #0D2E56 !important;*/
+                  
+                }
+
+
+              }

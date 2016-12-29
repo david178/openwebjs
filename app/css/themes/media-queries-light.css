@@ -1,0 +1,150 @@
+
+
+/* custom media queries */
+
+
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* under 767 (small - phone & tablet) */
+@media (max-width: 767px) {
+
+
+
+
+              #tester > .dropdown-menu
+              {
+                  padding: 5px;
+                box-shadow: 0.5px 3px 4px rgba(0, 0, 0, 0.40);
+                  position: absolute;
+                  top: 100%;
+                  left: 0;
+                  z-index: 1000;
+                  display: none;
+                  float: left;
+                  min-width: 160px;
+                  margin: 2px 0 0;
+                  font-size: 14px;
+                  list-style: none;
+                  background-clip: padding-box;
+                color:gray !important;
+                margin-top:3px;
+                  -webkit-border-radius:0px;
+                  -moz-border-radius:0px;
+                  border-radius:0px;
+                border-top: 0px solid #ababab;
+  /*              border-bottom: 2px solid #47a3da;*/
+                border-bottom: 2px solid #3c8ed2;
+
+
+
+                z-index:999999 !important;
+                /*background-color:#222 !important;*/
+                /*background-color:#0D2E56 !important;*/
+                background-color:#C1C1C1 !important; /* change for theme */
+                
+
+                
+                /*background-color: rgb(17, 63, 112) !important;*/
+/*                    border-color: rgb(17, 63, 112);*/
+
+                color:gray !important;
+
+  /*              width: 158% !important;*/
+  /*              width: 200% !important;*/ /* OLD VAL before switch to 'O' logo */
+  /*              margin-left: -137px;*/ /* OLD VAL before switch to 'O' logo */
+  /*              margin-right: 30px;*/ /* OLD VAL before switch to 'O' logo */
+
+                width: 200% !important; 
+                margin-left: -53px; 
+                margin-right: 30px; 
+
+                margin-top:5px !important;
+
+
+
+                -webkit-transition: all 0.30s linear;
+                -moz-transition: all 0.30s linear;
+                -ms-transition: all 0.30s linear;
+                -o-transition: all 0.30s linear;
+                transition: all 0.30s linear;
+
+
+              }
+              #tester > .dropdown-menu > li 
+                {
+                  /*background-color:#222 !important;*/
+                  background-color:#C1C1C1 !important; /* change for theme */
+                  color:gray !important;
+                  border-top-right-radius: 0 !important;
+                  border-top-left-radius: 0 !important;
+                  border-bottom-right-radius: 0 !important;
+                  border-bottom-left-radius: 0 !important;
+  /*                        margin-left: 2px;*/
+  /*                        margin-left: -7px;*/
+  /*                        margin-right: 0px;*/
+
+  /*                        margin-left: 2px;
+                          margin-right: 3px;*/
+
+
+                          margin-left: -5px;
+  /*                        width:111% !important;*/
+  /*                  width:150% !important;*/
+
+
+
+                }
+              #tester > .dropdown-menu > li > a { 
+                    display: block;
+                    padding: 3px 20px;
+                    clear: both;
+
+                    font-size:13px;
+
+                    line-height: 1.428571429;
+
+                  color:#D9F0F0 !important;
+
+                 /* margin-left: -7px;*/
+
+  /*                margin-left: -2px;
+                  margin-right: -100px !important;*/
+
+  /*                width: 158% !important;*/
+
+  /*                width:87% !important;*/
+
+
+                    white-space: nowrap;
+
+                    -webkit-transition: all 0.20s linear;
+                    -moz-transition: all 0.20s linear;
+                    -ms-transition: all 0.20s linear;
+                    -o-transition: all 0.20s linear;
+                    transition: all 0.20s linear;
+                }
+              #tester > .dropdown-menu> li:first-child {
+                  margin-top: 1px;
+                }
+
+              #tester > .dropdown-menu> li:last-child {
+                  margin-bottom: 1px;
+                }
+
+              #tester > .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
+  /*                color:black !important;*/
+                  /*background-color: #333 !important;*/
+                  /*background-color: #0D2E56 !important;*/
+                  background-color: #ADADAD !important; /* change for theme */
+                  /*background-color: rgb(17, 63, 112) !important;*/  
+                }
+
+
+
+
+
+
+
+
+              }

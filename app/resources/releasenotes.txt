@@ -2,18 +2,22 @@
 ----------------------------------------------------------------------------------------------
 [Release Notes for 4.2]
 
-Upgrades, Bug Fixes & Enchancements:
+Upgrades, Bug Fixes & Enhancements:
 -Restructured navbar to allow mobile/tablet users ability to click logo for disclaimer
 -Updated disclaimer window mobile display size
 -Removed 'string' msg from OW logo click
+
 -Updated API lib refs to http secured
 -Added Google Analytics metrics
+
 -Updated mobile infoWindow hiding process - close window on 'X' searchbox 
 click to match desktop functionality
 -Added 'Maximize' button for expanded Mobile Property Information
 -Fixed Streetview pano display intermittent issues
+
 -Added default county theme
 -Added custom Theme options, saves to storage
+
 -Updated additional property information for mobile
 -Added Persistent States (URL Parms as @State Plane, @lat/long, || @address/parcel)
 -Added Persistent Application-wide Coordinate System Synching - 
@@ -33,10 +37,13 @@ integer is the level of detail)
 (Chain Ex: http://gisgate.co.clark.nv.us/ow/?@1525%20Pinto&view=clark%20county%20zoning&legend=t&fullmap=t )
 -Added ability to change coordinate system through information block (state plane, lat/long)
 -Updates to: coordSys dropdown & streetview elements
+
 -Removed zoom to parcel on Select Property resolves
 -Added OpenWeb Advanced usage guide documentation (Resources)
 -Applied Fix for info window expanded (content panel) for mobile
+
 -Added Geolocation widget
+
 -Revamped & added new Resources sections
 -Revamped modal window system
 -Added additional help and assistant
@@ -45,23 +52,14 @@ integer is the level of detail)
 -Added Assessor Annotation layer
 -Fixed the blue tab highlighting on hover issue that occurs from conflict between
 added modal window css
+-Updated mobile popup info window, 'geolocate' button, and autocomplete typeahead suggestions
+depending upon theme selected
+-Adjusted 'geolocate' button z-indexing to correct infowindow pop up display conflict
 
-
--Update mobile popup info window header color depending upon theme selected [ ]
--Update dropdown arrow icon for cross browser (important for IE) [ ]
+-Updated dropdown arrow icon for cross browser (important for IE) [ ]
 -Fix the issue that occurs now when an @Address/APN is put into browser url - 
 the map coords are no longer saved (need to update browser url update logic) [ ]
--Fix export to PNG (exporting as PDF only) [ ]
 -Fix issue with mobile pop up that's occuring after consecutive select properties [ ]
 -Fix mobile popup y overflow to scroll (put in a content panel?) [ ]
-
--If there is a lat/lng or a state plane: then update to add x/y vals in infoblock by default [ ]
--Fix the inconsistency issue between the lat/lon values from info-block & lat/lon in browser url
-that gets resolved on mouse move evt [ ]
--Fix the issue where search resolve for address/apn no longer zooms in to location at all /
-Updated executeQueryTask for listening to the 'propselect' to pan/zoom to location without 
-highlighting parcel/selecting property [ ]
--Remove zoom to parcel onSelectProp (keep onSearch) [ ]
-
 
 

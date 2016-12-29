@@ -478,6 +478,37 @@ color: #ADADAD !important;
 
 
 
+.esriSimpleSliderDisabledButton, .esriSimpleSliderDisabledButton:active, .esriSimpleSliderDisabledButton:hover {
+    cursor: default;
+    /*background-color: #262020;*/
+    background-color: #ADADAD !important;
+    /*border-color: #333;*/
+    border-color: #ADADAD;
+    border-radius: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.esriPopup .titlePane {
+/*    background-color: #0D2E56 !important;*/
+/*    background-color: rgb(17, 63, 112) !important;*/
+
+    background-color: #C1C1C1 !important;
+
+/*    color: white !important;
+    font-weight: 700;*/
+}
+
+
+
 
 
 
@@ -502,3 +533,71 @@ color: #ADADAD !important;
 .coordsDropDown {
   background: #ADADAD !important; 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#LocateButton {
+      position: absolute;
+/*      top: 95px;
+      left: 20px;*/
+      /*z-index: 50;*/
+      z-index: 2;
+
+      -webkit-transition: all 0.5s ease-in-out;
+       -moz-transition: all 0.5s ease-in-out;
+       -o-transition: all 0.5s ease-in-out;
+       -ms-transition: all 0.5s ease-in-out;
+       transition: all 0.5s ease-in-out;
+
+       /*bottom: 20px;*/
+       bottom: 84px;
+       right: 20px;
+
+       /*background-color: rgba(102,102,102,0.80);*/
+
+
+    }
+
+
+    .LocateButton .zoomLocateButton {
+
+/*        background-color: rgb(17, 63, 112);*/
+
+        background-color: #C1C1C1;
+        border-color: #C1C1C1;
+
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        -o-border-radius: 2px;
+        border-radius: 2px;
+
+    }
+
+    .LocateButton .zoomLocateButton:hover {
+      /*background-color: #0D2E56;*/
+      background-color: #ADADAD;
+/*        background-color: #333;
+        background-color: rgba(102,102,102,0.90);*/
+
+        transition: all 0.30s linear;
+    }
+

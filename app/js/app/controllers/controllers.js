@@ -1087,14 +1087,20 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             if (localStorage.theme === "dark") {
                 // set the default layout
                 $scope.layout = 'dark'; //county, bright
+                // $scope.medialayout = 'dark'; //county, bright
+                // console.log('it is ' + $scope.medialayout)
                 console.log("M [[ " + localStorage.theme + " theme applied ]]");
             } else if (localStorage.theme === "light") {
                 // set the default layout
                 $scope.layout = 'light'; //county, bright
+                // $scope.medialayout = 'light'; //county, bright
+                // console.log('it is ' + $scope.medialayout)
                 console.log("M [[ " + localStorage.theme + " theme applied ]]");
             } else {
                 // set the default layout
                 $scope.layout = 'county'; //county, bright
+                // $scope.medialayout = 'county'; //county, bright
+                // console.log('it is ' + $scope.medialayout)
                 console.log("M [[ " + localStorage.theme + " theme applied ]]");
             }
             //-----------------------------------------
@@ -1687,6 +1693,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     //saves the theme on a theme change
     $scope.saveTheme = function() {
         localStorage.setItem("theme", $scope.layout);
+        // localStorage.setItem("mediatheme", $scope.medialayout);
     };
 
     // set the default layout

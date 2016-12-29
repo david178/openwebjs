@@ -88,12 +88,39 @@
 
 
 
+      <!-- possibly easier methology:
+
+      https://developers.arcgis.com/javascript/3/sandbox/sandbox.html?sample=util_label_point
 
 
+      <button id="polygon" data-dojo-type="dijit.form.Button">Polygon</button>
+      <button id="freehand" data-dojo-type="dijit.form.Button">Freehand Polygon</button>
+      <button id="clear" data-dojo-type="dijit.form.Button">Clear Graphics</button>
+
+
+      // activate a drawing tool when a button is clicked
+      registry.byId("polygon").on("click", function() {
+        toolbar.activate(Draw.POLYGON);
+        map.hideZoomSlider();
+      });
+      registry.byId("freehand").on("click", function() {
+        toolbar.activate(Draw.FREEHAND_POLYGON);
+        map.hideZoomSlider();
+      });
+      registry.byId("clear").on("click", function() {
+        map.graphics.clear();
+      });
+
+      -->
 
 
 
       <!-- WORKING TOOLS  -->
+
+ <!--      <button id="polygon" data-dojo-type="dijit.form.Button">Polygon</button>
+      <button id="freehand" data-dojo-type="dijit.form.Button">Freehand Polygon</button>
+      <button id="clear" data-dojo-type="dijit.form.Button">Clear Graphics</button> -->
+
 
           <li class='dropdown' id='drawtoolList'>
             <a class='dropdown-toggle' data-toggle='dropdown' href="#">Draw Tools 
@@ -101,6 +128,13 @@
               <!-- <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> -->
             </a>
             <ul class='dropdown-menu dropdown-menu-form'>
+
+
+<!--             <button id="polygon" data-dojo-type="dijit.form.Button">Polygon</button>
+            <button id="freehand" data-dojo-type="dijit.form.Button">Freehand Polygon</button>
+            <button id="clear" data-dojo-type="dijit.form.Button">Clear Graphics</button> -->
+
+
 <!--               <li onClick="toolbar.activate(esri.toolbars.Draw.POINT);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Point</a></li> -->
               <li class="toolSelect" id="Point" onClick="toolbar.activate(esri.toolbars.Draw.MULTI_POINT);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Point</a></li>
 <!--               <li onClick="toolbar.activate(esri.toolbars.Draw.LINE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Line</a></li> -->
@@ -113,15 +147,29 @@
               <li class="toolSelect" id="Circle" onClick="toolbar.activate(esri.toolbars.Draw.CIRCLE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Circle</a></li>
               <li class="toolSelect" id="Ellipse" onClick="toolbar.activate(esri.toolbars.Draw.ELLIPSE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Ellipse</a></li>
 
-              <!-- <li style="height:15px !important;"></li -->
 
-<!--               <br style="background-color:#232323; background:#232323;"></br>
-              <hr style="background-color:#232323; background:#232323;"></hr> -->
 
-              <!-- <li id="eraseBtn" ><a href="#"><small><i class="fa fa-eraser pull-left" style="margin-top:6px; margin-left:35px; margin-right:10px;" ></i> </small>  Eraser</a></li> -->
-<!--               <li id="eraseBtn" style="" ><a href="#"><small><i class="fa fa-eraser pull-left" style="margin-top:6px; margin-right:10px;" ></i> </small>  Eraser</a></li> -->
               <li id="eraseBtn" style="" ><a href="#"><small><span class="fa fa-eraser pull-left" style="margin-top:7px; margin-right:7px;"></span></small>  Erase</a></li>
               <li id="finishDrawBtn" style="" ><a href="#"><small><span class="fa fa-thumbs-o-up pull-left" style="margin-top:7px; margin-right:7px;"></span></small>  Finish Drawing</a></li>
+
+
+
+
+
+<!-- 
+              <li id="eraseBtn" style="" ><a href="#"><small><span class="fa fa-eraser pull-left" style="margin-top:7px; margin-right:7px;"></span></small>  Erase</a></li>
+              <li id="finishDrawBtn" style="" ><a href="#"><small><span class="fa fa-thumbs-o-up pull-left" style="margin-top:7px; margin-right:7px;"></span></small>  Finish Drawing</a></li> -->
+
+
+
+
+                            <!-- <li style="height:15px !important;"></li -->
+
+              <!--               <br style="background-color:#232323; background:#232323;"></br>
+                            <hr style="background-color:#232323; background:#232323;"></hr> -->
+
+                            <!-- <li id="eraseBtn" ><a href="#"><small><i class="fa fa-eraser pull-left" style="margin-top:6px; margin-left:35px; margin-right:10px;" ></i> </small>  Eraser</a></li> -->
+              <!--               <li id="eraseBtn" style="" ><a href="#"><small><i class="fa fa-eraser pull-left" style="margin-top:6px; margin-right:10px;" ></i> </small>  Eraser</a></li> -->
 
 
 <!--               <button dojoType="dijit.form.Button" onClick="toolbar.activate(esri.toolbars.Draw.POINT);">Point</button>
@@ -215,55 +263,42 @@
 
 
 
-
-
-
-          <li class='dropdown' id='colorList' class="disable_List">
-            <a class='dropdown-toggle' data-toggle='dropdown' href="#">Color</a>
-            <ul class='dropdown-menu dropdown-menu-form disable_List'>
-<!--               <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Black</a></li>
-              <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Blue</a></li>
-              <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Green</a></li>
-              <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Red</a></li>
-              <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Yellow</a></li> -->
-              <li><a href="#"><small><img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/images/colorbox/blackBox.png"></img> </small> Black</a></li>
-              <li><a href="#"><small><img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/images/colorbox/blueBox.png"></img> </small> Blue</a></li>
-              <li><a href="#"><small><img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/images/colorbox/greenBox.png"></img> </small> Green</a></li>
-              <li><a href="#"><small><img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/images/colorbox/redBox.png"></img> </small> Red</a></li>
-              <li><a href="#"><small><img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/images/colorbox/yellowBox.png"></img> </small> Yellow</a></li>
-            </ul>
+          <!-- Color -->
+          <li class='dropdown' id='colorList'>
+            <a class='disable_List dropdown-toggle' data-toggle='dropdown' href="#">Color</a>
+              <ul class='dropdown-menu dropdown-menu-form'>
+                <li><a href="#"><small><img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/images/colorbox/blackBox.png"></img> </small> Black</a></li>
+                <li><a href="#"><small><img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/images/colorbox/blueBox.png"></img> </small> Blue</a></li>
+                <li><a href="#"><small><img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/images/colorbox/greenBox.png"></img> </small> Green</a></li>
+                <li><a href="#"><small><img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/images/colorbox/redBox.png"></img> </small> Red</a></li>
+                <li><a href="#"><small><img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/images/colorbox/yellowBox.png"></img> </small> Yellow</a></li>
+              </ul>
           </li>
 
+          <!-- Symbol -->
           <li class='dropdown' id='symbolList'>
-            <a class='dropdown-toggle dropdown-menu-form' data-toggle='dropdown' href="#" class="disable_List">Symbol</a>
-            <ul class='dropdown-menu'>
-              <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Point1</a></li>
-              <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Point2</a></li>
-              <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Point3</a></li>
-              <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Point4</a></li>
-              <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Point5</a></li>
-            </ul>
+            <a class='disable_List dropdown-toggle dropdown-menu-form' data-toggle='dropdown' href="#" >Symbol</a>
+              <ul class='dropdown-menu'>
+                <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Point1</a></li>
+                <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Point2</a></li>
+                <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Point3</a></li>
+                <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Point4</a></li>
+                <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Point5</a></li>
+              </ul>
           </li>
 
 
+          <!-- Annotation Text -->
           <li><a href="#" class="disable_List">Annotation Text</a></li>
+          <!-- Annotation Size -->
           <li><a href="#" class="disable_List">Annotation Size</a></li>
-<!--           <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>8</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>12</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>15</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>20</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>40</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>80</a></li> -->
+          <!-- Buffer -->
           <li><a href="#" class="disable_List">Buffer</a></li>
 
-<!--           <li class="divider"></li> -->
-
-            <div style="padding: 20px 30px 0;"></div>
-
-<!--           <li><a id="printMapLink" href="#" onclick="printMap();">Print</a></li>
-          <li><a href="#" onclick="exportMap();">Export</a></li> -->
 
 
+          <!-- Spacer -->
+          <div style="padding: 20px 30px 0;"></div>
 
 
 

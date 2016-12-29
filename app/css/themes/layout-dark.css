@@ -52,3 +52,69 @@ background: #333 !important;
 .coordsDropDown {
   background: #111 !important; 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+    .LocateButton .zoomLocateButton {
+/*        padding: 2px;
+        width: 30px;
+        height: 30px;*/
+/*        width: 29px;
+        height: 29px;*/
+
+        /*background-color: #666;*/
+        /*background-color: rgba(102,102,102,0.80);*/
+        /*background-color: #0D2E56;*/
+/*        background-color: rgb(17, 63, 112);*/
+/*        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: pointer;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -o-border-radius: 5px;
+        border-radius: 5px;
+        background-image: url(../dijit/images/locate.png);
+        background-position: center center;
+        background-repeat: no-repeat;*/
+
+
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        -o-border-radius: 2px;
+        border-radius: 2px;
+
+/*
+background-color: #232323;*/
+
+background-color: #333;
+/* background-color: #232f3e; */
+/*border-color: #080808;*/
+
+    }
+
+    .LocateButton .zoomLocateButton:hover {
+/*      background-color: #0D2E56;*/
+/*        background-color: #333;
+        background-color: rgba(102,102,102,0.90);*/
+
+
+/*        background: #232323 !important;
+        border-color: #232323 !important;*/
+
+
+        transition: all 0.30s linear;
+
+        background-color: #262020;
+
+    }
