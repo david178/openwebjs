@@ -17,6 +17,39 @@ open.directive('toolsView', function() {
       });
 
 
+      ///https://css-tricks.com/dangers-stopping-event-propagation/
+      // $(document).on('click', function(event) {
+      //   if (!$(event.target).closest('#menucontainer').length) {
+      //     // Hide the menus.
+      //   }
+      // });
+
+      // $(document).on('click', function(event) {
+      //   if (!$(event.target).closest('#tools-dropdown-menu-form').length) {
+      //     // Hide the menus.
+      //     console.log('keep menus up')
+
+      //     //then the click was registered as coming from outside the tools downdrop,
+      //     //in which case, we want to keep the menu up
+      //             // if($(this).hasClass('tools-dropdown-menu-form')){
+      //                 e.stopPropagation();
+      //             // }
+
+      //   }
+      // });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -26,7 +59,7 @@ open.directive('toolsView', function() {
 
       //   // map.clearGraphics();
       //   map.graphics.clear();
-        
+
       //     // console.log('ihtrs');
       //     // map.graphics.remove('highlight');
       //     // map.graphics.clear();

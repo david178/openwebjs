@@ -2590,16 +2590,6 @@ margin-right:-10px;
 
 
 
-/* Info BLock coordinate system drop down */
-.coordsDropDown {
-
-  display:inline-block; 
-  background: #0D2E56 !important; 
-  background-color:transparent; 
-  border:0px; 
-  font-weight:bold;
-}
-
 
 
 #LocateButton {
@@ -2800,3 +2790,238 @@ margin-right:-10px;
     cursor: default;
     background-color: #eceeef;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Info BLock coordinate system drop down */
+.coordsDropDown {
+
+  display:inline-block; 
+  background: #0D2E56 !important; 
+  background-color:transparent; 
+  border:0px; 
+  font-weight:bold;
+
+  /*padding-right:20px;*/
+}
+
+
+
+
+
+
+
+
+
+/*.select {
+    border:1px solid #e3e3e3;    
+    border-radius:3px;
+    color:#616263;
+    overflow: hidden; 
+    height: 40px;    
+    width: 240px;
+    position: relative;
+    display: block;
+}
+
+select{       
+    height: 40px;
+    padding: 5px;
+    background-color:#ececec;
+    border: 0;
+    outline: none;
+    font-size: 16px;       
+    width: 240px;
+   -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.select:after {
+    content:"▼";    
+    padding: 12px 8px;
+    position: absolute; right: 10px; top: 0;    
+    z-index: 1;
+    text-align: center;
+    width: 10%;
+    height: 100%;      
+    pointer-events: none;
+    box-sizing: border-box;   
+}*/
+select::-ms-expand {
+    display: none;
+
+    content:"▼";    
+    font-size: 11px;  
+    padding: 2px 0px;
+    position: absolute; right: 10px; top: 0; 
+    text-align: center;
+    width: 20%;
+    height: 100%;  
+
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+
+.customarrow:after {
+
+/*  content:"\f078;";
+  font-family: "FontAwesome";
+
+/*content:"▼";
+  font-size: 8.5px;  
+  padding: 2px 0px;
+  position: absolute; right: 10px; top: 0; 
+  text-align: center;
+  width: 20%;
+  height: 100%;  
+
+  pointer-events: none;
+  box-sizing: border-box;*/
+
+
+
+
+/*  padding: 12px 8px;
+  position: absolute; right: 10px; top: 0;    
+  z-index: 1;
+  text-align: center;
+  width: 10%;
+  height: 100%;      
+  pointer-events: none;
+  box-sizing: border-box;  */ 
+
+/*  -moz-appearance: none;*/
+
+/*-webkit-appearance: none;*/
+
+
+
+
+
+
+
+
+content:"\f078";   
+font-family: "FontAwesome";
+font-size: 9px;
+/*color:#aaa;*/
+/*right:8px; top:4px;*/
+/*right:22px;*/
+right:22px;
+/*right:18px;*/
+top:1.5px;
+/*padding:0 0 2px;*/
+padding:0 0px 0px 4px;
+position:absolute; 
+pointer-events:none;
+
+/*width: 10%;*/
+width: 9%;
+
+
+
+
+
+}
+
+
+select {
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+padding: 0px 25px 0px 0px;
+/*padding: 0px 20px 0px 2px;*/
+
+  border: none;
+/*  background: transparent url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat right center;
+*/
+
+/*    -webkit-appearance: none;
+    -moz-appearance: none;*/
+/*    text-indent: 1px;
+    text-overflow: '';*/
+
+    text-indent: 2px;
+    /*text-indent: 0px;*/
+}
+
+
+
+
+select.coordsDropDown {
+  /*width:59%;*/
+/*  margin-left:2px;*/
+}
+
+select {
+/*    padding:4px;
+    margin: 0;
+    background: #fff;
+    color:#888;
+    border:none;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+    width: 150px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;*/
+}
+
+/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+/*@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select {padding-right:18px}
+}
+
+label {position:relative}
+label:after {
+    content:"\f078";   
+    font-family: "FontAwesome";
+    font-size: 11px;
+    color:#aaa;
+    right:8px; top:4px;
+    padding:0 0 2px;
+    position:absolute;
+    pointer-events:none;
+}
+label:before {
+    content:'';
+    right:4px; top:0px;
+    width:23px; height:18px;
+    background:#fff;
+    position:absolute;
+    pointer-events:none;
+    display:block;
+}
+*/
+
+
+
+
+
+

@@ -127,7 +127,7 @@
 <!--               <i class="fa fa-angle-right pull-right" style="margin-top:3px;" ></i> -->
               <!-- <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> -->
             </a>
-            <ul class='dropdown-menu dropdown-menu-form'>
+            <ul id='tools-dropdown-menu-form' class='dropdown-menu dropdown-menu-form'>
 
 
 <!--             <button id="polygon" data-dojo-type="dijit.form.Button">Polygon</button>
@@ -135,22 +135,37 @@
             <button id="clear" data-dojo-type="dijit.form.Button">Clear Graphics</button> -->
 
 
-<!--               <li onClick="toolbar.activate(esri.toolbars.Draw.POINT);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Point</a></li> -->
-              <li class="toolSelect" id="Point" onClick="toolbar.activate(esri.toolbars.Draw.MULTI_POINT);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Point</a></li>
-<!--               <li onClick="toolbar.activate(esri.toolbars.Draw.LINE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Line</a></li> -->
-              <li class="toolSelect" id="Polyline" onClick="toolbar.activate(esri.toolbars.Draw.POLYLINE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Polyline</a></li>
-              <li class="toolSelect" id="Polygon" onClick="toolbar.activate(esri.toolbars.Draw.POLYGON);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Polygon</a></li>
-              <li class="toolSelect" id="FH_Polyline" onClick="toolbar.activate(esri.toolbars.Draw.FREEHAND_POLYLINE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Freehand Polyline</a></li>
-              <li class="toolSelect" id="FH_Polygon" onClick="toolbar.activate(esri.toolbars.Draw.FREEHAND_POLYGON);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Freehand Polygon</a></li>
-              <li class="toolSelect" id="Arrow" onClick="toolbar.activate(esri.toolbars.Draw.ARROW);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Arrow</a></li>
-              <li class="toolSelect" id="Triangle" onClick="toolbar.activate(esri.toolbars.Draw.TRIANGLE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Triangle</a></li>
-              <li class="toolSelect" id="Circle" onClick="toolbar.activate(esri.toolbars.Draw.CIRCLE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Circle</a></li>
-              <li class="toolSelect" id="Ellipse" onClick="toolbar.activate(esri.toolbars.Draw.ELLIPSE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Ellipse</a></li>
+              <!-- suite of tools -->
+              <li id="Point" class="toolSelect"  onClick="toolbar.activate(esri.toolbars.Draw.MULTI_POINT);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Point</a></li>
+
+              <li id="Polyline" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.POLYLINE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Polyline</a></li>
+              
+              <li id="Polygon" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.POLYGON);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Polygon</a></li>
+              
+              <li id="FH_Polyline" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.FREEHAND_POLYLINE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Freehand Polyline</a></li>
+              
+              <li id="FH_Polygon" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.FREEHAND_POLYGON);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Freehand Polygon</a></li>
+              
+              <li id="Arrow" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.ARROW);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Arrow</a></li>
+              
+              <li id="Triangle" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.TRIANGLE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Triangle</a></li>
+              
+              <li id="Circle" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.CIRCLE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Circle</a></li>
+              
+              <li id="Ellipse" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.ELLIPSE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Ellipse</a></li>
 
 
-
+              <!-- erase / finish -->
               <li id="eraseBtn" style="" ><a href="#"><small><span class="fa fa-eraser pull-left" style="margin-top:7px; margin-right:7px;"></span></small>  Erase</a></li>
+             
               <li id="finishDrawBtn" style="" ><a href="#"><small><span class="fa fa-thumbs-o-up pull-left" style="margin-top:7px; margin-right:7px;"></span></small>  Finish Drawing</a></li>
+
+
+              <!-- return measure display -->
+
+
+
+
 
 
 
