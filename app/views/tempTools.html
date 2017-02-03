@@ -264,23 +264,64 @@
           </a></li> -->
 
 
-          <!-- New checks -->
 
-          <li><a href="#" class="disable_List">
-          <input id="measureBox" class="icon-checkbox" type="checkbox" checked />
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- Return Measure -->
+          <li><a href="#" class="">
+<!--           <input id="measureBox" class="icon-checkbox" type="checkbox" checked />
           <label for="measureBox">
             <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
             <span class='glyphicon glyphicon-check checked chkPadding'></span>
             Return Measure
+          </label> -->
+
+          <input id="measureReturnBox" class="icon-checkbox weatherPosOverrides" type="checkbox" ng-model="theMeasureReturn" />
+          <!-- onclick='blockPositionChk()' -->
+          <label for="measureReturnBox">
+            <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+            <span class='glyphicon glyphicon-check checked chkPadding'></span>
+            Return Measure
           </label>
+
+
           </a></li>
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           <!-- Color -->
-          <li class='dropdown' id='colorList'>
-            <a class='disable_List dropdown-toggle' data-toggle='dropdown' href="#">Color</a>
+          <li class='disable_List dropdown' id='colorList'>
+            <a class='dropdown-toggle' data-toggle='dropdown' href="#">Color</a>
               <ul class='dropdown-menu dropdown-menu-form'>
                 <li><a href="#"><small><img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/images/colorbox/blackBox.png"></img> </small> Black</a></li>
                 <li><a href="#"><small><img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/images/colorbox/blueBox.png"></img> </small> Blue</a></li>
@@ -290,8 +331,10 @@
               </ul>
           </li>
 
+
+
           <!-- Symbol -->
-          <li class='dropdown' id='symbolList'>
+          <li class='dropdown' id=' symbolList'>
             <a class='disable_List dropdown-toggle dropdown-menu-form' data-toggle='dropdown' href="#" >Symbol</a>
               <ul class='dropdown-menu'>
                 <li><a href="#"><small><span class="glyphicon glyphicon-pencil"></span></small> Point1</a></li>
@@ -303,12 +346,109 @@
           </li>
 
 
+
+
+
+
+
+
+
+
+
+          <!-- disable_List -->
+
+
           <!-- Annotation Text -->
           <li><a href="#" class="disable_List">Annotation Text</a></li>
           <!-- Annotation Size -->
           <li><a href="#" class="disable_List">Annotation Size</a></li>
+
+
+
+
+
+
+
+
+
+
+
           <!-- Buffer -->
-          <li><a href="#" class="disable_List">Buffer</a></li>
+          <li>
+          <a class='dropdown-toggle dropdown-menu-form' data-toggle='dropdown' href="#" >Buffer</a>
+<!--             <ul class='dropdown-menu dropdown-menu-form'>
+              <li style="" class=""><select style="background-color: #222;" class="form-control btn btn-primary styleBox-variant" ng-model="layout" ng-change="saveTheme()" ng-options="layout.url as layout.name for layout in layouts"></select></li>
+            </ul> -->
+
+            <ul class='dropdown-menu dropdown-menu-form'>
+              <!-- <li style="" class=""> -->
+
+              
+              <!-- Buffer Units dropdown -->
+               <div class="dropdown customarrow">
+                  <b>Buffer in </b>
+                  <!-- <select class="coordsDropDown" ng-model="selectedOption" ng-options="coordOption.name for coordOption in coordOptions" ng-change="changeCoords(selectedOption)"> -->
+          <!--           <option value="stateplaneft" selected="selected">State Plane ft. </option>
+                    <option value="latlong">Lat / Long</option> -->
+                  <!-- </select> -->
+
+
+                  <select id="bufferUnitsSelectBox" style="width:50px; color:black;">
+                    <option value="UNIT_FOOT">ft.</option>
+                    <option value="UNIT_STATUTE_MILE">mi.</option>
+                    <option value="UNIT_KILOMETER">km.</option>
+                    <option value="UNIT_METER">m.</option>
+                    <option value="UNIT_NAUTICAL_MILE">naut mi.</option>
+                    <option value="UNIT_US_NAUTICAL_MILE">US naut mi.</option>
+                    <option value="UNIT_DEGREE">Degrees</option>
+                  </select><br />
+
+
+
+                </div>
+                <!-- Buffer Distance Input box -->
+                <!-- Buffer Distance(Ft):  -->
+                <!-- <input class="form-control" id="bufferDistanceInputBox" value=""  placeholder="500" type="text"/> -->
+                Distance:&nbsp;<input type="text" style="color:black;" id="bufferDistanceInputBox" size="5" value="25" />
+
+
+
+                <!-- Buffer Fill Checkbox -->
+                <input id="bufferFillBox" class="icon-checkbox weatherPosOverrides" type="checkbox" ng-model="theBufferFill" ng-change="bufferFillPass(theBufferFill);"/>
+                <label for="bufferFillBox">
+                  <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                  <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                  Buffer Fill
+                </label>
+
+
+                <br><br>
+
+                <!-- Create / Clear Buffer -->
+                <input class="btn btn-primary form-control" id="bufferCreateBtn" value="Create" type="button" style="margin-bottom:5px;"></input>
+
+                <input class="form-control" id="bufferClearBtn" value="Clear" type="button"></input>
+
+
+                <br><br>
+
+                <!-- Buffer Description -->
+                <center><span style="font-size:12px;">Buffers the last graphic drawn on the Map </span></center>
+
+
+                <!-- <select style="background-color: #222;" class="form-control btn btn-primary styleBox-variant" ng-model="layout" ng-change="saveTheme()" ng-options="layout.url as layout.name for layout in layouts"></select> -->
+
+              <!-- </li> -->
+            </ul>
+          </li>
+
+
+
+
+
+
+
+
 
 
 

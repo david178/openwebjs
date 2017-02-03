@@ -11,6 +11,7 @@
     <!-- Bootstrap core CSS -->
     <link href="css/lib/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap-map-js & custom styles -->
+    <link rel="stylesheet" href="https://js.arcgis.com/3.19/esri/themes/calcite/dijit/calcite.css">
     <link rel="stylesheet" type="text/css" href="//js.arcgis.com/3.11/esri/css/esri.css"> <!-- esri style -->
     <link rel="stylesheet" type="text/css" href="css/lib/bootstrapmap.css"> <!-- bootstrap-map style -->
     <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.css"> <!-- bootstrap style -->
@@ -160,7 +161,10 @@
 
     <!-- Bootstrap-map-js -->
     <div id="mapDiv">
+      <!-- Geolocate -->
       <div id="LocateButton"></div>
+      <!-- Measure -->
+      <measure-block></measure-block>
     </div>
 
     <!-- Disclaimer -->
@@ -175,6 +179,10 @@
     <leg-block></leg-block>
     <!-- Weather -->
     <weather-block></weather-block>
+
+
+
+
 
     <!-- Loading Screen -->
     <div id="loading">
@@ -216,6 +224,7 @@
     <script src="js/app/directives/dirSelectProp.js"></script> <!-- directive -->
     <script src="js/app/directives/dirLegend.js"></script> <!-- directive -->
     <script src="js/app/directives/dirWeather.js"></script> <!-- directive -->
+    <script src="js/app/directives/dirMeasure.js"></script> <!-- directive -->
     <!-- move to directive -->
     <script>
      $(document).ready(function () {

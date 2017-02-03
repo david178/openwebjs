@@ -5,10 +5,11 @@
 *********************************
 *********************************
 
-
+------------------------
 Default URL:
 gisgate.co.clark.nv.us/ow
 
+------------------------
 URL after location resolve:
 gisgate.co.clark.nv.us/ow/@State Plane (default)
 gisgate.co.clark.nv.us/ow/@Lat Long (alternative)
@@ -43,9 +44,22 @@ URL can also come in as parcel/address/cross-street
       //http://gisgate.co.clark.nv.us/ow/?@=1525 Pinto&view=clark county zoning&legend=t&tab=display&fullmap=t
 
 
+------------------------
+Persistent Application-wide Coordinate System Synching - 
+Lat/lon, st plane for saving the map locations along with lods
+(Ex: 
 
+State Plane (Default)
+openweb/?@781994,26761960,6 (where the first 2 numerical values delineate state plane coords, and the final
+integer is the level of detail)
 
+Lat/Lon
+openweb/?@36.1645079,-115.1570102,6 (where the first 2 numerical values delineate lat/lon coords, and the final
+integer is the level of detail)
 
+)
+
+------------------------
 -Hotkeys-
 Esc: Used for closing active windows
 Arrow Keys: Used for nagivating map

@@ -3025,3 +3025,184 @@ label:before {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------- */
+
+/* Measure Block */
+#measureDivCasing {
+    position:absolute;
+  /*  top: 45px;
+    left:240px;*/
+    top: 0px;
+    right:0px;
+/*    bottom: 20px;
+    right: 24px;
+*/
+
+    /* visibility:hidden; */
+
+
+
+
+  /*  position:absolute !important; */
+    z-index:999; 
+  /*  top:0px; */
+    padding: 10px 14px;
+    margin: 0;
+    color: #FFF;
+    background-color: rgba(34,34,34,0.96);
+    width: 280px;
+    /*height: 109px;*/
+    height: 280px;
+    margin: auto;
+
+/*    opacity:0;*/ /*added */
+
+
+
+
+/*    position:absolute !important; 
+    z-index:1000; 
+    top:0px; 
+    padding: 10px 14px;
+    margin: 0;
+    color: #FFF;
+    background-color: rgba(34,34,34,0.96);
+    width: 280px;
+    height: 109px;
+    margin: auto;*/
+}
+
+#measureDiv  {
+height:68.5%;
+/*overflow-y:scroll; */
+margin-top:4px;
+margin-bottom:4px;
+margin-right:2px;
+margin-left:2px;
+}
+
+/* --------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+/* OW agent style */ /* --------------------- */
+
+#assistantInputBox {
+    background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    /*margin-bottom: 12px;*/ /* Add some space below the input */
+}
+
+/*div#assistantULList_UL {
+  transition: all 0.3s ease-out;
+
+
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}*/
+
+#assistantULList_UL li {
+  transition: all 0.3s ease-out;
+
+    /* Remove default lsist styling */
+    list-style-type: none !important;
+    padding: 0;
+    margin: 0;
+
+    padding: 2px; /* Add some padding */
+
+    margin-left:-40px; !important;
+
+
+}
+
+
+
+
+#assistantULList_UL li a {
+border-radius:0px !important;
+}
+
+#assistantULList_UL li a.header {
+
+}
+
+#assistantULList_UL li a:hover:not(.header) {
+
+}
+/* --------------------- */
+
+
+
+
+
+
+
+
+
+.esriScaleLabelDiv {
+ position: relative;
+ top: -5px;
+ width: 100%;
+ padding: 2px;
+ text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+ }
+
+ .esriScalebar {
+ z-index: 30;
+ position: absolute;
+ width: 0px;
+ height: 20px;
+ margin-left: 6cm;
+ }
+
+ .esriScalebarLine {
+ overflow: hidden;
+ position: relative;
+ width: 100%;
+ height: 6px;
+ border: 2px solid #dddddd;
+ }
+
+ 

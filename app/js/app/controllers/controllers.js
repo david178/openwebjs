@@ -65,7 +65,7 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
 
         $scope.executeSearch(theSearch);
 
-        //pass to ai
+        //pass to ai.js as well
         ai(theSearch);
     };
 

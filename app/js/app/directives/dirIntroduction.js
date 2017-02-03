@@ -85,6 +85,7 @@ open.directive('introView', function() {
                  $("#displayHeader").css("left", -194 + "px");
                  $("#toolsHeader").css("left", -194 + "px");
                  $("#resourcesHeader").css("left", -194 + "px");
+                 $(".esriScalebar").css("left", -194 + "px");
 
 
                  //transforms
@@ -167,6 +168,7 @@ open.directive('introView', function() {
                  $("#displayHeader").css("left", 7 + "px");
                  $("#toolsHeader").css("left", 7 + "px");
                  $("#resourcesHeader").css("left", 7 + "px");
+                 $(".esriScalebar").css("left", 19 + "px");
 
                  //transforms
                  $('#introToggle').removeClass('toggleAdjust');

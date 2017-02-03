@@ -47,6 +47,72 @@ open.directive('toolsView', function() {
 
 
 
+      //buffer fill pass
+      scope.bufferFillPass = function(theBufferFill) {
+
+        //set the global bufferFill variable equal to the current chkbox model val
+        bufferFill = theBufferFill;
+
+
+       // console.log(bufferFill);
+
+        // if (pass = true) {
+
+        //   bufferFill = true;
+
+        //  // map.showBufferFill();
+
+        //         //  showBufferFill();
+        // } //meaning, add a buffer fill
+        // if (pass = false) {
+
+        //   bufferFill = false;
+
+        //  // map.showBufferFill();
+
+        //         //  showBufferFill();
+        // } //meaning, add a buffer fill
+
+
+
+       
+
+
+  
+          //call to map.js buffer fill function to execute buffer fill logic
+
+          // console.log(pass)
+
+          // // console.log('testing')
+
+          // console.log("C [[ searching: " + theSearch + " ]]");
+
+          // $scope.executeSearch(theSearch);
+
+          // //pass to ai.js as well
+          // ai(theSearch);
+
+
+        //  filterHelp_UL();
+      };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -288,6 +354,7 @@ open.directive('toolsView', function() {
                $("#displayHeader").css("left", -194 + "px");
                $("#toolsHeader").css("left", -194 + "px");
                $("#resourcesHeader").css("left", -194 + "px");
+               $(".esriScalebar").css("left", -194 + "px");
 
 
                //transforms
@@ -350,6 +417,7 @@ open.directive('toolsView', function() {
                $("#displayHeader").css("left", 7 + "px");
                $("#toolsHeader").css("left", 7 + "px");
                $("#resourcesHeader").css("left", 7 + "px");
+               $(".esriScalebar").css("left", 19 + "px");
 
 
                //transforms

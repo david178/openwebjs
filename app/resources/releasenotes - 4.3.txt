@@ -1,5 +1,29 @@
 
 ----------------------------------------------------------------------------------------------
+[Release Notes for 4.3]
+
+Updates:
+-Added support for buffer by Miles, Feet, Kilometers, Nautical Miles / US, Degrees
+-Added ability to append / extend buffers to map geometries
+-Added responsive map scalebar control [ ]
+-Updated mobile property information window to allow additional information on expand [ ]
+-Updated the checkbox check detection area for map display and flight selections [ ] 
+
+-Added ability to change graphics, geometry color [ ]
+-Added Map Symbols [ ]
+-Added Annotation Text [ ]
+-Added Annotation Size [ ]
+-Added interactive OpenWeb / OW Agent - for general support queries as well as dynamic suggestions for 
+map parcel, address, and other various search queries [ ]
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------
 [Release Notes for 4.2]
 
 Updates:

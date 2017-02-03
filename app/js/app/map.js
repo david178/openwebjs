@@ -72,16 +72,30 @@ var isMax = 0;
 //& mouse move & extenet change coor updates)
 var coordSystem; //state-plane-ft || lat-long
 
+var bufferFill; //bool: tracks graphics buffer fill
+
+var geometry;
+//tracks how many times a buffer has been manually added using create btn
+var bufferCreateCount = 0;
+var bufferParms; //stores the buffer parameters for creating a buffer
+
+var bufferCumulativeVal = 0;
+
 
 require([
 
         //dojo includes
         "dojo/dom",
+        "dojo/_base/array",
         "dojo/dom-attr",
         "dojo/number",
 
         //esri includes
         "esri/map",
+
+        "esri/dijit/Measurement", //added for return measure
+        "esri/geometry/Polyline",
+        "esri/units",
 
         "esri/geometry/Point",
 
@@ -90,7 +104,11 @@ require([
         "esri/geometry/Geometry",
         "esri/geometry/Extent",
         "esri/SpatialReference",
+
+
+        "esri/geometry/normalizeUtils", //added for buffer
         "esri/tasks/GeometryService",
+        "esri/tasks/BufferParameters", //added for buffer
 
         "esri/graphic", //added for tools
         "esri/toolbars/draw", //added for tools
@@ -119,7 +137,7 @@ require([
         "dojo/domReady!"
     ],
 
-    function(dom, domAttr, number, Map, Point, webMercatorUtils, ProjectParameters, geometry, Extent, SpatialReference, GeometryService, Graphic, Draw, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Font, TextSymbol, Color, Print, PrintTask, PrintTemplate, Scalebar, BootstrapMap, LocateButton, FeatureLayer, Legend, arrayUtils, registry, parser) { //ADDED LEGEND FeatureLayer, Legend, arrayUtils, parser
+    function(dom, array, domAttr, number, Map, Measurement, Polyline, Units, Point, webMercatorUtils, ProjectParameters, geometry, Extent, SpatialReference, normalizeUtils, GeometryService, BufferParameters, Graphic, Draw, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Font, TextSymbol, Color, Print, PrintTask, PrintTemplate, Scalebar, BootstrapMap, LocateButton, FeatureLayer, Legend, arrayUtils, registry, parser) { //ADDED LEGEND FeatureLayer, Legend, arrayUtils, parser
 
         parser.parse(); //ADDED LEGEND
 
@@ -231,6 +249,17 @@ require([
                 // sliderStyle: "large"
 
         });
+
+
+        
+        scalebar = new Scalebar({
+                map: map,
+                attachTo: "bottom-left",
+                scalebarUnit: "dual"
+        });
+        
+
+                
         //disable arrow key panning
         map.on("load", function() {
             console.log("M [[ map loaded ]]");
@@ -244,6 +273,23 @@ require([
             initToolbar();
 
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         //TOOLS ---------------------------------------
@@ -273,28 +319,118 @@ require([
         //   42
         // );
 
+        // //add measure
+        // var measurement = new Measurement({
+        //   map: map,
+        //   defaultAreaUnit: Units.SQUARE_MILES,
+        //   defaultLengthUnit: Units.KILOMETERS
+        // }, dom.byId('themeasuretest'));
+
+
+
+
+
+
+
+
+        //activate measure
+        var measurement = new Measurement({
+          // geometry: evt.geometry,
+          map: map
+        }, dom.byId("themeasuretest"));
+        measurement.startup();
+
+
+
+
+
         function initToolbar(themap) {
             toolbar = new Draw(map);
             toolbar.on("draw-end", addToMap);
         }
 
+
+
+        // MULTI_POINT
+        // POLYLINE
+        // POLYGON
+        // FREEHAND_POLYLINE
+        // FREEHAND_POLYGON
+        // ARROW
+        // TRIANGLE
+        // CIRCLE
+        // ELLIPSE
+
+
         function addToMap(evt) {
             var symbol;
             toolbar.deactivate();
+            geometry = evt.geometry;//, symbol;
+
             // map.showZoomSlider();
-            switch (evt.geometry.type) {
+            switch (geometry.type) {
+
+
+                // // figure out which symbol to use
+                // // var symbol;
+                // if ( evt.geometry.type === "point" || evt.geometry.type === "multipoint") {
+                //   symbol = markerSymbol;
+                // } else if ( evt.geometry.type === "line" || evt.geometry.type === "polyline") {
+                //   symbol = lineSymbol;
+                // }
+                // else {
+                //   symbol = fillSymbol;
+                // }
+
+
+
                 case "point":
+                    // symbol = new SimpleMarkerSymbol(new Color([221,239,167])); //new Color([255,0,0])
+                    symbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255,0,0]), 1), new Color([0,255,0,0.25]));
+                    break;
                 case "multipoint":
                     symbol = new SimpleMarkerSymbol();
+                    break;
+
+
+                case "line":
+                    symbol = new SimpleLineSymbol();
                     break;
                 case "polyline":
                     symbol = new SimpleLineSymbol();
                     break;
+
+
+
+                case "FREEHAND_POLYGON":
+                    symbol = new SimpleFillSymbol();
+                    break;
+                case "ARROW":
+                    symbol = new SimpleFillSymbol();
+                    break;
+                case "TRIANGLE":
+                    symbol = new SimpleFillSymbol();
+                    break;
+                case "CIRCLE":
+                    symbol = new SimpleFillSymbol();
+                    break;
+                case "ELLIPSE":
+                    symbol = new SimpleFillSymbol();
+                    break;
+
+
+                // case "point":
+                // case "multipoint":
+                //     symbol = new SimpleMarkerSymbol();
+                //     break;
+                // case "polyline":
+                //     symbol = new SimpleLineSymbol();
+                //     break;
                 default:
                     symbol = new SimpleFillSymbol();
                     break;
             }
-            var graphic = new Graphic(evt.geometry, symbol);
+            var graphic = new Graphic(geometry, symbol);
             // map.graphics.add(graphic);
             graphic.id = "highlight";
 
@@ -316,12 +452,85 @@ require([
 
             // var graphic = new Graphic(evt.geometry, symbol);
            // map.graphics.add(graphic);
-            addTheGraphics(graphic);
+            addTheGraphics(graphic,geometry);
             // addTheGraphics(graphic, symbol);
+
+
+
+
+
+
+
+            //return measurement for the graphic
+
+            // // var measurement = new Measurement({
+            // //   geometry: customPolyline,
+            // //   map: map
+            // // }, dom.byId("measurement"));
+            // // measurement.startup();
+
+            // var measurement = new Measurement({
+            //   geometry: evt.geometry,
+            //   map: map
+            // }, dom.byId("measurement"));
+            // measurement.startup();
+
+            // // evt.geometry.type
+
+
+            // var customPolyline = new Polyline({"wkid":102707});
+            // customPolyline.addPath([
+            //   new Point(-13262764.15,2864328.22), 
+            //   new Point(-6237895.50, 5290745.25), 
+            //   new Point(-3283145.74, -618754.28)
+            // ]);
+
+            // var measurement = new Measurement({
+            //   geometry: customPolyline,
+            //   map: map
+            // }, dom.byId("themeasuretest"));
+            // measurement.startup();
+
+
+
+            // if (measurement)
+            // {
+            //     measurement.clearResult();
+            // }
+
+            // else {
+
+            //     var measurement = new Measurement({
+            //       geometry: evt.geometry,
+            //       map: map
+            //     }, dom.byId("themeasuretest"));
+            //     measurement.startup();
+
+            // }
+            
+
+            // var customPolyline = new Polyline({"wkid":102707});
+            // customPolyline.addPath([
+            //   new Point(-13262764.15,2864328.22), 
+            //   new Point(-6237895.50, 5290745.25), 
+            //   new Point(-3283145.74, -618754.28)
+            // ]);
+
+
+            //return measurements per current geometry
+            measurement.measure(geometry);
+
+
+            
+
+
+
+
+
         }
 
         //Add Graphics
-        function addTheGraphics(graphic) {
+        function addTheGraphics(graphic,geometry) {
        // function addTheGraphics(graphic, symbol) {
 
             //https://developers.arcgis.com/javascript/3/sandbox/sandbox.html?sample=util_label_point
@@ -362,12 +571,28 @@ require([
 
 
 
+            //------------------------------------------------------------------------
+            //Check if bufferFill true, then add a buffer to graphics
+
+            if (bufferFill === true) { //set buffer fill
+
+                createBuffer(geometry,false);
+
+            }
+            else { //no buffer
+
+            // console.log('false')
+
+            }
+
+            //------------------------------------------------------------------------
+
+
         }
 
         // registry.byId("clear").on("click", function() {
         //   map.graphics.clear();
         // });
-
 
 
         //Erase Graphics
@@ -389,6 +614,7 @@ require([
 
         //http://gis.stackexchange.com/questions/110060/remove-geometry-from-map-using-arcgis-api-for-javascript
         function clearGraphics() {
+            console.log('clear hit')
             //first remove all graphics added directly to map
             map.graphics.clear();
 
@@ -401,7 +627,370 @@ require([
                 gLayer.clear();
             }
         }
+
+
+
+        //Color work ------------------------
+
+        // function updateColor() {
+        //     // console.log('clear hit')
+        //     // //first remove all graphics added directly to map
+        //     // map.graphics.clear();
+
+        //     // //now go into each graphic layer and clear it
+        //     // var graphicLayerIds = map.graphicsLayerIds;
+        //     // var len = graphicLayerIds.length;
+        //     // for (var i = 0; i < len; i++) {
+        //     //     var gLayer = map.getLayer(graphicLayerIds[i]);
+        //     //     //clear this Layer
+        //     //     gLayer.clear();
+        //     // }
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //Buffer work ------------------------
+
+        //view-source:https://developers.arcgis.com/javascript/3/samples/util_buffergraphic/
+
+
+
+
+        //listen to create & clear btn functions
+        //grab input parms for ft/miles
+
+
+        //if/else to listen to buffer fill bool val for buffer fill
+
+        // bufferCreateBtn
+        // https://developers.arcgis.com/javascript/3/samples/util_buffergraphic/
+
+
+
+
+        //Create Buffer
+        $('#bufferCreateBtn').click(function() {
+            // console.log('ihtrs');
+            // map.graphics.remove('highlight');
+            // map.graphics.clear();
+
+            //keep track of how many times a buffer has been manually created
+            bufferCreateCount = bufferCreateCount + 1;
+
+
+            createBuffer(geometry,bufferCreateCount);
+
+           // console.log('buffer init')
+        });
+
+
+
+
+        //Buffer Fill (trigger on toggle of buffer fill checkbox)
+
+        // function isSelectedAll(theBufferFill) {
+
+        //     console.log('buffer hit')
+
+        // }
+
+
+
+        // //--------------------------------------------------------------------------------------
+        // //Buffer add flag set (gets set from chk box click)
+        // //bufferFill var will then also get checked on new graphics add to map for additional buffer adds
+        // //on tb draw end
+        // $('#bufferFillBox').click(function() {
+
+
+            
+        //     if (bufferFill === true) { //set buffer fill
+
+
+        //         createBuffer(geometry);
+
+
+        //     }
+        //     else { //no buffer
+
+
+        //     console.log('false')
+
+        //     }
+
+
+        // });
+
+        // //--------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // function showBufferFill() {
+
+        //     console.log('show buffer fill')
+
+        // }
+
+
+
+        //Add a buffer to graphics (gets called after tb end, and also on bufferFill chkbox toggle)
+        function createBuffer(geometry,bufferCreateCount) {
+            //view-source:https://developers.arcgis.com/javascript/3/samples/util_buffergraphic/
+
+
+            // console.log('create a buffer!')
+
+
+            //newVal = parseInt(dom.byId("bufferDistanceInputBox").value);
+
+            console.log(bufferCreateCount)
+
+
+
+            //if a previously exisiting buffer & params have been set (dirty state)
+            if (bufferCreateCount > 1) 
+            {
+
+                // if (bufferCreateCount = 2)
+                // {
+                //     newVal =  newVal * bufferCreateCount + parseInt(dom.byId("bufferDistanceInputBox").value);
+                // }
+                // else {
+                //     newVal =  newVal + parseInt(dom.byId("bufferDistanceInputBox").value);
+                // }
+
+                bufferCumulativeVal =  bufferCumulativeVal + parseInt(dom.byId("bufferDistanceInputBox").value);
+
+               // console.log(parseInt(dom.byId("bufferDistanceInputBox").value))
+               // console.log(newVal)
+
+                bufferParms.distances = [ bufferCumulativeVal ];
+
+                console.log('dirty state!')
+
+            }
+            else {
+
+                //setup the buffer parameters
+                bufferParms = new BufferParameters();
+                //bufferParms.distances = [ dom.byId("bufferDistanceInputBox").value ];
+
+                bufferCumulativeVal =  bufferCumulativeVal + parseInt(dom.byId("bufferDistanceInputBox").value);
+
+                bufferParms.distances = [ bufferCumulativeVal ];
+
+                
+            }
+
+
+
+
+
+
+            // //if a previously exisiting buffer & params have been set (dirty state)
+            // if (addToLastGph === true && params) 
+            // {
+            //     //add additional buffer overlay to perimeter
+            //     params.distances = [ dom.byId("bufferDistanceInputBox").value * 2 ];
+
+            //     console.log('extending buffer area')
+            // }
+
+            // else {
+            //     //setup the buffer parameters
+            //     var params = new BufferParameters();
+            //     params.distances = [ dom.byId("bufferDistanceInputBox").value ];
+            // }
+
+
+
+    
+            bufferParms.outSpatialReference = map.spatialReference;
+            // params.unit = GeometryService[dom.byId("bufferUnitsSelectBox").value];
+            bufferParms.unit = GeometryService[dom.byId("bufferUnitsSelectBox").value];
+            //normalize the geometry 
+
+            normalizeUtils.normalizeCentralMeridian([geometry]).then(function(normalizedGeometries){
+              var normalizedGeometry = normalizedGeometries[0];
+              if (normalizedGeometry.type === "polygon") {
+                //if geometry is a polygon then simplify polygon.  This will make the user drawn polygon topologically correct.
+                esriConfig.defaults.geometryService.simplify([normalizedGeometry], function(geometries) {
+                  bufferParms.geometries = geometries;
+                  esriConfig.defaults.geometryService.buffer(bufferParms, showBuffer);
+                });
+              } else {
+                bufferParms.geometries = [normalizedGeometry];
+                esriConfig.defaults.geometryService.buffer(bufferParms, showBuffer);
+              }
+
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // //setup the buffer parameters
+            // var params = new BufferParameters();
+            // // params.distances = [ dom.byId("distance").value ];
+            // params.distances = [ 25 ];
+            // params.outSpatialReference = map.spatialReference;
+            // // params.unit = GeometryService[dom.byId("unit").value];
+            // params.unit = GeometryService['Miles'];
+            // //normalize the geometry 
+
+            // normalizeUtils.normalizeCentralMeridian([geometry]).then(function(normalizedGeometries){
+            //   var normalizedGeometry = normalizedGeometries[0];
+            //   if (normalizedGeometry.type === "polygon") {
+            //     //if geometry is a polygon then simplify polygon.  This will make the user drawn polygon topologically correct.
+            //     esriConfig.defaults.geometryService.simplify([normalizedGeometry], function(geometries) {
+            //       params.geometries = geometries;
+            //       esriConfig.defaults.geometryService.buffer(params, showBuffer);
+            //     });
+            //   } else {
+            //     params.geometries = [normalizedGeometry];
+            //     esriConfig.defaults.geometryService.buffer(params, showBuffer);
+            //   }
+
+            // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // console.log('clear hit')
+            // //first remove all graphics added directly to map
+            // map.graphics.clear();
+
+            // //now go into each graphic layer and clear it
+            // var graphicLayerIds = map.graphicsLayerIds;
+            // var len = graphicLayerIds.length;
+            // for (var i = 0; i < len; i++) {
+            //     var gLayer = map.getLayer(graphicLayerIds[i]);
+            //     //clear this Layer
+            //     gLayer.clear();
+            // }
+        }
+        function showBuffer(bufferedGeometries) {
+          var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255,0,0,0.65]), 2), new Color([255,0,0,0.35]));
+
+
+          // // symbol = new SimpleMarkerSymbol(new Color([221,239,167])); //new Color([255,0,0])
+          // symbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255,0,0]), 1), new Color([0,255,0,0.25]));
+          // break;
+          // symbol = new SimpleFillSymbol();
+
+          array.forEach(bufferedGeometries, function(geometry) {
+            var graphic = new Graphic(geometry, symbol);
+            map.graphics.add(graphic);
+          });
+
+
+      }
+
+
+
+        //Clear Buffer
+        $('#bufferClearBtn').click(function() {
+            //clear map graphx
+            map.graphics.clear();
+            //reset cumualtive buffers to zero
+            bufferCumulativeVal = 0;
+        });
+
+
+
+
+        // function clearBuffer() {
+        //     map.graphics.clear();
+        //     // console.log('clear hit')
+        //     // //first remove all graphics added directly to map
+        //     // map.graphics.clear();
+
+        //     // //now go into each graphic layer and clear it
+        //     // var graphicLayerIds = map.graphicsLayerIds;
+        //     // var len = graphicLayerIds.length;
+        //     // for (var i = 0; i < len; i++) {
+        //     //     var gLayer = map.getLayer(graphicLayerIds[i]);
+        //     //     //clear this Layer
+        //     //     gLayer.clear();
+        //     // }
+        // }
+
         //-------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
 
 
 

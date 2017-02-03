@@ -35,6 +35,10 @@
 
 
 function ai(pass) {
+
+  //if pass.length is greater than 2-3 chars
+
+
   console.log(pass + ' testing')
 
   var pass = pass.toLowerCase();
@@ -130,7 +134,19 @@ function ai(pass) {
 
 
 
+
+
+
+  } else if (pass.indexOf("help") !=-1) {
+
+
+    $('#assistantModal').modal('show');
+
+
   } else {
+
+
+    $('#assistantModal').modal('show');
 
 
   }

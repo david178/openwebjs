@@ -522,7 +522,7 @@ color: #ADADAD !important;
 
 
 
-#weatherDivCasing, #legendDivCasing {
+#weatherDivCasing, #legendDivCasing, #measureDivCasing {
 
   background-color: rgba(193, 193, 193, 0.96);
 }

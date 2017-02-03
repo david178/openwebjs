@@ -7,6 +7,127 @@ open.directive('assistantBlock', function() {
    restrict:'E',
    link:function(scope,e,a){
 
+
+
+
+
+
+    //------------------------------------
+    //Pass to aj.js requestor parameters
+
+    //http://stackoverflow.com/questions/17470790/how-to-use-a-keypress-event-in-angularjs
+
+
+    // scope.myFunct = function(keyEvent) {
+    //   // if (keyEvent.which === 13)
+    //   //   alert('I am an alert');
+
+
+
+      
+    // }
+
+
+
+    //THE MAIN SEARCH FUNCTION
+    scope.assistSearchandFilter = function(theSearch) {
+
+      console.log(theSearch)
+
+        // // console.log('testing')
+
+        // console.log("C [[ searching: " + theSearch + " ]]");
+
+        // $scope.executeSearch(theSearch);
+
+        // //pass to ai.js as well
+        // ai(theSearch);
+
+
+        filterHelp_UL();
+    };
+
+
+
+
+
+    // // //pass to ai
+    // // ai(theSearch);
+    //------------------------------------
+
+
+
+    //------------------------------------
+    //Function that handles filtering the response list 
+    //http://www.w3schools.com/howto/howto_js_filter_lists.asp
+
+
+    function filterHelp_UL() {
+        // Declare variables
+        var input, filter, ul, li, a, i;
+        input = document.getElementById('assistantInputBox');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("assistantULList_UL");
+        li = ul.getElementsByTagName('li');
+
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+
+
+    // function filterHelp_DIV() {
+    //     // Declare variables
+    //     var input, filter, ul, li, a, i;
+    //     input = document.getElementById('assistantInputBox');
+    //     filter = input.value.toUpperCase();
+    //     ul = document.getElementById("assistantULList_DIV");
+    //     li = ul.getElementsByTagName('a');
+
+    //     // Loop through all list items, and hide those who don't match the search query
+    //     for (i = 0; i < li.length; i++) {
+    //         a = a.getElementsByTagName("a")[0];
+    //         if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+    //             li[i].style.display = "";
+    //         } else {
+    //             li[i].style.display = "none";
+    //         }
+    //     }
+    // }
+
+
+    //------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
      // //scope.theTitle = 'Data Disclaimer:'
      // scope.theBody = 'Welcome to OpenWeb' +
      // 'Due to continuous development activity throughout Clark County, this data is for' +

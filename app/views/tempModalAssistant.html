@@ -8,7 +8,7 @@
     		        <!-- Nav tabs -->
     		        <div class="card">
     		        <ul class="nav share-tabs nav-tabs" role="tablist">
-    		            <li role="presentation" class="active"><a href="#assistant" aria-controls="assistant" role="tab" data-toggle="tab">Help Agent</a></li>
+    		            <li role="presentation" class="active"><a href="#assistant" aria-controls="assistant" role="tab" data-toggle="tab">OW Agent</a></li>
 
     		            <!-- Close Icon -->
     		            <img class="modalCloseIcon" border="0" data-dismiss="modal" src="css/images/icon-close2.png">
@@ -23,26 +23,196 @@
                       <!-- search examples -->
                       <!-- http://bootsnipp.com/tags/search -->
 
+    		            	<!-- <input class="form-control" id="assistantInputBox" value=""  placeholder="Search Help" type="text"> -->
 
-    		            	<input class="form-control" id="assistantInputBox" value=""  placeholder="Search Help" type="text">
+
+
+<!--                       <input type="text" id="myInput" ng-keypress="assistSearchandFilter(helpTask);" ng-model="helpTask"  placeholder="Search for names.."> -->
+
+                      <!-- <input type="text" id="assistantInputBox" ng-keypress="assistSearchandFilter(helpTask);" ng-model="helpTask"  placeholder="Search for help.."> -->
+
+                      <input type="text" id="assistantInputBox" ng-change="assistSearchandFilter(helpTask);" ng-model="helpTask"  placeholder="Search for help..">
 
     		            	<p class="share-link-message"> Type your question in natural language. </p>
     		      
     		            </div>
 
 
-                    <!-- list -->
-                    <div class="list-group">
-<!--                       <a href="#" class="list-group-item active">
-                        How to use OpenWeb
-                      </a> -->
 
+
+
+                    <!-- list -->
+<!--                     <div id="assistantULList_DIV" class="list-group">
                       <a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OW_QuickGuide.pdf" target="_blank" class="list-group-item active list-group-item-action"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; How to use OpenWeb</a>
                       <a href="../resources/AdvancedUseGuide.txt" target="_blank" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; OpenWeb Advanced Features and Functionality</a>
                       <a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/feedback/form.html" target="_blank" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; Send us Feedback</a>
+                      <a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/releasenotes.txt" target="_blank" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; Current Release Notes</a>
+
                       <a href="#" class="list-group-item disabled"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; Measure distance between points</a>
                       <a href="#" class="list-group-item disabled"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; Adding graphics to the map</a>
+                    </div> -->
+
+
+
+
+
+
+
+                    <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."> -->
+
+<!--                     <input ng-keyup="count = count + 1" ng-init="count=0" />
+
+                    ng-keypress="myFunct($event)"
+
+
+                    <h1>{{count}}</h1> -->
+
+
+                    <!-- <input type="text" id="myInput" ng-keyup="console.log('test');" placeholder="Search for names.."> -->
+
+<!--                     <input type="text" id="myInput" ng-keypress="assistSearchandFilter($event);" ng-model="helpTask"  placeholder="Search for names.."> -->
+
+<!--                     <input type="text" id="myInput" ng-keypress="assistSearchandFilter(helpTask);" ng-model="helpTask"  placeholder="Search for names..">
+
+
+
+
+                    <div id="assistantULList_DIV" class="list-group">
+                      <a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OW_QuickGuide.pdf" target="_blank" class="list-group-item active list-group-item-action"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; How to use OpenWeb</a>
+                      <a href="../resources/AdvancedUseGuide.txt" target="_blank" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; OpenWeb Advanced Features and Functionality</a>
+                      <a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/feedback/form.html" target="_blank" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; Send us Feedback</a>
+                      <a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/releasenotes.txt" target="_blank" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; Current Release Notes</a>
+
+                      <a href="#" class="list-group-item disabled"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; Measure distance between points</a>
+                      <a href="#" class="list-group-item disabled"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; Adding graphics to the map</a>
+                    </div> -->
+
+
+
+
+      
+<!--                     <div class="list-group">
+                    <ul id="assistantULList_UL">
+                      <li><a class="list-group-item list-group-item-action" href="#" class="header">A</a></li>
+                      <li><a class="list-group-item list-group-item-action" href="#">Adele</a></li>
+                      <li><a class="list-group-item list-group-item-action" href="#">Agnes</a></li>
+
+                      <li><a class="list-group-item list-group-item-action" href="#" class="header">B</a></li>
+                      <li><a class="list-group-item list-group-item-action" href="#">Billy</a></li>
+                      <li><a class="list-group-item list-group-item-action" href="#">Bob</a></li>
+
+                      <li><a class="list-group-item list-group-item-action" href="#" class="header">C</a></li>
+                      <li><a class="list-group-item list-group-item-action" href="#">Calvin</a></li>
+                      <li><a class="list-group-item list-group-item-action" href="#">Christina</a></li>
+                      <li><a class="list-group-item list-group-item-action" href="#">Cindy</a></li>
+                    </ul>
+
                     </div>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   <div class="list-group">
+                   <ul id="assistantULList_UL">
+
+                     <li>
+                       <a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OW_QuickGuide.pdf" target="_blank" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-file float-xs-left"></span> &nbsp; How to use OpenWeb</a>
+                     </li>
+
+                      <li>
+                       <a href="../resources/AdvancedUseGuide.txt" target="_blank" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-font float-xs-left"></span> &nbsp; OpenWeb Advanced Features and Functionality</a>
+                     </li>
+                     <li>
+                       <a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/feedback/form.html" target="_blank" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-send float-xs-left"></span> &nbsp; Send us Feedback</a>
+                     </li>
+                     <li>
+                       <a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/releasenotes.txt" target="_blank" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-font float-xs-left"></span> &nbsp; Current Release Notes</a>
+                     </li>
+                     <li>
+                       <a href="#" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-font float-xs-left"></span> &nbsp; Measure distance between points</a>
+                     </li>
+                     <li>
+                       <a href="#" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-font float-xs-left"></span> &nbsp; Adding graphics to the map</a>
+                     </li>
+
+                   </ul>
+
+                   </div>
+
+
+
+
+                   <div id="assistantULList_DIV" class="list-group">
+
+                   <a style="padding:25px;" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/feedback/form.html" target="_blank" class="list-group-item list-group-item-action"><span style="display:inline-block; margin-left:-6px;" class="glyphicon glyphicon-user"></span> 
+
+                    <!-- <p style="margin-left:20px;"> --> <div style="display:inline-block; margin-top:-22px; padding-left:22px;"> How may I assist you? </div>
+
+                    </a>
+
+                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--                     <script>
+                    function myFunction() {
+                        // Declare variables
+                        var input, filter, ul, li, a, i;
+                        input = document.getElementById('myInput');
+                        filter = input.value.toUpperCase();
+                        ul = document.getElementById("myUL");
+                        li = ul.getElementsByTagName('li');
+
+                        // Loop through all list items, and hide those who don't match the search query
+                        for (i = 0; i < li.length; i++) {
+                            a = li[i].getElementsByTagName("a")[0];
+                            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                li[i].style.display = "";
+                            } else {
+                                li[i].style.display = "none";
+                            }
+                        }
+                    }
+                    </script> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
