@@ -39,10 +39,21 @@
 /*    background: #232323 !important;
     border-color: #232323 !important;*/
 
-    background-color: rgb(17, 63, 112) !important;
-    border-color: rgb(17, 63, 112) !important;
+/*    background-color: rgb(17, 63, 112) !important;
+    border-color: rgb(17, 63, 112) !important;*/
 /*    background-color: #3f51b5 !important;
     border-color: #3f51b5 !important;*/
+
+
+    /* old */
+    background-color: rgb(17, 63, 112) !important;
+    border-color: rgb(17, 63, 112) !important;
+    /* new */
+/*    background-color: #fff !important;
+    border-color: #fff !important;*/
+
+
+
 }
 .navbar-inverse .navbar-form {
   border-color: rgb(17, 63, 112) !important;
@@ -69,7 +80,7 @@
 
 .alert-info {
   /*background: #0D2E56 !important;*/
-  background: rgb(37, 83, 132) !important;
+  background: rgb(37, 83, 132);
 /*  background: #303f9f !important;*/
 
 /*    background: #759EC9 !important;
@@ -597,6 +608,31 @@ color: #ADADAD !important;
 /*    color: white !important;
     font-weight: 700;*/
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

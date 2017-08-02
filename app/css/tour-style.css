@@ -93,6 +93,6 @@
   background-color:#333;
 }
 #introHeader, .infoBlock  {
-  z-index:100 !important;
+  z-index:100;
 }
 /* ---------------------------------------------- */

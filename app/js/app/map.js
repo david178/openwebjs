@@ -1148,6 +1148,8 @@ require([
 
 
         //Print / Export Map ------------------------------------------------
+
+        //PrintTemplate
         var template = new esri.tasks.PrintTemplate();
 
         template.layoutOptions = {
@@ -1162,34 +1164,69 @@ require([
             height: 600,
             dpi: 96
         }
-
         template.preserveScale = true;
 
-        // template.layoutOptions = {
-        //      legendLayers: [], // empty array means no legend
-        //      scalebarUnit: "Feet",
-        //      titleText: "PIN " + 'parcelPin',
-        //      customTextElements: [
-        //          {"physAddress" : 'printAddress'},
-        //          {"ownerOne" : 'ownerOne'},
-        //          {"ownerTwo" : 'ownerTwo'},
-        //          {"mailAddress" : 'mailAddress'},
-        //          {"mailCity" : 'mailCity'},
-        //          {"mailState" : 'mailState'},
-        //          {"mailZip" : 'mailZip'},
-        //          {"propReal" : 'propReal'},
-        //          {"calcAcre" : 'calcAcre'},
-        //          {"landVal" : 'landVal'},
-        //          {"buildVal" : 'buildVal'},
-        //          {"assessVal" : 'assessVal'},
-        //          {"marketVal" : 'marketVal'}
-        //      ]
-        //  };
-
+        //PrintParameters
         var params = new esri.tasks.PrintParameters();
         params.map = map;
         params.template = template;
+
+        //PrintTask
         var printTask = new esri.tasks.PrintTask("http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task");
+
+        //Template Options (template.format,template.layout)
+        // var exportFormat = "PDF";
+        // var exportLayout = "MAP_ONLY";
+        var exportFormat = "png32";
+        var exportLayout = "MAP_ONLY";
+
+        //"MAP_ONLY";
+        //"A4 Landscape";
+        //"PDF";
+        //"png32";
+
+        template.format = exportFormat;
+        template.layout = exportLayout;
+
+
+        //------------------------------------------------
+        // $( "#printMapLink" ).click(function() {
+        // $("#printList").click(function() {
+
+        //     //call to processPrint function
+        //     processPrint();
+
+        // });
+
+
+        //gets called on 'Export As' list item click (in Resources)
+        $("#exportListItem").click(function() {
+
+            //call to processPrint function
+            processPrint();
+
+        });
+
+        //On Prop Info window, init a print friendly view
+        $("#printInitLink").click(function() {
+
+            //call to processPrint function
+            processPrint();
+
+        });
+    
+
+        //------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 
 
         // var tiledLayer = new esri.layers.ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer");
@@ -1224,132 +1261,110 @@ require([
         // Tabloid ANSI B Landscape
         // Tabloid ANSI B Portrait
 
-        //export map
-        var exportFormat = "PDF";
-        var exportLayout = "MAP_ONLY";
+        // //export map
+        // var exportFormat = "PDF";
+        // var exportLayout = "MAP_ONLY";
 
-        //print map
-        var printPDFFormat = "PDF"
-        var printPDFLayout = "A4 Landscape";
+        // //print map
+        // var printPDFFormat = "PDF"
+        // var printPDFLayout = "A4 Landscape";
 
-        var printPNGFormat = "png32"
-        var printPNGLayout = "A4 Landscape";
+        // var printPNGFormat = "png32"
+        // var printPNGLayout = "A4 Landscape";
 
 
-        //------------------------------------------------
-        //export map only pdf
-        $("#exportList").click(function() {
+        // //------------------------------------------------
+        // //export map only pdf
+        // $("#exportList").click(function() {
 
-            // var template = new esri.tasks.PrintTemplate();
-            template.format = exportFormat;
-            template.layout = exportLayout;
+        //     // var template = new esri.tasks.PrintTemplate();
+        //     template.format = exportFormat;
+        //     template.layout = exportLayout;
+
+        //     //Re-show map print & export load
+        //     $("#loading-readyPNG").hide();
+        //     $("#loading-image4").show();
+
+
+        //     //working
+        //     printTask.execute(params, exportResult);
+
+
+        //     //export resolve
+        //     function exportResult(result) {
+        //         console.log("M [[ export: " + result.url + " ]]");
+        //         // window.open('http://www.google.com', "_blank");
+
+        //         $("#exportMapLink_PNG").attr("href", result.url)
+
+
+
+        //         $("#loading-readyPNG").show();
+        //         $("#loading-image4").hide();
+
+        //     };
+
+        // });
+        // //------------------------------------------------
+
+
+
+
+        // //call to start print, or do so on controllers
+        // startPrint();
+
+        // console.log('startPrint')
+
+
+
+        //processPrint - creates the print friendly view
+        function processPrint() {
+
 
             //Re-show map print & export load
-            $("#loading-readyPNG").hide();
-            $("#loading-image4").show();
-
-
-            //working
-            printTask.execute(params, exportResult);
-
-
-            //export resolve
-            function exportResult(result) {
-                console.log("M [[ export: " + result.url + " ]]");
-                // window.open('http://www.google.com', "_blank");
-
-                $("#exportMapLink_PNG").attr("href", result.url)
-
-                $("#loading-readyPNG").show();
-                $("#loading-image4").hide();
-
-            };
-
-        });
-        //------------------------------------------------
-
-
-        //------------------------------------------------
-        // $( "#printMapLink" ).click(function() {
-        $("#printList").click(function() {
-
-            //  var template = new esri.tasks.PrintTemplate();
-            template.format = printPDFFormat;
-            template.layout = printPDFLayout;
-
-
-            //Re-show map print & export load
-            $("#loading-readyPDFleg").hide();
-            $("#loading-image2").show();
-
-            $("#loading-readyPDF").hide();
-            $("#loading-image3").show();
-
-
-            // //Re-show map print & export load
-            // $("#loading-readyPNG").hide();
-            // $("#loading-image3").show();
-
-            // $("li#PNGList").removeClass('enable_StreetList');
-            // $("li#PNGList").addClass('disable_PrintPNGList');
-
+            $("#printLoadingTag").show();
+            $("#printInitLink").hide();
 
             //Pause a few seconds then call the print task      
             //  setTimeout(function(){
             console.log("M [[ printing to PDF ]]");
             // printTask.execute(params, printResult, printError);
 
-            //working
-            printTask.execute(params, printResult);
-            // $("#loading-readyPDF").show();
-            // $("#loading-image2").hide();
-
-            //  },2000);
-
-            // //export to png resolve
-            // setTimeout(function(){
-            //    console.log("printing to PNG");
-            //    // printTask.execute(params, printResult, printError);
-
-            //    //Re-show map print & export load
-            //    $("#loading-image3").show();
-            //    $("#loading-readyPNG").hide();
-
-            //  // $("#loading-readyPDF").show();
-            //  // $("#loading-image2").hide();
-
-            //  },2000);
+            //Call to execute print task
+            printTask.execute(params, printResolve);
 
 
-            //print resolve
-            function printResult(result) {
-                console.log("M [[ print: " + result.url + " ]]");
-                // window.open('http://www.google.com', "_blank");
-
-                $("#printMapLink_PDFleg").attr("href", result.url)
-
-                $("#printMapLink_PDF").attr("href", result.url)
 
 
-                $("#loading-readyPDFleg").show();
-                $("#loading-image2").hide();
+            //Print process process resolve
+            function printResolve(result) {
 
-                $("#loading-readyPDF").show();
-                $("#loading-image3").hide();
+                //call to kick off the print preview url construct
+                angular.element($('#mapDiv')).scope().constructPrintFriendly(result.url);
+                
 
-                // var _open = window.open(result.url, "_blank");
-                //  if (_open == null || typeof(_open)=='undefined') {
+                 //Re-show map print & export load
+                 $("#printLoadingTag").hide();
+                 $("#printFriendlyLink").show();
 
-                //     alert("Turn off your pop-up blocker!");
-                //  }
 
-                // else
 
-                ///document.url(result.url)
+                 //Export Modal:
+                 $("#rawExportPNGLink").attr("href", result.url);
+                 $("#exportPreviewIframe").attr("src", result.url);
+
+
+                 //log result.url
+                 console.log("M [[ print: " + result.url + " ]]");
+
             };
 
-        });
-        //------------------------------------------------
+            
+        }
+
+
+
+
 
 
 
@@ -1469,7 +1484,15 @@ require([
             //Listen for click
             dojo.connect(map, "onClick", function(evt) {
 
+
                 if (functionMode == "identify") {
+
+
+                   //Reset the print & export load elements
+                   $("#printFriendlyLink").hide();
+                   $("#printInitLink").show();
+
+
 
                     //Call to executeQueryTask
                     //Call the 'mapController' controller found on map element (pass in evt param)
@@ -1478,6 +1501,9 @@ require([
                     //true flag quantifies a select property call
                     //resolveAs: select | search
 
+
+
+
                     console.log(evt.mapPoint)
 
                     // //ADDED FOR MOBILE**************************************
@@ -1485,6 +1511,11 @@ require([
 
                     //ADDED FOR MOBILE**************************************
                     map.infoWindow.show(evt.screenPoint, map.getInfoWindowAnchor(evt.screenPoint));
+
+
+
+
+
 
 
                     //log metric
@@ -2337,3 +2368,16 @@ function detectIE() {
     return false;
 }
 //************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+

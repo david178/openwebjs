@@ -8,18 +8,18 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../bootstrap_v3/docs-assets/ico/favicon.png">
     <title>OpenWeb</title>
-    <!-- Bootstrap core CSS -->
+    <!-- styles: bootstrap-core|esri|bootstrap-map|bootstrap -->
     <link href="css/lib/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap-map-js & custom styles -->
     <link rel="stylesheet" href="https://js.arcgis.com/3.19/esri/themes/calcite/dijit/calcite.css">
-    <link rel="stylesheet" type="text/css" href="//js.arcgis.com/3.11/esri/css/esri.css"> <!-- esri style -->
-    <link rel="stylesheet" type="text/css" href="css/lib/bootstrapmap.css"> <!-- bootstrap-map style -->
-    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.css"> <!-- bootstrap style -->
+    <link rel="stylesheet" type="text/css" href="//js.arcgis.com/3.11/esri/css/esri.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrapmap.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <!-- icons|fonts -->
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
-    <!-- Overrides -->
+    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700|Noto+Sans:300,400,500,700|Open+Sans:300,400,500,700|Roboto:300,400,500,700" rel="stylesheet"> 
+    <!-- overrides -->
     <link rel="stylesheet" type="text/css" href="css/media-queries.css"> <!-- responsive ui -->
     <link rel="stylesheet" type="text/css" href="css/main-style.css"> <!-- main ui -->
     <link rel="stylesheet" type="text/css" href="css/propinfo-style.css"> <!-- propinfo -->
@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="css/html5cntrl-style.css"> <!-- html5 cntrls -->
     <link rel="stylesheet" type="text/css" href="css/loader-style.css"> <!-- loading -->
     <link rel="stylesheet" type="text/css" href="css/tour-style.css"> <!-- bootstrap tour -->
-    <!-- Custom Theme Override -->
+    <!-- custome theme overrides -->
     <link rel="stylesheet" ng-href="css/themes/layout-{{layout}}.css">
     <link rel="stylesheet" ng-href="css/themes/media-queries-{{layout}}.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -73,7 +73,7 @@
             <form class="navbar-form" ng-submit="search(asyncSelected)" id="search-form"> 
                   <div id="tester" class="input-group" style="border:none !important;">
                     <!-- placeholder="Search OpenWeb" -->
-                    <input id="search-form" autofocus autocomplete="off" type="text" class="form-control closeIcon" 
+                    <input id="search-form" placeholder="Search OpenWeb" autofocus autocomplete="off" type="text" class="form-control closeIcon" 
                     ng-keyup="keyUp($event, $index, asyncSelected)" 
                     ng-change="updateSync($index)"
                     ng-model="asyncSelected"
@@ -86,9 +86,16 @@
                     <!-- Close Icon -->
                     <img id="closeIcon" border="0" src="css/images/icon-close2.png">
                     <!-- Search Btn -->
-                     <span class="input-group-btn">
+                     <span id="searchBtn-holder" class="input-group-btn">
                           <button id="searchBtn" class="btn btn-primary" type="button">
-                            <span class="glyphicon glyphicon-search"></span>
+                            <!-- <span class="iconic-adjust-main glyphicon glyphicon-search"></span> -->
+
+                            <!-- ionic -->
+                            <span class="iconic-adjust-main ion-search" data-pack="default" data-tags="magnifying glass"></span>
+
+                            <!-- <span class="iconic-adjust-10 ion-ribbon-b" data-pack="default" data-tags="competition, compete, win, lose, award, trophy"></span> -->
+
+
                           </button>
                      </span>
                   </div>
@@ -171,6 +178,8 @@
     <disclaim-block></disclaim-block>
     <!-- Share/Embed -->
     <share-block></share-block>
+    <!-- Export -->
+    <export-block></export-block>
     <!-- Help Assistant -->
     <assistant-block></assistant-block>
     <!-- InfoBlock (incl. tabs) -->
@@ -181,13 +190,12 @@
     <weather-block></weather-block>
 
 
-
-
-
     <!-- Loading Screen -->
     <div id="loading">
-         <div id="loading-image" class="loader"></div>
+          <div id="loading-image" class="loader"></div>
     </div>
+
+
 
     <!--**********************************************************************************************************-->
     <!--**********************************************************************************************************-->
@@ -215,6 +223,7 @@
     <script src="js/app/controllers/controllers.js"></script> <!-- controller -->
     <script src="js/app/directives/dirDisclaimer.js"></script> <!-- directive -->
     <script src="js/app/directives/dirShare.js"></script> <!-- directive -->
+    <script src="js/app/directives/dirExport.js"></script> <!-- directive -->
     <script src="js/app/directives/dirAssistant.js"></script> <!-- directive -->
     <script src="js/app/directives/dirIntroduction.js"></script> <!-- directive -->
     <script src="js/app/directives/dirDisplay.js"></script> <!-- directive -->
@@ -234,7 +243,8 @@
     <!-- Analytics - move to js file -->
     <script type="text/javascript">
       var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-33526539-2']);
+      // _gaq.push(['_setAccount', 'UA-33526539-2']);
+      _gaq.push(['_setAccount', 'UA-93228049-1']);
       _gaq.push(['_trackPageview']);
 
       (function() {

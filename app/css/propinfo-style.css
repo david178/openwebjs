@@ -245,10 +245,13 @@ cursor: move;
 
 
 position:absolute;
-top: 45px;
+/*top: 45px;
+left:240px;*/
+
+top: 49px;
 left:240px;
 
-  width:384px;
+  width:386px; /* old was 386 */
 /*  display:none;*/
 visibility:hidden;
   background-color: transparent !important;
@@ -325,23 +328,42 @@ transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 
 
 /* ORIGINAL */
+/* -webkit-transition: all 0.5s ease-in;
+  -moz-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  -ms-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+
+-webkit-transition: all 0.3s ease-out;
+ -moz-transition: all 0.3s ease-out;
+ -o-transition: all 0.3s ease-out;
+ -ms-transition: all 0.3s ease-out;
+ transition: all 0.3s ease-out;*/
+
+ -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+
+  
+
+
+
+
+
+
+
+
+
+
 /*    -webkit-transition: all 0.5s ease-in-out;
      -moz-transition: all 0.5s ease-in-out;
      -o-transition: all 0.5s ease-in-out;
      -ms-transition: all 0.5s ease-in-out;
      transition: all 0.5s ease-in-out;*/
 
-     -webkit-transition: all 0.5s ease-in;
-      -moz-transition: all 0.5s ease-in;
-      -o-transition: all 0.5s ease-in;
-      -ms-transition: all 0.5s ease-in;
-      transition: all 0.5s ease-in;
 
-    -webkit-transition: all 0.3s ease-out;
-     -moz-transition: all 0.3s ease-out;
-     -o-transition: all 0.3s ease-out;
-     -ms-transition: all 0.3s ease-out;
-     transition: all 0.3s ease-out;
 
 
 /*      -webkit-transition: all 0.4s ease-in;
@@ -431,6 +453,8 @@ font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;*/
 
 
 font-family: Verdana,Arial,sans-serif;
+
+
 
 
 
@@ -1425,10 +1449,7 @@ font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 }
 
-p {
-/*margin: 0 0 3px !important;*/
-margin: 0 0 2px !important;
-}
+
 
 
 
@@ -1658,6 +1679,14 @@ background-position: 16px 18px;
 
 
 
+
+ p {
+ /*margin: 0 0 3px !important;*/
+ /*margin: 0 0 2px !important;*/
+ margin: 0 0 0px !important;
+ }
+
+
  .accordionStyleNew {
 
 
@@ -1675,7 +1704,13 @@ background-position: 16px 18px;
 
   /* font-size: 13px !important;*/
 /*  font-size: 12px !important;*/
-font-size: 11.3px !important;
+/*font-size: 11.3px !important;*/
+/*font-size: 12px !important;*/
+/*font-size: 13.73px !important;*/
+
+
+/*line-height: 1.63;*/
+line-height: 1.53;
 
 
   /* current */
@@ -1684,7 +1719,12 @@ font-size: 11.3px !important;
   font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;*/
 
 
-  font-family: Verdana,Arial,sans-serif;
+/*  font-family: Verdana,Arial,sans-serif;*/
+
+  font-family: Lato,'Noto Sans',sans-serif;
+/*  font-family: 'Noto Sans',sans-serif;*/
+
+/*letter-spacing: -.0323em;*/
 
 
 

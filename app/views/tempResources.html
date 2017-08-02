@@ -3,7 +3,9 @@
    <!-- Title -->
    <div id='resourcesHeader' class='alert alert-info conditionalShow' role='alert' style='padding:7px;'>Resources
      <!-- <span id='introToggle' class='fa fa-times'></span> -->
-     <span id='resourcesToggle' class='fa fa-chevron-left'></span>
+     <!-- <span id='resourcesToggle' class='fa fa-chevron-left'></span> -->
+     <span id='resourcesToggle' class='ion-chevron-left'></span>
+     
    </div>
 
 
@@ -32,23 +34,58 @@
 
 
 
+            <!-- Export -->
+            <li class='disable_List dropdown' id='exportList'>
+              <a id='exportListItem' class='dropdown-toggle' data-toggle="modal" data-target="#exportModal" href="#">Export As</a>
+  <!--               <ul class='dropdown-menu dropdown-menu-form'>
+                <li style="" class="">
+
+                  <div class="widget-share-link-url-container"> <input id="last-focusable-in-modal" value="https://www.google.com/maps/dir///@36.1524687,-115.0923856,14z" type="text" jstcache="1219" jsaction="copy:share.shareLink;cut:share.shareLink" class="widget-share-link-url" jsan="7.widget-share-link-url,0.id,0.value,0.type,22.jsaction"> </div>
+
+
+
+              </ul> -->
+            </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
             <!-- Print -->
-            <li class='dropdown' id='printList'>
+            <li class='dropdown' id='printList2' style="display:none;">
               <a class='dropdown-toggle' data-toggle='dropdown' href="#">Print</a>
               <ul class='dropdown-menu dropdown-menu-form'>
 
                 <!-- Print 'As PDF' (PDF w legend) -->
                 <li>   
-                  <a id="printMapLink_PDFleg" href="#" target="_blank"> As PDF</a>
+<!--                   <a id="printMapLink_PDFleg" href="#" target="_blank"> As PDF</a> -->
                   <!-- Loading Shade -->           
-                  <div id="loading2">
+   <!--                <div id="loading2">
                      <div id="loading-image2" class="loader2"></div>
                      <div id="loading-readyPDFleg" >Ready</div>
-                  </div>
+                  </div> -->
                 </li>
 
                 <!-- Print 'As Map' (PDF w.o legend) -->
@@ -66,7 +103,7 @@
 
 
             <!-- Export -->
-            <li class='dropdown' id='exportList'>
+            <li class='dropdown' id='exportList' style="display:none;">
               <a class='dropdown-toggle' data-toggle='dropdown' href="#">Export</a>
               <ul class='dropdown-menu dropdown-menu-form'>
 
@@ -80,6 +117,101 @@
               </li>
               </ul>
             </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <!-- New: Export As -->
+              <li class='dropdown' id='printList' style="display:none;">
+                <a class='dropdown-toggle' data-toggle='dropdown' href="#">Export As</a>
+                <ul class='dropdown-menu dropdown-menu-form'>
+
+                  <li>   
+                    <a id="processedPNGLink" href="#" target="_blank"> &nbsp;</a>
+                    <!-- Loading Shade -->           
+<!--                     <div id="loading2">
+                       <div id="loading-image2" class="loader2"></div>
+                       <div id="loading-readyPDFleg" >PDF only</div> -->
+
+<!--                        <iframe id="processedPNGPreview" src="loading-" >PDF Preview</div>
+ -->
+
+<!-- 
+                    </div> -->
+                  </li>
+
+                  <!-- Print 'As Map' (PDF w.o legend) -->
+<!--                   <li>
+                    <a id="printMapLink_PDF" href="#" target="_blank"> As Map</a>    
+                    <div id="loading3">
+                      <div id="loading-image3" class="loader3"></div>
+                      <div id="loading-readyPDF" >Ready</div>
+                    </div>
+                  </li> -->
+
+                </ul>
+              </li>
+
+
+
+
+<!--               <li>   
+
+                <a class='dropdown-toggle' data-toggle='dropdown' href="#">Export As</a>
+                <ul class='dropdown-menu dropdown-menu-form'> -->
+
+                  <!-- PNG -->
+<!--                   <li>
+                    <a id="printMapLink_PDFleg" href="#" target="_blank">PNG</a> -->
+<!--                     <div id="loading44">
+                      <div id="loading-image44" class="loader44"></div>
+                      <div id="loading-readyPNG44" >Ready</div>
+                    </div> -->
+<!--                   </li> -->
+                  <!-- PNG -->
+<!--                   <li>
+                    <a id="test_PDF" href="#" target="_blank">PDF</a>
+                    <div id="loading444">
+                      <div id="loading-image444" class="loader444"></div>
+                      <div id="loading-readyPNG444" >Ready</div>
+                    </div>
+                  </li> -->
+                  <!-- PNG -->
+<!--                   <li>
+                    <a id="test_PNGmap" href="#" target="_blank">PNG (map only)</a>
+                    <div id="loading4444">
+                      <div id="loading-image4444" class="loader4444"></div>
+                      <div id="loading-readyPNG4444" >Ready</div>
+                    </div>
+                  </li> -->
+                  <!-- PNG -->
+<!--                   <li>
+                    <a id="test_PDFmap" href="#" target="_blank">PDF (map only)</a>
+                    <div id="loading44444">
+                      <div id="loading-image44444" class="loader44444"></div>
+                      <div id="loading-readyPNG44444" >Ready</div>
+                    </div>
+                  </li> -->
+<!--                 </ul>
+
+
+          </li>
+
+ -->
+
+
+
 
 
 
@@ -125,7 +257,7 @@
             <li class='dropdown'>
               <a class='dropdown-toggle' data-toggle='dropdown' href="#">Version</a>
               <ul class='dropdown-menu'>
-                <li><a href="#" target="_blank"> 4.2</a></li>
+                <li><a href="#" target="_blank"> 4.4</a></li>
               </ul>
             </li>
 

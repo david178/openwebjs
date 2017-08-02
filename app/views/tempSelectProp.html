@@ -2,18 +2,144 @@
 
    <div id='PropInfoDialog' title='Select Property' class='conditionalShow' ng-controller='accordionCtrl'>
 
+   <!-- ionic icons: http://ionicons.com/ -->
+
 
              <!-- Accordion -->
               <div class='accordionStyleNew'>
                 <accordion close-others='oneAtATime'>
 
                  <!-- Property Information -->
-                 <accordion-group is-open="status.open0" is-disabled='status.open0D' style="z-index:11 !important;" class="spG1">
+                 <accordion-group is-open="status.open0" is-disabled='status.open0D' style="z-index:11 !important; margin-bottom:-4px !important;" class="spG1">
                      <accordion-heading>
                         <div>
+
+                        <!-- iconic -->
+                        <span class="iconic-adjust-11 ion-information-circled" data-pack="default" data-tags="help, more, tooltip"></span>
+
+                        <!-- <span class="ion-ios-information" data-pack="ios" data-tags="help, question"></span> -->
+
+                        <!-- <span class="ion-ios-information-outline" data-pack="ios" data-tags="help, question"></span> -->
+
+
+
+
+                        <!-- <i class="ion-ios-information-outline" data-pack="ios" data-tags="help, question"></i> -->
+
+                        <!-- <i class="fa fa-fw" aria-hidden="true" title="Copy to use info-circle" style="margin-left:-5px !important; font-size: 14px; font-weight:300 !important;"></i> -->
                          Property Information <!-- <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open0, 'glyphicon-chevron-right': !status.open0}"></i> -->
                         </div>
                      </accordion-heading>
+
+
+                    <!-- Print Friendly Link -->
+                     <!-- <a href="" >Print Friendly View</a> -->
+
+
+
+
+
+
+
+
+                     <!-- <span id="printQueingTag" style="float:right; font-weight:bold; padding:15px; background-color:black;"> -->
+                     
+<!--                      <span class="iconic-adjust-11 ion-printer" data-pack="default" data-tags="paper"></span>
+
+                     <div id="loading2">
+                        <div id="loading-image2" class="loader2"></div>
+                     </div> -->
+ <!--                     <div id="loading2">
+                        <div id="loading-image2" class="loader2"></div>
+                     </div> -->
+<!--                      </span> -->
+
+
+
+
+
+
+                     <!-- Print Friendly Link -->
+<!--                      <a id="printFriendlyInitLink" href='' target="_blank" style="float:right; font-weight:bold; padding:3px;">
+                     <a id="printFriendlyReadyLink" href='' target="_blank" style="float:right; font-weight:bold; padding:3px;"> -->
+
+
+
+
+                     <!-- Print Init Link -->
+                     <a id="printInitLink" href='' target="_blank" style="float:right; font-weight:bold; padding:3px;">
+                        <span class="iconic-adjust-11 ion-printer" data-pack="default" data-tags="paper"></span>
+                          <span id="printInitTag">Print</span>
+                     </a>
+
+                     <!-- Print Loading Element -->
+                     <span id="printLoadingTag"  style="float:right; ">
+                        <div id="loading-image2" class="loader2"></div>
+                     </span>
+
+
+                     <!-- Print Friendly Link -->
+                     <a id="printFriendlyLink" href='' target="_blank" style="float:right; font-weight:bold; padding:3px;">
+                        <span class="iconic-adjust-11 ion-printer" data-pack="default" data-tags="paper"></span>
+                          <span id="printReadyTag">Ready</span>
+                      </a>
+
+
+
+
+
+                                            <!-- <span id="printQueuingTag">Queuing</span>
+                       -->
+                      <!--                       <div id="printQueuingTag"><div id="loading2">
+                                               <div id="loading-image2" class="loader2"></div>
+                                            </div></div> -->
+
+
+
+                                            <!-- Print Loading Element -->
+                      <!--                       <div id="loading2">
+                                               <div id="loading-image2" class="loader2"></div>
+                                            </div> -->
+
+                                            <!-- Print Ready Tag -->
+                                            <!-- <span id="printReadyTag" >Print</span> -->
+
+
+
+                      <!--                       <span id="printQueingTag" >Queuing</span>
+                                            <span id="printReadyTag" >Print</span> -->
+
+
+
+                                            <!-- Testing Print re-direct link -->
+                                            <!-- <a href="" target="_blank" style="float:right; font-weight:bold; padding:3px;">Print Redirect Test</a> -->
+                      <!--                       <a id="printRedirectLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/print/form.html" target="_blank" style="float:right; font-weight:bold; padding:3px;" >Print</a>
+                                            </br></br> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     <!-- <span class="iconic-adjust-11 ion-printer" data-pack="default" data-tags="paper"></span> -->
+
+
+
+
                      <p class="spF1"><b>Parcel:</b> {{attr.parcel}}</p>
                      <p class="spF2"><b>Owner Name(s):</b> {{data.OwnerName}}</p>
                      <p class="spF3"><b>Site Address:</b> {{data.SiteAddress}}</p>
@@ -37,6 +163,31 @@
                  <accordion-group is-open="status.open1" is-disabled='status.open1D' style="z-index:10 !important; margin-bottom:-4px !important;" class="spG2">
                      <accordion-heading >
                         <div>
+
+
+
+                        <!-- ionic -->
+                        <span class="iconic-adjust-11 ion-crop" data-pack="default" data-tags="images, levels, light, dark, settings"></span>
+
+                        <!-- <span class="ion-ios-bookmarks" data-pack="ios" data-tags="favorite"></span> -->
+
+                        <!-- alternate zoning plu -->
+                        <!-- <li class="ion-ios-crop-strong" data-pack="ios" data-tags="camera, picture, edit"></li> -->
+
+
+
+<!--                         <img src="/open-iconic/svg/icon-name.svg" alt="icon name"> -->
+
+
+
+                          <!-- <span class="oi oi-icon-name" title="icon name" aria-hidden="true"></span> -->
+
+<!--                         <span class="oi oi-book"></span> -->
+
+<!--                         <div class="icon-container"><svg viewBox="0 0 8 8" class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#book"></use></svg></div>
+
+                        <i class="ion-ios-book" data-pack="ios" data-tags="favorite, read, literature"></i> -->
+                        <!-- <i class="fa fa-fw" aria-hidden="true" title="Copy to use book" style="margin-left:-5px !important; font-size: 14px; font-weight:300 !important;"></i> -->
                          Zoning and Planned Landuse <!-- <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open1, 'glyphicon-chevron-right': !status.open1}"></i> -->
                         </div>
                      </accordion-heading>
@@ -59,6 +210,13 @@
                  <accordion-group is-open="status.open2" is-disabled='status.open2D' style="z-index:9; margin-bottom:-4px !important;" class="spG3">
                      <accordion-heading>
                         <div>
+
+
+                        <!-- ionic -->
+                        <span class="iconic-adjust-10 ion-ios-paper" data-pack="ios" data-tags="feed, paper"></span>
+
+
+                        <!-- <i class="fa fa-fw" aria-hidden="true" title="Copy to use legal" style="margin-left:-5px !important; font-size: 14px; font-weight:300 !important;"></i> -->
                          Legal Description <!-- <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}"></i> -->
                         </div>
                      </accordion-heading>
@@ -66,7 +224,8 @@
                      <p><b>Book Page:</b> {{data.AssessorBook}} {{data.AssessorPage}}</p>
                      <p><b>Lot Block:</b> {{data.LotBlock}}</p>
                      <p><b>T-R-S:</b> {{data.TownshipRangeSection}}</p>
-                     <p><b>Census Tract:</b> {{data.taxDistrict}}</p>
+                     <p><b>Tax District:</b> {{data.taxDistrict}}</p>
+                     <p><b>Census Tract:</b> {{ }}</p>
                      </p>
                  </accordion-group>
 
@@ -75,6 +234,14 @@
                   <accordion-group is-open="status.open3" is-disabled='status.open3D' style="z-index:8; margin-bottom:-4px !important;" class="spG4"> <!-- is-disabled='status.open5' -->
                       <accordion-heading>
                          <div>
+
+
+                         <!-- iconic -->
+                         <span class="iconic-adjust-11 ion-person-stalker" data-pack="default" data-tags="people, human, users, staff"></span>
+
+
+<!--                          <i class="fa fa-fw" aria-hidden="true" title="Copy to use user-circle-o" style="margin-left:-5px !important; font-size: 14px; font-weight:300 !important;">&#xf2be;</i> -->
+<!--                          <i class="fa fa-fw" aria-hidden="true" title="Copy to use group" style="margin-left:-5px !important; font-size: 14px; font-weight:300 !important;"></i> -->
                           Ownership <!-- <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open3, 'glyphicon-chevron-right': !status.open3}"></i> -->
                          </div>
                       </accordion-heading>
@@ -329,6 +496,12 @@
                  <accordion-group is-open="status.open4" is-disabled='status.open4D' style="z-index:7; margin-bottom:-4px !important;" class="spG5">
                      <accordion-heading>
                         <div>
+
+                        <!-- ionic -->
+                        <span class="iconic-adjust-8 ion-waterdrop" data-pack="default" data-tags="nature, clean, recycle, fresh, wet, rain"></span>
+
+                        <!-- <i class="fa fa-fw" aria-hidden="true" title="Copy to use tint" style="margin-left:-5px !important; font-size: 14px; font-weight:300 !important;"></i> -->
+
                          Flood Zone <!-- <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open4, 'glyphicon-chevron-right': !status.open4}"></i> -->
                         </div>
                      </accordion-heading>
@@ -341,6 +514,12 @@
                   <accordion-group is-open="status.open5" is-disabled='status.open5D' style="z-index:6; margin-bottom:-4px !important;"> <!-- is-disabled='status.open5' -->
                       <accordion-heading>
                          <div>
+
+                         <!-- ionic -->
+                         <span class="iconic-adjust-10 ion-ribbon-b" data-pack="default" data-tags="competition, compete, win, lose, award, trophy"></span>
+
+
+                         <!-- <i class="fa fa-fw" aria-hidden="true" title="Copy to use institution" style="margin-left:-5px !important; font-size: 14px; font-weight:300 !important;"></i> -->
                           Elected Officials <!-- <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open5, 'glyphicon-chevron-right': !status.open5}"></i> -->
                          </div>
                       </accordion-heading>
@@ -362,6 +541,15 @@
                    <accordion-group is-open="status.open6" is-disabled='status.open6D' style="z-index:5; margin-bottom:-4px !important;" class="spG6"> <!-- is-disabled='status.open5' -->
                        <accordion-heading>
                           <div>
+
+                          <!-- ionic -->
+<!--                           <span class="ion-link" data-pack="default" data-tags="chain, anchor, href, attach" style="font-size: 17px;"></span> -->
+
+
+
+
+
+                          <i class="fa fa-fw" aria-hidden="true" title="Copy to use link" style="margin-left:-6px !important; margin-right:2px !important; font-size: 13px;"></i>
                            Links <!-- <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open6, 'glyphicon-chevron-right': !status.open6}"></i> -->
                           </div>
                        </accordion-heading>

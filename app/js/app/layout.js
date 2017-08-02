@@ -27,6 +27,9 @@ function sized() {
    console.log('L [[ resizing ]]');
 
 
+
+
+
    //ensures dynamic positioning of legend and weather blocks during browser resize
    //required due to re-positioning on class clicks in dirDisplay
    // $(".blockFade").css("right", 0 + "px");
@@ -101,10 +104,10 @@ function sized() {
 
             //-------------------------------------------
             //Updating the Header positioning & Arrow (ALL)
-            $("#introHeader").css("left", 7 + "px");
-            $("#displayHeader").css("left", 7 + "px");
-            $("#toolsHeader").css("left", 7 + "px");
-            $("#resourcesHeader").css("left", 7 + "px");
+            $("#introHeader").css("left", 0 + "px");
+            $("#displayHeader").css("left", 0 + "px");
+            $("#toolsHeader").css("left", 0 + "px");
+            $("#resourcesHeader").css("left", 0 + "px");
 
             $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
             $('#displayToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
@@ -182,6 +185,13 @@ function sized() {
           $('#toolsToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
           $('#resourcesToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
 
+
+          // $(".esriScalebar").css("left", -194 + "px");
+
+          console.log(isMobile)
+
+          
+
           $('#mainTabs').css("display", "none");
           // $('#aerialSlider_Box').css("display", "none");
           $('.infoBlock').css("display", "none");
@@ -198,11 +208,15 @@ function sized() {
             }, 350, function() {
           // Animation complete.
 
+
+
           console.log('L [[ side panel tucked ]]');
 
 
           //subtract 50pixels for now, update for full amount of side panel later
           document.getElementById('mapDiv').style.width = document.documentElement.clientWidth + "px";
+
+
 
 
 
@@ -216,7 +230,15 @@ function sized() {
 
 
 
+
+
+
             });
+
+
+            // $(".esriScalebar").css("left", -194 + "px");
+
+
 
         }
 
@@ -664,24 +686,120 @@ function propInfoRepo_Second() {
 
 
 
+  // //defaults readout
+  // console.log('auto is showing: ' + autocompleteIsShowing)
+
+  // console.log('search has complete: ' + searchHasCompleted)
+
+
+
+
+
+
   //navbar / search was clicked (not close icon)
   if (autocompleteIsShowing === false && searchHasCompleted === true && $("#tester input").val().length > 2) 
   {
 
-    // COMMENTED
-    //resposition the prop info elem
-    $('#PropInfoDialog').css({
-      'top': 45,
-      'left': 240
-      });
-    // $( "#PropInfoDialog" ).show();
-    $('#PropInfoDialog').css({
-      'visibility': 'visible'
-      // 'visibility': 'visible'
-      });
+    // // COMMENTED
+    // //resposition the prop info elem
+    // $('#PropInfoDialog').css({
+    //   'top': 49,
+    //   'left': 240
+    //   });
+    // // $( "#PropInfoDialog" ).show();
+    // $('#PropInfoDialog').css({
+    //   'visibility': 'visible'
+    //   // 'visibility': 'visible'
+    //   });
 
-  // console.log('one sub one');
-  console.log('L [[ updating layout ]]');
+
+      // //prop info results positioning
+      // $("#PropInfoDialog").position({
+      //     my: "left top",
+      //     // at: "left+1 bottom+2",
+      //     at: "left+1 bottom+0",
+      //     of: "#tester .dropdown-menu"
+      //         // of: "#tester #search-form"
+      // });
+      // // $( "#PropInfoDialog" ).show();
+      // $('#PropInfoDialog').css({
+      //     'visibility': 'visible'
+      // });
+
+
+
+
+
+
+
+
+
+
+
+
+    //in the case that the slidePanel is Open, 
+    if (slidePanelOpen) {
+
+        // COMMENTED
+        //resposition the prop info elem
+        $('#PropInfoDialog').css({
+          'top': 49,
+          'left': 240
+          });
+        // $( "#PropInfoDialog" ).show();
+        $('#PropInfoDialog').css({
+          'visibility': 'visible'
+          // 'visibility': 'visible'
+          });
+
+      // console.log('one sub one');
+      console.log('L [[ updating layout ]]');
+
+      console.log('SUCCESSFUL TEST ONE')
+
+      console.log(slidePanelOpen)
+
+
+    }
+    else { //in the case that the slidePanel has been collapsed,
+
+      // //prop info results positioning
+      // $("#PropInfoDialog").position({
+      //     my: "left top",
+      //     // at: "left+1 bottom+2",
+      //     at: "left+1 bottom+0",
+      //     of: "#tester .dropdown-menu"
+      //         // of: "#tester #search-form"
+      // });
+      // // $( "#PropInfoDialog" ).show();
+      // $('#PropInfoDialog').css({
+      //     'visibility': 'visible'
+      // });
+
+
+      //BELOW IS THE ORIG CORRECT - BUT RENDERS DELAYED
+      // COMMENTED
+      //resposition the prop info elem
+      $('#PropInfoDialog').css({
+        'top': 49,
+        'left': 59
+        });
+      // $( "#PropInfoDialog" ).show();
+      $('#PropInfoDialog').css({
+        'visibility': 'visible'
+        // 'visibility': 'visible'
+        });
+
+
+
+      console.log('SUCCESSFUL TEST ONE SUB TWO')
+
+      console.log(slidePanelOpen)
+
+
+    } 
+
+
 
 
   }
@@ -691,7 +809,8 @@ function propInfoRepo_Second() {
     //prop info results positioning
     $( "#PropInfoDialog" ).position({
       my: "left top",
-      at: "left+1 bottom+2",
+      // at: "left+1 bottom+2",
+      at: "left+1 bottom+0",
       of: "#tester .dropdown-menu"
         // of: "#tester #search-form"
     });
@@ -703,7 +822,7 @@ function propInfoRepo_Second() {
   // console.log('one sub two');
   console.log('L [[ updating layout ]]');
   
-
+  console.log('SUCCESSFUL TEST TWO')
 
   }
 
@@ -713,7 +832,7 @@ function propInfoRepo_Second() {
 
 
     $('#PropInfoDialog').css({
-      'top': 45,
+      'top': 49,
       'left': 240
       });
     // $( "#PropInfoDialog" ).show();
@@ -726,6 +845,8 @@ function propInfoRepo_Second() {
   // console.log('two');
   console.log('L [[ updating layout ]]');
 
+  console.log('SUCCESSFUL TEST THREE')
+
   } 
 
   //gets hit on close icon click
@@ -734,7 +855,7 @@ function propInfoRepo_Second() {
 
 
     $('#PropInfoDialog').css({
-      'top': 45,
+      'top': 49,
       'left': 240
       });
     // $( "#PropInfoDialog" ).show();
@@ -746,8 +867,9 @@ function propInfoRepo_Second() {
   // console.log('three');
   console.log('L [[ updating layout ]]');
 
-  } 
+  console.log('SUCCESSFUL TEST FOUR')
 
+  } 
   else {
 
    // console.log($("#tester input").val().length);

@@ -560,6 +560,20 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             if (autocompleteIsShowing === true && searchHasCompleted === false) { //AUTOCOMPLETE SHOWING - INITIAL STATE
 
                 $('#PropInfoDialog').css({
@@ -599,7 +613,8 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
                 //prop info results positioning
                 $("#PropInfoDialog").position({
                     my: "left top",
-                    at: "left+1 bottom+2",
+                    // at: "left+1 bottom+2",
+                    at: "left+1 bottom+0",
                     of: "#tester .dropdown-menu"
                         // of: "#tester #search-form"
                 });
@@ -621,7 +636,7 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
             else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
 
                 $('#PropInfoDialog').css({
-                    'top': 45,
+                    'top': 49,
                     'left': 240
                 });
                 // $( "#PropInfoDialog" ).show();
@@ -635,7 +650,7 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
             else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
 
                 $('#PropInfoDialog').css({
-                    'top': 45,
+                    'top': 49,
                     'left': 240
                 });
                 // $( "#PropInfoDialog" ).show();
@@ -651,7 +666,7 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
             else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
 
                 $('#PropInfoDialog').css({
-                    'top': 45,
+                    'top': 49,
                     'left': 240
                 });
                 // $( "#PropInfoDialog" ).show();
@@ -668,7 +683,7 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
                 // console.log('this needs to hide')
 
                 $('#PropInfoDialog').css({
-                    'top': 45,
+                    'top': 49,
                     'left': 240
                 });
                 // $( "#PropInfoDialog" ).show();
@@ -684,7 +699,7 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
             else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
 
                 $('#PropInfoDialog').css({
-                    'top': 45,
+                    'top': 49,
                     'left': 240
                 });
                 // $( "#PropInfoDialog" ).show();
@@ -1768,21 +1783,22 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     //need to update default & seismic
     var viewObj = {
         "list": [
-            { "name3": "Most34", "mainName": "Aerial Imagery Only", "id1": 34, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", "addit": " " },
-            { "name3": "Most35", "mainName": "Assessor Map", "id1": 35, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/AssessorMap/MapServer", "addit": " " },
-            { "name3": "Most36", "mainName": "Boulder City Zoning", "id1": 36, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/5", "addit": " " },
-            { "name3": "Most37", "mainName": "Clark County PLU", "id1": 37, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/PlanedLandUse/MapServer", "addit": " " },
-            { "name3": "Most38", "mainName": "Clark County Zoning", "id1": 38, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/8", "addit": " " },
-            { "name3": "Most39", "mainName": "Contours 50 Meter", "id1": 39, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_50M/MapServer", "addit": " " },
-            { "name3": "Most40", "mainName": "Contours 2003 5ft (Valley)", "id1": 40, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_03_5ft/MapServer", "addit": " " },
-            { "name3": "Most41", "mainName": "Contours 1996 5ft (Valley)", "id1": 41, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_96_5ft/MapServer", "addit": " " },
-            { "name3": "Most42", "mainName": "Default", "id1": 42, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", "addit": " " },
-            { "name3": "Most43", "mainName": "Henderson Zoning", "id1": 43, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/6", "addit": " " },
-            { "name3": "Most44", "mainName": "Las Vegas Zoning", "id1": 44, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/4", "addit": " " },
-            { "name3": "Most45", "mainName": "Mesquite Zoning", "id1": 45, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/10", "addit": " " },
-            { "name3": "Most46", "mainName": "North Las Vegas Zoning", "id1": 46, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/7", "addit": " " },
-            { "name3": "Most47", "mainName": "Seismic", "id1": 47, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", "addit": " " },
-            { "name3": "Most48", "mainName": "Soil Guideline", "id1": 48, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/SoilsGuideline/MapServer", "addit": " " }
+            { "name3": "Most35", "mainName": "Aerial Imagery Only", "id1": 35, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", "addit": " " },
+            { "name3": "Most36", "mainName": "Assessor Map", "id1": 36, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/AssessorMap/MapServer", "addit": " " },
+            { "name3": "Most37", "mainName": "Boulder City Zoning", "id1": 37, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/5", "addit": " " },
+            { "name3": "Most38", "mainName": "Clark County PLU", "id1": 38, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/PlanedLandUse/MapServer", "addit": " " },
+            { "name3": "Most39", "mainName": "Clark County Zoning", "id1": 39, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/8", "addit": " " },
+            { "name3": "Most40", "mainName": "Contours 50 Meter", "id1": 40, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_50M/MapServer", "addit": " " },
+            { "name3": "Most41", "mainName": "contours 2016 2ft (Valley)", "id1": 41, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con2016_2ft/MapServer", "addit": " " },
+            { "name3": "Most42", "mainName": "Contours 2003 5ft (Valley)", "id1": 42, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_03_5ft/MapServer", "addit": " " },
+            { "name3": "Most43", "mainName": "Contours 1996 5ft (Valley)", "id1": 43, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_96_5ft/MapServer", "addit": " " },
+            { "name3": "Most44", "mainName": "Default", "id1": 44, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", "addit": " " },
+            { "name3": "Most45", "mainName": "Henderson Zoning", "id1": 45, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/6", "addit": " " },
+            { "name3": "Most46", "mainName": "Las Vegas Zoning", "id1": 46, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/4", "addit": " " },
+            { "name3": "Most47", "mainName": "Mesquite Zoning", "id1": 47, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/10", "addit": " " },
+            { "name3": "Most48", "mainName": "North Las Vegas Zoning", "id1": 48, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/7", "addit": " " },
+            { "name3": "Most49", "mainName": "Seismic", "id1": 49, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", "addit": " " },
+            { "name3": "Most50", "mainName": "Soil Guideline", "id1": 50, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/SoilsGuideline/MapServer", "addit": " " }
         ]
     };
 
@@ -1791,38 +1807,39 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     var flightObj = {
         "list": [
             { "name2": "Most1", "name": "Most Current Flight", "id": 1, "src": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", "etc": " " },
-            { "name2": "Most2", "name": "Spring 2014", "id": 2, "src": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/imagesS14/ImageServer", "etc": " " },
-            { "name2": "Most3", "name": "NAIP 2013", "id": 3, "src": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/imagesNAIP13/MapServer", "etc": " " },
-            { "name2": "Most4", "name": "Spring 2013", "id": 4, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS13/MapServer", "etc": " " },
-            { "name2": "Most5", "name": "Spring 2012", "id": 5, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS12/MapServer", "etc": " " },
-            { "name2": "Most6", "name": "Fall 2011", "id": 6, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF11/MapServer", "etc": " " },
-            { "name2": "Most7", "name": "Spring 2011 (6 in.)", "id": 7, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesSNWAS11/MapServer", "etc": " " },
-            { "name2": "Most8", "name": "Fall 2010 (6 in.)", "id": 8, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesSNWAF10/MapServer", "etc": " " },
-            { "name2": "Most9", "name": "NAIP 2010", "id": 9, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesNAIP10/MapServer", "etc": " " },
-            { "name2": "Most10", "name": "Spring 2010", "id": 10, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS10/MapServer", "etc": " " },
-            { "name2": "Most11", "name": "Fall 2009", "id": 11, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF09/MapServer", "etc": " " },
-            { "name2": "Most12", "name": "Spring 2009", "id": 12, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS09/MapServer", "etc": " " },
-            { "name2": "Most13", "name": "Fall 2008", "id": 13, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF08/MapServer", "etc": " " },
-            { "name2": "Most14", "name": "Spring 2008", "id": 14, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS08/MapServer", "etc": " " },
-            { "name2": "Most15", "name": "Fall 2007", "id": 15, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF07/MapServer", "etc": " " },
-            { "name2": "Most16", "name": "Spring 2007", "id": 16, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS07/MapServer", "etc": " " },
-            { "name2": "Most17", "name": "Fall 2006", "id": 17, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF06/MapServer", "etc": " " },
-            { "name2": "Most18", "name": "Spring 2006", "id": 18, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS06/MapServer", "etc": " " },
-            { "name2": "Most19", "name": "Fall 2005", "id": 19, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF05/MapServer", "etc": " " },
-            { "name2": "Most20", "name": "Spring 2005", "id": 20, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS05/MapServer", "etc": " " },
-            { "name2": "Most21", "name": "Fall 2004", "id": 21, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF04/MapServer", "etc": " " },
-            { "name2": "Most22", "name": "Spring 2004", "id": 22, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS04/MapServer", "etc": " " },
-            { "name2": "Most23", "name": "Fall 2003", "id": 23, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF03/MapServer", "etc": " " },
-            { "name2": "Most24", "name": "Spring 2003", "id": 24, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS03/MapServer", "etc": " " },
-            { "name2": "Most25", "name": "Fall 2002", "id": 25, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF02/MapServer", "etc": " " },
-            { "name2": "Most26", "name": "Spring 2002", "id": 26, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS02/MapServer", "etc": " " },
-            { "name2": "Most27", "name": "Fall 2001", "id": 27, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF01/MapServer", "etc": " " },
-            { "name2": "Most28", "name": "Spring 2001", "id": 28, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS01/MapServer", "etc": " " },
-            { "name2": "Most29", "name": "Fall 2000", "id": 29, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF00/MapServer", "etc": " " },
-            { "name2": "Most30", "name": "Spring 2000", "id": 30, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS00/MapServer", "etc": " " },
-            { "name2": "Most31", "name": "Fall 1999", "id": 31, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF99/MapServer", "etc": " " },
-            { "name2": "Most32", "name": "Spring 1999", "id": 32, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS99/MapServer", "etc": " " },
-            { "name2": "Most33", "name": "Fall 1998", "id": 33, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF98/MapServer", "etc": " " }
+            { "name2": "Most2", "name": "Spring 2016", "id": 2, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS16/ImageServer", "etc": " " },
+            { "name2": "Most3", "name": "Spring 2014", "id": 3, "src": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/imagesS14/MapServer", "etc": " " },
+            { "name2": "Most4", "name": "NAIP 2013", "id": 4, "src": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/imagesNAIP13/MapServer", "etc": " " },
+            { "name2": "Most5", "name": "Spring 2013", "id": 5, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS13/MapServer", "etc": " " },
+            { "name2": "Most6", "name": "Spring 2012", "id": 6, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS12/MapServer", "etc": " " },
+            { "name2": "Most7", "name": "Fall 2011", "id": 7, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF11/MapServer", "etc": " " },
+            { "name2": "Most8", "name": "Spring 2011 (6 in.)", "id": 8, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesSNWAS11/MapServer", "etc": " " },
+            { "name2": "Most9", "name": "Fall 2010 (6 in.)", "id": 9, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesSNWAF10/MapServer", "etc": " " },
+            { "name2": "Most10", "name": "NAIP 2010", "id": 10, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesNAIP10/MapServer", "etc": " " },
+            { "name2": "Most11", "name": "Spring 2010", "id": 11, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS10/MapServer", "etc": " " },
+            { "name2": "Most12", "name": "Fall 2009", "id": 12, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF09/MapServer", "etc": " " },
+            { "name2": "Most13", "name": "Spring 2009", "id": 13, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS09/MapServer", "etc": " " },
+            { "name2": "Most14", "name": "Fall 2008", "id": 14, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF08/MapServer", "etc": " " },
+            { "name2": "Most15", "name": "Spring 2008", "id": 15, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS08/MapServer", "etc": " " },
+            { "name2": "Most16", "name": "Fall 2007", "id": 16, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF07/MapServer", "etc": " " },
+            { "name2": "Most17", "name": "Spring 2007", "id": 17, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS07/MapServer", "etc": " " },
+            { "name2": "Most18", "name": "Fall 2006", "id": 18, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF06/MapServer", "etc": " " },
+            { "name2": "Most19", "name": "Spring 2006", "id": 19, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS06/MapServer", "etc": " " },
+            { "name2": "Most20", "name": "Fall 2005", "id": 20, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF05/MapServer", "etc": " " },
+            { "name2": "Most21", "name": "Spring 2005", "id": 21, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS05/MapServer", "etc": " " },
+            { "name2": "Most22", "name": "Fall 2004", "id": 22, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF04/MapServer", "etc": " " },
+            { "name2": "Most23", "name": "Spring 2004", "id": 23, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS04/MapServer", "etc": " " },
+            { "name2": "Most24", "name": "Fall 2003", "id": 24, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF03/MapServer", "etc": " " },
+            { "name2": "Most25", "name": "Spring 2003", "id": 25, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS03/MapServer", "etc": " " },
+            { "name2": "Most26", "name": "Fall 2002", "id": 26, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF02/MapServer", "etc": " " },
+            { "name2": "Most27", "name": "Spring 2002", "id": 27, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS02/MapServer", "etc": " " },
+            { "name2": "Most28", "name": "Fall 2001", "id": 28, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF01/MapServer", "etc": " " },
+            { "name2": "Most29", "name": "Spring 2001", "id": 29, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS01/MapServer", "etc": " " },
+            { "name2": "Most30", "name": "Fall 2000", "id": 30, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF00/MapServer", "etc": " " },
+            { "name2": "Most31", "name": "Spring 2000", "id": 31, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS00/MapServer", "etc": " " },
+            { "name2": "Most32", "name": "Fall 1999", "id": 32, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF99/MapServer", "etc": " " },
+            { "name2": "Most33", "name": "Spring 1999", "id": 33, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS99/MapServer", "etc": " " },
+            { "name2": "Most34", "name": "Fall 1998", "id": 34, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF98/MapServer", "etc": " " }
         ]
     };
 
@@ -1901,6 +1918,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     $scope.aerialDate = [];
     $scope.elecOfficial = [];
     $scope.linkInfo = [];
+    $scope.printViewLink = [];
 
     //used in the development and manipulation of the address string (1709)
     // var grabAddress;
@@ -2549,6 +2567,11 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     //executeQueryTask -------------------------------------------------------------
     $scope.executeQueryTask = function(theX, theY, resolveAs) {
 
+            //reset / clear print preview base link
+            $scope.printBase = undefined;
+
+
+
             // //catch the simple initial extent case
             // if (resolveAs === 'initial') { //else its the initial extent
 
@@ -2778,9 +2801,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
-
-
-
     //getOwnerRequest -------------------------------------------------------------
     $scope.getOwnerRequest = function(attr) {
 
@@ -2943,6 +2963,11 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 // autocompleteIsShowing = $("#tester .dropdown-menu").is(":visible"); 
 
 
+
+
+
+
+
                 // console.log("[acShowing: " + autocompleteIsShowing , autocompleteDirty, searchHasCompleted)
                 console.log("C [[ acShowing: " + autocompleteIsShowing + " | acDirty: " + autocompleteDirty + " | searchCompleted: " + searchHasCompleted + " ]]");
 
@@ -2960,6 +2985,48 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
+
+
+                //defaults readout
+                console.log('auto is showing: ' + autocompleteIsShowing)
+
+                console.log('ac dirty?: ' + autocompleteDirty)
+
+                console.log('search has complete: ' + searchHasCompleted)
+
+                console.log('side panel open?: ' + slidePanelOpen)
+
+
+                console.log('input length: ' + $("#tester input").val().length)
+
+                // //newly added to account for the case when a select property is clicked after first collapsing the side panel
+                // if (autocompleteIsShowing === false && searchHasCompleted === true && $("#tester input").val().length < 3) 
+                // {
+
+
+                //   $('#PropInfoDialog').css({
+                //     'top': 49,
+                //     'left': 59
+                //     });
+                //   // $( "#PropInfoDialog" ).show();
+                //   $('#PropInfoDialog').css({
+                //     'visibility': 'visible'
+                //     // 'visibility': 'visible'
+                //     });
+
+
+                // // console.log('two');
+                // console.log('L [[ updating layout ]]');
+
+                // console.log('SUCCESSFUL TEST THREE')
+
+                // } 
+
+                
+
+
+
+
                 if (autocompleteIsShowing === true && searchHasCompleted === false) { //AUTOCOMPLETE SHOWING - INITIAL STATE
 
                     $('#PropInfoDialog').css({
@@ -2972,7 +3039,8 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     //prop info results positioning
                     $("#PropInfoDialog").position({
                         my: "left top",
-                        at: "left+1 bottom+2",
+                        // at: "left+1 bottom+2",
+                        at: "left+1 bottom+0",
                         of: "#tester .dropdown-menu"
                             // of: "#tester #search-form"
                     });
@@ -2990,7 +3058,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
 
                     $('#PropInfoDialog').css({
-                        'top': 45,
+                        'top': 49,
                         'left': 240
                     });
                     // $( "#PropInfoDialog" ).show();
@@ -3000,11 +3068,28 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     console.log('C [[ propInfoVis-b[2]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
                 }
-                //autocomplete is not showing, it never has & length is min (SELECT PROP)
-                else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
+
+
+                // //autocomplete is not showing, it never has & length is min (SELECT PROP) AND SIDE PANEL IS OPEN
+                // else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && slidePanelOpen === true && slidePanelOpen $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
+
+                //     $('#PropInfoDialog').css({
+                //         'top': 49,
+                //         'left': 240
+                //     });
+                //     // $( "#PropInfoDialog" ).show();
+                //     $('#PropInfoDialog').css({
+                //         'visibility': 'visible'
+                //     });
+                //     console.log('C [[ propInfoVis-b[3]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+                // }
+
+                //autocomplete is not showing, it never has & length is min (SELECT PROP) AND SIDE PANEL IS OPEN
+                else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && slidePanelOpen === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE && autocompleteDirty === false
 
                     $('#PropInfoDialog').css({
-                        'top': 45,
+                        'top': 49,
                         'left': 240
                     });
                     // $( "#PropInfoDialog" ).show();
@@ -3015,11 +3100,31 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                 }
 
+                //autocomplete is not showing, it never has & length is min (SELECT PROP) AND SIDE PANEL HAS BEEN COLLAPSED
+                else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && slidePanelOpen === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false && SIDE PANEL IS CLOSED
+
+                    $('#PropInfoDialog').css({
+                        'top': 49,
+                        'left': 59
+                    });
+                    // $( "#PropInfoDialog" ).show();
+                    $('#PropInfoDialog').css({
+                        'visibility': 'visible'
+                    });
+                    console.log('C [[ propInfoVis-b[3]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+                }
+
+
+
+
+
+
                 //autocomplete is not showing, it never has & length is long
                 else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
 
                     $('#PropInfoDialog').css({
-                        'top': 45,
+                        'top': 49,
                         'left': 240
                     });
                     // $( "#PropInfoDialog" ).show();
@@ -3036,7 +3141,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     //  console.log('this needs to show')
 
                     $('#PropInfoDialog').css({
-                        'top': 45,
+                        'top': 49,
                         'left': 240
                     });
                     // $( "#PropInfoDialog" ).show();
@@ -3052,7 +3157,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
 
                     $('#PropInfoDialog').css({
-                        'top': 45,
+                        'top': 49,
                         'left': 240
                     });
                     // $( "#PropInfoDialog" ).show();
@@ -3062,6 +3167,24 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     console.log('C [[ propInfoVis-b[6]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
                 }
+
+
+
+                // //*******************************************************************************
+                // //ADDED FOR THE CASE WHEN THE SIDE PANEL COLLAPSED, AND THEN SELECT PROPERTY IS CALLED ON MAP CLICK
+                // else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
+
+                //     $('#PropInfoDialog').css({
+                //         'top': 49,
+                //         'left': 59
+                //     });
+                //     // $( "#PropInfoDialog" ).show();
+                //     $('#PropInfoDialog').css({
+                //         'visibility': 'visible'
+                //     });
+                //     console.log('C [[ propInfoVis-b[7]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+                // }
 
 
 
@@ -3149,10 +3272,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 $(".maximize").click(function() {
 
 
-
-
                     // console.log('is maxed');
-
                     // isMax = true;
 
 
@@ -3165,19 +3285,11 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                         //Prop Info (Expanded)
                         var content1 = "<div class='popup_Spacer'></div>" + "<b>Parcel:</b> " + mobileParcel + "<br> <b>Owner:</b> " + data.OwnerName + "<br><b>Add.:</b> " + data.SiteAddress;
                         content1 += "<br><b>Acres:</b> " + data.CalcAcres;
-
-                        // content1 += "<br><br><b>Jurisdiction: </b> " + zoning.jurisdiction + ", " + data.ZipCode;
                         content1 += "<br><br><b>Sale Date: </b> " + data.SaleDate;
                         content1 += "<br><b>Sale Price: </b> " + data.SalePrice;
                         content1 += "<br><b>Const. Year: </b> " + data.ConsructionYear;
-                        // content1 += "<br><b>Doc Number: </b> " + data.DocNumber;
-
                         content1 += "<br><b>Doc Number: </b> " + "<a class='infoLinks' target='_blank' href='http://gisgate.co.clark.nv.us/assessor/webimages/default.asp?appID=1&txtdocNum=data.DocNumber'>" + data.DocNumber + "</a>";
-
-                        // <a class="infoLinks" target="_blank" href='http://gisgate.co.clark.nv.us/assessor/webimages/default.asp?appID=1&txtdocNum={{data.DocNumber}}'>{{data.DocNumber}}</a>
-
-
-
+   
                         content1 += "<br><b>Subd. Name: </b> " + data.SubName;
                         content1 += "<br><b>Lot Block: </b> " + data.LotBlock;
                         content1 += "<br><b>Aerial Date: </b> " + data.aerialDate;
@@ -3185,14 +3297,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                         content1 += "<br><b>Book Page: </b> " + data.AssessorBook + ", " + data.AssessorPage;
 
                         //Link Info
-                        // content1 += "<br><span><b style=''><h3 class='verdFont' href='#'>Link Info</h3></b></span>";
-                        // content1 += "<br><b>Assessor Information</b> " + data.CalcAcres;
-                        // content1 += "<br><b>Assessor Parcel Maps</b> " + data.CalcAcres;
-                        // content1 += "<br><b>Document Imaging Records</b> " + data.CalcAcres;
-                        // content1 += "<br><b>Expansive Soil Guidelines</b> " + data.CalcAcres;
-                        // content1 += "<br><b>Flood Zone Information</b> " + data.CalcAcres;
-                        // content1 += "<br><b>Treasurer Information</b> " + data.CalcAcres;
-
                         content1 += "<br><br><b>Links</b>";
                         content1 += "<br><a id='infoLink0_mob' class='infoLinks' target='_blank' href='{{linkInfo.AssessorInformation}}'>Assessor's Information</a>";
                         content1 += "<br><a id='infoLink1_mob' class='infoLinks' target='_blank' href='{{linkInfo.AssessorParcelmaps}}'>Assessor's Parcel Map</a>";
@@ -3207,9 +3311,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                         map.infoWindow.setContent(content1);
 
 
-                        // isMax = false;
-
-
 
                     } else {
 
@@ -3217,12 +3318,12 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                         isMax = isMax + 1;
 
-                        var content2 = "<div class='popup_Spacer'></div>" + "<b>Parcel:</b> " + mobileParcel + "<br> <b>Owner:</b> " + data.OwnerName + "<br><b>Add.:</b> " + data.SiteAddress;
-                        content2 += "<br><b>Acres:</b> " + data.CalcAcres;
+                        // var content2 = "<div class='popup_Spacer'></div>" + "<b>Parcel:</b> " + mobileParcel + "<br> <b>Owner:</b> " + data.OwnerName + "<br><b>Add.:</b> " + data.SiteAddress;
+                        // content2 += "<br><b>Acres:</b> " + data.CalcAcres;
 
-                        map.infoWindow.setContent(content2);
+                        // map.infoWindow.setContent(content2);
 
-                        map.infoWindow.resize(200, 150);
+                        // map.infoWindow.resize(200, 150);
 
 
 
@@ -3508,7 +3609,16 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     $scope.getStreetView = function(theX, theY) {
 
             //old
-            $http.jsonp('http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/projectPoint?inputWKID=' + 3421 + '&outwkid=' + 4326 + '&Xcoordinate=' + theX + '&Ycoordinate=' + theY + '&callback=JSON_CALLBACK').success(function(data) {
+            //$http.jsonp('http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/projectPoint?inputWKID=' + 3421 + '&outwkid=' + 4326 + '&Xcoordinate=' + theX + '&Ycoordinate=' + theY + '&callback=JSON_CALLBACK').success(function(data) {
+            $http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/projectPoint?inputWKID=' + 3421 + '&outwkid=' + 4326 + '&Xcoordinate=' + theX + '&Ycoordinate=' + theY + '&callback=JSON_CALLBACK').success(function(data) {
+
+
+
+
+
+
+
+
 
                 //new
                 // var theURL = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=102707&outSR=4326&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":'+theX+',"y":'+theY+'}]}';
@@ -4170,6 +4280,174 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     //     // // http://sandgate.co.clark.nv.us/AssrRealProp/ParcelSales.aspx?instance=pcl2&parcel=17612313087
     // }
     // //------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Construct Print Friendly Link ----------------------------------------------------
+    $scope.constructPrintFriendly = function(resolvedURL) {
+
+
+        // <p><b>Commissioner: </b> &nbsp; {{elecOfficial.CountyCommissioner}}</p>  
+        // <p><b>City Ward: </b> &nbsp; {{elecOfficial.CityWard}}</p>  
+        // <p><b>U.S. Senate: </b> &nbsp; {{elecOfficial.Senate}}</p>  
+        // <p><b>U.S. Congress: </b> &nbsp; {{elecOfficial.Congress}}</p>  
+        // <p><b>State Senate: </b> &nbsp; {{elecOfficial.StateSenate}}</p>  
+        // <p><b>State Assembly: </b> &nbsp; {{elecOfficial.StateAssembly}}</p>  
+        // <p><b>School District: </b> &nbsp; {{elecOfficial.SchoolBoard}}</p>  
+        // <p><b>University Regent: </b> &nbsp; {{elecOfficial.UniversityRegent}}</p>  
+        // <p><b>Board of Education: </b> &nbsp; {{elecOfficial.BoardOfEducation}}</p> 
+
+
+
+
+      // //PrintLink parms
+      // $scope.basePrintLink = 'http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4_test/app/print/form.html?@';
+      // $scope.mapPrintLink = 'map='+resolvedURL;
+      // $scope.parcelPrintLink = '&parcel='+$scope.attr.parcel;
+      // $scope.onamePrintLink = '&Oname='+$scope.data.OwnerName;
+      // $scope.saddressPrintLink = '&SAddress='+$scope.data.SiteAddress;
+      // $scope.jurisPrintLink = '&Juris='+$scope.zoning.jurisdiction; //zoning.jurisdiction
+      // $scope.zipPrintLink = '&Zip='+$scope.data.ZipCode;
+      // //$scope.plandusePrintLink = '&PLanduse='+'Not_Available'; //Not Available
+      // $scope.subdnamePrintLink = '&SubdName='+$scope.data.SubName;//.trim();
+      // $scope.lotblockPrintLink = '&LotBlock='+$scope.data.LotBlock;
+      // $scope.conyearPrintLink = '&ConYear='+$scope.data.ConsructionYear;
+      // $scope.saledatePrintLink = '&SaleDate='+$scope.data.SaleDate;
+      // $scope.salepricePrintLink = '&SalePrice='+$scope.data.SalePrice;
+      // $scope.trsPrintLink = '&trs='+$scope.data.TownshipRangeSection;
+      // $scope.censustractPrintLink = '&CensusTract='+'Not_Available'; //Not Available
+      // $scope.recdocnumPrintLink = '&RecordedDocNum='+$scope.data.DocNumber;
+      // $scope.estlotsizePrintLink = '&EstLotSize='+$scope.data.CalcAcres;
+      // $scope.flightdatePrintLink = '&FlightDate='+$scope.aerialDate;
+      // $scope.zonePrintLink = '&Zone='+$scope.zoning.zoneDescription;
+      // $scope.commdistPrintLink = '&CommDist='+'Not_Available'; //Not Available
+      // $scope.ussenatePrintLink = '&USSenate='+$scope.elecOfficial.Senate; //elecOfficial.Senate
+      // $scope.uscongressPrintLink = '&USCongress='+$scope.elecOfficial.Congress; //elecOfficial.Congress
+      // $scope.statesenatePrintLink = '&StateSenate='+$scope.elecOfficial.StateSenate; //elecOfficial.StateSenate
+      // $scope.stateassemblyPrintLink = '&StateAssembly='+$scope.elecOfficial.StateAssembly; //elecOfficial.StateAssembly
+      // $scope.schooldistPrintLink = '&SchoolDisttrict='+$scope.elecOfficial.SchoolBoard; //elecOfficial.SchoolBoard
+      // $scope.universityregentPrintLink = '&UniversityRegent='+$scope.elecOfficial.UniversityRegent; //elecOfficial.UniversityRegent
+      // $scope.boardeducationPrintLink = '&BoardEducation='+$scope.elecOfficial.BoardOfEducation; //elecOfficial.BoardOfEducation
+      // $scope.mcdPrintLink = '&MCD='+'Not_Available'; //Not Available
+
+      var basePrintLink = 'http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4_test/app/print/form.html?@'; //base location
+      var mapPrintLink = 'map='+resolvedURL; //base map
+      var parcelPrintLink = '&parcel='+$scope.attr.parcel; //parcel
+      var onamePrintLink = '&Oname='+$scope.data.OwnerName; //owner name
+      var saddressPrintLink = '&SAddress='+$scope.data.SiteAddress; //site address
+      var jurisPrintLink = '&Juris='+$scope.zoning.jurisdiction+' - '+$scope.data.ZipCode; //jurisdiction
+      //var zipPrintLink = '&Zip='+$scope.data.ZipCode; //zipcode
+      var subdnamePrintLink = '&SubdName='+$scope.data.SubName; //subdivision name
+      var lotblockPrintLink = '&LotBlock='+$scope.data.LotBlock; //lot block
+      var conyearPrintLink = '&ConYear='+$scope.data.ConsructionYear; //construction year
+      var saledatePrintLink = '&SaleDate='+$scope.data.SaleDate; //sale date
+      var salepricePrintLink = '&SalePrice='+$scope.data.SalePrice; //sale price
+      var trsPrintLink = '&trs='+$scope.data.TownshipRangeSection; //township, range, section
+      var censustractPrintLink = '&CensusTract='+'Not_Available'; //Not Available //census tract ---
+      var recdocnumPrintLink = '&RecordedDocNum='+$scope.data.DocNumber; //recorded doc number
+      var estlotsizePrintLink = '&EstLotSize='+$scope.data.CalcAcres; //calculated acres
+      var flightdatePrintLink = '&FlightDate='+$scope.aerialDate; //aerial date
+      var zonePrintLink = '&Zone='+$scope.zoning.zoneDescription; //zoning description
+      var commdistPrintLink = '&CommDist='+'Not_Available'; //Not Available //community district ---
+      var ussenatePrintLink = '&USSenate='+$scope.elecOfficial.Senate; //senate
+      var uscongressPrintLink = '&USCongress='+$scope.elecOfficial.Congress; //congress
+      var statesenatePrintLink = '&StateSenate='+$scope.elecOfficial.StateSenate;  //state senate
+      var stateassemblyPrintLink = '&StateAssembly='+$scope.elecOfficial.StateAssembly; //state assembly
+      var schooldistPrintLink = '&SchoolDisttrict='+$scope.elecOfficial.SchoolBoard;  //school board
+      var universityregentPrintLink = '&UniversityRegent='+$scope.elecOfficial.UniversityRegent; //university regent
+      var boardeducationPrintLink = '&BoardEducation='+$scope.elecOfficial.BoardOfEducation; //board of education
+      var mcdPrintLink = '&MCD='+'Not_Available'; //Not Available //minor civil division ---
+      var cwardPrintLink = '&CWard='+'Not_Available'; //Not Available //city ward ---
+
+
+
+      //constructed print view link
+      // $scope.printViewLink = 
+      //       $scope.basePrintLink+
+      //       $scope.mapPrintLink+
+      //       $scope.parcelPrintLink+
+      //       $scope.onamePrintLink+
+      //       $scope.saddressPrintLink+
+      //       $scope.jurisPrintLink+
+      //       $scope.zipPrintLink+
+      //       $scope.subdnamePrintLink+
+      //       $scope.lotblockPrintLink+
+      //       $scope.conyearPrintLink+
+      //       $scope.saledatePrintLink+
+      //       $scope.salepricePrintLink+
+      //       $scope.trsPrintLink+
+      //       $scope.censustractPrintLink+
+      //       $scope.recdocnumPrintLink+
+      //       $scope.estlotsizePrintLink+
+      //       $scope.flightdatePrintLink+
+      //       $scope.zonePrintLink+
+      //       $scope.commdistPrintLink+
+      //       $scope.ussenatePrintLink+
+      //       $scope.uscongressPrintLink+
+      //       $scope.statesenatePrintLink+
+      //       $scope.stateassemblyPrintLink+
+      //       $scope.schooldistPrintLink+
+      //       $scope.universityregentPrintLink+
+      //       $scope.boardeducationPrintLink+
+      //       $scope.mcdPrintLink;
+
+      $scope.printViewLink = 
+            basePrintLink.trim()+
+            mapPrintLink.trim()+
+            parcelPrintLink.trim()+
+            onamePrintLink.trim()+
+            saddressPrintLink.trim()+
+            jurisPrintLink.trim()+
+            subdnamePrintLink.trim()+
+            lotblockPrintLink.trim()+
+            conyearPrintLink.trim()+
+            saledatePrintLink.trim()+
+            salepricePrintLink.trim()+
+            trsPrintLink.trim()+
+            censustractPrintLink.trim()+
+            recdocnumPrintLink.trim()+
+            estlotsizePrintLink.trim()+
+            flightdatePrintLink.trim()+
+            zonePrintLink.trim()+
+            commdistPrintLink.trim()+
+            ussenatePrintLink.trim()+
+            uscongressPrintLink.trim()+
+            statesenatePrintLink.trim()+
+            stateassemblyPrintLink.trim()+
+            schooldistPrintLink.trim()+
+            universityregentPrintLink.trim()+
+            boardeducationPrintLink.trim()+
+            mcdPrintLink.trim();
+
+            //zipPrintLink.trim()+
+
+
+        $("#printFriendlyLink").attr("href", $scope.printViewLink);
+
+
+        // console.log('This is the resolved map URL ' + resolvedURL)
+
+        console.log("C [[ resolved print map URL: " + resolvedURL + " ]]");
+
+        console.log("C [[ resolved print final URL: " + $scope.printViewLink + " ]]");
+        
+    }
+    //------------------------------------------------------------------------------
+
 
 
 

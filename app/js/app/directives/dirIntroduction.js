@@ -81,22 +81,32 @@ open.directive('introView', function() {
                  //-------------------------------------------
                  //Updating the Header positioning & Arrow (ALL)
                  // $("#introHeader").css("left", -194 + "px");
-                 $("#introHeader").css("left", -194 + "px");
-                 $("#displayHeader").css("left", -194 + "px");
-                 $("#toolsHeader").css("left", -194 + "px");
-                 $("#resourcesHeader").css("left", -194 + "px");
-                 $(".esriScalebar").css("left", -194 + "px");
+                 $("#introHeader").css("left", -181 + "px");
+                 $("#displayHeader").css("left", -201 + "px");
+                 $("#toolsHeader").css("left", -201 + "px");
+                 $("#resourcesHeader").css("left", -201 + "px");
+                 $(".esriScalebar").css("left", -201 + "px");
 
 
                  //transforms
                  $('#introToggle').addClass('toggleAdjust');
                  $('#introHeader').addClass('headerAdjust');
+                 $('#logoTitle').addClass('titleAdjust');
+                 $('#search-form').addClass('searchFormAdjust');
+
+                 // $('searchBtn-holder').addClass('searchBtnAdjust');
 
 
-                 $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-                 $('#displayToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-                 $('#toolsToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-                 $('#resourcesToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
+
+
+
+
+                 // $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
+                 $('#introToggle').toggleClass('ion-chevron-left ion-navicon-round');
+
+                 $('#displayToggle').toggleClass('ion-chevron-left ion-navicon-round');
+                 $('#toolsToggle').toggleClass('ion-chevron-left ion-navicon-round');
+                 $('#resourcesToggle').toggleClass('ion-chevron-left ion-navicon-round');
 
                  $('#mainTabs').css("display", "none");
                  $('.infoBlock').css("display", "none");
@@ -104,21 +114,93 @@ open.directive('introView', function() {
 
                     // hide panel
                     $("#slidepanel").animate({
-                        "marginLeft": "-=230px"
-                    }, 350);
+                        "marginLeft": "-=240px"
+                    }, 0);
                     slidePanelOpen = false;
                     // change width of map to fill empty space left from collapse of sldide panel
                     $('#mapDiv').animate({
                       // "width": "-=150px"
-                        "width": "+=230px"
-                    }, 350, function() {
+                        "width": "+=240px"
+                    }, 0, function() {
                   // Animation complete.
+
+
+
+
+
+                  propInfoRepo_Second();
+
+
+
+                  // //navbar / search was clicked (not close icon)
+                  // if (autocompleteIsShowing === false && searchHasCompleted === true && $("#tester input").val().length > 2) 
+                  // {
+
+                  //   // // COMMENTED
+                  //   // //resposition the prop info elem
+                  //   // $('#PropInfoDialog').css({
+                  //   //   'top': 49,
+                  //   //   'left': 240
+                  //   //   });
+                  //   // // $( "#PropInfoDialog" ).show();
+                  //   // $('#PropInfoDialog').css({
+                  //   //   'visibility': 'visible'
+                  //   //   // 'visibility': 'visible'
+                  //   //   });
+
+                  //   // COMMENTED
+                  //   //resposition the prop info elem
+                  //   $('#PropInfoDialog').css({
+                  //     'top': 49,
+                  //     'left': 59
+                  //     });
+                  //   // $( "#PropInfoDialog" ).show();
+                  //   $('#PropInfoDialog').css({
+                  //     'visibility': 'visible'
+                  //     // 'visibility': 'visible'
+                  //     });
+
+                  //   console.log('test net hit')
+
+                  // }
+
+
+
+
+
+
+
+
+
+
+
+                  // //BELOW I THE UPDATE TO PROP INFO POSITIONING FOR COLLAPSED
+                  // // COMMENTED
+                  // //resposition the prop info elem
+                  // $('#PropInfoDialog').css({
+                  //   'top': 49,
+                  //   'left': 59
+                  //   });
+                  // // $( "#PropInfoDialog" ).show();
+                  // $('#PropInfoDialog').css({
+                  //   'visibility': 'visible'
+                  //   // 'visibility': 'visible'
+                  //   });
+
+
+
+
+
+
+
+
 
                   console.log('slide complete');
 
 
                   //subtract 50pixels for now, update for full amount of side panel later
-                  document.getElementById('mapDiv').style.width = document.documentElement.clientWidth - 10 + "px";
+                  // document.getElementById('mapDiv').style.width = document.documentElement.clientWidth - 10 + "px";
+                  document.getElementById('mapDiv').style.width = document.documentElement.clientWidth + "px";
 
                   // console.log('mapdiv resize completed');
 
@@ -164,38 +246,91 @@ open.directive('introView', function() {
 
                  //-------------------------------------------
                  //Updating the Header positioning & Arrow (ALL)
-                 $("#introHeader").css("left", 7 + "px");
-                 $("#displayHeader").css("left", 7 + "px");
-                 $("#toolsHeader").css("left", 7 + "px");
-                 $("#resourcesHeader").css("left", 7 + "px");
+                 $("#introHeader").css("left", 0 + "px");
+                 $("#displayHeader").css("left", 0 + "px");
+                 $("#toolsHeader").css("left", 0 + "px");
+                 $("#resourcesHeader").css("left", 0 + "px");
                  $(".esriScalebar").css("left", 19 + "px");
 
                  //transforms
                  $('#introToggle').removeClass('toggleAdjust');
                  $('#introHeader').removeClass('headerAdjust');
+                 $('#logoTitle').removeClass('titleAdjust');
+                 $('#search-form').removeClass('searchFormAdjust');
 
 
-                 $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-                 $('#displayToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-                 $('#toolsToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-                 $('#resourcesToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
+
+
+
+                 // $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
+                 $('#introToggle').toggleClass('ion-chevron-left ion-navicon-round');
+
+                 $('#displayToggle').toggleClass('ion-chevron-left ion-navicon-round');
+                 $('#toolsToggle').toggleClass('ion-chevron-left ion-navicon-round');
+                 $('#resourcesToggle').toggleClass('ion-chevron-left ion-navicon-round');
                  
                  $('#mainTabs').css("display", "block");
                  $('.infoBlock').css("display", "block");
                  //-------------------------------------------
 
                     $("#slidepanel").animate({
-                      "marginLeft": "+=230px"
-                    }, 350);
+                      "marginLeft": "+=240px"
+                    }, 0);
                     slidePanelOpen = true;
                     $('#mapDiv').animate({
-                        "width": "-=230px"
-                    }, 350, function() {
+                        "width": "-=240px"
+                    }, 0, function() {
                   // Animation complete.
+
+
+
+
+
+
+
+
+                  propInfoRepo_Second();
+
+              //     //navbar / search was clicked (not close icon)
+              //     if (autocompleteIsShowing === false && searchHasCompleted === true && $("#tester input").val().length > 2) 
+              //     {
+
+              //     // // COMMENTED
+              //     // //resposition the prop info elem
+              //     // $('#PropInfoDialog').css({
+              //     //   'top': 49,
+              //     //   'left': 240
+              //     //   });
+              //     // // $( "#PropInfoDialog" ).show();
+              //     // $('#PropInfoDialog').css({
+              //     //   'visibility': 'visible'
+              //     //   // 'visibility': 'visible'
+              //     //   });
+
+              //     // COMMENTED
+              //     //resposition the prop info elem
+              //     $('#PropInfoDialog').css({
+              //       'top': 49,
+              //       'left': 240
+              //       });
+              //     // $( "#PropInfoDialog" ).show();
+              //     $('#PropInfoDialog').css({
+              //       'visibility': 'visible'
+              //       // 'visibility': 'visible'
+              //       });
+
+              // }
+
+
+
+
+
+                  
 
                   console.log('slide complete');
 
                   //subtract 50pixels for now, update for full amount of side panel later
+                  // document.getElementById('mapDiv').style.width = document.documentElement.clientWidth - 240 + "px";
                   document.getElementById('mapDiv').style.width = document.documentElement.clientWidth - 240 + "px";
 
 

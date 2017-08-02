@@ -10,6 +10,16 @@ open.directive('infoBlock', function() {
 	   link:function(scope,e,a){
 
 
+	   	
+	   	if (isMobile) {
+
+	   	 console.log(isMobile)
+	   	    $(".esriScalebar").css("left", -194 + "px");
+
+	   	}
+
+
+
 
 	 //   	//Memory Storage (Save, Load) ------------------------------------------------------------------
 

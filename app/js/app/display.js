@@ -417,27 +417,70 @@ function viewChange(viewName) {
 
            break;
 
+
+
+
+
+ 
+
+
+
        case 'contours 50 meter': //---------------------------------------
           
           //remove all layers
           map.removeAllLayers();
 
           layerUrlMain = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
-          layerUrlSecondary = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_50M/MapServer';
-       //   layerUrlTertiary = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/scl/MapServer';
-
+          layerUrlSecondary = 'http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+          layerUrlTertiary = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_50M/MapServer';
 
 
 
             var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
 
+           //Assessor Layer
+           assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'assessorServiceLayer'});
            //Dynamic Map layers
-           C50Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'C50Layer'});
+           C50Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlTertiary,{id:'C50Layer'});
 
 
-             map.addLayers([basemap, C50Layer, assessorannoServiceLayer, abLayer]);
+             map.addLayers([basemap, C50Layer, assessorServiceLayer, abLayer]);
 
            break;
+
+
+
+
+       
+
+
+
+       case 'contours 2016 2ft (valley)': //---------------------------------------
+           
+
+          //remove all layers
+          map.removeAllLayers();
+
+          layerUrlMain = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
+          layerUrlSecondary = 'http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+          layerUrlTertiary = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con2016_2ft/MapServer';
+
+
+
+            var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
+
+           //Assessor Layer
+           assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'assessorServiceLayer'});
+           //Dynamic Map layers
+           C2016Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlTertiary,{id:'C2016Layer'});
+
+
+          map.addLayers([basemap, C2016Layer, assessorServiceLayer, abLayer]);
+
+           break;
+
+
+
 
        case 'contours 2003 5ft (valley)': //---------------------------------------
            
@@ -446,19 +489,21 @@ function viewChange(viewName) {
           map.removeAllLayers();
 
           layerUrlMain = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
-          layerUrlSecondary = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_03_5ft/MapServer';
-       //   layerUrlTertiary = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/scl/MapServer';
+          layerUrlSecondary = 'http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+          layerUrlTertiary = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_03_5ft/MapServer';
 
 
 
 
             var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
 
+           //Assessor Layer
+           assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'assessorServiceLayer'});
            //Dynamic Map layers
-           C2003Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'C2003Layer'});
+           C2003Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlTertiary,{id:'C2003Layer'});
 
 
-          map.addLayers([basemap, C2003Layer, assessorannoServiceLayer, abLayer]);
+          map.addLayers([basemap, C2003Layer, assessorServiceLayer, abLayer]);
 
            break;
 
@@ -468,19 +513,21 @@ function viewChange(viewName) {
           map.removeAllLayers();
 
           layerUrlMain = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
-          layerUrlSecondary = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_96_5ft/MapServer';
-       //   layerUrlTertiary = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/scl/MapServer';
+          layerUrlSecondary = 'http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+          layerUrlTertiary = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_96_5ft/MapServer';
 
 
 
 
             var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
 
+          //Assessor Layer
+          assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'assessorServiceLayer'});
            //Dynamic Map layers
-           C1996Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'C1996Layer'});
+           C1996Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlTertiary,{id:'C1996Layer'});
 
 
-          map.addLayers([basemap, C1996Layer, assessorannoServiceLayer, abLayer]);
+          map.addLayers([basemap, C1996Layer, assessorServiceLayer, abLayer]);
 
            break;
 
@@ -1338,8 +1385,13 @@ function flightChange(flight) {
         case "Most Current Flight":
           layerUrl = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
           break;
+        case "Spring 2016":
+          // layerUrl = 'http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/imagesS14/ImageServer';
+          layerUrl = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS16/ImageServer';
+          break;
         case "Spring 2014":
-          layerUrl = 'http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/imagesS14/ImageServer';
+          // layerUrl = 'http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/imagesS14/ImageServer';
+          layerUrl = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS14/MapServer';
           break;
         case "NAIP 2013":
           layerUrl = 'http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/imagesNAIP13/MapServer';
