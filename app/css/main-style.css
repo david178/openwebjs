@@ -33,60 +33,10 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-
     /* added */
-    overflow: hidden;
-}
-
-body {
     overflow: hidden;
     /*margin-top: 50px !important;*/
 }
-
-
-
-#mapDiv {
-    overflow: hidden;
-    height: 100% !important;
-}
-
-.map {
-    overflow: hidden;
-}
-
-.esriControlsBR {
-    display: none !important;
-}
-
-
-
-
-
-/* map specific styling */
-
-/*.map .container {
-position: relative;
-border: none;
-padding: 0px;
-margin: 0px;
-left: 0px;
-top: 0px;
-overflow: hidden;
-width: 100%;
-height: 100%;
-}*/
-
-
-/*.fullmap {
-  position: absolute;
-  top: 70px;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
-  background-color: #CCCCCC;
-  z-index: -1;
-  margin-left: 0px !important;
-}*/
 
 #title {
     color: #fff;
@@ -104,7 +54,6 @@ height: 100%;
     margin-top: -5px !important;
 }
 
-
 #logoTitle span {}
 
 #CountyLogo {
@@ -113,10 +62,7 @@ height: 100%;
     margin-right: 2px;
 }
 
-
-
 /* Recorded Doc Num Link */
-
 
 /* Link Info Links */
 
@@ -133,64 +79,7 @@ height: 100%;
 
 
 
-
-/* close icons for windows */
-
-.widgetClose {
-    height: 12px;
-    width: 12px;
-    margin-top: 2px;
-    cursor: pointer;
-}
-
-#closeIcon {
-    display: none;
-    position: absolute;
-    z-index: 9999999;
-    top: 15px;
-    right: 63px;
-    margin-top: 4px;
-    color: gray !important;
-    height: 12px;
-    width: 12px;
-    cursor: pointer;
-}
-
-.closeIcon::-ms-clear {
-    display: none;
-    visibility: hidden;
-}
-
-
-
-
-
-
-#closeIcon2 {
-    display: none;
-    position: absolute;
-    top: 7px;
-    right: 50px;
-    z-index: 9999999;
-    margin-top: 3px;
-    color: gray !important;
-    cursor: pointer;
-}
-
-
-
-
-
-
-
-
-
-
-
-/* -------------------- Fonting ---------------- */
-
-
-/* Fonts */
+/* Fonts  */
 
 .verdFont {
     font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
@@ -202,11 +91,7 @@ height: 100%;
     font-size: 12px;
 }
 
-
-
-
-
-/* -------------- Custom Font-Icon Lib ---------- */
+/* Custom Font-Icon Lib */
 
 .custom-icon {
     font-family: "customfont";
@@ -233,8 +118,6 @@ height: 100%;
     /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-
-
 .custom-icon-2 {
     font-family: "customfont";
     display: inline-block;
@@ -245,8 +128,218 @@ height: 100%;
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Icon style */
 
-/* ---------------------------------------------- */
+.slide-icons {
+    font-size: 1.1em;
+}
+
+.fa-chevron-left {
+    color: #EEE !important;
+}
+
+
+
+
+
+/* Headers */
+
+h3 {
+  /*  font-family: 'Roboto', sans-serif;*/
+  /*  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  /*  font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;*/
+  /*      font-family: 'Lato', sans-serif;*/
+  /*      font-family: Lato,'Noto Sans',sans-serif;*/
+  /*      font-family: 'Open Sans', sans-serif;*/
+  /*      font-family: Lato,'Noto Sans',sans-serif;*/
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+/* used on accordion header text */
+
+/*
+h4 {
+  font-size: 13px !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  }
+}*/
+
+h5 {
+    font: 22px Helvetica, Arial, Sans-Serif;
+    letter-spacing: -1px;
+    color: #f6f6f6;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+h6 {
+    margin-top: 2px !important;
+    font-size: 17px;
+    font-family: "verb", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    color: #8ED1E9;
+}
+
+
+
+
+
+
+
+
+
+
+/* --------------------- Map Specific -------------- */
+
+/* Map Element */
+
+#mapDiv {
+    overflow: hidden;
+    height: 100% !important;
+}
+
+.map {
+    overflow: hidden;
+}
+
+.esriControlsBR {
+    display: none !important;
+}
+
+/*.map .container {
+position: relative;
+border: none;
+padding: 0px;
+margin: 0px;
+left: 0px;
+top: 0px;
+overflow: hidden;
+width: 100%;
+height: 100%;
+}*/
+
+/*.fullmap {
+  position: absolute;
+  top: 70px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  background-color: #CCCCCC;
+  z-index: -1;
+  margin-left: 0px !important;
+}*/
+
+
+/* Map Zoom Slider */
+
+.esriSimpleSlider {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -o-border-radius: 0px;
+    border-radius: 0px;
+}
+
+
+/* Map Scalebar control - added at map constructor */
+
+.esriScaleLabelDiv {
+    position: relative;
+    top: -5px;
+    width: 100%;
+    padding: 2px;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+
+.esriScalebar {
+    z-index: 30;
+    position: absolute;
+    width: 0px;
+    height: 20px;
+    margin-left: 6cm;
+}
+
+.esriScalebarLine {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 6px;
+    border: 2px solid #dddddd;
+}
+
+
+/* InfoWindow PopUp */
+
+.esriPopup .titlePane {
+    background-color: #333333 !important;
+    color: white !important;
+    font-weight: 700;
+}
+
+.infoWindowCustom {
+    font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------ Close Icons for Windows --------- */
+
+.widgetClose {
+    height: 12px;
+    width: 12px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+#closeIcon {
+    display: none;
+    position: absolute;
+    z-index: 9999999;
+    top: 15px;
+    right: 63px;
+    margin-top: 4px;
+    color: gray !important;
+    height: 12px;
+    width: 12px;
+    cursor: pointer;
+}
+
+.closeIcon::-ms-clear {
+    display: none;
+    visibility: hidden;
+}
+
+#closeIcon2 {
+    display: none;
+    position: absolute;
+    top: 7px;
+    right: 50px;
+    z-index: 9999999;
+    margin-top: 3px;
+    color: gray !important;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+/* ------------ Page UI Elements --------- */
 
 .jumbotron {
     height: 350px;
@@ -269,40 +362,11 @@ height: 100%;
     font-weight: 200;
 }
 
-
-
-
-h3 {
-    font-family: 'Open Sans', sans-serif !important;
-}
-
-
-/* used on accordion header text */
-
-/*
-h4 {
-  font-size: 13px !important;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  line-height: 1.1;
-  }
-}*/
-
-h5 {
-    font: 22px Helvetica, Arial, Sans-Serif;
-    letter-spacing: -1px;
-    color: #f6f6f6;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
-}
-
-
 .fullwidth {
     width: 55%;
     margin-right: auto;
     margin-left: auto;
 }
-
-
 
 .alert-info {
     border-radius: 3px;
@@ -311,9 +375,6 @@ h5 {
     color: #EEE;
     font-size: 17px !important;
     font-weight: 300;
-    /*  font-family: 'Roboto', sans-serif;*/
-    /*  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-    /*  font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;*/
     font-family: 'Open Sans', sans-serif;
 
     -webkit-transition: all 0.5s ease-in-out;
@@ -322,55 +383,6 @@ h5 {
     -ms-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
 }
-
-
-/* ADDED */
-
-.fa-chevron-left {
-    color: #EEE !important;
-}
-
-
-/* view headers */
-
-#introHeader,
-#displayHeader,
-#toolsHeader,
-#resourcesHeader {
-    position: absolute;
-    left: 0px;
-    z-index: 99;
-    -webkit-transition: all 200ms ease-out 0ms;
-    -moz-transition: all 200ms ease-out 0ms;
-    -o-transition: all 200ms ease-out 0ms;
-    -ms-transition: all 200ms ease-out 0ms;
-    transition: all 200ms ease-out 0ms;
-    border-radius: 0!important;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    width: 240px;
-}
-
-
-/* Arrow Toggles */
-
-#introToggle,
-#displayToggle,
-#toolsToggle,
-#resourcesToggle {
-    font-size: .9em;
-    margin-top: 2px;
-    cursor: pointer;
-    padding-left: 3px;
-    padding-right: 3px;
-    float: right;
-}
-
-
-
-
 
 /* Override */
 
@@ -392,24 +404,7 @@ needed or search form inline mobile format compat*/
 }
 
 
-#slidepanel .divider {
-    margin: 9px 0;
-    height: 0;
-    clear: both;
-    border: solid #ddd;
-    border-width: 1px 0 0;
-    align: center;
-    color: #cccccc !important;
-    text-decoration: none;
-}
-
-
-
-
-
-
-
-/* firefox specific */
+/* Firefox Specific */
 
 .navbar-collapse {
     min-width: 786px;
@@ -426,15 +421,7 @@ needed or search form inline mobile format compat*/
 
 
 
-
-
-
-
-
-
-
-
-/* intro tour button */
+/* Intro Tour Button */
 
 .introButton {
     border-radius: 3px;
@@ -453,12 +440,8 @@ needed or search form inline mobile format compat*/
     -o-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
-
     margin-top: 10px !important;
 }
-
-
-
 
 .introButton-variant:hover {
     color: #fef4f4 !important;
@@ -480,30 +463,7 @@ needed or search form inline mobile format compat*/
 
 
 
-
-
-
-
-
-
-
-
-
-
-.esriSimpleSlider {
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    -o-border-radius: 0px;
-    border-radius: 0px;
-}
-
-
-
-
-
-
-
-/* theme select box */
+/* Select Box Theme */
 
 .styleBox-variant {
     color: #DEDEDE;
@@ -522,10 +482,6 @@ needed or search form inline mobile format compat*/
     color: #fef4f4 !important;
     border-color: #fef4f4 !important;
 }
-
-
-
-
 
 /*.select {
   position: relative;
@@ -586,404 +542,73 @@ needed or search form inline mobile format compat*/
 */
 
 
-/* ---------------------------------------------- */
 
-
-/* ---------------- InfoWindow PopUp ------------- */
-
-.esriPopup .titlePane {
-    background-color: #333333 !important;
-    color: white !important;
-    font-weight: 700;
-}
-
-.infoWindowCustom {
-    font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
-    color: white;
-}
-
-
-/* ---------------------------------------------- */
-
-
-/* ---------------- Information Card -------------- */
-
-#InfoCardDialog {
-
-    z-index: 99;
-
-    outline: none;
-    position: absolute;
-
-    height: 195px;
-    width: 220px;
-
-    left: 10px !important;
-
-    bottom: 15px !important;
-    /*background-color: white !important;*/
-    color: #666;
-    background: #fff;
-}
-
-.cards-strong {
-    /*  color: #333;*/
-    /*  padding-left:5px;*/
-    /*  padding-top:5px;*/
-    /*color: #232323;*/
-    /* COMMENTED OUT */
-    /*color: #FFF !important;*/
-    /*color: #DEDEDE !important;*/
-    color: #AAA !important;
-    /*padding-top:2px;*/
-    /*padding-bottom:2px;*/
-    /*padding-top:6px;*/
-    padding-top: 7px;
-    padding-bottom: 6px;
-    /*padding-left:24px;
-padding-right:24px;*/
-    padding-left: 27px;
-    padding-right: 27px;
-    /*margin-top:-2px;
-margin-bottom:2px;
-margin-left:-2px;
-margin-right:-2px;*/
-    font-size: 13px !important;
-    font-family: 'Roboto', sans-serif;
-    /*  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-    /*  font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;*/
-    background: #111;
-    /* added - from .infoblock class */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    /* added - from .infoblock class */
-}
-
-.cards-bold {
-    font-weight: bolder !important;
-}
-
-.cards-light {
-    color: #666;
-    font-size: 12px !important;
-}
-
-.cards-title {
-    /*  color: #333;*/
-    color: #232323;
-
-    font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
-    padding: 2px;
-    padding-left: 5px;
-
-
-    background-color: #0d77b6 !important;
-    background-image: none;
-    /*  color: white !important;*/
-    font-size: 14px !important;
-    font-weight: bold !important;
-    text-shadow: 0 -1px 1px #214675;
-
-    border: 1px solid #2e63a5;
-    border-bottom: 0px !important;
-}
-
-
-
-
-.headertitle {
-    /*  font-family: 'Roboto', sans-serif;
-
-  font-weight:600; 
-  padding:5px;*/
-    padding: 5px;
-    /*  color: white !important;*/
-    /*  color: black !important;*/
-    color: #232323;
-
-    font-size: 14px !important;
-    font-weight: bold !important;
-    /*  text-shadow: 0 -1px 1px #214675;*/
-    /*text-shadow: 0 -1px 1px #49FFFB;*/
-    line-height: 1.428571429;
-
-    font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
-}
-
-.infoBlock {
-
-
-    position: absolute;
-    /*  left:0px;*/
-    left: -4px;
-    /*  bottom:18px;*/
-    bottom: 13px;
-    z-index: 999999;
-    /*  width:100%;*/
-    /*width:240px;*/
-    /* old commented out */
-    width: 248px;
-
-
-
-
-    /*border: 1px solid #aaaaaa;*/
-    /*  border-radius: 3px;*/
-    /*border-radius: 2px;*/
-    /* commented */
-    border-radius: 0px;
-    /*  background: linear-gradient(to bottom, rgba(242,242,242,0.95) 0%,rgba(242,242,242,0.95) 100%) !important;*/
-    /* background: #fff !important;*/
-    /* background-color: #d9edf7 !important;*/
-    /*background-color: #fafafa !important; /* COMMENTED OUT */
-    /* border: 1px solid #bce8f1;*/
-    /* COMMENTED OUT */
-    /* border: 1px solid #bce8f1;*/
-    /*    color:black;*/
-    /*    background-color:#3B5998;*/
-    height: auto;
-    position: absolute;
-    /*    width: 240px;*/
-    /*    border-top: 2px solid #47a3da;*/
-    /*        width: 224px;*/
-    /* commented */
-    /*    width: 240px !important;*/
-    /*    margin-left: 8px;
-    margin-right: 8px;*/
-    /*    margin-left: 0px;
-    margin-right: 0px;*/
-    /*    background: #111;*/
-    /* old commented */
-    /*    margin-left: 0px;
-    margin-right: 0px;*/
-    /*    border-radius: 5px;*/
-    border-radius: 0px;
-    /*    font-size: 12px !important;*/
-    padding: 5px;
-    /*    margin-bottom: 18px;
-    padding-bottom:5px;*/
-    /*    margin-bottom: 18px;*/
-    /*    margin-bottom: 18px;*/
-    /*    padding:5px;*/
-    /*box-shadow: 0.5px 3px 4px rgba(0, 0, 0, 0.40);*/
-    /*    box-shadow: 0 2px 6px rgba(0,0,0,0.3);*/
-    z-index: 9999999;
-
-
-
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-}
-
-
-.ui-icon-clipboard {
-    /*  top: -55px !important;
-  color:white !important;*/
-    background-position: -158px -126px;
-}
-
-
-/* ---------------------------------------------- */
-
-
-/* -------------- Accordion (angular-ui) ---------- */
+/* Accordion (angular-ui) */
 
 .panel-title {
-    /*    font-size: 12px !important;*/
-    /*    color: #555;*/
-    /*    font-weight: 500;*/
-    /* old panel title */
-    /*    font-size: 12px !important;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
-    /*  font-family: 'Open Sans', sans-serif;*/
-    /*          font-family: 'Noto Sans',sans-serif;
-          letter-spacing: 0;
-          font-size: 12px;*/
     font-family: Lato, 'Noto Sans', sans-serif;
     letter-spacing: -.0323em;
     font-style: normal;
     font-size: 14px;
     font-weight: 400;
-    /*          font-weight:bold;*/
-    /*          color: #000;
-          text-shadow: 0 0px 0px #ccc;*/
-    /*color: #fff;*/
-    /*          color: #DBDBDB;*/
-    /*color: #000;*/
     color: #3d3d3d;
-    /*color: #222;*/
-    /*color: #EEE;*/
     -webkit-font-smoothing: antialiased;
-    /*          color: #333;*/
-    /*          text-shadow: 0 0px 1px #333;*/
-    /*          text-shadow: 0 1px 1px #000;*/
-    /*text-shadow: 0 1px 1px #ccc;
-*/
-    /*          -webkit-font-smoothing: antialiased;*/
-    /*text-shadow: 0 1px 1px #ccc;*/
-    /*text-shadow: 0 1px 1px #d5d5d5;*/
     text-shadow: 0 1px 1px #fff;
-    /*text-shadow: 1 1px 0px #d5d5d5;*/
-    /*text-shadow: 
-      4px 4px 0px #d5d5d5, 
-      7px 7px 0px rgba(0, 0, 0, 0.2);*/
-    /*
-      text-shadow: 
-            1px 1px 0px #d5d5d5, 
-            2px 2px 0px rgba(0, 0, 0, 0.1);*/
-    /*-webkit-font-smoothing: antialiased;*/
-    /*color: #202020;
-letter-spacing: .1em;
-text-shadow: 0 1px 1px #ccc;
-*/
-    /*background-color: #2d2d2d;*/
-    /*text-shadow: 
-  -1px -1px 1px #111, 
-  2px 2px 1px #363636;*/
 }
 
 .panel-body {
     /*  font-family: 'Noto Sans',sans-serif;
-  font-size: 13px;
-
-  -webkit-font-smoothing: antialiased;*/
-    /*  line-height: 1.63;*/
     /*font-family: Lato,'Noto Sans',sans-serif;*/
-    /*
-margin: 4px !important;*/
     margin: 0px 4px 4px 4px !important;
 }
 
 .panel-heading {
-    /*padding: 10px 15px;*/
-    /*border-top-right-radius: 3px;
-border-top-left-radius: 3px;*/
     padding: 6px 15px;
-    /* Added */
-    /*background-color:#ffffff !important;*/
-    /*background-color:#fafafa !important;
-border-color:#ffffff !important;*/
-    /*#fafafa;*/
 }
 
 .panel-default>.panel-heading {
-    /*  color: #333333;
-  background-color: #f5f5f5;
-  border-color: #dddddd;*/
     color: #333;
-    /*  background-color: #f5f5f5;
-    border-color: #ddd;*/
-    /*    background-color: transparent;*/
-    /*  border-color: transparent;*/
-    /*  background-color: transparent;*/
     background-image: url("images/greyBG.jpg");
-    /*    background-color: #2d2d2d;*/
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
-    /*  border-bottom: 1px solid #dddddd;*/
 }
 
-
 .panel-body {
-    /*padding: 15px;*/
     padding: 3px;
-    /*padding-left:5px;*/
     padding-left: 8px;
-    /* Commented out */
-    /*border-color:#ffffff !important;*/
     border-color: #ffffff !important;
 }
 
-
 .panel-group .panel-heading+.panel-collapse .panel-body {
-    /*  border-top: 1px solid #dddddd;*/
-    /* border: 1px solid #CCC; */
-    /* box-shadow: 0 1px 1px rgba(0,0,0,.05); */
-    /*  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);
-  -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);
-  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);*/
-    /*  border: 1px solid transparent;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.21);
-  -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.21);
-  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.21);*/
+
 }
 
-
 .panel-group .panel-heading+.panel-collapse .panel-body {
-    /*  border-top: 1px solid #dddddd;*/
-    /* border: 1px solid #CCC; */
     border: 1px solid transparent;
-    /* box-shadow: 0 1px 1px rgba(0,0,0,.05); */
-    /*    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);
-    -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);
-    -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);*/
 }
-
-
 
 .panel-default>.panel-body {
-    /*  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.21);
-  -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.21);
-  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.21);*/
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);
     -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);
     -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);
 }
 
-
 .panel-group .panel {
-    /*margin-bottom: 0;
-overflow: hidden;*/
     border-radius: 1px !important;
-    /* added */
-    /*box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;*/
-    /*box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;*/
-    /*box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;*/
 }
-
-
 
 .collapse.in {
-    /* display: block; */
-    /*  box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;*/
-    /* box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);
- -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);
- -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);*/
 }
-
 
 .panel-collapse.collapse {
-    /*box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);
--moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);
--webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.31);*/
 }
-
-
-
 
 div.panel.panel-default {
-    /*  box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;*/
 }
 
-
-
 .panel-default {
-    /*border-color: #dddddd;*/
-    /*border-color: white;*/
     border: 0px;
-    /* Commented out */
-    /*box-shadow: 0 2px 6px rgba(0,0,0,0.3);*/
-    /*box-shadow:inset 0 -15px 5px -16px #111;*/
-    /*box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.80);
-   -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.80);
-   -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.80);*/
-    /*   box-shadow: 0 2px 6px rgba(0,0,0,0.3);*/
-    /*box-shadow: 0 2px 6px #919191;*/
-    /*box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;*/
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
-    /* COMMENTED */
     -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
     -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
 }
@@ -999,92 +624,44 @@ a.accordion-toggle {
 }
 
 
-/* ---------------------------------------------- */
 
+/* Print Friendly elements - on PropInfo */
 
-/* ---------------------------------------------- */
-
-
-/* streetView - streetView label */
-
-.StrLabel {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    margin-right: 8px;
-    margin-bottom: 10px;
-    color: white;
-    /*font-weight: 400;*/
-    font-weight: 500;
-    cursor: pointer;
-    /*z-index: 2;*/
-    z-index: 9999999;
-    /*text-shadow: rgba(0,0,0,0.7) 0px 1px 8px;*/
-    text-shadow: black 2px 2px 8px;
+#printLoadingTag,
+#printFriendlyLink {
+    display: none;
 }
 
-#streetCard {
-    /*  border-radius: 1px;*/
-    /* old border */
+
+/* autocomplete custom style */
+
+.autocompleteCustom {
+
+    border: 0px !important;
     border-radius: 0px !important;
-    /*   height:87px; */
-    /*height:100px; */
-    /*height:94px; */
-    /*   margin-top:8px; */
-    /*margin-top:7px; */
-    /* old margin */
-    margin-top: 4px;
-    /*   padding:5px; */
-    padding: 3px;
-    /*   background-color:white"*/
-    background-image: url("images/greyBG.jpg");
-    /*background-color:#dddddd;*/
-    /*background:transparent;*/
-    /*background-color: rgba(34,34,34,0.96);*/
-    /*visibility: hidden;*/
-    height: 94px;
-}
-
-.streetCard {
-    border-radius: 1px;
-    /*   height:87px; */
-    /*height:100px; */
-    /*height:94px; */
-    /*   margin-top:8px; */
-    margin-top: 7px;
-    margin-left: 2px;
-    /*   padding:5px; */
-    padding: 3px;
-    background-color: white;
-    /*  background-image: url("images/greyBG.jpg");*/
-    /*background-color:#dddddd;*/
-    /*background:transparent;*/
-    /*background-color: rgba(34,34,34,0.96);*/
-    /*visibility: hidden;*/
-    /*  height:94px; */
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
 }
 
 
-.glyphicon-chevron-right {
-    color: gray;
-}
 
 
-/* ---------------------------------------------- */
 
 
-/* ----------- side-panel element specifics ------------- */
 
 
-/* custom carets */
+
+
+
+/* ----------- Side-Panel & Pull-out Menu Specific ------------- */
+
+/* Custom Carets */
 
 .caret-right {
     border-left: 4px solid;
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
 }
-
-
 
 .main-nav li {
     position: relative;
@@ -1096,16 +673,8 @@ li {
 }
 
 .main-nav .nav-text a {
-    /*  -webkit-font-smoothing: antialiased;
-  text-shadow: 0px 1px #000;
-  color: #eee;*/
     transition: .3s ease all;
-    /*  color: #DEDEDE;*/
-    /* COMMENTED */
-    /*color: #BBB;*/
     color: #DEDEDE;
-    /*color: #AAA;*/
-    /*  color: #EEE;*/
     display: block;
     font-weight: 300;
     padding: 2px 30px;
@@ -1113,9 +682,7 @@ li {
     transition: .3s ease all;
     -moz-transition: .3s ease all;
     -webkit-transition: .3s ease all;
-
     line-height: 1.5;
-
     text-decoration: none!important;
 
     font-family: 'Open Sans', sans-serif !important;
@@ -1124,44 +691,28 @@ li {
 #aerialLevel {
     color: #DEDEDE;
     font-weight: 300;
-    /*    padding: 2px 30px;*/
-    /*    font-size: 17px;*/
     font-size: 12px;
     transition: .3s ease all;
     -moz-transition: .3s ease all;
     -webkit-transition: .3s ease all;
-
     line-height: 1.5;
-    /*    text-decoration: none!important;*/
+
     font-family: 'Open Sans', sans-serif !important;
 }
 
 .main-nav .nav-text a:hover {
-    /*  color: #ffffff;*/
-    /*  color: #EEE;
-  background: #232323;*/
-    /*  -webkit-transition: .3s ease all;*/
-    /*color: #ffffff;*/
-    /* COMMENTED */
     color: #fef4f4;
-
     transition: .3s ease all;
     -moz-transition: .3s ease all;
     -webkit-transition: .3s ease all;
 }
 
 .main-nav .nav-text li:hover {
-    /*  color: #ffffff;*/
-    /*  color: #EEE;*/
-    /*  background: #232323;*/
     background: #111;
-    /*  -webkit-transition: .3s ease all;*/
     transition: .3s ease all;
     -moz-transition: .3s ease all;
     -webkit-transition: .3s ease all;
 }
-
-
 
 .main-nav .nav-text {
     list-style: none;
@@ -1170,60 +721,25 @@ li {
 }
 
 .main-nav .nav-text ul .dropdown-menu {
-    /*  margin-left:240px;*/
-    /*  -webkit-transition: all 0.5s ease-in-out;
-   -moz-transition: all 0.5s ease-in-out;
-   -o-transition: all 0.5s ease-in-out;
-   -ms-transition: all 0.5s ease-in-out;
-   transition: all 0.5s ease-in-out;
 
-   transition: .3s ease all;
-   -moz-transition: .3s ease all;
-   -webkit-transition: .3s ease all;*/
 }
 
-
-/*.open {
-  transition: .3s ease all;
-  -moz-transition: .3s ease all;
-  -webkit-transition: .3s ease all;
-
-}*/
-
 .open>.dropdown-menu {
-    /*  margin-top:-30px !important;*/
     margin-top: -29px !important;
-    /*  margin-left:232px;*/
-    /*margin-left:239px;*/
     margin-left: 236px;
     border: 0px;
-    /*border:0px !important;*/
     border-radius: 0px !important;
-    /*padding:5px;*/
-    /* margin-left:5px; */
     box-shadow: none !important;
-    /*    border-bottom: 2px solid #3c8ed2;*/
     outline: 6px solid #222;
-    /*    border: 5px solid blue; */
-    /*      outline: 5px solid #222;*/
 }
 
 .open>.dropdown-menu a {
     background-color: #222;
     color: #DEDEDE !important;
-    /*    background-color: black !important;*/
 }
 
-
 .open>.dropdown-menu a:hover {
-    /*  color: #ffffff;
-
-  transition: .3s ease all;
-  -moz-transition: .3s ease all;
-  -webkit-transition: .3s ease all;*/
-    /*  color: #fef4f4 !important;*/
     color: white !important;
-    /*  background-color: #111 !important;*/
     transition: .3s ease all;
     -moz-transition: .3s ease all;
     -webkit-transition: .3s ease all;
@@ -1232,67 +748,256 @@ li {
 .open>.dropdown-menu a:focus {
     background-color: #333 !important;
     color: white !important;
-    /*background-color: #333 !important;
-  color: white !important;*/
 }
 
-
-
-
 .open>.dropdown-menu li:hover {
-    /*  background: #111 !important;
-
-
-  transition: .3s ease all;
-  -moz-transition: .3s ease all;
-  -webkit-transition: .3s ease all;*/
-    /*  color: #fef4f4 !important;*/
     color: white !important;
-
     background: #111 !important;
-    /*  background: #333 !important; */
-    /*  background-color: #fff;*/
     background-color: #111 !important;
     transition: .3s ease all;
     -moz-transition: .3s ease all;
     -webkit-transition: .3s ease all;
 }
 
-
 .open>.dropdown-menu>li {
-    /*    margin-top:-5px;*/
-    /*    margin-right:-1px;*/
-    /*    margin-top:-5px !important;*/
-    /*    margin-left:1px;*/
-    /*  padding: 5px 0;
-    margin: 2px 0 0;*/
-    /*  margin-left:2px;
-  margin-right:2px;*/
-    /*  background-color: black !important;*/
-    /* border-top: 1px solid #d9d9d9; */
-    /* padding: 1px; */
-    /* border-radius: 0 2px 2px 0 !important; */
-    /*  border-bottom-right-radius: 2px !important;
-  border-bottom-left-radius: 2px !important;*/
+
 }
 
 
-/* ---------------------------------------------- */
+/* View Headers */
 
-
-/* ---------------------------------------------- */
-
-
-/* Icon style */
-
-.slide-icons {
-    font-size: 1.1em;
-    /*margin-top:-8px !important;*/
-    /*margin-bottom:8px !important;*/
+#introHeader,
+#displayHeader,
+#toolsHeader,
+#resourcesHeader {
+    position: absolute;
+    left: 0px;
+    z-index: 99;
+    -webkit-transition: all 200ms ease-out 0ms;
+    -moz-transition: all 200ms ease-out 0ms;
+    -o-transition: all 200ms ease-out 0ms;
+    -ms-transition: all 200ms ease-out 0ms;
+    transition: all 200ms ease-out 0ms;
+    border-radius: 0!important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    width: 240px;
 }
 
 
-/* ---------------------------------------------- */
+/* Arrow Toggles */
+
+#introToggle,
+#displayToggle,
+#toolsToggle,
+#resourcesToggle {
+    font-size: .9em;
+    margin-top: 2px;
+    cursor: pointer;
+    padding-left: 3px;
+    padding-right: 3px;
+    float: right;
+}
+
+
+#slidepanel .divider {
+    margin: 9px 0;
+    height: 0;
+    clear: both;
+    border: solid #ddd;
+    border-width: 1px 0 0;
+    align: center;
+    color: #cccccc !important;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Information Card */
+
+#InfoCardDialog {
+    z-index: 99;
+    outline: none;
+    position: absolute;
+    height: 195px;
+    width: 220px;
+    left: 10px !important;
+    bottom: 15px !important;
+    color: #666;
+    background: #fff;
+}
+
+.cards-strong {
+    color: #AAA !important;
+    padding-top: 7px;
+    padding-bottom: 6px;
+    padding-left: 27px;
+    padding-right: 27px;
+    font-size: 13px !important;
+    font-family: 'Roboto', sans-serif;
+    /*  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    /*  font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;*/
+    background: #111;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.cards-bold {
+    font-weight: bolder !important;
+}
+
+.cards-light {
+    color: #666;
+    font-size: 12px !important;
+}
+
+.cards-title {
+    color: #232323;
+    font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+    padding: 2px;
+    padding-left: 5px;
+    background-color: #0d77b6 !important;
+    background-image: none;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    text-shadow: 0 -1px 1px #214675;
+
+    border: 1px solid #2e63a5;
+    border-bottom: 0px !important;
+}
+
+.headertitle {
+    padding: 5px;
+    color: #232323;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    line-height: 1.428571429;
+
+    font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+}
+
+.infoBlock {
+    position: absolute;
+    left: -4px;
+    bottom: 13px;
+    z-index: 999999;
+    width: 248px;
+    border-radius: 0px;
+    height: auto;
+    position: absolute;
+    border-radius: 0px;
+    padding: 5px;
+    z-index: 9999999;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.ui-icon-clipboard {
+    background-position: -158px -126px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------ StreetView Control --------- */
+
+/* StreetView label */
+
+.StrLabel {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    margin-right: 8px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    z-index: 9999999;
+    text-shadow: black 2px 2px 8px;
+}
+
+#streetCard {
+    border-radius: 0px !important;
+    margin-top: 4px;
+    padding: 3px;
+    background-image: url("images/greyBG.jpg");
+    height: 94px;
+}
+
+.streetCard {
+    border-radius: 1px;
+    margin-top: 7px;
+    margin-left: 2px;
+    padding: 3px;
+    background-color: white;
+}
+
+.glyphicon-chevron-right {
+    color: gray;
+}
+
+
+
+
+
+
 
 
 /* ---------------------------------------------- */
@@ -1300,37 +1005,11 @@ li {
 
 /* Map Legend, Weather module */
 
-h6 {
-    /*  margin-top:-5px;
-  border-top-style: solid;
-  border-top-width: 6px;
-  font-weight: normal;
-  height: 34px;
-  line-height: 29px;
-  padding-left: .5rem;
-  margin: 0 0 5px 0;
-  */
-    margin-top: 2px !important;
-    font-size: 17px;
-    font-family: "verb", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-    /*  border-top-color: #5B9F49 !important;*/
-    /*  border-top-color: #3c8ed2 !important;
-  color: #3c8ed2 !important;*/
-    /*border-top-color: #0053AE;*/
-    color: #8ED1E9;
-}
-
 #legendDivCasing {
-
     position: absolute;
-    /*  top: 45px;
-  left:240px;*/
     top: 0px;
     right: 0px;
-    /* visibility:hidden; */
-    /*  position:absolute !important; */
     z-index: 1000;
-    /*  top:0px; */
     padding: 10px 14px;
     margin: 0;
     color: #FFF;
@@ -1338,23 +1017,12 @@ h6 {
     width: 280px;
     height: 299px;
     margin: auto;
-    /*  opacity:0;*/
-    /*added */
 }
 
 #legendDiv {
-    /*  position: relative;*/
-    /*  padding: 10px 20px;
-  margin: 0;*/
-    /*  height:95%; */
-    /*  height:91%;*/
     height: 88.5%;
-    /*  width:98%;  */
     overflow-y: scroll;
-
     overflow-x: hidden;
-    /*overflow-y:hidden; */
-    /*  padding:20px;   */
     margin-top: 4px;
     margin-bottom: 4px;
     margin-right: 2px;
@@ -1363,14 +1031,9 @@ h6 {
 
 #weatherDivCasing {
     position: absolute;
-    /*  top: 45px;
-    left:240px;*/
     top: 0px;
     right: 0px;
-    /* visibility:hidden; */
-    /*  position:absolute !important; */
     z-index: 999;
-    /*  top:0px; */
     padding: 10px 14px;
     margin: 0;
     color: #FFF;
@@ -1378,23 +1041,10 @@ h6 {
     width: 280px;
     height: 109px;
     margin: auto;
-    /*    opacity:0;*/
-    /*added */
-    /*    position:absolute !important; 
-    z-index:1000; 
-    top:0px; 
-    padding: 10px 14px;
-    margin: 0;
-    color: #FFF;
-    background-color: rgba(34,34,34,0.96);
-    width: 280px;
-    height: 109px;
-    margin: auto;*/
 }
 
 #weatherDiv {
     height: 68.5%;
-    /*overflow-y:scroll; */
     margin-top: 4px;
     margin-bottom: 4px;
     margin-right: 2px;
@@ -1407,7 +1057,6 @@ h6 {
 /* legend specific */
 
 .esriLegendServiceLabel {
-    /*  font-weight: bold;*/
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 5px;
@@ -1469,7 +1118,6 @@ h6 {
     background-color: #222;
 }
 
-
 .newspaper3>.dropdown-menu {
     margin-top: -29px !important;
     margin-left: 216px;
@@ -1501,19 +1149,16 @@ h6 {
 
 .ng-hide-add,
 .ng-hide-remove {
-
     display: block !important;
 }
 
 .cssFade {
     right: 0px;
-
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
-
     opacity: 1;
 }
 
@@ -1521,8 +1166,6 @@ h6 {
     right: -150px;
     opacity: 0;
 }
-
-
 
 
 .blockFade {
@@ -1712,9 +1355,6 @@ input[type='checkbox']:checked.icon-checkbox+label .checked {
 
 
 
-
-
-
 /* disable Print As PNG option - future implement */
 
 .ownershipTable td,
@@ -1781,23 +1421,6 @@ tr {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .blue-streak {}
 
 .blue-streak li {
@@ -1823,15 +1446,9 @@ tr {
 
 }
 
-
-
-
 .dropdown-menu-form>li {
 
 }
-
-
-
 
 
 
@@ -1881,7 +1498,6 @@ tr {
     display: none;
 }
 
-
 .gm-style {
 
 }
@@ -1900,19 +1516,15 @@ tr {
 
 #LocateButton {
     position: absolute;
-
     z-index: 2;
-
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
-
     bottom: 84px;
     right: 20px;
 }
-
 
 .LocateButton .zoomLocateButton {
     -webkit-border-radius: 0px;
@@ -1977,8 +1589,6 @@ tr {
     transform: scale(1);
 }
 
-
-
 .share-pane.tab-pane {
     padding: 15px 0;
 }
@@ -1993,8 +1603,6 @@ tr {
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
     margin-bottom: 30px;
 }
-
-
 
 .share-container {
     background: #EDECEC;
@@ -2053,16 +1661,6 @@ tr {
     cursor: default;
     background-color: #eceeef;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2227,32 +1825,6 @@ select {
 /* --------------------- */
 
 
-/* map scalebar control - added at map constructor */
-
-.esriScaleLabelDiv {
-    position: relative;
-    top: -5px;
-    width: 100%;
-    padding: 2px;
-    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
-}
-
-.esriScalebar {
-    z-index: 30;
-    position: absolute;
-    width: 0px;
-    height: 20px;
-    margin-left: 6cm;
-}
-
-.esriScalebarLine {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    height: 6px;
-    border: 2px solid #dddddd;
-}
-
 
 
 
@@ -2276,8 +1848,6 @@ select {
 .esriPopup .titleButton.close {
     display: none;
 }
-
-
 
 .esriPopup .titleButton.maximize {
     display: block;
@@ -2332,21 +1902,10 @@ div.sizer {
 
 }
 
-
-
-
 .esriPopup .titlePane {
     border-radius: 0px 0px 0px 0px;
     -webkit-border-radius: 0px 0px 0px 0px;
 }
-
-
-
-
-
-
-
-
 
 .esriPopup .pointer.top {
 
@@ -2357,15 +1916,6 @@ div.sizer {
 .esriPopup .outerPointer {
 
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2397,8 +1947,6 @@ div.sizer {
 
 
 
-
-
 .newspaper3>.dropdown-menu li span {
     /*padding-left:20px;*/
 }
@@ -2410,16 +1958,6 @@ div.sizer {
 .newspaper3>.dropdown-menu a label {
     /*width:100%;*/
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2472,11 +2010,6 @@ div.sizer {
 /* --------------------- Search --------------------- */
 
 input#search-form {
-    /*      font-family: 'Lato', sans-serif;*/
-    /*      font-family: Lato,'Noto Sans',sans-serif;*/
-    /*      font-family: 'Open Sans', sans-serif;*/
-    /*      font-family: Lato,'Noto Sans',sans-serif;*/
-    /*      font-weight: 500;*/
     font-family: 'Noto Sans', sans-serif;
     letter-spacing: 0;
     font-size: 19px;
@@ -2561,16 +2094,9 @@ input#search-form {
 
 
 
-
-
-
-
-
-
 #searchBtn {
     border-radius: 0px;
 }
-
 
 
 
@@ -2613,12 +2139,10 @@ input#search-form {
 
 
 .navbar-inverse .navbar-form {
-
 }
 
 
 .navbar-inverse {
-
 }
 
 
@@ -2648,39 +2172,3 @@ input#search-form {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* autocomplete custom style */
-
-.autocompleteCustom {
-
-    border: 0px !important;
-    border-radius: 0px !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-}
-
-
-
-
-
-
-
-
-
-/* print friendly elements - on PropInfo */
-
-#printLoadingTag,
-#printFriendlyLink {
-    display: none;
-}

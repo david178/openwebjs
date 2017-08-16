@@ -80,20 +80,10 @@ color: #243314;
     border: 0 none;
     overflow: auto;
     position: relative;
-/*    padding: 0 !important;*/
     margin: 0;
 }
 
 .ui-dialog .ui-widget-header {
-/*    background: #b0de78;
-    border: 0;
-    color: #fff;
-    font-weight: normal; */
-
-
-
-/*    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-/*    font-size: 14px;*/
     line-height: 1.428571429;
     color: #333333;
     background-color: #ffffff;
@@ -143,14 +133,6 @@ color: #243314;
 -webkit-border-bottom-right-radius: 3px;
 border-bottom-right-radius: 3px;
 }
-
-
-/*
-<span id='introToggle' class='fa fa-times'></span>*/
-
-
-
-
 
 
 
