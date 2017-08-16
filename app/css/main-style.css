@@ -138,6 +138,30 @@ body {
     color: #EEE !important;
 }
 
+/* Custom adjustments to iconic icon framework */
+
+.iconic-adjust-11 {
+    margin-right: 4px;
+    margin-left: -3px;
+}
+
+.iconic-adjust-10 {
+    margin-right: 5px;
+    margin-left: -3px;
+}
+
+.iconic-adjust-8 {
+    margin-right: 7px;
+    margin-left: -3px;
+}
+
+.iconic-adjust-main {
+    font-size: 1.5em !important;
+}
+
+
+
+
 
 
 
@@ -239,6 +263,117 @@ height: 100%;
     border-radius: 0px;
 }
 
+/* GeoLocate Button */
+
+#LocateButton {
+    position: absolute;
+    z-index: 2;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    bottom: 84px;
+    right: 20px;
+}
+
+.LocateButton .zoomLocateButton {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -o-border-radius: 0px;
+    border-radius: 0px;
+    background-color: rgb(17, 63, 112);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.LocateButton .zoomLocateButton:hover {
+    background-color: #0D2E56;
+    transition: all 0.30s linear;
+}
+
+
+/* Map Legend, Weather module */
+
+#legendDivCasing {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 1000;
+    padding: 10px 14px;
+    margin: 0;
+    color: #FFF;
+    background-color: rgba(34, 34, 34, 0.96);
+    width: 280px;
+    height: 299px;
+    margin: auto;
+}
+
+#legendDiv {
+    height: 88.5%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+#weatherDivCasing {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 999;
+    padding: 10px 14px;
+    margin: 0;
+    color: #FFF;
+    background-color: rgba(34, 34, 34, 0.96);
+    width: 280px;
+    height: 109px;
+    margin: auto;
+}
+
+#weatherDiv {
+    height: 68.5%;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+/* legend specific */
+
+.esriLegendServiceLabel {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 5px;
+    color: #A3A3A3;
+}
+
+
+/* Measure Block */
+
+#measureDivCasing {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 999;
+    padding: 10px 14px;
+    margin: 0;
+    color: #FFF;
+    background-color: rgba(34, 34, 34, 0.96);
+    width: 280px;
+    height: 280px;
+    margin: auto;
+}
+
+#measureDiv {
+    height: 68.5%;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
 
 /* Map Scalebar control - added at map constructor */
 
@@ -281,7 +416,54 @@ height: 100%;
 }
 
 
+/* Esri PopUp specific - modify for mobile friendly expanded prop info view */
 
+.esriPopup .titleButton.close {
+    display: none;
+}
+
+.esriPopup .titleButton.maximize {
+    display: block;
+    margin-top: 4px;
+    margin-right: -10px;
+}
+
+.esriPopup .titleButton.restore {
+    display: block;
+    margin-top: 4px;
+    margin-right: -10px;
+}
+
+.esriPopup {
+    z-index: 9999999 !important;
+    transition: margin 0.5s ease-in-out;
+}
+
+.esriPopupMaximized {
+    margin-top: -24px !important;
+    margin: -24px !important;
+}
+
+.esriPopup .esriPopupWrapper {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+}
+
+.esriPopup .titlePane {
+    border-radius: 0px 0px 0px 0px;
+    -webkit-border-radius: 0px 0px 0px 0px;
+}
+
+.esriPopup .pointer.top {
+
+}
+
+.esriPopup .pointer,
+.esriPopup .outerPointer {
+
+}
 
 
 
@@ -645,6 +827,123 @@ a.accordion-toggle {
 
 
 
+/* Used for map View & FLight date checkbox lists */
+
+/* Two & Three-Col Native lists */
+
+.two-col-special>.dropdown-menu {
+    margin-top: -29px !important;
+    margin-left: 236px;
+    border: 0px;
+}
+
+.two-col-special {
+    width: 350px !important;
+    background-color: #222;
+}
+
+.two-col-special li {
+    display: inline-block;
+    width: 49%;
+}
+
+.two-col-special li:before {
+
+}
+
+/* Two-Col lists */
+
+.two-col-special>.dropdown-menu {
+    margin-top: -29px !important;
+    margin-left: 236px;
+    border: 0px;
+}
+
+.two-col-special {
+    width: 350px !important;
+    background-color: #222;
+}
+
+.two-col-special li {
+    display: inline-block;
+    width: 49%;
+}
+
+.two-col-special li:before {
+
+}
+
+
+
+.newspaper2>.dropdown-menu {
+    margin-top: -29px !important;
+    margin-left: 236px;
+    border: 0px;
+}
+
+.newspaper2 {
+    -webkit-columns: 100px 2;
+    -moz-columns: 100px 2;
+    columns: 100px 2;
+    width: 350px !important;
+    background-color: #222;
+}
+
+.newspaper3>.dropdown-menu {
+    margin-top: -29px !important;
+    margin-left: 216px;
+    border: 0px;
+}
+
+.newspaper3 {
+    -webkit-columns: 100px 3;
+    -moz-columns: 100px 3;
+    columns: 100px 3;
+    width: 500px !important;
+    background-color: #222;
+}
+
+
+
+/* Pull out side panels, list item adjustments (for a href element) */
+
+.newspaper2>.dropdown-menu li span {
+    /*padding-left:20px;*/
+}
+
+.newspaper2>.dropdown-menu a {
+    /*padding:2px;*/
+}
+
+.newspaper2>.dropdown-menu a label {
+    /*width:100%;*/
+}
+
+
+.newspaper3>.dropdown-menu li span {
+    /*padding-left:20px;*/
+}
+
+.newspaper3>.dropdown-menu a {
+    /*padding:2px;*/
+}
+
+.newspaper3>.dropdown-menu a label {
+    /*width:100%;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -815,17 +1114,6 @@ li {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 /* Information Card */
 
 #InfoCardDialog {
@@ -848,8 +1136,6 @@ li {
     padding-right: 27px;
     font-size: 13px !important;
     font-family: 'Roboto', sans-serif;
-    /*  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-    /*  font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;*/
     background: #111;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
@@ -924,38 +1210,6 @@ li {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ------------ StreetView Control --------- */
 
 /* StreetView label */
@@ -993,6 +1247,43 @@ li {
     color: gray;
 }
 
+/* Google Streeview Settings */
+
+.gm-style>div:nth-child(2) {
+    display: none;
+}
+.gm-style>div:nth-child(4) {
+    display: none;
+}
+.gm-style>div:nth-child(10) {
+    display: none;
+}
+.gm-style>div:nth-child(8) {
+    display: none;
+}
+.gm-style>div:nth-child(7) {
+    display: none;
+}
+.gm-style>div:nth-child(5) {
+    display: none;
+}
+.gm-style>div:nth-child(3) {
+    display: none;
+}
+.gm-style>div:nth-child(12) {
+    display: none;
+}
+.gm-style>div:nth-child(6) {
+    margin: -1px !important;
+    cursor: pointer;
+    display: none;
+}
+.gm-style>div:nth-child(13) {
+    display: none;
+}
+.gm-style {
+
+}
 
 
 
@@ -1000,150 +1291,253 @@ li {
 
 
 
-/* ---------------------------------------------- */
 
 
-/* Map Legend, Weather module */
 
-#legendDivCasing {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    z-index: 1000;
-    padding: 10px 14px;
+
+
+
+/* --------------------- Search --------------------- */
+
+/* Main Search - search-form -  placeholder text style */
+
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    font-family: Lato, 'Noto Sans', sans-serif !important;
+    font-weight: 600 !important;
+    background: url(data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw%3D%3D) transparent;
+    Opacity: .4 !important;
+    color: #696969 !important;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    font-family: Lato, 'Noto Sans', sans-serif !important;
+    font-weight: 600 !important;
+    background: url(data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw%3D%3D) transparent;
+    Opacity: .4 !important;
+    color: #696969 !important;
+}
+
+:-ms-input-placeholder {
+    /* IE 10+ */
+    font-family: Lato, 'Noto Sans', sans-serif !important;
+    font-weight: 600 !important;
+    color: #c7c9cc !important;
+}
+
+:-moz-placeholder {
+    /* Firefox 18- */
+    font-family: Lato, 'Noto Sans', sans-serif !important;
+    font-weight: 600 !important;
+    background: url(data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw%3D%3D) transparent;
+    Opacity: .4 !important;
+    color: #696969 !important;
+}
+
+
+
+
+/* Search Form */
+
+input#search-form {
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: 0;
+    font-size: 19px;
+    -webkit-font-smoothing: antialiased;
+}
+
+#search-form ul {
+    width: 100%;
+    cursor: pointer;
+    z-index: 9999999 !important;
+}
+
+#search-form li {
+    z-index: 9999999 !important;
+}
+
+
+/* IE searchbox height specific */
+
+#search-holder {
+    margin-left: -3px;
+}
+
+
+#tester .input-group {
+    background-color: black !important;
+}
+
+.navbar-form {
+    margin-top: 0px !important;
+    border: 0px !important;
+    box-shadow: none;
+
+    background-color: transparent !important;
+}
+
+
+
+/* Search Modern Style (incl searchBtn) */
+
+/* transforming the header and toggle buttons for side panel collapse */
+
+.headerAdjust {
+    background-color: white !important;
+    color: rgb(17, 63, 112);
+    border-bottom: 2px solid rgb(37, 83, 132);
+    margin-top: -57px;
+    height: 49px;
+    z-index: 999999999 !important;
+}
+
+.toggleAdjust {
+    margin-right: 8px;
+    margin-top: 2px !important;
+
+    font-size: 1.1em !important;
+}
+
+.searchBtnAdjust {
+
+}
+
+/* custom transforms */
+
+.titleAdjust {
+    display: none !important;
+}
+
+.searchFormAdjust {
+    margin-right: 171px !important;
+}
+
+#searchBtn {
+    border-radius: 0px;
+}
+
+#tester>input {
+    /* use this for search box */
+    /*      box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 -1px 0px rgba(0,0,0,0.02);*/
+    /*border: 0px !important;*/
+}
+
+#search-form {
+
+    /*margin-left:-29px;*/
+    outline: 0 !important;
+    /*transition: .3s ease all;*/
+    letter-spacing: 0;
+    background: #FFF;
+    /*border: 0px solid #cccccc;*/
+    border: 0px !important;
+    /*border-top: .1px solid rgb(37, 83, 132) !important;*/
+    border-radius: 0 !important;
+    box-shadow: none;
+
+
+    /* use this for search box */
+    /* add back in at the end of re-model */
+    /*      box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 -1px 0px rgba(0,0,0,0.02);*/
+    /* added */
+    /*margin-top:0px;*/
+    margin-top: 0px;
+    height: 49px !important;
+
+
+    /*padding-right:-220px;
+*/
+    /*margin-right:50px;*/
+    margin-right: -11px;
+}
+
+.navbar-inverse .navbar-form {
+}
+
+.navbar-inverse {
+}
+
+
+
+
+
+
+
+
+
+
+/* --------------------- OW Agent --------------------- */
+
+/* Assistant Input Box */
+
+#assistantInputBox {
+    background-image: url('/css/searchicon.png');
+    /* Add a search icon to input */
+    background-position: 10px 12px;
+    /* Position the search icon */
+    background-repeat: no-repeat;
+    /* Do not repeat the icon image */
+    width: 100%;
+    /* Full-width */
+    font-size: 16px;
+    /* Increase font-size */
+    padding: 12px 20px 12px 40px;
+    /* Add some padding */
+    border: 1px solid #ddd;
+}
+
+#assistantULList_UL li {
+    transition: all 0.3s ease-out;
+
+    /* Remove default list styling */
+    list-style-type: none !important;
+    padding: 0;
     margin: 0;
-    color: #FFF;
-    background-color: rgba(34, 34, 34, 0.96);
-    width: 280px;
-    height: 299px;
-    margin: auto;
+
+    padding: 2px;
+    /* Add some padding */
+    margin-left: -40px;
+    !important;
 }
 
-#legendDiv {
-    height: 88.5%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-right: 2px;
-    margin-left: 2px;
+#assistantULList_UL li a {
+    border-radius: 0px !important;
 }
 
-#weatherDivCasing {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    z-index: 999;
-    padding: 10px 14px;
-    margin: 0;
-    color: #FFF;
-    background-color: rgba(34, 34, 34, 0.96);
-    width: 280px;
-    height: 109px;
-    margin: auto;
-}
+#assistantULList_UL li a.header {}
 
-#weatherDiv {
-    height: 68.5%;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-right: 2px;
-    margin-left: 2px;
-}
+#assistantULList_UL li a:hover:not(.header) {}
 
 
 
 
-/* legend specific */
-
-.esriLegendServiceLabel {
-    font-size: 14px;
-    line-height: 20px;
-    margin-bottom: 5px;
-    color: #A3A3A3;
-}
 
 
-/* ---------------------------------------------- */
 
 
-/* ---------------------------------------------- */
 
 
-/* Two-Col lists */
-
-.two-col-special>.dropdown-menu {
-    margin-top: -29px !important;
-    margin-left: 236px;
-    border: 0px;
-}
-
-.two-col-special {
-    width: 350px !important;
-    background-color: #222;
-}
-
-.two-col-special li {
-    display: inline-block;
-    width: 49%;
-}
-
-.two-col-special li:before {
-
-}
 
 
-/* ---------------------------------------------- */
 
 
-/* ---------------------------------------------- */
 
 
-/* Two & Three-Col Native lists */
 
 
-/* Used for map View & FLight date checkbox lists */
-
-.newspaper2>.dropdown-menu {
-    margin-top: -29px !important;
-    margin-left: 236px;
-    border: 0px;
-}
-
-.newspaper2 {
-    -webkit-columns: 100px 2;
-    -moz-columns: 100px 2;
-    columns: 100px 2;
-    width: 350px !important;
-    background-color: #222;
-}
-
-.newspaper3>.dropdown-menu {
-    margin-top: -29px !important;
-    margin-left: 216px;
-    border: 0px;
-}
-
-.newspaper3 {
-    -webkit-columns: 100px 3;
-    -moz-columns: 100px 3;
-    columns: 100px 3;
-    width: 500px !important;
-    background-color: #222;
-}
 
 
-/* ---------------------------------------------- */
 
 
-/* ---------------------------------------------- */
 
+
+
+/* --------------------- Animations, Etc --------------------- */
 
 /* ng-show / hide animations (ng-Animate) */
 
-
 /* FADE */
-
 
 /* ensure visibility during the transition */
 
@@ -1167,7 +1561,6 @@ li {
     opacity: 0;
 }
 
-
 .blockFade {
     top: 0px;
     right: 0px;
@@ -1184,7 +1577,6 @@ li {
     right: 0px;
     opacity: 0;
 }
-
 
 
 /* ---------------------------------------------- */
@@ -1204,7 +1596,6 @@ li {
     margin-top: 5px !important;
     margin-left: 6px;
 }
-
 
 
 /* IE10+ CSS styles go here */
@@ -1253,7 +1644,6 @@ li label {
 }*/
 
 
-
 /* Used for map View & FLight date checkbox lists */
 
 .glyphicon-ok {
@@ -1272,8 +1662,6 @@ li label {
     display: inline;
     font-size: 14px !important;
 }
-
-
 
 li label {
     margin: 0;
@@ -1341,16 +1729,12 @@ input[type='checkbox']:checked.icon-checkbox+label .checked {
     opacity: 1;
 }
 
-
-
 /* general disable list item */
 
 .disable_List {
     pointer-events: none;
     opacity: 0.4;
 }
-
-
 
 
 
@@ -1386,7 +1770,6 @@ tr {
     margin-bottom: 3px;
 }
 
-
 #regTab.nav-tabs>li.active>a,
 #regTab.nav-tabs>li.active>a:focus,
 #regTab.nav-tabs>li.active>a:hover {
@@ -1418,15 +1801,11 @@ tr {
 
 
 
-
-
-
 .blue-streak {}
 
 .blue-streak li {
 
 }
-
 
 /*external list items */
 
@@ -1434,12 +1813,10 @@ tr {
     background: #333 !important;
 }
 
-
 /* internal list items */
 
 .blue-streak a:hover {
     background: #333 !important;
-
 }
 
 .blue-streak a:focus {
@@ -1449,100 +1826,6 @@ tr {
 .dropdown-menu-form>li {
 
 }
-
-
-
-
-
-/* Google Streeview Settings */
-
-.gm-style>div:nth-child(2) {
-    display: none;
-}
-
-.gm-style>div:nth-child(4) {
-    display: none;
-}
-
-.gm-style>div:nth-child(10) {
-    display: none;
-}
-
-.gm-style>div:nth-child(8) {
-    display: none;
-}
-
-.gm-style>div:nth-child(7) {
-    display: none;
-}
-
-.gm-style>div:nth-child(5) {
-    display: none;
-}
-
-.gm-style>div:nth-child(3) {
-    display: none;
-}
-
-.gm-style>div:nth-child(12) {
-    display: none;
-}
-
-.gm-style>div:nth-child(6) {
-    margin: -1px !important;
-    cursor: pointer;
-    display: none;
-}
-
-.gm-style>div:nth-child(13) {
-    display: none;
-}
-
-.gm-style {
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-#LocateButton {
-    position: absolute;
-    z-index: 2;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-    bottom: 84px;
-    right: 20px;
-}
-
-.LocateButton .zoomLocateButton {
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    -o-border-radius: 0px;
-    border-radius: 0px;
-    background-color: rgb(17, 63, 112);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.LocateButton .zoomLocateButton:hover {
-    background-color: #0D2E56;
-    transition: all 0.30s linear;
-}
-
-
-
-
 
 
 
@@ -1611,9 +1894,7 @@ tr {
 
 
 
-
-
-/*modal window close icon */
+/* modal window close icon */
 
 .modalCloseIcon {
     position: absolute;
@@ -1650,8 +1931,6 @@ tr {
 
 
 
-
-
 /* disabled bootstrap list group items */
 
 .list-group-item.disabled,
@@ -1665,15 +1944,6 @@ tr {
 
 
 
-
-
-
-
-
-
-
-
-
 /* Info Block coordinate system drop down */
 
 .coordsDropDown {
@@ -1683,9 +1953,6 @@ tr {
     border: 0px;
     font-weight: bold;
 }
-
-
-
 
 select::-ms-expand {
     display: none;
@@ -1704,7 +1971,6 @@ select::-ms-expand {
     box-sizing: border-box;
 }
 
-
 .customarrow:after {
     content: "\f078";
     font-family: "FontAwesome";
@@ -1717,7 +1983,6 @@ select::-ms-expand {
     width: 9%;
 }
 
-
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -1728,447 +1993,6 @@ select {
     text-indent: 2px;
 }
 
-
-
-
 select.coordsDropDown {
 
 }
-
-select {
-
-}
-
-
-
-
-/* --------------------- */
-
-
-/* Measure Block */
-
-#measureDivCasing {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    z-index: 999;
-    padding: 10px 14px;
-    margin: 0;
-    color: #FFF;
-    background-color: rgba(34, 34, 34, 0.96);
-    width: 280px;
-    height: 280px;
-    margin: auto;
-}
-
-#measureDiv {
-    height: 68.5%;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-right: 2px;
-    margin-left: 2px;
-}
-
-
-/* --------------------- */
-
-
-/* OW agent style */
-
-
-/* --------------------- */
-
-#assistantInputBox {
-    background-image: url('/css/searchicon.png');
-    /* Add a search icon to input */
-    background-position: 10px 12px;
-    /* Position the search icon */
-    background-repeat: no-repeat;
-    /* Do not repeat the icon image */
-    width: 100%;
-    /* Full-width */
-    font-size: 16px;
-    /* Increase font-size */
-    padding: 12px 20px 12px 40px;
-    /* Add some padding */
-    border: 1px solid #ddd;
-}
-
-
-
-#assistantULList_UL li {
-    transition: all 0.3s ease-out;
-
-    /* Remove default list styling */
-    list-style-type: none !important;
-    padding: 0;
-    margin: 0;
-
-    padding: 2px;
-    /* Add some padding */
-    margin-left: -40px;
-    !important;
-}
-
-
-
-
-#assistantULList_UL li a {
-    border-radius: 0px !important;
-}
-
-#assistantULList_UL li a.header {}
-
-#assistantULList_UL li a:hover:not(.header) {}
-
-
-/* --------------------- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* esri popup specific - modify for mobile friendly expanded prop info view */
-
-
-/* added */
-
-.esriPopup .titleButton.close {
-    display: none;
-}
-
-.esriPopup .titleButton.maximize {
-    display: block;
-    margin-top: 4px;
-    margin-right: -10px;
-}
-
-.esriPopup .titleButton.restore {
-    display: block;
-    margin-top: 4px;
-    margin-right: -10px;
-}
-
-
-
-
-#scrollSheet {
-
-}
-
-
-
-.esriPopup {
-    z-index: 9999999 !important;
-    transition: margin 0.5s ease-in-out;
-}
-
-.esriPopupMaximized {
-    margin-top: -24px !important;
-    margin: -24px !important;
-}
-
-div.contentPane {
-
-}
-
-div.sizer {
-
-}
-
-
-
-
-.esriPopup .esriPopupWrapper {
-    box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    border-radius: 0px;
-    -webkit-border-radius: 0px;
-}
-
-.esriPopupWrapper {
-
-}
-
-.esriPopup .titlePane {
-    border-radius: 0px 0px 0px 0px;
-    -webkit-border-radius: 0px 0px 0px 0px;
-}
-
-.esriPopup .pointer.top {
-
-}
-
-
-.esriPopup .pointer,
-.esriPopup .outerPointer {
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Pull out side panels, list item adjustments (for a href element) */
-
-.newspaper2>.dropdown-menu li span {
-    /*padding-left:20px;*/
-}
-
-.newspaper2>.dropdown-menu a {
-    /*padding:2px;*/
-}
-
-.newspaper2>.dropdown-menu a label {
-    /*width:100%;*/
-}
-
-
-
-.newspaper3>.dropdown-menu li span {
-    /*padding-left:20px;*/
-}
-
-.newspaper3>.dropdown-menu a {
-    /*padding:2px;*/
-}
-
-.newspaper3>.dropdown-menu a label {
-    /*width:100%;*/
-}
-
-
-
-
-
-
-
-
-
-
-/* Main Search - search-form -  placeholder text style */
-
-::-webkit-input-placeholder {
-    /* Chrome/Opera/Safari */
-    font-family: Lato, 'Noto Sans', sans-serif !important;
-    font-weight: 600 !important;
-    background: url(data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw%3D%3D) transparent;
-    Opacity: .4 !important;
-    color: #696969 !important;
-}
-
-::-moz-placeholder {
-    /* Firefox 19+ */
-    font-family: Lato, 'Noto Sans', sans-serif !important;
-    font-weight: 600 !important;
-    background: url(data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw%3D%3D) transparent;
-    Opacity: .4 !important;
-    color: #696969 !important;
-}
-
-:-ms-input-placeholder {
-    /* IE 10+ */
-    font-family: Lato, 'Noto Sans', sans-serif !important;
-    font-weight: 600 !important;
-    color: #c7c9cc !important;
-}
-
-:-moz-placeholder {
-    /* Firefox 18- */
-    font-family: Lato, 'Noto Sans', sans-serif !important;
-    font-weight: 600 !important;
-    background: url(data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw%3D%3D) transparent;
-    Opacity: .4 !important;
-    color: #696969 !important;
-}
-
-
-
-
-/* --------------------- Search --------------------- */
-
-input#search-form {
-    font-family: 'Noto Sans', sans-serif;
-    letter-spacing: 0;
-    font-size: 19px;
-    -webkit-font-smoothing: antialiased;
-}
-
-#search-form ul {
-    width: 100%;
-    cursor: pointer;
-    z-index: 9999999 !important;
-}
-
-#search-form li {
-    z-index: 9999999 !important;
-}
-
-
-/* IE searchbox height specific */
-
-#search-holder {
-    margin-left: -3px;
-}
-
-
-#tester .input-group {
-    background-color: black !important;
-}
-
-.navbar-form {
-    margin-top: 0px !important;
-    border: 0px !important;
-    box-shadow: none;
-
-    background-color: transparent !important;
-}
-
-
-
-/* ---------------------------------------------- */
-
-
-/* --------------------- Search Modern Style (incl searchBtn) --------------------- */
-
-
-/* transforming the header and toggle buttons for side panel collapse */
-
-.headerAdjust {
-    background-color: white !important;
-    color: rgb(17, 63, 112);
-    border-bottom: 2px solid rgb(37, 83, 132);
-    margin-top: -57px;
-    height: 49px;
-    z-index: 999999999 !important;
-}
-
-
-.toggleAdjust {
-    margin-right: 8px;
-    margin-top: 2px !important;
-
-    font-size: 1.1em !important;
-}
-
-
-.searchBtnAdjust {
-
-}
-
-
-/* custom transforms */
-
-.titleAdjust {
-    display: none !important;
-}
-
-.searchFormAdjust {
-    margin-right: 171px !important;
-}
-
-
-
-
-
-
-#searchBtn {
-    border-radius: 0px;
-}
-
-
-
-#tester>input {
-    /* use this for search box */
-    /*      box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 -1px 0px rgba(0,0,0,0.02);*/
-    /*border: 0px !important;*/
-}
-
-
-
-#search-form {
-
-    /*margin-left:-29px;*/
-    outline: 0 !important;
-    /*transition: .3s ease all;*/
-    letter-spacing: 0;
-    background: #FFF;
-    /*border: 0px solid #cccccc;*/
-    border: 0px !important;
-    /*border-top: .1px solid rgb(37, 83, 132) !important;*/
-    border-radius: 0 !important;
-    box-shadow: none;
-
-
-    /* use this for search box */
-    /* add back in at the end of re-model */
-    /*      box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 -1px 0px rgba(0,0,0,0.02);*/
-    /* added */
-    /*margin-top:0px;*/
-    margin-top: 0px;
-    height: 49px !important;
-
-
-    /*padding-right:-220px;
-*/
-    /*margin-right:50px;*/
-    margin-right: -11px;
-}
-
-
-.navbar-inverse .navbar-form {
-}
-
-
-.navbar-inverse {
-}
-
-
-
-/* ------------------------------------------------------------- */
-
-
-/* ------- custom adjustments to iconic icon framework --------- */
-
-.iconic-adjust-11 {
-    margin-right: 4px;
-    margin-left: -3px;
-}
-
-.iconic-adjust-10 {
-    margin-right: 5px;
-    margin-left: -3px;
-}
-
-.iconic-adjust-8 {
-    margin-right: 7px;
-    margin-left: -3px;
-}
-
-.iconic-adjust-main {
-    font-size: 1.5em !important;
-}
-
-
