@@ -59,7 +59,7 @@ var elecOfficialsFlag = false;
 var linksFlag = false;
 
 var appended = false;
-//G streetview
+//Google streetview
 var sv, panorama, myHome, wickedLocation, theLocal;
 
 var isMax = 0;
@@ -78,9 +78,7 @@ var geometry;
 //tracks how many times a buffer has been manually added using create btn
 var bufferCreateCount = 0;
 var bufferParms; //stores the buffer parameters for creating a buffer
-
 var bufferCumulativeVal = 0;
-
 
 require([
 
@@ -104,7 +102,6 @@ require([
         "esri/geometry/Geometry",
         "esri/geometry/Extent",
         "esri/SpatialReference",
-
 
         "esri/geometry/normalizeUtils", //added for buffer
         "esri/tasks/GeometryService",
@@ -247,45 +244,23 @@ require([
             sliderPosition: "bottom-right" //,
                 // sliderOrientation: "horizontal",
                 // sliderStyle: "large"
-
         });
 
-
-        
+        //Map Scalebar
         scalebar = new Scalebar({
                 map: map,
                 attachTo: "bottom-left",
                 scalebarUnit: "dual"
         });
-        
 
-                
-        //disable arrow key panning
+        //Map Init Tools, Disable arrow panning
         map.on("load", function() {
-            console.log("M [[ map loaded ]]");
-            // map.disableMapNavigation();  
+            console.log("M [[ map loaded ]]"); 
             map.disableKeyboardNavigation();
-            // map.disablePan();  
-            // map.disableRubberBandZoom();  
-            // map.disableScrollWheelZoom();  
-
             //call to create tools toolbar
             initToolbar();
 
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -330,10 +305,7 @@ require([
 
 
 
-
-
-
-        //activate measure
+        //Activate Measurement
         var measurement = new Measurement({
           // geometry: evt.geometry,
           map: map
@@ -341,16 +313,13 @@ require([
         measurement.startup();
 
 
-
-
-
+        //Init Draw toolbar, OnDrawEnd
         function initToolbar(themap) {
             toolbar = new Draw(map);
             toolbar.on("draw-end", addToMap);
         }
 
-
-
+        //Geometry Options ------------------
         // MULTI_POINT
         // POLYLINE
         // POLYGON
@@ -361,7 +330,7 @@ require([
         // CIRCLE
         // ELLIPSE
 
-
+        //Add Geometry, Points to map
         function addToMap(evt) {
             var symbol;
             toolbar.deactivate();
@@ -369,7 +338,6 @@ require([
 
             // map.showZoomSlider();
             switch (geometry.type) {
-
 
                 // // figure out which symbol to use
                 // // var symbol;
@@ -382,8 +350,6 @@ require([
                 //   symbol = fillSymbol;
                 // }
 
-
-
                 case "point":
                     // symbol = new SimpleMarkerSymbol(new Color([221,239,167])); //new Color([255,0,0])
                     symbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255,0,0]), 1), new Color([0,255,0,0.25]));
@@ -392,15 +358,12 @@ require([
                     symbol = new SimpleMarkerSymbol();
                     break;
 
-
                 case "line":
                     symbol = new SimpleLineSymbol();
                     break;
                 case "polyline":
                     symbol = new SimpleLineSymbol();
                     break;
-
-
 
                 case "FREEHAND_POLYGON":
                     symbol = new SimpleFillSymbol();
@@ -417,7 +380,6 @@ require([
                 case "ELLIPSE":
                     symbol = new SimpleFillSymbol();
                     break;
-
 
                 // case "point":
                 // case "multipoint":
@@ -437,7 +399,6 @@ require([
             console.log(graphic.id);
 
 
-
             // //ADDED -------------------------
             // //Craft the symbol
             // // add the drawn graphic to the map
@@ -448,15 +409,10 @@ require([
             //   new Color([249, 198, 103, 0.5]));
             // //---------------------------------
 
-
-
             // var graphic = new Graphic(evt.geometry, symbol);
            // map.graphics.add(graphic);
             addTheGraphics(graphic,geometry);
             // addTheGraphics(graphic, symbol);
-
-
-
 
 
 
@@ -477,7 +433,6 @@ require([
 
             // // evt.geometry.type
 
-
             // var customPolyline = new Polyline({"wkid":102707});
             // customPolyline.addPath([
             //   new Point(-13262764.15,2864328.22), 
@@ -490,8 +445,6 @@ require([
             //   map: map
             // }, dom.byId("themeasuretest"));
             // measurement.startup();
-
-
 
             // if (measurement)
             // {
@@ -508,7 +461,6 @@ require([
 
             // }
             
-
             // var customPolyline = new Polyline({"wkid":102707});
             // customPolyline.addPath([
             //   new Point(-13262764.15,2864328.22), 
@@ -519,13 +471,6 @@ require([
 
             //return measurements per current geometry
             measurement.measure(geometry);
-
-
-            
-
-
-
-
 
         }
 
@@ -544,11 +489,8 @@ require([
             // var text = new TextSymbol("Editable Text");
             // text.font.setSize("20pt");
 
-
-
             // var text = new TextSymbol("Editable Text");
             // text.font.setSize("20pt");
-
 
             // if (showMeasure)
 
@@ -560,15 +502,11 @@ require([
             //     // var graphic = new Graphic(evt.geometry, symbol);
             //     map.graphics.add(graphic, text);
 
-
             // }
 
-
+            //Add graphics to map
             // map.graphics.add(graphic, symbol)
-
             map.graphics.add(graphic)
-
-
 
 
             //------------------------------------------------------------------------
@@ -586,7 +524,6 @@ require([
             }
 
             //------------------------------------------------------------------------
-
 
         }
 
@@ -629,7 +566,6 @@ require([
         }
 
 
-
         //Color work ------------------------
 
         // function updateColor() {
@@ -648,25 +584,9 @@ require([
         // }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         //Buffer work ------------------------
 
         //view-source:https://developers.arcgis.com/javascript/3/samples/util_buffergraphic/
-
-
-
 
         //listen to create & clear btn functions
         //grab input parms for ft/miles
@@ -696,8 +616,6 @@ require([
         });
 
 
-
-
         //Buffer Fill (trigger on toggle of buffer fill checkbox)
 
         // function isSelectedAll(theBufferFill) {
@@ -714,56 +632,20 @@ require([
         // //on tb draw end
         // $('#bufferFillBox').click(function() {
 
-
-            
         //     if (bufferFill === true) { //set buffer fill
-
 
         //         createBuffer(geometry);
 
-
         //     }
         //     else { //no buffer
-
 
         //     console.log('false')
 
         //     }
 
-
         // });
 
         // //--------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -782,15 +664,11 @@ require([
         function createBuffer(geometry,bufferCreateCount) {
             //view-source:https://developers.arcgis.com/javascript/3/samples/util_buffergraphic/
 
-
             // console.log('create a buffer!')
-
 
             //newVal = parseInt(dom.byId("bufferDistanceInputBox").value);
 
             console.log(bufferCreateCount)
-
-
 
             //if a previously exisiting buffer & params have been set (dirty state)
             if (bufferCreateCount > 1) 
@@ -824,12 +702,7 @@ require([
 
                 bufferParms.distances = [ bufferCumulativeVal ];
 
-                
             }
-
-
-
-
 
 
             // //if a previously exisiting buffer & params have been set (dirty state)
@@ -847,9 +720,6 @@ require([
             //     params.distances = [ dom.byId("bufferDistanceInputBox").value ];
             // }
 
-
-
-    
             bufferParms.outSpatialReference = map.spatialReference;
             // params.unit = GeometryService[dom.byId("bufferUnitsSelectBox").value];
             bufferParms.unit = GeometryService[dom.byId("bufferUnitsSelectBox").value];
@@ -869,15 +739,6 @@ require([
               }
 
             });
-
-
-
-
-
-
-
-
-
 
 
 
@@ -911,15 +772,6 @@ require([
 
 
 
-
-
-
-
-
-
-
-
-
             // console.log('clear hit')
             // //first remove all graphics added directly to map
             // map.graphics.clear();
@@ -936,7 +788,6 @@ require([
         function showBuffer(bufferedGeometries) {
           var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255,0,0,0.65]), 2), new Color([255,0,0,0.35]));
 
-
           // // symbol = new SimpleMarkerSymbol(new Color([221,239,167])); //new Color([255,0,0])
           // symbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255,0,0]), 1), new Color([0,255,0,0.25]));
           // break;
@@ -946,7 +797,6 @@ require([
             var graphic = new Graphic(geometry, symbol);
             map.graphics.add(graphic);
           });
-
 
       }
 
@@ -959,8 +809,6 @@ require([
             //reset cumualtive buffers to zero
             bufferCumulativeVal = 0;
         });
-
-
 
 
         // function clearBuffer() {
@@ -980,17 +828,6 @@ require([
         // }
 
         //-------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1036,12 +873,6 @@ require([
         //     }
         // }
         // //-------------------------------------------------
-
-
-
-
-
-
 
 
 
@@ -1223,12 +1054,6 @@ require([
 
 
 
-
-
-
-
-
-
         // var tiledLayer = new esri.layers.ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer");
         // map.addLayer(tiledLayer);
 
@@ -1313,13 +1138,8 @@ require([
         // //call to start print, or do so on controllers
         // startPrint();
 
-        // console.log('startPrint')
-
-
-
         //processPrint - creates the print friendly view
         function processPrint() {
-
 
             //Re-show map print & export load
             $("#printLoadingTag").show();
@@ -1347,8 +1167,6 @@ require([
                  $("#printLoadingTag").hide();
                  $("#printFriendlyLink").show();
 
-
-
                  //Export Modal:
                  $("#rawExportPNGLink").attr("href", result.url);
                  $("#exportPreviewIframe").attr("src", result.url);
@@ -1358,13 +1176,8 @@ require([
                  console.log("M [[ print: " + result.url + " ]]");
 
             };
-
             
         }
-
-
-
-
 
 
 
@@ -1396,8 +1209,7 @@ require([
         // transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/Transportation/MapServer",{id:'transportationServiceLayer'});
         assessorannoServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/AssessorAnno/MapServer", { id: 'assessorannoServiceLayer' });
 
-        //Transportation Layer
-        // transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/Transportation/MapServer",{id:'transportationServiceLayer'});
+        //SCL Layer
         transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/scl/MapServer", { id: 'transportationServiceLayer' });
 
 
@@ -1467,7 +1279,6 @@ require([
 
 
 
-
         //ready
         $(document).ready(function() {
 
@@ -1484,14 +1295,11 @@ require([
             //Listen for click
             dojo.connect(map, "onClick", function(evt) {
 
-
                 if (functionMode == "identify") {
-
 
                    //Reset the print & export load elements
                    $("#printFriendlyLink").hide();
                    $("#printInitLink").show();
-
 
 
                     //Call to executeQueryTask
@@ -1502,8 +1310,6 @@ require([
                     //resolveAs: select | search
 
 
-
-
                     console.log(evt.mapPoint)
 
                     // //ADDED FOR MOBILE**************************************
@@ -1511,11 +1317,6 @@ require([
 
                     //ADDED FOR MOBILE**************************************
                     map.infoWindow.show(evt.screenPoint, map.getInfoWindowAnchor(evt.screenPoint));
-
-
-
-
-
 
 
                     //log metric
@@ -1550,12 +1351,6 @@ require([
                 var thelevel = map.getLevel(); //added
                 angular.element($('#mapDiv')).scope().mapevtExtentChange(point.x, point.y, thelevel);
 
-                // console.log(thelevel);
-
-                // saveExtent();
-
-                // console.log('save extent called ' + point.x + ' ' + point.y)
-
                 // propInfoRepo_Second();
                 setTimeout(function() {
                     //call to repo
@@ -1568,7 +1363,6 @@ require([
 
 
             //Hot-keys
-
 
 
 
@@ -1599,8 +1393,6 @@ require([
             // map.on("load", function() { ShowLocation(-81.3765, 28.54175); });
 
             //--------------------------------------------------------------------
-
-
 
 
 
@@ -1678,7 +1470,6 @@ require([
 
             //     //           console.log('backspace')
 
-
             //     //           // // var theSearchBox = $( "#tester ul" );
             //     //           // var theSearchBox = $( ".dropdown-menu" );
             //     //           // var offset = theSearchBox.offset();
@@ -1722,7 +1513,6 @@ require([
 
             //     // alert(searchTextVal)
 
-
             //     // if($("#search-form").val().length < 1) {
             //     //          // Enable submit button
 
@@ -1730,9 +1520,7 @@ require([
             //     //     } else {
             //     //          // Disable submit button
 
-
             //     //     }
-
 
             //     // if($(this).val().length < 1) {
             //     //          // Enable submit button
@@ -1742,7 +1530,6 @@ require([
             //     //          // Disable submit button
 
             //     //     }
-
 
             //     // $( "#PropInfoDialog" ).hide();
 
@@ -1768,8 +1555,6 @@ require([
 
             //   //  console.log('val: ' + $('#search-form').val())
 
-
-
             //     // var searchText = document.getElementById("search-form");
             //     // var searchTextVal = searchText.value;
             //     // // var searchTextLength = searchText.value.length;
@@ -1792,8 +1577,6 @@ require([
             //     // }
 
             // });
-
-
 
             //Map display list
             // $("#basemapList li").click(function (e) {
@@ -1824,20 +1607,14 @@ require([
             //     }
             // });
 
-
             // //slide panel list item clicks (to animate panel slide out)
             // $("#basemapList li").click(function (e) {
 
             //     $("#basemapList .dropdown-menu").css("margin-left", 232 + "px");
 
-
             //     // $(".open > .dropdown-menu").css("left", 232 + "px");
 
             // });
-
-            // // margin-left:232px;
-
-            // // .open > .dropdown-menu {
 
             //---------------------------------------------
 
@@ -2038,8 +1815,6 @@ function config() {
 
 //    // }
 
-
-
 //      // $('.nav-tabs a').click(function (e) {
 //      //   // $(this).tab('show');
 //      //   // var scrollmem = $('body').scrollTop() || $('html').scrollTop();
@@ -2107,7 +1882,6 @@ function config() {
 //  //   // a_intro
 
 
-
 //  //   $('.nav-tabs a').click(function (e) {
 //  //     // $(this).tab('show');
 //  //     // var scrollmem = $('body').scrollTop() || $('html').scrollTop();
@@ -2115,24 +1889,17 @@ function config() {
 //  //     // $('html,body').scrollTop(scrollmem);
 //  //   });
 
-
-
-
-
 //    // //update appropriate links to active class
 //    // $('li.tackLi').removeClass('active');
 //    // $('li.compassLi').addClass('active');
 //    // $('li.pencilLi').removeClass('active');
 //    // $('li.gearLi').removeClass('active');
 
-
 //    // //update appropriate links to active class
 //    // $('#a.tab-pane').removeClass('active');
 //    // $('#b.tab-pane').addClass('active');
 //    // $('#c.tab-pane').removeClass('active');
 //    // $('#d.tab-pane').removeClass('active');
-
-
 
 //    // // var queryString2 = window.location.search;
 //    // // queryString2 = queryString2.substring(1).split("?");
@@ -2143,9 +1910,6 @@ function config() {
 //    // // queryString2 = queryString2.substring(1).split("@");
 
 //    // console.log(queryString2);
-
-
-
 
 //    // var hash = window.location.hash;
 //    // hash = hash.substring(1).split("#");
@@ -2271,7 +2035,7 @@ function resizeMap() {
 
 //************************************************************************
 
-//*************************** Theme *********************************
+//*************************** Theme **************************************
 //check the theme
 function themeCheck() {
     //  // if(localStorage.disclaim === "nodisclaim") {
@@ -2305,7 +2069,7 @@ function disclaimerCheck() {
 }
 //************************************************************************
 
-// //*************************** Persist Extent *****************************
+// //*************************** Persist Extent **************************
 // //set the initialExtent variable
 // function saveExtent() {
 //     //create new extent object for storage
@@ -2329,7 +2093,7 @@ function disclaimerCheck() {
 // function extentCheck() {
 //     alert(JSON.stringify(localStorage.Xmin));
 // }
-// //************************************************************************
+// //*********************************************************************
 
 //********************************* Ready ********************************
 $(function() {
@@ -2338,7 +2102,7 @@ $(function() {
 });
 //************************************************************************
 
-//*************************** Detect IE ***********************************
+//*************************** Detect IE **********************************
 /**
  * detect IE
  * returns version of IE or false, if browser is not Internet Explorer
@@ -2368,16 +2132,4 @@ function detectIE() {
     return false;
 }
 //************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
 

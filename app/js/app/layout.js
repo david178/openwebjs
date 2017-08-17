@@ -26,10 +26,6 @@ function sized() {
 
    console.log('L [[ resizing ]]');
 
-
-
-
-
    //ensures dynamic positioning of legend and weather blocks during browser resize
    //required due to re-positioning on class clicks in dirDisplay
    // $(".blockFade").css("right", 0 + "px");
@@ -85,17 +81,12 @@ function sized() {
       {
 
        // console.log("* 1st case: Screen is desktop & panel collapse not activated")
-
-
        // console.log('panel hit closed false');
-
 
 
           //set the isMobile bool to true | this will be used to limit typeahead results
           isMobile = false;
           productCode = 'OW4';
-
-
 
 
 
@@ -135,8 +126,6 @@ function sized() {
               document.getElementById('mapDiv').style.width = document.documentElement.clientWidth - 240 + "px";
 
 
-
-
               //Reposition & resize
               //  repoMap();
 
@@ -155,14 +144,7 @@ function sized() {
     //Window size is less than 768 pixels
     //Collapse the slide Panel
     else if (x < 768 && panelCloseHit === false)
-    // if (x < 768)
     {
-     // console.log("* 2nd case: Screen is mobile & panel collapse not activated")
-
-
-      // console.log('hit1')
-
-      // console.log('panel hit closed is: ' + panelCloseHit)
 
       //set the isMobile bool to true | this will be used to limit typeahead results
       isMobile = true;
@@ -219,10 +201,6 @@ function sized() {
 
 
 
-
-
-
-
           //Reposition & resize
           //  repoMap();
 
@@ -230,14 +208,7 @@ function sized() {
 
 
 
-
-
-
             });
-
-
-            // $(".esriScalebar").css("left", -194 + "px");
-
 
 
         }
@@ -251,25 +222,9 @@ function sized() {
 
     //Window size is greater than or equal to 768 pixels
     //Expand the slide Panel
-    else if (x >= 768 && panelCloseHit === true)          //added--------------------------
+    else if (x >= 768 && panelCloseHit === true)
     {
 
-    //  console.log("* 3rd case: Screen is desktop & panel collapse activated")
-    //  console.log('third case is: ' + slidePanelOpen)
-
-      // //Reposition & resize ADDED NOW
-      //   repoMap();
-
-
-
-
-
-     //  // console.log('hit3')
-
-     //  //set the isMobile bool to true | this will be used to limit typeahead results
-     //  isMobile = false;
-
-     // // console.log('panel hit closed true');
 
       //set the isMobile bool to true | this will be used to limit typeahead results
       isMobile = false;
@@ -278,176 +233,15 @@ function sized() {
 
      if (isMobile === true) {
 
-       // console.log('its doing it')
-
-        //   // peal panel
-        //   $("#slidepanel").animate({
-        //       "marginLeft": "+=10px"
-        //   }, 1);
-        //   slidePanelOpen = false;
-        //   // change width of map to fill empty space left from collapse of sldide panel
-        //   $('#mapDiv').animate({
-        //     // "width": "-=150px"
-        //       "width": "-=10px"
-        //   }, 1, function() {
-        // // Animation complete.
-
-        // // console.log('L [[ side panel tucked ]]');
-
-
-        // // //subtract 50pixels for now, update for full amount of side panel later
-        // // document.getElementById('mapDiv').style.width = document.documentElement.clientWidth - 10 + "px";
-
-
-
-
-
-
-        // //Reposition & resize
-        //  repoMap();
-
-        //   resizeMap();
-
-
-
-        //   });
-
-
-
-
-      //   // hide panel
-      //   $("#slidepanel").animate({
-      //       "marginLeft": "-=10px"
-      //   }, 1);
-      //   slidePanelOpen = false;
-      //   // change width of map to fill empty space left from collapse of sldide panel
-      //   $('#mapDiv').animate({
-      //     // "width": "-=150px"
-      //       "width": "+=10px"
-      //   }, 1, function() {
-      // // Animation complete.
-
-      // // console.log('L [[ side panel tucked ]]');
-
-
-      // // //subtract 50pixels for now, update for full amount of side panel later
-      // // document.getElementById('mapDiv').style.width = document.documentElement.clientWidth - 10 + "px";
-
-
-
-
-
-
-      // //Reposition & resize
-      //  repoMap();
-
-      //   // resizeMap();
-
-
-
-      //   });
-
 
      }
-
-
-
-
-
 
 
      if (slidePanelOpen === true) {
 
-    //  console.log('repo action')
-
-
-       // //-------------------------------------------
-       // //Updating the Header positioning & Arrow (ALL)
-       // $("#introHeader").css("left", 7 + "px");
-       // $("#displayHeader").css("left", 7 + "px");
-       // $("#toolsHeader").css("left", 7 + "px");
-       // $("#resourcesHeader").css("left", 7 + "px");
-
-       // $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-       // $('#displayToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-       // $('#toolsToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-       // $('#resourcesToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-       
-       // $('#mainTabs').css("display", "block");
-       // // $('#aerialSlider_Box').css("display", "block");
-       // $('.infoBlock').css("display", "block");
-       // //-------------------------------------------
-
-       // $("#slidepanel").animate({
-       //   "marginLeft": "+=240px"
-       // }, 350);
-       // slidePanelOpen = true;
-       // $('#mapDiv').animate({
-       //     "width": "-=240px"
-       // }, 350, function() {
-       //   // Animation complete.
-
-       //   console.log('L [[ side panel expanded ]]');
-
-
-       //   //subtract 50pixels for now, update for full amount of side panel later
-       //   document.getElementById('mapDiv').style.width = document.documentElement.clientWidth - 240 + "px";
-
-
-
-
-       //   //Reposition & resize
-       //   //  repoMap();
-
-       //     resizeMap();
-
-
-
-       // });
 
      }
 
-
-
-
-        // if (slidePanelOpen === false) {
-
-        // //   console.log('its doing it')
-
-        // //   // hide panel
-        // //   $("#slidepanel").animate({
-        // //       "marginLeft": "-=10px"
-        // //   }, 1);
-        // //   slidePanelOpen = false;
-        // //   // change width of map to fill empty space left from collapse of sldide panel
-        // //   $('#mapDiv').animate({
-        // //     // "width": "-=150px"
-        // //       "width": "+=10px"
-        // //   }, 1, function() {
-        // // // Animation complete.
-
-        // // // console.log('L [[ side panel tucked ]]');
-
-
-        // // // //subtract 50pixels for now, update for full amount of side panel later
-        // // // document.getElementById('mapDiv').style.width = document.documentElement.clientWidth - 10 + "px";
-
-
-
-
-
-
-        // // //Reposition & resize
-        // //  repoMap();
-
-        // //   // resizeMap();
-        // //   });
-
-
-
-
-
-        // }
 
 
 
@@ -457,138 +251,9 @@ function sized() {
   else if (x < 768 && panelCloseHit === true)
   {
 
-   // console.log("* 4th case: Screen is mobile & panel collapse activated")
-
-
-
-    // console.log('its mobile. but panel was manually collapsed')
-
-    // console.log(slidePanelOpen)
-
     //set the isMobile bool to true | this will be used to limit typeahead results
     isMobile = true;
     productCode = 'OW4mobile';
-
-        // //-------------------------------------------
-        // //Updating the Header positioning & Arrow (ALL)
-        // // $("#introHeader").css("left", -194 + "px");
-        // $("#introHeader").css("left", -194 + "px");
-        // $("#displayHeader").css("left", -194 + "px");
-        // $("#toolsHeader").css("left", -194 + "px");
-        // $("#resourcesHeader").css("left", -194 + "px");
-
-        // $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-        // $('#displayToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-        // $('#toolsToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-        // $('#resourcesToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-
-        // $('#mainTabs').css("display", "none");
-        // // $('#aerialSlider_Box').css("display", "none");
-        // $('.infoBlock').css("display", "none");
-        // //-------------------------------------------
-          // hide panel
-        //   $("#slidepanel").animate({
-        //       "marginLeft": "-=10px"
-        //   }, 1);
-        //   slidePanelOpen = false;
-        //   // change width of map to fill empty space left from collapse of sldide panel
-        //   $('#mapDiv').animate({
-        //     // "width": "-=150px"
-        //       "width": "+=10px"
-        //   }, 1, function() {
-        // // Animation complete.
-
-        // // console.log('L [[ side panel tucked ]]');
-
-
-        // // //subtract 50pixels for now, update for full amount of side panel later
-        // // document.getElementById('mapDiv').style.width = document.documentElement.clientWidth - 10 + "px";
-
-
-
-
-
-
-        // //Reposition & resize
-        //  repoMap();
-
-        //   resizeMap();
-
-
-
-        //   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //   if (slidePanelOpen) {
-
-
-    //     //-------------------------------------------
-    //     //Updating the Header positioning & Arrow (ALL)
-    //     // $("#introHeader").css("left", -194 + "px");
-    //     $("#introHeader").css("left", -194 + "px");
-    //     $("#displayHeader").css("left", -194 + "px");
-    //     $("#toolsHeader").css("left", -194 + "px");
-    //     $("#resourcesHeader").css("left", -194 + "px");
-
-    //     $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-    //     $('#displayToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-    //     $('#toolsToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-    //     $('#resourcesToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-
-    //     $('#mainTabs').css("display", "none");
-    //     // $('#aerialSlider_Box').css("display", "none");
-    //     $('.infoBlock').css("display", "none");
-    //     //-------------------------------------------
-    //       // hide panel
-    //       $("#slidepanel").animate({
-    //           "marginLeft": "-=240px"
-    //       }, 350);
-    //       slidePanelOpen = false;
-    //       // change width of map to fill empty space left from collapse of sldide panel
-    //       $('#mapDiv').animate({
-    //         // "width": "-=150px"
-    //           "width": "+=240px"
-    //       }, 350, function() {
-    //     // Animation complete.
-
-    //     console.log('L [[ side panel tucked ]]');
-
-
-    //     //subtract 50pixels for now, update for full amount of side panel later
-    //     document.getElementById('mapDiv').style.width = document.documentElement.clientWidth + "px";
-
-
-
-
-
-
-    //     //Reposition & resize
-    //     //  repoMap();
-
-    //       resizeMap();
-
-
-
-    //       });
-
-    //   }
-
 
   }
 
@@ -601,52 +266,7 @@ function sized() {
 
 
 
-
-
 }
-
-
-
-
-
-
-
-
-
-
-//sniff the browser and then apply adjustments
-function browserspecifics() {
-
-  
-
-
-  //http://stackoverflow.com/questions/2400935/browser-detection-in-javascript
-
-     navigator.sayswho = (function(){
-         var ua= navigator.userAgent, tem, 
-         M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-         if(/trident/i.test(M[1])){
-             tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
-             return 'IE '+(tem[1] || '');
-         }
-         if(M[1]=== 'Chrome'){
-             tem= ua.match(/\bOPR\/(\d+)/)
-             if(tem!= null) return 'Opera '+tem[1];
-         }
-         M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
-         if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
-         return M.join(' ');
-     })();
-
-
-
-}
-
-
-
-
-
-
 
 
 
@@ -684,58 +304,17 @@ function propInfoRepo_Second() {
     autocompleteIsShowing = true;
   }
 
-
-
   // //defaults readout
   // console.log('auto is showing: ' + autocompleteIsShowing)
-
   // console.log('search has complete: ' + searchHasCompleted)
 
 
 
 
-
-
+  //---------------------------------------------------------------------------------------------------------
   //navbar / search was clicked (not close icon)
   if (autocompleteIsShowing === false && searchHasCompleted === true && $("#tester input").val().length > 2) 
   {
-
-    // // COMMENTED
-    // //resposition the prop info elem
-    // $('#PropInfoDialog').css({
-    //   'top': 49,
-    //   'left': 240
-    //   });
-    // // $( "#PropInfoDialog" ).show();
-    // $('#PropInfoDialog').css({
-    //   'visibility': 'visible'
-    //   // 'visibility': 'visible'
-    //   });
-
-
-      // //prop info results positioning
-      // $("#PropInfoDialog").position({
-      //     my: "left top",
-      //     // at: "left+1 bottom+2",
-      //     at: "left+1 bottom+0",
-      //     of: "#tester .dropdown-menu"
-      //         // of: "#tester #search-form"
-      // });
-      // // $( "#PropInfoDialog" ).show();
-      // $('#PropInfoDialog').css({
-      //     'visibility': 'visible'
-      // });
-
-
-
-
-
-
-
-
-
-
-
 
     //in the case that the slidePanel is Open, 
     if (slidePanelOpen) {
@@ -763,19 +342,6 @@ function propInfoRepo_Second() {
     }
     else { //in the case that the slidePanel has been collapsed,
 
-      // //prop info results positioning
-      // $("#PropInfoDialog").position({
-      //     my: "left top",
-      //     // at: "left+1 bottom+2",
-      //     at: "left+1 bottom+0",
-      //     of: "#tester .dropdown-menu"
-      //         // of: "#tester #search-form"
-      // });
-      // // $( "#PropInfoDialog" ).show();
-      // $('#PropInfoDialog').css({
-      //     'visibility': 'visible'
-      // });
-
 
       //BELOW IS THE ORIG CORRECT - BUT RENDERS DELAYED
       // COMMENTED
@@ -791,7 +357,6 @@ function propInfoRepo_Second() {
         });
 
 
-
       console.log('SUCCESSFUL TEST ONE SUB TWO')
 
       console.log(slidePanelOpen)
@@ -800,9 +365,8 @@ function propInfoRepo_Second() {
     } 
 
 
-
-
   }
+  //---------------------------------------------------------------------------------------------------------
   if (autocompleteIsShowing === true && searchHasCompleted === true && $("#tester input").val().length > 2) 
   {
 
@@ -826,29 +390,55 @@ function propInfoRepo_Second() {
 
   }
 
-
+  //---------------------------------------------------------------------------------------------------------
   if (autocompleteIsShowing === false && searchHasCompleted === true && $("#tester input").val().length < 3) 
   {
 
 
-    $('#PropInfoDialog').css({
-      'top': 49,
-      'left': 240
-      });
-    // $( "#PropInfoDialog" ).show();
-    $('#PropInfoDialog').css({
-      'visibility': 'hidden'
-      // 'visibility': 'visible'
-      });
+    //in the case that the slidePanel is Open, 
+    if (slidePanelOpen) {
 
 
-  // console.log('two');
-  console.log('L [[ updating layout ]]');
+        $('#PropInfoDialog').css({
+          'top': 49,
+          'left': 240
+          });
+        // $( "#PropInfoDialog" ).show();
+        $('#PropInfoDialog').css({
+          'visibility': 'hidden'
+          // 'visibility': 'visible'
+          });
 
-  console.log('SUCCESSFUL TEST THREE')
+
+      // console.log('two');
+      console.log('L [[ updating layout ]]');
+
+      console.log('SUCCESSFUL TEST THREE')
+
+
+
+
+    }
+    else { //in the case that the slidePanel has been collapsed,
+
+
+
+      $('#PropInfoDialog').css({
+        'top': 49,
+        'left': 59
+        });
+      // $( "#PropInfoDialog" ).show();
+      $('#PropInfoDialog').css({
+        'visibility': 'hidden'
+        // 'visibility': 'visible'
+        });
+
+
+    }
+
 
   } 
-
+  //---------------------------------------------------------------------------------------------------------
   //gets hit on close icon click
   if (autocompleteIsShowing === true && searchHasCompleted === true && $("#tester input").val().length < 3) 
   {
@@ -917,67 +507,6 @@ function propInfoRepo_Second() {
 
   });
 
-
-
-
-
-
-  // //range slider
-
-  // $("#aerialSlider").oninput = function(){
-  //     console.log(this.value);
-  // }
-
-
-
-
-
-  // $(".aerialSlider").on("input", function(){
-
-  //   alert(this.value)
-    
-  //  //  console.log(this.value);
-
-  //  //  // map.getLayer("basemap").setOpacity(val);
-  //  // map.getLayer("basemap").setOpacity(this.value);
-
-  //  // // layer.setOpacity(0.5);
-
-  //  // //call to update readout output
-  //  // outputUpdate(this.value);
-
-  // });
-
-  // // function outputUpdate(val) {
-  // //   val = val * 100;
-  // // document.querySelector('#aerialLevel').value = val;
-  // // }
-
-
-  // $("#aerialSlider").on("input change", function() { 
-
-  //   alert('testing range'); 
-
-  // });
-
-
-
-
-
-
-
-// $('input[type="checkbox"]').on('change', function() {
-//   console.log('hittt')
-//    // $('input[type="checkbox"]').not(this).prop('checked', false);
-// });
-
-
-// $('input[type="checkbox"]').on('change', function() {
-//   console.log('hittt')
-//    // $('input[type="checkbox"]').not(this).prop('checked', false);
-// });
-
-
 })();
 
 
@@ -988,6 +517,33 @@ function propInfoRepo_Second() {
 
 
 
+
+
+
+//*************************************************************
+//sniff the browser and then apply adjustments
+function browserspecifics() {
+
+  //http://stackoverflow.com/questions/2400935/browser-detection-in-javascript
+
+     navigator.sayswho = (function(){
+         var ua= navigator.userAgent, tem, 
+         M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+         if(/trident/i.test(M[1])){
+             tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+             return 'IE '+(tem[1] || '');
+         }
+         if(M[1]=== 'Chrome'){
+             tem= ua.match(/\bOPR\/(\d+)/)
+             if(tem!= null) return 'Opera '+tem[1];
+         }
+         M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+         if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
+         return M.join(' ');
+     })();
+
+}
+//*************************************************************
 
 
 
@@ -1053,11 +609,7 @@ function propInfoRepo_Second() {
 
 
 
-
-
-
-
-//******************** Tour ***************************
+//************************ Tour *******************************
 
 // Instance the tour
 var tour = new Tour({
@@ -1113,10 +665,6 @@ var tour = new Tour({
   }],
 });
 //*************************************************************
-
-
-
-
 
 
 

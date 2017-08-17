@@ -33,22 +33,6 @@ open.directive('selProperty', function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	     	// function processSVData(data, status) {
 	     	// 	alert('ht')
 	     	//   // if (status === google.maps.StreetViewStatus.OK) {

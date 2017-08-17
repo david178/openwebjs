@@ -1,3 +1,11 @@
+
+/* ----------------------------------------------------------- */
+/* --------------------- main-style.css ---------------------- */
+/* ----------------------------------------------------------- */
+
+
+/* ------------------- Font Imports ------------ */
+
 @font-face {
     font-family: 'Glyphicons Halflings';
     src: url('https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot');
@@ -20,11 +28,7 @@
 
 
 
-
-
-
 /* --------------------- Main Style -------------- */
-
 
 /* Main */
 
@@ -934,6 +938,121 @@ a.accordion-toggle {
 
 
 
+/* Map View & Flight Date Checkbox List items (Bootstrap) */
+
+.glyphicon-ok {
+    display: inline;
+    margin-right: 2px;
+}
+
+.glyphicon-none:before {
+    margin-right: 4.7px;
+    content: "\2122";
+    color: transparent !important;
+}
+
+.glyphicon-unok {
+    margin-right: 20.5px;
+    display: inline;
+    font-size: 14px !important;
+}
+
+li label {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    white-space: nowrap;
+    width: 147px;
+    cursor: pointer;
+}
+
+
+/* extra padding for the checkboxes */
+
+.chkPadding {
+    padding-right: 2px;
+}
+
+/* ALTERNATIVE */
+
+input[type='checkbox'].icon-checkbox {
+    display: none
+}
+
+input[type='checkbox'].icon-checkbox+label .unchecked {
+    display: inline;
+    font-size: 14px !important;
+}
+
+input[type='checkbox'].icon-checkbox+label .checked {
+    display: none
+}
+
+input[type='checkbox']:checked.icon-checkbox {
+    display: none
+}
+
+input[type='checkbox']:checked.icon-checkbox+label .unchecked {
+    display: none
+}
+
+input[type='checkbox']:checked.icon-checkbox+label .checked {
+    display: inline;
+    font-size: 14px !important;
+}
+
+/*.glyphicon:before {
+     visibility: visible;
+}
+.glyphicon.glyphicon-unchecked:checked:before {
+    content: "\e067";
+}
+.glyphicon.glyphicon-checked:checked:before {
+    content: "\e067";
+}
+input[type=checkbox].glyphicon{
+     visibility: hidden;        
+}
+
+.glyphicon-unchecked {
+  font-size:14px !important;
+  font-weight:400 !important;
+}
+
+li label {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  white-space: nowrap;
+  width:147px;
+  padding-left: 5px;
+  cursor:pointer;
+}*/
+
+/* enable and disable checkbox list item styles */
+
+.disable_StreetList,
+.disable_LegList,
+.disable_WeatherList {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.enable_StreetList,
+.enable_LegList,
+.enable_WeatherList {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+/* general disable list item */
+
+.disable_List {
+    pointer-events: none;
+    opacity: 0.4;
+}
 
 
 
@@ -1466,7 +1585,6 @@ input#search-form {
 
 
 
-
 /* --------------------- OW Agent --------------------- */
 
 /* Assistant Input Box */
@@ -1517,23 +1635,7 @@ input#search-form {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* --------------------- Animations, Etc --------------------- */
+/* --------------------- Animations --------------------- */
 
 /* ng-show / hide animations (ng-Animate) */
 
@@ -1579,10 +1681,20 @@ input#search-form {
 }
 
 
-/* ---------------------------------------------- */
 
-#aerialLbl {
-}
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------- ETC --------------------- */
 
 #aerialLevel {
     display: inline-block;
@@ -1600,142 +1712,11 @@ input#search-form {
 
 /* IE10+ CSS styles go here */
 
-
 /*@media (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
 margin-top:-40.75px !important;
 
 }*/
-
-
-/* ---------------------------------------------- */
-
-
-/* Bootstrap Checkbox list items */
-
-
-/*.glyphicon:before {
-     visibility: visible;
-}
-.glyphicon.glyphicon-unchecked:checked:before {
-    content: "\e067";
-}
-.glyphicon.glyphicon-checked:checked:before {
-    content: "\e067";
-}
-input[type=checkbox].glyphicon{
-     visibility: hidden;        
-}
-
-.glyphicon-unchecked {
-  font-size:14px !important;
-  font-weight:400 !important;
-}
-
-li label {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  white-space: nowrap;
-  width:147px;
-  padding-left: 5px;
-  cursor:pointer;
-}*/
-
-
-/* Used for map View & FLight date checkbox lists */
-
-.glyphicon-ok {
-    display: inline;
-    margin-right: 2px;
-}
-
-.glyphicon-none:before {
-    margin-right: 4.7px;
-    content: "\2122";
-    color: transparent !important;
-}
-
-.glyphicon-unok {
-    margin-right: 20.5px;
-    display: inline;
-    font-size: 14px !important;
-}
-
-li label {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font: inherit;
-    white-space: nowrap;
-    width: 147px;
-    cursor: pointer;
-}
-
-
-/* extra padding for the checkboxes */
-
-.chkPadding {
-    padding-right: 2px;
-}
-
-
-/* ALTERNATIVE */
-
-input[type='checkbox'].icon-checkbox {
-    display: none
-}
-
-input[type='checkbox'].icon-checkbox+label .unchecked {
-    display: inline;
-    font-size: 14px !important;
-}
-
-input[type='checkbox'].icon-checkbox+label .checked {
-    display: none
-}
-
-input[type='checkbox']:checked.icon-checkbox {
-    display: none
-}
-
-input[type='checkbox']:checked.icon-checkbox+label .unchecked {
-    display: none
-}
-
-input[type='checkbox']:checked.icon-checkbox+label .checked {
-    display: inline;
-    font-size: 14px !important;
-}
-
-
-/* ---------------------------------------------- */
-
-
-/* enable and disable checkbox list item styles */
-
-.disable_StreetList,
-.disable_LegList,
-.disable_WeatherList {
-    pointer-events: none;
-    opacity: 0.4;
-}
-
-.enable_StreetList,
-.enable_LegList,
-.enable_WeatherList {
-    pointer-events: auto;
-    opacity: 1;
-}
-
-/* general disable list item */
-
-.disable_List {
-    pointer-events: none;
-    opacity: 0.4;
-}
-
 
 
 
@@ -1800,9 +1781,7 @@ tr {
 
 
 
-
 .blue-streak {}
-
 .blue-streak li {
 
 }
@@ -1812,17 +1791,14 @@ tr {
 .blue-streak li:hover {
     background: #333 !important;
 }
-
 /* internal list items */
 
 .blue-streak a:hover {
     background: #333 !important;
 }
-
 .blue-streak a:focus {
 
 }
-
 .dropdown-menu-form>li {
 
 }

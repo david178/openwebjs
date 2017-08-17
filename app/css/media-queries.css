@@ -1,12 +1,12 @@
-/* ------------------------------------------------------------ */
 
-
-/* ----------------- Custom Media Queries --------------------- */
-
-
+/* ----------------------------------------------------------- */
+/* ------------------- media-queries.css --------------------- */
 /* ----------------------------------------------------------- */
 
 
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
 /* 1200 and above (large) */
 
 @media (min-width: 1200px) {
@@ -20,9 +20,8 @@
 
 
 
-
     /* ensures the autocomplete active list items dont 
-  overlay the bottom ul with no border radius */
+    overlay the bottom ul with no border radius */
     #tester>.dropdown-menu>.active>a {
         border-radius: 0px !important;
     }
@@ -51,10 +50,8 @@
     #tester>input:hover {
         background: #fff;
         background-image: none;
-
         color: #545454;
         background: #f5f5f5;
-
         border: none !important;
     }
 
@@ -63,10 +60,6 @@
     .input-group-btn {}
 
     #searchBtn {
-        /*    left:1px !important;
-
-    height:32px !important;
-    border: 1px solid transparent !important;*/
         height: 49px;
         width: 49px;
 
@@ -75,10 +68,6 @@
         background: rgb(37, 83, 132) !important;
         border-color: rgb(37, 83, 132) !important;
     }
-
-
-
-
 
 
 
@@ -131,10 +120,6 @@
 
 
 
-
-
-
-
     /* Conditional Visibilities */
     /* desktop propInfo */
     #PropInfoDialog {
@@ -168,16 +153,9 @@
 
 
 
-
 /* ----------------------------------------------------------- */
-
-
 /* ----------------------------------------------------------- */
-
-
 /* ----------------------------------------------------------- */
-
-
 /* between 992 and 1199 (medium) */
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -188,10 +166,6 @@
         margin-left: -13px;
         padding-right: 45px;
     }
-
-
-
-
 
 
 
@@ -234,27 +208,16 @@
     }
 
 
-
     .input-group-btn {}
 
     #searchBtn {
-        /*    left:1px !important;
-
-    height:32px !important;
-    border: 1px solid transparent !important;*/
         height: 49px;
         width: 49px;
-
         color: #fff !important;
         background-color: rgb(37, 83, 132) !important;
         background: rgb(37, 83, 132) !important;
         border-color: rgb(37, 83, 132) !important;
     }
-
-
-
-
-
 
 
 
@@ -317,11 +280,6 @@
 
 
 
-
-
-
-
-
     /* Conditional Visibilities */
     /* desktop propInfo */
     #PropInfoDialog {
@@ -357,16 +315,11 @@
 
 
 
-/* ----------------------------------------------------------- */
-
 
 /* ----------------------------------------------------------- */
-
-
 /* ----------------------------------------------------------- */
-
-
-/* between 768 and 991 (medium) */
+/* ----------------------------------------------------------- */
+/* Between 768 and 991 (medium) */
 
 @media (min-width: 768px) and (max-width: 991px) {
 
@@ -379,14 +332,8 @@
 
 
 
-
-
-
-
-
-
     /* ensures the autocomplete active list items dont 
-  overlay the bottom ul with no border radius */
+    overlay the bottom ul with no border radius */
     #tester>.dropdown-menu>.active>a {
         border-radius: 0px !important;
     }
@@ -446,12 +393,6 @@
 
 
 
-
-
-
-
-
-
     /* navbar length for non-mobile screen sizes */
     .navbar,
     .navbar-header {
@@ -488,8 +429,6 @@
 
 
 
-
-
     /* size the logo for mobile */
     #imgLogo {
         display: inline-block;
@@ -498,35 +437,6 @@
     #imgLogo_mobile {
         display: none;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -569,43 +479,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ----------------------------------------------------------- */
-
-
 /* ----------------------------------------------------------- */
-
-
 /* ----------------------------------------------------------- */
-
-
-/* under 767 (small - phone & tablet) */
+/* Under 767 (small - phone & tablet) */
 
 @media (max-width: 767px) {
 
@@ -632,10 +509,6 @@
       background: rgb(37, 83, 132) !important;
       border-color: rgb(37, 83, 132) !important;*/
     }
-
-
-
-
 
 
 
@@ -677,8 +550,6 @@
         margin-right: 30px;
 
         margin-top: 5px !important;
-
-
 
         -webkit-transition: all 0.30s linear;
         -moz-transition: all 0.30s linear;
@@ -761,15 +632,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
     /* Navbar height */
     .navbar,
     .navbar-header {
@@ -804,29 +666,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     /* needed in addition to conditionalShow for jQuery dialog titlebars */
     .ui-helper-clearfix {}
     /* Removes that gray line bug */
     .ui-widget-content {
         border: 0px !important;
     }
-
-
-
-
 
 
 
@@ -902,17 +747,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     #tester {
         margin-top: -7px !important;
         outline: 0px !important;
@@ -938,11 +772,6 @@
         /*height: 49px !important;*/
         margin-right: -11px;
     }
-
-
-
-
-
 
 
 
