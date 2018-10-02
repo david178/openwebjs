@@ -64,6 +64,7 @@ open.factory('openFactory', function($http, $q){
 	      $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPlannedLandUse?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&returnGeom=false'+'&callback=JSON_CALLBACK').then(function(resp) {
 	      //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPlannedLandUse?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&returnGeom=false'+'&callback=JSON_CALLBACK').then(function(resp) {
           deferred.resolve(resp.data);
+          //fghh
 	      });
 	       
 	      return deferred.promise;
