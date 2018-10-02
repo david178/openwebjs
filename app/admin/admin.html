@@ -1,0 +1,2587 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+<!--   <meta name="google-site-verification" content="OExd-toTqQeLO96MiXmi-dAHCSzR_8uTIF3dbcsbNhU" /> -->
+  <title>OpenWeb Admin Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <!-- icons|fonts -->
+  <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/v4-shims.css">
+
+
+    <link rel="stylesheet" type="text/css" href="loader-style.css"> <!-- loading -->
+
+
+  <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+  <style>
+
+
+  /* Overall Styles */
+  body {
+    background: #141d26;
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    overflow-x:hidden;
+    /*overflow-y: scroll;*/
+    /*overflow-y: scroll;*/
+    /*overflow-x: hidden;*/
+  }
+  .Trends {
+      background-color: #1b2836;
+      background-clip: inherit;
+      border: 1px solid #000;
+      line-height: inherit;
+      padding: 15px;
+  }
+  .fullname {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  iframe body { 
+    overflow:hidden !important; 
+    padding: .75rem;
+  }
+  .stamp {
+    /*font-size: 14px;*/
+    font-size: 12px;
+    color: #8899a6 !important;
+    font-weight:300 !important;
+    float:right;
+  }
+
+  .custom_header_top_borders {
+    border-top: 4px solid #1c94e0;
+    padding-top:10px;
+  }
+
+
+
+
+
+  /* Page Flow (Flex Element & Inner Elements Flowed) */
+  .flex-container{
+    position: relative;
+/*    display:inline-block;*/
+    
+    /* Other styling stuff */
+   /* width: 1400px;*/
+    /*width: 100%;*/
+    max-width: 1480px;
+    height: auto;
+/*    background-color: #3498db;*/
+
+
+
+/*    top: 0px;
+    right: 0px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;*/
+
+
+
+/*    margin-left:50px !important;
+    margin-right:50px !important;*/
+
+    /*margin-left:400px !important;*/
+    margin-left:355px !important;
+
+
+  }
+
+  .inner-element-flowed{
+/*    position: absolute;*/
+/*    left: 10%;
+    top: 10%;*/
+    
+/*    transform: translate(+10%,+10%);*/
+    /* or 3d alternative if you will add animations (smoother transitions) */
+/*    transform: translate3d(+3%,+3%,0);*/
+
+    /* Other styling stuff */
+/*    width: 100px;
+    height: 100px;*/
+ /*   background-color: #f1c40f;*/
+
+
+
+
+/*    top: 0px;
+    right: 0px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+*/
+
+
+  }
+
+
+
+    .side-container{
+      position: absolute;
+
+      /*top:76px;*/
+      top:64px;
+
+      display:inline-block;
+      
+      /* Other styling stuff */
+     /* width: 400px;*/
+/*      width: 1300px;
+      height: auto;*/
+      /*background-color: #3498db;*/
+
+
+
+  /*    top: 0px;
+      right: 0px;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      opacity: 1;*/
+
+
+
+/*      margin-left:50px !important;*/
+/*      margin-right:20px !important;*/
+
+
+/*      width: auto;*/
+/*      height: 100%;*/
+
+      float:top;
+      -webkit-rtl-ordering: logical;
+      flex-direction: column;
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+  /* Table Element */
+  .table-dark {
+    background-color: #1b2836;
+  }
+
+  .table thead {
+    color: #1B95E0;
+  }
+
+  .table {
+    border-top: 0px;
+    border-color: #000;
+
+  }
+  .table tr {
+    border:0px !important;
+  }
+  .table thead th {
+      vertical-align: bottom;
+      /*border-bottom: 2px solid #dee2e6;*/
+      border-bottom: 2px solid #000;
+      border-top: 2px transparent;
+
+
+      border-bottom: 2px solid #1c94e0;
+      transition: all .15s ease-in-out;
+  }
+  .table td, .table th {
+      padding: .75rem;
+      vertical-align: top;
+      /*border-top: 1px solid #dee2e6;*/
+      border-top: 1px solid #000;
+
+  }
+
+
+
+
+
+
+  /* Container Elements */
+  .containerz {
+/*    -webkit-appearance: textarea;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    flex-direction: column;
+    resize: auto;
+    cursor: text;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border-width: 1px;
+    border-style: solid;
+    border-color: initial;
+    border-image: initial;
+    padding: 2px;*/
+
+
+
+    display:inline-block; 
+    overflow: auto; 
+    overflow-x: hidden;
+    resize: vertical;
+    width:400px;
+    height:500px;
+
+    /*padding: 2px;*/
+
+    -webkit-rtl-ordering: logical;
+    flex-direction: column;
+
+  }
+
+
+
+
+    /* Container Elements */
+    .containerzSkinny {
+  /*    -webkit-appearance: textarea;
+      background-color: white;
+      -webkit-rtl-ordering: logical;
+      flex-direction: column;
+      resize: auto;
+      cursor: text;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      border-width: 1px;
+      border-style: solid;
+      border-color: initial;
+      border-image: initial;
+      padding: 2px;*/
+
+
+
+      display:inline-block; 
+      overflow: auto; 
+      overflow-x: hidden;
+      resize: vertical;
+      width:160px;
+      height:500px;
+
+      /*padding: 2px;*/
+
+      -webkit-rtl-ordering: logical;
+      flex-direction: column;
+
+
+/*      padding:0px;*/
+
+/*      background-color: #1c94e0;*/
+
+
+
+
+    }
+
+
+
+    .containerzSkinnyAndSmall {
+
+      display:inline-block; 
+      overflow: auto; 
+      overflow-y: hidden;
+      resize: vertical;
+      width:268px;
+      height:400px;
+
+
+      -webkit-rtl-ordering: logical;
+      flex-direction: column;
+
+    }
+
+
+
+
+
+
+
+  .containerzSmall {
+    display:inline-block; 
+    overflow: auto; 
+    resize: horizontal;
+    width:400px !important;
+    height:400px;
+
+    /*padding: 2px;*/
+
+    -webkit-rtl-ordering: logical;
+    flex-direction: column;
+
+    overflow:hidden !important;
+
+  }
+
+
+  .containerzWide {
+
+/*    display:inline-block; 
+    overflow: auto; 
+    resize: vertical;
+    width:400px;
+    height:500px;
+
+    -webkit-rtl-ordering: logical;
+    flex-direction: column;
+
+*/
+
+
+
+    display:inline-block; 
+    overflow: auto; 
+    resize: horizontal;
+    width:100% !important;
+    height:400px;
+
+/*    margin-left: 22px;*/
+
+    -webkit-rtl-ordering: logical;
+    flex-direction: column;
+
+    overflow:hidden !important;
+
+  }
+
+
+  .containerzTall {
+    display:inline-block; 
+    overflow: auto; 
+    resize: horizontal;
+    /*width:1600px !important;*/
+    width:auto !important;
+    height:1600px;
+
+    /*padding: 2px;*/
+
+    -webkit-rtl-ordering: logical;
+    flex-direction: column;
+
+    overflow:hidden !important;
+
+  }
+
+
+
+
+  .containerzResponsive {
+    display:inline-block; 
+    overflow: auto; 
+    resize: horizontal;
+    width:1600px !important;
+    height:400px;
+
+
+
+    -webkit-rtl-ordering: logical;
+    flex-direction: column;
+
+    overflow:hidden !important;
+
+  }
+
+  div.containerz {
+    /*padding: 2px;*/
+  }
+
+
+  .container {
+/*    margin-left:6px;
+    margin-top:6px;*/
+    margin:10px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+ /* Chart Vizualizations / Customizations */
+
+  .reportContainer {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 20px;
+  }
+  
+  .chartContainer {
+    width: 500px;
+    height: 200px;
+  }
+  
+  .chartTitleContainer {
+    width: 500px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+  
+  .up {
+    color: green;
+  }
+  .down {
+    color: red;
+  }
+
+  .chart {
+      background-color: #1b2836 !important;
+      border: none;
+  }
+
+
+
+
+
+
+
+
+  /* loader icon */
+/*  #printLoadingTag,
+  #printFriendlyLink {
+      display: none;
+  }*/
+
+
+
+
+
+
+
+  </style>
+
+
+</head>
+<body>
+
+
+
+<button id="auth-button" hidden>Authorize</button>
+
+<!-- <h1 style="padding:10px; margin-left:10px;">OW Analytics at a glance</h1>
+ -->
+
+<!-- Logos -->
+<a id="title" class="navbar-brand" href="#" style="position: absolute; top:10px;left:20px; width:100%;" > 
+    <div id='logoTitle' style="display:inline-block;">
+<!--       <img id="CountyLogo" title="OpenWeb" alt="OpenWeb" src="images/county/33logobrightened.png" class="conditionalShow" /> -->
+          <img id="imgLogo" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/ow3.5.png" />
+
+<!--           <img id="imgLogo_mobile" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/compass.png" /> -->
+    </div>   
+    <h1 style="position: absolute; top:8px; margin-left:2px; display:inline-block; font-size:26px; "> Analytics 
+
+    <i class="far fa-chart-bar" style=""></i>
+
+
+
+
+<!--       <ion-icon name="analytics"></ion-icon>
+
+        <ion-icon md="md-analytics"></ion-icon> -->
+
+
+        <!-- ionic -->
+<!--         <span class="iconic-adjust-main ion-md-analytics" data-pack="default" data-tags="magnifying glass"></span>
+ -->
+
+
+        <!-- <i class="ion-md-analytics"></i> -->
+
+        <!-- <i class="far fa-chart-bar"></i> -->
+
+
+
+        </h1> 
+
+</a>
+
+
+
+
+
+
+
+<!-- <div class="countdown"></div>
+<div class="countdown1"></div>
+<div class="countdown2"></div> -->
+
+
+
+
+
+<!-- REG CONTAINER -->
+<div class="container Trends containerzTall side-container">
+
+  <span class="FullNameGroup">
+  <strong class="fullname show-popup-with-id u-textTruncate " data-aria-label-part="">Sessions & Avg Duration</strong><span>‏</span><span class="UserBadges"></span><span class="UserNameBreak">&nbsp;</span></span>
+  <span class="stamp" > </span>
+
+  <!-- AVG SESSION LENGTH BY DATE TABLE -->
+  <table id="dataTable" class="table" style="padding:15px !important;">
+    <thead><tr><th>Date</th><th>Sessions</th><th>Avg. Duration</th></tr></thread>
+    <tbody>  </tbody>
+  </table>
+
+  <div class="status"></div>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="flex-container"> <!-- starts the flow box -->
+<!--   <p>Other inner elements like this follows the normal flow.</p> -->
+  <div class="inner-element"></div>
+
+
+
+
+  <!-- TODAYS SESSIONS | LAST 7 DAYS | LAST 30 DAYS   -->
+  <div class="container Trends containerzSkinny inner-element-flowed">
+
+    <span class="FullNameGroup" style="" >
+    <strong class="fullname show-popup-with-id u-textTruncate" data-aria-label-part="">Today's Sessions</strong><span>‏
+
+      <h1 style="padding:10px; margin-left:10px; color: #1B95E0;" id="todays_sessions-content" > 
+        <div class="status"></div>
+      </h1>
+
+    </span>
+
+  </span>
+
+      <table class="table table-dark table-hover">
+        
+        <h1 style="padding:10px; margin-left:10px; color: #1B95E0;" id="seven_sessions-content" > 
+          <div class="status"></div>
+        </h1>
+
+        <h1 style="padding:10px; margin-left:10px; color: #1B95E0;" id="thirty_sessions-content" > no data</h1>
+
+
+ </table>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- REG CONTAINER -->
+  <div class="container Trends containerz inner-element-flowed">
+
+    <span class="FullNameGroup">
+    <strong class="fullname show-popup-with-id u-textTruncate " data-aria-label-part=""># Sessions for Past Seven Days</strong><span>‏</span><span class="UserBadges"></span><span class="UserNameBreak">&nbsp;</span></span>
+    <span class="stamp" > </span>
+
+    <table class="table table-dark table-hover">
+      
+      <thead>
+        <tr>
+          <th>query</th>
+          <th>metrics</th>
+          <th>results</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="td1_query-ids-content"> <div class="status"></div> </td> 
+  <!--         <td id="td1_query-date-content"> date-content</td>  -->
+          <td id="td1_query-metrics-content"> <div class="status"></div> </td>
+  <!--         <td id="td1_query-dimensions-content"> dimensions-content</td> -->
+          <td id="td1_query-results-content"> <div class="status"></div> </td>
+        </tr>
+  <!--       <tr>
+          <td>ids-content</td> 
+          <td>date-content</td> 
+          <td>metrics-content</td>
+          <td>dimensions-content</td>
+          <td>results-content</td>
+        </tr>
+        <tr>
+          <td>ids-content</td> 
+          <td>date-content</td> 
+          <td>metrics-content</td>
+          <td>dimensions-content</td>
+          <td>results-content</td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- REG CONTAINER -->
+  <div class="container Trends containerz inner-element-flowed">
+
+    <span class="FullNameGroup">
+    <strong class="fullname show-popup-with-id u-textTruncate " data-aria-label-part="">Users and Pageviews Over Past Year</strong><span>‏</span><span class="UserBadges"></span><span class="UserNameBreak">&nbsp;</span></span>
+    <span class="stamp" > </span>
+
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th>query</th>
+          <th>metrics</th>
+          <th>results</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="td2_query-ids-content"> <div class="status"></div> </td> 
+          <td id="td2_query-metrics-content"> <div class="status"></div> </td>
+          <td id="td2_query-results-content"> <div class="status"></div> </td>
+        </tr>
+  <!--       <tr>
+          <td>ids-content</td> 
+          <td>date-content</td> 
+          <td>metrics-content</td>
+          <td>dimensions-content</td>
+          <td>results-content</td>
+        </tr>
+        <tr>
+          <td>ids-content</td> 
+          <td>date-content</td> 
+          <td>metrics-content</td>
+          <td>dimensions-content</td>
+          <td>results-content</td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- REG CONTAINER -->
+  <div class="container Trends containerz inner-element-flowed">
+
+    <span class="FullNameGroup">
+    <strong class="fullname show-popup-with-id u-textTruncate " data-aria-label-part="">Monthly Mobile Traffic</strong><span>‏</span><span class="UserBadges"></span><span class="UserNameBreak">&nbsp;</span></span>
+    <span class="stamp" > </span>
+
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th>query</th>
+          <th>metrics</th>
+          <th>results</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="td3_query-ids-content"> <div class="status"></div> </td> 
+          <td id="td3_query-metrics-content"> <div class="status"></div> </td>
+          <td id="td3_query-results-content"> <div class="status"></div> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- LONG CONTAINER -->
+  <div class="container Trends containerzWide inner-element-flowed">
+
+    <span class="FullNameGroup">
+    <strong class="fullname show-popup-with-id u-textTruncate " data-aria-label-part="">Month / Month Compare (Dark : Recent) </strong><span>‏</span><span class="UserBadges"></span><span class="UserNameBreak">&nbsp;</span></span>
+    <span class="stamp" > </span>
+
+
+      <table class="table table-dark table-hover">
+        <div class="status"></div>
+        <iframe class="table-dark table-hover" src="http://gisgate.co.clark.nv.us/ow/admin/admin2.html" width="100%" height="100%" frameBorder="0" >Browser not compatible.</iframe>
+
+      </table>
+
+  </div>
+
+
+
+
+
+
+
+
+
+    <!-- USERS   -->
+    <div class="container Trends containerzSkinnyAndSmall inner-element-flowed">
+
+      <span class="FullNameGroup" style="" >
+      <strong class="fullname show-popup-with-id u-textTruncate" data-aria-label-part="">Live Users</strong>
+
+      <i class="fas fa-user" style="float:right; font-size:10px;" ></i>
+
+
+      <span>‏
+
+        <h1 style="padding:10px; margin-left:10px; color: #1B95E0;" id="todays_sessions-content" > no data</h1>
+
+      </span>
+
+    </span>
+
+
+        <table class="table table-dark table-hover">
+          <div class="status"></div>
+
+          <h1 style="padding:10px; margin-left:10px; color: #1B95E0;" id="users1-content" > no data</h1>
+
+          <h1 style="padding:10px; margin-left:10px; color: #1B95E0;" id="users2-content" > no data</h1>
+
+
+   </table>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- REG CONTAINER -->
+  <div class="container Trends containerz inner-element-flowed">
+
+    <span class="FullNameGroup">
+    <strong class="fullname show-popup-with-id u-textTruncate " data-aria-label-part="">New vs Returning Users</strong><span>‏</span><span class="UserBadges"></span><span class="UserNameBreak">&nbsp;</span></span>
+    <span class="stamp" > </span>
+
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th>query</th>
+          <th>metrics</th>
+          <th>results</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="td4_query-ids-content"> <div class="status"></div> </td> 
+          <td id="td4_query-metrics-content"> <div class="status"></div> </td>
+          <td id="td4_query-results-content"> <div class="status"></div> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- SM CONTAINER -->
+  <div class="container Trends containerz inner-element-flowed">
+
+    <span class="FullNameGroup">
+    <strong class="fullname show-popup-with-id u-textTruncate " data-aria-label-part="">Monthly Sessions</strong><span>‏</span><span class="UserBadges"></span><span class="UserNameBreak">&nbsp;</span></span>
+    <span class="stamp" > </span>
+
+
+      <table class="table table-dark table-hover">
+        <div class="status"></div>
+        <div id="embed-api-auth-container"></div>
+        <div id="chart-container"></div>
+        <div id="view-selector-container"></div> <!-- style="visibility:hidden;" -->
+
+      </table>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- REG CONTAINER -->
+  <div class="container Trends containerz inner-element-flowed">
+
+    <span class="FullNameGroup">
+    <strong class="fullname show-popup-with-id u-textTruncate " data-aria-label-part="">Sessions by Country</strong><span>‏</span><span class="UserBadges"></span><span class="UserNameBreak">&nbsp;</span></span>
+    <span class="stamp" > </span>
+
+    <table class="table table-dark table-hover">
+      <div class="status"></div>
+      <thead>
+        <tr>
+          <th>query</th>
+          <th>metrics</th>
+          <th>results</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="td5_query-ids-content"> <div class="status"></div> </td> 
+          <td id="td5_query-metrics-content"> <div class="status"></div> </td>
+          <td id="td5_query-results-content"> <div class="status"></div> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- REG CONTAINER -->
+  <div class="container Trends containerz inner-element-flowed">
+
+    <span class="FullNameGroup">
+    <strong class="fullname show-popup-with-id u-textTruncate " data-aria-label-part="">Browser and Operating System</strong><span>‏</span><span class="UserBadges"></span><span class="UserNameBreak">&nbsp;</span></span>
+    <span class="stamp" > </span>
+
+    <table class="table table-dark table-hover">
+      <div class="status"></div>
+      <thead>
+        <tr>
+          <th>query</th>
+          <th>metrics</th>
+          <th>results</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="td6_query-ids-content"> <div class="status"></div> </td> 
+          <td id="td6_query-metrics-content"> <div class="status"></div> </td>
+          <td id="td6_query-results-content"> <div class="status"></div> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- REG CONTAINER -->
+  <div class="container Trends containerz inner-element-flowed">
+
+    <span class="FullNameGroup">
+    <strong class="fullname show-popup-with-id u-textTruncate " data-aria-label-part="">Time on Site / User Engagement</strong><span>‏</span><span class="UserBadges"></span><span class="UserNameBreak">&nbsp;</span></span>
+    <span class="stamp" > </span>
+
+    <table class="table table-dark table-hover">
+      <div class="status"></div>
+      <thead>
+        <tr>
+          <th>query</th>
+          <th>metrics</th>
+          <th>results</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="td7_query-ids-content"> no data</td> 
+          <td id="td7_query-metrics-content"> no data</td>
+          <td id="td7_query-results-content"> no data</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- REPONSIVE CONTAINER -->
+  <div class="container Trends containerzResponsive inner-element-flowed">
+
+    <span class="FullNameGroup">
+    <strong class="fullname show-popup-with-id u-textTruncate " data-aria-label-part="">Top Browser Traffic (Monthly) </strong><span>‏</span><span class="UserBadges"></span><span class="UserNameBreak">&nbsp;</span></span>
+    <span class="stamp" > </span>
+
+
+      <div style="display:none;" id="view-selector-container2"></div> <!-- style="visibility:hidden;" -->
+  <!--     <div style="display:inline-block;"> 
+
+        <div style="color: #1b2836 !important; display:inline-block;" id="main-chart-container"></div>
+        <div style="display:inline-block;" id="breakdown-chart-container"></div>
+
+      </div>
+
+   -->
+
+
+   <br><hr>
+
+      <table class="table table-dark table-hover">
+        <div class="status"></div>
+
+        <div style="color: #1b2836 !important; display:inline-block; padding:2px; width:50%; margin-top:-10px; margin-right:15px; " id="main-chart-container" class="table table-dark table-hover" ></div>
+        <div style="display:inline-block; color: #1b2836 !important; height:254px !important;" id="breakdown-chart-container"></div>
+
+      </table>
+      
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div> <!-- end the flow box -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br>
+
+ 
+<!-- temp hide -->
+<div style="display:none;">
+<div style="display:inline-block;"> 
+<h2>-# Sessions for Past Seven Days-</h2>
+<textarea cols="80" rows="20" id="query-output0"></textarea>
+</div>
+
+<div style="display:inline-block;"> 
+<h2>-Users and Pageviews Over Past Year-</h2>
+<textarea cols="80" rows="20" id="query-output1"></textarea>
+</div>
+
+<div style="display:inline-block;"> 
+<h2>-Monthly Mobile Traffic-</h2>
+<textarea cols="80" rows="20" id="query-output2"></textarea>
+</div>
+
+<div style="display:inline-block;"> 
+<h2>-New vs Returning-</h2>
+<textarea cols="80" rows="20" id="query-output3"></textarea>
+</div>
+
+
+
+
+<div style="display:inline-block;"> 
+<h2>-Sessions by Country-</h2>
+<textarea cols="80" rows="20" id="query-output4"></textarea>
+</div>
+
+<div style="display:inline-block;"> 
+<h2>-Browser and Operating System-</h2>
+<textarea cols="80" rows="20" id="query-output5"></textarea>
+</div>
+
+<div style="display:inline-block;"> 
+<h2>-Time on Site-</h2>
+<textarea cols="80" rows="20" id="query-output6"></textarea>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br>
+
+
+<!-- CHARTS -->
+<!-- <div id="embed-api-auth-container"></div>
+<div id="chart-container"></div>
+<div id="view-selector-container"></div>
+
+ -->
+
+
+
+<!-- VISUALIZATION -->
+<!-- <iframe src="http://gisgate.co.clark.nv.us/ow/admin2.html"></iframe> -->
+<!-- <iframe src="http://gisgate.co.clark.nv.us/ow/admin2.html"" width="300" height="300" frameBorder="0">Browser not compatible.</iframe> -->
+
+
+
+<!-- 'ids': 'ga:' + profileId,
+'start-date': '30daysAgo',
+'end-date': 'today',
+'metrics': 'ga:sessions'
+'dimensions': 'ga:mobileDeviceInfo,ga:source',
+'metrics': 'ga:sessions,ga:pageviews,ga:sessionDuration',
+'segment': 'gaid::-14'
+'sort': '-ga:sessions' -->
+
+
+
+
+
+
+
+
+<script>
+
+  // Replace with your client ID from the developer console.
+  var CLIENT_ID = '220793374245-cj4os2v2u0cheb2mi5tig4lj2ob6bf25.apps.googleusercontent.com';
+
+  // Set authorized scope.
+  var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
+
+
+  function authorize(event) {
+    // Handles the authorization flow.
+    // `immediate` should be false when invoked from the button click.
+    var useImmdiate = event ? false : true;
+    var authData = {
+      client_id: CLIENT_ID,
+      scope: SCOPES,
+      immediate: useImmdiate
+    };
+
+    gapi.auth.authorize(authData, function(response) {
+      var authButton = document.getElementById('auth-button');
+      if (response.error) {
+        authButton.hidden = false;
+      }
+      else {
+        authButton.hidden = true;
+        queryAccounts();
+      }
+    });
+  }
+
+
+function queryAccounts() {
+  // Load the Google Analytics client library.
+  gapi.client.load('analytics', 'v3').then(function() {
+
+    // Get a list of all Google Analytics accounts for this user
+    gapi.client.analytics.management.accounts.list().then(handleAccounts);
+  });
+}
+
+
+function handleAccounts(response) {
+  // Handles the response from the accounts list method.
+  if (response.result.items && response.result.items.length) {
+    // Get the first Google Analytics account.
+    var firstAccountId = response.result.items[0].id;
+
+    // Query for properties.
+    queryProperties(firstAccountId);
+  } else {
+    console.log('No accounts found for this user.');
+  }
+}
+
+
+function queryProperties(accountId) {
+  // Get a list of all the properties for the account.
+  gapi.client.analytics.management.webproperties.list(
+      {'accountId': accountId})
+    .then(handleProperties)
+    .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+}
+
+
+function handleProperties(response) {
+  // Handles the response from the webproperties list method.
+  if (response.result.items && response.result.items.length) {
+
+    // Get the first Google Analytics account
+    var firstAccountId = response.result.items[0].accountId;
+
+    // Get the first property ID
+    var firstPropertyId = response.result.items[0].id;
+
+    // Query for Views (Profiles).
+    queryProfiles(firstAccountId, firstPropertyId);
+  } else {
+    console.log('No properties found for this user.');
+  }
+}
+
+
+function queryProfiles(accountId, propertyId) {
+  // Get a list of all Views (Profiles) for the first property
+  // of the first Account.
+  gapi.client.analytics.management.profiles.list({
+      'accountId': accountId,
+      'webPropertyId': propertyId
+  })
+  .then(handleProfiles)
+  .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+}
+
+
+function handleProfiles(response) {
+  // Handles the response from the profiles list method.
+  if (response.result.items && response.result.items.length) {
+    // Get the first View (Profile) ID.
+    var firstProfileId = response.result.items[0].id;
+
+    // Query the Core Reporting API.
+    queryCoreReportingApi(firstProfileId);
+  } else {
+    console.log('No views (profiles) found for this user.');
+  }
+}
+
+
+
+//TimeStamp
+function stampy () {
+  var currstamp = moment().format('l') + ' ' + moment().format('LTS');
+  currstamp = currstamp.slice(0, -3) 
+  $('.stamp').text(currstamp)
+}
+
+
+
+
+
+
+
+
+/*response.result*/
+
+// response.result.query
+// response.result.query.start-date
+// response.result.query.ids
+// response.result.query.metrics
+// response.result.totalsForAllResults
+
+
+
+
+
+
+//Query Calls
+function queryCoreReportingApi(profileId) {
+
+
+  GrabTodays(profileId);
+
+
+
+  // function GrabTodays(profileId) {
+
+  //   //Today's Sessions -----------------------------------------------------
+  //   gapi.client.analytics.data.ga.get({
+  //     'ids': 'ga:' + profileId,
+  //     // 'start-date': '7daysAgo',
+  //     'start-date': '1daysAgo',
+  //     'end-date': 'today',
+  //     'metrics': 'ga:sessions'
+  //   })
+  //   .then(function(response) {
+  //     var formattedJson = JSON.stringify(response.result, null, 2);
+  //     document.getElementById('query-output0').value = formattedJson;
+
+
+
+  //     //grab:
+  //     //todays users (1 day)
+  //     //todays sessions (1 day)
+
+  //     //users (7 day)
+  //     //sessions (7 day)
+
+  //     //users (30 day)
+  //     //sessions (30 day)
+
+
+
+  //     //Sessions by device (desktop, mobile, tablet || percentage basis w/ icons) (30 days)
+  //     //metrics: ga:sessions
+  //     //dimensions: 
+
+
+
+
+
+
+  //     //Well-Formed response
+  //     // response.result.query
+  //     // response.result.query.start-date
+  //     // response.result.query.ids
+  //     // response.result.query.metrics
+  //     // response.result.totalsForAllResults
+
+  //     // todays_sessions-content
+  //     // seven_sessions-content
+  //     // thirty_sessions-content
+
+
+  //     //grabing the data from json
+  //     var formattedJson1 = JSON.stringify(response.result.totalsForAllResults, null, 2); //result
+  //     formattedJson1 = formattedJson1.substr(19, 19);
+
+  //     //formatting the strings
+  //     formattedJson1 = formattedJson1.replace(/\}/g,'');
+  //     formattedJson1 = formattedJson1.replace(/\"/g,'');
+
+
+  //     //binding to element
+  //     // document.getElementById('td0_query-ids-content').innerHTML = formattedJson1;
+  //     // document.getElementById('td0_query-metrics-content').innerHTML = formattedJson2;
+  //     document.getElementById('todays_sessions-content').innerHTML = formattedJson1;
+  //     // document.getElementById('todays_sessions-content').innerHTML = formattedJson2;
+  //     // document.getElementById('todays_sessions-content').innerHTML = formattedJson3;
+
+  //     //Log full result
+  //     console.log('(1) RESULT FOR: ' + formattedJson)
+
+
+
+
+  //     //TimeStamp
+  //    //  var CurrentDate = moment().format();
+  //    //  // var theTime = Date.now();
+  //    //  var theTime = CurrentDate;
+  //    //  //Date().getTime();
+
+  //    //  // moment().startOf('hour').fromNow();
+
+  //    // // Date.now() /1000 |0
+  //    // // document.getElementById('TimeStamp').value = theTime;
+  //    // //document.getElementById('TimeStamp').innerHTML = theTime;
+  //    // //$(".stamp").text(moment().format('LTS'));
+  //    // // $(".stamp").text(moment().startOf(CurrentDate).fromNow());
+  //    // // $(".stamp").text(moment().format('lll'));
+  //    // // $(".stamp").text(moment().startOf(moment().format('lll')).fromNow());
+
+
+  //    // // setTimeout(function(){
+  //    //   // $(".stamp").text(moment().format('lll'));
+  //    //   $(".stamp").text('TimeStamp');
+  //    // // },60000)
+    
+
+  //    // $(".Mark_Pre_Val")
+  //    //  console.log('This is the time ' + theTime)
+
+  //   })
+  //   .then(null, function(err) {
+  //       // Log any errors.
+  //       console.log(err);
+  //   });
+
+  // }
+
+
+
+
+
+
+
+
+  //7days Sessions -----------------------------------------------------
+  gapi.client.analytics.data.ga.get({
+    'ids': 'ga:' + profileId,
+    'start-date': '7daysAgo',
+    'end-date': 'today',
+    'metrics': 'ga:sessions'
+  })
+  .then(function(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    document.getElementById('query-output0').value = formattedJson;
+
+    //grabing the data from json
+    var formattedJson1 = JSON.stringify(response.result.totalsForAllResults, null, 2); //result
+    formattedJson1 = formattedJson1.substr(19, 19);
+
+    //formatting the strings
+    formattedJson1 = formattedJson1.replace(/\}/g,'');
+    formattedJson1 = formattedJson1.replace(/\"/g,'');
+
+
+    //binding to element
+    // document.getElementById('td0_query-ids-content').innerHTML = formattedJson1;
+    // document.getElementById('td0_query-metrics-content').innerHTML = formattedJson2;
+    document.getElementById('seven_sessions-content').innerHTML = formattedJson1;
+
+
+  })
+  .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //# sessions for past seven days -----------------------------------------------------
+  gapi.client.analytics.data.ga.get({
+    'ids': 'ga:' + profileId,
+    // 'start-date': '7daysAgo',
+    'start-date': '30daysAgo',
+    'end-date': 'today',
+    'metrics': 'ga:sessions'
+  })
+  .then(function(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    document.getElementById('query-output1').value = formattedJson;
+
+    var formattedJson1 = JSON.stringify(response.result.query, null, 2); //query
+    var formattedJson2 = JSON.stringify(response.result.query.metrics, null, 2); //metrics
+    var formattedJson3 = JSON.stringify(response.result.totalsForAllResults, null, 2); //result
+
+    document.getElementById('td1_query-ids-content').innerHTML = formattedJson1;
+    document.getElementById('td1_query-metrics-content').innerHTML = formattedJson2;
+    document.getElementById('td1_query-results-content').innerHTML = formattedJson3;
+
+
+
+  })
+  .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+
+
+
+  //Users and Pageviews Over Past Year -----------------------------------------------------
+  gapi.client.analytics.data.ga.get({
+    'ids': 'ga:' + profileId,
+    // 'start-date': '7daysAgo',
+    'start-date': '365daysAgo',
+    'end-date': 'today',
+    'metrics': 'ga:sessions,ga:pageviews'
+  })
+  .then(function(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    document.getElementById('query-output2').value = formattedJson;
+
+
+  var formattedJson1 = JSON.stringify(response.result.query, null, 2); //query
+  var formattedJson2 = JSON.stringify(response.result.query.metrics, null, 2); //metrics
+  var formattedJson3 = JSON.stringify(response.result.totalsForAllResults, null, 2); //result
+
+  document.getElementById('td2_query-ids-content').innerHTML = formattedJson1;
+  document.getElementById('td2_query-metrics-content').innerHTML = formattedJson2;
+  document.getElementById('td2_query-results-content').innerHTML = formattedJson3;
+
+
+
+
+  })
+  .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+
+
+
+
+
+  //Monthly Mobile Traffic -----------------------------------------------------
+  gapi.client.analytics.data.ga.get({
+    'ids': 'ga:' + profileId,
+    'start-date': '30daysAgo',
+    'end-date': 'today',
+    // 'metrics': 'ga:sessions'
+
+    'dimensions': 'ga:mobileDeviceInfo,ga:source',
+    'metrics': 'ga:sessions,ga:pageviews,ga:sessionDuration',
+    'segment': 'gaid::-14'
+
+
+  })
+  .then(function(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    document.getElementById('query-output3').value = formattedJson;
+
+
+    var formattedJson1 = JSON.stringify(response.result.query, null, 2); //query
+    var formattedJson2 = JSON.stringify(response.result.query.metrics, null, 2); //metrics
+    var formattedJson3 = JSON.stringify(response.result.totalsForAllResults, null, 2); //result
+
+    document.getElementById('td3_query-ids-content').innerHTML = formattedJson1;
+    document.getElementById('td3_query-metrics-content').innerHTML = formattedJson2;
+    document.getElementById('td3_query-results-content').innerHTML = formattedJson3;
+
+
+
+
+  })
+  .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+
+  // dimensions=ga:mobileDeviceInfo,ga:source
+  // metrics=ga:sessions,ga:pageviews,ga:sessionDuration
+  // segment=gaid::-14
+
+
+
+
+
+
+
+
+  //New vs Returning -----------------------------------------------------
+  gapi.client.analytics.data.ga.get({
+    'ids': 'ga:' + profileId,
+    'start-date': '30daysAgo',
+    'end-date': 'today',
+    'dimensions': 'ga:userType',
+    'metrics': 'ga:sessions'
+  })
+  .then(function(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    document.getElementById('query-output4').value = formattedJson;
+
+
+
+    var formattedJson1 = JSON.stringify(response.result.query, null, 2); //query
+    var formattedJson2 = JSON.stringify(response.result.query.metrics, null, 2); //metrics
+    var formattedJson3 = JSON.stringify(response.result.totalsForAllResults, null, 2); //result
+
+    document.getElementById('td4_query-ids-content').innerHTML = formattedJson1;
+    document.getElementById('td4_query-metrics-content').innerHTML = formattedJson2;
+    document.getElementById('td4_query-results-content').innerHTML = formattedJson3;
+
+
+
+
+  })
+  .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+
+
+
+
+
+
+
+
+
+
+  //Sessions by Country -----------------------------------------------------
+  gapi.client.analytics.data.ga.get({
+    'ids': 'ga:' + profileId,
+    'start-date': '30daysAgo',
+    'end-date': 'today',
+    'dimensions': 'ga:country',
+    'metrics': 'ga:sessions',
+    'sort': '-ga:sessions'
+  })
+  .then(function(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    document.getElementById('query-output5').value = formattedJson;
+
+
+
+    var formattedJson1 = JSON.stringify(response.result.query, null, 2); //query
+    var formattedJson2 = JSON.stringify(response.result.query.metrics, null, 2); //metrics
+    var formattedJson3 = JSON.stringify(response.result.totalsForAllResults, null, 2); //result
+
+    document.getElementById('td5_query-ids-content').innerHTML = formattedJson1;
+    document.getElementById('td5_query-metrics-content').innerHTML = formattedJson2;
+    document.getElementById('td5_query-results-content').innerHTML = formattedJson3;
+
+
+
+
+  })
+  .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+
+
+
+
+
+
+  //Browser and Operating System -----------------------------------------------------
+  gapi.client.analytics.data.ga.get({
+    'ids': 'ga:' + profileId,
+    'start-date': '30daysAgo',
+    'end-date': 'today',
+    'dimensions': 'ga:operatingSystem,ga:operatingSystemVersion,ga:browser,ga:browserVersion',
+    'metrics': 'ga:sessions'
+  })
+  .then(function(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    document.getElementById('query-output6').value = formattedJson;
+
+
+
+
+    var formattedJson1 = JSON.stringify(response.result.query, null, 2); //query
+    var formattedJson2 = JSON.stringify(response.result.query.metrics, null, 2); //metrics
+    var formattedJson3 = JSON.stringify(response.result.totalsForAllResults, null, 2); //result
+
+    document.getElementById('td6_query-ids-content').innerHTML = formattedJson1;
+    document.getElementById('td6_query-metrics-content').innerHTML = formattedJson2;
+    document.getElementById('td6_query-results-content').innerHTML = formattedJson3;
+
+
+
+
+  })
+  .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+
+
+
+
+  //Time on Site -----------------------------------------------------
+  gapi.client.analytics.data.ga.get({
+    'ids': 'ga:' + profileId,
+    'start-date': '30daysAgo',
+    'end-date': 'today',
+    'metrics': 'ga:sessions,ga:sessionDuration'
+  })
+  .then(function(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    document.getElementById('query-output7').value = formattedJson;
+
+
+
+
+    var formattedJson1 = JSON.stringify(response.result.query, null, 2); //query
+    var formattedJson2 = JSON.stringify(response.result.query.metrics, null, 2); //metrics
+    var formattedJson3 = JSON.stringify(response.result.totalsForAllResults, null, 2); //result
+
+    document.getElementById('td7_query-ids-content').innerHTML = formattedJson1;
+    document.getElementById('td7_query-metrics-content').innerHTML = formattedJson2;
+    document.getElementById('td7_query-results-content').innerHTML = formattedJson3;
+
+
+
+
+  })
+  .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+
+
+
+
+
+
+
+
+
+  //Top Referrals -----------------------------------------------------
+  // gapi.client.analytics.data.ga.get({
+  //   'ids': 'ga:' + profileId,
+  //   'start-date': '30daysAgo',
+  //   'end-date': 'today',
+  //   'metrics': 'ga:sessions,ga:sessionDuration'
+  // })
+  // .then(function(response) {
+  //   var formattedJson = JSON.stringify(response.result, null, 2);
+  //   document.getElementById('query-output7').value = formattedJson;
+
+
+
+
+  //   var formattedJson1 = JSON.stringify(response.result.query, null, 2); //query
+  //   var formattedJson2 = JSON.stringify(response.result.query.metrics, null, 2); //metrics
+  //   var formattedJson3 = JSON.stringify(response.result.totalsForAllResults, null, 2); //result
+
+  //   document.getElementById('td7_query-ids-content').innerHTML = formattedJson1;
+  //   document.getElementById('td7_query-metrics-content').innerHTML = formattedJson2;
+  //   document.getElementById('td7_query-results-content').innerHTML = formattedJson3;
+
+
+
+
+  // })
+  // .then(null, function(err) {
+  //     // Log any errors.
+  //     console.log(err);
+  // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //EMBEDDED CHARTS -----------------------------------------------------------
+
+  gapi.analytics.ready(function() {
+
+    // // Replace with your client ID from the developer console.
+    // var CLIENT_ID = '220793374245-cj4os2v2u0cheb2mi5tig4lj2ob6bf25.apps.googleusercontent.com';
+
+    // // Set authorized scope.
+    // var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
+
+
+    /**
+     * Authorize the user immediately if the user has already granted access.
+     * If no access has been created, render an authorize button inside the
+     * element with the ID "embed-api-auth-container".
+     */
+    gapi.analytics.auth.authorize({
+      container: 'embed-api-auth-container',
+      clientid: '220793374245-cj4os2v2u0cheb2mi5tig4lj2ob6bf25.apps.googleusercontent.com'
+    });
+
+
+    /**
+     * Create a new ViewSelector instance to be rendered inside of an
+     * element with the id "view-selector-container".
+     */
+    var viewSelector = new gapi.analytics.ViewSelector({
+      container: 'view-selector-container'
+    });
+
+    // Render the view selector to the page.
+    viewSelector.execute();
+
+
+    /**
+     * Create a new DataChart instance with the given query parameters
+     * and Google chart options. It will be rendered inside an element
+     * with the id "chart-container".
+     */
+    var dataChart = new gapi.analytics.googleCharts.DataChart({
+      query: {
+        metrics: 'ga:sessions',
+        dimensions: 'ga:date',
+        'start-date': '30daysAgo',
+        'end-date': 'yesterday'
+      },
+      chart: {
+        container: 'chart-container',
+        type: 'LINE',
+        options: {
+          width: '100%'
+        }
+      }
+    });
+
+
+    /**
+     * Render the dataChart on the page whenever a new view is selected.
+     */
+    viewSelector.on('change', function(ids) {
+      // dataChart.set({query: {ids: ids}}).execute();
+      dataChart.set({query: {ids: 'ga:17113491'}}).execute();
+    });
+
+
+    //Added this in to hide the element after execution has ran
+    $("#view-selector-container").hide();
+
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //TOP BROWSERS CHART ----------------------------------------------
+
+
+  // *
+  //  * Authorize the user immediately if the user has already granted access.
+  //  * If no access has been created, render an authorize button inside the
+  //  * element with the ID "embed-api-auth-container".
+   
+  // gapi.analytics.auth.authorize({
+  //   container: 'embed-api-auth-container',
+  //   clientid: 'REPLACE WITH YOUR CLIENT ID'
+  // });
+
+
+  /**
+   * Create a new ViewSelector instance to be rendered inside of an
+   * element with the id "view-selector-container".
+   */
+  var viewSelector2 = new gapi.analytics.ViewSelector({
+    container: 'view-selector-container2'
+  });
+
+  // Render the view selector to the page.
+  viewSelector2.execute();
+
+  /**
+   * Create a table chart showing top browsers for users to interact with.
+   * Clicking on a row in the table will update a second timeline chart with
+   * data from the selected browser.
+   */
+  var mainChart = new gapi.analytics.googleCharts.DataChart({
+    query: {
+      'dimensions': 'ga:browser',
+      'metrics': 'ga:sessions',
+      'sort': '-ga:sessions',
+      'max-results': '6'
+    },
+    chart: {
+      type: 'TABLE',
+      container: 'main-chart-container',
+      options: {
+        width: '100%'
+      }
+    }
+  });
+
+
+  /**
+   * Create a timeline chart showing sessions over time for the browser the
+   * user selected in the main chart.
+   */
+  var breakdownChart = new gapi.analytics.googleCharts.DataChart({
+    query: {
+      'dimensions': 'ga:date',
+      'metrics': 'ga:sessions',
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday'
+    },
+    chart: {
+      type: 'LINE',
+      container: 'breakdown-chart-container',
+      options: {
+        width: '100%'
+      }
+    }
+  });
+
+
+
+  /**
+   * Store a refernce to the row click listener variable so it can be
+   * removed later to prevent leaking memory when the chart instance is
+   * replaced.
+   */
+  var mainChartRowClickListener;
+
+
+  /**
+   * Update both charts whenever the selected view changes.
+   */
+  viewSelector2.on('change', function(ids) {
+    // var options = {query: {ids: ids}};
+    // var options = {query: {ids: 'OpenWebJS'}};
+    var options = {query: {ids: 'ga:17113491'}};
+
+
+    // Clean up any event listeners registered on the main chart before
+    // rendering a new one.
+    if (mainChartRowClickListener) {
+      google.visualization.events.removeListener(mainChartRowClickListener);
+    }
+
+    mainChart.set(options).execute();
+    // mainChart.set({query: {ids: 'ga:17113491'}}).execute();
+    breakdownChart.set(options);
+
+    // Only render the breakdown chart if a browser filter has been set.
+    if (breakdownChart.get().query.filters) breakdownChart.execute();
+  });
+
+
+  /**
+   * Each time the main chart is rendered, add an event listener to it so
+   * that when the user clicks on a row, the line chart is updated with
+   * the data from the browser in the clicked row.
+   */
+  mainChart.on('success', function(response) {
+
+    var chart = response.chart;
+    var dataTable2 = response.dataTable;
+
+    // Store a reference to this listener so it can be cleaned up later.
+    mainChartRowClickListener = google.visualization.events
+        .addListener(chart, 'select', function(event) {
+
+      // When you unselect a row, the "select" event still fires
+      // but the selection is empty. Ignore that case.
+      if (!chart.getSelection().length) return;
+
+      var row =  chart.getSelection()[0].row;
+      var browser =  dataTable2.getValue(row, 0);
+      var options = {
+        query: {
+          filters: 'ga:browser==' + browser
+        },
+        chart: {
+          options: {
+            title: browser
+          }
+        }
+      };
+
+      breakdownChart.set(options).execute();
+    });
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //AVG SESSIONS DURATION TABLE - BY DAY ----------------------------------------------
+
+  // var $tbody;
+  // var $status;
+  // var intl = false;
+
+
+  // // Step 5: Create the timeline chart.
+  // var timeline = new gapi.analytics.googleCharts.DataChart({
+  //   reportType: 'ga',
+  //   query: {
+  //     'dimensions': 'ga:date',
+  //     'metrics': 'ga:sessions,ga:avgSessionDuration',
+  //     'start-date': '30daysAgo',
+  //     'end-date': 'yesterday',
+  //     'ids': "ga:17113491"
+  //   },
+  //   chart: {
+  //     type: 'TABLE',
+  //     container: 'timeline'
+  //   }
+  // });
+
+  // timeline.execute();
+
+  // gapi.analytics.auth.on('success', function(response) {
+  //   //hide the auth-button
+  //   document.querySelector("#auth-button").style.display='none';
+    
+  //   timeline.execute();
+
+  // });
+
+
+
+
+
+  // $(document).ready(function() {
+    
+    if(window.Intl) intl = true;
+    
+    $tbody = $("#dataTable tbody");
+    $status = $(".status");
+    // $status.html("<i>Please stand by - loading data...</i>");
+    $status.html('<span id="printLoadingTag"  style=" "><div id="loading-image2" class="loader2"></div></span>');
+
+
+    
+
+    // gapi.analytics.ready(function() {
+    
+    
+      // var CLIENT_ID = '818125206534-g1r0datdtu9serq2pf9cp5vkuih3h8pv.apps.googleusercontent.com';
+      
+      // gapi.analytics.auth.authorize({
+      //   container: 'auth-button',
+      //   clientid: CLIENT_ID,
+      //   userInfoLabel:""
+      // });
+    
+      // gapi.analytics.auth.on('success', function(response) {
+        //hide the auth-button
+        // document.querySelector("#auth-button").style.display='none';
+        
+        gapi.client.analytics.data.ga.get({
+          // 'ids': 'ga:17113491',
+          // 'metrics': 'ga:sessions,ga:avgSessionDuration',
+          // 'start-date': '30daysAgo',
+          // 'end-date': 'yesterday',
+          // 'dimensions':'ga:date'
+
+
+          'ids': 'ga:' + profileId,
+          'start-date': '30daysAgo',
+          'end-date': 'yesterday',
+          'metrics': 'ga:sessions,ga:avgSessionDuration',
+          'dimensions':'ga:date'
+
+
+
+        }).execute(function(results) {
+          $status.html("");
+          renderData(results.rows);
+        });
+      
+    
+      // });
+    
+    // });
+    
+  // });
+
+
+  function formatDate(str) {
+    var year = str.substring(0,4);
+    var month = str.substring(4,6);
+    var day = str.substring(6,8);
+    if(intl) {
+      var d = new Date(year,month-1,day); 
+      return new Intl.DateTimeFormat().format(d);
+    } 
+    return month + "/" + day + "/" + year;
+  }
+
+  function formatNumber(str) {
+    if(intl) return new Intl.NumberFormat().format(str);
+    return str;
+  }
+
+  function formatTime(str) {
+    var dur = moment.duration(parseInt(str,10), 'seconds');
+    var minutes = dur.minutes();
+    var seconds = dur.seconds();
+    // return minutes + " minutes and " + seconds + " seconds";
+    return minutes + " mins and " + seconds + " secs";
+  }
+
+  function renderData(data) {
+    var s = "";
+    for(var i=0;i<data.length;i++) {
+      s += "<tr><td>" + formatDate(data[i][0]) + "</td>";
+      s += "<td>" + formatNumber(data[i][1]) + "</td>";
+      s += "<td>" + formatTime(data[i][2]) + "</td></tr>";
+    }
+    $tbody.html(s);
+  }
+
+
+
+  //CUSTOM SORT BY DATE FUNCTION ADDED
+  function convertDate(d) {
+    var p = d.split("/");
+    return +(p[2]+p[1]+p[0]);
+  }
+
+  function sortByDate() {
+    var tbody = document.querySelector("#results tbody");
+    // get trs as array for ease of use
+    var rows = [].slice.call(tbody.querySelectorAll("tr"));
+    
+    rows.sort(function(a,b) {
+      return convertDate(a.cells[0].innerHTML) - convertDate(b.cells[0].innerHTML);
+    });
+    
+    rows.forEach(function(v) {
+      tbody.appendChild(v); // note that .appendChild() *moves* elements
+    });
+  }
+
+  document.querySelector("button").addEventListener("click", sortByDate);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //TimeStamping Logic ------------------------------------------
+
+  // var eventTime= 1366549200; // Timestamp - Sun, 21 Apr 2013 13:00:00 GMT
+  // var currentTime = 1366547400; // Timestamp - Sun, 21 Apr 2013 12:30:00 GMT
+  // var diffTime = eventTime - currentTime;
+  // var duration = moment.duration(diffTime*1000, 'milliseconds');
+  // var interval = 1000;
+
+  // setInterval(function(){
+  //   duration = moment.duration(duration - interval, 'milliseconds');
+  //     $('.countdown').text(duration.hours() + ":" + duration.minutes() + ":" + duration.seconds())
+  // }, interval);
+
+
+
+   // var CurrentDate = moment().format();
+   // var CurrentDate = moment().format('lll');
+   // var CurrentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+   // var CurrentDate = moment().format('l') + ' ' + moment().format('LTS');
+   // // var theTime = Date.now();
+   // var theTime = CurrentDate;
+   // //Date().getTime();
+
+   // moment().startOf('hour').fromNow();
+
+  // Date.now() /1000 |0
+  // document.getElementById('TimeStamp').value = theTime;
+  //document.getElementById('TimeStamp').innerHTML = theTime;
+  //$(".stamp").text(moment().format('LTS'));
+  // $(".stamp").text(moment().startOf(CurrentDate).fromNow());
+  // $(".stamp").text(moment().format('lll'));
+  // $(".stamp").text(moment().startOf(moment().format('lll')).fromNow());
+
+
+  // setTimeout(function(){
+    // $(".stamp").text(moment().format('lll'));
+    // $(".stamp").text('TimeStamp');
+  // },60000)
+  
+
+
+
+
+  // var eventTime= 1366549200; // Timestamp - Sun, 21 Apr 2013 13:00:00 GMT
+  // var currentTime = 1366547400; // Timestamp - Sun, 21 Apr 2013 12:30:00 GMT
+  // var diffTime = eventTime - currentTime;
+  // var duration = moment.duration(diffTime*1000, 'milliseconds');
+  // var interval = 1000;
+
+  // setInterval(function(){
+
+  //   queryCoreReportingApi(firstProfileId);
+
+
+
+  //   // duration = moment.duration(duration - interval, 'milliseconds');
+  //   //   $('.countdown').text(duration.hours() + ":" + duration.minutes() + ":" + duration.seconds())
+  //   // $('.stamp').text('Last | ' + moment().startOf(CurrentDate).fromNow())
+
+  //   var currstamp = moment().format('l') + ' ' + moment().format('LTS');
+  //   currstamp = currstamp.slice(0, -3) 
+  //   $('.stamp').text(currstamp)
+  //   // $(".stamp").text('TimeStamp');
+
+  // }, interval);
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function GrabTodays(profileId) {
+
+  //Today's Sessions -----------------------------------------------------
+  gapi.client.analytics.data.ga.get({
+    'ids': 'ga:' + profileId,
+    // 'start-date': '7daysAgo',
+    'start-date': '1daysAgo',
+    'end-date': 'today',
+    'metrics': 'ga:sessions'
+  })
+  .then(function(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    document.getElementById('query-output0').value = formattedJson;
+
+
+
+    //grab:
+    //todays users (1 day)
+    //todays sessions (1 day)
+
+    //users (7 day)
+    //sessions (7 day)
+
+    //users (30 day)
+    //sessions (30 day)
+
+
+
+    //Sessions by device (desktop, mobile, tablet || percentage basis w/ icons) (30 days)
+    //metrics: ga:sessions
+    //dimensions: 
+
+
+
+
+
+
+    //Well-Formed response
+    // response.result.query
+    // response.result.query.start-date
+    // response.result.query.ids
+    // response.result.query.metrics
+    // response.result.totalsForAllResults
+
+    // todays_sessions-content
+    // seven_sessions-content
+    // thirty_sessions-content
+
+
+    //grabing the data from json
+    var formattedJson1 = JSON.stringify(response.result.totalsForAllResults, null, 2); //result
+    formattedJson1 = formattedJson1.substr(19, 19);
+
+    //formatting the strings
+    formattedJson1 = formattedJson1.replace(/\}/g,'');
+    formattedJson1 = formattedJson1.replace(/\"/g,'');
+
+
+    //binding to element
+    // document.getElementById('td0_query-ids-content').innerHTML = formattedJson1;
+    // document.getElementById('td0_query-metrics-content').innerHTML = formattedJson2;
+    document.getElementById('todays_sessions-content').innerHTML = formattedJson1;
+    // document.getElementById('todays_sessions-content').innerHTML = formattedJson2;
+    // document.getElementById('todays_sessions-content').innerHTML = formattedJson3;
+
+    //Log full result
+    console.log('(1) RESULT FOR: ' + formattedJson)
+
+
+
+
+    //TimeStamp
+   //  var CurrentDate = moment().format();
+   //  // var theTime = Date.now();
+   //  var theTime = CurrentDate;
+   //  //Date().getTime();
+
+   //  // moment().startOf('hour').fromNow();
+
+   // // Date.now() /1000 |0
+   // // document.getElementById('TimeStamp').value = theTime;
+   // //document.getElementById('TimeStamp').innerHTML = theTime;
+   // //$(".stamp").text(moment().format('LTS'));
+   // // $(".stamp").text(moment().startOf(CurrentDate).fromNow());
+   // // $(".stamp").text(moment().format('lll'));
+   // // $(".stamp").text(moment().startOf(moment().format('lll')).fromNow());
+
+
+   // // setTimeout(function(){
+   //   // $(".stamp").text(moment().format('lll'));
+   //   $(".stamp").text('TimeStamp');
+   // // },60000)
+  
+
+   // $(".Mark_Pre_Val")
+   //  console.log('This is the time ' + theTime)
+
+  })
+  .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+
+}
+
+
+
+
+
+
+
+
+
+//Internal Loader
+
+var interval = 5000;
+
+setInterval(function(){
+
+  // //Today's Sessions -----------------------------------------------------
+  GrabTodays(17113491);
+
+
+
+
+
+  // duration = moment.duration(duration - interval, 'milliseconds');
+  //   $('.countdown').text(duration.hours() + ":" + duration.minutes() + ":" + duration.seconds())
+  // $('.stamp').text('Last | ' + moment().startOf(CurrentDate).fromNow())
+
+
+  
+  // $(".stamp").text('TimeStamp');
+
+
+  //Update TimeStamp
+  stampy();
+
+}, interval);
+
+
+
+
+
+
+  // Add an event listener to the 'auth-button'.
+  document.getElementById('auth-button').addEventListener('click', authorize);
+</script>
+
+<!-- this is for the api calls - separate from the embed API for charts below (this is for tables and json api calls only) -->
+<script src="https://apis.google.com/js/client.js?onload=authorize"></script>
+
+
+
+<!-- This demo uses the Chart.js graphing library and Moment.js to do date
+     formatting and manipulation. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>  
+
+
+
+
+
+
+<!-- load the embed API Library for charts -->
+<script>
+(function(w,d,s,g,js,fs){
+  g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
+  js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+  js.src='https://apis.google.com/js/platform.js';
+  fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
+}(window,document,'script'));
+</script>
+
+
+
+</body>
+</html>

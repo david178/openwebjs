@@ -1,0 +1,143 @@
+
+<!DOCTYPE html><html><head><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#009688"><meta name="msapplication-TileColor" content="#009688"><meta name="msapplication-TileImage" content="http://ccgisfs01m.co.clark.nv.us/favicons/ms-icon-144x144.png"><title>Clark County GIS Wiki</title><link rel="apple-touch-icon" sizes="57x57" href="http://ccgisfs01m.co.clark.nv.us/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="http://ccgisfs01m.co.clark.nv.us/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="http://ccgisfs01m.co.clark.nv.us/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="http://ccgisfs01m.co.clark.nv.us/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="http://ccgisfs01m.co.clark.nv.us/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="http://ccgisfs01m.co.clark.nv.us/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="http://ccgisfs01m.co.clark.nv.us/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="http://ccgisfs01m.co.clark.nv.us/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="http://ccgisfs01m.co.clark.nv.us/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="http://ccgisfs01m.co.clark.nv.us/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="http://ccgisfs01m.co.clark.nv.us/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="http://ccgisfs01m.co.clark.nv.us/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="http://ccgisfs01m.co.clark.nv.us/favicons/favicon-16x16.png"><link rel="manifest" href="http://ccgisfs01m.co.clark.nv.us/manifest.json"><script>var siteLang = 'en';
+var siteRoot = 'http://ccgisfs01m.co.clark.nv.us';
+</script><script type="text/javascript" src="http://ccgisfs01m.co.clark.nv.us/js/vendor.js"></script><script type="text/javascript" src="http://ccgisfs01m.co.clark.nv.us/js/app.js"></script></head><body><div class="has-stickynav is-primary-indigo is-alternate-blue-grey" id="root"><div id="header-container"><nav class="nav is-indigo" id="header" ref="header"><div class="nav-left"><a class="nav-item" href="/"><h1><i class="nc-icon-outline ui-2_layers"></i>Clark County GIS Wiki</h1></a></div><div class="nav-center"><search></search></div><span class="nav-toggle"><span></span><span></span><span></span></span><div class="nav-right"><loading-spinner></loading-spinner><div class="nav-item"><a class="button is-outlined is-icon-only" @click="$store.dispatch(&quot;modalDeletePage/open&quot;)"><i class="nc-icon-outline ui-1_trash"></i></a><a class="button is-outlined" v-on:click="$store.dispatch(&quot;modalMovePage/open&quot;)"><i class="nc-icon-outline arrows-1_shuffle-98"></i><span>Move</span></a><a class="button is-outlined" href="/source/applications/open-web-js"><i class="nc-icon-outline education_paper"></i><span>Source</span></a><a class="button" href="/edit/applications/open-web-js"><i class="nc-icon-outline ui-1_edit-76"></i><span>Edit</span></a><a class="button" v-on:click="$store.dispatch(&quot;modalCreatePage/open&quot;)"><i class="nc-icon-outline ui-1_simple-add"></i><span>Create</span></a></div></div></nav></div><alert></alert><main><content-view inline-template><div class="container is-fluid has-mkcontent"><div class="columns is-gapless"><div class="column is-narrow is-hidden-touch sidebar"><aside><div class="sidebar-label"><span>Navigation</span></div><ul class="sidebar-menu"><li><a href="/"><i class="nc-icon-outline ui-1_home-minimal"></i><span>Home</span></a></li><li><a href="/all"><i class="nc-icon-outline business_hierarchy-55"></i><span>All Pages</span></a></li><li><a href="/applications"><i class="icon-reply"></i><span>Applications</span></a></li><li><a href="/admin"><i class="nc-icon-outline ui-1_settings-gear-63"></i><span>Settings</span></a></li></ul></aside><aside class="sidebar-pagecontents"><div class="sidebar-label"><span>Page Contents</span></div><ul class="sidebar-menu"><li class="is-hidden-until-scroll"><a href="#root" title="Top of Page"><i class="icon-arrow-up2"></i></a></li><li><a href="#open-web-js-quick-guide-end-user" title="OpenWebJS QuickGuide [End-User]">OpenWebJS QuickGuide [End-User]</a><ul><li><a href="#description" title="Description">Description</a></li></ul></li><li><a href="#open-web-js-advanced-usage-guide-end-user" title="OpenWebJS Advanced Usage Guide [End-User]">OpenWebJS Advanced Usage Guide [End-User]</a><ul><li><a href="#description" title="Description">Description</a></li></ul></li><li><a href="#o-wjs-service-locations-dev" title="OWjs Service Locations [Dev]">OWjs Service Locations [Dev]</a><ul><li><a href="#description" title="Description">Description</a></li></ul></li><li><a href="#o-wjs-views-flights-config-config" title="OWjs ViewsFlights_Config [Config]">OWjs ViewsFlights_Config [Config]</a><ul><li><a href="#description" title="Description">Description</a></li></ul></li><li><a href="#o-wjs-intro-config-config" title="OWjs Intro_Config [Config]">OWjs Intro_Config [Config]</a><ul><li><a href="#description" title="Description">Description</a></li></ul></li><li><a href="#o-wjs-owl-config-config" title="OWjs OWL_Config [Config]">OWjs OWL_Config [Config]</a><ul><li><a href="#description" title="Description">Description</a></li></ul></li><li><a href="#etc" title="Etc">Etc</a></li></ul></aside></div><div class="column"><div class="hero"><h1 class="title" id="title">Open Web Js</h1><h2 class="subtitle">Documentation specific to OpenWebJS Application</h2></div><div class="content mkcontent is-code-dark" v-pre><!-- TITLE: Open Web Js --><!-- SUBTITLE: Documentation specific to OpenWebJS Application --><html><head></head><body><h1 id="open-web-js-quick-guide-end-user"><a class="toc-anchor nc-icon-outline location_bookmark-add internal-link" href="#open-web-js-quick-guide-end-user" aria-hidden="true"></a> OpenWebJS QuickGuide [End-User]</h1>
+<h2 id="description"><a class="toc-anchor nc-icon-outline location_bookmark-add internal-link" href="#description" aria-hidden="true"></a> Description</h2><div class="indent-h2"><p>OpenWebJS QuickGuide (<strong>PDF</strong>)<br>
+<a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OW_QuickGuide.pdf" class="external-link">http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OW_QuickGuide.pdf</a></p></div>
+
+<h1 id="open-web-js-advanced-usage-guide-end-user"><a class="toc-anchor nc-icon-outline location_bookmark-add internal-link" href="#open-web-js-advanced-usage-guide-end-user" aria-hidden="true"></a> OpenWebJS Advanced Usage Guide [End-User]</h1>
+<h2 id="description-2"><a class="toc-anchor nc-icon-outline location_bookmark-add internal-link" href="#description-2" aria-hidden="true"></a> Description</h2><div class="indent-h2"><p>OpenWebJS Advanced Guide (<strong>Text</strong>)<br>
+<a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OWjs_AdvancedGuide.txt" class="external-link">http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OWjs_AdvancedGuide.txt</a></p><p><strong>TABLE</strong><br>
+Chapter 1: Getting Started  . . . . . . . . . . . 1<br>
+Introduction . . . . . . . . . . . . . . . . . 1.1<br>
+Persistent Coord System Synching . . . . . . . 1.2<br>
+Chapter 2: Integration  . . . . . . . . . . . . . 2<br>
+Links  . . . . . . . . . . . . . . . . . . . . 2.1<br>
+Querystring Parameters . . . . . . . . . . . . 2.2<br>
+State-based Parms . . . . . . . . . . . . 2.2.1<br>
+Client-side Embed  . . . . . . . . . . . . . . 2.3<br>
+Chapter 3: Hotkeys  . . . . . . . . . . . . . . . 3<br>
+Shortcuts  . . . . . . . . . . . . . . . . . . 3.1</p><hr><p><strong>[[ CHAPTER 1 - GETTING STARTED ]]</strong></p><p>-INTRODUCTION-</p><p>Hello,</p><p>This readme is meant to serve as an advanced guide in order to assist in the usage of the Openweb.js application.<br>
+Below you will find an easy to follow guide in order to get up and running quickly with the platform. The sections<br>
+below are delinated by a numerical system, with sub-sections outlined in alpha-characters.</p><p>-PERSISTENT COORD SYSTEM SYNCHING-</p><p>One of the key features of the OpenWeb application is the coordinate synching system, which allows for persistance of<br>
+map states throughout browser refresh cycles. The synching system also allows for convenient bookmarking of map locals.</p><p>The two main coordinates that are synched in OpenWeb are the State Plane coordinate system (default), and Lat/Long.<br>
+The coordinate system type used throughout the application can be changed with the Coord System dropdown, located in the<br>
+&quot;Information Block&quot; in the lower left quadrant of the left-most side panel.</p><p>An outline of the synching system can be found below:</p><p>[State Plane (Default)]<br>
+<a href="http://gisgate.co.clark.nv.us/ow/?@781994,26761960,6" class="external-link">gisgate.co.clark.nv.us/ow/?@781994,26761960,6</a> (where the first 2 numerical values delineate state plane coords, and the final<br>
+integer is the level of detail)</p><p>[Lat/Lon]<br>
+<a href="http://gisgate.co.clark.nv.us/ow/?@36.1645079,-115.1570102,6" class="external-link">gisgate.co.clark.nv.us/ow/?@36.1645079,-115.1570102,6</a> (where the first 2 numerical values delineate lat/lon coords, and the final<br>
+integer is the level of detail)</p><hr><p><strong>[[ CHAPTER 2 - INTEGRATION ]]</strong></p><p>-LINKS-</p><p>The OpenWeb application can be referenced via the follow URL:</p><p>//Default URL:<br>
+<a href="http://gisgate.co.clark.nv.us/ow" class="external-link">gisgate.co.clark.nv.us/ow</a></p><p>-QUERYSTRING PARAMETERS-</p><p>The OpenWeb application can be integrated and referenced by any number of applications for a variety of means.<br>
+One way to reference the application is by QueryString Parameters. QS Parameters are helpful because they allow an easy<br>
+means of access, or shortcut reference point to a specific location or point on the map residing from within OpenWeb.</p><p>The following will outline a few use common cases</p><p>(1) A local real-estate agency may have a custom developed application or website used by either/or/both internal staff,<br>
+clientele, or contractor personnel; interfacing with the OpenWeb application by way of a querystring parameter helps<br>
+take advantage of some of the customized toolsets, currated data, imagery, and public information required throughout<br>
+a typical workflow that might not make sense to develop in-house. In this case, OpenWeb serves as an extension of<br>
+the application.</p><p>a. User accesses the referencing application by clicking a property or point on the map</p><p>b. The referencing application take the property of the map, and then passes it on to OpenWeb using an embedded link<br>
+Accepted Parameters include:</p><pre><code>  //Parcel (APN): ?@13933710002
+  //Address: ?@500 Grand Central
+  //State Plane Ft: ?@782826,26762144,5
+  //Lat/Long: ?@35.8378134,-115.6509992
+</code></pre><p>c. The completed constructed embed link on the referencing application would then take the following format:</p><p apn="">[template format]<br>
+<a href="http://gisgate.co.clark.nv.us/ow/?@" class="external-link">gisgate.co.clark.nv.us/ow/?@</a></p><p>OR constructed:</p><p><a href="http://gisgate.co.clark.nv.us/ow/?@13933710002" class="external-link">gisgate.co.clark.nv.us/ow/?@13933710002</a></p><p>d. A zoom level can also be specified for State Plane Ft, as well as Lat/Long parameters.</p><p zoom_level="">[template format]<br>
+782699,26761532,</p><p>OR constructed:</p><p><a href="http://gisgate.co.clark.nv.us/ow/?@782826,26762144,5" class="external-link">gisgate.co.clark.nv.us/ow/?@782826,26762144,5</a></p><p>-QUERYSTRING PARAMETERS - STATE-BASED PARMS-</p><p>The OpenWeb application can further be customized by additional querystring parameters that change the specific<br>
+view that is desired for the end-used. Examples of these view customizations are highlighted below:</p><pre><code>  //Map View: view=clark county zoning
+  //Legend: legend=t/f
+  //Weather: weather=t/f
+  //Active Tab: tab=display
+  //Full Map: fullmap=t/f
+
+  //Examples of usage
+  //http://gisgate.co.clark.nv.us/ow?tab=resources
+  //http://gisgate.co.clark.nv.us/ow?legend=t/
+  //http://gisgate.co.clark.nv.us/ow?owner
+  //http://gisgate.co.clark.nv.us/ow/?fullmap=t
+
+  //Chaining
+  //http://gisgate.co.clark.nv.us/ow/?@=1525 Pinto&amp;view=clark county zoning&amp;legend=t&amp;tab=display&amp;fullmap=t
+</code></pre><p>-CLIENT-SIDE EMBED-</p><p>You may also embed the OpenWeb application client-side, internal to your application or website. In the side-panel:</p><p>a. Navigate to the &quot;Resources&quot; section (denoted by the gear icon)</p><p>b. Select the &quot;Share or Embed map&quot; link</p><p>c. Select the &quot;Embed&quot; tab</p><p>d. Copy and paste the embedded iframe text string, internal to your applications code, where appropriate</p><hr><p><strong>[[ CHAPTER 3 - HOTKEYS ]]</strong></p><p>-SHORTCUTS-</p><p>The OpenWeb application also allows for an easy means of navigation and operation by way of hotkeys.</p><p>At the present time, these are limit to basic functions related to menu and map navigation, but these uses<br>
+will be expanded in the future</p><p>[hotkeys]<br>
+Esc: Used for closing active windows<br>
+Arrow Keys: Used for nagivating map<br>
+Enter: Used for executing a search</p></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="o-wjs-service-locations-dev"><a class="toc-anchor nc-icon-outline location_bookmark-add internal-link" href="#o-wjs-service-locations-dev" aria-hidden="true"></a> OWjs Service Locations [Dev]</h1>
+<h2 id="description-3"><a class="toc-anchor nc-icon-outline location_bookmark-add internal-link" href="#description-3" aria-hidden="true"></a> Description</h2><div class="indent-h2"><p>OpenWebJS Service Locations (<strong>in Code</strong>)</p><p>app/map.js:<br>
+print task | ln 1006<br>
+geometry | ln 156<br>
+layers | ln 1205 - 1248<br>
+metric post svc | ln 1960</p><p>app/display.js (CACHE &amp; various rest imagery svc):<br>
+various ln</p><p>app/controllers/controllers.js (arcgis rest svc):<br>
+various ln</p><p>app/services/factory.js (Custom WCF):<br>
+getZoning | ln 45<br>
+getPLU | ln 57<br>
+getFloodZone | ln 88<br>
+getAerialFlight | ln 103<br>
+getElectedOffcial | ln 118<br>
+getSelectPropLinks | ln 132<br>
+getSCLZip | ln 165</p></div>
+
+
+
+
+
+<h1 id="o-wjs-views-flights-config-config"><a class="toc-anchor nc-icon-outline location_bookmark-add internal-link" href="#o-wjs-views-flights-config-config" aria-hidden="true"></a> OWjs ViewsFlights_Config [Config]</h1>
+<h2 id="description-4"><a class="toc-anchor nc-icon-outline location_bookmark-add internal-link" href="#description-4" aria-hidden="true"></a> Description</h2><div class="indent-h2"><p>Controls the Map Views &amp; Flight Dates (used as input) (<strong>migrate to JSON</strong>)<br>
+<a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/config/viewsflights_config.txt" class="external-link">http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/config/viewsflights_config.txt</a></p></div>
+
+<h1 id="o-wjs-intro-config-config"><a class="toc-anchor nc-icon-outline location_bookmark-add internal-link" href="#o-wjs-intro-config-config" aria-hidden="true"></a> OWjs Intro_Config [Config]</h1>
+<h2 id="description-5"><a class="toc-anchor nc-icon-outline location_bookmark-add internal-link" href="#description-5" aria-hidden="true"></a> Description</h2><div class="indent-h2"><p>Controls the Introductory panel update text (used as input) (<strong>migrate to JSON</strong>)<br>
+<a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/config/intro_config.txt" class="external-link">http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/config/intro_config.txt</a></p></div>
+
+<h1 id="o-wjs-owl-config-config"><a class="toc-anchor nc-icon-outline location_bookmark-add internal-link" href="#o-wjs-owl-config-config" aria-hidden="true"></a> OWjs OWL_Config [Config]</h1>
+<h2 id="description-6"><a class="toc-anchor nc-icon-outline location_bookmark-add internal-link" href="#description-6" aria-hidden="true"></a> Description</h2><div class="indent-h2"><p>Controls the specific Map Views configurations (layers, opacity, attributes, display, properties, etc) (<strong>InDev</strong>)</p></div>
+
+<h1 id="etc"><a class="toc-anchor nc-icon-outline location_bookmark-add internal-link" href="#etc" aria-hidden="true"></a> Etc</h1>
+</body></html></div></div></div></div></content-view><modal-create-page basepath="applications/open-web-js"></modal-create-page><modal-move-page current-path="applications/open-web-js"></modal-move-page><modal-delete-page current-path="applications/open-web-js"></modal-delete-page><anchor></anchor></main><footer class="footer is-blue-grey" ref="footer"><span>Powered by <a href="https://github.com/Requarks/wiki">Wiki.js</a>.</span><ul><li><a href="/">Home</a></li><li><a href="#root">Return to top</a></li></ul></footer></div></body></html>

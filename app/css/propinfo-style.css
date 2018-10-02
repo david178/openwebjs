@@ -1378,6 +1378,7 @@ margin-bottom:12px;
   font-family: Roboto,Arial,sans-serif;
   font-size: 12px;
   line-height: 16px;
+/*  color:black !important;*/
 }
 
 
@@ -1868,6 +1869,28 @@ font-weight: bold !important;*/
 /* accordion margin fix */
 .panel-group {
   margin-bottom:5px !important;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
+  
+/*
+ 
+
+  -moz-box-shadow:    inset  0  8px 8px -8px #939393, 
+                      inset  0 -8px 8px -8px #939393 !important;
+  -webkit-box-shadow: inset  0  8px 8px -8px #939393, 
+                      inset  0 -8px 8px -8px #939393 !important;
+   box-shadow:        inset  0  8px 8px -8px #939393, 
+                      inset  0 -8px 8px -8px #939393 !important;
+*/
+
+/*-moz-box-shadow:    inset  0  8px 8px -8px #939393, 
+                    inset  0 -8px 8px -8px #939393 !important;
+-webkit-box-shadow: inset  0  8px 8px -8px #939393, 
+                    inset  0 -8px 8px -8px #939393 !important;
+ box-shadow:        inset  0  8px 8px -8px #939393, 
+                    inset  0 -8px 8px -8px #939393 !important;
+*/
+
 }
 
 

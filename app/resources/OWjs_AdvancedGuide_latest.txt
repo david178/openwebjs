@@ -1,0 +1,177 @@
+
+/* ----------------------------------------------------------- */
+/* ------------ OpenWeb.js ADVANCED USAGE GUIDE -------------- */
+/* ----------------------------------------------------------- */
+
+TABLE
+Chapter 1: Getting Started  . . . . . . . . . . . 1
+   Introduction . . . . . . . . . . . . . . . . . 1.1
+   Persistent Coord System Synching . . . . . . . 1.2
+Chapter 2: Integration  . . . . . . . . . . . . . 2
+   Links  . . . . . . . . . . . . . . . . . . . . 2.1
+   Querystring Parameters . . . . . . . . . . . . 2.2
+   	State-based Parms . . . . . . . . . . . . 2.2.1
+   Client-side Embed  . . . . . . . . . . . . . . 2.3
+Chapter 3: Hotkeys  . . . . . . . . . . . . . . . 3
+   Shortcuts  . . . . . . . . . . . . . . . . . . 3.1
+
+
+--------------------------------------------------------------------------------------------------------------
+[[ CHAPTER 1 - GETTING STARTED ]]
+
+-INTRODUCTION-
+
+Hello,
+
+This readme is meant to serve as an advanced guide in order to assist in the usage of the Openweb.js application.
+Below you will find an easy to follow guide in order to get up and running quickly with the platform. The sections 
+below are delinated by a numerical system, with sub-sections outlined in alpha-characters.
+
+
+
+-PERSISTENT COORD SYSTEM SYNCHING-
+
+One of the key features of the OpenWeb application is the coordinate synching system, which allows for persistance of
+map states throughout browser refresh cycles. The synching system also allows for convenient bookmarking of map locals.
+
+The two main coordinates that are synched in OpenWeb are the State Plane coordinate system (default), and Lat/Long.
+The coordinate system type used throughout the application can be changed with the Coord System dropdown, located in the
+"Information Block" in the lower left quadrant of the left-most side panel.
+
+An outline of the synching system can be found below:
+
+[State Plane (Default)]
+gisgate.co.clark.nv.us/ow/?@781994,26761960,6 (where the first 2 numerical values delineate state plane coords, and the final
+integer is the level of detail)
+
+[Lat/Lon]
+gisgate.co.clark.nv.us/ow/?@36.1645079,-115.1570102,6 (where the first 2 numerical values delineate lat/lon coords, and the final
+integer is the level of detail)
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------
+[[ CHAPTER 2 - INTEGRATION ]]
+
+-LINKS-
+
+The OpenWeb application can be referenced via the follow URL:
+
+# Default URL:
+gisgate.co.clark.nv.us/ow
+
+
+
+-QUERYSTRING PARAMETERS-
+
+The OpenWeb application can be integrated and referenced by any number of applications for a variety of means.
+One way to reference the application is by QueryString Parameters. QS Parameters are helpful because they allow an easy
+means of access, or shortcut reference point to a specific location or point on the map residing from within OpenWeb.
+
+The following will outline a few use common cases
+
+(1) A local real-estate agency may have a custom developed application or website used by either/or/both internal staff, 
+clientele, or contractor personnel; interfacing with the OpenWeb application by way of a querystring parameter helps
+take advantage of some of the customized toolsets, currated data, imagery, and public information required throughout
+a typical workflow that might not make sense to develop in-house. In this case, OpenWeb serves as an extension of 
+the application. 
+
+a. User accesses the referencing application by clicking a property or point on the map
+
+
+b. The referencing application take the property of the map, and then passes it on to OpenWeb using an embedded link
+Accepted Parameters include:
+
+      //Parcel (APN): ?@13933710002
+      //Address: ?@500 Grand Central
+      //State Plane Ft: ?@782826,26762144,5
+      //Lat/Long: ?@35.8378134,-115.6509992
+
+
+c. The completed constructed embed link on the referencing application would then take the following format:
+
+[template format]
+gisgate.co.clark.nv.us/ow/?@{APN}
+
+OR constructed:
+
+gisgate.co.clark.nv.us/ow/?@13933710002
+
+
+d. A zoom level can also be specified for State Plane Ft, as well as Lat/Long parameters.
+
+[template format]
+782699,26761532,{ZOOM_LEVEL}
+
+OR constructed:
+
+gisgate.co.clark.nv.us/ow/?@782826,26762144,5
+
+
+
+-QUERYSTRING PARAMETERS - STATE-BASED PARMS-
+
+The OpenWeb application can further be customized by additional querystring parameters that change the specific
+view that is desired for the end-used. Examples of these view customizations are highlighted below:
+
+      //Map View: view=clark county zoning
+      //Legend: legend=t/f
+      //Weather: weather=t/f
+      //Active Tab: tab=display
+      //Full Map: fullmap=t/f
+
+      //Examples of usage
+      //http://gisgate.co.clark.nv.us/ow?tab=resources
+      //http://gisgate.co.clark.nv.us/ow?legend=t/
+      //http://gisgate.co.clark.nv.us/ow?owner
+      //http://gisgate.co.clark.nv.us/ow/?fullmap=t
+
+      //Chaining
+      //http://gisgate.co.clark.nv.us/ow/?@=1525 Pinto&view=clark county zoning&legend=t&tab=display&fullmap=t
+
+
+
+-CLIENT-SIDE EMBED-
+
+You may also embed the OpenWeb application client-side, internal to your application or website. In the side-panel:
+
+ 
+a. Navigate to the "Resources" section (denoted by the gear icon)
+
+b. Select the "Share or Embed map" link
+
+c. Select the "Embed" tab
+
+d. Copy and paste the embedded iframe text string, internal to your applications code, where appropriate
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------
+[[ CHAPTER 3 - HOTKEYS ]]
+
+-SHORTCUTS-
+
+The OpenWeb application also allows for an easy means of navigation and operation by way of hotkeys.
+
+At the present time, these are limit to basic functions related to menu and map navigation, but these uses
+will be expanded in the future
+
+[hotkeys]
+Esc: Used for closing active windows
+Arrow Keys: Used for nagivating map
+Enter: Used for executing a search
+
+
+
+
+
+
+
+
+

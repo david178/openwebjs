@@ -1,3 +1,4 @@
+
 //************************************************
 //************** CONTROLLERS *********************
 //************************************************
@@ -9,61 +10,46 @@
 //************ TypeaheadCtrl *********************
 //************************************************
 
+//TypeaheadCtrl Module --------------------------------------------------------------------------------------
 // angular.module('ui.bootstrap.demo', ['ui.bootstrap']);
 open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limitToFilter limits typeahead result returns
 
     $scope.selected = undefined;
     $scope.selectedIndex = -1;
-    $scope.suggestionsObj = [];
-
+    $scope.searchMagiKey = []; //search suggestions magic key
+    $scope.searchSuggestionsText = []; //search suggestions address text
 
 
     console.log("C [[ selected: " + $scope.selected + " ]]");
 
-
-
-
     // $scope.onTheKeyUp = function ($event, $item, $model, $label, $viewValue) {
 
     //   // if ($event.keyCode === 40) {
-
-
     //   //   console.log($scope.asyncSelected);
     //   //   console.log($item + "2");
     //   //   console.log($label + "3");
     //   //   console.log($viewValue);
     //   // }
-
-
     // };
 
 
     $scope.onTheChange = function($item, $model, $label) {
-
         // console.log($scope.asyncSelected);
         // console.log($item + "2");
         // console.log($label + "3");
-
         // $scope.$item = $item;
         // $scope.$model = $model;
         // $scope.$label = $label;
-
-
-
         // $( "#PropInfoDialog" ).hide();
-
-
     };
 
 
     //THE MAIN SEARCH FUNCTION
     $scope.search = function(theSearch) {
 
-        // console.log('testing')
-
         console.log("C [[ searching: " + theSearch + " ]]");
 
-        $scope.executeSearch(theSearch);
+        $scope.executeSearch(theSearch,null);
 
         //pass to ai.js as well
         ai(theSearch);
@@ -71,8 +57,6 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
 
 
 
-    // $scope.keyPress = function (what, $item, $model, $label, asyncSelected, activeIdx, second, theMatch, $viewValue) {
-    // $scope.keyUp = function ($event, $item, $model, $label, asyncSelected, activeIdx, second, theMatch, $viewValue) {
     $scope.keyUp = function($event, $index, asyncSelected) {
 
         //Update closeIcon
@@ -80,59 +64,12 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
         if (!asyncSelected) {
             $('#closeIcon').hide();
 
-            // // $( "#PropInfoDialog" ).show();
-            // $('#PropInfoDialog').css({
-            //   'visibility': 'hidden'
-            //   // 'visibility': 'visible'
-            //   });
-
         } else if (asyncSelected === '') {
             $('#closeIcon').hide();
-
-            // // $( "#PropInfoDialog" ).show();
-            // $('#PropInfoDialog').css({
-            //   'visibility': 'hidden'
-            //   // 'visibility': 'visible'
-            //   });
 
         } else {
             $('#closeIcon').show();
         }
-
-
-
-        // console.log('char test ' + asyncSelected.length)
-
-
-
-
-
-        // if (asyncSelected) {
-
-        //   //if there is a value in the model, then show the 'x' close icon
-        //   if (asyncSelected.length >= 1) {
-
-        //     $('#closeIcon').show();
-
-        //     // $("#closeIcon").css("display", "block");
-
-        //     }
-        //     else if (asyncSelected.length < 1) {
-        //       $('#closeIcon').hide();
-
-        //       // $("#closeIcon").css("display", "none");
-        //     }
-
-        // } else {
-
-        //   $('#closeIcon').hide();
-        // }
-
-        // console.log(asyncSelected)
-
-
-
-
 
 
         //get current selectedIndex by place int
@@ -156,124 +93,39 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
             // scope.addToSelectedTags(scope.selectedIndex);
         }
 
-
-
-
-
         // //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         // //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         // //DYNAMIC PropInfo dialog visability onKeyUp
         // $scope.propInfoVis($event.keyCode);
         $scope.propInfoVis(); //COMMENTED OUT
 
-
-
     }
-
-
-
-
-
-
-    //watch
-
-    //ng-model="asyncSelected" ng-change="updateBar(asyncSelected)"
-
-    // $scope.updateBar = function(asyncSelected) {
-    //     if(val === 'test') {
-    //         scope.bar = 'foo is testing me';
-    //     } else if (val === 'blah') {
-    //         $scope.bar = 'foo seems indifferent';
-    //     } else {
-    //             $scope.bar = 'I do not understand foo';
-    //     }
-    // };
-
-
-    // $scope.updateSync = function(asyncSelected) {
-    //     // if(val === 'test') {
-    //     //     scope.bar = 'foo is testing me';
-    //     // } else if (val === 'blah') {
-    //     //     $scope.bar = 'foo seems indifferent';
-    //     // } else {
-    //     //         $scope.bar = 'I do not understand foo';
-    //     // }
-
-    //     $scope.propInfoVis();
-
-    //     console.log('tst')
-    // };
-
-
-    // //Trying to get the active index
-    // $scope.$watch('asyncSelected', function(newValue, oldValue) {
-
-    //   // // testing = index;
-
-    //   //   // console.log(newValue)
-    //   //   // console.log(oldValue)
-
-
-    //   //   // $scope.propInfoVis();
-
-    //   //     if(newValue !== oldValue) {
-    //   //       $scope.propInfoVis();
-    //   //       // console.log('a change was made')
-    //   //     }
-
-
-
-    //       });
-
-
-
-
-    // scope.$watch('selectedIndex',function(val){
-    //      if(val!==-1) {
-    //           scope.searchText = scope.suggestions[scope.selectedIndex];
-    //       }
-    // });
-
-    // $scope.$watch('selectedIndex',function(val){
-
-    //   console.log(val)
-
-    //      // if(val!==-1) {
-    //      //      $scope.asyncSelected = $scope.suggestions[$scope.selectedIndex];
-
-
-    //      //  }
-    // });
-
-
-
-
-    // $scope.updateSync = function($index) {
-    //     // // if(val === 'test') {
-    //     // //     scope.bar = 'foo is testing me';
-    //     // // } else if (val === 'blah') {
-    //     // //     $scope.bar = 'foo seems indifferent';
-    //     // // } else {
-    //     // //         $scope.bar = 'I do not understand foo';
-    //     // // }
-
-    //     // $scope.propInfoVis();
-
-    //     console.log($index)
-    // };
-
-
-
 
 
 
     //onSearch (GETS CALLED ON CLICK SELECTION OF DROP DOWN SUGGESTION)
     $scope.onSelect = function($item, $model, $label) {
-        // console.log($model + 'test')
-        $scope.executeSearch($model);
+
+        // //LOGGING THE SCOPE SUGGESTIONS KEY FOR A MATCH WITH THE SUGGESTIONSKEY[1] VAR
+        // console.log('SCOPE searchSuggestionsKey - This should match the suggestionsKey log: ' + $scope.searchSuggestionsKey); // 3
+
+        //passing in search text (val), & magic key (magi)
+        //$scope.executeSearch($model);
+        // $scope.executeSearch($model,$scope.searchSuggestionsKey);
+
+        //EXECUTE A MAGIC KEY GRAB ON SEARCHTERM
+        $scope.getMagi($model);
+        console.log('(1) EXECUTED A MAGIC KEY GRAB ON SEARCHTERM: ' + $model)
+
+
+        
+
+        // //NEW: PASSING THE MAGIC
+        // //PASS THE MAGIC KEY AS PARAM TO EXECUTESEARCH METHOD
+        // console.log($model)
+        // console.log('YOUR MAGIC KEY IS: ' + $scope.searchSuggestionsKey);
+
     };
-
-
 
 
     //888888888888888888888888888888888888888888888888//888888888888888888888888888888888888888888888888
@@ -290,230 +142,48 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
 
 
 
-
-
     //Autocomplete
     $scope.getLocation = function(val) {
 
+        //new
+         var propInfoURL = servicePrefix+'arcgis/rest/services/Locators/Clark_County_Composite_All/GeocodeServer/suggest?';
+       // var propInfoURL = 'http://maps.clarkcountynv.gov/arcgis/rest/services/Locators/Clark_County_Composite_All/GeocodeServer/suggest?';
 
 
 
-        // //ORIG 
-        //  var propInfoURL = 'http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/quicksearch?';
-
-        //  return $http.jsonp(propInfoURL +'method=gismo' + '&searchvalue=' + val + '&callback=JSON_CALLBACK').then(function(response){
-
-        //    //set the autocomplete flag to true 
-        //    autocompleteDirty = true;
-
-        //    //NEED TO FIGURE OUT HOW TO RETURN MULTIPL
-        //    // INCL            console.log($('#tester ul').height());
-
-        //    //return autocomplete data, limited to 5 results
-        //    return limitToFilter(response.data, 5);
-
-        //    });
-
-
-
-
-
-        // //888888888888888888888888888888888888888888888888//888888888888888888888888888888888888888888888888
-        // //888888888888888888888888888888888888888888888888//888888888888888888888888888888888888888888888888
-        // //888888888888888888888888888888888888888888888888//888888888888888888888888888888888888888888888888
-        // //WORKS (but delayed / inconsistent)
-
-        // var propInfoURL = 'http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/quicksearch?';
-
-        // $http.jsonp(propInfoURL +'method=gismo' + '&searchvalue=' + val + '&callback=JSON_CALLBACK').then(function(response){
-
-        //   //set the autocomplete flag to true 
-        //   autocompleteDirty = true;
-
-        //   $scope.suggestionsObj = response.data;
-
-        //   });
-
-        // return $scope.suggestionsObj;
-
-        // //888888888888888888888888888888888888888888888888//888888888888888888888888888888888888888888888888
-        // //888888888888888888888888888888888888888888888888//888888888888888888888888888888888888888888888888
-        // //888888888888888888888888888888888888888888888888//888888888888888888888888888888888888888888888888
-
-
-
-
-
-
-
-
-        // var propInfoURL = 'http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/quicksearch?';
-
-        // return $http.jsonp(propInfoURL +'method=gismo' + '&searchvalue=' + val + '&callback=JSON_CALLBACK').then(function(response){
-
-        //   //set the autocomplete flag to true 
-        //   autocompleteDirty = true;
-
-        //   // $scope.suggestionsObj = response.data;
-        //   $scope.suggestionsObj = response.data;
-
-        //   return limitToFilter(response.data, 5);
-
-        //   });
-
-        // // return limitToFilter($scope.suggestionsObj, 5);
-
-
-
-
-
-
-
-
-
-        // var propInfoURL = 'http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/quicksearch?';
-
-        // return $http.jsonp(propInfoURL +'method=gismo' + '&searchvalue=' + val + '&callback=JSON_CALLBACK').then(function(response){
-
-        //   //set the autocomplete flag to true 
-        //   autocompleteDirty = true;
-
-        //   return limitToFilter(response.data, 5);
-
-        //   // $scope.suggestionsObj = response.data;
-
-        //   });
-
-        // // return $scope.suggestionsObj;
-
-
-
-
-
-
-
-
-
-        // var propInfoURL = 'http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/quicksearch?';
-
-        // return $http.jsonp(propInfoURL +'method=gismo' + '&searchvalue=' + val + '&callback=JSON_CALLBACK').then(function(response){
-
-        //   //set the autocomplete flag to true 
-        //   autocompleteDirty = true;
-
-        //   // $scope.suggestionsObj = response.data;
-
-        //   // $scope.apply($scope.suggestionsObj);
-
-        //   $scope.$apply(function() {
-        //               // //wrapped this within $apply
-        //               // $scope.message = 'Fetched after 3 seconds'; 
-        //               // console.log('message:' + $scope.message);
-        //               $scope.suggestionsObj = response.data;
-
-
-        //             });
-
-
-
-        //   return limitToFilter($scope.suggestionsObj, 5);
-
-        //   });
-
-        // // return limitToFilter($scope.suggestionsObj, 5);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //              var propInfoURL = 'http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/quicksearch?';
-
-        //              var thisisTest = $http.jsonp(propInfoURL +'method=gismo' + '&searchvalue=' + val + '&callback=JSON_CALLBACK').then(function(response){
-
-        //                //set the autocomplete flag to true 
-        //                // autocompleteDirty = true;
-
-        //                //NEED TO FIGURE OUT HOW TO RETURN MULTIPL
-        //                // INCL            console.log($('#tester ul').height());
-
-        //                // $scope.suggestionsObj = 'response.data';
-
-        //                // $scope.suggestionsObj += 1;
-
-        //                // $scope.suggestionsObj = response.data;
-
-        //                // //return autocomplete data, limited to 5 results
-        //                // return limitToFilter(response.data, 5);
-
-        //                autocompleteDirty = true;
-
-        // /*               $scope.suggestionsObj = limitToFilter(response.data, 5);*/
-        //                 $scope.suggestionsObj += 1;
-
-
-        //                 // var h = $scope.suggestionsObj;
-        //                 //   var w = limitToFilter(response.data, 5);
-
-
-        //                 // var hw=[h,w];
-        //                 //   return hw;
-
-
-
-        //                //return autocomplete data, limited to 5 results
-        //                return [limitToFilter(response.data, 5),$scope.suggestionsObj];
-
-        //                });
-
-        //              // return thisisTest[0];
-
-        //              return thisisTest[0];
-
-
-
-
-
-
-
-
-
-        var propInfoURL = 'http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/quicksearch?';
-
-        return $http.jsonp(propInfoURL + 'method=gismo' + '&searchvalue=' + val + '&callback=JSON_CALLBACK').then(function(response) {
+        return $http.jsonp(propInfoURL + 'text=' + val + '&maxSuggestions=' + null + '&category=' + null + '&countryCode=' + null + '&searchExtent=' + null + '&location=' + null + '&distance=' + null + '&f=json' + '&callback=JSON_CALLBACK').then(function(response) {
 
             //set the autocomplete flag to true 
             autocompleteDirty = true;
 
-            //NEED TO FIGURE OUT HOW TO RETURN MULTIPL
-            // INCL            console.log($('#tester ul').height());
+            // var obj = response.data.suggestions;
+            var obj = response.data.suggestions;
+            var keys = [];
 
-            // $scope.suggestionsObj = limitToFilter(response.data, 5);
-
-            // $scope.$digest();
+            // var suggestionsResult = [];
+            // var parsedResult = [];
+           // var suggestionsKey = [];
+            var suggestionsText = [];
 
             // After a brief timeout, clone and inject the compiled DOM element.
             setTimeout(
                 function() {
 
-                    // transclude(
-                    //     $scope,
-                    //     function( clone ) {
+                    $.each(obj, function(k, v) {
 
-                    //         element.append( clone );
+                        //suggestionsKey.push(v.magicKey);
+                        suggestionsText.push(v.text);
 
-                    //     }
-                    // );
+                    });
 
-                    $scope.suggestionsObj = limitToFilter(response.data, 5);
+                    $scope.searchSuggestionsText = limitToFilter(suggestionsText, 5);
+
+                    //TEST: BINDING MAGIC KEY TO SCOPE OBJECT
+                   // $scope.searchSuggestionsKey = suggestionsKey[0];
+
+                    //Grabbing the first item in an array of strings
+                    //console.log('suggestionsKey log: ' + suggestionsKey[0]); // 3
+                    
 
                     // Tell AngularJS that a change has occurred (this will
                     // invoke various $watch() callbacks).
@@ -523,11 +193,81 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
                 250
             );
 
-
             //return autocomplete data, limited to 5 results
-            return limitToFilter(response.data, 5);
+            return limitToFilter($scope.searchSuggestionsText, 5);
 
         });
+
+    };
+
+
+
+
+    //GetMagicKey - TAKES A RESOLVED SEARCH TEXT TERM AND THEN ATTEMPT GRAB OF ITS ASSOCIATED MAGIKEY
+    // - gets called on a search term resolve intent; for a new magic key request
+    $scope.getMagi = function(searchTerm) {
+
+
+        //svcURL
+        var svcURL = servicePrefix+'arcgis/rest/services/Locators/Clark_County_Composite_All/GeocodeServer/suggest?';
+       // var svcURL = 'http://maps.clarkcountynv.gov/arcgis/rest/services/Locators/Clark_County_Composite_All/GeocodeServer/suggest?';
+
+        
+
+        // var svcURL = 'http://gisgate.clarkcountynv.gov/arcgis/rest/services/Locators/Clark_County_Composite_All/GeocodeServer/findAddressCandidates?';
+
+        $http.jsonp(svcURL + 'text=' + searchTerm + '&maxSuggestions=' + null + '&category=' + null + '&countryCode=' + null + '&searchExtent=' + null + '&location=' + null + '&distance=' + null + '&f=json' + '&callback=JSON_CALLBACK').then(function(response) {
+
+            console.log('(2) INITIATING A GETMAGI REQUEST ON: ' + searchTerm)
+
+            //console.log(response.data.suggestions)
+
+            //Bind Suggestions obj
+            // var magiKeyItem = response.data.suggestions;
+            var magiKeyItem = response.data.suggestions[0].magicKey;
+            //console.log('THIS IS THE TEST OF THE MAGIC KEY PLACE: ' + magiKeyItem)
+            //$scope.searchMagiKey = magiKeyItem;
+
+            //PASS IT AS PARAM OFF TO executeSearch - where it is then passed off to appropriate search
+            //method to operate on
+           $scope.executeSearch(searchTerm,magiKeyItem)
+
+
+
+
+
+
+
+
+            // var obj = response.data.suggestions;
+            // var suggestionsKey = [];
+
+            // console.log('GETTING THE RESPONSE BACK FROM GETMAGI REQUEST')
+
+            // $.each(obj, function(k, v) {
+
+            //     suggestionsKey.push(v.magicKey);
+
+            // });
+
+            // //clearing out the magic key 
+            // delete $scope.searchMagiKey;
+
+
+            // //BINDING MAGIC KEY TO SCOPE OBJECT
+            // $scope.searchMagiKey = suggestionsKey[0];
+
+            // console.log('HERE LIES THE KEY: ' + suggestionsKey)
+
+
+        });//.
+        // error(function(data) {
+
+        //     console.log("err" + data)
+
+        // });
+
+
 
 
     };
@@ -538,10 +278,10 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
 
 
 
+
     //dynamic propInfoVis -------------------------------------------------------------
     // $scope.propInfoVis = function(evt) {
     $scope.propInfoVis = function() {
-
 
             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -554,20 +294,6 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
             } else {
                 autocompleteIsShowing = true;
             }
-
-            //console.log("[acShowing: " + autocompleteIsShowing + "]");
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -583,13 +309,8 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
 
             } else if (autocompleteIsShowing === true && searchHasCompleted === true) { //AUTOCOMPLETE SHOWING & PREV SEARCH ACTIVE
 
-
-
-
-
                 // setTimeout(
                 //     function() {
-
                 //       //prop info results positioning
                 //       $( "#PropInfoDialog" ).position({
                 //         my: "left top",
@@ -604,7 +325,6 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
                 //       console.log('C [[ propInfoVis-a[1]' + JSON.stringify($( "#PropInfoDialog" ).position()) + " ]]" );
 
                 //       // console.log(autocompleteIsShowing)
-
                 //     },
                 //     50
                 //     // 250
@@ -623,12 +343,6 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
                     'visibility': 'visible'
                 });
                 console.log('C [[ propInfoVis-a[1]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
-
-                // console.log(autocompleteIsShowing)
-
-
-
-
 
             }
 
@@ -711,7 +425,6 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
             }
 
 
-
         }
         //------------------------------------------------------------------------------
 
@@ -727,22 +440,17 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
 
 
 
+//************************************************
+//************ mapController *********************
+//************************************************
 
 
-
-
-
-//--------------------------------
-//mapController
+//mapController Module --------------------------------------------------------------------------------------
 open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', function($scope, $filter, $http, openFactory) {
-
-
 
     //Coord System Options
     $scope.coordOptions = [{ name: 'State Plane ft. ', value: 'state-plane-ft' }, { name: 'Lat / Long', value: 'lat-long' }];
     $scope.selectedOption = $scope.coordOptions[0];
-
-
 
 
     //ChangeCoords (updates the coordinate system) -------------------------------
@@ -752,38 +460,23 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             locale = window.location.search.substring(1).split("@")[1]; // new
 
 
-
-            // console.log(coordSystem)
-
-
-            //console.log(coordSelected.value)
-
             if (coordSelected.value === 'state-plane-ft') //state plane
             {
-
-                //  console.log(coordSystem + '1')
-
-                // console.log($scope.thePoint.Y)
-
-
-
 
                 //Immediate update conversion for the coordSys dropdown & browser url coords
                 //convert lat long to state plan x/y
 
                 // // convert the incoming lat lng to state plane for Map center and zoom
-                var theURL = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=4326&outSR=102707&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":' + locale.split(",")[1] + ',"y":' + locale.split(",")[0] + '}]}';
+                // var theURL = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=4326&outSR=102707&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":' + locale.split(",")[1] + ',"y":' + locale.split(",")[0] + '}]}';
+                var theURL = servicePrefix+'arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=4326&outSR=102707&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":' + locale.split(",")[1] + ',"y":' + locale.split(",")[0] + '}]}';
+
+                
+
+
 
                 //make request for coord conversion
                 $http.jsonp(theURL + '&callback=JSON_CALLBACK').success(function(data) {
 
-                    // console.log(data.geometries[0].y.toFixed(7));
-                    // console.log(data.geometries[0].x.toFixed(7));
-
-
-                    //   //bind to info block x/y (immediate)
-                    //   thedfX = data.geometries[0].y.toFixed(7);
-                    //   thedfY = data.geometries[0].x.toFixed(7);
 
                     console.log(data.geometries[0].x)
 
@@ -796,11 +489,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     //set showX & showY vals
                     showX.innerHTML = "<b>X: </b>" + thedfX;
                     showY.innerHTML = "<b>Y: </b>" + thedfY;
-
-
-
-
-
 
 
 
@@ -821,9 +509,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     }
 
 
-
-
-
                 }).
                 error(function(data) {
 
@@ -833,100 +518,16 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-                // //craft a state plane ft url
-                // // var craftedURL = '?@'+Math.round(uX)+','+Math.round(uY);
-                // var craftedURL = '?@'+Math.round(uX)+','+Math.round(uY)+','+uLVL;
-
-
-                // //update the windows.location url
-                // if (typeof (history.pushState) != "undefined") {
-                //     var obj = {Page: 'page', Url: craftedURL};
-                //     history.pushState(obj, obj.Page, obj.Url);
-                // } else {
-                //     window.location.href = "@homePage";
-                //     // alert("Browser does not support HTML5.");
-                // }
-
-
-                // //craft a lat long url
-                // // var craftedURL = '?@'+data.geometries[0].y.toFixed(7)+','+data.geometries[0].x.toFixed(7);
-                // var craftedURL = '?@'+data.geometries[0].y.toFixed(7)+','+data.geometries[0].x.toFixed(7)+','+uLVL;
-
-
-                // //update the windows.location url
-                // if (typeof (history.pushState) != "undefined") {
-                //     var obj = {Page: 'page', Url: craftedURL};
-                //     history.pushState(obj, obj.Page, obj.Url);
-                // } else {
-                //     window.location.href = "@homePage";
-                //     // alert("Browser does not support HTML5.");
-                // }
-
-
-
-
-
-
-
                 //update coorsystem to state plane
                 coordSystem = 'state-plane-ft';
 
             } else if (coordSelected.value === 'lat-long') //lat long
             {
 
-                // console.log('test '+document.getElementById('showX').innerHTML)
 
-                // console.log($( "#showX" ).text())
+                // var theURL = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=102707&outSR=4326&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":' + locale.split(",")[0] + ',"y":' + locale.split(",")[1] + '}]}';
+                var theURL = servicePrefix+'arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=102707&outSR=4326&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":' + locale.split(",")[0] + ',"y":' + locale.split(",")[1] + '}]}';
 
-                // console.log($scope.thePoint.X)
-
-
-
-                // //grab showX & showY
-                // var showX = document.getElementById("showX");
-                // var showY = document.getElementById("showY");
-
-                //       $scope.thePoint.X = Math.round(uX);
-                //       $scope.thePoint.Y = Math.round(uY);
-
-                //     $scope.thePoint.X = $scope.thePointInfo.X;
-                //     $scope.thePoint.Y = $scope.thePointInfo.Y;
-
-                // //set showX & showY vals
-                // showX.innerHTML = "<b>X: </b>" + $scope.thePoint.X;
-                // showY.innerHTML = "<b>Y: </b>" + $scope.thePoint.Y;
-
-
-
-
-
-                // //QueryString Params
-                // var locale2 = window.location.search.substring(1).split("@")[1]; // new
-                // var viewName = $scope.configURLParse('view'); // 
-                // var legendBlock = $scope.configURLParse('legend'); // 
-                // var weatherBlock = $scope.configURLParse('weather'); //
-                // var tab = $scope.configURLParse('tab'); // 
-                // var fullmap = $scope.configURLParse('fullmap'); //
-
-                //Immediate update conversion for the coordSys dropdown & browser url coords
-                //convert current state plane x/y to lat long
-
-                // // convert the incoming lat lng to state plane for Map center and zoom
-                // var theURL = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=102707&outSR=4326&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":'+$scope.thePoint.X+',"y":'+$scope.thePoint.Y+'}]}';
-
-                var theURL = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=102707&outSR=4326&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":' + locale.split(",")[0] + ',"y":' + locale.split(",")[1] + '}]}';
 
                 //make request for coord conversion
                 $http.jsonp(theURL + '&callback=JSON_CALLBACK').success(function(data) {
@@ -945,10 +546,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
-
-
-
-
                     //immediate update to browser url ---------------------------
 
                     //craft a lat long url
@@ -966,42 +563,12 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     }
 
 
-
-
-
-
-                    // //update the browser url ---------------------------
-
-                    // //craft a state plane ft url
-                    // // var craftedURL = '?@'+Math.round(uX)+','+Math.round(uY);
-                    // var craftedURL = '?@'+Math.round(uX)+','+Math.round(uY)+','+uLVL;
-
-
-                    // //update the windows.location url
-                    // if (typeof (history.pushState) != "undefined") {
-                    //     var obj = {Page: 'page', Url: craftedURL};
-                    //     history.pushState(obj, obj.Page, obj.Url);
-                    // } else {
-                    //     window.location.href = "@homePage";
-                    //     // alert("Browser does not support HTML5.");
-                    // }
-
-
-
-
-
-
-
-
-
                 }).
                 error(function(data) {
 
                     console.log("err" + data)
 
                 });
-
-
 
 
 
@@ -1014,49 +581,8 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
             }
 
-            //console.log(coordSystem)
-
-            // if (typeof (history.pushState) != "undefined") {
-            //     var obj = {Page: page, Url: url};
-            //     history.pushState(obj, obj.Page, obj.Url);
-            // } else {
-            //     window.location.href = "@homePage";
-            //     // alert("Browser does not support HTML5.");
-            // }
-
         }
         //------------------------------------------------------------------------------
-
-    //  $scope.selectedTemplate = function(pTemplate) {
-    //     //Your logic
-    //     alert('Template Url is : '+pTemplate);
-    // }
-
-
-    // $scope.update = function() {
-    //    $scope.item.size.code = $scope.selectedItem.code;
-    //    // use $scope.selectedItem.code and $scope.selectedItem.name here
-    //    // for other stuff ...
-    // }
-
-
-    // function MyCtrl($scope) {
-    //   $scope.sizes = [ {code: 1, name: 'n1'}, {code: 2, name: 'n2'}];
-    //   $scope.update = function() {
-    //     console.log($scope.item.code, $scope.item.name)
-    //   }
-    // }
-
-    // // $scope.itemList=[];
-    // $scope.blisterPackTemplates=[{id:1,name:"a"},{id:2,name:"b"},{id:3,name:"c"}]
-
-    // $scope.changedValue=function(item){
-    // // $scope.itemList.push(item.name);
-    //   console.log(item.name)
-    // }    
-
-
-
 
 
 
@@ -1099,6 +625,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     //Load Saved Settings from Memory --------------------------------------------
     $scope.themeSet = function() {
 
+            //Theme
             if (localStorage.theme === "dark") {
                 // set the default layout
                 $scope.layout = 'dark'; //county, bright
@@ -1124,69 +651,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             //Config
             $scope.configLoad = function() {
 
-                //Mod url without page reload
-                //http://stackoverflow.com/questions/824349/modify-the-url-without-reloading-the-page
-
-
-                //-Config Settings-
-
-                //Parcel: @13933710002
-                //Address: @500 Grand Central
-                //Owner: @CARR LOUIS JR~12419511114 (will improve after update to getSuggestions,getAddressFromLoc)
-                //State Plane Ft: @782826,26762144
-                //Lat/Long: N/A yet..
-                //Map View: view=clark county zoning
-                //Legend: legend=t/f
-                //Weather: weather=t/f
-                //Active Tab: tab=display
-                //Full Map: fullmap=t/f
-
-                //Examples of usage
-                //http://gisgate.co.clark.nv.us/ow/?@=500 Grand Central
-                //http://gisgate.co.clark.nv.us/ow/?@=13933305021
-                //http://gisgate.co.clark.nv.us/ow?@=782826,26762144/
-                //http://gisgate.co.clark.nv.us/ow/?@=13933305021
-                //http://gisgate.co.clark.nv.us/ow?tab=resources
-                //http://gisgate.co.clark.nv.us/ow?legend=t/
-                //http://gisgate.co.clark.nv.us/ow?owner
-                //http://gisgate.co.clark.nv.us/ow/?fullmap=t
-
-                //Chaining
-                //http://gisgate.co.clark.nv.us/ow/?@=1525 Pinto&view=clark county zoning&legend=t&tab=display&fullmap=t
-
-
-
-
-
-                // //?@782826,26762144&legend=t
-
-                // // query string: ?foo=lorem&bar=&baz
-                // // var foo = getParameterByName('foo'); // "lorem"
-                // // var bar = getParameterByName('bar'); // "" (present with empty value)
-                // // var baz = getParameterByName('baz'); // "" (present with no value)
-                // // var qux = getParameterByName('qux'); // null (absent)
-
-                // //?foo=lorem&tester=ipsum
-                // var foo = getParameterByName('@'); // "lorem"
-                // var bar = getParameterByName('tester'); // "" (present with empty value)
-                // // var baz = getParameterByName('baz'); // "" (present with no value)
-                // // var qux = getParameterByName('qux'); // null (absent)
-
-                // console.log(foo)
-                // console.log(bar)
-                // // console.log(baz)
-                // // console.log(qux)
-
-                //?@782826,26762144&legend=t
-
-                // query string: ?foo=lorem&bar=&baz
-                // var foo = getParameterByName('foo'); // "lorem"
-                // var bar = getParameterByName('bar'); // "" (present with empty value)
-                // var baz = getParameterByName('baz'); // "" (present with no value)
-                // var qux = getParameterByName('qux'); // null (absent)
-
-                //?foo=lorem&tester=ipsum
-                // var locale = $scope.configURLParse('@'); // old
+                //Grab and Parses, Split URL
                 var locale = window.location.search.substring(1).split("@")[1]; // new
                 var viewName = $scope.configURLParse('view'); // 
                 var legendBlock = $scope.configURLParse('legend'); // 
@@ -1194,77 +659,15 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 var tab = $scope.configURLParse('tab'); // 
                 var fullmap = $scope.configURLParse('fullmap'); //
 
-
-                // // var locale = $scope.localelocaleconfigURLParse('@'); //
-                // //queryString = queryString.substring(1).split("@");
-                // var queryString = window.location.href;
-                // name = name.replace(/[\[\]]/g, "\\$&");
-
-                //  //var locale = queryString.substring(1).split("@");
-
-                //  var locale = queryString[0].split("=");
-                // // console.log(name)
-
-                // console.log(locale + 'teset')
-
-
-                //    var queryString2 = window.location.search;
-                // //    // // queryString2 = queryString2.substring(1).split("?");
-
-                // //    // // console.log(queryString2[1]);
-
-                // //    // var queryString2 = window.location.pathname;
-                //    queryString2 = queryString2.substring(1).split("@");
-
-                //   // console.log(queryString2[1]);
-
-                //   var local = window.location.search.substring(1).split("@");
-
-                //    var locale = queryString2[1];
-
-                // console.log(locale)
-
-                // console.log(locale[1])
-
-
-                //  //   legendString = queryString.substring(1).split("legend=");
-
-                //  //   // console.log('legend is' + localeString[1].split("=")[0])
-
-
-
-
-                // var testString = window.location.search.substring(1).split("@")[1];
-
-                // console.log(testString)
-
-
-                //var locale = window.location.search.substring(1).split("@"); // new
-
-
-
-
-
-
-
-
-
-
                 console.log(locale)
 
-                //  console.log(window.location.href) 
 
-
-
-
-
-                //locale Config -------
+                //locale Config ---------------------------------------
 
                 //filter out undefined
                 if (locale) {
 
-                    // console.log('success')
-
+  
                     //lat/long & state plane
                     if (locale.indexOf(",") > -1) {
 
@@ -1281,26 +684,9 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                             console.log('lat/long')
 
 
-
-
                             //bind vals for universal coord system (to be used in infoblock x/y) 
                             $scope.thePointInfo.X = locale.split(",")[0];
                             $scope.thePointInfo.Y = locale.split(",")[1];
-
-
-                            //set showX & showY vals (for infoblock) (needs finish)
-                            // $scope.thePoint.X = $scope.thePointInfo.X;
-                            // $scope.thePoint.Y = $scope.thePointInfo.Y;
-
-                            // //set showX & showY vals
-                            // showX.innerHTML = "<b>X: </b>" + $scope.thePoint.X;
-                            // showY.innerHTML = "<b>Y: </b>" + $scope.thePoint.Y;
-
-                            // showX.innerHTML = "<b>X: </b>" + locale.split(",")[0];
-                            // showY.innerHTML = "<b>Y: </b>" + locale.split(",")[1];
-
-
-
 
 
                             thexc = locale.split(",")[0];
@@ -1309,7 +695,10 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                             // convert the incoming lat lng to state plane for Map center and zoom
                             //http://meyerweb.com/eric/tools/dencoder/
                             //http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=102707&outSR=4326&geometries={%22geometryType%22:%22esriGeometryPoint%22,%22geometries%22:[{%22x%22:779788,%22y%22:26761500}]}&transformation=&transformForward=true&f=html
-                            var theURL = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=4326&outSR=102707&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":' + theyc + ',"y":' + thexc + '}]}';
+                            // var theURL = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=4326&outSR=102707&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":' + theyc + ',"y":' + thexc + '}]}';
+                            var theURL = servicePrefix+'arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=4326&outSR=102707&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":' + theyc + ',"y":' + thexc + '}]}';
+
+                            
 
                             //make request for coord conversion
                             $http.jsonp(theURL + '&callback=JSON_CALLBACK').success(function(data) {
@@ -1340,166 +729,11 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            //center map based on lat long
-                            // map.centerAt(new Point(-118.15, 33.80));
-                            // map.centerAt(new Point(locale.split(",")[1], locale.split(",")[0]));
-
-                            // require([
-                            //   "esri/geometry/Point", "esri/SpatialReference", ... 
-                            // ], function(Point, SpatialReference, ... ) {
-                            //   new Point(-118.15, 33.80, new SpatialReference({ wkid: 4326 }));
-                            //   map.centerAt(new Point(locale.split(",")[1], locale.split(",")[0]));
-                            // });
-
-
-
-
-
-
-
-
-
-
-
-
-                            //set centerAndZoom
-                            // require([
-                            //   "esri/geometry/Point", "esri/SpatialReference"
-                            // ], function(Point, SpatialReference) {
-                            //   // new Point(-118.15, 33.80, new SpatialReference({ wkid: 4326 }));
-                            //   // map.centerAt( new Point(locale.split(",")[0], locale.split(",")[1], new SpatialReference({ wkid: 102707 }) ));
-
-                            //   map.centerAndZoom( new Point(locale.split(",")[0], locale.split(",")[1], new SpatialReference({ wkid: 102707 }) ),locale.split(",")[2]);
-
-                            //  // console.log(locale.split(",")[2])
-
-
-                            // });
-
-
-
-
-
-
-
-                            // // convert the incoming lat lng to state plane for Map center and zoom
-                            //  var theURL = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=102707&outSR=4326&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":'+thexc+',"y":'+theyc+'}]}';
-
-                            //  //make request for coord conversion
-                            //  $http.jsonp(theURL + '&callback=JSON_CALLBACK').success(function(data) {
-
-
-
-                            //    //   thedfX = data.geometries[0].y.toFixed(7);
-                            //    //   thedfY = data.geometries[0].x.toFixed(7);
-
-
-
-                            //    // //set centerAndZoom
-                            //    // require([
-                            //    //   "esri/geometry/Point", "esri/SpatialReference"
-                            //    // ], function(Point, SpatialReference) {
-                            //    //   // new Point(-118.15, 33.80, new SpatialReference({ wkid: 4326 }));
-                            //    //   // map.centerAt( new Point(locale.split(",")[0], locale.split(",")[1], new SpatialReference({ wkid: 102707 }) ));
-
-                            //    //   map.centerAndZoom( new Point(thedfX, thedfY, new SpatialReference({ wkid: 102707 }) ),locale.split(",")[2]);
-
-                            //    //  // console.log(locale.split(",")[2])
-
-
-                            //    // });
-
-
-
-
-
-
-                            //  //  console.log(data.geometries[0].x.toFixed(7));
-                            //    //console.log(data.geometries[0].y.toFixed(7));
-
-                            //    // //bind vals for universal coord system (to be used in infoblock x/y)
-                            //    // $scope.thePointInfo.X = data.geometries[0].y.toFixed(7);
-                            //    // $scope.thePointInfo.Y = data.geometries[0].x.toFixed(7);
-
-
-                            //    // //craft a lat long url
-                            //    // // var craftedURL = '?@'+data.geometries[0].y.toFixed(7)+','+data.geometries[0].x.toFixed(7);
-                            //    // var craftedURL = '?@'+data.geometries[0].y.toFixed(7)+','+data.geometries[0].x.toFixed(7)+','+uLVL;
-
-
-                            //    // //update the windows.location url
-                            //    // if (typeof (history.pushState) != "undefined") {
-                            //    //     var obj = {Page: 'page', Url: craftedURL};
-                            //    //     history.pushState(obj, obj.Page, obj.Url);
-                            //    // } else {
-                            //    //     window.location.href = "@homePage";
-                            //    //     // alert("Browser does not support HTML5.");
-                            //    // }
-
-                            //  }).
-                            //  error(function (data) {
-
-                            //   console.log("err" + data)
-
-                            //  });
-
-
-
-
-
-
-
-
-
                         } else //State plane ft
                         {
 
                             //update coorsystem to state plane
                             coordSystem = 'state-plane-ft';
-
-                            // console.log('state plane')
-
-                            // angular.element($('#mapDiv')).scope().executeQueryTask(locale[1].split(",")[0],locale[1].split(",")[1]);
-
-                            //uncomment for auto re-direct on state-plane
-                            //specify false for 3rd param to pan to location, but do not execute a select property on property
-                            // propselect = false;
-
-                            //works, but commented out because only want bookmarking on parcel/address 
-                            //$scope.executeQueryTask(locale.split(",")[0],locale.split(",")[1],'initial');
-                            // map.centerAt(locale.split(",")[0],locale.split(",")[1]);
-
-
-
-
-
-                            //catch the simple initial extent case
-                            // if (resolveAs === 'initial') { //else its the initial extent
-
-                            //map.graphics.add(gra);
-                            // map.setExtent(gra.geometry.getExtent(), true); //old
-                            //}
-
-
-                            // map.centerAt(761466,26779256); 
-                            // map.centerAt(36.1656043,-115.1519173); 
-                            // map.centerAt(761466,26779256); 
-
 
 
 
@@ -1514,11 +748,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                                 // console.log(locale.split(",")[2])
 
-
                             });
-
-
-
 
 
 
@@ -1529,13 +759,11 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                         console.log('parcel add owner')
 
                         // console.log(locale)
-
                         //  $scope.ajaxAddress(locale);
-
                         // angular.element($('#mapDiv')).scope().executeSearch(locale[1]);
 
                         //auto re-direct
-                        $scope.executeSearch(locale);
+                        $scope.executeSearch(locale,null);
                         // $scope.executeSearch('1716 Jack Rabbit Way');
                     } else {}
 
@@ -1545,17 +773,52 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                     console.log("C [[ fresh extent - Welcome! ]]");
 
-
                     //update coorsystem to state plane - by default
                     coordSystem = 'state-plane-ft';
 
+                    //SET INITIAL EXTENT
                     map.setExtent(initialExtent);
+
+                   //ADDED: Now that basemap is a "ArcGISImageServiceLayer", requires zoom level set
+                   // map.setLevel(5);
+
+                    //https://developers.arcgis.com/javascript/3/jsapi/map-amd.html#getlevel
+
+                    
+
+                    // //set zoom factor
+                    // var factor = 9;
+
+                    // // //clear graphics
+                    // // map.graphics.clear();
+
+                    // // //create new location symbol
+                    // // var loc_symbol = new esri.symbol.PictureMarkerSymbol({
+                    // // "angle":0,
+                    // // "xoffset":0,
+                    // // "yoffset":10,
+                    // // "type":"esriPMS",
+                    // // "url":"images/pin.png",
+                    // // // "url":"images/pin.png",
+                    // // "contentType":"image/png",
+                    // // "width":34,
+                    // // "height":34
+                    // // // "width":24,
+                    // // // "height":24
+                    // // });
+
+                    // // //Add Graphics: drop location symbol at map point
+                    // // currentGraphic = new esri.Graphic(point, loc_symbol);
+                    // // map.graphics.add(currentGraphic);
+
+                    // //NEW WAY, ZOOM FACTOR SET
+                    // map.centerAndZoom(point, factor)
+
+
 
                 }
 
-
-
-                //Views config -----------
+                //Views config ---------------------------------------
                 //filter out undefined
                 if (viewName) {
 
@@ -1569,9 +832,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     );
                 }
 
-
-
-                //Legend config ----------
+                //Legend config ---------------------------------------
                 //filter out undefined
                 if (legendBlock) {
 
@@ -1587,8 +848,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                 }
 
-
-                //Weather config ---------
+                //Weather config ---------------------------------------
                 //filter out undefined
                 if (weatherBlock) {
 
@@ -1602,8 +862,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                 }
 
-
-                //Tab config -----------
+                //Tab config ---------------------------------------
                 //filter out undefined
                 if (tab) {
 
@@ -1663,7 +922,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                 }
 
-                //Fullmap config -----------
+                //Fullmap config ---------------------------------------
                 //filter out undefined
                 if (fullmap) {
 
@@ -1681,8 +940,19 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 }
 
 
-
             };
+
+
+
+
+
+
+
+            // //Load View from Memory --------------------------------------------
+            // //bind scope.view to localStorage.view
+            // $scope.selectedViewDefault.vname = localStorage.view;
+
+            // console.log("M [[ " + localStorage.view + " view applied ]]");
 
 
 
@@ -1693,8 +963,33 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
         }
         //---------------------------------------------------------------
 
+    //Load View from Memory --------------------------------------------
+    $scope.viewSet = function() {
+
+            //default
+        // $scope.selectedViewDefault = $scope.Views[1];
 
 
+
+
+        // //bind scope.view to localStorage.view
+        // $scope.selectedViewDefault = localStorage.view;
+
+        // console.log("M [[ " + localStorage.view + " view applied ]]");
+
+        //Load View from Memory --------------------------------------------
+        //bind scope.view to localStorage.view
+        // $scope.selectedViewDefault.vname == localStorage.view;
+
+        // console.log("M [[ " + localStorage.view + " view applied ]]");
+
+
+        $scope.selectedViewDefault.vname == localStorage.view;
+
+        console.log("M [[ " + localStorage.view + " view applied ]]");
+
+
+    }
 
 
 
@@ -1709,11 +1004,20 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     $scope.saveTheme = function() {
         localStorage.setItem("theme", $scope.layout);
         // localStorage.setItem("mediatheme", $scope.medialayout);
+
+        console.log('testing scope layout val: ' + $scope.layout)
+    };
+
+    $scope.saveView = function() {
+        localStorage.setItem("view", $scope.selectedViewDefault.vname);
+        console.log('successful pass off from line 1380 function call to save view to local storage, which was triggered by view dropdown: ' + $scope.selectedViewDefault.vname)
+        // localStorage.setItem("mediatheme", $scope.medialayout);
     };
 
     // set the default layout
     //$scope.layout = 'county'; //county, bright
     $scope.themeSet();
+    // $scope.viewSet();
 
     //$scope.parcelRedirect();
 
@@ -1739,7 +1043,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     $scope.attr = [];
     $scope.street = [];
     //ng hide default (will hide the streetView Card)
-    //ng hide default
 
 
     //checkbox toggles:
@@ -1748,6 +1051,8 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     $scope.alias = true;
     //StreetView Toggle
     $scope.toggle = true;
+    //7-day weather forecast view Toggle
+    $scope.forecasttoggle = false;
 
     // //Map View & Flight Date defaults
     //  $scope.Most1 = true;
@@ -1757,6 +1062,13 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     $scope.viewChange = viewChange;
     $scope.flightChange = flightChange;
 
+    $scope.introDate = [];
+
+
+
+    //Constructing the mapViews -------------------------------------------
+    $scope.Views = [];
+
 
     //PropSelect used in controllers.js executeQueryTask method for limiting new searches -
     // if they need a select property info info or just a pan to location
@@ -1764,153 +1076,1595 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     //var propselect = true;
     //var resolveAs;
 
-
-
     // $scope.flightChange = function flightChange(flight) {
-
     //   console.log('flight')
     // }
 
+
+
+
+
+
+
+
+
+
+
+    //---------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------
+    //------------------------ CONFIG FILES -------------------------------------------------
+    //---------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------
 
     // http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/export?bbox=720675.525446917%2c26740644.0923726%2c790953.303224776%2c26783199.6479282&size=1265%2c766&dpi=96&format=png24&transparent=true&imageSR=102707&bboxSR=102707&layers=show%3a1&f=image&
 
     // $scope.mapviewChange=function(idPassedFromNgClick){
     //     console.log(idPassedFromNgClick);
-
     // }
 
     //need to move to display.js and then inject view & flight Obj's as depenencies to use in loop
     //need to update default & seismic
-    var viewObj = {
-        "list": [
-            { "name3": "Most35", "mainName": "Aerial Imagery Only", "id1": 35, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", "addit": " " },
-            { "name3": "Most36", "mainName": "Assessor Map", "id1": 36, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/AssessorMap/MapServer", "addit": " " },
-            { "name3": "Most37", "mainName": "Boulder City Zoning", "id1": 37, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/5", "addit": " " },
-            { "name3": "Most38", "mainName": "Clark County PLU", "id1": 38, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/PlanedLandUse/MapServer", "addit": " " },
-            { "name3": "Most39", "mainName": "Clark County Zoning", "id1": 39, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/8", "addit": " " },
-            { "name3": "Most40", "mainName": "Contours 50 Meter", "id1": 40, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_50M/MapServer", "addit": " " },
-            { "name3": "Most41", "mainName": "contours 2016 2ft (Valley)", "id1": 41, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con2016_2ft/MapServer", "addit": " " },
-            { "name3": "Most42", "mainName": "Contours 2003 5ft (Valley)", "id1": 42, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_03_5ft/MapServer", "addit": " " },
-            { "name3": "Most43", "mainName": "Contours 1996 5ft (Valley)", "id1": 43, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_96_5ft/MapServer", "addit": " " },
-            { "name3": "Most44", "mainName": "Default", "id1": 44, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", "addit": " " },
-            { "name3": "Most45", "mainName": "Henderson Zoning", "id1": 45, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/6", "addit": " " },
-            { "name3": "Most46", "mainName": "Las Vegas Zoning", "id1": 46, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/4", "addit": " " },
-            { "name3": "Most47", "mainName": "Mesquite Zoning", "id1": 47, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/10", "addit": " " },
-            { "name3": "Most48", "mainName": "North Las Vegas Zoning", "id1": 48, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/7", "addit": " " },
-            { "name3": "Most49", "mainName": "Seismic", "id1": 49, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", "addit": " " },
-            { "name3": "Most50", "mainName": "Soil Guideline", "id1": 50, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/SoilsGuideline/MapServer", "addit": " " }
-        ]
-    };
+    //viewObj - data source for Map Views
+    // var viewObj_new = [];
+    var introObj_new;
+    var viewObj_new;
+    var flightObj_new;
 
+    var flightObj_new2;
 
+    var flightSRC;
 
-    var flightObj = {
-        "list": [
-            { "name2": "Most1", "name": "Most Current Flight", "id": 1, "src": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", "etc": " " },
-            { "name2": "Most2", "name": "Spring 2016", "id": 2, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS16/ImageServer", "etc": " " },
-            { "name2": "Most3", "name": "Spring 2014", "id": 3, "src": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/imagesS14/MapServer", "etc": " " },
-            { "name2": "Most4", "name": "NAIP 2013", "id": 4, "src": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/imagesNAIP13/MapServer", "etc": " " },
-            { "name2": "Most5", "name": "Spring 2013", "id": 5, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS13/MapServer", "etc": " " },
-            { "name2": "Most6", "name": "Spring 2012", "id": 6, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS12/MapServer", "etc": " " },
-            { "name2": "Most7", "name": "Fall 2011", "id": 7, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF11/MapServer", "etc": " " },
-            { "name2": "Most8", "name": "Spring 2011 (6 in.)", "id": 8, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesSNWAS11/MapServer", "etc": " " },
-            { "name2": "Most9", "name": "Fall 2010 (6 in.)", "id": 9, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesSNWAF10/MapServer", "etc": " " },
-            { "name2": "Most10", "name": "NAIP 2010", "id": 10, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesNAIP10/MapServer", "etc": " " },
-            { "name2": "Most11", "name": "Spring 2010", "id": 11, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS10/MapServer", "etc": " " },
-            { "name2": "Most12", "name": "Fall 2009", "id": 12, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF09/MapServer", "etc": " " },
-            { "name2": "Most13", "name": "Spring 2009", "id": 13, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS09/MapServer", "etc": " " },
-            { "name2": "Most14", "name": "Fall 2008", "id": 14, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF08/MapServer", "etc": " " },
-            { "name2": "Most15", "name": "Spring 2008", "id": 15, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS08/MapServer", "etc": " " },
-            { "name2": "Most16", "name": "Fall 2007", "id": 16, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF07/MapServer", "etc": " " },
-            { "name2": "Most17", "name": "Spring 2007", "id": 17, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS07/MapServer", "etc": " " },
-            { "name2": "Most18", "name": "Fall 2006", "id": 18, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF06/MapServer", "etc": " " },
-            { "name2": "Most19", "name": "Spring 2006", "id": 19, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS06/MapServer", "etc": " " },
-            { "name2": "Most20", "name": "Fall 2005", "id": 20, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF05/MapServer", "etc": " " },
-            { "name2": "Most21", "name": "Spring 2005", "id": 21, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS05/MapServer", "etc": " " },
-            { "name2": "Most22", "name": "Fall 2004", "id": 22, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF04/MapServer", "etc": " " },
-            { "name2": "Most23", "name": "Spring 2004", "id": 23, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS04/MapServer", "etc": " " },
-            { "name2": "Most24", "name": "Fall 2003", "id": 24, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF03/MapServer", "etc": " " },
-            { "name2": "Most25", "name": "Spring 2003", "id": 25, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS03/MapServer", "etc": " " },
-            { "name2": "Most26", "name": "Fall 2002", "id": 26, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF02/MapServer", "etc": " " },
-            { "name2": "Most27", "name": "Spring 2002", "id": 27, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS02/MapServer", "etc": " " },
-            { "name2": "Most28", "name": "Fall 2001", "id": 28, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF01/MapServer", "etc": " " },
-            { "name2": "Most29", "name": "Spring 2001", "id": 29, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS01/MapServer", "etc": " " },
-            { "name2": "Most30", "name": "Fall 2000", "id": 30, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF00/MapServer", "etc": " " },
-            { "name2": "Most31", "name": "Spring 2000", "id": 31, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS00/MapServer", "etc": " " },
-            { "name2": "Most32", "name": "Fall 1999", "id": 32, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF99/MapServer", "etc": " " },
-            { "name2": "Most33", "name": "Spring 1999", "id": 33, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS99/MapServer", "etc": " " },
-            { "name2": "Most34", "name": "Fall 1998", "id": 34, "src": "http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF98/MapServer", "etc": " " }
-        ]
-    };
+    var layerObj_new;
+    var customObj_new;
+    
 
 
 
 
-    $scope.Views = [];
+    //POPULATE UI - Intro Panel
+    $(function () {
 
-    //constructing the mapView List Object ----------------
-    var vResults = [];
+        //date-------------------------------
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
 
-    for (var i = 0; i < viewObj.list.length; i++) {
-        vResults.push(viewObj.list[i]); //need to add price to each item return
+        //month spelled out
+        var month = new Array();
+        month[0] = "Jan";
+        month[1] = "Feb";
+        month[2] = "Mar";
+        month[3] = "Apr";
+        month[4] = "May";
+        month[5] = "June";
+        month[6] = "July";
+        month[7] = "Aug";
+        month[8] = "Sept";
+        month[9] = "Oct";
+        month[10] = "Nov";
+        month[11] = "Dec";
+        var n = month[today.getMonth()];
+
+        var yyyy = today.getFullYear();
+        if(dd<10){
+            dd='0'+dd;
+        } 
+        if(mm<10){
+            mm='0'+mm;
+        } 
+        // var today = dd+'/'+mm+'/'+yyyy;
+
+        var today = n+' '+dd+', '+yyyy;
+       //document.getElementById("mainDate").value = today;
+
+       //set introDate to bind date field to introDate field
+        $scope.introDate = today;
+
+        //format
+        //Dec 22, 2017
+
+
+
+
+
+
+        //INTRO UPDATES (read from intro_config.txt file)-------------------------------
+
+        //Config ------------------------------------------------
+        $http.get('resources/config/intro.txt').success(function(data) {
+
+            //set the data
+            introObj_new = data[0];
+
+
+
+            //Constructing the flight dates -------------------------------------------
+            $scope.Updates = [];
+
+            //constructing the mapView List Object ----------------
+            var uResults = [];
+
+            for (var i = 0; i < introObj_new.updatesList.length; i++) {
+                uResults.push(introObj_new.updatesList[i]); //need to add price to each item return
+
+            }
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+            $scope.Updates = uResults;
+
+
+        });
+        //------------------------------------------------------
+
+    });
+
+
+
+
+
+
+
+
+
+
+    //LOAD Views (via views.txt) ------------------------------------------------------
+    $(function () {
+
+        // //POPULATE Layers ----------------------------------------------------------------------------------------------------------------
+
+        // $http.jsonp(servicePrefix+serviceSuffix_L+serviceType_L+'?f=pjson'+'&callback=JSON_CALLBACK').then(function(resp) {
+
+        //     //resp.data.services.name.replace('GISMO','');
+
+        //     //set the data
+        //     // viewObj_new = resp.data;
+        //     viewObj_new = resp.data;
+
+        //    // viewObj_new = viewObj_new.services.name.replace('GISMO','');
+
+        //     //Constructing the map views -------------------------------------------
+        //     $scope.Views = [];
+
+        //     //constructing the mapView List Object ----------------
+        //     var vResults = [];
+
+        //     // var ret = "data-123".replace('data-','');
+        //     // console.log(ret);   //prints: 123
+
+
+        //     // //Cleaning the data for 'name' (removing 'GISMO/' text)
+        //     // for (var i = 0; i < viewObj_new.services.length; i++) {
+        //     //     viewObj_new.services[i].name.replace('GISMO/',''); //replaces the gismo preface text
+        //     // }
+
+
+
+        //     // for (var i = 0; i < flightObj_new.flightList.length; i++) {
+        //     //     fResults.push(flightObj_new.flightList[i]); //need to add price to each item return
+        //     // }
+        //     for (var i = 0; i < viewObj_new.services.length; i++) {
+        //         vResults.push(viewObj_new.services[i]); //need to add price to each item return
+        //     }
+
+
+
+
+        //     // console.log('raw object ' + JSON.stringify(vResults))
+
+
+        //     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        //     $scope.Views = vResults;
+        //     $scope.selectedViewDefault = $scope.Views[0];
+
+
+
+
+        //     console.log('SHOW ME THE JSON FOR THE LAYERS ' + JSON.stringify(viewObj_new))
+
+
+
+
+
+
+        //OLD METHOD:
+
+        //Config ------------------------------------------------
+         $http.get('resources/config/views.txt').success(function(data) {
+
+            //set the data
+            viewObj_new = data[0];
+
+            // //Constructing the mapViews -------------------------------------------
+            // $scope.Views = [];
+
+            //constructing the mapView List Object ----------------
+            var vResults = [];
+
+            for (var i = 0; i < viewObj_new.viewList.length; i++) {
+                vResults.push(viewObj_new.viewList[i]); //need to add price to each item return
+            }
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+            $scope.Views = vResults;
+            $scope.selectedViewDefault = $scope.Views[1];
+            // $scope.viewSet();
+
+            // $scope.selectedViewDefault.vname == localStorage.view;
+
+            // console.log("M [[ " + localStorage.view + " view applied ]]");
+
+
+
+
+
+
+            //POPULATE OBJECTS - MapView Objects, replaces display.js (OWL - CustomList) ------------------------------------------------------
+
+            //set the data
+            customObj_new = data[0];
+
+            //Constructing the flight dates -------------------------------------------
+            $scope.customListsID = [];
+            $scope.customListsNAME = [];
+            $scope.customListsACTIVE = [];
+            $scope.customListsSRC = [];
+
+            //constructing the mapView List Object ----------------
+            var cResultsID = [];
+            var cResultsNAME = [];
+            var cResultsACTIVE = [];
+            var cResultsSRC = [];
+
+            for (var i = 0; i < customObj_new.customList.length; i++) {
+                cResultsID.push(customObj_new.customList[i].vid); //need to add price to each item return
+            }
+            for (var i = 0; i < customObj_new.customList.length; i++) {
+                cResultsNAME.push(customObj_new.customList[i].vname); //need to add price to each item return
+            }
+            for (var i = 0; i < customObj_new.customList.length; i++) {
+                cResultsACTIVE.push(customObj_new.customList[i].vactive); //need to add price to each item return
+            }
+            for (var i = 0; i < customObj_new.customList.length; i++) {
+                cResultsSRC.push(customObj_new.customList[i].vsrc); //need to add price to each item return
+            }
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+            $scope.customListsID = cResultsID;
+            $scope.customListsNAME = cResultsNAME;
+            $scope.customListsACTIVE = cResultsACTIVE;
+            $scope.customListsSRC = cResultsSRC;
+
+            console.log('THE OWL DATA ' + $scope.customListsID);
+            console.log('THE OWL DATA ' + $scope.customListsNAME);
+            console.log('THE OWL DATA ' + $scope.customListsACTIVE);
+            console.log('THE OWL DATA ' + $scope.customListsSRC);
+
+
+        });
+        //------------------------------------------------------
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //LOAD Flight Dates ------------------------------------------------------
+    $(function () {
+
+        //POPULATE Flights ----------------------------------------------------------------------------------------------------------------
+
+        // services.name > "name": "CACHED/mostcurrentflight",
+        // services.type > "type": "MapServer"
+
+        // For ex:
+        // var serverFetchURL;
+        // serverFetchURL = servicePrefix+arcgis_images/rest/services/CACHED?f=pjson
+
+
+        // MostCurrent:
+
+        // /arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer
+
+        //  servicePrefix + '/arcgis_images/rest/services/'   / + '/' + services.type
+
+
+
+
+
+
+
+
+        // flightObj_new.flightList
+        // { "flightid": 1, "fname": "Most Current Flight", "active": 1, "src": "http://maps.clarkcountynv.gov/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer"},
+
+        // vs
+
+        // flightObj_new2.services.name ("CACHED/mostcurrentflight")
+
+        // flightObj_new2.services.type ("MapServer")
+
+        // var servicePrefix = 'http://maps.clarkcountynv.gov/';
+        // var serviceSuffix_F = 'arcgis_images/rest/services/';
+        // var serviceType_F = 'CACHED'; //E.g. CACHED / Elevations / Utilities
+
+        $http.jsonp(servicePrefix+serviceSuffix_F+serviceType_F+'?f=pjson'+'&callback=JSON_CALLBACK').then(function(resp) {
+
+
+            //set the data
+            flightObj_new2 = resp.data;
+
+            //Constructing the flight dates -------------------------------------------
+            $scope.Flights = [];
+
+            //constructing the mapView List Object ----------------
+            var fResults = [];
+
+
+
+            // for (var i = 0; i < flightObj_new.flightList.length; i++) {
+            //     fResults.push(flightObj_new.flightList[i]); //need to add price to each item return
+            // }
+            for (var i = 0; i < flightObj_new2.services.length; i++) {
+                fResults.push(flightObj_new2.services[i]); //need to add price to each item return
+            }
+
+
+
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+            $scope.Flights = fResults;
+            $scope.selectedFlightDefault = $scope.Flights[0];
+
+
+
+
+
+            console.log('SHOW ME THE JSON FOR THE FLIGHTS ' + JSON.stringify(flightObj_new2))
+
+
+
+
+
+
+
+
+            //OLD METHOD:
+
+            // //set the data
+            // flightObj_new2 = resp;
+
+            // //Constructing the flight dates -------------------------------------------
+            // $scope.Flights = [];
+
+            // //constructing the mapView List Object ----------------
+            // var fResults = [];
+
+            // for (var i = 0; i < flightObj_new.flightList.length; i++) {
+            //     fResults.push(flightObj_new.flightList[i]); //need to add price to each item return
+            // }
+            // //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+            // $scope.Flights = fResults;
+            // $scope.selectedFlightDefault = $scope.Flights[0];
+
+
+        });
+
+
+    });
+
+
+
+
+
+
+
+    //UPDATE FlightDate on click (Layer Change EVT) ------------------------------------------------------
+    function flightChange(flight) {
+
+       // var flightName = flight.fname;
+       var flightName = flight.name;
+       var layerUrl;
+
+       var layer = map.getLayer('basemap');
+       map.removeLayer(layer);
+
+
+       // //binding layerUrl
+       // layerUrl = flight.src;
+       //binding layerUrl
+       layerUrl = servicePrefix+serviceSuffix_F+flight.name+'/'+flight.type;
+
+       //re-setting basemap layer
+       var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrl,{id:'basemap'});
+       map.addLayer(basemap,0);
+
+       //update the current flight tag (info box)
+       $("#currentFlightTag").text(flightName);
+
+
+
+       console.log('this is the flight source / layer url ' + layerUrl)
 
     }
-    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-    $scope.Views = vResults;
+    //---------------------------------------------------------------------------------------------
 
 
 
-    // $scope.Views = [];
 
-    // //constructing the mapView List Object ----------------
-    // var vResults = [];
 
-    // for (var i=0 ; i < flightObj2.list.length ; i++)
-    // {
-    //     vResults.push(flightObj2.list[i]); //need to add price to each item return
+
+
+
+
+
+
+
+
+
+    //---------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------
+    //HANDLING EVTS (REPLACES DISPLAY.JS) --------------------------------------------
+
+    //Update MapView Layer Change EVT -------------------------
+    function viewChange(theView) {
+
+
+
+
+
+       //First, before you do anything else, call to Save view to localStorage
+       $scope.saveView();
+
+
+
+
+
+
+
+        freshView = JSON.stringify(theView.vname);
+        // freshView = JSON.stringify(theView.name);
+
+        // //ADDED:
+        // freshView = freshView.replace("GISMO/","");
+
+        // console.log('TESTING OUT THE VIEW: ' + freshView)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      console.log('HERE IS THE NAME OF THE VIEW THAT WAS JUST PASSED IN' + freshView);
+
+
+      //grabbing the active view
+      // var viewName = viewName.toLowerCase();
+      freshView = freshView.toLowerCase();
+      freshView = freshView.replace(/['"]+/g, '');
+
+      console.log('formatted as: ' + freshView)
+
+      //Levels of Layers
+      var layerUrlMain;
+      var layerUrlSecondary;
+      var layerUrlTertiary;
+
+      //grabbing current basemap
+      var currentBase = map.getLayer('basemap');
+              
+      //grabbing and enumerating each layer
+      var layer = map.getLayer('basemap');
+      var layer2 = map.getLayer('PLULayer');
+      var layer3 = map.getLayer('CCZoningLayer');
+      var layer4 = map.getLayer('C50Layer');
+      var layer5 = map.getLayer('C2003Layer');
+      var layer6 = map.getLayer('C1996Layer');
+      var layer7 = map.getLayer('hendersonZoningLayer');
+      var layer8 = map.getLayer('lasVegasZoningLayer');
+      var layer9 = map.getLayer('mesquiteZoningLayer');
+      var layer10 = map.getLayer('nlvZoningLayer');
+      var layer11 = map.getLayer('seismicLayer');
+      var layer12 = map.getLayer('SoilLayer');
+      var layer13 = map.getLayer('rightofwayLayer');
+      var layer14 = map.getLayer('abLayer');
+
+      //removing basemap layer
+      map.removeLayer(layer);
+
+      //removing each enumerated layer
+      if (layer2) { map.removeLayer(layer2) }
+      if (layer3) { map.removeLayer(layer3) }
+      if (layer4) { map.removeLayer(layer4) }
+      if (layer5) { map.removeLayer(layer5) }
+      if (layer6) { map.removeLayer(layer6) }
+      if (layer7) { map.removeLayer(layer7) }
+      if (layer8) { map.removeLayer(layer8) }
+      if (layer9) { map.removeLayer(layer9) }
+      if (layer10) { map.removeLayer(layer10) }
+      if (layer11) { map.removeLayer(layer11) }
+      if (layer12) { map.removeLayer(layer12) }
+      if (layer13) { map.removeLayer(layer13) }
+      if (layer14) { map.removeLayer(layer14) }
+
+      //initiatializing assessor anno
+      // var assessorannoServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/AssessorAnno/MapServer", { id: 'assessorannoServiceLayer' });
+      var assessorannoServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorAnno/MapServer", { id: 'assessorannoServiceLayer' });
+      // var abLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/AB142/MapServer", { id: 'abLayer' });
+      var abLayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AB142/MapServer", { id: 'abLayer' });
+
+
+
+
+       switch(freshView){
+           case 'aerial imagery only': //---------------------------------------
+
+               //remove all layers
+               map.removeAllLayers();
+
+               // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
+               layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
+
+               var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
+
+               map.addLayers([basemap, abLayer]);
+
+               break; //---------------------------------------------------
+
+
+           case 'assessor map': //---------------------------------------
+
+               //remove all layers
+               map.removeAllLayers();
+
+               // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
+               // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+               // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
+               layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
+               layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+               layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
+
+               var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
+
+              //Dynamic Map layers (default)
+              //Assessor Layer
+              assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'assessorServiceLayer'});
+              //Transportation Layer
+              transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlTertiary,{id:'transportationServiceLayer'});
+            
+               map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, abLayer]);
+
+               break; //---------------------------------------------------
+
+
+           case 'boulder city zoning': //---------------------------------------
+
+               require([
+                       "esri/layers/ArcGISDynamicMapServiceLayer",
+                       "esri/layers/ImageParameters"
+                     ], function (
+                       ArcGISDynamicMapServiceLayer, ImageParameters) {
+
+                      //Use the ImageParameters to set the visibleLayerIds layers in the map service 
+                      //during ArcGISDynamicMapServiceLayer construction.
+                      var imageParameters = new ImageParameters();
+                      imageParameters.layerIds = [5];
+                      imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
+                      //can also be: LAYER_OPTION_EXCLUDE, LAYER_OPTION_HIDE, LAYER_OPTION_INCLUDE
+
+                       //remove all layers
+                       map.removeAllLayers();
+
+                       // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
+                       // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+                       // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
+                       primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/';
+                       secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+                       tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
+
+                       var basemap = new esri.layers.ArcGISTiledMapServiceLayer(currentBase.url,{id:'basemap'});
+                       //Assessor Layer
+                       assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(secondaryLayer,{id:'assessorServiceLayer'});
+                       //Transportation Layer
+                       transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(tertiaryLayer,{id:'transportationServiceLayer'});
+                       
+                      
+                       //Dynamic Map layers
+                       bcLayer = new esri.layers.ArcGISDynamicMapServiceLayer(primaryLayer,{
+                         id:'bcLayer',
+                         "opacity" : 0.7,
+                         "imageParameters": imageParameters
+                        });
+
+                       map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, bcLayer, abLayer]);
+
+                     });
+
+
+                   break; //---------------------------------------------------
+
+
+           case 'clark county plu': //---------------------------------------
+                   
+              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
+              // layerUrlSecondary = servicePrefix+'arcgis/rest/services/GISMO/PlanedLandUse/MapServer';
+              layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
+              layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/PlanedLandUse/MapServer';
+
+
+                var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
+
+
+               //Dynamic Map layers
+               PLULayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{
+                 id:'PLULayer',
+                 "opacity" : 0.7//,
+               });
+
+                 map.addLayers([basemap, PLULayer, assessorannoServiceLayer, abLayer]);
+
+               break; //---------------------------------------------------
+
+
+
+           case 'clark county zoning': //---------------------------------------
+
+
+           require([
+                   "esri/layers/ArcGISDynamicMapServiceLayer",
+                   "esri/layers/ImageParameters"
+                 ], function (
+                   ArcGISDynamicMapServiceLayer, ImageParameters) {
+
+                  //Use the ImageParameters to set the visibleLayerIds layers in the map service 
+                  //during ArcGISDynamicMapServiceLayer construction.
+                  var imageParameters = new ImageParameters();
+                  imageParameters.layerIds = [8];
+                  imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
+                  //can also be: LAYER_OPTION_EXCLUDE, LAYER_OPTION_HIDE, LAYER_OPTION_INCLUDE
+
+                   //remove all layers
+                   map.removeAllLayers();
+
+                   // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+                   // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
+                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/';
+                   secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+                   tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
+
+                   var basemap = new esri.layers.ArcGISTiledMapServiceLayer(currentBase.url,{id:'basemap'});
+                   //Assessor Layer
+                   assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(secondaryLayer,{id:'assessorServiceLayer'});
+                   //Transportation Layer
+                   transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(tertiaryLayer,{id:'transportationServiceLayer'});
+                   
+                  
+                   //Dynamic Map layers
+                   CCZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer(primaryLayer,{
+                     id:'CCZoningLayer',
+                     "opacity" : 0.7,
+                     "imageParameters": imageParameters
+                    });
+
+                   map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, CCZoningLayer, abLayer]);
+
+                 });
+
+
+               break; //---------------------------------------------------
+
+
+
+           case 'contours 50 meter': //---------------------------------------
+              
+              //remove all layers
+              map.removeAllLayers();
+
+              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
+              // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+              // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/con_50M/MapServer';
+              layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
+              layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+              layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_50M/MapServer';
+
+                var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
+
+               //Assessor Layer
+               assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'assessorServiceLayer'});
+               //Dynamic Map layers
+               C50Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlTertiary,{id:'C50Layer'});
+
+
+               map.addLayers([basemap, C50Layer, assessorServiceLayer, abLayer]);
+
+               break; //---------------------------------------------------
+
+
+           case 'contours 2016 2ft (valley)': //---------------------------------------
+               
+
+              //remove all layers
+              map.removeAllLayers();
+
+              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
+              // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+              // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/con2016_2ft/MapServer';
+              layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
+              layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+              layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con2016_2ft/MapServer';
+
+               var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
+
+               //Assessor Layer
+               assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'assessorServiceLayer'});
+               //Dynamic Map layers
+               C2016Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlTertiary,{id:'C2016Layer'});
+
+
+              map.addLayers([basemap, C2016Layer, assessorServiceLayer, abLayer]);
+
+               break; //---------------------------------------------------
+
+
+           case 'contours 2003 5ft (valley)': //---------------------------------------
+               
+              //remove all layers
+              map.removeAllLayers();
+
+              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
+              // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+              // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/con2016_2ft/MapServer';
+              layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
+              layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+              layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_03_5ft/MapServer';
+
+                var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
+
+               //Assessor Layer
+               assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'assessorServiceLayer'});
+               //Dynamic Map layers
+               C2003Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlTertiary,{id:'C2003Layer'});
+
+
+              map.addLayers([basemap, C2003Layer, assessorServiceLayer, abLayer]);
+
+               break; //---------------------------------------------------
+
+
+           case 'contours 1996 5ft (valley)': //---------------------------------------
+               
+              //remove all layers
+              map.removeAllLayers();
+
+              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
+              // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+              // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/con2016_2ft/MapServer';
+              layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
+              layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+              layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_96_5ft/MapServer';
+
+                var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
+
+              //Assessor Layer
+              assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'assessorServiceLayer'});
+               //Dynamic Map layers
+               C1996Layer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlTertiary,{id:'C1996Layer'});
+
+              map.addLayers([basemap, C1996Layer, assessorServiceLayer, abLayer]);
+
+               break; //---------------------------------------------------
+
+
+           case 'default': //---------------------------------------
+
+                //remove all layers
+                map.removeAllLayers();
+
+                // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
+                // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+                // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
+                layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
+                layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+                layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
+
+                var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
+
+               //Dynamic Map layers (default)
+               //Assessor Layer
+               assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'assessorServiceLayer'});
+               //Transportation Layer
+               transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlTertiary,{id:'transportationServiceLayer'});
+            
+                map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, abLayer]);
+
+               break; //---------------------------------------------------
+
+
+           case 'henderson zoning': //---------------------------------------
+
+
+           require([
+                   "esri/layers/ArcGISDynamicMapServiceLayer",
+                   "esri/layers/ImageParameters"
+                 ], function (
+                   ArcGISDynamicMapServiceLayer, ImageParameters) {
+
+                  //Use the ImageParameters to set the visibleLayerIds layers in the map service 
+                  //during ArcGISDynamicMapServiceLayer construction.
+                  var imageParameters = new ImageParameters();
+                  imageParameters.layerIds = [6];
+                  imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
+                  //can also be: LAYER_OPTION_EXCLUDE, LAYER_OPTION_HIDE, LAYER_OPTION_INCLUDE
+
+                   //remove all layers
+                   map.removeAllLayers();
+
+                   // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+                   // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
+                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+                   tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
+
+                   var basemap = new esri.layers.ArcGISTiledMapServiceLayer(currentBase.url,{id:'basemap'});
+                   //Assessor Layer
+                   assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(secondaryLayer,{id:'assessorServiceLayer'});
+                   //Transportation Layer
+                   transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(tertiaryLayer,{id:'transportationServiceLayer'});
+                   
+                  
+                   //Dynamic Map layers
+                   hendersonZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer(primaryLayer,{
+                     id:'hendersonZoningLayer',
+                     "opacity" : 0.7,
+                     "imageParameters": imageParameters
+                    });
+
+                   map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, hendersonZoningLayer, abLayer]);
+
+                 });
+
+
+               break; //---------------------------------------------------
+
+
+
+           case 'las vegas zoning': //---------------------------------------
+               
+
+           require([
+                   "esri/layers/ArcGISDynamicMapServiceLayer",
+                   "esri/layers/ImageParameters"
+                 ], function (
+                   ArcGISDynamicMapServiceLayer, ImageParameters) {
+
+                  //Use the ImageParameters to set the visibleLayerIds layers in the map service 
+                  //during ArcGISDynamicMapServiceLayer construction.
+                  var imageParameters = new ImageParameters();
+                  imageParameters.layerIds = [4];
+                  imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
+                  //can also be: LAYER_OPTION_EXCLUDE, LAYER_OPTION_HIDE, LAYER_OPTION_INCLUDE
+
+                   //remove all layers
+                   map.removeAllLayers();
+
+                   // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+                   // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
+                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+                   tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
+
+                   var basemap = new esri.layers.ArcGISTiledMapServiceLayer(currentBase.url,{id:'basemap'});
+                   //Assessor Layer
+                   assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(secondaryLayer,{id:'assessorServiceLayer'});
+                   //Transportation Layer
+                   transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(tertiaryLayer,{id:'transportationServiceLayer'});
+                   
+                  
+                   //Dynamic Map layers
+                   lasVegasZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer(primaryLayer,{
+                     id:'lasVegasZoningLayer',
+                     "opacity" : 0.7,
+                     "imageParameters": imageParameters
+                    });
+
+                   map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, lasVegasZoningLayer, abLayer]);
+
+                 });
+
+
+               break; //---------------------------------------------------
+
+
+           case 'mesquite zoning': //---------------------------------------
+               
+
+           require([
+                   "esri/layers/ArcGISDynamicMapServiceLayer",
+                   "esri/layers/ImageParameters"
+                 ], function (
+                   ArcGISDynamicMapServiceLayer, ImageParameters) {
+
+                  //Use the ImageParameters to set the visibleLayerIds layers in the map service 
+                  //during ArcGISDynamicMapServiceLayer construction.
+                  var imageParameters = new ImageParameters();
+                  imageParameters.layerIds = [9];
+                  imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
+                  //can also be: LAYER_OPTION_EXCLUDE, LAYER_OPTION_HIDE, LAYER_OPTION_INCLUDE
+
+                   //remove all layers
+                   map.removeAllLayers();
+
+                   // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+                   // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
+                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+                   tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
+
+                   var basemap = new esri.layers.ArcGISTiledMapServiceLayer(currentBase.url,{id:'basemap'});
+                   //Assessor Layer
+                   assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(secondaryLayer,{id:'assessorServiceLayer'});
+                   //Transportation Layer
+                   transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(tertiaryLayer,{id:'transportationServiceLayer'});
+                   
+                  
+                   //Dynamic Map layers
+                   mesquiteZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer(primaryLayer,{
+                     id:'mesquiteZoningLayer',
+                     "opacity" : 0.7,
+                     "imageParameters": imageParameters
+                    });
+
+                   map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, mesquiteZoningLayer, abLayer]);
+
+                 });
+
+
+               break; //---------------------------------------------------
+
+
+           case 'north las vegas zoning': //---------------------------------------
+
+           require([
+                   "esri/layers/ArcGISDynamicMapServiceLayer",
+                   "esri/layers/ImageParameters"
+                 ], function (
+                   ArcGISDynamicMapServiceLayer, ImageParameters) {
+
+                  //Use the ImageParameters to set the visibleLayerIds layers in the map service 
+                  //during ArcGISDynamicMapServiceLayer construction.
+                  var imageParameters = new ImageParameters();
+                  imageParameters.layerIds = [7];
+                  imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
+                  //can also be: LAYER_OPTION_EXCLUDE, LAYER_OPTION_HIDE, LAYER_OPTION_INCLUDE
+
+                   //remove all layers
+                   map.removeAllLayers();
+
+                   // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+                   // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
+                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+                   tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
+
+                   var basemap = new esri.layers.ArcGISTiledMapServiceLayer(currentBase.url,{id:'basemap'});
+                   //Assessor Layer
+                   assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(secondaryLayer,{id:'assessorServiceLayer'});
+                   //Transportation Layer
+                   transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(tertiaryLayer,{id:'transportationServiceLayer'});
+                   
+                  
+                   //Dynamic Map layers
+                   nlvZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer(primaryLayer,{
+                     id:'nlvZoningLayer',
+                     "opacity" : 0.7,
+                     "imageParameters": imageParameters
+                    });
+
+                   map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, nlvZoningLayer, abLayer]);
+
+                 });
+
+
+               break; //----------------------------------------------------
+
+
+           case 'seismic': //---------------------------------------
+
+
+           require([
+                   "esri/layers/ArcGISDynamicMapServiceLayer",
+                   "esri/layers/ImageParameters"
+                 ], function (
+                   ArcGISDynamicMapServiceLayer, ImageParameters) {
+
+                  //Use the ImageParameters to set the visibleLayerIds layers in the map service 
+                  //during ArcGISDynamicMapServiceLayer construction.
+                  var imageParameters = new ImageParameters();
+                  imageParameters.layerIds = [5];
+                  imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
+                  //can also be: LAYER_OPTION_EXCLUDE, LAYER_OPTION_HIDE, LAYER_OPTION_INCLUDE
+
+                   //remove all layers
+                   map.removeAllLayers();
+
+                   // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+                   // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
+                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+                   tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
+
+                   var basemap = new esri.layers.ArcGISTiledMapServiceLayer(currentBase.url,{id:'basemap'});
+                   //Assessor Layer
+                   assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(secondaryLayer,{id:'assessorServiceLayer'});
+                   //Transportation Layer
+                   transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(tertiaryLayer,{id:'transportationServiceLayer'});
+                   
+                  
+                   //Dynamic Map layers
+                   seismicLayer = new esri.layers.ArcGISDynamicMapServiceLayer(primaryLayer,{
+                     id:'seismicLayer',
+                     "opacity" : 0.7,
+                     "imageParameters": imageParameters
+                    });
+
+                   map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, seismicLayer, abLayer]);
+
+                 });
+
+
+               break; //---------------------------------------------------
+
+
+           case 'soil guideline': //---------------------------------------
+               
+              //remove all layers
+              map.removeAllLayers();
+
+              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
+              // layerUrlSecondary = servicePrefix+'arcgis/rest/services/GISMO/SoilsGuideline/MapServer';
+              layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
+              layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/SoilsGuideline/MapServer';
+
+              var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
+
+               //Dynamic Map layers
+               SoilLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{
+                 id:'SoilLayer',
+                 "opacity" : 0.7//,
+               });
+
+              map.addLayers([basemap, SoilLayer, assessorannoServiceLayer, abLayer]);
+
+              break; //---------------------------------------------------
+
+
+           default: //---------------------------------------
+
+              //default case is same as 'default'
+
+              //remove all layers
+              map.removeAllLayers();
+
+              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
+              // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
+              // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
+              layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
+              layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
+              layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
+
+
+              var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
+
+             //Dynamic Map layers (default)
+             //Assessor Layer
+             assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlSecondary,{id:'assessorServiceLayer'});
+             //Transportation Layer
+             transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(layerUrlTertiary,{id:'transportationServiceLayer'});
+
+              map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, abLayer]);
+                
+              break; //---------------------------------------------------
+
+
+       }
+
+
+       console.log(' -------------------- ' + freshView + ' -------------------- ');
+       console.log('layerUrlMain: ' + layerUrlMain)
+       console.log('layerUrlSecondary: ' + layerUrlSecondary)
+       console.log('layerUrlTertiary: ' + layerUrlTertiary)
+
+
+       //update the current flight tag (info box)
+       $("#currentViewTag").text(freshView);
+
+
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // //Show Status Message (tempIntroduction.html) ------------------------------------------------------
+    // $scope.showStatusMessage = function (status) {
+
+    //     // alert(status);
+
+
+    
+
+
+
+    //     //  //call for Owner (-)
+    //     //  $scope.getOwnerRequest(data);
+
+    //     //  //call for StreetView (-)
+    //     //  // openFactory.getStreetView(theX,theY).then(function(data) {
+    //     //  //   $scope.street = data;
+    //     //  // });
+    //     //  //OLD >
+    //     // // $scope.getStreetView(theX, theY); //COMMENTED OUT ON 9/4 - GOOGLE NOW CHARGES FOR STREETVIEW SVC
+
+    //     //  //call for Aerial FLight Date (-)
+    //     //  openFactory.getArielFlightDate(theX, theY).then(function(data) {
+    //     //      $scope.aerialDate = data;
+    //     //  });
+    //     //  //OLD >
+    //     //  // $scope.getAerialFlightDate(theX, theY);
+
+    //     //  // //if elected officials flag is active (set from accordion expand evt)
+    //     //  // if (elecOfficialsFlag === true) {
+
+    //     //  //call for Elected Officials  (-)
+    //     //  openFactory.getOfficials(theX, theY).then(function(data) {
+    //     //      $scope.elecOfficial = data;
+    //     //  });
+
+
+
+
+    //     // open.directive('assistantBlock', function() {
+
+    //     // //Grab the module
+    //     // var open = angular.module('open', ['ui.bootstrap']); //, 'ngAnimate'
+
+    //     // open.factory('openFactory', function($http, $q){
+
+
+
+
+    //     // //set the search value to What's Coming
+    //     // $('#assistantInputBox').val("What's Coming"); 
+    //     // //call to start the filter on the search text
+    //     // // filterHelp_UL();
+
+
+
+    //     // open.factory('openFactory', function($http, $q){
+    //     // open.directive('assistantBlock', function() {
+
+
+    //     // openFactory.getArielFlightDate(theX, theY).then(function(data) {
+    //     //     $scope.aerialDate = data;
+    //     // });
+
+    //     // //THE MAIN SEARCH FUNCTION
+    //     // scope.assistSearchandFilter = function(theSearch) {
+
+    //     // // assistantBlock.assistSearchandFilter(theX, theY).then(function(data) {
+    //     // //     $scope.aerialDate = data;
+    //     // // });
+
+    //     // assistantBlock.
+
+    //     // scope.assistSearchandFilter
+    //     // <input type="text" id="assistantInputBox" ng-change="assistSearchandFilter(helpTask);" ng-model="helpTask"  placeholder="Search for help..">
+
+    //     assistantBlock.assistSearchandFilter("What's Coming");
+
+
+
+ 
+        
+
+    //     // //input the message text into the input box
+
+    //     // $('#assistantULList_DIV2_Inner').val(status); 
+
+    //     //Inline Block display the hidden message box in the modal
+    //     $('#assistantULList_DIV2').css('display', 'block');
+
+    //     //populate the assitant hidden message box with the current updates on the way
+    //     $('#assistantULList_DIV2_Contents').text(status); 
+
+    //     //manually show the modal dialog
+    //     $('#assistantModal').modal('show'); 
+
+
+    //     // ng-repeat
+
+    //     // ng-model="result.name3"
+    //     // result in Updates
+    //     // result.statustext
+
+
+        
+
+
+
+    // }
+    // //---------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // $.getJSON("http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json?callback=?", function(result){
+    //    //response data are now in the result variable
+    //    alert('result');
+    // });
+
+
+    // $(function () {
+    //     $.getJSON("http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json?callback=?", function (data) {
+    //     }).success(function (data) {
+    //         // myArr = data.data;
+    //         // doSomething(data.data);
+    //     });
+    // });
+
+
+    // $(function () {
+    //      $http.jsonp('http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json?' + '&callback=JSON_CALLBACK').success(function(data) {
+    //         console.log('zomg')
+    //     });
+    // });
+
+
+
+
+
+
+
+    // $(function () {
+    //     $.getJSON("./file.json", function (data) {
+    //     }).success(function (data) {
+    //         myArr = data.data;
+    //         doSomething(data.data);
+    //     });
+    // });
+
+    // $(function () {
+    //     $.getJSON("/testing.json", function (data) {
+    //     }).success(function (data) {
+    //         console.log(data)
+    //         // myArr = data.data;
+    //         doSomething(data.list);
+    //     });
+    // });
+
+
+    // function doSomething(arr) {
+    //     console.log('SUCCESS')
+    //     // for (i = 0; i < arr.length; i++) {
+    //     //     console.log(arr[i].variable + ': ' + arr[i].value);
+    //     // }
+    // }
+
+
+
+    //  $http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getOwnershipHistory?parcel=' + attr + '&callback=JSON_CALLBACK').success(function(data, attr) {
+    //     //Set Object
+    //     $scope.ownershipHist = data;
+
+    // });
+
+
+
+    //  $http.jsonp('testing.json' + '&callback=JSON_CALLBACK').success(function(data) {
+    //     //Set Object
+    //     //$scope.ownershipHist = data;
+
+    //     console.log('zomg')
+
+    // });
+
+
+
+     // //log metric
+     // zomg(productCode, sessionNumber + ":Select Property");
+
+    //  //log metric
+    //  zomg();
+
+
+    // //  // function zomg(rApp, rAction) {
+    // // function zomg() {
+
+    // //      $.ajax({
+    // //              // method: "POST",
+    // //               // url: "http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/addMetric",
+    // //               url: "/testing.json",
+    // //          })
+    // //          .done(function(response) {
+    // //             console.log('excelsior')
+    // //          })
+    // //          .fail(function(response) {
+    // //              console.log('metric post fail')
+    // //          });
+
+    // //  }
+
+
+    // // $.getJSON("http://example.com/something.json?callback=?", function(result){
+    // //    //response data are now in the result variable
+    // //    alert(result);
+    // // });
+
+
+    // function zomg() {
+
+    //     $.getJSON("testing.json?callback=?", function(result){
+    //        //response data are now in the result variable
+    //      //  alert(result);
+
+    //        console.log('successsion')
+    //     });
 
     //  }
-    //  //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-    // $scope.Views = vResults;
 
 
-
-    $scope.Flights = [];
-
-    //constructing the mapView List Object ----------------
-    var fResults = [];
-
-    for (var i = 0; i < flightObj.list.length; i++) {
-        fResults.push(flightObj.list[i]); //need to add price to each item return
-
-    }
-    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-    $scope.Flights = fResults;
-
-
-
-
+     // $(document).ready(function(){
+     //     $.ajax({
+     //         url: 'http://twitter.com/status/user_timeline/padraicb.json?count=10',
+     //         dataType: 'jsonp',
+     //         success: function(dataWeGotViaJsonp){
+     //             var text = '';
+     //             var len = dataWeGotViaJsonp.length;
+     //             for(var i=0;i<len;i++){
+     //                 twitterEntry = dataWeGotViaJsonp[i];
+     //                 text += '<p><img src = "' + twitterEntry.user.profile_image_url_https +'"/>' + twitterEntry['text'] + '</p>'
+     //             }
+     //             $('#twitterFeed').html(text);
+     //         }
+     //     });
+     // })
 
 
+     // $(document).ready(function(){
+     //     $.ajax({
+     //         url: '/testing.txt',
+     //         dataType: 'jsonp',
+     //         success: function(data){
+
+     //            console.log('successfion')
+     //             // var text = '';
+     //             // var len = dataWeGotViaJsonp.length;
+     //             // for(var i=0;i<len;i++){
+     //             //     twitterEntry = dataWeGotViaJsonp[i];
+     //             //     text += '<p><img src = "' + twitterEntry.user.profile_image_url_https +'"/>' + twitterEntry['text'] + '</p>'
+     //             // }
+     //             // $('#twitterFeed').html(text);
+     //         }
+     //     });
+     // })
 
 
-    // $scope.searchResults = [];
+     // // Using YQL and JSONP
+     // $.ajax({
+     //     url: "http://query.yahooapis.com/v1/public/yql",
+      
+     //     // The name of the callback parameter, as specified by the YQL service
+     //     jsonp: "callback",
+      
+     //     // Tell jQuery we're expecting JSONP
+     //     dataType: "jsonp",
+      
+     //     // Tell YQL what we want and that we want JSON
+     //     data: {
+     //         q: "select title,abstract,url from search.news where query=\"cat\"",
+     //         format: "json"
+     //     },
+      
+     //     // Work with the response
+     //     success: function( response ) {
+     //         console.log( response ); // server response
+     //     }
+     // });
 
-    //   //constructing the mapView List Object ----------------
-    //   var results = [];
 
-    //   for (var i=0 ; i < mapViewObj.list.length ; i++)
-    //   {
-    //       results.push(mapViewObj.list[i]); //need to add price to each item return
 
-    //    }
-    //    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+     // // Using YQL and JSONP
+     // $.ajax({
+     //     url: "http://query.yahooapis.com/v1/public/yql",
+      
+     //     // The name of the callback parameter, as specified by the YQL service
+     //     jsonp: "callback",
+      
+     //     // Tell jQuery we're expecting JSONP
+     //     dataType: "jsonp",
+      
+     //     // Tell YQL what we want and that we want JSON
+     //     data: {
+     //         q: "select title,abstract,url from search.news where query=\"cat\"",
+     //         format: "json"
+     //     },
+      
+     //     // Work with the response
+     //     success: function( response ) {
+     //         console.log( 'response' ); // server response
+     //     }
+     // });
 
-    //   $scope.searchResults = results;
 
+     // // Using YQL and JSONP
+     // $.ajax({
+     //     url: "testing.json",
+      
+     //     // The name of the callback parameter, as specified by the YQL service
+     //     jsonp: "callback",
+      
+     //     // Tell jQuery we're expecting JSONP
+     //     dataType: "jsonp",
+      
+     //     // // Tell YQL what we want and that we want JSON
+     //     // data: {
+     //     //     q: "select title,abstract,url from search.news where query=\"cat\"",
+     //     //     format: "json"
+     //     // },
+      
+     //     // Work with the response
+     //     success: function( response ) {
+     //         console.log( 'response' ); // server response
+     //     }
+     // });
+
+
+
+
+     // //template
+    // var propInfoURL_such = 'http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/PointToParcel?';
+
+     // //buildPropertyInfo 
+     // $http.jsonp(propInfoURL + 'method=gismo' + '&xcoordinate=' +
+     //     theX + '&ycoordinate=' + theY + '&returnGeometry=true&wkid=102707' +
+     //     '&callback=JSON_CALLBACK').
+     // success(function(data) {
+
+     // };
+
+
+
+
+
+     //404 not found errors:
+
+    //  //template
+    //  var suchlame = './testing2.txt?';
+
+    //  var suchwow = 'testing.json?';
+
+    // //  //buildPropertyInfo 
+    // //  $http.jsonp(suchwow + '&callback=JSON_CALLBACK').success(function(data) {
+    // //     console.log(data)
+
+    // // });
+
+    //  //buildPropertyInfo 
+    //  $http.jsonp(suchwow + '&callback=JSON_CALLBACK').success(function(data) {
+    //     console.log(data)
+
+    // });
+
+
+
+    //parsing flightObj 
+    // var viewObj = require('./test.json'); //with path
+    // var viewObj = require('/test.txt'); //with path
+
+    // var viewObj = JSON.parse(text);
+    // var viewObj = JSON.parse('./test.txt');
+
+    // loadJSON("data.json", drawData);
+
+    // loadJSON("test.txt", drawData);
+
+    // loadJSON("testing.json", drawData);
+
+
+
+    // function drawData(data) {
+    //     console.log('successful!')
+
+    // }
+
+    
+
+
+
+
+
+    //---------------------------------------------------------------------------------------
 
 
 
@@ -1919,6 +2673,8 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     $scope.elecOfficial = [];
     $scope.linkInfo = [];
     $scope.printViewLink = [];
+
+    $scope.weather = [];
 
     //used in the development and manipulation of the address string (1709)
     // var grabAddress;
@@ -1934,14 +2690,25 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
-
     //Search (search-form) -----------------------------------------------------
-    $scope.executeSearch = function(val) {
+    //$scope.executeSearch = function(val) {
+    $scope.executeSearch = function(val,magi) {
 
-            //console.log(val)
 
+        //if comes in with a magic key param
+        if (magi != null) {
 
-            // console.log('hit inner')
+            //new
+            //JUST PASSING IN NULL FOR NOW TO TEST DUPE MAGI KEY
+            //PASSING IN NULL FOR MAGI KEY MAKES IT WORK EVERY TIME
+            // $scope.ajaxAddress(val,magi);
+            $scope.ajaxAddress(val,magi);
+            console.log('(3) EXECUTING SIMPLE PASS OFF TO AJAX ADDRESS ALONG WITH MAGIC')
+
+        }
+        else //(do it the old way, used for querystring params, etc)
+        {
+
 
             //Regex Patterns:
 
@@ -1959,6 +2726,8 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     //remove all non-alphabetic characters
                     val = val.replace(/\D/g, '');
 
+                    console.log('C [[ SEARCH RESOLVED AS AN OWNER ]]')
+
                     //execute to find owner by APN
                     $scope.ajaxAPN(val);
 
@@ -1967,7 +2736,9 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 //*Address*
                 else if (val.match(addressPattern)) {
                     //execute to find address
-                    $scope.ajaxAddress(val);
+                    $scope.ajaxAddress(val,null);
+
+                    console.log('C [[ SEARCH RESOLVED AS AN ADDRESS ]]')
 
                     return;
                 }
@@ -1975,6 +2746,8 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 else if (val.match(apnPattern)) {
                     //execute to find apn
                     $scope.ajaxAPN(val);
+
+                    console.log('C [[ SEARCH RESOLVED AS AN APN ]]')
 
                     return;
                 }
@@ -1991,180 +2764,165 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 //   return;
                 // }
                 else {
-                    console.log('none')
+                    console.log('C [[ SEARCH RESOLVED AS A NONE ]]')
 
                     return;
                 }
 
             } catch (err) {
 
+                console.log('C [[ SEARCH REGEX RESOLVED AS AN ERROR ]]')
+
+
+
                 return;
             }
 
 
+
         }
-        //------------------------------------------------------------------------------
+
+
+
+    }
+    //------------------------------------------------------------------------------
 
 
     //Address Search (search-form) -----------------------------------------------------
-    $scope.ajaxAddress = function(address) {
+    $scope.ajaxAddress = function(address,magi) {
 
 
-            // console.log('hit address search')
+        //if comes in with a magic key param
+        if (magi != null) {
 
-            //console.log(address)
+            //console.log('(5) IT JUST HIT MAGI IN AJAXADDRESS')
+            console.log('(4) AJAXADDRESS; THE MAGIC KEY, WHICH SHOULD BE ONE, IS: ' + JSON.stringify(magi))
 
-            var searchURL = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/CompositLocator/GeocodeServer/findAddressCandidates?';
-
-
-            // var searchURL = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/Locators/Clark_County_Composite_All/GeocodeServer/findAddressCandidates?';
-
-            //new
-            //http://gisgate.co.clark.nv.us/arcgis/rest/services/Locators/Clark_County_Composite_All/GeocodeServer/findAddressCandidates?Street=1716+Jack+Rabbit+Way&SingleLine=&category=&outFields=&outSR=&f=pjson
-
+            //searchURL
+            var searchURL = servicePrefix+'arcgis/rest/services/Locators/Clark_County_Composite_All/GeocodeServer/findAddressCandidates?';
+           // var searchURL = 'http://maps.clarkcountynv.gov/arcgis/rest/services/Locators/Clark_County_Composite_All/GeocodeServer/findAddressCandidates?';
+            
 
 
-            // http://gisgate.co.clark.nv.us/arcgis/rest/services/Locators/Clark_County_Composite_All/GeocodeServer
+
+            // return $http.jsonp(searchURL + 'Street=' + '' + '&SingleLine=' + '' + '&category=' + '' + '&outFields=' + '' +  '&maxLocations=' + '' + '&outSR=' + '' + '&searchExtent=' + '' + '&location=' + '' + '&distance=' + '' + '&magicKey=' + magi + '&f=' + 'pjson' + '&callback=JSON_CALLBACK').then(function(response) {
+            return $http.jsonp(searchURL + 'Street=' + address + '&SingleLine=' + '' + '&category=' + '' + '&outFields=' + '' +  '&maxLocations=' + '' + '&outSR=' + '' + '&searchExtent=' + '' + '&location=' + '' + '&distance=' + '' + '&magicKey=' + magi + '&f=' + 'pjson' + '&callback=JSON_CALLBACK').then(function(response) {
 
 
-            // var searchURLformed = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/Locators/Clark_County_Composite_All/GeocodeServer/findAddressCandidates?Street=1716+Jack+Rabbit&SingleLine=&category=&outFields=&outSR=&f=pjson';
-
-
-            //&maxLocations=
-
-
-            return $http.jsonp(searchURL + 'Street=' + address + '&SingleLine=' + '' + '&outFields=' + '' + '&outSR=' + '' + '&searchExtent=' + '' + '&f=' + 'pjson' + '&callback=JSON_CALLBACK').then(function(response) {
-
-                // return $http.jsonp(searchURLformed + '&callback=JSON_CALLBACK').then(function(response){
+                // //testing
+                // console.log(JSON.stringify(response.data.candidates[0]));
 
 
 
                 try {
 
-                    // var theAddress = response.data.candidates[0].address;
-                    var xcoord = response.data.candidates[0].location.x;
-                    var ycoord = response.data.candidates[0].location.y;
-                    // xcoord = response.data.candidates[0].location.x;
-                    // ycoord = response.data.candidates[0].location.y;
+                    //IF ADDRESS CAN NOT BE FOUND IN DATA
+                    if (JSON.stringify(response.data.candidates[0]) === undefined)
+                    // magi != null 
+                    {
+                        //alert the user - DATA FOR THE SPECIFIED ADDRESS CAN NOT BE FOUND, WOULD YOU LIKE TO 
+                        //view the location anyway?
+                        //ESRI world geocode service, lat/long return
 
-                    // // if (theAddress === null) {
-                    // // console.log("Address not found!");
-                    // // } else {
-                    // //-------------------------------------------------------------------
-                    // //-------------------------------------------------------------------
-                    // var point = new esri.geometry.Point({
-                    // "x" : xcoord,
-                    // "y" : ycoord,
-                    // "spatialReference" : {
-                    // "wkid" : 102707
-                    // }
-
-                    // });
-
-                    // var factor = 1;
-
-                    // //old
-                    // var polygonJson = {
-                    // "rings" : [[[xcoord, ycoord], [xcoord + factor, ycoord + factor], [xcoord - factor, ycoord - factor]]],
-                    // "spatialReference" : {
-                    // "wkid" : 102707
-                    // }
-                    // };
-                    // var polygon = new esri.geometry.Polygon(polygonJson);
-
-                    // var gra = new esri.Graphic(polygon);
-                    // map.setExtent(gra.geometry.getExtent(), true);
-
-
-                    //updated
-                    // var Myrings = {
-                    // "rings" : [[[xcoord, ycoord], [xcoord + factor, ycoord + factor], [xcoord - factor, ycoord - factor]]],
-                    // "spatialReference" : {
-                    // "wkid" : 102707
-                    // }
-                    // };
-                    // map.graphics.clear();
-                    //  var myPolygon = {
-                    //    "geometry" : JSON.parse(Myrings),
-                    //    "symbol" : {
-                    //      "color" : [100, 0, 0, 64],
-                    //      // "outline" : {
-                    //      //   "color" : [100, 0, 0, 255],
-                    //      //   "width" : 1,
-                    //      //   "type" : "esriSLS",
-                    //      //   "style" : "esriSLSSolid"
-                    //      "outline" : {
-                    //        "color" : [212, 121, 224, 255],
-                    //        "width" : 3,
-                    //        "type" : "esriSLS",
-                    //        "style" : "esriSLSSolid"
-
-                    //      },
-                    //      "type" : "esriSFS",
-                    //      "style" : "esriSFSSolid"
-                    //      }
-                    //    };
-                    // var gra = new esri.Graphic(myPolygon);
-                    // map.graphics.add(gra);
-
-                    // map.setExtent(gra.geometry.getExtent(), true);
-
-
-
-                    // //Set new graphic
-                    // map.graphics.clear();
-
-                    // var loc_symbol = new esri.symbol.PictureMarkerSymbol({
-                    // "angle":0,
-                    // "xoffset":0,
-                    // "yoffset":10,
-                    // "type":"esriPMS",
-                    // "url":"images/pin.png",
-                    // "contentType":"image/png",
-                    // "width":24,
-                    // "height":24
-                    // });
-
-                    // currentGraphic = new esri.Graphic(point, loc_symbol);
-                    // map.graphics.add(currentGraphic);
+                       // alert('Location Not Found')
 
 
 
 
-                    // }
+                        ai('nolocation');
+
+                        console.log('it didnt come up');
+
+
+
+
+
+                        // // //Call to executeQueryTask
+                        // $scope.executeQueryTask(xcoord, ycoord, 'magi'); //propselect
+
+                    }
+                    else {
+
+                        console.log('and then it went crazy');
+
+                        //Set x and y coord to location
+                       // var theAddress = response.data.candidates[0].address;
+                       var xcoord = response.data.candidates[0].location.x;
+                       var ycoord = response.data.candidates[0].location.y;
+
+                       // //Call to executeQueryTask
+                       $scope.executeQueryTask(xcoord, ycoord, 'magi'); //propselect
+
+                    }
+
 
                 } catch (err) {}
 
 
-                //added-----------------------------
-                //Call to executeQueryTask
-                //Call the 'mapController' controller found on map element (pass in evt param)
-                //$scope.propselect = true;
-                // propselect = 'true';
-                $scope.executeQueryTask(xcoord, ycoord, 'search'); //propselect
-
-                // console.log(propselect)
-
-                //$scope.executeQueryTask(1, 2, false); //test
 
             });
 
+        }
+
+        else { //else just search on it the old way - used for inputs coming in from querystring parms
+
+            console.log('OR ELSE ITS STILL HITTING THE OLD COMPOSIT LOCATOR') //will need  to update this to new search service eventually
+
+
+            //OLD
+
+                // var searchURL = servicePrefix+'arcgis/rest/services/CompositLocator/GeocodeServer/findAddressCandidates?';
+                var searchURL = "http://gisgate.co.clark.nv.us/"+'arcgis/rest/services/CompositLocator/GeocodeServer/findAddressCandidates?';
+  
+                //var searchURL = 'http://maps.clarkcountynv.gov/arcgis/rest/services/CompositLocator/GeocodeServer/findAddressCandidates?';
+
+
+                return $http.jsonp(searchURL + 'Street=' + address + '&SingleLine=' + '' + '&outFields=' + '' + '&outSR=' + '' + '&searchExtent=' + '' + '&f=' + 'pjson' + '&callback=JSON_CALLBACK').then(function(response) {
+
+                    // return $http.jsonp(searchURLformed + '&callback=JSON_CALLBACK').then(function(response){
+
+                    try {
+
+                        // var theAddress = response.data.candidates[0].address;
+                        var xcoord = response.data.candidates[0].location.x;
+                        var ycoord = response.data.candidates[0].location.y;
+
+
+                    } catch (err) {}
+
+
+                    //added-----------------------------
+                    //Call to executeQueryTask
+                    //Call the 'mapController' controller found on map element (pass in evt param)
+                    //$scope.propselect = true;
+                    // propselect = 'true';
+                    $scope.executeQueryTask(xcoord, ycoord, 'search'); //propselect
+
+                    // console.log(propselect)
+
+                    //$scope.executeQueryTask(1, 2, false); //test
+
+                });
 
 
         }
-        //------------------------------------------------------------------------------
+
+    }
+    //------------------------------------------------------------------------------
 
 
 
     //APN Search (search-form) -----------------------------------------------------
     $scope.ajaxAPN = function(apn) {
 
+
             console.log('hit apn search')
 
 
-            //console.log(apn)
+            var searchURL = servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/parcelSearch?';
+            //var searchURL = 'http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/parcelSearch?';
+            
 
-            var searchURL = 'http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/parcelSearch?';
 
             return $http.jsonp(searchURL + 'method=gismo' + '&parcel=' + apn + '&callback=JSON_CALLBACK').then(function(response) { //apn.length
 
@@ -2219,10 +2977,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                             // gra.setSymbol(polygonSymbol);
                             map.graphics.add(gra);
 
-
-
-
-
                             // //log metric for 'getParcel' (if apn search was initiated by a getparcel request)
                             // if (document.URL.indexOf("getparcel") > -1)
                             // {
@@ -2235,7 +2989,23 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                             // }
                         }
                         // map.setExtent(gra.geometry.getExtent(), true); //old
-                        map.centerAt(gra.geometry.getExtent().getCenter()); //new
+
+
+                        //OLD METHOD - BEFORE ADDING CENTER & ZOOM, ALONG WITH ZOOM LEVEL (used to just highlight and pan)
+                        // map.centerAt(gra.geometry.getExtent().getCenter()); //new
+
+                        // console.log(gra.geometry.getExtent().getCenter().x)
+
+                        //set centerAndZoom
+                        require([
+                            "esri/geometry/Point", "esri/SpatialReference"
+                        ], function(Point, SpatialReference) {
+
+                            map.centerAndZoom(new Point(gra.geometry.getExtent().getCenter().x, gra.geometry.getExtent().getCenter().y, new SpatialReference({ wkid: 102707 })), 5);
+
+                        });
+
+
 
                     } else {
                         console.log("C [[ parcel not found ]]");
@@ -2244,15 +3014,10 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                 } catch (err) {}
 
-
-
                 // //added-----------------------------
                 //  //Call to executeQueryTask
                 //  //Call the 'mapController' controller found on map element (pass in evt param)
                 // $scope.executeQueryTask(xcoord, ycoord);
-
-
-
 
             });
 
@@ -2266,30 +3031,8 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
-
-
-
-
-
-
-
     //theMove (Map Mousemove) -----------------------------------------------------
     $scope.mapevtMouseMove = function(uX, uY) {
-
-            // var showX = document.getElementById("showX");
-            // var showY = document.getElementById("showY");
-
-            // if (showX) { //check if exists 
-            //     $scope.thePoint.X = Math.round(uX);
-            //     $scope.thePoint.Y = Math.round(uY);
-            //     showX.innerHTML = "<b>X: </b>" + $scope.thePoint.X;
-            //     showY.innerHTML = "<b>Y: </b>" + $scope.thePoint.Y;
-            // }
-
-            // console.log(coordSystem)
-
-
-
 
             //grab showX & showY
             var showX = document.getElementById("showX");
@@ -2321,20 +3064,11 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                         //set showX & showY vals
                         showX.innerHTML = "<b>X: </b>" + $scope.thePoint.X;
                         showY.innerHTML = "<b>Y: </b>" + $scope.thePoint.Y;
-
                     }
-
 
                 }
 
-
             }
-
-
-
-
-
-
 
 
         }
@@ -2345,19 +3079,12 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     //theMove (Map Mousemove) -----------------------------------------------------
     $scope.mapevtExtentChange = function(uX, uY, uLVL) {
 
-            //  console.log(uX,uY)
-
-            // console.log('uvel' + uLVL)
-
-
-
             if (coordSystem === 'state-plane-ft') //state plane (default)
             {
                 // if (showX) { //check if exists 
                 //     $scope.thePoint.X = Math.round(uX);
                 //     $scope.thePoint.Y = Math.round(uY);
                 // }
-
 
                 //craft a state plane ft url
                 // var craftedURL = '?@'+Math.round(uX)+','+Math.round(uY);
@@ -2374,21 +3101,16 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 }
 
 
-
-
             } else if (coordSystem === 'lat-long') //lat long
             {
-
 
                 // $scope.thePointNew.X = Math.round(uX);
                 // $scope.thePointNew.Y = Math.round(uY);
                 // if (showX) { //check if exists 
 
-
                 //  //grab showX & showY
                 //  var showX = document.getElementById("showX");
                 //  var showY = document.getElementById("showY");
-
 
                 //  if (showX) { //check if exists 
                 //      $scope.thePoint.X = Math.round(uX);
@@ -2399,13 +3121,13 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 //  showX.innerHTML = "<b>X: </b>" + $scope.thePoint.X;
                 //  showY.innerHTML = "<b>Y: </b>" + $scope.thePoint.Y;
 
-
-
                 // }
 
 
+                 var theURL = servicePrefix+'arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=102707&outSR=4326&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":' + uX + ',"y":' + uY + '}]}';
+                //var theURL = 'http://maps.clarkcountynv.gov/arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=102707&outSR=4326&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":' + uX + ',"y":' + uY + '}]}';
 
-                var theURL = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=102707&outSR=4326&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":' + uX + ',"y":' + uY + '}]}';
+
 
                 //make request for coord conversion
                 $http.jsonp(theURL + '&callback=JSON_CALLBACK').success(function(data) {
@@ -2416,7 +3138,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     //bind vals for universal coord system (to be used in infoblock x/y)
                     $scope.thePointInfo.X = data.geometries[0].y.toFixed(7);
                     $scope.thePointInfo.Y = data.geometries[0].x.toFixed(7);
-
 
                     //craft a lat long url
                     // var craftedURL = '?@'+data.geometries[0].y.toFixed(7)+','+data.geometries[0].x.toFixed(7);
@@ -2443,15 +3164,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             }
 
 
-
-
-
-
-
-
-
-
-
             // function ChangeUrl(page, url) {
             //     if (typeof (history.pushState) != "undefined") {
             //         var obj = {Page: page, Url: url};
@@ -2465,12 +3177,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             // $scope.ChangeUrl('Page1', '@homePage');
 
 
-
-
-
-
-
-
             // //buildPropertyInfo 
             // $http.jsonp(theURL + '&callback=JSON_CALLBACK').success(function(data) {
 
@@ -2479,24 +3185,12 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             // }).
             // error(function (data) {
 
-
-
             // });
-
-
-
-
-
-
-
-
 
 
             // $.ajax("http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer/project?inSR=4326&outSR=102707&geometries={'geometryType':'esriGeometryPoint','geometries':[{'x':"+point.x+",'y':"+point.y+"}]}", function(data, status){
             //         console.log("Data: " + data + "\nStatus: " + status);
             //     });
-
-
 
             // //new
             // var theURL = 'http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer/project?';
@@ -2512,25 +3206,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             // }).
             // error(function (data) {
 
-
-
             // });
-
-
-
-
-
-
-
-            // var showX = document.getElementById("showX");
-            // var showY = document.getElementById("showY");
-
-            // if (showX) { //check if exists 
-            //     $scope.thePoint.X = Math.round(event.mapPoint.x);
-            //     $scope.thePoint.Y = Math.round(event.mapPoint.y);
-            //     showX.innerHTML = "<b>X: </b>" + $scope.thePoint.X;
-            //     showY.innerHTML = "<b>Y: </b>" + $scope.thePoint.Y;
-            // }
 
         }
         //------------------------------------------------------------------------------
@@ -2543,254 +3219,292 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //executeQueryTask -------------------------------------------------------------
     $scope.executeQueryTask = function(theX, theY, resolveAs) {
 
-            //reset / clear print preview base link
-            $scope.printBase = undefined;
+        console.log('(5) EXECUTE MAGI COMES IN AS: ' + theX, theY)
+
+        //reset / clear print preview base link
+        $scope.printBase = undefined;
+
+        //new
+        var propInfoURL = servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/PointToParcel?';
+        //var propInfoURL = 'http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/PointToParcel?';
 
 
 
-            // //catch the simple initial extent case
-            // if (resolveAs === 'initial') { //else its the initial extent
+        //buildPropertyInfo 
+        $http.jsonp(propInfoURL + 'method=gismo' + '&xcoordinate=' +
+            theX + '&ycoordinate=' + theY + '&returnGeometry=true&wkid=102707' +
+            '&callback=JSON_CALLBACK').
+        success(function(data) {
 
-            //   //map.graphics.add(gra);
-            // // map.setExtent(gra.geometry.getExtent(), true); //old
+
+            //if propselect param is true, then also execute to bring up prop info  (true by default)
+            // if (propselect === true) {
+
+
+            var Myrings = "{\"rings\" :" + data.parcelGeometry + ",\"spatialReference\":{\"wkid\":102707}}";
+
+            map.graphics.clear();
+            var myPolygon = {
+                "geometry": JSON.parse(Myrings),
+                "symbol": {
+                    // "color" : [212, 121, 224, 255],
+                    "color": [255, 255, 0, 0.3],
+                    // "outline" : {
+                    //   "color" : [100, 0, 0, 255],
+                    //   "width" : 1,
+                    //   "type" : "esriSLS",
+                    //   "style" : "esriSLSSolid"
+                    "outline": {
+                        "color": [212, 121, 224, 255],
+                        "width": 3,
+                        "type": "esriSLS",
+                        "style": "esriSLSSolid"
+
+                    },
+                    "type": "esriSFS",
+                    "style": "esriSFSSolid"
+                }
+            };
+            var gra = new esri.Graphic(myPolygon);
+            // map.graphics.add(gra);
+
+            // propselect = true;
+            // $scope.propselect = true;
+            //resolveAs types: select, search
+
+
+
+
+            if (resolveAs === 'select') { //if its a select property that triggered the evt
+
+
+                //Add Graphics: color the parcel perimeter
+                map.graphics.add(gra);
+
+
+                // //craft a new point
+                // var point = new esri.geometry.Point({
+                // "x" : theX,
+                // "y" : theY,
+                // "spatialReference" : {
+                // "wkid" : 102707
+                // }
+                // });
+
+                // //set zoom factor
+                // var factor = 5;
+
+                // //clear graphics
+                // map.graphics.clear();
+
+                // //create new location symbol
+                // var loc_symbol = new esri.symbol.PictureMarkerSymbol({
+                // "angle":0,
+                // "xoffset":0,
+                // "yoffset":10,
+                // "type":"esriPMS",
+                // "url":"images/pin.png",
+                // "contentType":"image/png",
+                // "width":24,
+                // "height":24
+                // });
+
+                // //drop location symbol at map point
+                // currentGraphic = new esri.Graphic(point, loc_symbol);
+                // map.graphics.add(currentGraphic);
+
+                // //zoom to map point according to zoom factor
+                // map.centerAndZoom(point, factor)
+
+
+            }
+            if (resolveAs === 'search') { //else set graphics, zoom AND pan
+
+                map.graphics.add(gra);
+                map.setExtent(gra.geometry.getExtent(), true); //old
+
+            }
+            if (resolveAs === 'magi') { //else set graphics, zoom AND pan
+
+
+                 console.log('(6) RESOLVED AS X/Y: ' + theX + ' ,' + theY)
+
+
+
+                 //craft a new point
+                 var point = new esri.geometry.Point({
+                 "x" : theX,
+                 "y" : theY,
+                 "spatialReference" : {
+                 "wkid" : 102707
+                 }
+                 });
+
+                 //set zoom factor
+                 var factor = 9;
+
+                 //clear graphics
+                 map.graphics.clear();
+
+                 //create new location symbol
+                 var loc_symbol = new esri.symbol.PictureMarkerSymbol({
+                 "angle":0,
+                 "xoffset":0,
+                 "yoffset":10,
+                 "type":"esriPMS",
+                 "url":"images/pin.png",
+                 // "url":"images/pin.png",
+                 "contentType":"image/png",
+                 "width":34,
+                 "height":34
+                 // "width":24,
+                 // "height":24
+                 });
+
+                 //Add Graphics: drop location symbol at map point
+                 currentGraphic = new esri.Graphic(point, loc_symbol);
+                 map.graphics.add(currentGraphic);
+
+                 //zoom to map point according to zoom factor
+                 map.centerAndZoom(point, factor)
+
+
+
+
+
+                 // require([
+                 //   "esri/geometry/Point", "esri/SpatialReference", ... 
+                 // ], function(Point, SpatialReference, ... ) {
+                 //   new Point(-118.15, 33.80, new SpatialReference({ wkid: 4326 }));
+                 //   map.centerAt(new Point(locale.split(",")[1], locale.split(",")[0]));
+                 // });
+
+                 // map.setExtent(gra.geometry.getExtent(), true); //old 
+
+                 //         // require([
+                 //         //   "esri/geometry/Point", "esri/SpatialReference", ... 
+                 //         // ], function(Point, SpatialReference, ... ) {
+                 //         //   new Point(-118.15, 33.80, new SpatialReference({ wkid: 4326 }));
+                 //         //   map.centerAt(new Point(locale.split(",")[1], locale.split(",")[0]));
+                 //         // });
+
+                 // https://developers.arcgis.com/javascript/3/jsapi/map-amd.html#centerandzoom
+
+                 // map.centerAndZoom(location,12);
+
+                 // map.centerAt(evt.mapPoint);
+
+
+                // map.graphics.add(gra);
+                 //map.setExtent(gra.geometry.getExtent(), true); //old
+
+            }
+
+
+
+
+            //--------------------------------------------
+            //+/+/+/+/+/ Calls to Data Factory /+/+/+/+/+/
+            //--------------------------------------------
+
+            //call for Owner (-)
+            $scope.getOwnerRequest(data);
+
+            //call for StreetView (-)
+            // openFactory.getStreetView(theX,theY).then(function(data) {
+            //   $scope.street = data;
+            // });
+            //OLD >
+           // $scope.getStreetView(theX, theY); //COMMENTED OUT ON 9/4 - GOOGLE NOW CHARGES FOR STREETVIEW SVC
+
+            //call for Aerial FLight Date (-)
+            openFactory.getArielFlightDate(theX, theY).then(function(data) {
+                $scope.aerialDate = data;
+            });
+            //OLD >
+            // $scope.getAerialFlightDate(theX, theY);
+
+            // //if elected officials flag is active (set from accordion expand evt)
+            // if (elecOfficialsFlag === true) {
+
+            //call for Elected Officials  (-)
+            openFactory.getOfficials(theX, theY).then(function(data) {
+                $scope.elecOfficial = data;
+            });
+            //OLD >
+            // $scope.getElectedOfficials(theX, theY);
             // }
 
-
-            //new
-            var propInfoURL = 'http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/PointToParcel?';
-
-            //buildPropertyInfo 
-            $http.jsonp(propInfoURL + 'method=gismo' + '&xcoordinate=' +
-                theX + '&ycoordinate=' + theY + '&returnGeometry=true&wkid=102707' +
-                '&callback=JSON_CALLBACK').
-            success(function(data) {
-
-
-
-
-
-
-                //if propselect param is true, then also execute to bring up prop info  (true by default)
-                // if (propselect === true) {
-
-
-                var Myrings = "{\"rings\" :" + data.parcelGeometry + ",\"spatialReference\":{\"wkid\":102707}}";
-
-                map.graphics.clear();
-                // var myPolygon = {
-                //   "geometry" : JSON.parse(Myrings),
-                //   "symbol" : {
-                //     "color" : [100, 0, 0, 64],
-                //     "outline" : {
-                //       "color" : [100, 0, 0, 255],
-                //       "width" : 1,
-                //       "type" : "esriSLS",
-                //       "style" : "esriSLSSolid"
-                //     },
-                //     "type" : "esriSFS",
-                //     "style" : "esriSFSSolid"
-                //   }
-                // };
-                var myPolygon = {
-                    "geometry": JSON.parse(Myrings),
-                    "symbol": {
-                        // "color" : [212, 121, 224, 255],
-                        "color": [255, 255, 0, 0.3],
-                        // "outline" : {
-                        //   "color" : [100, 0, 0, 255],
-                        //   "width" : 1,
-                        //   "type" : "esriSLS",
-                        //   "style" : "esriSLSSolid"
-                        "outline": {
-                            "color": [212, 121, 224, 255],
-                            "width": 3,
-                            "type": "esriSLS",
-                            "style": "esriSLSSolid"
-
-                        },
-                        "type": "esriSFS",
-                        "style": "esriSFSSolid"
-                    }
-                };
-                var gra = new esri.Graphic(myPolygon);
-                // map.graphics.add(gra);
-
-
-                // propselect = true;
-
-                // $scope.propselect = true;
-
-                //resolveAs types: select, search
-
-                // console.log($scope.propselect)
-                if (resolveAs === 'select') { //if its a select property that triggered the evt
-
-                    //then don't zoom OR pan (just highlight)
-
-                    //added
-                    // map.setExtent(gra.geometry.getExtent(), true); //old
-                    // console.log(gra.geometry.getExtent())
-                    //map.centerAt(gra.geometry.getExtent().getCenter()); //new
-
-                    map.graphics.add(gra);
-
-                }
-                if (resolveAs === 'search') { //else set graphics, zoom AND pan
-
-                    map.graphics.add(gra);
-                    map.setExtent(gra.geometry.getExtent(), true); //old
-                }
-                // if (resolveAs === 'initial') { //else its the initial extent
-
-                //   //map.graphics.add(gra);
-                // // map.setExtent(gra.geometry.getExtent(), true); //old
-                // }
-
-
-
-
-                // // console.log($scope.propselect)
-                // if (propselect === true) { //if its a select property that triggered the evt
-
-                //  //then don't zoom OR pan (just highlight)
-
-                //  //added
-                //  // map.setExtent(gra.geometry.getExtent(), true); //old
-                //  // console.log(gra.geometry.getExtent())
-                //  //map.centerAt(gra.geometry.getExtent().getCenter()); //new
-
-                //  map.graphics.add(gra);
-
-                // }
-                // else { //else zoom AND pan
-                //  map.setExtent(gra.geometry.getExtent(), true); //old
-                // }
-
-
-
-
-
-
-                //--------------------------------------------
-                //+/+/+/+/+/ Calls to Data Factory /+/+/+/+/+/
-                //--------------------------------------------
-
-                //call for Owner (-)
-                $scope.getOwnerRequest(data);
-
-                //call for StreetView (-)
-                // openFactory.getStreetView(theX,theY).then(function(data) {
-                //   $scope.street = data;
-                // });
-                //OLD >
-                $scope.getStreetView(theX, theY);
-
-                //call for Aerial FLight Date (-)
-                openFactory.getArielFlightDate(theX, theY).then(function(data) {
-                    $scope.aerialDate = data;
-                });
-                //OLD >
-                // $scope.getAerialFlightDate(theX, theY);
-
-                // //if elected officials flag is active (set from accordion expand evt)
-                // if (elecOfficialsFlag === true) {
-
-                //call for Elected Officials  (-)
-                openFactory.getOfficials(theX, theY).then(function(data) {
-                    $scope.elecOfficial = data;
-                });
-                //OLD >
-                // $scope.getElectedOfficials(theX, theY);
-
-                // }
-
-                //call for Links (-)
-                openFactory.getSelectPropertyLinks(data).then(function(data) {
-                    $scope.linkInfo = data;
-                });
-                //OLD >
-                // $scope.getSelectPropertyLinks(data);
-
-                //call for Flood Zone (-)
-                openFactory.getFloodZoneInfo(data).then(function(data) {
-                    $scope.floodZone = data;
-                });
-                //OLD >
-                // $scope.getFloodZoneInfo(data);
-
-                //call for Zoning (-)
-                openFactory.getZoning(theX, theY).then(function(data) {
-                    $scope.zoning = data;
-                });
-
-                // //call for PLU (-)
-                // openFactory.getCommunityDist(theX,theY).then(function(data) {
-                //   $scope.PLU = data;
-                // });
-
-
-                //--------------------------------------------
-                //--------------------------------------------
-
-
-
-
-                //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                //Set the search has completed flag to true
-                //THIS WILL ENABLE THE PROP INFO ELEM TO SHOW UNDER AUTOCOMPLETE RESULTS 
-                searchHasCompleted = true;
-
-
-                // //ADDED FOR MOBILE**************************************
-                // map.infoWindow.show(evt.screenPoint, map.getInfoWindowAnchor(evt.screenPoint));
-
-                //bind the attr scope to the response (for attr.parcel binding - on select parcel)
-                $scope.attr = data;
-
-                // console.log("parcel is: " + data.parcel)
-
-
-                // } 
-                //  else { //else just pan to location - do not select property
-
-                //need to figure out how to get extent from here and then pan/zoom to location
-
-
-
-                // }
-
-
-
-
-            }).
-            error(function(data) {
-                $scope.data = "Request failed";
+            // // //call for Weather (only if weatherBlock scope active) (-)
+            // //pass in the active weatherBlock scope, and current zip
+            // openFactory.getWeather($scope.theWeather, data.ZipCode).then(function(data) {
+            //    // $scope.weather = data;
+            //     $scope.weather = data;
+            // });
+
+            //call for Links (-)
+            openFactory.getSelectPropertyLinks(data).then(function(data) {
+                $scope.linkInfo = data;
             });
+            //OLD >
+            // $scope.getSelectPropertyLinks(data);
+
+            //call for Flood Zone (-)
+            openFactory.getFloodZoneInfo(data).then(function(data) {
+                $scope.floodZone = data;
+            });
+            //OLD >
+            // $scope.getFloodZoneInfo(data);
+
+            //call for Zoning (-)
+            openFactory.getZoning(theX, theY).then(function(data) {
+                $scope.zoning = data;
+                console.log('THIS IS getZoning: ' + JSON.stringify(data))
+            });
+
+            // //call for PLU (-)
+            // openFactory.getCommunityDist(theX,theY).then(function(data) {
+            //   $scope.PLU = data;
+            // });
+            openFactory.getCommunityDist(theX,theY).then(function(data) {
+              $scope.PLU = data;
+              console.log('THIS IS getCommunityDist: ' + JSON.stringify(data))
+            });
+
+            //call for LandUse (-)
+            openFactory.getLandUse(theX,theY).then(function(data) {
+              $scope.land = data;
+              console.log('THIS IS LandUsePlanArea: ' + JSON.stringify(data))
+            });
+
+
+            //--------------------------------------------
+            //--------------------------------------------
+
+
+
+            //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            //Set the search has completed flag to true
+            //THIS WILL ENABLE THE PROP INFO ELEM TO SHOW UNDER AUTOCOMPLETE RESULTS 
+            searchHasCompleted = true;
+
+
+            // //ADDED FOR MOBILE**************************************
+            // map.infoWindow.show(evt.screenPoint, map.getInfoWindowAnchor(evt.screenPoint));
+
+            //bind the attr scope to the response (for attr.parcel binding - on select parcel)
+            $scope.attr = data;
+
+
+        }).
+        error(function(data) {
+            $scope.data = "Request failed";
+        });
+
 
 
         }
@@ -2804,14 +3518,14 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     //getOwnerRequest -------------------------------------------------------------
     $scope.getOwnerRequest = function(attr) {
 
-
             var mobileParcel = attr.parcel;
 
 
             //JSONP calls
 
             //buildPropertyInfo 
-            $http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPropertyInfo?parcel=' + attr.parcel + '&callback=JSON_CALLBACK').success(function(data, attr) {
+             $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPropertyInfo?parcel=' + attr.parcel + '&callback=JSON_CALLBACK').success(function(data, attr) {
+             //   $http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPropertyInfo?parcel=' + attr.parcel + '&callback=JSON_CALLBACK').success(function(data, attr) {
 
 
                 //Formatting the data object---------------------------------
@@ -2840,7 +3554,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
-
                 //Parcel Classifications ------------------------------
 
                 // ***Public & private right of ways: hook into the 8th character of parcel number:
@@ -2854,6 +3567,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 // 124-30-599-009 (Public Right-of-Way)
                 // 124-29-195-001 (Private Right-of-Way)
 
+                //X/Y
                 // 99 – Public Right-of-Way
                 // 98 – Railroad Right-of-Way
                 // 97 – Subdivision Common Area – Non Assessed
@@ -2862,7 +3576,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 // 90 – Other Areas – Non Assessed
 
                 //use parcel number to call getRowDocNo to get the document number to populate
-
 
 
 
@@ -2884,12 +3597,9 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     $('.spF3, .spF5, .spF6, .spF7, .spF8').css("display", "none");
 
 
-
                     //HIDE (GROUPS: ownership hist panel)
                     //(FIELDS: )
                     $('.spG4').css("display", "none");
-
-
 
 
 
@@ -2910,13 +3620,8 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     $('.spF1, .spF2, .spF4, .spF9, .spF10').css("display", "block");
                     $('.spF3, .spF5, .spF6, .spF7, .spF8').css("display", "none");
 
-
                     //HIDE (GROUPS: ownership hist panel)
                     $('.spG4').css("display", "none");
-
-
-
-
 
 
                     console.log('C [[ private right-of-way ]]');
@@ -2926,7 +3631,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     //SHOW (all fields & groups)
                     $('.spF1, .spF2, .spF3, .spF4, .spF5, .spF6, .spF7, .spF8, .spF9, .spF10').css("display", "block");
                     $('.spG4').css("display", "block");
-
 
 
                     console.log('C [[ regular parcel ]]');
@@ -2947,24 +3651,10 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
-
-
-
-
-
-
-
-
-
-
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 // autocompleteIsShowing = $("body .dropdown-menu").is(":visible"); 
                 // autocompleteIsShowing = $("#tester .dropdown-menu").is(":visible"); 
-
-
-
-
 
 
 
@@ -2984,26 +3674,16 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 //need a case where no autocomplete is showing, search has not completed
 
 
-
-
-
                 //defaults readout
                 console.log('auto is showing: ' + autocompleteIsShowing)
-
                 console.log('ac dirty?: ' + autocompleteDirty)
-
                 console.log('search has complete: ' + searchHasCompleted)
-
                 console.log('side panel open?: ' + slidePanelOpen)
-
-
                 console.log('input length: ' + $("#tester input").val().length)
 
                 // //newly added to account for the case when a select property is clicked after first collapsing the side panel
                 // if (autocompleteIsShowing === false && searchHasCompleted === true && $("#tester input").val().length < 3) 
                 // {
-
-
                 //   $('#PropInfoDialog').css({
                 //     'top': 49,
                 //     'left': 59
@@ -3013,18 +3693,10 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 //     'visibility': 'visible'
                 //     // 'visibility': 'visible'
                 //     });
-
-
                 // // console.log('two');
                 // console.log('L [[ updating layout ]]');
-
                 // console.log('SUCCESSFUL TEST THREE')
-
                 // } 
-
-                
-
-
 
 
                 if (autocompleteIsShowing === true && searchHasCompleted === false) { //AUTOCOMPLETE SHOWING - INITIAL STATE
@@ -3049,9 +3721,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                         'visibility': 'visible'
                     });
                     console.log('C [[ propInfoVis-b[1]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
-
-                    // console.log(autocompleteIsShowing)
-
                 }
 
                 //autocomplete is not showing, it never has & length is min
@@ -3068,11 +3737,8 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     console.log('C [[ propInfoVis-b[2]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
                 }
-
-
                 // //autocomplete is not showing, it never has & length is min (SELECT PROP) AND SIDE PANEL IS OPEN
                 // else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && slidePanelOpen === true && slidePanelOpen $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
-
                 //     $('#PropInfoDialog').css({
                 //         'top': 49,
                 //         'left': 240
@@ -3082,7 +3748,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 //         'visibility': 'visible'
                 //     });
                 //     console.log('C [[ propInfoVis-b[3]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
-
                 // }
 
                 //autocomplete is not showing, it never has & length is min (SELECT PROP) AND SIDE PANEL IS OPEN
@@ -3114,12 +3779,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     console.log('C [[ propInfoVis-b[3]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
                 }
-
-
-
-
-
-
                 //autocomplete is not showing, it never has & length is long
                 else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
 
@@ -3168,8 +3827,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                 }
 
-
-
                 // //*******************************************************************************
                 // //ADDED FOR THE CASE WHEN THE SIDE PANEL COLLAPSED, AND THEN SELECT PROPERTY IS CALLED ON MAP CLICK
                 // else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
@@ -3185,12 +3842,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 //     console.log('C [[ propInfoVis-b[7]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
                 // }
-
-
-
-
-
-
 
 
                 //--------------------------------------------
@@ -3210,7 +3861,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 //https://developers.arcgis.com/javascript/3/jshelp/intro_formatinfowindow.html
 
 
-
                 //Uncomment below
                 //ADDED: IF WINDOW IS MOBILE:**************************************
                 var title = "<table id='popup_Table' style='margin-top:-2px;margin-bottom:-5px; width:150px; border:0px;' class='infoWindowCustom' border='0'><tr><td><i class='glyphicon glyphicon-info-sign'></i></td><td>Property Info</td></tr></table>";
@@ -3218,11 +3868,8 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 content += "<br><b>Acres:</b> " + data.CalcAcres;
 
 
-
                 // //moreInfo/Expand Link
                 // content += "<br><span><b style=''><a class='verdFont' id='moreInfoLink' href='#'>More Information</a></b></span>";
-
-
 
 
                 //Expanded Mobile Property Info
@@ -3253,28 +3900,18 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 // //   Treasurer Information
 
 
-
+                //Set the content to the mobile infoWindow
                 map.infoWindow.setTitle(title);
                 map.infoWindow.setContent(content);
 
-
-                //resize the map info window 
-
-                //buildPropertyInfo(data, attr);
+                //resize the infoWindow
                 map.infoWindow.resize(200, 150);
-
-
 
 
 
                 //Init Event for extended mobile property Info
                 // $( "#moreInfoLink" ).click(function() {
                 $(".maximize").click(function() {
-
-
-                    // console.log('is maxed');
-                    // isMax = true;
-
 
                     if (isMax % 2 == 0) {
 
@@ -3288,7 +3925,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                         content1 += "<br><br><b>Sale Date: </b> " + data.SaleDate;
                         content1 += "<br><b>Sale Price: </b> " + data.SalePrice;
                         content1 += "<br><b>Const. Year: </b> " + data.ConsructionYear;
-                        content1 += "<br><b>Doc Number: </b> " + "<a class='infoLinks' target='_blank' href='http://gisgate.co.clark.nv.us/assessor/webimages/default.asp?appID=1&txtdocNum=data.DocNumber'>" + data.DocNumber + "</a>";
+                        content1 += "<br><b>Doc Number: </b> " + "<a class='infoLinks' target='_blank' href='http://maps.clarkcountynv.gov/assessor/webimages/default.asp?appID=1&txtdocNum=data.DocNumber'>" + data.DocNumber + "</a>";
    
                         content1 += "<br><b>Subd. Name: </b> " + data.SubName;
                         content1 += "<br><b>Lot Block: </b> " + data.LotBlock;
@@ -3305,12 +3942,10 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                         content1 += "<br><a id='infoLink4_mob' class='infoLinks' target='_blank' href='{{linkInfo.SoilGuidlinesLink}}'>Soil Guidelines Map</a>";
                         content1 += "<br><a id='infoLink5_mob' class='infoLinks' target='_blank' href='{{linkInfo.ExpansiveSoilGuidelinesLink}}'>Expansive Soil Guidelines Map</a>";
                         content1 += "<br><a id='infoLink6_mob' class='infoLinks' target='_blank' href='{{linkInfo.FloodZoneInformation}}'>Flood Zone Information</a>";
-                        content1 += "<br><a id='infoLink7_mob' class='infoLinks' target='_blank' href='http://gisgate.co.clark.nv.us/openweb?getparcel={{attr.parcel}}'>Mail Link of Current Parcel</a>";
+                        content1 += "<br><a id='infoLink7_mob' class='infoLinks' target='_blank' href='http://maps.clarkcountynv.gov/openweb?getparcel={{attr.parcel}}'>Mail Link of Current Parcel</a>";
 
-
+                        //Set infoWindow content
                         map.infoWindow.setContent(content1);
-
-
 
                     } else {
 
@@ -3322,24 +3957,12 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                         // content2 += "<br><b>Acres:</b> " + data.CalcAcres;
 
                         // map.infoWindow.setContent(content2);
-
                         // map.infoWindow.resize(200, 150);
-
-
 
                     }
 
 
-
-
-
                 });
-
-
-
-
-
-
 
 
                 //---------------------------------------
@@ -3350,26 +3973,30 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
-
-
-
-
-
-
-
-
-
-
                 //--------------------------------------------
                 //+/+/+/+/+/ Calls to Data Factory /+/+/+/+/+/
                 //--------------------------------------------
                 // $scope.getAerialFlightDate(attr.parcel);
 
-                // //call for Weather (only if weatherBlock scope active) (-)
-                //pass in the active weatherBlock scope, and current zip
+                // // //call for Weather (only if weatherBlock scope active) (-)
+                // //pass in the active weatherBlock scope, and current zip
                 openFactory.getWeather($scope.theWeather, data.ZipCode).then(function(data) {
                     $scope.weather = data;
+                  //  $scope.currentWeather = data;
+
+                  console.log('look at this returned weather: ' +  JSON.stringify($scope.weather))
                 });
+
+                // // //call for Value (only if weatherBlock scope active) (-)
+                // //pass in the active weatherBlock scope, and current address
+                openFactory.getValuation($scope.theValuation, data.SiteAddress).then(function(data) {
+                    $scope.valuation = data;
+
+                 console.log('look at this returned valuation: ' +  JSON.stringify($scope.valuation))
+                });
+
+
+
 
                 //call for Ownership History (-)
                 $scope.getOwnershipHistory(mobileParcel);
@@ -3396,7 +4023,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                 //--------------------------------------------
                 //--------------------------------------------
-
 
 
 
@@ -3447,70 +4073,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
-                        //http://stackoverflow.com/questions/3480771/how-to-see-if-string-contains-substring
-
-                        // var regex = /(S)/g;
-
-                        // alert(thesecond.test(regex));
-
-                        // thesecond.test(regex);
-
-                        // // if(thesecond.indexOf('S') === 1)
-                        // // {
-                        // //   alert('test')
-
-                        // // }
-
-                        // if ( thesecond.indexOf("S") > -1 ) {
-                        //   console.log( "found it" );
-                        // } else {
-                        //   console.log( "not found" );
-                        // }
-
-                        // alert(thesecond)
-
-                        // //then remove the last word in the string (street ending)
-                        // streetEndLast = grabAddress.lastIndexOf(" ");
-                        // grabAddress = grabAddress.substring(0, streetEndLast);
-
-                        // streetDir = grabAddress.lastIndexOf(" ");
-
-                        // var myString = "I want to remove the last word";
-                        // var mySplitResult = myString.split(" ");
-                        // var lastWord =  mySplitResult[mySplitResult.length-1] 
-
-                        // grabAddress = grabAddress.split(" ");
-                        // grabAddress =  grabAddress[1];
-
-                        // var str = "data-123";
-                        // str = str.replace("data-", "");
-
-                        //      grabAddress = grabAddress.replace(thesecond, "");
-
-                        //remove excess whitespace created (remove excess whitespace from inside a string)
-                        //https://css-tricks.com/snippets/javascript/strip-whitespace-from-string/
-                        // grabAddress.replace(/ /g, '');
-                        // grabAddress.replace(" ", "");
-                        // grabAddress = grabAddress.replace(/\s+/g, '');
-                        // grabAddress = grabAddress.replace(/\s/g, "");
-                        // var testing = grabAddress;
-                        // alert(testing.replace(/\s/g, ""));
-
-                        //http://stackoverflow.com/questions/16974664/remove-extra-spaces-in-string-javascript
-                        // grabAddress.replace(/\s+/g,' ').trim();
-
-
-
-                        // // grabAddress = document.getElementById("textString").value;
-                        // grabAddress = grabAddress.replace(/(^\s*)|(\s*$)/gi,"");
-                        // grabAddress = grabAddress.replace(/[ ]{2,}/gi," ");
-                        // grabAddress = grabAddress.replace(/\n /,"\n");
-                        // // document.getElementById("textString").value = s;
-
-                        //OR
-
-                        // product.replace("/\\s*/g", " ");
-
                     } else {}
 
 
@@ -3521,7 +4083,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     streetEndDecide = grabAddress.split(" "); //grab last word, and decide
                     if (streetEndDecide[streetEndDecide.length - 1] === "PKWY" || "WAY" || "AVE" || "BLVD") //ST, CT, RD, DR, CIR
                     {
-
                         //loop through the array of all available streetTypes
                         length = streetTypes.length;
                         while (length--) {
@@ -3540,14 +4101,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                     } else {}
 
-
-
-
-
-
-
-
-
                     //update search val
                     $('#search-form input').val(grabAddress);
 
@@ -3561,8 +4114,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     } else {
                         $('#closeIcon').show();
                     }
-
-
 
                 } else { //parcel / APN / owner / or right-of-way
                     //update search val
@@ -3585,13 +4136,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 }
 
 
-
-
-
-
-
-
-
             });
 
         }
@@ -3605,21 +4149,23 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
+
+
+
+
+
+
+
     //getStreetView -------------------------------------------------------------
     $scope.getStreetView = function(theX, theY) {
 
+        //console.log('GET STREET TEST' + servicePrefix)
+
             //old
             //$http.jsonp('http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/projectPoint?inputWKID=' + 3421 + '&outwkid=' + 4326 + '&Xcoordinate=' + theX + '&Ycoordinate=' + theY + '&callback=JSON_CALLBACK').success(function(data) {
-            $http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/projectPoint?inputWKID=' + 3421 + '&outwkid=' + 4326 + '&Xcoordinate=' + theX + '&Ycoordinate=' + theY + '&callback=JSON_CALLBACK').success(function(data) {
-
-
-
-
-
-
-
-
-
+             $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/projectPoint?inputWKID=' + 3421 + '&outwkid=' + 4326 + '&Xcoordinate=' + theX + '&Ycoordinate=' + theY + '&callback=JSON_CALLBACK').success(function(data) {
+              //  $http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/projectPoint?inputWKID=' + 3421 + '&outwkid=' + 4326 + '&Xcoordinate=' + theX + '&Ycoordinate=' + theY + '&callback=JSON_CALLBACK').success(function(data) {
+                
                 //new
                 // var theURL = 'http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/project?inSR=102707&outSR=4326&f=pjson&geometries={"geometryType":"esriGeometryPoint","geometries":[{"x":'+theX+',"y":'+theY+'}]}';
 
@@ -3628,8 +4174,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                 //   console.log(data.geometries[0].x.toFixed(7));
                 //   console.log(data.geometries[0].y.toFixed(7));
-
-
 
                 //old
                 var lat = data.yCoordinate;
@@ -3658,17 +4202,10 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 }
 
 
-
-
-
                 //gets run when streetview checkbox is checked (default)
                 function processSVData(data, status) {
 
-                    // console.log('teset3')
-
                     if (status === google.maps.StreetViewStatus.OK) {
-
-                        //  console.log('test5')
 
                         // //set pano
                         // // panorama.setPano(data.location.pano);
@@ -3685,11 +4222,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                         //ng show - truthy
                         $scope.toggle = true;
 
-
-
-                        //console.log('hits first case')
-                        //  console.log($scope.toggle)
-
                         // panorama.setVisible(true);
                         console.log("StreetView: " + status);
                         console.log("StreetView locale: " + wickedLocation);
@@ -3700,17 +4232,11 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                     } else if (status === "ZERO_RESULTS") {
 
-                        // console.log('test6')
-
-                        // theLocal = status;
-
-                        // //show pano
+                        //show pano
                         // panorama.setVisible(false);
 
                         //ng show - truthy
                         $scope.toggle = false;
-
-
 
                         console.log("StreetView: " + status);
                         console.log("StreetView locale: " + wickedLocation);
@@ -3721,33 +4247,18 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     } else {}
 
                 }
-
-
-
 
 
 
                 //gets run when streetview checkbox is unchecked (manual override)
                 function processSVData_overrideVr(data, status) {
 
-                    // console.log('teset4')
-
-
-                    // panorama.setPano(data.location.pano);
-
                     if (status === google.maps.StreetViewStatus.OK) {
-
-                        //  console.log('test7')
 
                         //set pano
                         panorama.setPano(data.location.pano);
 
-                        // //show pano
-                        // panorama.setVisible(true);
-
-
-                        // console.log('hits first case')
-                        // console.log($scope.toggle)
+                        //show pano
 
                         // panorama.setVisible(true);
                         console.log("StreetView: " + status);
@@ -3759,8 +4270,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                     } else if (status === "ZERO_RESULTS") {
 
-                        //  console.log('test8')
-
                         console.log("StreetView: " + status);
                         console.log("StreetView locale: " + wickedLocation);
                         console.log("SV data: " + data);
@@ -3770,9 +4279,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     } else {}
 
                 }
-
-
-
 
 
             });
@@ -3783,431 +4289,8 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // // Use the Street View service to find a pano ID on Pirrama Rd, outside the
-    // // Google office.
-    // // var streetviewService = new google.maps.StreetViewService;
-    // streetviewService.getPanorama(
-    //     {location: {lat: -33.867386, lng: 151.195767}},
-    //     function(result, status) {
-    //       if (status === google.maps.StreetViewStatus.OK) {
-    //         outsideGoogle = result;
-    //         initPanorama();
-    //       }
-    //     });
-
-
-
-
-
-
-
-
-
-
-
-    // var panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
-    // var myHome = { "lat" : lat , "long" : lon };
-    // var wickedLocation =  new google.maps.LatLng( myHome.lat, myHome.long );
-    // panorama.setPosition(wickedLocation);
-    // panorama.setVisible(true);
-
-
-    // Use the Street View service to find a pano ID on Pirrama Rd, outside the
-    // Google office.
-    // var sv = new google.maps.StreetViewService();
-    // var myHome = { "lat" : lat , "long" : lon };
-    // // sv.getPanorama(
-    // //     {location: {lat:  myHome.lat, lng:  myHome.lon}},
-    // //     function(result, status) {
-    // //       if (status === google.maps.StreetViewStatus.OK) {
-    // //         outsideGoogle = result;
-    // //         initPanorama();
-    // //       }
-    // //     });
-    // sv.getPanorama(
-    //     // {location: {lat:  -33.867386, lng:  151.195767}},
-    //     {location: myHome}, 
-    //     function(result, status) {
-    //       if (status === google.maps.StreetViewStatus.OK) {
-    //         // outsideGoogle = result;
-    //         // initPanorama();
-
-    //         var panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
-
-
-    //       }
-    //     });
-
-
-
-
-    // function initPanorama() {
-
-    //   // var panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
-
-
-
-
-
-    //   // panorama = new google.maps.StreetViewPanorama(
-    //   //     document.getElementById('street-view'),
-    //   //     {
-    //   //       pano: outsideGoogle.location.pano,
-    //   //       // Register a provider for our custom panorama.
-    //   //       panoProvider: function(pano) {
-    //   //         if (pano === 'reception') {
-    //   //           return getReceptionPanoramaData();
-    //   //         }
-    //   //       }
-    //   //     });
-
-    //   // // Add a link to our custom panorama from outside the Google Sydney office.
-    //   // panorama.addListener('links_changed', function() {
-    //   //   if (panorama.getPano() === outsideGoogle.location.pano) {
-    //   //     panorama.getLinks().push({
-    //   //       description: 'Google Sydney',
-    //   //       heading: 25,
-    //   //       pano: 'reception'
-    //   //     });
-    //   //   }
-    //   // });
-    // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //view-source:file:///C:/Users/DTitus/Desktop/Streetview%20Google%20API/JSAPI_streetviewo.html
-    //view-source:file:///C:/Users/DTitus/Desktop/Streetview%20Google%20API/JSAPI_streetviewo.html ****
-    //&& docs: https://developers.google.com/maps/documentation/javascript/3.exp/reference#LatLng *****
-
-    //constructing the lat long object
-    //http://stackoverflow.com/questions/10676828/passing-location-coordinates-to-google-maps-as-variable
-
-    //removing the default ui controls
-    //http://stackoverflow.com/questions/32654034/streetview-api-hiding-fullscreen-control
-    //http://stackoverflow.com/questions/32642606/fullscreencontrol-fullscreencontroloptions-in-googlemap-api-v3-22-for-streetview
-
-    //init on load
-    //https://developers.google.com/maps/documentation/javascript/streetview
-
-
-    // var thelat = parseInt(lat)
-    // var thelon = parseInt(lon)
-
-
-    // panorama position, panorama expand button
-    // http://stackoverflow.com/questions/32654034/streetview-api-hiding-fullscreen-control
-    // https://developers.google.com/maps/documentation/javascript/streetview#StreetViewControls
-    // http://stackoverflow.com/questions/32654034/streetview-api-hiding-fullscreen-control
-
-
-
-    // var sv = new google.maps.StreetViewService();
-
-    // var panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
-
-    // var myHome = { "lat" : lat , "long" : lon };
-
-
-    // var wickedLocation =  new google.maps.LatLng( myHome.lat, myHome.long );
-
-
-    // //construct the streetview service
-    // // sv = new google.maps.StreetViewService();
-
-    // var myHome = { "lat" : lat , "long" : lon };
-
-    // // panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
-    // var wickedLocation =  new google.maps.LatLng( myHome.lat, myHome.long );
-
-    // panorama.setPosition(wickedLocation);
-
-
-
-    // sv.getPanorama({location: event.latLng, radius: 50}, processSVData);
-    // sv.getPanorama({location: myHome, radius: 50}, processSVData);
-
-
-    // var round = Math.round;
-    // var thelat = round(lat); //equivalent to round("1000",0)
-    // var thelon = round(lon); //equivalent to round("1000",0)
-
-
-    // console.log(lat) //36.1778384609251
-    // console.log(lon) //-115.290700000136
-
-    // // var myHome = { "lat" : "44.767778" , "long" : "-93.2775" };
-    // // var myHome = { "lat" : lat , "long" : lon };
-
-
-    // panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
-    // myLatLng = new google.maps.LatLng({lat:   36.1778384609251, lng: -115.290700000136}); 
-    // myLatLng = new google.maps.LatLng({lat:   thelat, lng: thelon, noWrap:true}); 
-    // myLatLng = new google.maps.LatLng({lat:   36.1738441144415, lng: -115.268547998358, noWrap:true});
-    // myLatLng = new google.maps.LatLng({lat:   36.1738441144415, lng: -115.268547998358, noWrap:true});
-    // wickedLocation =  new google.maps.LatLng( myHome.lat, myHome.long );
-
-    // panorama.setPosition(wickedLocation)
-
-
-    // console.log(lat) 36.1778384609251
-    // console.log(lon) -115.290700000136
-
-    // panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
-    // myLatLng = new google.maps.LatLng({lat:   data.yCoordinate, lng: data.xCoordinate}); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // panorama.setPov({
-    //       heading: 270,
-    //       pitch: 0
-    //     });
-
-    // panorama.setVisible(true);
-
-
-    //get a pano
-    // then run set pano, setpov, set vis
-
-    // streetviewService.getPanorama(
-    //       {location: {lat: -33.867386, lng: 151.195767}},
-    //       function(result, status) {
-    //         if (status === google.maps.StreetViewStatus.OK) {
-    //           outsideGoogle = result;
-    //           initPanorama();
-    //         }
-    //       });
-
-    // panorama.setPano(data.location.pano);
-    //     panorama.setPov({
-    //       heading: 270,
-    //       pitch: 0
-    //     });
-    //     panorama.setVisible(true);
-
-
-
-
-
-    // function processSVData(data, status) {
-
-    //   console.log(stat)
-
-    //   // panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
-    //   // wickedLocation =  new google.maps.LatLng( myHome.lat, myHome.long );
-
-    //   // panorama.setPosition(wickedLocation)
-
-
-    //   // if (status === google.maps.StreetViewStatus.OK) {
-    //   //   var marker = new google.maps.Marker({
-    //   //     position: data.location.latLng,
-    //   //     map: map,
-    //   //     title: data.location.description
-    //   //   });
-
-    //   //   panorama.setPano(data.location.pano);
-    //   //   panorama.setPov({
-    //   //     heading: 270,
-    //   //     pitch: 0
-    //   //   });
-    //   //   panorama.setVisible(true);
-
-    //   //   marker.addListener('click', function() {
-    //   //     var markerPanoID = data.location.pano;
-    //   //     // Set the Pano to use the passed panoID.
-    //   //     panorama.setPano(markerPanoID);
-    //   //     panorama.setPov({
-    //   //       heading: 270,
-    //   //       pitch: 0
-    //   //     });
-    //   //     panorama.setVisible(true);
-    //   //   });
-    //   // } else {
-    //   //   console.error('Street View data not found for this location.');
-    //   // }
-    // }
-
-
-
-
-
-
-
-
-
-    //         //working
-    //           var dataUrl1 = 'http://cbk0.google.com/cbk?output=json&ll=' + lat + ',' + lon + '&';
-    //         //  var dataUrl2 = 'https://maps.googleapis.com/maps/api/streetview?size=374x75&location='+lat+','+lon+'&heading=151.78&pitch=-0.76' + '&key=AIzaSyBrNY2A2YH14eWPEUUGitq1_vvCJ6GII7U';
-    //          // var dataUrl = 'https://maps.googleapis.com/maps/api/streetview?size=374x75&location='+lat+','+lon+'&heading=151.78&pitch=-0.76';
-    //          // // var variantURL00 = 'https://cbks0.google.com/cbk?cb_client=maps_sv.tactile&authuser=0&hl=en&output=thumbnail&thumb=2&w=374&h=75' + '&ll=' + lat + ',' + lon + '&key=' + 'AIzaSyBrNY2A2YH14eWPEUUGitq1_vvCJ6GII7U'
-    //          // var variantURL00 = 'https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=151.78&pitch=-0.76&key=AIzaSyBrNY2A2YH14eWPEUUGitq1_vvCJ6GII7U'
-
-    //          //ng hide default
-    //          $scope.toggle = false;
-
-    //           // $http.jsonp(dataUrl1+'&callback=JSON_CALLBACK').success(function(data){
-    //             $http.jsonp(dataUrl1+'&callback=JSON_CALLBACK').success(function(data){
-
-    //           if (data)
-    //           {
-
-    //               if(strViewOverride === true) {
-
-    //                 //ng show - truthy
-    //                 $scope.toggle = false;
-
-    //               }
-    //               else {
-
-    //                 //ng show - truthy
-    //                 $scope.toggle = true;
-
-    //               }
-
-    //               $("li#streetViewList").removeClass('disable_StreetList');
-    //               $("li#streetViewList").addClass('enable_StreetList');
-
-
-    // //             //https://cbks0.google.com/cbk?cb_client=maps_sv
-    // //             //original method
-    // //            // var display_url = 'http://maps.google.com/maps?layer=c&cbp=0,,,,30&panoid=' + data.Location.panoId + "&output=svembed";
-    // // //.tactile&authuser=0&hl=en&output=thumbnail&thumb=2&panoid=rU9xiEfU3A03ZgXck2k6pA&w=374&h=75&yaw=77.896156&pitch=0&ll=39.40871043542365,-104.91798281738517
-
-    // //           //  var panoimg_Url = 'http://maps.googleapis.com/maps/api/streetview?size=350x75&pano=' + data.Location.panoId + "&sensor=false";
-    // //             var llimg_Url = 'http://maps.googleapis.com/maps/api/streetview?size=350x75&location=' + lat + ',' + lon + "&sensor=false"
-
-    // //             //working
-    // //              var variantURL00 = 'https://cbks0.google.com/cbk?cb_client=maps_sv.tactile&authuser=0&hl=en&output=thumbnail&thumb=2&w=374&h=75' + '&ll=' + lat + ',' + lon + '&key=' + 'AIzaSyBrNY2A2YH14eWPEUUGitq1_vvCJ6GII7U'
-    // //             // var variantURL00 = 'https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=151.78&pitch=-0.76&key=AIzaSyBrNY2A2YH14eWPEUUGitq1_vvCJ6GII7U'
-    // //             // // https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=151.78&pitch=-0.76&key=YOUR_API_KEY
-    // //             // var variantURL00 = 'https://maps.googleapis.com/maps/api/streetview?size=374x75&location='+lat+','+lon+'&heading=151.78&pitch=-0.76' + '&key=AIzaSyBrNY2A2YH14eWPEUUGitq1_vvCJ6GII7U'
-
-    // //             var variantURL0 = 'https://cbks0.google.com/cbk?cb_client=maps_sv.tactile&authuser=0&hl=en&output=thumbnail&thumb=2&location=' + grabAddress
-    // //          //   var variantURL1 = 'https://cbks0.google.com/cbk?cb_client=maps_sv.tactile&authuser=0&hl=en&output=thumbnail&thumb=2&panoid=' + data.Location.panoId + '&w=350&h=75&' + '&location=' + grabAddress
-    // //             var variantURL11 = 'https://cbks0.google.com/cbk?cb_client=maps_sv.tactile&authuser=0&hl=en&output=thumbnail&thumb=2&w=350&h=75' + '&location=' + grabAddress
-    // //          //   var variantURL2 = 'https://cbks0.google.com/cbk?cb_client=maps_sv.tactile&authuser=0&hl=en&output=thumbnail&thumb=2&panoid=' + data.Location.panoId  + '&w=350&h=75&yaw=77.896156&pitch=0&location=' + grabAddress
-    // //          //   var variantURL3 = 'https://cbks0.google.com/cbk?cb_client=maps_sv.tactile&authuser=0&hl=en&output=thumbnail&thumb=2&panoid=' + data.Location.panoId  + '&w=350&h=75&pitch=0&location=' + grabAddress
-
-    // //             $scope.street.src = variantURL00; //commented out //variantURL00
-
-
-    //             // panorama.setPosition(wickedLocation);
-    //             // panorama.setVisible(true);
-
-
-
-    //             // myLatLng = new google.maps.LatLng({lat:   lat lng: lon}); 
-
-    //             // // panorama.setPosition(latLng:myLatLng)
-    //             // panorama.setPosition(myLatLng)
-
-
-
-
-
-    //             // // panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
-
-    //             // // myLatLng = new google.maps.LatLng({lat:   36.1666327, lng: -115.1562629}); 
-
-    //             // // panorama.setPosition(latLng:myLatLng)
-    //             // panorama.setPosition(myLatLng)
-
-
-
-
-
-    //             return;
-    //           }
-    //           //ADDED
-    //           else {
-
-    //             //ng show - truthy
-    //             $scope.toggle = false;
-
-    //             // panorama.setVisible(false);
-
-    //             $("li#streetViewList").removeClass('enable_StreetList');
-    //             $("li#streetViewList").addClass('disable_StreetList');
-
-    //           }
-
-
-    //          });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //getOwnershipHistory -------------------------------------------------------------
     $scope.getOwnershipHistory = function(attr) {
-
-            //  console.log('parcel ' + attr)
 
             // getOwnershipHistory: http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getOwnershipHistory
 
@@ -4217,7 +4300,9 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             //JSONP calls
 
             //$getOwnershipHistory 
-            $http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getOwnershipHistory?parcel=' + attr + '&callback=JSON_CALLBACK').success(function(data, attr) {
+             $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getOwnershipHistory?parcel=' + attr + '&callback=JSON_CALLBACK').success(function(data, attr) {
+              //  $http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getOwnershipHistory?parcel=' + attr + '&callback=JSON_CALLBACK').success(function(data, attr) {
+
 
                 //Set Object
                 $scope.ownershipHist = data;
@@ -4226,80 +4311,10 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
         }
         //------------------------------------------------------------------------------
 
-    // //getTrends -------------------------------------------------------------
-    // $scope.getTrends = function(attr) {
-
-
-
-
-    //   $scope.trends = 'http://sandgate.co.clark.nv.us/AssrRealProp/ParcelSales.aspx?instance=pcl2&parcel='+attr;
-
-
-
-
-
-
-    //   // console.log($("#ContentPlaceHolder1_gvSales").html());
-
-
-
-
-
-    //   // $scope.theTrendsURL= [];
-
-    //   // // var theTrendsURL = 'http://sandgate.co.clark.nv.us/AssrRealProp/ParcelSales.aspx?instance=pcl2&parcel='+attr;
-
-    //   // var response = "http://sandgate.co.clark.nv.us/AssrRealProp/ParcelSales.aspx?instance=pcl2&parcel='+attr";
-
-    //   // $scope.theTrendsURL.push(response)
-
-    //   //  //Set Object
-    //   // // $scope.trends = JSON.stringify(theTrendsURL);
-    //   // // $scope.trends = theTrendsURL;
-
-    //   // $scope.trends = escape(theTrendsURL).toLowerCase();
-
-
-    //   // escape(str)
-    //   //           .toLowerCase()
-
-    //   //http://angularjs4u.com/errors/203/
-    //   //https://www.google.com/search?q=angular+Error%3A+%5B%24interpolate%3Ainterr%5D&oq=angular+Error%3A+%5B%24interpolate%3Ainterr%5D&aqs=chrome..69i57j69i65l3j69i59j69i60.1271j0j7&sourceid=chrome&es_sm=93&ie=UTF-8
-
-    //   // {{trends}}
-
-    //   // console.log(theTrendsURL);
-
-    //     // //$getOwnershipHistory 
-    //     // $http.jsonp('http://sandgate.co.clark.nv.us/AssrRealProp/ParcelSales.aspx?instance=pcl2&parcel='+attr+'&callback=JSON_CALLBACK').success(function(data, attr){
-
-    //     //   //Set Object
-    //     //  $scope.trends = data;
-
-    //     // });
-    //     // // http://sandgate.co.clark.nv.us/AssrRealProp/ParcelSales.aspx?instance=pcl2&parcel=17612313087
-    // }
-    // //------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     //Construct Print Friendly Link ----------------------------------------------------
     $scope.constructPrintFriendly = function(resolvedURL) {
-
 
         // <p><b>Commissioner: </b> &nbsp; {{elecOfficial.CountyCommissioner}}</p>  
         // <p><b>City Ward: </b> &nbsp; {{elecOfficial.CityWard}}</p>  
@@ -4312,39 +4327,9 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
         // <p><b>Board of Education: </b> &nbsp; {{elecOfficial.BoardOfEducation}}</p> 
 
 
-
-
       // //PrintLink parms
-      // $scope.basePrintLink = 'http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4_test/app/print/form.html?@';
-      // $scope.mapPrintLink = 'map='+resolvedURL;
-      // $scope.parcelPrintLink = '&parcel='+$scope.attr.parcel;
-      // $scope.onamePrintLink = '&Oname='+$scope.data.OwnerName;
-      // $scope.saddressPrintLink = '&SAddress='+$scope.data.SiteAddress;
-      // $scope.jurisPrintLink = '&Juris='+$scope.zoning.jurisdiction; //zoning.jurisdiction
-      // $scope.zipPrintLink = '&Zip='+$scope.data.ZipCode;
-      // //$scope.plandusePrintLink = '&PLanduse='+'Not_Available'; //Not Available
-      // $scope.subdnamePrintLink = '&SubdName='+$scope.data.SubName;//.trim();
-      // $scope.lotblockPrintLink = '&LotBlock='+$scope.data.LotBlock;
-      // $scope.conyearPrintLink = '&ConYear='+$scope.data.ConsructionYear;
-      // $scope.saledatePrintLink = '&SaleDate='+$scope.data.SaleDate;
-      // $scope.salepricePrintLink = '&SalePrice='+$scope.data.SalePrice;
-      // $scope.trsPrintLink = '&trs='+$scope.data.TownshipRangeSection;
-      // $scope.censustractPrintLink = '&CensusTract='+'Not_Available'; //Not Available
-      // $scope.recdocnumPrintLink = '&RecordedDocNum='+$scope.data.DocNumber;
-      // $scope.estlotsizePrintLink = '&EstLotSize='+$scope.data.CalcAcres;
-      // $scope.flightdatePrintLink = '&FlightDate='+$scope.aerialDate;
-      // $scope.zonePrintLink = '&Zone='+$scope.zoning.zoneDescription;
-      // $scope.commdistPrintLink = '&CommDist='+'Not_Available'; //Not Available
-      // $scope.ussenatePrintLink = '&USSenate='+$scope.elecOfficial.Senate; //elecOfficial.Senate
-      // $scope.uscongressPrintLink = '&USCongress='+$scope.elecOfficial.Congress; //elecOfficial.Congress
-      // $scope.statesenatePrintLink = '&StateSenate='+$scope.elecOfficial.StateSenate; //elecOfficial.StateSenate
-      // $scope.stateassemblyPrintLink = '&StateAssembly='+$scope.elecOfficial.StateAssembly; //elecOfficial.StateAssembly
-      // $scope.schooldistPrintLink = '&SchoolDisttrict='+$scope.elecOfficial.SchoolBoard; //elecOfficial.SchoolBoard
-      // $scope.universityregentPrintLink = '&UniversityRegent='+$scope.elecOfficial.UniversityRegent; //elecOfficial.UniversityRegent
-      // $scope.boardeducationPrintLink = '&BoardEducation='+$scope.elecOfficial.BoardOfEducation; //elecOfficial.BoardOfEducation
-      // $scope.mcdPrintLink = '&MCD='+'Not_Available'; //Not Available
-
-      var basePrintLink = 'http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4_test/app/print/form.html?@'; //base location
+      // var basePrintLink = 'http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/print/form.html?@'; //base location
+      var basePrintLink = 'http://maps.clarkcountynv.gov/gismo/apps/openweb_js/app/print/form.html?@'; //base location
       var mapPrintLink = 'map='+resolvedURL; //base map
       var parcelPrintLink = '&parcel='+$scope.attr.parcel; //parcel
       var onamePrintLink = '&Oname='+$scope.data.OwnerName; //owner name
@@ -4373,38 +4358,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
       var mcdPrintLink = '&MCD='+'Not_Available'; //Not Available //minor civil division ---
       var cwardPrintLink = '&CWard='+'Not_Available'; //Not Available //city ward ---
 
-
-
       //constructed print view link
-      // $scope.printViewLink = 
-      //       $scope.basePrintLink+
-      //       $scope.mapPrintLink+
-      //       $scope.parcelPrintLink+
-      //       $scope.onamePrintLink+
-      //       $scope.saddressPrintLink+
-      //       $scope.jurisPrintLink+
-      //       $scope.zipPrintLink+
-      //       $scope.subdnamePrintLink+
-      //       $scope.lotblockPrintLink+
-      //       $scope.conyearPrintLink+
-      //       $scope.saledatePrintLink+
-      //       $scope.salepricePrintLink+
-      //       $scope.trsPrintLink+
-      //       $scope.censustractPrintLink+
-      //       $scope.recdocnumPrintLink+
-      //       $scope.estlotsizePrintLink+
-      //       $scope.flightdatePrintLink+
-      //       $scope.zonePrintLink+
-      //       $scope.commdistPrintLink+
-      //       $scope.ussenatePrintLink+
-      //       $scope.uscongressPrintLink+
-      //       $scope.statesenatePrintLink+
-      //       $scope.stateassemblyPrintLink+
-      //       $scope.schooldistPrintLink+
-      //       $scope.universityregentPrintLink+
-      //       $scope.boardeducationPrintLink+
-      //       $scope.mcdPrintLink;
-
       $scope.printViewLink = 
             basePrintLink.trim()+
             mapPrintLink.trim()+
@@ -4433,13 +4387,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             boardeducationPrintLink.trim()+
             mcdPrintLink.trim();
 
-            //zipPrintLink.trim()+
-
-
         $("#printFriendlyLink").attr("href", $scope.printViewLink);
-
-
-        // console.log('This is the resolved map URL ' + resolvedURL)
 
         console.log("C [[ resolved print map URL: " + resolvedURL + " ]]");
 
@@ -4447,14 +4395,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
         
     }
     //------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
 
 
 }]); // end - mapController
@@ -4468,29 +4408,11 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
+//************************************************
+//************ accordionCtrl *********************
+//************************************************
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Angular UI Acccordion init-------------------------------------
-// open.controller('mapController',['$scope', '$filter', '$http', function($scope,$filter,$http){
-// open.controller('accordionCtrl',['$scope', '$http', function($scope,$http){
+//accordionCtrl Module --------------------------------------------------------------------------------------
 open.controller('accordionCtrl', ['$scope', '$http', 'openFactory', function($scope, $http, openFactory) {
     $scope.oneAtATime = false;
     // $scope.oneAtATime = true;
@@ -4513,95 +4435,11 @@ open.controller('accordionCtrl', ['$scope', '$http', 'openFactory', function($sc
         $scope.items.push('Item ' + newItemNo);
     };
 
-
     $scope.status = {
         //set the first property information panel properties
         open0: true,
         open0D: false
     };
-
-
-
-
-
-    // //watch for accordion section open evts -----------------
-
-    // // Zoning and PLU -->
-    // $scope.$watch('status.open1', function(isOpen){
-    //       if (isOpen) { 
-
-    //         console.log('Zoning and PLU active') 
-    //         zoningPLUFlag = true;
-
-    //       }    
-    //     })
-
-    // // Legal Descr. -->
-    // $scope.$watch('status.open2', function(isOpen){
-    //       if (isOpen) { 
-
-    //         console.log('Legal Descr. active') 
-    //         legalDescrFlag = true;
-
-    //       }    
-    //     })
-
-    // // Ownership -->
-    // $scope.$watch('status.open3', function(isOpen){
-    //       if (isOpen) { 
-
-    //         console.log('Ownership active') 
-    //         ownershipFlag = true;
-
-    //       }    
-    //     })
-
-    // // Flood Zone -->
-    // $scope.$watch('status.open4', function(isOpen){
-    //       if (isOpen) { 
-
-    //         console.log('Flood Zone active') 
-    //         floodZoneFlag = true;
-
-    //       }    
-    //     })
-
-    // // Elected Officials -->
-    // $scope.$watch('status.open5', function(isOpen){
-    //       if (isOpen) { 
-
-    //         // alert(xcoord)
-
-    //         console.log('Elected Officials active')
-
-    //         //set elected officials flag to active
-    //         elecOfficialsFlag = true;
-
-    //        // console.log(xcoord)
-
-    //         // //call for elected officials
-    //         // openFactory.getOfficials(xcoord,ycoord).then(function(data) {
-    //         //   $scope.elecOfficial = data;
-    //         // });
-
-
-    //       }    
-    //     })
-
-    // // Links -->
-    // $scope.$watch('status.open6', function(isOpen){
-    //       if (isOpen) { 
-
-    //         console.log('Links requested') 
-    //         linksFlag = true;
-
-    //       }    
-    //     })
-
-
-
-
-
 
 }]); // end - accordionCtrl
 
@@ -4610,15 +4448,14 @@ open.controller('accordionCtrl', ['$scope', '$http', 'openFactory', function($sc
 
 
 
+//************************************************
+//************ Custom Filters ********************
+//************************************************
 
-
-
-
-
-/* Custom filters */
-
+//trustAsResourceUrl Module --------------------------------------------------------------------------------------
 open.filter('trustAsResourceUrl', ['$sce', function($sce) {
     return function(val) {
         return $sce.trustAsResourceUrl(val);
     };
 }])
+

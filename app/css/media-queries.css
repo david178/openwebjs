@@ -139,7 +139,8 @@
     }
     .StreetList,
     .LegList,
-    .WeatherList {
+    .WeatherList,
+    .valuationList {
         pointer-events: auto;
         opacity: 1;
     }
@@ -272,7 +273,8 @@
 
     /* Map Legend & Weather blocks */
     #legendDivCasing,
-    #weatherDivCasing {
+    #weatherDivCasing,
+    #valuationDivCasing {
         width: 230px !important;
     }
 
@@ -299,7 +301,8 @@
     }
     .StreetList,
     .LegList,
-    .WeatherList {
+    .WeatherList,
+    .valuationList {
         pointer-events: auto;
         opacity: 1;
     }
@@ -461,7 +464,8 @@
     }
     .StreetList,
     .LegList,
-    .WeatherList {
+    .WeatherList,
+    .valuationList {
         pointer-events: none !important;
         opacity: 0.4 !important;
         /*  pointer-events:auto;
@@ -739,7 +743,8 @@
 
     /* Map Legend */
     #legendDivCasing,
-    #weatherDivCasing {
+    #weatherDivCasing,
+    #valuationDivCasing {
         /*  top:70px !important;*/
     }
 

@@ -200,10 +200,33 @@
                        <a class="infoLinks" target="_blank" href='{{ZonePLU.ZoneLink}}'>{{zoning.zoneDescription}}</a>
                      </p>
 
-                     <p><b>Community District:</b> </p> <!-- {{CommunityDistrict}}</p> -->
+                     <!-- <p><b>Community District:</b> </p> --> <!-- {{CommunityDistrict}}</p> -->
 
 
-                     </p>
+
+                     <p ><b>Overlay District:</b>   </p> <!-- {{PLU.CommunityDistrict}} --> <!-- ng-show="matchCount==1" -->
+                     <p ><b>Planned Landuse:</b>   </p> <!-- {{PLU.CommunityDistrict}} -->
+                     <p ng-show="land.length"><b>Land Use Plan Area:</b> <span>{{land.LandUsePlanArea}}</span> </p> 
+                     <!-- <p ng-if="q.length === 0"><b>Land Use Plan Area:</b> {{q.LandUsePlanArea}} </p>  --><!-- {{PLU.CommunityDistrict}} --> 
+                     <!-- ng-show="!land.LandUsePlanArea" -->
+
+
+                     <!-- Contests (search active) -->
+<!--                      <p ng-show="q" class="quick">
+                         <h1>{{q.LandUsePlanArea}}</h1>
+                     </p> -->
+
+
+
+                     <p><b>Community District:</b> {{PLU.CommunityDistrict}}</p> <!-- {{PLU.CommunityDistrict}} -->
+
+
+
+
+                     <!-- <p><b>Community District:</b> {{PLU.CommunityDistrict}}</p> --> <!-- {{PLU.CommunityDistrict}} -->
+
+
+                     <!-- </p> -->
                  </accordion-group>
 
                  <!-- Legal Descr. -->
@@ -533,7 +556,7 @@
                       <p><b>School District: </b> &nbsp; {{elecOfficial.SchoolBoard}}</p>  
                       <p><b>University Regent: </b> &nbsp; {{elecOfficial.UniversityRegent}}</p>  
                       <p><b>Board of Education: </b> &nbsp; {{elecOfficial.BoardOfEducation}}</p>  
-                      <p><b>Minor Civil Division: </b> </p>  
+                      <p><b>Minor Civil Division: </b> &nbsp; {{land.MinorCivilDivision}}</p>  
 
                   </accordion-group>
 
@@ -591,14 +614,29 @@
                    <!-- StreetView -->
                   <div id="streetCard" class='conditionalShow_Street' ng-show="toggle" > <!-- conditionalShow_Street -->
 
+                    <!-- style="display:none !important;" -->
+
 <!--                      <p> <a style="color:white;" target="_blank" href='http://gisgate.co.clark.nv.us/gismo/apps/mobile/streetview/?@{{gStreetviewBigLinklat}}'>{{data.SiteAddress}}</a> 
                      </p> -->
+
+<!--                      <div class="StrLabel" >
+                       <p>{{data.SiteAddress}}</p>
+                     </div> -->
+
+
+                     <div class="StrLabel_Top" >
+                       <p></p>
+                     </div>
+
+
+
+                     <!-- <div id="pano" style="" ></div> -->
+
+
 
                      <div class="StrLabel" >
                        <p>{{data.SiteAddress}}</p>
                      </div>
-
-                     <div id="pano" style="width: 378px; height: 88px;" ></div>
 
                    </div>
 

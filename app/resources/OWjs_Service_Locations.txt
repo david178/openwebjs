@@ -1,0 +1,25 @@
+
+****************************************
+******* OWjs Service Locations *********
+****************************************
+
+app/map.js:
+print task | ln 1006
+geometry | ln 156
+layers | ln 1205 - 1248
+metric post svc | ln 1960
+
+app/display.js (CACHE & various rest imagery svc):
+various ln
+
+app/controllers/controllers.js (arcgis rest svc):
+various ln
+
+app/services/factory.js (Custom WCF):
+getZoning | ln 45
+getPLU | ln 57
+getFloodZone | ln 88
+getAerialFlight | ln 103
+getElectedOffcial | ln 118
+getSelectPropLinks | ln 132
+getSCLZip | ln 165

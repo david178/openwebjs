@@ -80,6 +80,27 @@ var bufferCreateCount = 0;
 var bufferParms; //stores the buffer parameters for creating a buffer
 var bufferCumulativeVal = 0;
 
+var freshView = "";
+
+
+//----------------------------
+//SERVICES AND SERVER CONFIG
+var servicePrefix = 'http://maps.clarkcountynv.gov/'; //used by both Flights & Layers
+//http://gisgate.co.clark.nv.us/
+
+//Flights / CACHES
+var serviceSuffix_F = 'arcgis_images/rest/services/';
+var serviceType_F = 'CACHED'; //E.g. CACHED / Elevations / Utilities
+
+//Layers / GISMO 
+// https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO
+var serviceSuffix_L = 'arcgis/rest/services/';
+var serviceType_L = 'GISMO';
+//---------------------------
+
+
+
+
 require([
 
         //dojo includes
@@ -124,9 +145,13 @@ require([
         "application/bootstrapmap",
         "esri/dijit/LocateButton", //added
 
+        "esri/layers/ArcGISImageServiceLayer", //ADDED: for ImageService Layer basemap
+
         "esri/layers/FeatureLayer", //added for legend
         "esri/dijit/Legend", //added for legend
         "dojo/_base/array", //added for legend
+
+
 
         "dijit/registry", //added for 'registry.byId' event listening functionality for colors
 
@@ -134,7 +159,7 @@ require([
         "dojo/domReady!"
     ],
 
-    function(dom, array, domAttr, number, Map, Measurement, Polyline, Units, Point, webMercatorUtils, ProjectParameters, geometry, Extent, SpatialReference, normalizeUtils, GeometryService, BufferParameters, Graphic, Draw, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Font, TextSymbol, Color, Print, PrintTask, PrintTemplate, Scalebar, BootstrapMap, LocateButton, FeatureLayer, Legend, arrayUtils, registry, parser) { //ADDED LEGEND FeatureLayer, Legend, arrayUtils, parser
+    function(dom, array, domAttr, number, Map, Measurement, Polyline, Units, Point, webMercatorUtils, ProjectParameters, geometry, Extent, SpatialReference, normalizeUtils, GeometryService, BufferParameters, Graphic, Draw, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Font, TextSymbol, Color, Print, PrintTask, PrintTemplate, Scalebar, BootstrapMap, LocateButton, ArcGISImageServiceLayer, FeatureLayer, Legend, arrayUtils, registry, parser) { //ADDED LEGEND FeatureLayer, Legend, arrayUtils, parser
 
         parser.parse(); //ADDED LEGEND
 
@@ -153,7 +178,10 @@ require([
 
         //Default geometry service (to be used by LocateButton to project geometry)
         // esriConfig.defaults.geometryService = new GeometryService("http://yourdomain.com/geometryService");  
-        esriConfig.defaults.geometryService = new GeometryService("http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/");
+
+
+         // esriConfig.defaults.geometryService = new GeometryService("http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/Geometry/GeometryServer/");
+         esriConfig.defaults.geometryService = new GeometryService(servicePrefix+"arcgis/rest/services/Utilities/Geometry/GeometryServer/");
 
 
         //no extent in memory
@@ -221,7 +249,9 @@ require([
             "xmax": 786446,
             "ymax": 26764499,
             "spatialReference": {
-                "wkid": 102707
+               // "wkid": 3421
+                 "wkid": 102707
+                
             }
         });
 
@@ -1003,7 +1033,9 @@ require([
         params.template = template;
 
         //PrintTask
-        var printTask = new esri.tasks.PrintTask("http://gisgate.co.clark.nv.us/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task");
+         var printTask = new esri.tasks.PrintTask(servicePrefix+"arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task");
+        // var printTask = new esri.tasks.PrintTask("http://maps.clarkcountynv.gov/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task");
+
 
         //Template Options (template.format,template.layout)
         // var exportFormat = "PDF";
@@ -1186,7 +1218,17 @@ require([
 
 
         //Basemap Layer (default)
-        basemap = new esri.layers.ArcGISTiledMapServiceLayer("http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", { id: 'basemap' });
+        //basemap = new esri.layers.ArcGISImageServiceLayer("http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/ImageServer", { id: 'basemap' });
+        //^^^ Switch to new basemap control here & update WKID from 102707 to new WKID set in image srv
+        // basemap = new esri.layers.ArcGISTiledMapServiceLayer("http://gisgate.co.clark.nv.us/"+"ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", { id: 'basemap' });
+        basemap = new esri.layers.ArcGISTiledMapServiceLayer("http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer", { id: 'basemap' });
+
+
+
+
+
+
+
         //  mostcurrentflight2 = new esri.layers.ArcGISTiledMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesS13/MapServer",{id:'mostcurrentflight2'});
 
         // imagesF98 = new esri.layers.ArcGISTiledMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/CACHED/imagesF98/MapServer/0",{id:'imagesF98'});
@@ -1202,50 +1244,102 @@ require([
 
         //Dynamic Map layers (default)
         //Assessor Layer
-        assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/AssessorMap/MapServer", { id: 'assessorServiceLayer' });
+        // assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"ArcGIS/rest/services/GISMO/AssessorMap/MapServer", { id: 'assessorServiceLayer' });
+        // assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"ArcGIS/rest/services/GISMO/AssessorMap/MapServer", { id: 'assessorServiceLayer' });
+        assessorServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer", { id: 'assessorServiceLayer' });
         // map.addLayer(assessorServiceLayer);
 
         //AssesorAnno Layer
         // transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/Transportation/MapServer",{id:'transportationServiceLayer'});
-        assessorannoServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/AssessorAnno/MapServer", { id: 'assessorannoServiceLayer' });
-
+        // assessorannoServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/AssessorAnno/MapServer", { id: 'assessorannoServiceLayer' });
+        assessorannoServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorAnno/MapServer", { id: 'assessorannoServiceLayer' });
+        
         //SCL Layer
-        transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/scl/MapServer", { id: 'transportationServiceLayer' });
-
+        // transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/scl/MapServer", { id: 'transportationServiceLayer' });
+        transportationServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer", { id: 'transportationServiceLayer' });
 
         //abLayer
-        abLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/AB142/MapServer", { id: 'abLayer' });
+        // abLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/AB142/MapServer", { id: 'abLayer' });
+        abLayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AB142/MapServer", { id: 'abLayer' });
+
 
         //add map layers
         map.addLayers([basemap, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer, abLayer]);
 
 
         //Boulder City Zoning Layer
-        bcLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/5", { id: 'bcLayer' });
+        // bcLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/Zoning/MapServer/5", { id: 'bcLayer' });
+        bcLayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/5", { id: 'bcLayer' });
         //Clark County Planned Landuse Layer
-        PLULayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/PlanedLandUse/MapServer", { id: 'PLULayer' });
+        // PLULayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/PlanedLandUse/MapServer", { id: 'PLULayer' });
+        PLULayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/PlanedLandUse/MapServer", { id: 'PLULayer' });
         //Clark County Zoning Layer
-        CCZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/8", { id: 'CCZoningLayer' });
+        // CCZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/Zoning/MapServer/8", { id: 'CCZoningLayer' });
+        CCZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/8", { id: 'CCZoningLayer' });
         //Contours 50 Meter Layer
-        C50Layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_50M/MapServer", { id: 'C50Layer' });
+        // C50Layer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/con_50M/MapServer", { id: 'C50Layer' });
+        C50Layer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_50M/MapServer", { id: 'C50Layer' });
         //Contours 2003 5ft (Valley) Layer
-        C2003Layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_03_5ft/MapServer", { id: 'C2003Layer' });
+        // C2003Layer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/con_03_5ft/MapServer", { id: 'C2003Layer' });
+        C2003Layer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_03_5ft/MapServer", { id: 'C2003Layer' });
         //Contours 1996 5ft (Valley) Layer
-        C1996Layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_96_5ft/MapServer", { id: 'C1996Layer' });
+        // C1996Layer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/con_96_5ft/MapServer", { id: 'C1996Layer' });
+        C1996Layer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_96_5ft/MapServer", { id: 'C1996Layer' });
         //Henderson Zoning Layer
-        hendersonZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/6", { id: 'lasVegasZoningLayer' });
+        // hendersonZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/Zoning/MapServer/6", { id: 'lasVegasZoningLayer' });
+        hendersonZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/6", { id: 'lasVegasZoningLayer' });
         //Las Vegas Zoning Layer
-        lasVegasZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/4", { id: 'lasVegasZoningLayer' });
+        // lasVegasZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/Zoning/MapServer/4", { id: 'lasVegasZoningLayer' });
+        lasVegasZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/4", { id: 'lasVegasZoningLayer' });
         //Mesquite Zoning Layer
-        mesquiteZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/9", { id: 'mesquiteZoningLayer' });
+        // mesquiteZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/Zoning/MapServer/9", { id: 'mesquiteZoningLayer' });
+        mesquiteZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/10", { id: 'mesquiteZoningLayer' });
         //NLV Zoning Layer
-        nlvZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/7", { id: 'nlvZoningLayer' });
+        // nlvZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/Zoning/MapServer/7", { id: 'nlvZoningLayer' });
+        nlvZoningLayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/7", { id: 'nlvZoningLayer' });
         //Seismic Layer
-        seismicLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/SoilsGuideline/MapServer/5", { id: 'seismicLayer' });
+        // seismicLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/SoilsGuideline/MapServer/5", { id: 'seismicLayer' });
+        seismicLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer", { id: 'seismicLayer' });
         //Soil Guideline Layer
-        SoilLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/SoilsGuideline/MapServer", { id: 'SoilLayer' });
+        // SoilLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/SoilsGuideline/MapServer", { id: 'SoilLayer' });
+        SoilLayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/SoilsGuideline/MapServer", { id: 'SoilLayer' });
         //Right-of-Way Layer
-        rightofwayLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/RightOfWay/MapServer", { id: 'rightofwayLayer' });
+        // rightofwayLayer = new esri.layers.ArcGISDynamicMapServiceLayer(servicePrefix+"arcgis/rest/services/GISMO/RightOfWay/MapServer", { id: 'rightofwayLayer' });
+        rightofwayLayer = new esri.layers.ArcGISDynamicMapServiceLayer("https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/RightOfWay/MapServer", { id: 'rightofwayLayer' });
+
+        //new declarative method:
+        //basemap
+        //assessorServiceLayer
+        //assessorannoServiceLayer
+        //transportationServiceLayer
+        //abLayer
+        //bcLayer
+        //PLULayer
+        //CCZoning Layer
+        //C50Layer
+        //C2003Layer
+        //C1996Layer
+        //hendersonZoningLayer
+        //lasVegasZoningLayer
+        //mesquiteZoningLayer
+        //nlvZoningLayer
+        //seismicLayer
+        //SoilLayer
+        //rightofwayLayer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         // //geolocate
@@ -1347,8 +1441,32 @@ require([
             //Listen for extentchange
             map.on("extent-change", function(evt) {
 
+                // var point = map.extent.getCenter();
+                //    var thelevel = map.getLevel(); //added
+                //    angular.element($('#mapDiv')).scope().mapevtExtentChange(point.x, point.y, thelevel);
+
+                //    // propInfoRepo_Second();
+                //    setTimeout(function() {
+                //        //call to repo
+                //        propInfoRepo_Second();
+                //    }, 100);
+
+
+                   
+
+                //UNABLE TO GET THE CURRENT LEVEL, ZOOM, LODS, ETC FOR AN "ArcGISImageServiceLayer"
+                //THIS FUNCTIONALITY DOES WORK WHEN "ArcGISTiledMapServiceLayer" is used
+                // // basemap = new esri.layers.ArcGISTiledMapServiceLayer("http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", { id: 'basemap' });
+                // basemap = new esri.layers.ArcGISImageServiceLayer("http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/ImageServer", { id: 'basemap' });
+                // //^^^ Switch to new basemap control here & update WKID from 102707 to new WKID set in image srv
+
+
+
+
                 var point = map.extent.getCenter();
-                var thelevel = map.getLevel(); //added
+                var thelevel = map.getLevel(); //added | test:  var thelevel = map.getZoom(); 
+
+
                 angular.element($('#mapDiv')).scope().mapevtExtentChange(point.x, point.y, thelevel);
 
                 // propInfoRepo_Second();
@@ -1358,7 +1476,37 @@ require([
                 }, 100);
 
 
+                //TESTING
+                console.log("THIS IS THE ZOOM FACTOR " + map.zoomFactor);
+                console.log("THIS IS THE MAX ZOOM " + map.getMaxZoom());
+
+
             });
+
+            //Listen for extentchange
+            map.on("zoom-end", function(evt) {
+
+                // var point = map.extent.getCenter();
+                // var thelevel = map.getLevel(); //added | test:  var thelevel = map.getZoom(); 
+
+
+                // angular.element($('#mapDiv')).scope().mapevtExtentChange(point.x, point.y, thelevel);
+
+                // // propInfoRepo_Second();
+                // setTimeout(function() {
+                //     //call to repo
+                //     propInfoRepo_Second();
+                // }, 100);
+
+
+                //TESTING
+                console.log("MAP HAS BEEN ZOOMED");
+              //  console.log("THIS IS THE MAX ZOOM " + map.getMaxZoom());
+
+
+            });
+
+
 
 
 
@@ -1636,7 +1784,262 @@ require([
             //load config
             config();
             //init StreetView
-            initStreetView();
+            //initStreetView(); //COMMENTED OUT ON 9/4 - GOOGLE NOW CHARGES FOR STREETVIEW SVC
+
+
+
+
+
+
+            // //testing out local json call
+            // testCall();
+
+
+
+            // var it_works = false;
+
+            // $.ajax({
+            //   type: 'GET',
+            //   async: false,
+            //   url: "http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json?callback=?",
+            //   data: "",
+            //   success: function() {it_works = true;}
+            // });
+
+            // alert(it_works);
+
+
+
+            // var it_works = false;
+
+            // $.getJSON({
+            //   type: 'GET',
+            //   async: false,
+            //   url: "http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json?callback=?",
+            //   data: "",
+            //   success: function() {it_works = true;}
+            // });
+
+            // alert(it_works);
+
+
+
+
+
+
+            // checkPassword()
+            // .done(function(r) {
+
+            //     console.log('wtf')
+            //     if (r) {
+            //         // Tell the user they're logged in
+            //         console.log('yes')
+            //     } else {
+            //         // Tell the user their password was bad
+            //         console.log('no')
+            //     }
+            // })
+            // .fail(function(x) {
+            //     // Tell the user something bad happened
+            // });
+
+
+           // example();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           //************************************************************************
+
+           //handles the intro panel scroll buttons logic
+
+           //http://jsfiddle.net/andrewwhitaker/s5mgX/
+
+           var step = 25;
+           var scrolling = false;
+
+           // Wire up events for the 'scrollUp' link:
+           $("#scrollUp").bind("click", function(event) {
+               event.preventDefault();
+               // Animates the scrollTop property by the specified
+               // step.
+               $("#intoUpdateContainer").animate({
+                   scrollTop: "-=" + step + "px"
+               });
+           }).bind("mouseover", function(event) {
+               scrolling = true;
+               scrollContent("up");
+           }).bind("mouseout", function(event) {
+               scrolling = false;
+           });
+
+
+           $("#scrollDown").bind("click", function(event) {
+               event.preventDefault();
+               $("#intoUpdateContainer").animate({
+                   scrollTop: "+=" + step + "px"
+               });
+           }).bind("mouseover", function(event) {
+               scrolling = true;
+               scrollContent("down");
+           }).bind("mouseout", function(event) {
+               scrolling = false;
+           });
+
+           function scrollContent(direction) {
+               var amount = (direction === "up" ? "-=1px" : "+=1px");
+               $("#intoUpdateContainer").animate({
+                   scrollTop: amount
+               }, 1, function() {
+                   if (scrolling) {
+                       scrollContent(direction);
+                   }
+               });
+           }
+
+           //************************************************************************
+
+           
+           // //handles the intro panel scroll buttons logic
+
+           // if ($('#toTopBtn').length) {
+           //     var scrollTrigger = 400, // px
+           //         backToTop = function () {
+           //             var scrollTop = $(window).scrollTop();
+           //             if (scrollTop > scrollTrigger) {
+           //                 $('#toTopBtn').addClass('show');
+
+
+           //                 // $('#upperTopWell').addClass('upperTopWell_Transform');
+           //                 // $('#devsite-doc-set-nav-tab').addClass('devsite-doc-set-nav-tab_Transform');
+           //                 // $('#devsite-user-wrapper').addClass('devsite-user-wrapper_Transform');
+
+           //                 // $('#upperTopWell').addClass('smallerHead');
+           //                 // $('#devsite-doc-set-nav-tab').addClass('smallerHead');
+           //                 // $('#devsite-user-wrapper').addClass('smallerHead');
+
+           //                 // upperTopWell_Transform
+           //                 // devsite-doc-set-nav-tab_Transform
+           //                 // devsite-user-wrapper_Transform
+
+
+
+           //             } else {
+           //                 $('#toTopBtn').removeClass('show');
+
+
+           //                 // $('#upperTopWell').removeClass('upperTopWell_Transform');
+           //                 // $('#devsite-doc-set-nav-tab').removeClass('devsite-doc-set-nav-tab_Transform');
+           //                 // $('#devsite-user-wrapper').removeClass('devsite-user-wrapper_Transform');
+
+
+           //             }
+           //         };
+           //     backToTop();
+           //     $(window).on('scroll', function () {
+           //         backToTop();
+           //     });
+           //     // $('#toTopBtn').on('click', function (e) {
+           //     //     e.preventDefault();
+           //     //     $('introUpdateListOutter,introUpdateListInner').animate({
+           //     //         scrollTop: 0
+           //     //     }, 700);
+
+           //     //     console.log('toTop scroll button clicked')
+           //     // });
+
+           //     // $('#toBottomBtn').on('click', function (e) {
+           //     //     // e.preventDefault();
+           //     //     // $('introUpdateListOutter,introUpdateListInner').animate({
+           //     //     //     scrollBottom: 0
+           //     //     // }, 700);
+
+           //     //     // console.log('toBottom scroll button clicked')
+           //     // });
+
+           //     // $('html,body').animate({
+
+
+           //      // $('#toTopBtn').on('click', function (e) {
+           //      //     e.preventDefault();
+           //      //     // $('html,body').animate({
+           //      //     //     scrollTop: $("#introUpdateListOutter").offset().top
+           //      //     // }, 2000);
+
+           //      //     $('introUpdateListInner').animate({
+           //      //         scrollTop: $("#introUpdateListOutter").offset().top
+           //      //     }, 2000);
+
+           //      //     // console.log('toBottom scroll button clicked')
+           //      // });
+
+
+           // }
+
+           // $('#toTopBtn').on('click', function (e) {
+           //     e.preventDefault();
+           //     // $('html,body').animate({
+           //     //     scrollTop: $("#introUpdateListOutter").offset().top
+           //     // }, 2000);
+
+           //     // $('introUpdateListInner').animate({
+           //     $('introUpdateListOutter,introUpdateListInner').animate({
+           //         scrollTop: $("#introUpdateListInner").offset().top
+           //     }, 2000);
+
+           //     // console.log('toBottom scroll button clicked')
+           // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             //log metric
             postMetric(productCode, 'UserAgent:' + navigator.userAgent.toString().toLowerCase());
@@ -1645,6 +2048,431 @@ require([
 
     }); //end require
 //************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // //https://stackoverflow.com/questions/24909006/javascript-get-data-from-json-to-a-global-variable
+    // //https://gist.github.com/zuch/3720842
+
+
+    // //error:
+    // //https://stackoverflow.com/questions/5359224/parsererror-after-jquery-ajax-request-with-jsonp-content-type
+
+
+    //     function example()
+    //     {
+    //         // var response = "";
+    //         // var form_data = {
+    //         //     username: username,
+    //         //     password: password
+    //         // };
+
+    //         //                dataType: "json",
+
+    //         //url: "http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json?callback=?", 
+
+    //         $.ajax({
+    //             type: "GET", 
+    //             url: "http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testingjson.txt", 
+    //             success: function(response)
+    //             {
+    //                 response = '[{"Language":"jQuery","ID":"1"},{"Language":"C#","ID":"2"},
+    //                                {"Language":"PHP","ID":"3"},{"Language":"Java","ID":"4"},
+    //                                {"Language":"Python","ID":"5"},{"Language":"Perl","ID":"6"},
+    //                                {"Language":"C++","ID":"7"},{"Language":"ASP","ID":"8"},
+    //                                {"Language":"Ruby","ID":"9"}]'
+    //                 console.log('response');
+                    
+    //             // var json_obj = $.parseJSON(response);//parse JSON
+                    
+    //             //     var output="<ul>";
+    //             //     for (var i in json_obj) 
+    //             //     {
+    //             //         output+="<li>" + json_obj[i].Language + ",  " + json_obj[i].ID + "</li>";
+    //             //     }
+    //             //     output+="</ul>";
+                    
+    //             //     console.log(output);
+    //             },
+    //             error: function(XMLHttpRequest, textStatus, errorThrown) { 
+
+    //                 console.log(XMLHttpRequest);
+    //                 console.log(textStatus);
+    //                 console.log(errorThrown);
+    //                     // alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+    //             } 
+                  
+    //         })    
+    //     }
+
+
+
+
+
+
+
+    // $(document).ready(function() {
+
+    //     
+
+    //    var jsontext =  "http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json?callback=?"; 
+    //    var dumbtext =  "http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/test.txt?callback=?"; 
+
+
+    //     // function test(callback) {
+    //     //   $.getJSON(dumbtext, function (data) {
+    //     //     callback(data);
+    //     //   });
+    //     // }
+    //     // test(function (data) {
+    //     //   console.log('data');
+    //     // });
+
+
+
+    //     $.getJSON(dumbtext, function(data) {
+    //         console.log( "json loaded" );
+    //         foo(data); 
+    //     })
+    //     .done(function() {
+    //        console.log("");
+    //        foo1(data);
+    //     });
+
+
+
+
+
+    // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // $(document).ready(function() {
+    // // $("#jsonpbtn2").click(function() {
+    //     var surl =  "http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json?callback=?"; 
+    //     var id = $(this).attr("id"); 
+    //     $.ajax({
+    //         url: surl, 
+    //         // data: {id: id},
+    //         dataType: "jsonp",
+    //         jsonp : "callback",
+    //         jsonpCallback: "jsonpcallback"
+    //         }); 
+
+
+    //  });
+
+
+
+
+    // // Named callback function from the ajax call when jsonpbtn2 clicked
+    // function jsonpcallback(rtndata) { 
+
+    //     console.log('yus')
+
+    //     // // Get the id from the returned JSON string and use it to reference the target jQuery object.
+    //     // var myid = "#"+rtndata.id; 
+    //     // $(myid).feedback(rtndata.message, {duration: 4000, above: true});
+    // }
+
+
+
+
+
+
+
+
+// function checkPassword() {
+//     return $.ajax({
+//         url: 'http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json?callback=?',
+//         // data: {
+//         //     username: $('#username').val(),
+//         //     password: $('#password').val()
+//         // },
+//         type: 'GET',
+//         dataType: 'jsonp'
+//     });
+// }
+
+// // if (checkPassword()) {
+// //     // Tell the user they're logged in
+// // }
+
+
+
+
+
+
+
+
+
+//https://stackoverflow.com/questions/3222347/javascript-global-variables-after-ajax-requests
+
+
+// var it_works = false;
+
+// $.ajax({
+//   type: 'POST',
+//   async: false,
+//   url: "some_file.php",
+//   data: "",
+//   success: function() {it_works = true;}
+// });
+
+// alert(it_works);
+
+
+
+
+
+// $(function () {
+//     //  $http.jsonp('http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json?' + '&callback=JSON_CALLBACK').success(function(data) {
+//     //     console.log('zomg')
+//     // });
+
+//     $.getJSON("http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json?callback=?", function(result){
+//        //response data are now in the result variable
+//        alert('result');
+//     });
+
+
+// });
+
+
+// function testCall() {
+
+//     // //https://stackoverflow.com/questions/7936610/json-uncaught-syntaxerror-unexpected-token
+
+
+//     // $.getJSON("http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json?callback=?", function(result){
+//     //    //response data are now in the result variable
+//     //    alert('result');
+//     // });
+
+
+
+
+
+
+
+
+//     // //http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json
+
+//     // console.log('first')
+
+//     // $.ajax({
+//     //         // url: 'testing.json' + '?callback=?',
+//     //         // url: 'testing.txt' + '?callback=?',
+//     //         url: 'http://gisgate.co.clark.nv.us/gismo/apps/mobile/newowl/testing.json' + '?callback=?',
+//     //         type: "GET",
+//     //         dataType: "jsonp",
+//     //         jsonpCallback: "localJsonpCallback"
+//     //     });
+
+//     //  function localJsonpCallback(json) {
+//     //     console.log(json);
+
+//     //         // if (!json.Error) {
+//     //         //  console.log('failed')
+//     //         //     // $('#resultForm').submit();
+//     //         // }
+//     //         // else {
+//     //         //  console.log('success')
+//     //         //     // $('#loading').hide();
+//     //         //     // $('#userForm').show();
+//     //         //     // alert(json.Message);
+//     //         // }
+
+
+//     //     }
+
+
+//     // console.log('last')
+
+
+// }
+
+
+
+// $(document).ready(function () {
+//    // if ($('#userForm').valid()) {
+//                    // var formData = $("#userForm").serializeArray();
+//                    // $.ajax({
+//                    //     url: 'http://www.example.com/user/' + $('#Id').val() + '?callback=?',
+//                    //     type: "GET",
+//                    //     data: formData,
+//                    //     dataType: "jsonp",
+//                    //     jsonpCallback: "localJsonpCallback"
+//                    // });
+//        // });
+
+
+//    // $.ajax({
+//    //         url: '/testing.json' + '?callback=?',
+//    //         type: "GET",
+//    //         // data: formData,
+//    //         dataType: "jsonp",
+//    //         jsonpCallback: "localJsonpCallback"
+//    //     });
+    
+
+//    $.ajax({
+//            url: 'testing.json' + '?callback=?',
+//            type: "GET",
+//            dataType: "jsonp",
+//            jsonpCallback: "localJsonpCallback"
+//        });
+
+//     function localJsonpCallback(json) {
+//            if (!json.Error) {
+//             console.log('failed')
+//                // $('#resultForm').submit();
+//            }
+//            else {
+//             console.log('success')
+//                // $('#loading').hide();
+//                // $('#userForm').show();
+//                // alert(json.Message);
+//            }
+//        }
+
+
+
+//    } //end call
+
+
+
+
+
+
+
+// function testCall() {
+
+//     console.log('testing')
+//     // $.getJSON("http://example.com/something.json?callback=?", function(result){
+//     //    //response data are now in the result variable
+//     //    console.log('result');
+//     // });
+
+//     $.getJSON("/testing.json?callback=?", function(result){
+//        //response data are now in the result variable
+//        console.log('result');
+//     });
+
+
+
+//     $.ajax({
+//             // method: "POST",
+//              // url: "http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/addMetric",
+//              url: "http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/addMetric",
+//             data: { app: rApp, RecordedAction: rAction }
+//         })
+//         .done(function(response) {
+//             // alert( "Data Saved: " + msg );
+
+//             if (rAction.substring(0, 10) == 'UserAgent:') {
+//                 sessionNumber = response;
+//             }
+
+//             //  console.log('metric post success')
+//             //  console.log(sessionNumber)
+//         })
+//         .fail(function(response) {
+//             // console.log('metric post fail')
+//         });
+
+
+
+
+// }
+
+
+ // $(document).ready(function () {
+ //    // if ($('#userForm').valid()) {
+ //                    // var formData = $("#userForm").serializeArray();
+ //                    $.ajax({
+ //                        url: 'http://www.example.com/user/' + $('#Id').val() + '?callback=?',
+ //                        type: "GET",
+ //                        data: formData,
+ //                        dataType: "jsonp",
+ //                        jsonpCallback: "localJsonpCallback"
+ //                    });
+ //        // });
+
+ //     function localJsonpCallback(json) {
+ //            if (!json.Error) {
+ //                $('#resultForm').submit();
+ //            }
+ //            else {
+ //                $('#loading').hide();
+ //                $('#userForm').show();
+ //                alert(json.Message);
+ //            }
+ //        }
+
+ //    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //***************************Config***************************************
 function config() {
@@ -1957,7 +2785,8 @@ function postMetric(rApp, rAction) {
 
     $.ajax({
             // method: "POST",
-            url: "http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/addMetric",
+             // url: "http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/addMetric",
+             url: "http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/addMetric",
             data: { app: rApp, RecordedAction: rAction }
         })
         .done(function(response) {
@@ -2059,6 +2888,9 @@ function themeCheck() {
 //*************************** Disclaimer *********************************
 //throw the disclaimer
 function disclaimerCheck() {
+
+    console.log('this is the localstorage val ' + localStorage.disclaim)
+    
     if (localStorage.disclaim === "nodisclaim") {
         console.log("M [[ " + localStorage.disclaim + " ]]");
         return;
@@ -2132,4 +2964,11 @@ function detectIE() {
     return false;
 }
 //************************************************************************
+
+
+
+
+
+
+
 

@@ -1,0 +1,22 @@
+
+[{
+        "viewList": [
+            { "vid": 1, "vname": "Aerial Imagery Only", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer"},
+            { "vid": 2, "vname": "Assessor Map", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/AssessorMap/MapServer"},
+            { "vid": 3, "vname": "Boulder City Zoning", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/5"},
+            { "vid": 4, "vname": "Clark County PLU", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/PlanedLandUse/MapServer"},
+            { "vid": 5, "vname": "Clark County Zoning", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/8"},
+            { "vid": 6, "vname": "Contours 50 Meter", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_50M/MapServer"},
+            { "vid": 7, "vname": "Contours 2016 2ft (Valley)", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con2016_2ft/MapServer"},
+            { "vid": 8, "vname": "Contours 2003 5ft (Valley)", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_03_5ft/MapServer"},
+            { "vid": 9, "vname": "Contours 1996 5ft (Valley)", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_96_5ft/MapServer"},
+            { "vid": 10, "vname": "Default", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer"},
+            { "vid": 11, "vname": "Henderson Zoning", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/6"},
+            { "vid": 12, "vname": "Las Vegas Zoning", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/4"},
+            { "vid": 13, "vname": "Mesquite Zoning", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/10"},
+            { "vid": 14, "vname": "North Las Vegas Zoning", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/7"},
+            { "vid": 15, "vname": "Seismic", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer"},
+            { "vid": 16, "vname": "Soil Guideline", "vactive": 1, "vsrc": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/SoilsGuideline/MapServer"}
+        ]
+    }
+]

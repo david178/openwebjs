@@ -42,8 +42,13 @@ open.factory('openFactory', function($http, $q){
 	      // Create the deffered object
 	      var deferred = $q.defer();
 
-	      $http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getZoning?Xcoordinate='+theX+'&Ycoordinate='+theY+'&inputSpatialReferenceWKID=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
-	        deferred.resolve(resp.data);
+
+        //http://gisgate.co.clark.nv.us/
+        //http://maps.clarkcountynv.gov/
+
+	      $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getZoning?Xcoordinate='+theX+'&Ycoordinate='+theY+'&inputSpatialReferenceWKID=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+	      //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getZoning?Xcoordinate='+theX+'&Ycoordinate='+theY+'&inputSpatialReferenceWKID=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+          deferred.resolve(resp.data);
 	      });
 	       
 	      return deferred.promise;
@@ -54,8 +59,12 @@ open.factory('openFactory', function($http, $q){
 	      // Create the deffered object
 	      var deferred = $q.defer();
 
-	      $http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPlannedLandUse?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&returnGeom=false'+'&callback=JSON_CALLBACK').then(function(resp) {
-	        deferred.resolve(resp.data);
+        //http://gisgate.co.clark.nv.us/
+        //http://maps.clarkcountynv.gov/
+
+	      $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPlannedLandUse?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&returnGeom=false'+'&callback=JSON_CALLBACK').then(function(resp) {
+	      //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPlannedLandUse?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&returnGeom=false'+'&callback=JSON_CALLBACK').then(function(resp) {
+          deferred.resolve(resp.data);
 	      });
 	       
 	      return deferred.promise;
@@ -63,30 +72,103 @@ open.factory('openFactory', function($http, $q){
 	    },
 	    getCommunityDist: function(theX,theY) { //-----------------------------------------------------
 
+        // Update & Add on Select Prop/Print Preview data (Request maps.clarkcounty location for these services from brian):
+        // >>Also, refer to the: "OpenWeb_OW_Requested_Fixes.pdf" on desktop
+
+        // ** Update prop info & print preview w/ 3 addtional params:
+        // community district (both?)
+        // census tract (both?)
+        // minor civil division (both?)
+        // city ward (dependent) (both?)
+        // Overlay districts (prop info)
+        // Planned Land Use (prop info)
+
+        // >Community district comes from:
+        // getOverlays
+
+        // >Rest call for above looks like: 
+
+        // http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/GetOverlays?xCoordinate=738242.1894&yCoordinate=26728740.750&wkid=102707&viewData=selectproperty
+        // return 
+        // {"AirZones":{"bash":null,"doaowner":null,"doaowner2":null,"subd1":null,"subd2":null,"subd3":null},"CommunityDistrict":"3\/6","PlannedCommunity":""}
+
+
+
+
+
+
 	    //**** Need to update service to hit communitydistricts Layer: CDBNRY_P (ID: 6)   TO return number
 	    //http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/communitydistricts/MapServer/6
 
 	      // Create the deffered object
 	      var deferred = $q.defer();
 
-	      http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/communitydistricts/MapServer
+	      //http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/communitydistricts/MapServer
 
 
 
 	      // $http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPlannedLandUse?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&returnGeom=false'+'&callback=JSON_CALLBACK').then(function(resp) {
 	      //   deferred.resolve(resp.data);
 	      // });
+
+
+        // http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/GetOverlays?xCoordinate=738242.1894&yCoordinate=26728740.750&wkid=102707&viewData=selectproperty
+
+        $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/GetOverlays?xCoordinate='+theX+'&yCoordinate='+theY+'&wkid=102707&viewData=selectproperty'+'&callback=JSON_CALLBACK').then(function(resp) {
+        //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getZoning?Xcoordinate='+theX+'&Ycoordinate='+theY+'&inputSpatialReferenceWKID=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+          deferred.resolve(resp.data);
+        });
+
+
 	       
 	      return deferred.promise;
 
 	    },
+      getLandUse: function(theX,theY) { //-----------------------------------------------------
+
+        //************* NEEDS TO GET SWITCHED OVER TO MAPS SERVER *******************
+
+
+        // >Census Tract and mcd you can get from:
+
+        // http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPlaceData?xCoordinate=738368&yCoordinate=26728745&wkid=3421
+        // return 
+        // {"LandUsePlanArea":"Spring Valley","MinorCivilDivision":"Las Vegas","PlaceName":"CC Spring Valley","Tract":"5853"}
+
+
+
+        // Create the deffered object
+        var deferred = $q.defer();
+
+
+        // $http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPlannedLandUse?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&returnGeom=false'+'&callback=JSON_CALLBACK').then(function(resp) {
+        //   deferred.resolve(resp.data);
+        // });
+
+
+        // http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/GetOverlays?xCoordinate=738242.1894&yCoordinate=26728740.750&wkid=102707&viewData=selectproperty
+
+        $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPlaceData?xCoordinate='+theX+'&yCoordinate='+theY+'&wkid=3421'+'&callback=JSON_CALLBACK').then(function(resp) {
+        //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getZoning?Xcoordinate='+theX+'&Ycoordinate='+theY+'&inputSpatialReferenceWKID=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+          deferred.resolve(resp.data);
+        });
+
+
+         
+        return deferred.promise;
+
+      },
 	    getFloodZoneInfo: function(attr) { //-----------------------------------------------------
 
 	      // Create the deffered object
 	      var deferred = $q.defer();
 
-			$http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getFloodZoneInfo?parcel='+attr.parcel+'&callback=JSON_CALLBACK').then(function(resp) {
-			  deferred.resolve(resp.data);
+        //http://gisgate.co.clark.nv.us/
+        //http://maps.clarkcountynv.gov/
+
+			$http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getFloodZoneInfo?parcel='+attr.parcel+'&callback=JSON_CALLBACK').then(function(resp) {
+			//$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getFloodZoneInfo?parcel='+attr.parcel+'&callback=JSON_CALLBACK').then(function(resp) {
+        deferred.resolve(resp.data);
 			});
         
 	      return deferred.promise;
@@ -97,12 +179,16 @@ open.factory('openFactory', function($http, $q){
           // Create the deffered object
           var deferred = $q.defer();
 
+          //http://gisgate.co.clark.nv.us/
+          //http://maps.clarkcountynv.gov/
+
           //current map
           var currentMap = "Most Current Flight (County)";
           
-			$http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getAerialFlightDate?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&flightName='+currentMap+'&callback=JSON_CALLBACK').then(function(resp) {
-			  deferred.resolve(resp.data);
-			});
+  			$http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getAerialFlightDate?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&flightName='+currentMap+'&callback=JSON_CALLBACK').then(function(resp) {
+  			//$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getAerialFlightDate?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&flightName='+currentMap+'&callback=JSON_CALLBACK').then(function(resp) {
+          deferred.resolve(resp.data);
+  			});
           
           return deferred.promise;
 
@@ -115,9 +201,13 @@ open.factory('openFactory', function($http, $q){
           //   deferred.resolve(resp.data);
           // });
 
-			$http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
-			  deferred.resolve(resp.data);
-			});
+
+          //http://maps.clarkcountynv.gov/
+
+  			$http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+  			//$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+          deferred.resolve(resp.data);
+  			});
 
 			// $http.get('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(data,attr) {
 			//   deferred.resolve(data);
@@ -129,8 +219,13 @@ open.factory('openFactory', function($http, $q){
 	      // Create the deffered object
 	      var deferred = $q.defer();
 
-			$http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getSelectPropertyLinks?parcel='+attr.parcel+'&callback=JSON_CALLBACK').then(function(resp) {
-			  
+        //http://gisgate.co.clark.nv.us/
+        //http://maps.clarkcountynv.gov/
+
+			  $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getSelectPropertyLinks?parcel='+attr.parcel+'&callback=JSON_CALLBACK').then(function(resp) {
+			  //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getSelectPropertyLinks?parcel='+attr.parcel+'&callback=JSON_CALLBACK').then(function(resp) {
+          
+          
 			    //Formatting the data object---------------------------------
 
 			    var soilsLink = document.getElementById("infoLink4");
@@ -162,8 +257,12 @@ open.factory('openFactory', function($http, $q){
 	      // Create the deffered object
 	      var deferred = $q.defer();
 
-	      $http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getSCLZip?siteAddress='+address+'&callback=JSON_CALLBACK').then(function(resp) {
-	        deferred.resolve(resp.data);
+        //http://gisgate.co.clark.nv.us/
+        //http://maps.clarkcountynv.gov/
+
+	      $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getSCLZip?siteAddress='+address+'&callback=JSON_CALLBACK').then(function(resp) {
+	      //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getSCLZip?siteAddress='+address+'&callback=JSON_CALLBACK').then(function(resp) {
+          deferred.resolve(resp.data);
 	      });
 	       
 	      return deferred.promise;
@@ -195,8 +294,9 @@ open.factory('openFactory', function($http, $q){
     	},
       getWeather: function(active,zip) { //-----------------------------------------------------
 
-      //  console.log('the weather is: ' + active)
-        //console.log(jurisdiction)
+
+        //https://developer.yahoo.com/yql/guide/yql_code_tutorials.html
+
 
         // Create the deffered object
         var deferred = $q.defer();
@@ -205,16 +305,6 @@ open.factory('openFactory', function($http, $q){
         //only make the request if weatherBlock scope is active
         if (active == true)
         {
-
-            // $http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getZoning?Xcoordinate='+theX+'&Ycoordinate='+theY+'&inputSpatialReferenceWKID=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
-            //   deferred.resolve(resp.data);
-            // });
-
-            // view-source:http://www.onextrapixel.com/examples/jquery-yql-weather/
-            // http://erikflowers.github.io/weather-icons/
-
-            // Specify the ZIP/location code and units (f or c)
-            // var loc = '89128'; // or e.g. SPXX0050
 
             //check zip for extra digits, if extra, trim 
             if (zip.length > 5)
@@ -228,52 +318,425 @@ open.factory('openFactory', function($http, $q){
 
 
             //Serving Weather Active-------------------------
-            console.log("F [[ Weather for" + loc + " ]]");
-            
+            console.log("F [[ Weather for " + loc + " ]]");
 
-           // var loc =  zip.substring(6, mobileParcel.length - 3)
+             var u = 'f';
 
-            // var loc = zip; // or e.g. SPXX0050
-            var u = 'f';
+             // var query = "SELECT item.condition FROM weather.forecast WHERE location='" + loc + "' AND u='" + u + "'";
+             // var cacheBuster = Math.floor((new Date().getTime()) / 1200 / 1000);
+             // var url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&_nocache=' + cacheBuster;
 
-            var query = "SELECT item.condition FROM weather.forecast WHERE location='" + loc + "' AND u='" + u + "'";
-            var cacheBuster = Math.floor((new Date().getTime()) / 1200 / 1000);
-            var url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&_nocache=' + cacheBuster;
+             var query = 'select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="'+loc+'") and u="f"';
+             var cacheBuster = Math.floor((new Date().getTime()) / 1200 / 1000);
+             var url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&_nocache=' + cacheBuster;
 
-            window['wxCallback'] = function(data) {
-                var info = data.query.results.channel.item.condition;
-                $('#wxIcon').css({
-                    backgroundPosition: '-' + (61 * info.code) + 'px 0'
-                }).attr({
-                    title: info.text
-                });
 
-                  // $('#wxZip').html(' - ' + zip);
-                  $( "#wxInitial" ).remove(); //remove the placeholder
-                  $('#wxIcon2').html('')
-                  // $('#wxIcon2').append('<img src="http://l.yimg.com/a/i/us/we/52/' + info.code + '.gif" width="34" height="34" title="' + info.text + '" />');
-                  $('#wxIcon2').append('<img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/weather_icons/' + info.code + '.gif" width="34" height="34" title="' + info.text + '" />');
-                  // appended = true;
-                  $('#wxTemp').html(info.temp + '&deg;' + (u.toUpperCase()));
-            };
+             window['wxCallback'] = function(data) {
 
-            $.ajax({
-                url: url,
-                dataType: 'jsonp',
-                cache: true,
-                jsonpCallback: 'wxCallback'
-            });
+                 console.log('basic data blaj: ' + JSON.stringify(data))
 
+                 //current weather
+                 var info = data.query.results.channel.item.condition;
+                 //forecast
+                 var cast = data.query.results.channel.item.forecast;
+
+                 //pushing the data resolve back to controllers.js (for scope.weather bind)
+                 deferred.resolve(cast);
+
+
+                 //Testing Weather Data -------------------------
+                 console.log("F [[ Weather test " + info + " ]]");
+
+                 $('#wxIcon').css({
+                     backgroundPosition: '-' + (61 * info.code) + 'px 0'
+                 }).attr({
+                     title: info.text
+                 });
+
+                   $( "#wxInitial" ).remove(); //remove the placeholder
+                   $('#wxIcon2').html('')
+                   $('#wxIcon2').append('<img src="http://maps.clarkcountynv.gov/Gismo/apps/mobile/OW4/app/images/weather_icons/' + info.code + '.gif" width="34" height="34" title="' + info.text + '" />');
+                   $('#wxTemp').html(info.temp + '&deg;' + (u.toUpperCase()));
+             };
+
+             $.ajax({
+                 url: url,
+                 dataType: 'jsonp',
+                 cache: true,
+                 jsonpCallback: 'wxCallback'
+             });
 
         }
-
 
         return deferred.promise;
 
 
 
 
-      }//,
+      },
+
+
+
+
+
+
+      getValuation: function(active,address_pass) { //-----------------------------------------------------
+
+        //https://christianheilmann.com/2009/11/16/using-yql-to-read-html-from-a-document-that-requires-post-data/
+        //https://j11y.io/javascript/using-yql-with-jsonp/
+
+        console.log('TEST: ' + active)
+        console.log('TEST: ' + address_pass)
+
+        // Create the deffered object
+        var deferred = $q.defer();
+
+
+        //only make the request if weatherBlock scope is active
+        if (active == true)
+        {
+
+            //Serving Valuation Active-------------------------
+            console.log("F [[ Valuation request initiated for " + address_pass + " ]]");
+
+        //     // var query = 'select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="'+loc+'") and u="f"';
+        //     // var cacheBuster = Math.floor((new Date().getTime()) / 1200 / 1000);
+        //     // var url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&_nocache=' + cacheBuster;
+
+
+              //works for weather
+              // var query = 'select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="'+loc+'") and u="f"';
+              // var cacheBuster = Math.floor((new Date().getTime()) / 1200 / 1000);
+              // var url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&_nocache=' + cacheBuster;
+
+              // //get it to work for zillow home values
+              // var query = "select * from rss where url='http://feeds2.feedburner.com/ajaxian' limit 1"; //https://www.zillow.com/homes/8364-Spanish-Creek-Ct,-Las-Vegas,-NV-89113_rb/
+              // var cacheBuster = Math.floor((new Date().getTime()) / 1200 / 1000);
+              // var url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&_nocache=' + cacheBuster;
+
+
+
+              //https://developer.yahoo.com/yql/guide/overview.html
+              //select * from html where url='http://example.com' and charset='iso-8559-1'
+
+
+              // //works for an rss feed data
+              // var query = "select * from rss where url='http://feeds2.feedburner.com/ajaxian' limit 1";
+              // var cacheBuster = Math.floor((new Date().getTime()) / 1200 / 1000);
+              // var url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&_nocache=' + cacheBuster;
+
+              //YQL html table no longer supported, what to use instead
+              //https://www.google.com/search?q=yql+select+from+html+no+longer+supported%2C+what+to+use+isntead&rlz=1C1GGRV_enUS770US770&oq=yql+select+from+html+no+longer+supported%2C+what+to+use+isntead&aqs=chrome..69i57.9751j0j7&sourceid=chrome&ie=UTF-8
+
+              //works for an rss feed data
+              // var query = "select * from html where url='https://www.zillow.com/homes/8364-Spanish-Creek-Ct,-Las-Vegas,-NV-89113_rb/' limit 1";
+              // var query = "select * from html where url='https://www.zillow.com/homes/8364-Spanish-Creek-Ct,-Las-Vegas,-NV-89113_rb/' and charset='iso-8559-1";
+              //var query = "select * from htmlstring where url='https://stackoverflow.com/' ";
+
+
+              //using htmlstring https://joshuawoehlke.com/scraping-raw-css-and-html-with-yql/
+
+              //https://www.zillow.com/homes/for_sale/2095735645_zpid/globalrelevanceex_sort/36.066912,-115.273313,36.063469,-115.278887_rect/17_zm/
+
+              // var query = "select * from htmlstring where url='http://feeds2.feedburner.com/ajaxian' limit 1";
+              // var query = "select * from htmlstring where url='http://feeds2.feedburner.com/ajaxian'";
+              
+              //address variable, with '-' inserted for whitespace
+
+
+              // setTimeout(
+              //     function() {
+
+              //       // var str = $( "#addresservaluationkey" ).val();
+              //       // var addresservaluationkey_VAL = str.replace(/ /g,"-");
+              //       // console.log('this is the addresservaluationkey: ' + addresservaluationkey_VAL)
+
+              //     },
+              //     250
+              // );
+
+             // var str = $( "#addresservaluationkey" ).val();
+              // var addresservaluationkey_VAL = info.replace(/ /g,"-");
+
+              var info = address_pass;
+              info = info.replace(/ /g,"-");
+              // var addresservaluationkey_VAL = info.replace(/ /g,"-");
+
+             // var addresservaluationkey_VAL = str;
+
+              console.log('this is the addresservaluationkey: ' + info)
+
+              // var query = "select * from htmlstring where url='https://www.redfin.com/NV/Las-Vegas/8364-Spanish-Creek-Ct-89113/home/112894649'";
+
+//HistoricalAvmGraph
+
+  //https://www.zillow.com/homes/8364-Spanish-Creek-Ct,-Las-Vegas,-NV-89113_rb/
+
+
+
+              //REQUEST FORMULATION
+              //http://remax.com/homevalues/lasvegas-nv-p001.html?query=addr-1716 Jack Rabbit Way, las vegas, nv
+
+              var query = "select * from htmlstring where url='https://www.redfin.com/NV/Las-Vegas/"+info+"/home/112894649'";
+              // var query = "select * from htmlstring where url='https://www.zillow.com/homes/"+"8364-Spanish-Creek-Ct-89113"+",-Las-Vegas,-NV-89113_rb/'";
+              // var query = "select * from htmlstring where url='http://remax.com/homevalues/lasvegas-nv-p001.html?query="+"1716 Jack Rabbit Way"+", las vegas, nv'";
+
+              
+
+
+
+              var cacheBuster = Math.floor((new Date().getTime()) / 1200 / 1000);
+              var url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json' + '&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys' + '&_nocache=' + cacheBuster;
+
+
+              //var url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&_nocache=' + cacheBuster;
+              // var url = 'http://query.yahooapis.com/v1/public/yql?q=' + 'select%20*%20from%20htmlstring%20where%20url%3D%27http%3A%2F%2Fstackoverflow.com%2F%27' + '&format=json&_nocache=' + cacheBuster;
+             // var url = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20htmlstring%20where%20url%3D%27http%3A%2F%2Fstackoverflow.com%2F%27&format=jsonp&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=';
+
+              
+              //select%20*%20from%20htmlstring%20where%20url%3D%27http%3A%2F%2Fstackoverflow.com%2F%27&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=
+
+              //var url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&_nocache=' + cacheBuster;
+
+              //select%20*%20from%20htmlstring%20where%20url%3D%27http%3A%2F%2Fstackoverflow.com%2F%27&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=
+
+
+
+ 
+
+
+
+              // //get it to work for zillow home values
+              // var query = "select * from html where url='https://www.zillow.com/homes/8364-Spanish-Creek-Ct,-Las-Vegas,-NV-89113_rb/'"; //https://www.zillow.com/homes/8364-Spanish-Creek-Ct,-Las-Vegas,-NV-89113_rb/
+              // var cacheBuster = Math.floor((new Date().getTime()) / 1200 / 1000);
+              // var url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&_nocache=' + cacheBuster;
+
+                //limit 1
+                //  home-summary-row
+                //xpath='//[@home-summary-row"]'
+                //xpath='//a'
+                //xpath='//[@"home-summary-row"]' and
+
+              // var info = address_pass;
+
+
+              //Testing Weather Data -------------------------
+              console.log("F [[ Valuation test " + info + " ]]");
+
+
+
+             window['vlCallback'] = function(data) {
+
+              //https://stackoverflow.com/questions/926580/find-text-string-using-jquery
+
+                 $( "#vlInitial" ).remove(); //remove the placeholder
+
+
+                 //set
+                // var htmlgrab = JSON.stringify(data.query.results.result);
+                var htmlgrab = JSON.stringify(data);
+                //console.log('the grab: '+htmlgrab)
+                
+
+                // var foundin = $('*:contains("I am a simple string")');
+                // var foundin = $('htmlgrab:contains("Redfin Estimate for 8364 Spanish Creek Ct"):last');
+               // var testf = $( "htmlgrab:first" ).text();
+                //var foundin = $('htmlgrab:contains("Redfin Estimate for 8364 Spanish Creek Ct"):last');
+                // $( "li.item-ii" ).find( "li" )
+                // var foundin = $( data.query.results.result ).find( "li" )
+
+                //https://api.jquery.com/find/
+
+
+
+                //SCRAPE
+                var foundin = $( data.query.results.result ).find( "div.HistoricalAvmGraph" );
+                //remove parts
+                $( foundin ).remove( "div.HistoricalAvmGraph-heading");
+                $( foundin ).remove( "div.AvmGraphLegend");
+                $( foundin ).remove( "div.AvmClaimHomeButton");
+                $( foundin ).remove( "div.HistoricalAvmGraph-domainToggle");
+
+                // var foundin = $( data.query.results.result ).find( "div.zestimate-value" );
+                // var foundin = $( data.query.results.result ).find( "span.price-amount" );
+
+                var unavailable = "</br>THIS SERVICE IS CURRENTLY UNAVAILABLE</br></br>"
+                
+                // //append
+                // // $('#vlTemp').html(foundin);
+                // console.log(foundin);
+
+                // $('#vlTemp').html('')
+                // $('#vlTemp').append(foundin);
+                // $('#vlTemp').append(unavailable);
+
+
+
+
+
+
+                // $('#wxIcon2').html('')
+                // $('#wxIcon2').append('<img src="http://maps.clarkcountynv.gov/Gismo/apps/mobile/OW4/app/images/weather_icons/' + info.code + '.gif" width="34" height="34" title="' + info.text + '" />');
+                //element extraction
+                //https://stackoverflow.com/questions/28726382/find-element-within-html-string
+                // var $div = $html(data.query.results.result);
+                // $div.find(".HistoricalAvmGraph").remove();
+                // var htmlString = $('<div>').append($div).html();
+
+
+
+                //set
+                // var htmlgrab = data.query.results.result;
+
+
+                //$('div[class*="HistoricalAvmGraph"]').css('background-color', '#ff0000');
+
+              //  var $grapDivs = $('div[class|="HistoricalAvmGraph"]');
+
+               // $('#mydiv').find('.myclass');
+
+
+
+
+
+                 // $('#vlTemp').html(data.query.results.result);
+
+                 //https://api.jquery.com/find/
+
+                 // $('#vlTemp').html(data.query.results.result);
+
+                 // $( "li.item-ii" ).find( allListElements );
+
+                 // var allListElements = $( "li" );
+
+                 // $( "li" );
+
+                 // $( "p" ).html( htmlgrab ).find( ".HistoricalAvmGraph" )
+
+                 //$( "vlTemp" ).html(htmlgrab)
+
+               // $('#vlTemp').html
+
+
+
+               // //   //current valuation
+               // //   // var info = data.query.results.channel.item.condition;
+               // //   var info = 0;
+
+
+               // //   //Testing Weather Data -------------------------
+               // //   console.log("F [[ Valuation test " + info + " ]]");
+
+               // //   $( "#vlInitial" ).remove(); //remove the placeholder
+               // // //  $('#vlIcon2').html('')
+               // //  // $('#vlIcon2').append('<img src="http://gisgate.co.clark.nv.us/Gismo/apps/mobile/OW4/app/images/weather_icons/' + info.code + '.gif" width="34" height="34" title="' + info.text + '" />');
+               // //   $('#vlTemp').html(info.temp + '&deg;' + (u.toUpperCase()));
+
+
+             };
+
+
+             $.ajax({
+                 url: url,
+                 dataType: 'jsonp',
+                 cache: true,
+                 jsonpCallback: 'vlCallback'
+             });
+
+        }
+
+        return deferred.promise;
+
+
+
+
+
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //ALWAYS COMMENTED:
+
+       // $http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getZoning?Xcoordinate='+theX+'&Ycoordinate='+theY+'&inputSpatialReferenceWKID=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+       //   deferred.resolve(resp.data);
+       // });
+
+       // view-source:http://www.onextrapixel.com/examples/jquery-yql-weather/
+       // http://erikflowers.github.io/weather-icons/
+
+       // Specify the ZIP/location code and units (f or c)
+       // var loc = '89128'; // or e.g. SPXX0050
+
+
+
+
+
+
+
+
+
+       // // var loc =  zip.substring(6, mobileParcel.length - 3)
+
+       //  // var loc = zip; // or e.g. SPXX0050
+       //  var u = 'f';
+
+       //  var query = "SELECT item.condition FROM weather.forecast WHERE location='" + loc + "' AND u='" + u + "'";
+       //  var cacheBuster = Math.floor((new Date().getTime()) / 1200 / 1000);
+       //  var url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&_nocache=' + cacheBuster;
+
+
+       //      console.log('basic test blaj: ')
+       //  window['wxCallback'] = function(data) {
+       //      console.log('basic data blaj: ' + JSON.stringify(data))
+       //      var info = data.query.results.channel.item.condition;
+
+       //      //Testing Weather Data -------------------------
+       //      console.log('basic weather blaj')
+       //      console.log("F [[ Weather test " + info + " ]]");
+
+
+       //      $('#wxIcon').css({
+       //          backgroundPosition: '-' + (61 * info.code) + 'px 0'
+       //      }).attr({
+       //          title: info.text
+       //      });
+
+       //        // $('#wxZip').html(' - ' + zip);
+       //        $( "#wxInitial" ).remove(); //remove the placeholder
+       //        $('#wxIcon2').html('')
+       //        // $('#wxIcon2').append('<img src="http://l.yimg.com/a/i/us/we/52/' + info.code + '.gif" width="34" height="34" title="' + info.text + '" />');
+       //        // $('#wxIcon2').append('<img src="http://gisgate.co.clark.nv.us/gismo/apps/mobile/weather_icons/' + info.code + '.gif" width="34" height="34" title="' + info.text + '" />');
+       //        $('#wxIcon2').append('<img src="../../resources/weather_icons/' + info.code + '.gif" width="34" height="34" title="' + info.text + '" />');
+       //        // appended = true;
+       //        $('#wxTemp').html(info.temp + '&deg;' + (u.toUpperCase()));
+       //  };
+
+       //  $.ajax({
+       //      url: url,
+       //      dataType: 'jsonp',
+       //      cache: true,
+       //      jsonpCallback: 'wxCallback'
+       //  });
+
+
 
 
 

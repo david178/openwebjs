@@ -151,6 +151,14 @@ function ai(pass) {
 
     $('#assistantModal').modal('show');
 
+  } else if (pass.indexOf("nolocation") !=-1) {
+
+      console.log('hit nolocation')
+
+
+      //$('#assistantModal').modal('show');
+
+      alert('Location Not Found');
 
 
   } else if (pass.indexOf("silverlight") !=-1) {

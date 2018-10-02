@@ -1,0 +1,21 @@
+
+[{
+                "list": [
+                    { "name3": "Most36", "mainName": "Aerial Imagery Only", "id1": 36, "src1": "http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/ImageServer", "addit": " " },
+                    { "name3": "Most37", "mainName": "Assessor Map", "id1": 37, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/GISMO/AssessorMap/MapServer", "addit": " " },
+                    { "name3": "Most38", "mainName": "Boulder City Zoning", "id1": 38, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/5", "addit": " " },
+                    { "name3": "Most39", "mainName": "Clark County PLU", "id1": 39, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/PlanedLandUse/MapServer", "addit": " " },
+                    { "name3": "Most40", "mainName": "Clark County Zoning", "id1": 40, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/8", "addit": " " },
+                    { "name3": "Most41", "mainName": "Contours 50 Meter", "id1": 41, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_50M/MapServer", "addit": " " },
+                    { "name3": "Most42", "mainName": "contours 2016 2ft (Valley)", "id1": 42, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con2016_2ft/MapServer", "addit": " " },
+                    { "name3": "Most43", "mainName": "Contours 2003 5ft (Valley)", "id1": 43, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_03_5ft/MapServer", "addit": " " },
+                    { "name3": "Most44", "mainName": "Contours 1996 5ft (Valley)", "id1": 44, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/con_96_5ft/MapServer", "addit": " " },
+                    { "name3": "Most45", "mainName": "Default", "id1": 45, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", "addit": " " },
+                    { "name3": "Most46", "mainName": "Henderson Zoning", "id1": 46, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/6", "addit": " " },
+                    { "name3": "Most47", "mainName": "Las Vegas Zoning", "id1": 47, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/4", "addit": " " },
+                    { "name3": "Most48", "mainName": "Mesquite Zoning", "id1": 48, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/10", "addit": " " },
+                    { "name3": "Most49", "mainName": "North Las Vegas Zoning", "id1": 49, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Zoning/MapServer/7", "addit": " " },
+                    { "name3": "Most50", "mainName": "Seismic", "id1": 50, "src1": "http://gisgate.co.clark.nv.us/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer", "addit": " " },
+                    { "name3": "Most51", "mainName": "Soil Guideline", "id1": 51, "src1": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/SoilsGuideline/MapServer", "addit": " " }
+                ]
+            }]

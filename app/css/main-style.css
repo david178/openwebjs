@@ -79,6 +79,45 @@ body {
 #glyphicon-search {}
 
 
+.introPaneText {
+    color: hsla(0,0%,100%,.9) !important;
+    line-height: 1.25 !important;
+    font-size: 1.625rem !important;
+}
+
+.introPaneTextSubset {
+    color: hsla(0,0%,100%,.9) !important;
+/*    color: #f2f2f2 !important;*/
+
+    line-height: 1.25 !important;
+    font-size: 14px !important;
+/*    font-size: 13px !important;*/
+    float:left;
+    display:inline-block;
+    /*padding-top:12px;*/
+    padding-top:12px;
+
+    padding-left:2px;
+}
+
+.introPaneTextSubsetIcons {
+    color: hsla(0,0%,100%,.8) !important;
+    font-size: 1.525rem !important;
+}
+
+.introBottomSection {
+/*    line-height: 1.25 !important;*/
+    margin-top:50px;
+/*    position: absolute;
+    left: 42px;
+    bottom: 183px;*/
+
+    margin-left:28px;
+}
+
+
+
+
 
 
 
@@ -332,7 +371,9 @@ height: 100%;
     color: #FFF;
     background-color: rgba(34, 34, 34, 0.96);
     width: 280px;
-    height: 109px;
+    /*height: 109px;*/
+    min-height: 109px;
+    height: auto;
     margin: auto;
 }
 
@@ -343,6 +384,33 @@ height: 100%;
     margin-right: 2px;
     margin-left: 2px;
 }
+
+#valuationDivCasing {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 999;
+    padding: 10px 14px;
+    margin: 0;
+    color: #FFF;
+    background-color: rgba(34, 34, 34, 0.96);
+    width: 280px;
+    /*height: 109px;*/
+    height: auto;
+    margin: auto;
+}
+
+#valuationDiv {
+    height: 68.5%;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+
+
+
 
 /* legend specific */
 
@@ -540,6 +608,10 @@ height: 100%;
     /*  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     /*  font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;*/
     font-family: 'Open Sans', sans-serif !important;
+
+    /* ADDED */
+    /* changes default intro jumbo style padding to 20 from 30 */
+    
 }
 
 .jumbotron p {
@@ -569,6 +641,64 @@ height: 100%;
     -ms-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
 }
+
+/* the alert box style used in intro-panel items */
+.alert-info-custom {
+    /*border-radius: 3px;*/
+    border-radius: 0px;
+    /*background: rgb(37, 83, 132);*/
+    background: transparent;
+    /*border: #333;*/
+    border:2px solid rgb(37, 83, 132);
+    color: #EEE;
+    font-size: 17px !important;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+
+    width:100%;
+
+
+
+/*    padding-top:0px;
+
+    padding-bottom:0px;*/
+
+
+
+/*
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    
+    border-bottom: 5px solid black;*/
+
+/*    border-top: 2px solid transparent;
+     border-bottom: 8px solid transparent;
+     border-right: 8px solid blue*/
+
+    border-top: 2px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid rgb(37, 83, 132);
+
+
+     
+
+
+/*    margin-left: -6px !important; 
+    margin-top:3px; 
+    padding:2px; 
+    padding-right:3px !important; 
+    border-radius: 0px !important;
+*/
+
+}
+
+
 
 /* Override */
 
@@ -645,6 +775,13 @@ needed or search form inline mobile format compat*/
     transition: .3s ease all;
     margin-top: 10px !important;
     border-radius: 0px !important;
+
+/*
+    background-color: transparent !important;
+*/
+
+
+    width:100%;
 }
 
 
@@ -971,7 +1108,7 @@ li label {
 /* extra padding for the checkboxes */
 
 .chkPadding {
-    padding-right: 2px;
+    /*padding-right: 2px;*/
 }
 
 /* ALTERNATIVE */
@@ -1050,8 +1187,8 @@ li label {
 /* general disable list item */
 
 .disable_List {
-    pointer-events: none;
-    opacity: 0.4;
+    pointer-events: none !important;
+    opacity: 0.4 !important;
 }
 
 
@@ -1105,6 +1242,31 @@ li {
 
     font-family: 'Open Sans', sans-serif !important;
 }
+/* weather block's forecast view dropdown style - for consistency */
+#forecastViewList {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    text-decoration: none!important;
+}
+#forecastViewList a {
+    transition: .3s ease all;
+    color: #fff;
+    display: block;
+    font-weight: 300;
+    padding: 2px 30px;
+    font-size: 17px;
+    transition: .3s ease all;
+    -moz-transition: .3s ease all;
+    -webkit-transition: .3s ease all;
+    line-height: 1.5;
+    text-decoration: none!important;
+
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+
+
 
 #aerialLevel {
     color: #DEDEDE;
@@ -1333,8 +1495,39 @@ li {
 
 /* StreetView label */
 
+
+
+.spG6 {
+/*    border: 0px !important;
+    box-shadow: none !important;*/
+/*    -webkit-box-shadow: 0 2px 6px rgba(1, 0, 0, 0.9) !important;*/
+
+}
+
+.StrLabel_Top {
+        border-bottom-left-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+        font-size: .75rem;
+        border-color: none !important;
+        border:none !important;
+        color: #fff;
+        background-color: #ffffff;
+        background-color: #fff;
+        justify-content: center;
+        padding: calc(.375em - 1px) .75em;
+/*        background: #0D2E56;*/
+
+        background-image: url("images/greyBG.jpg");
+
+}
+
+
+.StrLabel>p {
+    text-align: right;
+}
+
 .StrLabel {
-    position: absolute;
+/*    position: absolute;
     bottom: 0px;
     right: 0px;
     margin-right: 8px;
@@ -1342,17 +1535,148 @@ li {
     color: white;
     font-weight: 500;
     cursor: pointer;
-    z-index: 9999999;
-    text-shadow: black 2px 2px 8px;
+    z-index: 9999999;*/
+    /*text-shadow: black 2px 2px 8px !important;*/
+    /*  z-index: 2;*/
+/*     text-shadow: rgba(0,0,0,0.7) 0px 1px 8px !important;*/
+
+
+/*    border-radius: 2px;
+    font-size: .75rem;
+    border-color: #4a4a4a;
+    color: #363636;
+    background-color: #fff;
+    justify-content: center;
+    padding: calc(.375em - 1px) .75em;*/
+
+
+
+
+/*
+    border-bottom-left-radius: 2px !important;
+    border-bottom-right-radius: 2px !important;
+    font-size: .75rem;
+    border-color: #4a4a4a;
+    color: #363636;
+    background-color: #fff;
+    justify-content: center;
+    padding: calc(.375em - 1px) .75em;
+*/
+
+
+
+/*    border-radius: 0px !important;*/
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 2px !important;
+    font-size: .75rem;
+    border-color: #4a4a4a;
+/*    color: #363636;*/
+/*        color: #999;*/
+/*        color: #333;*/
+        color: #3d3d3d;
+/*    color: #555555;*/
+
+/*    color: #fff;*/
+    /*background-color: rgb(17, 63, 112);*/
+    background-color: #ffffff;
+    justify-content: center;
+    padding: calc(.375em - 1px) .75em;
+
+/*background-color: #ffffff;*/
+/*    border-bottom: 2px solid rgb(37, 83, 132);
+*/
+
+
+/*    color: rgb(17, 63, 112);*/
+/*    border-bottom: 2px solid rgb(37, 83, 132);*/
+
+/*        background: #0D2E56;*/
+
+        background-image: url("images/greyBG.jpg");
+
+
+/*        font-family: Lato, 'Noto Sans', sans-serif;*/
+        letter-spacing: -.0323em;
+/*        font-style: normal;*/
+/*            font-size: 12px;*/
+/*        font-size: 19px;*/
+font-weight: 400;
+font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+
+    text-shadow: 0 1px 1px #fff;
+
+    padding-right:10px;
+
+
 }
 
+
+/* streetview panorama img style */
+#pano {
+/*    width: 388px; 
+    height: 88px;
+    margin-left:-2px;*/
+
+
+
+
+    width: 386px; 
+    height: 88px;
+
+
+}
+
+
+
 #streetCard {
-    border-radius: 0px !important;
+/*    border-radius: 0px !important;
     margin-top: 4px;
     padding: 3px;
     background-image: url("images/greyBG.jpg");
-    height: 94px;
+    height: 94px;*/
+
+
+/*    border-radius: 0px !important;
+    margin-top: 4px;
+    padding: 3px;
+    background-image: url("images/greyBG.jpg");
+    height: 94px;*/
+
+
+
+
+    border-radius: 0px !important;
+/*    background-image: url("images/greyBG.jpg");*/
+    margin-top: 4px;
+/*    padding: 3px;
+    background-image: url("images/greyBG.jpg");
+    height: 94px;*/
+
+/*        -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;*/
+
+/*box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;*/
+
 }
+/**[@id="pano"]/div[2]
+*/
+/*#pano>div:nth-child(2) { 
+    display: none;
+ }
+ div#pano div:nth-child(2) {
+        display: none;
+ }*/
+/* div#pano div.gm-style>div:nth-child(2) {
+        display: none;
+        font-size:0px !important;
+        background-color:transparent !important;
+        color:black !important;
+ }*/
+
+
+
 
 .streetCard {
     border-radius: 1px;
@@ -1371,25 +1695,14 @@ li {
 .gm-style>div:nth-child(2) {
     display: none;
 }
-.gm-style>div:nth-child(4) {
-    display: none;
-}
-.gm-style>div:nth-child(10) {
-    display: none;
-}
-.gm-style>div:nth-child(8) {
-    display: none;
-}
-.gm-style>div:nth-child(7) {
-    display: none;
-}
-.gm-style>div:nth-child(5) {
-    display: none;
-}
+
 .gm-style>div:nth-child(3) {
     display: none;
 }
-.gm-style>div:nth-child(12) {
+.gm-style>div:nth-child(4) {
+    display: none;
+}
+.gm-style>div:nth-child(5) {
     display: none;
 }
 .gm-style>div:nth-child(6) {
@@ -1397,12 +1710,131 @@ li {
     cursor: pointer;
     display: none;
 }
+.gm-style>div:nth-child(7) {
+    display: none;
+}
+.gm-style>div:nth-child(8) {
+    display: none;
+}
+
+
+.gm-style>div:nth-child(10) {
+    display: none;
+}
+.gm-style>div:nth-child(12) {
+    display: none;
+}
 .gm-style>div:nth-child(13) {
     display: none;
 }
 .gm-style {
+    /*transition: background .3s ease !important;*/
 
 }
+
+.gm-style>button {
+    /*display: none;*/
+    /*    padding: 10px 15px 10px 10px !important;*/
+    /*    border: white !important;
+        background-color: white !important;*/
+    /*    color: white !important;*/
+    /*background-image:50px;*/
+/*    background-position: -5px -5px !important;*/
+
+
+/*background: #fff;
+border-radius: 3px !important;
+transition: background .3s ease !important;
+margin-right:5px !important;
+margin-top:5px !important;
+border: 0 !important;
+padding:10px !important;*/
+
+
+/*margin-bottom:-50px !important;*/
+/*margin-top:72px !important;*/
+
+
+
+
+
+
+/*background: #fff;
+border-radius: 3px !important;
+transition: background .3s ease !important;
+margin-right:5px !important;
+margin-top:58px !important;
+border: 5 !important;
+padding:10px !important;
+z-index: 9;
+*/
+/*transition: background .3s ease !important;*/
+
+
+
+
+
+/*background: transparent !important;
+font-color: #fff !important;
+border-radius: 3px !important;
+margin-right:5px !important;
+margin-top:58px !important;
+border: 5 !important;
+padding:10px !important;
+z-index: 9;
+outline:none !important;
+border:none !important;
+border: white !important;*/
+
+
+
+
+/* updated */
+/*background: transparent !important;*/
+font-color: #fff !important;
+border-radius: 3px !important;
+margin-right:5px !important;
+margin-top:58px !important;
+border: 5 !important;
+padding:10px !important;
+z-index: 9;
+outline:none !important;
+border:none !important;
+border: white !important;
+opacity:.5;
+
+
+
+}
+
+
+.gm-style>button>img {
+    /*white expand */
+/*    margin-left:-52px !important;*/
+
+    /*mobile expand */
+/*    margin-left:-133px !important;*/
+
+
+/*    height: 147px !important;*/
+    /*height: 147px !important;*/
+/*    right: 147px !important;*/
+    /*background-position: -5px -288px !important;*/
+    /*background-position: -5px -300px !important;*/
+}
+
+
+/*.gmnoprint .gm-style-cc {
+        display: none;
+
+}*/
+
+
+
+
+
+
+
 
 
 
@@ -1959,6 +2391,143 @@ select::-ms-expand {
     width: 9%;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+.coordsDropDownVariant {
+    display: inline-block;
+    transition: .3s ease all !important;
+    color: #DEDEDE  !important;
+    font-weight: 300  !important;
+/*    padding: 2px 30px  !important;*/
+    font-size: 16px  !important;
+    transition: .3s ease all  !important;
+    -moz-transition: .3s ease all  !important;
+    -webkit-transition: .3s ease all  !important;
+    line-height: 1.5  !important;
+    text-decoration: none!important;
+    font-family: 'Open Sans', sans-serif !important;
+
+    background-color: rgb(17, 63, 112) !important;
+
+
+    padding: 8px 30px 10px 14px !important;
+
+
+
+    min-width: 229px;
+
+    cursor: pointer !important;
+
+
+
+
+/*    position: relative;*/
+    /*Don't really need this just for demo styling*/
+    
+/*    float: left;
+    min-width: 200px;
+    margin: 50px 33%;*/
+
+
+}
+
+.coordsDropDownVariant select { /* added */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Add some styling */
+    
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: 50px;
+    float: right;
+    margin: 5px 0px;
+    padding: 0px 24px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #333;
+    background-color: #ffffff;
+    background-image: none;
+    /*border: 1px solid #0ebeff;*/
+    border: 1px solid #DEDEDE;
+    -ms-word-break: normal;
+    word-break: normal;
+
+    cursor: pointer !important;
+}
+
+.customarrowVariant:after {
+/*    content: "\f078";
+    font-family: "FontAwesome";
+    font-size: 14px !important;
+    right: 22px;
+    top: 1.5px;
+    padding: 0 0px 0px 4px;
+    position: absolute;
+    pointer-events: none;
+    width: 9%;
+    color: #DEDEDE  !important;
+*/
+
+
+
+    content: '\f078';
+    /*font: normal normal normal 17px/1 FontAwesome;*/
+    font: normal normal normal 14px/1 FontAwesome;
+    /*color: #0ebeff;*/
+    color: #DEDEDE;
+    right: 10px;
+    top: 7px;
+    height: 28px;
+/*    padding: 15px 0px 0px 8px;*/
+    padding: 6px 4px 0px 8px;
+    /*border-left: 1px solid #0ebeff;*/
+    border-left: 2px solid #0ebeff;
+    border-bottom: 0px solid #0ebeff;
+   /* border-left: 2px solid #DEDEDE;*/
+/*    border-bottom:1px solid #DEDEDE;*/
+    position: absolute;
+    pointer-events: none;
+
+
+}
+
+
+
+/* IE11 hide native button (thanks Matt!) */
+select::-ms-expand {
+display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -1971,4 +2540,523 @@ select {
 
 select.coordsDropDown {
 
+}
+
+
+
+
+
+
+
+
+
+
+.showBubble:before {
+    /*content: "\f3fc";*/
+/*    content: "\f075";*/
+/*    content: "\f075";*/
+/*    content: "\f0e5";*/
+content: "\f3fb";
+font-weight:bold;
+font-size:12px;
+/*color:rgb(37, 83, 132);*/
+color:#eeeeee;
+/*1px solid #eeeeee*/
+
+}
+
+
+
+.showBubble, .showWarn, .showImprove {
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.showWarn:before {
+    content: "\f100";
+}
+.showImprove:before {
+    content: "\f137";
+}
+
+
+
+.showStatus {
+    visibility: visible;
+}
+
+.showElement {
+    visibility: visible;
+}
+.hideElement {
+    visibility:hidden;
+}
+
+
+/*.cursorHand {
+    cursor: pointer;
+
+}*/
+.extensibleMessage {
+    cursor: pointer;
+/*    text-decoration: underline;*/
+}
+
+
+
+/*.showBubble {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+.showWarning {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* custom webkit scrollbar for intro panel */
+.force-overflow
+{
+    min-height: 100px;
+}
+#style-3::-webkit-scrollbar-track
+{
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+    /*background-color: #F5F5F5;*/
+    /*background-color: #000000;*/
+    /*background-color: rgb(17, 63, 112);*/
+    background-color: transparent;
+/*    -webkit-box-shadow: inset 0 0 2px #F5F5F5;*/
+/*    border:1px white;*/
+/*-webkit-box-shadow: color 0 0 6px rgba(183,231,255,1);*/
+
+/*border-right: 2px solid #F5F5F5;*/
+/*border-right: 0px solid #2CA9E1;*/
+/*border-right: 2px solid #b7e7ff;*/
+/*border-left: 1px solid;*/
+
+/*border-right: 2px solid #F5F5F5;*/
+/*border-right: 2px solid #2CA9E1;*/
+/*border-right: 2px solid #b7e7ff;*/
+/*border-right: 2px solid #aaeeff;*/
+border-right: 0px solid #b8dcfc;
+
+
+/* rgb(183, 231, 255) || #b7e7ff */
+/* rgb(198, 236, 255) || #c6ecff */
+/* rgb(198, 244, 255) || #c6f4ff */
+/* rgb(170, 238, 255) || #aaeeff */
+
+/* rgb(201, 230, 255) || #c9e6ff */
+/* rgb(186, 223, 255) || #badfff */
+
+/* rgb(184, 220, 252) || #b8dcfc */
+
+
+}
+
+#style-3::-webkit-scrollbar
+{
+    width: 3px;
+    /*background-color: #F5F5F5;*/
+    /*background-color: #000000;*/
+    background-color: transparent;
+}
+
+#style-3::-webkit-scrollbar-thumb
+{
+    /*background-color: #000000;*/
+    /*background-color: #F5F5F5;*/
+    /*background-color: #2CA9E1;*/
+    /*background-color: #b7e7ff;*/
+    /*background-color: #2CA9E1;*/
+    /*background-color: #b8dcfc;*/
+    background-color: #b8dcfc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Valuation chart */
+#vlTemp {
+
+    margin-top: -20px;
+    margin-bottom: 0px;
+    padding:10px;
+
+/*    font-family: 'Open Sans', sans-serif !important;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.1;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+        display: block;*/
+
+}
+
+/*#vlTemp > div > div.HistoricalAvmGraphMouseTrackingWrapper > div > div > svg > g:nth-child(4)
+{
+    stroke:white !important;
+}
+
+#vlTemp > div > div.HistoricalAvmGraphMouseTrackingWrapper > div > div > svg > g:nth-child(3)
+{
+    stroke:white !important;
+}
+
+#vlTemp > div > div.HistoricalAvmGraphMouseTrackingWrapper > div > div > svg > g:nth-child(3) > g
+{
+    stroke:white !important;
+}
+#vlTemp > div > div.HistoricalAvmGraphMouseTrackingWrapper > div > div > svg > g:nth-child(3) > g > path
+{
+    stroke:white !important;
+}
+
+.HistoricalAvmGraphMouseTrackingWrapper {
+    margin-top:5px;
+    margin-bottom:5px;
+    padding-top:5px;
+    background-color:#0D2E56;
+}
+.HistoricalAvmGraphChart {
+    font-style:bold;
+}*/
+
+/* */
+
+
+
+
+
+/* Show more / less */
+
+/* http://jsfiddle.net/santosh_patnala/nFd7C/422/ */
+/* https://stackoverflow.com/questions/17736786/jquery-load-first-3-elements-click-load-more-to-display-next-5-elements?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa */
+
+/*#introUpdateList li{
+    display:none;
+}
+#loadMore {
+    color:green;
+    cursor:pointer;
+}
+#loadMore:hover {
+    color:black;
+}
+#showLess {
+    color:red;
+    cursor:pointer;
+}
+#showLess:hover {
+    color:black;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+/*#introUpdateList {
+
+
+    height:200px !important;
+
+
+    padding-left:0px !important; 
+    padding-right:5px !important; 
+    list-style: none; 
+
+
+}
+
+#introUpdateScrollBox {
+
+    height:auto;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}*/
+
+
+
+
+
+
+
+
+
+
+/* custom cross-browser scroll bar for intro element */
+
+/*************** SCROLLBAR BASE CSS ***************/
+/*
+#introUpdateScrollBox{
+
+      height:auto;
+
+      margin-bottom: 10px;
+
+
+      overflow-y: scroll;
+       overflow-x: hidden;
+}
+
+
+#introUpdateList {
+    padding-left:0px !important; 
+    padding-right:5px !important; 
+    list-style: none; 
+}
+
+*/
+
+#introUpdateList {
+    padding-left:0px !important; 
+/*    padding-right:5px !important; */
+    list-style: none; 
+
+
+
+
+    /*overflow-y: scroll;*/
+    /*overflow-x: hidden;*/
+
+/*    max-width: 1480px;
+    overflow-x:hidden;
+    height: auto;
+    overflow-y:200px;
+*/
+
+
+/*
+height: auto;*/
+
+
+
+/*background-color: #3498db;*/
+
+
+}
+
+#intoUpdateContainer {
+
+    /*overflow-y: auto;*/
+    overflow: hidden;
+
+    height: 220px;
+
+    /*max-height: auto;*/
+
+
+
+
+
+    /*border:1px solid rgb(37, 83, 132);*/
+
+/*    border-top:1px solid rgb(37, 83, 132);
+    border-bottom:1px solid rgb(37, 83, 132);*/
+
+    /*margin:0px;*/
+    margin-top:5px;
+    padding-top:5px;
+    padding-bottom:5px;
+
+
+/*    background-color: #f1c40f;*/
+}
+
+/*#introUpdateBox{
+
+      height:auto;
+
+      margin-bottom: 10px;
+
+
+      overflow-y: scroll;
+       overflow-x: hidden;
+}*/
+
+
+/* to top button */
+/* bottom: 20px; right: 20px;  */
+#toTopBtn {
+/*    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 30px;
+    background: #3f51b5;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    opacity: 0;*/
+}
+#toTopBtn:hover {
+/*    background: #e9ebec;*/
+    background: #303f9f;
+}
+#toTopBtn.show {
+    opacity: 1;
+}
+
+
+#toBottomBtn {
+/*    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    z-index: 9999;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 30px;
+    background: #3f51b5;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    opacity: 0;*/
+
+
+
+}
+#toBottomBtn:hover {
+    background: #303f9f;
+}
+#toBottomBtn.show {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+.customHR {
+/*    border-top:1px solid #0D2E56;*/
+/*    border:1px solid rgb(37, 83, 132) !important;
+    border-top: 1px solid black !important;*/
+
+
+/*    border:1px solid rgb(37, 83, 132) !important;
+    border-top: 1px solid #0D2E56 !important;*/
+
+/*    border: 1px solid #0D2E56 !important;*/
+/*    border-top:2px solid rgb(37, 83, 132) !important;
+*/
+
+    
+
+/*    margin-top: 20px;
+    margin-bottom: 20px;*/
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+/*    border: 0;*/
+
+    margin-left:0px;
+    width:100%;
+}
+
+
+#scrollUp {
+/*    font-size: .9em;
+    margin-top: 2px;
+    cursor: pointer;
+    padding-left: 3px;
+    padding-right: 3px;
+    float: right;*/
+}
+
+
+
+#scrollDown {
+/*    font-size: .9em;
+    margin-top: 2px;
+    cursor: pointer;
+    padding-left: 3px;
+    padding-right: 3px;
+    float: right;*/
+}
+
+
+
+
+
+
+.jumbotron {
+    padding-top: 0px;
+    padding-bottom: 15px;
+    /*padding: 30px;*/
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 30px;
 }

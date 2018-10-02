@@ -1,0 +1,471 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Embed API Demo</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>  
+  <style>
+    
+
+    body {
+      /*background: #141d26;*/
+      background-color: #1b2836;
+      color: #fff;
+      font-size: 14px;
+      line-height: 20px;
+/*      overflow-y: scroll;*/
+
+      overflow:hidden;
+    }
+
+
+    .Trends {
+        background-color: #1b2836;
+        background-clip: inherit;
+        border: 1px solid #000;
+        line-height: inherit;
+        padding: 15px;
+    }
+
+    .table-dark {
+      background-color: #1b2836;
+    }
+
+    .table thead {
+      color: #1B95E0;
+    }
+
+    .table {
+      border-top: 0px;
+
+      border-color: #000;
+
+    }
+    .table tr {
+      border:0px !important;
+    }
+
+    .table thead th {
+        vertical-align: bottom;
+        /*border-bottom: 2px solid #dee2e6;*/
+        border-bottom: 2px solid #000;
+        border-top: 2px transparent;
+
+
+        border-bottom: 2px solid #1c94e0;
+        transition: all .15s ease-in-out;
+    }
+
+    .table td, .table th {
+        padding: .75rem;
+        vertical-align: top;
+        /*border-top: 1px solid #dee2e6;*/
+        border-top: 1px solid #000;
+
+    }
+
+
+
+    .fullname {
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+
+
+
+    .containerz {
+  /*    -webkit-appearance: textarea;
+      background-color: white;
+      -webkit-rtl-ordering: logical;
+      flex-direction: column;
+      resize: auto;
+      cursor: text;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      border-width: 1px;
+      border-style: solid;
+      border-color: initial;
+      border-image: initial;
+      padding: 2px;*/
+
+
+
+      display:inline-block; 
+      overflow: auto; 
+      resize: vertical;
+      width:400px;
+      height:500px;
+
+      /*padding: 2px;*/
+
+      -webkit-rtl-ordering: logical;
+      flex-direction: column;
+
+
+    }
+    div.containerz {
+      /*padding: 2px;*/
+    }
+
+    .stamp {
+        font-size: 14px;
+        color: #8899a6 !important;
+        font-weight:300 !important;
+        float:right;
+    }
+
+    .container {
+  /*    margin-left:6px;
+      margin-top:6px;*/
+      margin:10px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+   /* vizualizations */
+
+    .reportContainer {
+      float: left;
+      margin-bottom: 20px;
+      margin-right: 20px;
+    }
+    
+    .chartContainer {
+      width: 500px;
+      height: 200px;
+    }
+    
+    .chartTitleContainer {
+      width: 500px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+    
+    .up {
+      color: green;
+    }
+    .down {
+      color: red;
+    }
+
+
+
+
+    .reportContainer {
+      float: left;
+      margin-bottom: 20px;
+      margin-right: 20px;
+    }
+    
+    .chartContainer {
+      width: 500px;
+      height: 200px;
+    }
+    
+    .chartTitleContainer {
+      width: 500px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+    
+    .up {
+      color: green;
+    }
+    .down {
+      color: red;
+    }
+
+/*    font-color {
+      white;
+    }*/
+
+
+
+
+    </style>
+
+
+
+</head>
+<body>
+
+
+<!-- Step 1: Create the containing elements. -->
+
+<section id="auth-button"></section>
+<!-- <section id="timeline"></section> -->
+
+<!-- Step 2: Load the library. -->
+
+<script>
+(function(w,d,s,g,js,fjs){
+  g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
+  js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
+  js.src='https://apis.google.com/js/platform.js';
+  fjs.parentNode.insertBefore(js,fjs);js.onload=function(){g.load('analytics')};
+}(window,document,'script'));
+</script>
+
+<script>
+var profiles;
+var curProfile = 0;
+
+function getProfiles(cb) {
+  //do we have a cached version?
+  if(sessionStorage["gaProfiles"]) {
+    console.log("profiles fetched from cache");
+    cb(JSON.parse(sessionStorage["gaProfiles"]));
+    return;
+  }
+
+  gapi.client.analytics.management.accounts.list().then(function(res) { 
+    var accountId = res.result.items[0].id;
+    var profiles = [];
+    gapi.client.analytics.management.webproperties.list({'accountId': accountId}).then(function(res) {
+  
+    	res.result.items.forEach(function(item) {
+    		if(item.defaultProfileId) profiles.push({id:"ga:"+item.defaultProfileId,name:item.name});
+    	});
+      sessionStorage["gaProfiles"] = JSON.stringify(profiles);    
+      cb(profiles);      
+    });
+  });
+}
+
+//Credit: https://ga-dev-tools.appspot.com/embed-api/third-party-visualizations/
+function query(params) {
+  return new Promise(function(resolve, reject) {
+    var data = new gapi.analytics.report.Data({query: params});
+    data.once('success', function(response) { resolve(response); })
+        .once('error', function(response) { reject(response); })
+        .execute();
+  });
+}
+
+function makeCanvas(id) {
+  var container = document.getElementById(id);
+  var canvas = document.createElement('canvas');
+  var ctx = canvas.getContext('2d');
+
+  container.innerHTML = '';
+  canvas.width = container.offsetWidth;
+  canvas.height = container.offsetHeight;
+  container.appendChild(canvas);
+
+  return ctx;
+}
+      
+function processProfiles() {
+  console.log("working on profile "+profiles[curProfile].name);
+  
+  var now = moment();
+  console.log('this week',moment(now).subtract(1, 'day').day(0).format('YYYY-MM-DD'),moment(now).format('YYYY-MM-DD') );
+  console.log('this week',moment(now).subtract(8, 'day').format('YYYY-MM-DD'),moment(now).subtract(1,'day').format('YYYY-MM-DD') );
+  console.log('last week',moment(now).subtract(15, 'day').format('YYYY-MM-DD'),moment(now).subtract(8,'day').format('YYYY-MM-DD') );
+  //console.log('last week',moment(now).subtract(1, 'day').day(0).subtract(1, 'week').format('YYYY-MM-DD'),moment(now).subtract(1, 'day').day(6).subtract(1, 'week').format('YYYY-MM-DD') )
+
+  var id = profiles[curProfile].id;
+  
+  // var thisWeek = query({
+  //   'ids': id,
+  //   'dimensions': 'ga:date,ga:nthDay',
+  //   'metrics': 'ga:pageviews',
+  //   'start-date': moment(now).subtract(8, 'day').format('YYYY-MM-DD'),
+  //   'end-date': moment(now).subtract(1,'day').format('YYYY-MM-DD')
+  // });
+
+  // var lastWeek = query({
+  //   'ids': id,
+  //   'dimensions': 'ga:date,ga:nthDay',
+  //   'metrics': 'ga:pageviews',
+  //   'start-date': moment(now).subtract(15, 'day').subtract(1, 'week')
+  //   .format('YYYY-MM-DD'),
+  //   'end-date': moment(now).subtract(8, 'day').subtract(1, 'week')
+  //   .format('YYYY-MM-DD')
+  // });
+
+  var thisWeek = query({
+    'ids': id,
+    'dimensions': 'ga:date,ga:nthDay',
+    'metrics': 'ga:pageviews',
+    'start-date': moment(now).subtract(31, 'day').format('YYYY-MM-DD'),
+    'end-date': moment(now).subtract(1,'day').format('YYYY-MM-DD')
+  });
+
+  var lastWeek = query({
+    'ids': id,
+    'dimensions': 'ga:date,ga:nthDay',
+    'metrics': 'ga:pageviews',
+    'start-date': moment(now).subtract(62, 'day').subtract(1, 'week')
+    .format('YYYY-MM-DD'),
+    'end-date': moment(now).subtract(32, 'day').subtract(1, 'week')
+    .format('YYYY-MM-DD')
+  });
+    
+    
+  Promise.all([thisWeek, lastWeek]).then(function(results) {
+    console.log("Promise.all");console.dir(results);
+      
+    var data1 = results[0].rows.map(function(row) { return +row[2]; });
+    var data2 = results[1].rows.map(function(row) { return +row[2]; });
+    var labels = results[1].rows.map(function(row) { return +row[0]; });
+
+    var totalThisWeek = results[0].totalsForAllResults["ga:pageviews"];
+    var totalLastWeek = results[1].totalsForAllResults["ga:pageviews"];
+    var percChange = (((totalThisWeek - totalLastWeek) / totalLastWeek) * 100).toFixed(2);
+    console.log(totalLastWeek, totalThisWeek, percChange);
+    
+    labels = labels.map(function(label) {
+      return moment(label, 'YYYYMMDD').format('ddd');
+    });
+
+    var data = {
+      labels : labels,
+      datasets : [
+        {
+          // label: 'Last Week',
+          // fillColor : 'rgba(220,220,220,0.5)',
+          // strokeColor : 'rgba(220,220,220,1)',
+          // pointColor : 'rgba(220,220,220,1)',
+          // pointStrokeColor : '#fff',
+          // data : data2
+
+          // label: 'Last Week',
+          // fillColor : 'rgb(28, 148, 224,0.5)',
+          // strokeColor : 'rgba(220,220,220,1)',
+          // pointColor : 'rgba(220,220,220,1)',
+          // pointStrokeColor : '#fff',
+          // data : data2
+
+          label: 'Last Week',
+          fillColor : 'rgba(220,220,220,0.5)',
+          strokeColor : 'rgba(220,220,220,1)',
+          pointColor : 'rgba(220,220,220,0)',
+          pointStrokeColor : 'transparent',
+          data : data2
+
+        
+        },
+        {
+          label: 'This Week',
+          // fillColor : 'rgba(151,187,205,0.5)',
+          // strokeColor : 'rgba(151,187,205,1)',
+          // pointColor : 'rgba(151,187,205,1)',
+          // pointStrokeColor : '#fff',
+          // data : data1
+          // fillColor : 'rgba(151,187,205,0.5)',
+          // strokeColor : 'rgba(110,110,110,1)',
+          // pointColor : 'rgba(110,110,110,1)',
+          // pointStrokeColor : '#fff',
+          // data : data2
+          fillColor : 'rgba(151,187,205,0.5)',
+          strokeColor : 'rgba(151,187,205,1)',
+          pointColor : 'rgba(151,187,205,0)',
+          pointStrokeColor : 'transparent',
+          data : data1
+        }
+      ]
+    };
+
+    var titleStr = profiles[curProfile].name + " ";
+    if(totalLastWeek > 0 && totalThisWeek > 0) {
+      if(percChange < 0) {
+        titleStr += "<span class='down'>(Down "+Math.abs(percChange) + "%)</span>";
+      } else {
+        titleStr += "<span class='up'>(Up "+percChange + "%)</span>";      
+      }
+    }
+        
+	  $("body").append("<div class='reportContainer'><div class='chartTitleContainer'>"+titleStr+"</div><div class='chartContainer' id='chart-"+curProfile+"-container'></div></div>");
+
+    new Chart(makeCanvas('chart-'+curProfile+'-container')).Line(data);
+
+    if(curProfile+1 < profiles.length) {
+      curProfile++;
+      //settimeout to try to avoid GA rate limits
+      setTimeout(processProfiles,200);
+    }
+  });
+}
+  
+gapi.analytics.ready(function() {
+
+  var CLIENT_ID = '220793374245-cj4os2v2u0cheb2mi5tig4lj2ob6bf25.apps.googleusercontent.com';
+
+  gapi.analytics.auth.authorize({
+    container: 'auth-button',
+    clientid: CLIENT_ID,
+    userInfoLabel:""
+  });
+
+  gapi.analytics.auth.on('success', function(response) {
+    //hide the auth-button
+    document.querySelector("#auth-button").style.display='none';
+    console.log("get profiles");
+    getProfiles(function(profs) {
+      window.profiles = profs;
+      processProfiles();      
+    });
+  
+  });
+
+  Chart.defaults.global.animationSteps = 60;
+  Chart.defaults.global.animationEasing = 'easeInOutQuart';
+  Chart.defaults.global.responsive = true;
+  Chart.defaults.global.maintainAspectRatio = false;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+});
+</script>
+</body>
+</html>

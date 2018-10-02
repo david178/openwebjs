@@ -1,0 +1,163 @@
+
+[{
+        "updatesList": [
+            { "updatesid": 1, "name": "Enhanced Uptime, Speed & Reliability", "status": 0, "statusmsg": false, "statustext": "none"},
+            { "updatesid": 2, "name": "Flights & Views Added", "status": 1, "statusmsg": false, "statustext": "none"},
+            { "updatesid": 3, "name": "UI Enhancements, Property Valuation", "status": 1, "statusmsg": false, "statustext": "none"},
+            { "updatesid": 4, "name": "Updates: Map Views, Flights; Weather", "status": 1, "statusmsg": false, "statustext": "none"},
+            { "updatesid": 5, "name": "Help Docs added, Applied Enhancements to Street View", "status": 1, "statusmsg": false, "statustext": "none"},
+            { "updatesid": 6, "name": "Search cross-streets, street name added", "status": 1, "statusmsg": false, "statustext": "none"}
+        ]
+},
+
+
+
+
+
+{
+        "customList": [
+            { "customid": 1, "name": "Most Current Flight", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/ImageServer"},
+            { "customid": 2, "name": "Spring 2017", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/imagesS17/MapServer"},
+            { "customid": 3, "name": "Spring 2016", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS16/MapServer"},
+            { "customid": 4, "name": "Spring 2015", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS15/MapServer"},
+            { "customid": 5, "name": "Spring 2014", "active": 1, "src": "http://maps.clarkcountynv.gov/ArcGIS/rest/services/CACHED/imagesS14/MapServer"},
+            { "customid": 6, "name": "NAIP 2013", "active": 1, "src": "http://maps.clarkcountynv.gov/ArcGIS/rest/services/CACHED/imagesNAIP13/MapServer"},
+            { "customid": 7, "name": "Spring 2013", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS13/MapServer"},
+            { "customid": 8, "name": "Spring 2012", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS12/MapServer"},
+            { "customid": 9, "name": "Fall 2011", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF11/MapServer"},
+            { "customid": 10, "name": "Spring 2011 (6 in.)", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesSNWAS11/MapServer"},
+            { "customid": 11, "name": "Fall 2010 (6 in.)", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesSNWAF10/MapServer"},
+            { "customid": 12, "name": "NAIP 2010", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesNAIP10/MapServer"},
+            { "customid": 13, "name": "Spring 2010", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS10/MapServer"},
+            { "customid": 14, "name": "Fall 2009", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF09/MapServer"},
+            { "customid": 15, "name": "Spring 2009", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS09/MapServer"},
+            { "customid": 16, "name": "Fall 2008", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF08/MapServer"},
+            { "customid": 17, "name": "Spring 2008", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS08/MapServer"},
+            { "customid": 18, "name": "Fall 2007", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF07/MapServer"},
+            { "customid": 19, "name": "Spring 2007", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS07/MapServer"},
+            { "customid": 20, "name": "Fall 2006", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF06/MapServer"},
+            { "customid": 21, "name": "Spring 2006", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS06/MapServer"},
+            { "customid": 22, "name": "Fall 2005", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF05/MapServer"},
+            { "customid": 23, "name": "Spring 2005", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS05/MapServer"},
+            { "customid": 24, "name": "Fall 2004", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF04/MapServer"},
+            { "customid": 25, "name": "Spring 2004", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS04/MapServer"},
+            { "customid": 26, "name": "Fall 2003", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF03/MapServer"},
+            { "customid": 27, "name": "Spring 2003", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS03/MapServer"},
+            { "customid": 28, "name": "Fall 2002", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF02/MapServer"},
+            { "customid": 29, "name": "Spring 2002", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS02/MapServer"},
+            { "customid": 30, "name": "Fall 2001", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF01/MapServer"},
+            { "customid": 31, "name": "Spring 2001", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS01/MapServer"},
+            { "customid": 32, "name": "Fall 2000", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF00/MapServer"},
+            { "customid": 33, "name": "Spring 2000", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS00/MapServer"},
+            { "customid": 34, "name": "Fall 1999", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF99/MapServer"},
+            { "customid": 35, "name": "Spring 1999", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS99/MapServer"},
+            { "customid": 36, "name": "Fall 1998", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF98/MapServer"}
+        ]
+    },
+
+
+
+
+
+    {
+        "viewList": [
+            { "viewid": 1, "vname": "Aerial Imagery Only", "active": 1, "src": "http://maps.clarkcountynv.gov/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer"},
+            { "viewid": 2, "vname": "Assessor Map", "active": 1, "src": "http://maps.clarkcountynv.gov/ArcGIS/rest/services/GISMO/AssessorMap/MapServer"},
+            { "viewid": 3, "vname": "Boulder City Zoning", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/5"},
+            { "viewid": 4, "vname": "Clark County PLU", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/PlanedLandUse/MapServer"},
+            { "viewid": 5, "vname": "Clark County Zoning", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/8"},
+            { "viewid": 6, "vname": "Contours 50 Meter", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_50M/MapServer"},
+            { "viewid": 7, "vname": "contours 2016 2ft (Valley)", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con2016_2ft/MapServer"},
+            { "viewid": 8, "vname": "Contours 2003 5ft (Valley)", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_03_5ft/MapServer"},
+            { "viewid": 9, "vname": "Contours 1996 5ft (Valley)", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_96_5ft/MapServer"},
+            { "viewid": 10, "vname": "Default", "active": 1, "src": "http://maps.clarkcountynv.gov/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer"},
+            { "viewid": 11, "vname": "Henderson Zoning", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/6"},
+            { "viewid": 12, "vname": "Las Vegas Zoning", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/4"},
+            { "viewid": 13, "vname": "Mesquite Zoning", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/10"},
+            { "viewid": 14, "vname": "North Las Vegas Zoning", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/7"},
+            { "viewid": 15, "vname": "Seismic", "active": 1, "src": "http://maps.clarkcountynv.gov/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer"},
+            { "viewid": 16, "vname": "Soil Guideline", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/SoilsGuideline/MapServer"}
+        ]
+    },
+
+
+    {
+        "flightList": [
+            { "flightid": 1, "fname": "Most Current Flight", "active": 1, "src": "http://maps.clarkcountynv.gov/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer"},
+            { "flightid": 2, "fname": "Spring 2017", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/Spring2017/ImageServer"},
+            { "flightid": 3, "fname": "Spring 2016", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagess16/MapServer"},
+            { "flightid": 4, "fname": "Spring 2015", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS15/MapServer"},
+            { "flightid": 5, "fname": "Spring 2014", "active": 1, "src": "http://maps.clarkcountynv.gov/ArcGIS/rest/services/CACHED/imagesS14/MapServer"},
+            { "flightid": 6, "fname": "NAIP 2013", "active": 1, "src": "http://maps.clarkcountynv.gov/ArcGIS/rest/services/CACHED/imagesNAIP13/MapServer"},
+            { "flightid": 7, "fname": "Spring 2013", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS13/MapServer"},
+            { "flightid": 8, "fname": "Spring 2012", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS12/MapServer"},
+            { "flightid": 9, "fname": "Fall 2011", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF11/MapServer"},
+            { "flightid": 10, "fname": "Spring 2011 (6 in.)", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesSNWAS11/MapServer"},
+            { "flightid": 11, "fname": "Fall 2010 (6 in.)", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesSNWAF10/MapServer"},
+            { "flightid": 12, "fname": "NAIP 2010", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesNAIP10/MapServer"},
+            { "flightid": 13, "fname": "Spring 2010", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS10/MapServer"},
+            { "flightid": 14, "fname": "Fall 2009", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF09/MapServer"},
+            { "flightid": 15, "fname": "Spring 2009", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS09/MapServer"},
+            { "flightid": 16, "fname": "Fall 2008", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF08/MapServer"},
+            { "flightid": 17, "fname": "Spring 2008", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS08/MapServer"},
+            { "flightid": 18, "fname": "Fall 2007", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF07/MapServer"},
+            { "flightid": 19, "fname": "Spring 2007", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS07/MapServer"},
+            { "flightid": 20, "fname": "Fall 2006", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF06/MapServer"},
+            { "flightid": 21, "fname": "Spring 2006", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS06/MapServer"},
+            { "flightid": 22, "fname": "Fall 2005", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF05/MapServer"},
+            { "flightid": 23, "fname": "Spring 2005", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS05/MapServer"},
+            { "flightid": 24, "fname": "Fall 2004", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF04/MapServer"},
+            { "flightid": 25, "fname": "Spring 2004", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS04/MapServer"},
+            { "flightid": 26, "fname": "Fall 2003", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF03/MapServer"},
+            { "flightid": 27, "fname": "Spring 2003", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS03/MapServer"},
+            { "flightid": 28, "fname": "Fall 2002", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF02/MapServer"},
+            { "flightid": 29, "fname": "Spring 2002", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS02/MapServer"},
+            { "flightid": 30, "fname": "Fall 2001", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF01/MapServer"},
+            { "flightid": 31, "fname": "Spring 2001", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS01/MapServer"},
+            { "flightid": 32, "fname": "Fall 2000", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF00/MapServer"},
+            { "flightid": 33, "fname": "Spring 2000", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS00/MapServer"},
+            { "flightid": 34, "fname": "Fall 1999", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF99/MapServer"},
+            { "flightid": 35, "fname": "Spring 1999", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesS99/MapServer"},
+            { "flightid": 36, "fname": "Fall 1998", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/CACHED/imagesF98/MapServer"}
+        ]
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+        "layerList": [
+            { "layerid": 1, "name": "basemap", "active": 1, "src": "http://maps.clarkcountynv.gov/ArcGIS/rest/services/CACHED/mostcurrentflight/MapServer"},
+            { "layerid": 2, "name": "assessorServiceLayer", "active": 1, "src": "http://maps.clarkcountynv.gov/ArcGIS/rest/services/GISMO/AssessorMap/MapServer"},
+            { "layerid": 3, "name": "assessorannoServiceLayer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorAnno/MapServer"},
+            { "layerid": 4, "name": "transportationServiceLayer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer"},
+            { "layerid": 5, "name": "abLayer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AB142/MapServer"},
+            { "layerid": 6, "name": "bcLayer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/5"},
+            { "layerid": 7, "name": "PLULayer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/PlanedLandUse/MapServer"},
+            { "layerid": 8, "name": "CCZoningLayer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/8"},
+            { "layerid": 9, "name": "C50Layer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_50M/MapServer"},
+            { "layerid": 10, "name": "C2003Layer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_03_5ft/MapServer"},
+            { "layerid": 11, "name": "C1996Layer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_96_5ft/MapServer"},
+            { "layerid": 12, "name": "hendersonZoningLayer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/6"},
+            { "layerid": 13, "name": "lasVegasZoningLayer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/4"},
+            { "layerid": 14, "name": "mesquiteZoningLayer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/9"},
+            { "layerid": 15, "name": "nlvZoningLayer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/7"},
+            { "layerid": 16, "name": "seismicLayer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/SoilsGuideline/MapServer/5"},
+            { "layerid": 17, "name": "SoilLayer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/SoilsGuideline/MapServer"},
+            { "layerid": 18, "name": "rightofwayLayer", "active": 1, "src": "http://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/RightOfWay/MapServer"}
+        ]
+     }
+
+
+
+
+
+]

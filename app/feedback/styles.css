@@ -11,7 +11,8 @@ body {
 }
 
 header {
-	background-color:#222;
+	/*background-color:#222;*/
+	background-color: rgb(17, 63, 112);
 	margin: 0 auto;
 	padding:15px;
 	margin-top:-17px;

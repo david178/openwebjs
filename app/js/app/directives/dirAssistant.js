@@ -51,6 +51,69 @@ open.directive('assistantBlock', function() {
 
 
 
+    //THE 'WHATS COMING' FUNCTION
+    scope.assistWhatsComing = function(name,status) {
+
+      //console.log(status)
+
+        // // console.log('testing')
+
+        // console.log("C [[ searching: " + theSearch + " ]]");
+
+        // $scope.executeSearch(theSearch);
+
+        // //pass to ai.js as well
+        // ai(theSearch);
+
+
+
+        //show the general message element
+        $('#assitantGeneralMessageBox').css('display', 'block');
+
+        //Inline Block display the hidden message box in the modal
+        $('#assistantULList_DIV2_Contents').css('display', 'block');
+
+        //populate the assitant hidden message box with the current updates on the way
+        // $('#assistantULList_DIV2_Inner').text(name); 
+        $('#assistantULList_DIV2_Contents').text(status); 
+
+
+        // // $('#assistantULList_DIV2').css('display', 'block');
+        // // assistantULList_DIV2_Contents
+
+        // assistantULList_DIV2_Contents
+
+
+        //bind the search box val with the search val and then execute filter
+        $('#assistantInputBox').val(name); 
+        filterHelp_UL();
+
+        //manually show the modal dialog
+        $('#assistantModal').modal('show'); 
+
+    };
+
+
+
+
+    //THE 'WHATS COMING' FUNCTION
+    scope.assistBasicShow = function() {
+
+        //bind the search box val with the search val and then execute filter
+        $('#assistantInputBox').val(''); 
+        filterHelp_UL();
+
+
+        //hide the general message element (not needed to show on default)
+        $('#assitantGeneralMessageBox').css('display', 'none');
+
+        //manually show the modal dialog
+        $('#assistantModal').modal('show'); 
+
+    };
+
+
+
     // // //pass to ai
     // // ai(theSearch);
     //------------------------------------

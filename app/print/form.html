@@ -1,214 +1,118 @@
-<!DOCTYPE html public>
+﻿<!DOCTYPE html>
 <html>
-
-	<head>
-		<title>OpenWeb Feedback Form</title>
-    	<link rel="stylesheet" type="text/css" href="styles.css">
-    	<meta charset="UTF-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
-	</head>
-
-	<body>
-
-		<header>
-			<div class="logos">
-				<a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/#"><img src="county.png"/><img src="logo.png"/></a>
-			</div>
-		</header>
-
-	<div id="wrapper">
-
-		<div id="main">
-
-			<h1>OpenWeb Print Form</h1>
-
-
-			<div id="textinputs">
-<!-- 				<p class="input">Name: <input type="text" required class="textinput" id="nameField"></p>
-				<p class="input">Email: <input type="text" required class="textinput" id="emailField"></p>
-				<p class="input">Reason for Using OpenWeb: <input type="text" class="textinput" id="reasonField"></p>
-				<p class="input">How did you find OpenWeb? <input type="text" class="textinput" id="foundField"></p>
-				<p class="input">Other Comments <input style="height:50px;" type="text" class="textinput" id="commentField"> --></p>
-			</div><!--end textinputs-->
-
-			<br>
-			<hr>
-
-
-<!-- 			<p>Please rate OpenWeb on a scale from 1 to 5</p>
-
-			
-			<div id="scaleref">
-				<div id="one">Confusing<br>1</div>
-				<div id="three">Navigable<br>3</div>
-				<div id="five">Efficient<br>5</div>
-			</div> -->
-			<!--end scaleref -->
-
-<!-- 			<div id="mobileref">
-				<p>Confusing = 1, Navigable = 3, Efficient = 5</p>
-			</div> -->
-
-
-			<div id="scale">
-<!-- 			<div id="functionality">Functionality
-				<input type="radio" name="functionality" value="5" class="scale">
-				<input type="radio" name="functionality" value="4" class="scale">
-				<input type="radio" name="functionality" value="3" class="scale">
-				<input type="radio" name="functionality" value="2" class="scale">
-				<input type="radio" name="functionality" value="1" class="scale">
-			</div>
-
-			<div id="easeofuse">Ease of Use
-				<input type="radio" name="ease" value="5" class="scale">
-				<input type="radio" name="ease" value="4" class="scale">
-				<input type="radio" name="ease" value="3" class="scale">
-				<input type="radio" name="ease" value="2" class="scale">
-				<input type="radio" name="ease" value="1" class="scale">
-			</div>
-
-			<div id="design">Design
-				<input type="radio" name="design" value="5" class="scale">
-				<input type="radio" name="design" value="4" class="scale">
-				<input type="radio" name="design" value="3" class="scale">
-				<input type="radio" name="design" value="2" class="scale">
-				<input type="radio" name="design" value="1" class="scale">
-			</div> -->
-
-
-
-			</div> <!--end scale-->
-
-<!-- 			<input onClick="serviceCall()" type="submit" name="submit" value="Submit" class="submit" id="submit"></input> -->
-
-
-		</div> <!--end main-->
-
-	</div> <!--end wrapper-->
-
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script>
-
-		           function serviceCall() {
-
-
-		             //--------------------------------------------
-		             //Variable collection
-
-		             //comment fields (need to replace with actual values)
-		             var theEmail = $('#emailField').val();
-		             var theUser = $('#nameField').val();
-		             var theID = "2005093";
-		             var theReason = $('#reasonField').val();
-		             var theFind = $('#foundField').val();
-		             var theComment = $('#commentField').val();
-		             var Comment = "Reason: " + theReason + " | Found: " + theFind + " | Comment: " + theComment;
-
-		             //radio fields (need to replace with actual values)
-		             var functionality = $('input[name="functionality"]:checked').val();
-		             var easeofuse = $('input[name="ease"]:checked').val();
-		             var design = $('input[name="design"]:checked').val();
-
-
-		             //--------------------------------------------
-		             //URL String construction
-
-		             // var commentURL = 'http://gisgate.co.clark.nv.us/proxy/proxy.ashx?http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/addUserQuestion?appname=openwebQA&useremail=theemail&username=thename&userid=2005093&question=thecomment?';
-
-		             // var surveyURL = 'http://gisgate.co.clark.nv.us/proxy/proxy.ashx?http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/addUserFeedback?appname=openwebQA&useremail=&username=&userid=2005093&question=Functionality&answer=5?';
-
-		             //comment URL
-		             var commentURL = 'http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/addUserQuestion?appname=openwebQA&useremail=' + 'theEmail' + '&username=' + 'theUser' + '&userid=' + theID + '&question=' + Comment;
-		            
-		             //survey URL
-		             var func_surveyURL = 'http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/addUserFeedback?appname=openwebQA&useremail=&username=&userid=' + theID + '&question=Functionality&answer=' + functionality;
-		             var ease_surveyURL = 'http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/addUserFeedback?appname=openwebQA&useremail=&username=&userid=' + theID + '&question=EaseOfUse&answer=' + easeofuse;
-		             var design_surveyURL = 'http://gisgate.co.clark.nv.us/gisdal/gisservice.svc/jsonep/addUserFeedback?appname=openwebQA&useremail=&username=&userid=' + theID + '&question=Design&answer=' + design;
-
-
-
-
-		             //--------------------------------------------
-		             //Service calls
-
-		             //comment post
-		               $.ajax({
-		                 url : commentURL,
-		                         dataType:"jsonp",
-		                         // jsonp:"resolve",
-		                         success:function(data)
-		                         {
-		                           //logic to reset email, name, comment fields
-		                           $('#emailField').val('');
-		                           $('#nameField').val('');
-		                           $('#reasonField').val('');
-		                           $('#foundField').val('');
-		                           $('#commentField').val('');
-
-		                           alert('Thank you for your feedback!')
-
-		                         },
-		                         error: function () {
-		                             alert('error during comment submission')
-		                         },
-		                     });
-
-					   //survey posts
-		               $.ajax({
-		                 url : func_surveyURL,
-		                         dataType:"jsonp",
-		                         // jsonp:"resolve",
-		                         success:function(data)
-		                         {
-		                           //logic to reset radio buttons
-		                           $('input[name="functionality"]').prop('checked', false);
-
-		                         },
-		                         error: function () {
-		                           alert('error during survey submission')
-		                         },
-		                     });
-
-		               $.ajax({
-		                 url : ease_surveyURL,
-		                         dataType:"jsonp",
-		                         // jsonp:"resolve",
-		                         success:function(data)
-		                         {
-		                           //logic to reset radio buttons
-		                           $('input[name="ease"]').prop('checked', false);
-
-		                         },
-		                         error: function () {
-		                           alert('error during survey submission')
-		                         },
-		                     });
-
-
-		               $.ajax({
-		                 url : design_surveyURL,
-		                         dataType:"jsonp",
-		                         // jsonp:"resolve",
-		                         success:function(data)
-		                         {
-		                           //logic to reset radio buttons
-		                           $('input[name="design"]').prop('checked', false);
-
-		                         },
-		                         error: function () {
-		                           alert('error during survey submission')
-		                         },
-		                     });
-
-
-		           }
-
-
-
-
-
-		</script>
-
-
+<head>
+    <meta charset="utf-8" />
+    <title>index</title>
+</head>
+<body>
+    <center>
+        <img id="printmapimage" alt="printmap" src="" style="width:625px" />
+        <br/>
+        <span style="font-family:'Lucida Console'; font-size:x-small; color:red;">The MAPS and DATA are provided without warranty of any kind, expressed or implied.</span>
+        <br/>
+        <div style="font-family:'Lucida Console'; font-size:x-small" id="todaysdate"></div>
+    </center>
+    <br />
+    <table id=propinfotable style="font-size: 12px" cellSpacing=1 rules=none width=625 align=center border=0 >
+        <tbody>
+            <tr>
+                <td style="font-size: 11pt; font-weight: bold">Property Information</td>
+            </tr>
+            <tr>
+                <td><b>Parcel:</b></td>
+                <td id="show-parcel"></td>
+            </tr>
+            <tr>
+                <td><b>Owner Name(s):</b></td>
+                <td id="show-Oname"></td>
+            </tr>
+            <tr>
+                <td><b>Site Address:</b></td>
+                <td id="show-SAddress"></td>
+            </tr>
+            <tr>
+                <td><b>Jurisdiction:</b></td>
+                <td id="show-Juris"></td>
+            </tr>
+            <tr>
+                <td><b>Zoning Classification:</b></td>
+                <td id="show-Zone"></td>
+            </tr>
+            <tr>
+                <td><b>Planned Landuse:</b></td>
+                <td id="show-PLanduse"></td>
+            </tr>    
+            <tr>
+                <td style="font-size: 11pt; font-weight: bold">Misc Information</td>
+            </tr>
+            <tr>
+                <td><b>Subdivision Name:</b></td>
+                <td id="show-SubdName"></td>
+            </tr>
+            <tr>
+                <td><b>Lot Block:</b></td>
+                <td id="show-LotBlock"></td>
+                <td><b>Construction Year:</b></td>
+                <td id="show-ConYear"></td>
+            </tr>
+            <tr>
+                <td><b>Sale Date:</b></td>
+                <td id="show-SaleDate"></td>
+                <td><b>T-R-S:</b></td>
+                <td id="show-trs"></td>
+            </tr>
+            <tr>
+                <td><b>Sale Price:</b></td>
+                <td id="show-SalePrice"></td>
+                <td><b>Census tract:</b></td>
+                <td id="show-CensusTract"></td>
+            </tr>
+            <tr>
+                <td><b>Recorded Doc Number:</b></td>
+                <td id="show-RecordedDocNum"></td>
+                <td><b>Estimated Lot Size:</b></td>
+                <td id="show-EstLotSize"></td>
+            </tr>
+            <tr>
+                <td><b>Flight Date:</b></td>
+                <td id="show-FlightDate"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 11pt; font-weight: bold">Elected Officials</td>
+            </tr>
+            <tr>
+                <td><b>Commission District:</b></td>
+                <td id="show-CommDist"></td>
+                <td><b>City Ward:</b></td>
+                <td id="show-CityWard"></td> <!-- FindOneWithCityWard?!-->
+            </tr>
+            <tr>
+                <td><b>US Senate:</b></td>
+                <td id="show-USSenate"></td>
+                <td><b>US Congress:</b></td>
+                <td id="show-USCongress"></td>
+            </tr>
+            <tr>
+                <td><b>State Senate:</b></td>
+                <td id="show-StateSenate"></td>
+                <td><b>State Assembly:</b></td>
+                <td id="show-StateAssembly"></td>
+            </tr>
+            <tr>
+                <td><b>School District:</b></td>
+                <td id="show-SchoolDisttrict"></td>
+                <td><b>University Regent:</b></td>
+                <td id="show-UniversityRegent"></td>
+            </tr>
+            <tr>
+                <td><b>Board of Education:</b></td>
+                <td id="show-BoardEducation"></td>
+                <td><b>Minor Civil Division:</b></td>
+                <td id="show-MCD"></td>
+            </tr>
+        </tbody>
+    </table>
+   
 </body>
 </html>
+<script type="text/javascript" src="js/site.js"></script>

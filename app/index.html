@@ -17,7 +17,27 @@
     <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <!-- icons|fonts -->
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- font-awesome shim -->
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/v4-shims.css"> -->
+
+
+    
+<!--     <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" data-prerender="keep" rel="stylesheet"> -->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/solid.css" integrity="sha384-VGP9aw4WtGH/uPAOseYxZ+Vz/vaTb1ehm1bwx92Fm8dTrE+3boLfF1SpAtB1z7HW" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/regular.css" integrity="sha384-ZlNfXjxAqKFWCwMwQFGhmMh3i89dWDnaFU2/VZg9CvsMGA7hXHQsPIqS+JIAmgEq" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/brands.css" integrity="sha384-rf1bqOAj3+pw6NqYrtaE1/4Se2NBwkIfeYbsFdtiR6TQz0acWiwJbv1IM/Nt/ite" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/fontawesome.css" integrity="sha384-1rquJLNOM3ijoueaaeS5m+McXPJCGdr5HcA03/VHXxcp2kX2sUrQDmFc3jR5i/C7" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/v4-shims.css">
+
+
+
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700|Noto+Sans:300,400,500,700|Open+Sans:300,400,500,700|Roboto:300,400,500,700" rel="stylesheet"> 
     <!-- overrides -->
     <link rel="stylesheet" type="text/css" href="css/media-queries.css"> <!-- responsive ui -->
@@ -69,6 +89,7 @@
                       <img id="imgLogo_mobile" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/compass.png" />
                 </div>     
             </a>
+
 
             <form class="navbar-form" ng-submit="search(asyncSelected)" id="search-form"> 
                   <div id="tester" class="input-group" style="border:none !important;">
@@ -188,6 +209,8 @@
     <leg-block></leg-block>
     <!-- Weather -->
     <weather-block></weather-block>
+    <!-- Valuation -->
+    <valuation-block></valuation-block>
 
 
     <!-- Loading Screen -->
@@ -234,6 +257,7 @@
     <script src="js/app/directives/dirLegend.js"></script> <!-- directive -->
     <script src="js/app/directives/dirWeather.js"></script> <!-- directive -->
     <script src="js/app/directives/dirMeasure.js"></script> <!-- directive -->
+    <script src="js/app/directives/dirValuation.js"></script> <!-- directive -->
     <!-- move to directive -->
     <script>
      $(document).ready(function () {
@@ -243,8 +267,8 @@
     <!-- Analytics - move to js file -->
     <script type="text/javascript">
       var _gaq = _gaq || [];
-      // _gaq.push(['_setAccount', 'UA-33526539-2']);
-      _gaq.push(['_setAccount', 'UA-93228049-1']);
+      _gaq.push(['_setAccount', 'UA-33526539-2']);
+      // _gaq.push(['_setAccount', 'UA-93228049-1']);
       _gaq.push(['_trackPageview']);
 
       (function() {
