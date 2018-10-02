@@ -3446,6 +3446,9 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             // });
 
             //call for Links (-)
+            // openFactory.getSelectPropertyLinks(data).then(function(data) {
+            //     $scope.linkInfo = data;
+            // });
             openFactory.getSelectPropertyLinks(data).then(function(data) {
                 $scope.linkInfo = data;
             });
