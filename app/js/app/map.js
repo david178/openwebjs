@@ -1866,10 +1866,6 @@ require([
 
 
 
-
-
-
-
            //************************************************************************
 
            //handles the intro panel scroll buttons logic

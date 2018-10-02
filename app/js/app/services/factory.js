@@ -42,7 +42,6 @@ open.factory('openFactory', function($http, $q){
 	      // Create the deffered object
 	      var deferred = $q.defer();
 
-
         //http://gisgate.co.clark.nv.us/
         //http://maps.clarkcountynv.gov/
 
