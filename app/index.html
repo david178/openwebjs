@@ -37,6 +37,7 @@
 
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700|Noto+Sans:300,400,500,700|Open+Sans:300,400,500,700|Roboto:300,400,500,700" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- overrides -->
     <link rel="stylesheet" type="text/css" href="css/media-queries.css"> <!-- responsive ui -->
     <link rel="stylesheet" type="text/css" href="css/main-style.css"> <!-- main ui -->
@@ -75,52 +76,6 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-
-          <!-- Main Search -->
-          <div id="search-holder" class="col-sm-5 searchSize" ng-controller="TypeaheadCtrl">
-
-            <!-- Logos -->
-            <a id="title" class="navbar-brand" href="#" style=" " > 
-                <div id='logoTitle' style="display:inline-block;">
-                  <img id="CountyLogo" title="OpenWeb" alt="OpenWeb" src="images/county/33logobrightened.png" class="conditionalShow" />
-                      <img id="imgLogo" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/ow3.5.png" />
-                      <img id="imgLogo_mobile" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/compass.png" />
-                </div>     
-            </a>
-
-
-            <form class="navbar-form" ng-submit="search(asyncSelected)" id="search-form"> 
-                  <div id="tester" class="input-group" style="border:none !important;">
-                    <!-- placeholder="Search OpenWeb" -->
-                    <input id="search-form" placeholder="Search OpenWeb" autofocus autocomplete="off" type="text" class="form-control closeIcon" 
-                    ng-keyup="keyUp($event, $index, asyncSelected)" 
-                    ng-change="updateSync($index)"
-                    ng-model="asyncSelected"
-                    typeahead-on-select='onSelect($item, $model, $label)'
-                    typeahead-focus-first="false"
-                    typeahead-template-url="views/tempAutocomplete.html"
-                    typeahead="address for address in getLocation($viewValue) | filter:$viewValue"
-                    typeahead-loading="loadingLocations" 
-                    typeahead-min-length="3" >  
-                    <!-- Close Icon -->
-                    <img id="closeIcon" border="0" src="css/images/icon-close2.png">
-                    <!-- Search Btn -->
-                     <span id="searchBtn-holder" class="input-group-btn">
-                          <button id="searchBtn" class="btn btn-primary" type="button">
-                            <!-- <span class="iconic-adjust-main glyphicon glyphicon-search"></span> -->
-
-                            <!-- ionic -->
-                            <span class="iconic-adjust-main ion-search" data-pack="default" data-tags="magnifying glass"></span>
-
-                            <!-- <span class="iconic-adjust-10 ion-ribbon-b" data-pack="default" data-tags="competition, compete, win, lose, award, trophy"></span> -->
-
-
-                          </button>
-                     </span>
-                  </div>
-              </form>
-
-            </div><!-- /.search-holder -->
 
             <!-- Select Property Window -->
             <sel-property></sel-property>
@@ -162,27 +117,106 @@
     </div><!--/.navbar-inner -->
     </div><!--/.navbar -->
 
-    <!-- Side Panel -->
-    <div id="slidepanel" class="conditionalShow right-edge-shadow gradient sliderStyle">
+
+
+
+
+    <!-- Skinny Panel -->
+    <div class="skinnyPanel conditionalShow right-edge-shadow gradient sliderStyle"> <!-- id="skinnyPanel" -->
+
+
+
+
+      <!-- Display View Section -->
+      <display-view></display-view>
+
+      <!-- Intro View Section -->
+      <!-- <intro-view></intro-view> -->
+
+      <!-- Tools Section -->
+<!--       <tools-view></tools-view> -->
+
+      <!-- Resources Section -->
+      <resources-view></resources-view>
+
+
+
+
+
+
+
+
+
       <!-- tabs content -->
-      <div class="tab-content">
-        <div class="tab-pane active" id="introTab" style="width:240px;">
+<!--       <div class="tab-content">
+        <div class="tab-pane active" id="introTab" style="width:240px;"> -->
           <!-- Intro View -->
-          <intro-view></intro-view>
+<!--           <intro-view></intro-view>
         </div>
-        <div class="tab-pane" id="displayTab">
+        <div class="tab-pane" id="displayTab"> -->
           <!-- Display View -->
-          <display-view></display-view>
+ <!--          <display-view></display-view>
         </div>
-        <div class="tab-pane" id="toolsTab">
+        <div class="tab-pane" id="toolsTab"> -->
           <!-- Tools View -->
-          <tools-view></tools-view>
+  <!--         <tools-view></tools-view>
         </div>
-        <div class="tab-pane" id="resourcesTab">
+        <div class="tab-pane" id="resourcesTab"> -->
           <!-- Resources View -->
-          <resources-view></resources-view>
-        </div>
-      </div>
+ <!--          <resources-view></resources-view>
+        </div> -->
+
+
+
+
+           <!-- MainTabs -->
+<!--            <div id="mainTabs" class="tabs-below">
+               <ul class="nav nav-tabs theMainTabs">  -->
+
+        <!--                <li class="active"><a id="tackTab" href="#a" data-toggle="tab" data-placement="bottom" class="tip"><i style="margin-left:1px !important;" class="custom-icon-2 icon-pin slide-icons">&#xe801;</i></a></li>
+                       <li><a id="compassTab" href="#b" data-toggle="tab" data-placement="bottom" class="tip"><i style="margin-left:1px !important;" class="custom-icon-2 icon-map slide-icons">&#xe808;</i></a></li>
+                       <li><a id="pencilTab" href="#c" data-toggle="tab" data-placement="bottom" class="tip"><i style="margin-left:1px !important;" class="fa fa-pencil fa-4 slide-icons"></i></a></li>
+                       <li><a id="gearTab" href="#d" data-toggle="tab" data-placement="bottom" class="tip"><i style="margin-left:1px !important;" class="custom-icon-2 icon-cog-1 slide-icons">&#xe807;</i></a></li> -->
+
+        <!--                <li class="active" ng-click="select($index)" ng-class="{sel: $index == selected}"><a id="tackTab" href="#a" data-toggle="tab" data-placement="bottom" title="Intro"><i style="margin-left:1px !important;" class="custom-icon-2 icon-pin slide-icons tip">&#xe801;</i></a></li>
+                       <li ng-click="select($index)" ng-class="{sel: $index == selected}"><a id="compassTab" href="#b" data-toggle="tab" data-placement="bottom" title="Display"><i style="margin-left:1px !important;" class="custom-icon-2 icon-map slide-icons tip">&#xe808;</i></a></li>
+                       <li ng-click="select($index)" ng-class="{sel: $index == selected}"><a id="pencilTab" href="#c" data-toggle="tab" data-placement="bottom" title="Tools"><i style="margin-left:1px !important;" class="fa fa-pencil fa-4 slide-icons tip"></i></a></li>
+                       <li ng-click="select($index)" ng-class="{sel: $index == selected}"><a id="gearTab" href="#d" data-toggle="tab" data-placement="bottom" title="Resources"><i style="margin-left:1px !important;" class="custom-icon-2 icon-cog-1 slide-icons tip">&#xe807;</i></a></li> -->
+
+                       <!--    <button title="Reset Pricing" type="button"
+                                  class="btn btn-mini resetPrice"
+                                  data-placement='bottom'>
+                              <i class="icon-refresh"></i>
+                          </button> -->
+
+
+        <!--                   <li class="tackLi active" ng-click="saveTab($event)"><a id="tackTab" href="#a" data-toggle="tab" data-placement="bottom" title="Intro"><i style="margin-left:1px !important;" class="custom-icon-2 icon-pin slide-icons tip">&#xe801;</i></a></li>
+                          <li class="compassLi" ng-click="saveTab($event)"><a id="compassTab" href="#b" data-toggle="tab" data-placement="bottom" title="Display"><i style="margin-left:1px !important;" class="custom-icon-2 icon-map slide-icons tip">&#xe808;</i></a></li>
+                          <li class="pencilLi" ng-click="saveTab($event)"><a id="pencilTab" href="#c" data-toggle="tab" data-placement="bottom" title="Tools"><i style="margin-left:1px !important;" class="fa fa-pencil fa-4 slide-icons tip"></i></a></li>
+                          <li class="gearLi" ng-click="saveTab($event)"><a id="gearTab" href="#d" data-toggle="tab" data-placement="bottom" title="Resources"><i style="margin-left:1px !important;" class="custom-icon-2 icon-cog-1 slide-icons tip">&#xe807;</i></a></li> -->
+
+        <!--                   <li class="tackLi active" ng-click="saveMainTab($event)"><a id="tackTab" href="#a" data-toggle="tab" data-placement="bottom" title="Intro"><i style="margin-left:1px !important;" class="custom-icon-2 icon-pin slide-icons tip">&#xe801;</i></a></li>
+                          <li class="compassLi" ng-click="saveMainTab($event)"><a id="compassTab" href="#b" data-toggle="tab" data-placement="bottom" title="Display"><i style="margin-left:1px !important;" class="custom-icon-2 icon-map slide-icons tip">&#xe808;</i></a></li>
+                          <li class="pencilLi" ng-click="saveMainTab($event)"><a id="pencilTab" href="#c" data-toggle="tab" data-placement="bottom" title="Tools"><i style="margin-left:1px !important;" class="fa fa-pencil fa-4 slide-icons tip"></i></a></li>
+                          <li class="gearLi" ng-click="saveMainTab($event)"><a id="gearTab" href="#d" data-toggle="tab" data-placement="bottom" title="Resources"><i style="margin-left:1px !important;" class="custom-icon-2 icon-cog-1 slide-icons tip">&#xe807;</i></a></li> -->
+
+
+<!--                           <li class="tackLi active" ng-click="saveMainTab($event)"><a id="tackTab" href="#introTab" data-toggle="tab" data-placement="bottom" title="Intro"><i style="margin-left:1px !important;" class="custom-icon-2 icon-pin slide-icons tip">&#xe801;</i></a></li>
+                          <li class="compassLi" ng-click="saveMainTab($event)"><a id="compassTab" href="#displayTab" data-toggle="tab" data-placement="bottom" title="Display"><i style="margin-left:1px !important;" class="custom-icon-2 icon-map slide-icons tip">&#xe808;</i></a></li>
+                          <li class="pencilLi" ng-click="saveMainTab($event)"><a id="pencilTab" href="#toolsTab" data-toggle="tab" data-placement="bottom" title="Tools"><i style="margin-left:1px !important;" class="fa fa-pencil fa-4 slide-icons tip"></i></a></li>
+                          <li class="gearLi" ng-click="saveMainTab($event)"><a id="gearTab" href="#resourcesTab" data-toggle="tab" data-placement="bottom" title="Resources"><i style="margin-left:1px !important;" class="custom-icon-2 icon-cog-1 slide-icons tip">&#xe807;</i></a></li>
+              
+               </ul>
+           </div> -->
+
+
+
+      </div><!--/Tabs content -->
+
+
+
+
+
     </div><!-- /.Slide Panel -->
 
     <!-- Bootstrap-map-js -->
@@ -193,6 +227,109 @@
       <measure-block></measure-block>
     </div>
 
+
+
+
+
+
+
+
+    <!-- Main Search -->
+    <div class="searchCard searchSize" ng-controller="TypeaheadCtrl"> <!-- col-sm-5 -->
+
+      <div class="searchformcontainer">
+      <form class="navbar-form" ng-submit="search(asyncSelected)" class="" id="search-form"> 
+            <div id="tester" class="input-group" style="border:none !important;">
+              <!-- Hamburger Btn -->
+              <span id="searchBtn-holder2" class="input-group-btn">
+                   <button id="hamburgerBtn" class="btn btn-primary" type="button">
+                     <!-- ionic -->
+                     <span class="iconic-adjust-main ion-navicon-round" data-pack="default" data-tags="magnifying glass"></span>
+                   </button>
+              </span>
+
+              <input id="search-form" placeholder="Search OpenWeb" autofocus autocomplete="off" type="text" class="form-control closeIcon" 
+                ng-keyup="keyUp($event, $index, asyncSelected)" 
+                ng-change="updateSync($index)"
+                ng-model="asyncSelected"
+                typeahead-on-select='onSelect($item, $model, $label)'
+                typeahead-focus-first="false"
+                typeahead-template-url="views/tempAutocomplete.html"
+                typeahead="address for address in getLocation($viewValue) | filter:$viewValue"
+                typeahead-loading="loadingLocations" 
+                typeahead-min-length="3" >  
+
+              <!-- Close Icon -->
+              <img id="closeIcon" border="0" src="css/images/icon-close2.png">
+              <!-- Search Btn -->
+               <span id="searchBtn-holder" class="input-group-btn">
+                    <button id="searchBtn" class="btn btn-primary" type="button">
+                      <!-- ionic -->
+                      <span class="iconic-adjust-main ion-search" data-pack="default" data-tags="magnifying glass"></span>
+                    </button>
+               </span>
+            </div> <!-- /tester -->
+        </form>
+      </div> <!--/searchformcontainer-->
+
+    </div>
+
+
+    <!-- Omnibar -->
+    <div class="omnibarcontainer" > 
+
+      <ul class="list-group cardList">
+        <li class=""><sel-prop></sel-prop></li>
+        <li class="">           </li>
+        <li class="">           
+
+<!--           <div class="sectionsCard" >
+           <div class="mainTabs" class="tabs-below">
+               <ul class="nav nav-tabs theMainTabs" style="border: none !important;"> 
+                    <li class="tackLi active" ng-click="saveMainTab($event)" style="border: none !important;"><a id="tackTab2" href="#introTab" data-toggle="tab" data-placement="bottom" title="Intro" style="border: none !important;"><i style="margin-left:1px !important; font-size: 36px; border: none !important;" class="custom-icon-2 icon-pin slide-icons tip">&#xe801;</i></a></li>
+                    <li class="compassLi" ng-click="saveMainTab($event)" style="border: none !important;"><a id="compassTab2" href="#displayTab" data-toggle="tab" data-placement="bottom" title="Display" style="border: none !important;"><i style="margin-left:1px !important; font-size: 36px;" class="custom-icon-2 icon-map slide-icons tip">&#xe808;</i></a></li>
+                    <li class="pencilLi" ng-click="saveMainTab($event)" style="border: none !important;"><a id="pencilTab2" href="#toolsTab" data-toggle="tab" data-placement="bottom" title="Tools" style="border: none !important;"><i style="margin-left:1px !important; font-size: 36px;" class="fa fa-pencil fa-4 slide-icons tip"></i></a></li>
+                    <li class="gearLi" ng-click="saveMainTab($event)" style="border: none !important;"><a id="gearTab2" href="#resourcesTab" data-toggle="tab" data-placement="bottom" title="Resources" style="border: none !important;"><i style="margin-left:1px !important; font-size: 36px;" class="custom-icon-2 icon-cog-1 slide-icons tip">&#xe807;</i></a></li>
+               </ul>
+           </div>
+
+         </div>
+ -->
+
+         </li>
+        <li class=""><info-card></info-card></li>
+        <li class="">      
+          <a style="font-size: 85% !important;" class="introPaneTextSubset feedbackBlurb" style="" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/feedback/form.html"> <br> <i class="icon ion-thumbsup"></i> | Your feedback helps improve OpenWeb   </a>
+
+<!--           <br> <span style=" color: #428bca; text-decoration: none;">Let us know how we can improve</span> -->
+<!-- 
+         <i class="icon ion-thumbsup"></i>
+                  <span class="iconic-adjust-main ion-thumbsup" data-pack="default" data-tags="magnifying glass"></span>
+ -->
+        </li>
+
+
+        <li class="">    </li>
+
+      </ul>
+
+
+
+
+
+    </div> <!--/.Omnibar -->
+
+    <!-- hideBarShowBar -->
+    <div class="hideShowBar" ng-click="toggleHiddenState()"  > 
+          <a style="" class="hideShowBlurb" style="" href=""  > <i class="ion-chevron-up" style="margin-left:20px;">&nbsp;&nbsp;</i> &nbsp; Hide </a> 
+    </div>
+
+
+
+
+
+
+
     <!-- Disclaimer -->
     <disclaim-block></disclaim-block>
     <!-- Share/Embed -->
@@ -202,7 +339,7 @@
     <!-- Help Assistant -->
     <assistant-block></assistant-block>
     <!-- InfoBlock (incl. tabs) -->
-    <info-block></info-block>
+    <!-- <info-block></info-block> -->
     <!-- Legend -->
     <leg-block></leg-block>
     <!-- Weather -->
@@ -210,11 +347,17 @@
     <!-- Valuation -->
     <valuation-block></valuation-block>
 
+    <!-- Inactive Overlay -->
+    <div class="inactiveOverlay">
+    </div>
 
     <!-- Loading Screen -->
     <div id="loading">
           <div id="loading-image" class="loader"></div>
     </div>
+
+
+
 
 
 
@@ -251,7 +394,9 @@
     <script src="js/app/directives/dirTools.js"></script> <!-- directive -->
     <script src="js/app/directives/dirResources.js"></script> <!-- directive -->
     <script src="js/app/directives/dirInformation.js"></script> <!-- directive -->
-    <script src="js/app/directives/dirSelectProp.js"></script> <!-- directive -->
+    <!-- <script src="js/app/directives/dirSelectProp.js"></script> --> <!-- directive -->
+
+    <script src="js/app/directives/dirSelProp.js"></script> <!-- directive -->
     <script src="js/app/directives/dirLegend.js"></script> <!-- directive -->
     <script src="js/app/directives/dirWeather.js"></script> <!-- directive -->
     <script src="js/app/directives/dirMeasure.js"></script> <!-- directive -->
@@ -275,5 +420,6 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+
   </body>
 </html>

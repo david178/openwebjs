@@ -1,34 +1,33 @@
 
- <div id='resourcesDirective' style='padding:7px; border:white;'>
+<!--  <div id='resourcesDirective' style='padding:7px; border:white;'> -->
    <!-- Title -->
-   <div id='resourcesHeader' class='alert alert-info conditionalShow' role='alert' style='padding:7px;'>Resources
+<!--    <div id='resourcesHeader' class='alert alert-info conditionalShow' role='alert' style='padding:7px;'>Resources -->
      <!-- <span id='introToggle' class='fa fa-times'></span> -->
      <!-- <span id='resourcesToggle' class='fa fa-chevron-left'></span> -->
-     <span id='resourcesToggle' class='ion-chevron-left'></span>
+<!--      <span id='resourcesToggle' class='ion-chevron-left'></span>
      
-   </div>
+   </div> -->
+
+
 
 
    <!-- CONTENT -->
-   <div style="margin-top:60px;">
+   <div class="skinnySection" > 
 
         <nav class="main-nav main-nav-desktop">
           <ul class="nav-text blue-streak">
 
 
-
             <!-- Share -->
-            <li class='dropdown' id='shareembedList'>
-              <a id='shareembedListItem' class='dropdown-toggle' data-toggle="modal" data-target="#shareModal" href="#">Share or embed map</a>
-<!--               <ul class='dropdown-menu dropdown-menu-form'>
-                <li style="" class="">
-
-                  <div class="widget-share-link-url-container"> <input id="last-focusable-in-modal" value="https://www.google.com/maps/dir///@36.1524687,-115.0923856,14z" type="text" jstcache="1219" jsaction="copy:share.shareLink;cut:share.shareLink" class="widget-share-link-url" jsan="7.widget-share-link-url,0.id,0.value,0.type,22.jsaction"> </div>
+<!--             <li class='dropdown' id='shareembedList'> -->
+              <!-- <a id='shareembedListItem' class='dropdown-toggle' data-toggle="modal" data-target="#shareModal" href="#">Share or embed map</a> -->
+<!--             </li> -->
 
 
-
-              </ul> -->
-            </li>
+            <!-- Print -->
+<!--             <li class='dropdown' id='printList'>
+              <a id='printListItem' class='dropdown-toggle'  href="#">Print</a>
+            </li> -->
 
 
 
@@ -221,45 +220,34 @@
             <!-- <hr> -->
             <div style="padding: 8px 8px 0;"></div>
 
+      <!--         <span class="introBottomSection">
+                <small><a id="qGuideLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OW_QuickGuide.pdf">QuickGuide</a></small> |
+                <small><a id="dGuideLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/wiki-local/open-web-js.html">Docs</a></small> |
+                <small><a id="aGuideLink" href="#" ng-click="assistBasicShow()">Agent</a></small>
+              </span> -->
+
 
             <!-- Tour -->
             <li><a id="tourButtonListItem" href="">Take a tour</a></li>
 
-            <!-- Theme -->
-            <li class='dropdown' id='settingsList'>
-              <a class='dropdown-toggle' data-toggle='dropdown' href="#">Theme</a>
-              <ul class='dropdown-menu dropdown-menu-form'>
-                <li style="" class=""><select style="background-color: #222;" class="form-control btn btn-primary styleBox-variant" ng-model="layout" ng-change="saveTheme()" ng-options="layout.url as layout.name for layout in layouts"></select></li>
-              </ul>
-            </li>
+            <li><a id="aGuideLink" href="#" ng-click="assistBasicShow()">Get help</a></li>
+
 
             <!-- Help -->
-            <li class='dropdown' id='helpList' >
+<!--             <li class='dropdown' id='helpList' >
               <a class='dropdown-toggle' data-toggle='dropdown' href="#">Get help</a>
               <ul class='dropdown-menu'>
                 <li><a id='assistantListItem' class='dropdown-toggle' data-toggle="modal" data-target="#assistantModal" href="#">Help Agent</a></li>
                 <li><a id="qGuideLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OW_QuickGuide.pdf" target="_blank">Quick Guide</a></li>
                 <li><a id="aGuideLink" href="../resources/OWjs_AdvancedGuide_latest.txt" target="_blank">Advanced Guide</a></li>
               </ul>
-            </li>
+            </li> -->
 
             <!-- Send feedback -->
             <li><a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/feedback/form.html" target="_blank">Send feedback</a></li>
 
-
-
             <!-- <hr> -->
-            <div style="padding: 8px 8px 0;"></div>
-
-
-
-            <!-- Version -->
-            <li class='dropdown'>
-              <a class='dropdown-toggle' data-toggle='dropdown' href="#">Version</a>
-              <ul class='dropdown-menu'>
-                <li><a href="#" target="_blank"> 4.4</a></li>
-              </ul>
-            </li>
+<!--             <div style="padding: 8px 8px 0;"></div> -->
 
             <!-- GISMO apps -->
             <li class='dropdown' id='appsList'>
@@ -273,6 +261,56 @@
             </li>
 
 
+
+            <!-- Version -->
+            <li class='dropdown'>
+              <a class='dropdown-toggle' data-toggle='dropdown' href="#">Version</a>
+              <ul class='dropdown-menu'>
+                <li><a href="#" target="_blank"> 4.4</a></li>
+              </ul>
+            </li>
+
+
+            <!-- <hr> -->
+            <div style="padding: 8px 8px 0;"></div>
+
+            
+
+            <!-- Theme -->
+<!--             <li class='dropdown' id='settingsList'>
+              <a class='dropdown-toggle' data-toggle='dropdown' href="#">Night Mode <i class='ion-ios-moon-outline' style="font-size: 26px; padding:6px; margin-top:13px !important; padding-top:8px !important;" ></i></a>
+              <ul class='dropdown-menu dropdown-menu-form'>
+                <li style="" class=""><select style="background-color: #222;" class="form-control btn btn-primary styleBox-variant" ng-model="layout" ng-change="saveTheme()" ng-options="layout.url as layout.name for layout in layouts"></select></li>
+              </ul>
+            </li> -->
+
+<!--             <li><a href="#" ng-click="">Night Mode <i class='ion-ios-moon-outline' style="position: absolute; right:25px; top:-9px; padding:5px !important; font-size:26px;" ></i></a>  </li> -->
+            <li><a href="#" ng-click="">Night Mode <i class='ion-ios-moon-outline' style="position: absolute; left:121px; top:-9px; padding:5px !important; font-size:26px; font-weight:bold;" ></i></a>  </li>
+
+
+
+<!--             <li> 
+
+              <label class="switch">
+                <input type="checkbox" checked>Night Mode 
+                <span class="slider round"></span>
+              </label>
+
+
+            </li>
+ -->
+<!--             <li class=" valuationList"><a href="#">
+            <input id="valuationBox" class="icon-checkbox valuationPosOverrides" type="checkbox" ng-model="theValuation" />
+            <label for="valuationBox">
+              <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+              <span class='glyphicon glyphicon-check checked chkPadding'></span>
+              Valuation
+            </label>
+            </a></li> -->
+
+
+
+
           </ul>
 
         </nav>
@@ -281,10 +319,83 @@
 
 
 
+   </div> <!--END CONTENT -->
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+   <!-- CONTENT -->
+<!--    <div style="margin-top:30px; border-top:1px solid rgb(37, 83, 132);">  -->
+  <div class="skinnySection" style="" > 
+
+
+    <div class='jumbotron' style="" >
+
+
+<!--         <div style="padding-top:18px; padding-bottom:6px;" class="input-group-btn">
+          <button id="tourButton" type="submit" class="tourInits btn btn-primary introButton-variant" style="border-color: transparent; letter-spacing: .2px; text-transform: uppercase; border: none; transition: all .3s ease;border-radius: 0px !important;     font-size: 1.1875rem; background-color: rgb(37, 83, 132) !important; border: none !important; color: hsla(0,0%,100%,.9); font-weight: 300 !important; font-family: 'Open Sans', sans-serif !important; letter-spacing: .2px; -webkit-font-smoothing: antialiased;"> 
+            <span>Take a tour</span>
+          </button>
+        </div> -->
+
+
+
+
+
+        <!-- Notes -->
+<!--         </br> -->
+
+
+
+        <div id="intoUpdateContainer" >
+
+          <ul id="introUpdateList">
+
+            <!--  MAP VIEWS -->
+            <li ng-repeat="result in Updates| orderBy:'updatesid'">
+
+              <p class="introPaneTextSubset" style="">
+
+                  <span id="{{result.updatesid}}" style="padding-left:8px !important; border-radius: 0px !important;" class="introPaneTextSubsetIcons iconic-adjust-11" ng-class="{showImprove: result.status === 2, showBubble: result.status === 1, showWarn: result.status === 0}" data-pack="default" ></span>  {{result.name}} 
+
+
+                  <div ng-show="result.statusmsg" class="alert-info-custom" style="">
+                    <a href="#" ng-click="assistWhatsComing(result.name,result.statustext)" class="alert-link" style="color:white; font-size:11px; padding:7px; padding-top:10px;">more...</a>
+                  </div>
+
+              </p>
+            
+            </li>
+          </ul>
+
+      </div>
+
+
+    </div>
 
    </div> <!--END CONTENT -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  </div>

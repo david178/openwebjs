@@ -185,10 +185,10 @@ open.factory('openFactory', function($http, $q){
           //current map
           var currentMap = "Most Current Flight (County)";
           
-  			$http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getAerialFlightDate?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&flightName='+currentMap+'&callback=JSON_CALLBACK').then(function(resp) {
-  			//$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getAerialFlightDate?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&flightName='+currentMap+'&callback=JSON_CALLBACK').then(function(resp) {
-          deferred.resolve(resp.data);
-  			});
+    			$http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getAerialFlightDate?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&flightName='+currentMap+'&callback=JSON_CALLBACK').then(function(resp) {
+    			//$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getAerialFlightDate?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&flightName='+currentMap+'&callback=JSON_CALLBACK').then(function(resp) {
+            deferred.resolve(resp.data);
+    			});
           
           return deferred.promise;
 
@@ -204,14 +204,14 @@ open.factory('openFactory', function($http, $q){
 
           //http://maps.clarkcountynv.gov/
 
-  			$http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
-  			//$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
-          deferred.resolve(resp.data);
-  			});
+    			$http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+    			//$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+            deferred.resolve(resp.data);
+    			});
 
-			// $http.get('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(data,attr) {
-			//   deferred.resolve(data);
-			// });
+  			// $http.get('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(data,attr) {
+  			//   deferred.resolve(data);
+  			// });
           
           return deferred.promise;
         },

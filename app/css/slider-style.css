@@ -379,12 +379,6 @@ menu.collapse-inner {
 
 /* General styles for all menus */
 
-.sliderStyle {
-background-color: #222;
-/*background-color: #232f3e;*/
-border-color: #080808;
-}
-
 
 
 
@@ -407,29 +401,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47a3da', end
 
 
 
-
-/* New slide panel updates */
-
-#slidepanel
-{
-    height: 100%;
-
-    width: 240px;
-
-
-    float: left;
-
-
-/*    background-color: #222;*/ /*commented out */
-
-    background: #232323;
-/*    background: #232f3e;*/
-
-/*    border-color: #080808;*/
-
-    z-index: 1000;
-
-    margin-top: 50px !important; /* added after removing from the body style */
-
-}
 

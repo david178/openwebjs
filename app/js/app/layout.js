@@ -10,9 +10,9 @@
 $(function() {
 
     // set initial with of map to the size of the( window - panel width) 
-    $('#mapDiv').css('width', (window.innerWidth - 240 + 'px'));
+    // $('#mapDiv').css('width', (window.innerWidth - 240 + 'px'));
 
-    slidePanelOpen = true;
+    skinnyPanelOpen = false;
 
     var mapDiv = document.getElementById('mapDiv');
 
@@ -75,146 +75,99 @@ function sized() {
 
 
 
+
+
+
+
       //Window size is greater than or equal to 768 pixels
       //Expand the slide Panel
-      if (x >= 768 && panelCloseHit === false)
+      if (x >= 768) // && panelCloseHit === false
       {
-
-       // console.log("* 1st case: Screen is desktop & panel collapse not activated")
-       // console.log('panel hit closed false');
-
 
           //set the isMobile bool to true | this will be used to limit typeahead results
           isMobile = false;
           productCode = 'OW4';
 
 
+          if (skinnyPanelOpen === true) { 
 
-          if (slidePanelOpen === false) {
-
-
-            //-------------------------------------------
-            //Updating the Header positioning & Arrow (ALL)
-            $("#introHeader").css("left", 0 + "px");
-            $("#displayHeader").css("left", 0 + "px");
-            $("#toolsHeader").css("left", 0 + "px");
-            $("#resourcesHeader").css("left", 0 + "px");
-
-            $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-            $('#displayToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-            $('#toolsToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-            $('#resourcesToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-            
-            $('#mainTabs').css("display", "block");
-            // $('#aerialSlider_Box').css("display", "block");
-            $('.infoBlock').css("display", "block");
-            //-------------------------------------------
-
-            $("#slidepanel").animate({
-              "marginLeft": "+=240px"
-            }, 350);
-            slidePanelOpen = true;
-            $('#mapDiv').animate({
-                "width": "-=240px"
-            }, 350, function() {
-              // Animation complete.
-
-              console.log('L [[ side panel expanded ]]');
-
-
-              //subtract 50pixels for now, update for full amount of side panel later
-              document.getElementById('mapDiv').style.width = document.documentElement.clientWidth - 240 + "px";
-
-
-              //Reposition & resize
-              //  repoMap();
-
-                resizeMap();
-
-
-
-            });
+            $('.inactiveOverlay').addClass('inactiveOverlayVisible');
 
           }
 
-
+          console.log(isMobile)
 
     }
 
     //Window size is less than 768 pixels
-    //Collapse the slide Panel
-    else if (x < 768 && panelCloseHit === false)
+    //Collapse the slide Panel && remove the inactiveoverlay visible class
+    else if (x < 767)
     {
+
+      console.log('panelCloseHit ' + panelCloseHit)
 
       //set the isMobile bool to true | this will be used to limit typeahead results
       isMobile = true;
       productCode = 'OW4mobile';
 
 
-        if (slidePanelOpen) {
+        if (skinnyPanelOpen === true) { //SKINNY IS OPEN ALREADY - GOING INTO MOBILE MODE, WE WANT TO TUCK IT IN AND REMOVE THE OVERLAY IF EXISTS
+
+          $('.inactiveOverlay').removeClass('inactiveOverlayVisible');
 
 
-          //-------------------------------------------
-          //Updating the Header positioning & Arrow (ALL)
-          // $("#introHeader").css("left", -194 + "px");
-          $("#introHeader").css("left", -194 + "px");
-          $("#displayHeader").css("left", -194 + "px");
-          $("#toolsHeader").css("left", -194 + "px");
-          $("#resourcesHeader").css("left", -194 + "px");
+            // // hide panel
+            // $("#skinnyPanel").animate({
+            //     "marginLeft": "-=240px"
+            // }, 350);
 
-          $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-          $('#displayToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-          $('#toolsToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-          $('#resourcesToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
+            // //hide the 'inactive overlay'
+            // $('.inactiveOverlay').removeClass('inactiveOverlayVisible');
 
+            // skinnyPanelOpen = false;
 
-          // $(".esriScalebar").css("left", -194 + "px");
-
-          console.log(isMobile)
-
-          
-
-          $('#mainTabs').css("display", "none");
-          // $('#aerialSlider_Box').css("display", "none");
-          $('.infoBlock').css("display", "none");
-          //-------------------------------------------
-            // hide panel
-            $("#slidepanel").animate({
-                "marginLeft": "-=240px"
-            }, 350);
-            slidePanelOpen = false;
-            // change width of map to fill empty space left from collapse of sldide panel
-            $('#mapDiv').animate({
-              // "width": "-=150px"
-                "width": "+=240px"
-            }, 350, function() {
-          // Animation complete.
-
-
-
-          console.log('L [[ side panel tucked ]]');
-
-
-          //subtract 50pixels for now, update for full amount of side panel later
-          document.getElementById('mapDiv').style.width = document.documentElement.clientWidth + "px";
-
-
-
-
-          //Reposition & resize
-          //  repoMap();
-
-            resizeMap();
-
-
-
-            });
-
+            // console.log(isMobile)
 
         }
 
+        console.log(isMobile)
+
+
+
+
+
 
     }
+
+
+    // //Window size is less than 768 pixels
+    // //Collapse the slide Panel && remove the inactiveoverlay visible class
+    // else if (x < 768 && panelCloseHit === false)
+    // {
+
+    //   console.log('panelCloseHit ' + panelCloseHit)
+
+    //   //set the isMobile bool to true | this will be used to limit typeahead results
+    //   isMobile = true;
+    //   productCode = 'OW4mobile';
+
+
+    //     if (skinnyPanelOpen === true) { //SKINNY IS OPEN ALREADY - GOING INTO MOBILE MODE, WE WANT TO TUCK IT IN AND REMOVE THE OVERLAY IF EXISTS
+    //         // hide panel
+    //         $("#skinnyPanel").animate({
+    //             "marginLeft": "-=240px"
+    //         }, 350);
+    //         skinnyPanelOpen = false;
+
+    //         //hide the 'inactive overlay'
+    //         $('.inactiveOverlay').removeClass('inactiveOverlayVisible');
+
+    //         console.log(isMobile)
+
+    //     }
+
+
+    // }
 
 
     //added---------------------------------------------
@@ -237,7 +190,7 @@ function sized() {
      }
 
 
-     if (slidePanelOpen === true) {
+     if (skinnyPanelOpen === true) {
 
 
      }
@@ -317,7 +270,7 @@ function propInfoRepo_Second() {
   {
 
     //in the case that the slidePanel is Open, 
-    if (slidePanelOpen) {
+    if (skinnyPanelOpen) {
 
         // COMMENTED
         //resposition the prop info elem
@@ -336,7 +289,7 @@ function propInfoRepo_Second() {
 
       console.log('SUCCESSFUL TEST ONE')
 
-      console.log(slidePanelOpen)
+      console.log(skinnyPanelOpen)
 
 
     }
@@ -359,7 +312,7 @@ function propInfoRepo_Second() {
 
       console.log('SUCCESSFUL TEST ONE SUB TWO')
 
-      console.log(slidePanelOpen)
+      console.log(skinnyPanelOpen)
 
 
     } 
@@ -396,7 +349,7 @@ function propInfoRepo_Second() {
 
 
     //in the case that the slidePanel is Open, 
-    if (slidePanelOpen) {
+    if (skinnyPanelOpen) {
 
 
         $('#PropInfoDialog').css({
@@ -483,7 +436,7 @@ function propInfoRepo_Second() {
 (function() {
 
   //propInfoRepo
-  $('#slidepanel').click(function(e) { 
+  $('#skinnyPanel').click(function(e) { 
     setTimeout(function(){
         //call to repo
         propInfoRepo_Second();
@@ -633,7 +586,7 @@ var tour = new Tour({
     content: "These tabs provide specific information about the selected property."
   },
   {
-    element: "#slidepanel",
+    element: "#skinnyPanel",
     placement: "right",   
     title: "Sidebar",
     content: "The icons at the bottom of this sidebar will direct you to more of OpenWeb's features."
@@ -657,7 +610,7 @@ var tour = new Tour({
     content: "Leave us feedback or check out our other applications here!"
   },
   {
-    element: "#slidepanel",
+    element: "#skinnyPanel",
     placement: "right",
     title: "Thank you!",
     content: "Thanks for taking the tour! If you need to take it again, click the 'Take a Tour' button on the introduction panel!"

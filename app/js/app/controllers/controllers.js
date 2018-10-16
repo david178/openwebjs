@@ -1053,6 +1053,9 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     $scope.toggle = true;
     //7-day weather forecast view Toggle
     $scope.forecasttoggle = false;
+    //the model for hideShowBar state (used to roll up/down omnibar, apply styles etc) 
+    // $scope.theHideShowBarState = false;
+
 
     // //Map View & Flight Date defaults
     //  $scope.Most1 = true;
@@ -1418,6 +1421,27 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             //     fResults.push(flightObj_new.flightList[i]); //need to add price to each item return
             // }
             for (var i = 0; i < flightObj_new2.services.length; i++) {
+
+                // text = flightObj_new2.services[i].name.substring(7, flightObj_new2.services[i].name.lastIndexOf('/'));
+
+                //removes the 'CACHED/' pretext from the name object items, preformatting the text
+                // formattedFlightNames = /[^/]*$/.exec(flightObj_new2.services[i].name)[0];
+                // flightObj_new2.services[i].name = /[^/]*$/.exec(flightObj_new2.services[i].name)[0];
+
+                // flightObj_new2.services[i].name.sort(function(a, b){
+                //     if(a.name < b.name) return -1;
+                //     if(a.name > b.name) return 1;
+                //     return 0;
+                // })
+
+
+                flightObj_new2.services[i].name = /[^/]*$/.exec(flightObj_new2.services[i].name)[0];
+
+
+                // <i class="ion-social-buffer-outline" style=" font-size: 24px;"></i>
+
+
+                // fResults.push(flightObj_new2.services[i]); //need to add price to each item return
                 fResults.push(flightObj_new2.services[i]); //need to add price to each item return
             }
 
@@ -1425,14 +1449,97 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+            //binds the Flights ang object to the fResults; sets the default select box option
             $scope.Flights = fResults;
-            $scope.selectedFlightDefault = $scope.Flights[0];
+            $scope.selectedFlightDefault = $scope.Flights[36];
+            // $scope.selectedFlightDefault = $scope.Flights.name("mostcurrentflight");
+
+
+            // users.sort(function(a, b){
+            //     if(a.firstname < b.firstname) return -1;
+            //     if(a.firstname > b.firstname) return 1;
+            //     return 0;
+            // })
+
+
+            // console.log(fResults)
+
+
+            // $scope.Flights = fResults;
+
+
+            // fruits.sort();
+            // fruits.reverse();
+
+
+
+
+
+            // //set dropdown's default value
+            // function setSelectedIndex(s, valsearch)
+            // {
+            //     // Loop through all the items in drop down list
+            //     for (i = 0; i< s.options.length; i++)
+            //     { 
+            //         if (s.options[i].value == valsearch)
+            //         {
+            //             // Item is found. Set its property and exit
+            //             s.options[i].selected = true;
+            //             break;
+            //         }
+            //     }
+            //     return;
+            // }
+            // setSelectedIndex(document.getElementById("flightSelector"),"mostcurrentflight");
+
+
+            // // //set dropdown's default value
+            // // function setSelectedIndex(s, valsearch)
+            // // {
+            //     // Loop through all the items in drop down list
+            //     for (i = 0; i< document.getElementById("flightSelector").options.length; i++)
+            //     { 
+            //         if (sdocument.getElementById("flightSelector").options[i].value == "mostcurrentflight")
+            //         {
+            //             // Item is found. Set its property and exit
+            //             document.getElementById("flightSelector").options[i].selected = true;
+            //             break;
+            //         }
+            //     }
+            //     // return;
+            // // }
+            // // setSelectedIndex(document.getElementById("flightSelector"),"mostcurrentflight");
 
 
 
 
 
             console.log('SHOW ME THE JSON FOR THE FLIGHTS ' + JSON.stringify(flightObj_new2))
+
+
+
+
+            // https://stackoverflow.com/questions/16863800/javascript-regex-to-extract-the-string-before-the-last-backslash
+            // text = stringVariable.substring(0, stringVariable.lastIndexOf('/'));
+
+
+
+            // /^(.*[\\\/])/
+            // Explanation:
+
+            // ^      Start of line/string
+            // (      Start capturing group
+            // .*     Match any character greedily
+            // [\\\/] Match a backslash or a forward slash
+            // )      End the capturing group  
+
+
+            // sub(".*/", "", x)
+
+            // https://stackoverflow.com/questions/3981880/regex-for-everything-before-last-forward-or-backward-slash
+
+            // https://stackoverflow.com/questions/36683359/remove-everything-in-string-up-to-last-forward-slash/36683386
+
 
 
 
@@ -1486,7 +1593,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
        // //binding layerUrl
        // layerUrl = flight.src;
        //binding layerUrl
-       layerUrl = servicePrefix+serviceSuffix_F+flight.name+'/'+flight.type;
+       layerUrl = servicePrefix+serviceSuffix_F+'CACHED/'+flight.name+'/'+flight.type;
 
        //re-setting basemap layer
        var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrl,{id:'basemap'});
@@ -3684,7 +3791,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 console.log('auto is showing: ' + autocompleteIsShowing)
                 console.log('ac dirty?: ' + autocompleteDirty)
                 console.log('search has complete: ' + searchHasCompleted)
-                console.log('side panel open?: ' + slidePanelOpen)
+                console.log('side panel open?: ' + skinnyPanelOpen)
                 console.log('input length: ' + $("#tester input").val().length)
 
                 // //newly added to account for the case when a select property is clicked after first collapsing the side panel
@@ -3757,7 +3864,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 // }
 
                 //autocomplete is not showing, it never has & length is min (SELECT PROP) AND SIDE PANEL IS OPEN
-                else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && slidePanelOpen === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE && autocompleteDirty === false
+                else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && skinnyPanelOpen === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE && autocompleteDirty === false
 
                     $('#PropInfoDialog').css({
                         'top': 49,
@@ -3772,7 +3879,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 }
 
                 //autocomplete is not showing, it never has & length is min (SELECT PROP) AND SIDE PANEL HAS BEEN COLLAPSED
-                else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && slidePanelOpen === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false && SIDE PANEL IS CLOSED
+                else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && skinnyPanelOpen === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false && SIDE PANEL IS CLOSED
 
                     $('#PropInfoDialog').css({
                         'top': 49,
@@ -4401,6 +4508,303 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
         
     }
     //------------------------------------------------------------------------------
+
+
+
+
+    // //THE MAIN SEARCH FUNCTION
+    // scope.assistSearchandFilter = function(theSearch) {
+
+    //   console.log(theSearch)
+
+    //     // // console.log('testing')
+
+    //     // console.log("C [[ searching: " + theSearch + " ]]");
+
+    //     // $scope.executeSearch(theSearch);
+
+    //     // //pass to ai.js as well
+    //     // ai(theSearch);
+
+
+    //     filterHelp_UL();
+    // };
+
+
+    //hideShowBarToggle ----------------------------------------------------
+    $scope.toggleHiddenState = function(hidden) {
+
+        // console.log()
+
+
+        
+
+
+
+        if (hiddenState === true) { //its already hidden, clicked during show state
+
+            $('.hideShowBar').removeClass('hideShowBarCollapsed');
+            $('.hideShowBlurb').removeClass('hideShowBlurbCollapsed');
+
+            $('.hideShowBlurb').empty().append('<i class="ion-chevron-up" style="margin-left:20px;">&nbsp;&nbsp;</i> &nbsp; Hide');
+
+            $('.omnibarcontainer').removeClass('omnibarcontainerCollapsed');
+
+            console.log('EXPAND OUT')
+
+
+            //make sure to switch over the 'hiddenState' to false, now that it has been clicked
+            hiddenState = false;
+
+        }
+        else { //its not yet hidden, hide elements and roll up
+
+            $('.hideShowBar').addClass('hideShowBarCollapsed');
+            $('.hideShowBlurb').addClass('hideShowBlurbCollapsed');
+
+            $('.hideShowBlurb').empty().append('<i class="ion-chevron-down" style="margin-left:20px;">&nbsp;&nbsp;</i> &nbsp; See Property Information');
+
+            $('.omnibarcontainer').addClass('omnibarcontainerCollapsed');
+
+
+
+            // $('.hideShowBlurb').empty().append('newcontent');
+
+
+
+
+            //make sure to switch over the 'hiddenState' to true, now that it has been clicked
+            hiddenState = true;
+
+
+
+            console.log('HIDE IN ' +hiddenState)
+
+
+            // $('#hideShowBar').toggleClass('hideShowBarDefault hideShowBarCollapsed');
+
+            // $('.omnibarcontainer').toggleClass('defaultState omniBarCollapsed');
+            
+
+        }
+
+
+        // theHideShowBarState = !theHideShowBarState
+
+        // console.log(theHideShowBarState)
+
+        // // $scope.theHideShowBarState = theHideShowBarState;
+
+
+        // // console.log('THIS IS THE VALUE: ' +theHideShowBarState);
+
+        // //
+        // if (theHideShowBarState === false) {
+        //     console.log('its false')
+        //     // console.log('THIS IS THE VALUE: ' +theHideShowBarState);
+        // }
+        // else {
+        //     console.log('its true')
+
+        // }
+
+
+
+
+
+        
+    }
+    //------------------------------------------------------------------------------
+
+
+
+
+
+
+    //Handles the skinny Panel's list item population, as well as toggeled active/inactive css states to apply styles
+    // .active-selection {
+    //   background-color: #eee;
+    // }
+    $scope.skinnyDisplayOptions = [{
+      id: "1",
+      name: "Right-of-Way",
+      // icon: "ion-arrow-swap",
+      icon: "ion-android-car",
+      active: false
+    }, {
+      id: "2",
+      name: "Tools",
+      // icon: "ion-wrench",
+      icon: "ion-settings",
+      active: false
+    }, {
+      id: "3",
+      name: "Valuation",
+      // icon: "ion-arrow-graph-up-right",
+      icon: "ion-pricetag",
+      active: false
+      // ion-pricetag
+    }, {
+      id: "4",
+      name: "Legend",
+      icon: "ion-android-list",
+      active: false
+    }, {
+      id: "5",
+      name: "Weather",
+      icon: "ion-android-cloud-outline",
+      active: false
+    }, {
+      id: "6",
+      name: "Share or embed",
+      icon: "ion-link",
+      active: false
+    }, {
+      id: "7",
+      name: "Print",
+      icon: "ion-printer",
+      active: false
+    }
+
+
+
+    ];
+
+    // $scope.isActive = false;
+
+    $scope.selectDisplayItem = function(id,name,active) {
+      $scope.activeClass = id;
+      $scope.activeName = name;
+      // $scope.activeActive = active;
+      console.log(id);
+
+
+      //toggles the active model/scoped class = bound to the element's window
+      // $scope.theLegend = !$scope.theLegend;
+
+      // $scope.isActive = active;
+      // $scope.isActive = !$scope.isActive;
+
+
+// ng-model="skinnyDisplayOptions.isChecked"
+
+      // console.log(active)
+
+      //http://jsfiddle.net/thr3ee/83cvu/
+
+
+
+        // $scope.isActive = false;
+        // $scope.activeButton = function() {
+        //   $scope.isActive = !$scope.isActive;
+        // }  
+        // https://codepen.io/hbuchel/pen/xtbzc
+
+
+          // $scope.isActive = false;
+          // $scope.activeButton = function() {
+          //   $scope.isActive = !$scope.isActive;
+          // }  
+
+
+        if ($scope.activeName === "Tools") {
+
+            $scope.theTools = true;
+            $scope.theLegend = false;
+            $scope.theWeather = false;
+            $scope.theValuation = false;
+
+        }
+        else if ($scope.activeName === "Valuation") {
+
+            $scope.theTools = false;
+            $scope.theLegend = false;
+            $scope.theWeather = false;
+            $scope.theValuation = true;
+
+        }
+        else if ($scope.activeName === "Legend") {
+
+            $scope.theTools = false;
+            $scope.theLegend = true;
+            $scope.theWeather = false;
+            $scope.theValuation = false;
+
+
+        }
+        else if ($scope.activeName === "Weather") {
+
+            $scope.theTools = false;
+            $scope.theLegend = false;
+            $scope.theWeather = true;
+            $scope.theValuation = false;
+
+        }
+        else { }
+
+
+        //added--------------------------
+        panelCloseHit = false;
+
+        console.log('skinny panel going back')
+
+        $('.inactiveOverlay').removeClass('inactiveOverlayVisible');
+
+        $(".skinnyPanel").animate({
+           "marginLeft": "-=240px"
+           // "marginLeft": "+=0px"
+        }, 0);
+        skinnyPanelOpen = false;
+        console.log('skinnyPanelOpen ' + skinnyPanelOpen)
+
+
+
+
+        // https://stackoverflow.com/questions/16863800/javascript-regex-to-extract-the-string-before-the-last-backslash
+        // text = stringVariable.substring(0, stringVariable.lastIndexOf('/'));
+
+
+
+        // /^(.*[\\\/])/
+        // Explanation:
+
+        // ^      Start of line/string
+        // (      Start capturing group
+        // .*     Match any character greedily
+        // [\\\/] Match a backslash or a forward slash
+        // )      End the capturing group  
+
+
+        // sub(".*/", "", x)
+
+        // https://stackoverflow.com/questions/3981880/regex-for-everything-before-last-forward-or-backward-slash
+
+        // https://stackoverflow.com/questions/36683359/remove-everything-in-string-up-to-last-forward-slash/36683386
+
+
+
+
+
+
+        console.log('you clicked for ' + $scope.activeName)
+
+    };
+    //------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }]); // end - mapController

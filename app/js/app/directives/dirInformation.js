@@ -2,7 +2,7 @@
 
 //http://stackoverflow.com/questions/24802668/angularjs-directive-using-another-controller?rq=1
 
-open.directive('infoBlock', function() {
+open.directive('infoCard', function() {
 
 
 	 return {

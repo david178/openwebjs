@@ -5,7 +5,7 @@
             { "updatesid": 1, "name": "Streetview", "status": 1, "statusmsg": true, "statustext": "Streetview has been indefinately removed from OpenWeb due to changes in Google's billing structure."},
             { "updatesid": 2, "name": "MCD, Community & Land Use added", "status": 1, "statusmsg": false, "statustext": "none"},
             { "updatesid": 3, "name": "Flights & Views Added", "status": 1, "statusmsg": false, "statustext": "none"},
-            { "updatesid": 4, "name": "UI Enhancements, Property Valuation", "status": 1, "statusmsg": false, "statustext": "none"},
+            { "updatesid": 4, "name": "UI Enhancements, Prop Valuation", "status": 1, "statusmsg": false, "statustext": "none"},
             { "updatesid": 5, "name": "Updates: Map Views, Flights; Weather", "status": 1, "statusmsg": false, "statustext": "none"},
             { "updatesid": 6, "name": "Help Docs added", "status": 1, "statusmsg": false, "statustext": "none"},
             { "updatesid": 7, "name": "Search cross-streets, street name added", "status": 1, "statusmsg": false, "statustext": "none"}

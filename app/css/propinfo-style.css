@@ -216,27 +216,15 @@ cursor: move;
 
 #PropInfoDialog {
 
-  /* OLD */
-/*   position:absolute;
-  top: 50px !important;
-  left:240px !important;
-
-
-*/
-
 
 position:absolute;
-/*top: 45px;
-left:240px;*/
 
 top: 49px;
 left:240px;
 
-  width:386px; /* old was 386 */
-/*  display:none;*/
+width:386px; 
 visibility:hidden;
-  background-color: transparent !important;
-
+background-color: transparent !important;
 
 
 
@@ -327,42 +315,6 @@ transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
   -ms-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 
-  
-
-
-
-
-
-
-
-
-
-
-/*    -webkit-transition: all 0.5s ease-in-out;
-     -moz-transition: all 0.5s ease-in-out;
-     -o-transition: all 0.5s ease-in-out;
-     -ms-transition: all 0.5s ease-in-out;
-     transition: all 0.5s ease-in-out;*/
-
-
-
-
-/*      -webkit-transition: all 0.4s ease-in;
-       -moz-transition: all 0.4s ease-in;
-       -o-transition: all 0.4s ease-in;
-       -ms-transition: all 0.4s ease-in;
-       transition: all 0.4s ease-in;
-
-     -webkit-transition: all 0.2s ease-out;
-      -moz-transition: all 0.2s ease-out;
-      -o-transition: all 0.2s ease-out;
-      -ms-transition: all 0.2s ease-out;
-      transition: all 0.2s ease-out;
-*/
-
-
-
-
 
 
 
@@ -384,7 +336,6 @@ transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 
 background: #fff !important;
 
-/*background: #fff !important;*/
 }
 
 
@@ -412,6 +363,9 @@ zoom: 1;
 
 
   background-color: white !important;
+
+/*  background-color: rgb(17, 63, 112) !important;
+  */
 
 
           -moz-box-shadow:    inset  0  8px 8px -8px #939393, 
@@ -487,78 +441,6 @@ background-color: #fff !important;
 
   height:35px !important;
 }*/
-
-
-
-
-
-
-/*
-.mblAccordionTitle {
-position: relative;
-height: 30px;
-
-font-family: "Source Sans Pro", sans-serif !important;
-font-weight: bold !important;
-font-size: 14px !important;
-
-line-height: 30px;
-vertical-align: middle;
-white-space: nowrap;
-border-top: 1px solid #8c8f91;
-
-background-image: none !important;
-
-color: black !important;
-
-
-background: #0d77b6  !important; 
-
-}
-
-.mblAccordionTitleLabel {
-
-color: white !important;
-
-}
-
-
-.mblAccordionTitleSelected {
-border-bottom: 0px solid #8c8f91 !important;
-
-background-image: none !important;
-
-color: black !important;
-
-
-background: #0d77b6  !important; 
-
-
-}
-
-
-.mblAccordionTitleSelected .mblAccordionTitleAnchor {
-
-  color: black !important;
-}
-
-.mblImageIcon {
-
-  opacity: .8 !important;
-}
-
-.mblAccordion {
-border-style: outset;
-border-width: 0px !important;
-border-color: #8c8f91;
-}
-
-
-
-
-*/
-
-
 
 
 
@@ -680,46 +562,6 @@ border-color: #8c8f91;
 
 
 */
-
-
-
-
-
-
-
-
-
-/* jQuery accordion */
-/*#accordion {
-
-}
-
-#accordion .ui-accordion-header { 
-
-background: #0d77b6  !important;
-
-border:0px;
-
-  color:white;
-}
-
-
-#accordion .ui-accordion-header.ui-state-active { 
-  background: #0c8d11; 
-}
-
-*/
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1076,11 +918,16 @@ border-color: #29abe0 !important;*/
 
 
 
-border: 1px solid #4285f4 !important;
+
 font-weight: bold !important;
 outline: none !important;
-background: #4285f4 !important;
-background: -webkit-linear-gradient(top,#4387fd,#4683ea) !important;
+
+border: 1px solid #4285f4;
+background: #4285f4;
+background: -webkit-linear-gradient(top,#4387fd,#4683ea);
+
+
+
 /*border: 1px solid #4285f4;
 font-weight: bold;
 outline: none;
@@ -1115,44 +962,6 @@ top: 50%;
 width: 19px;
 height: 18px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1669,8 +1478,8 @@ background-position: 16px 18px;
  }
 
 
- .accordionStyleNew {
-
+/* .accordionStyleNew {
+*/
 
 /*    background-color: white !important;*/
 
@@ -1692,8 +1501,9 @@ background-position: 16px 18px;
 
 
 /*line-height: 1.63;*/
-line-height: 1.53;
-
+/*line-height: 1.53;
+  font-family: Lato,'Noto Sans',sans-serif;
+*/
 
   /* current */
   /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1703,7 +1513,7 @@ line-height: 1.53;
 
 /*  font-family: Verdana,Arial,sans-serif;*/
 
-  font-family: Lato,'Noto Sans',sans-serif;
+/*  font-family: Lato,'Noto Sans',sans-serif;*/
 /*  font-family: 'Noto Sans',sans-serif;*/
 
 /*letter-spacing: -.0323em;*/
@@ -1713,8 +1523,8 @@ line-height: 1.53;
 /*  max-height:500px;*/
 
 
-
- }
+/*
+ }*/
 
  /*#PropInfoDialog {
 
@@ -1866,32 +1676,15 @@ font-weight: bold !important;*/
   }
 
 
-/* accordion margin fix */
-.panel-group {
-  margin-bottom:5px !important;
 
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
-  
-/*
- 
 
-  -moz-box-shadow:    inset  0  8px 8px -8px #939393, 
-                      inset  0 -8px 8px -8px #939393 !important;
-  -webkit-box-shadow: inset  0  8px 8px -8px #939393, 
-                      inset  0 -8px 8px -8px #939393 !important;
-   box-shadow:        inset  0  8px 8px -8px #939393, 
-                      inset  0 -8px 8px -8px #939393 !important;
-*/
 
-/*-moz-box-shadow:    inset  0  8px 8px -8px #939393, 
-                    inset  0 -8px 8px -8px #939393 !important;
--webkit-box-shadow: inset  0  8px 8px -8px #939393, 
-                    inset  0 -8px 8px -8px #939393 !important;
- box-shadow:        inset  0  8px 8px -8px #939393, 
-                    inset  0 -8px 8px -8px #939393 !important;
-*/
 
-}
+
+
+
+
+
 
 
 
@@ -1903,7 +1696,7 @@ font-weight: bold !important;*/
   .nav-tabs > li.active > a {
 /*  color: black;*/
 
-color: white !important;
+  color: white !important;
   font-weight:normal;
   }
 

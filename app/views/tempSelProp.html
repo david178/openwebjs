@@ -1,0 +1,280 @@
+
+
+<!--    <div id='PropInfoDialog' style="" title='Select Property' class='conditionalShow' ng-controller='accordionCtrl'> -->
+   <!-- ionic icons: http://ionicons.com/ -->
+
+             <!-- Accordion -->
+              <div class='accordionStyleNew' class='cards-strong conditionalShow' ng-controller='accordionCtrl' > <!-- parentcontainer -->
+                <accordion close-others='oneAtATime'>
+
+                 <!-- Property Information -->
+                 <accordion-group is-open="status.open0" is-disabled='status.open0D' style="z-index:11 !important; margin-bottom:-4px !important;" class="spG1">
+                     <accordion-heading>
+                        <div>
+
+                        <!-- iconic -->
+                        <span class="iconic-adjust-11 ion-information-circled" data-pack="default" data-tags="help, more, tooltip"></span>
+
+                         Property Information 
+
+
+                         <!-- <span class="iconic-adjust-mainexpand ion-android-expand" ></span> -->
+                         <span class="iconic-adjust-mainexpand ion-android-more-vertical" ></span>
+
+
+                         
+
+
+
+
+   <!--                       <i class="ion-social-buffer-outline" style=" font-size: 24px; color:#DEDEDE;"></i> -->
+                        </div>
+                     </accordion-heading>
+
+
+                     <!-- Print Init Link -->
+                     <a id="printInitLink" href='' target="_blank" style="float:right; font-weight:bold; padding:3px;">
+                        <span class="iconic-adjust-11 ion-printer" data-pack="default" data-tags="paper"></span>
+                          <span id="printInitTag">Print</span>
+                     </a>
+
+                     <!-- Print Loading Element -->
+                     <span id="printLoadingTag"  style="float:right; ">
+                        <div id="loading-image2" class="loader2"></div>
+                     </span>
+
+
+                     <!-- Print Friendly Link -->
+                     <a id="printFriendlyLink" href='' target="_blank" style="float:right; font-weight:bold; padding:3px;">
+                        <span class="iconic-adjust-11 ion-printer" data-pack="default" data-tags="paper"></span>
+                          <span id="printReadyTag">Ready</span>
+                      </a>
+
+
+                     <p class="spF1"><b>Parcel:</b> {{attr.parcel}}</p>
+                     <p class="spF2"><b>Owner Name(s):</b> {{data.OwnerName}}</p>
+                     <p class="spF3"><b>Site Address:</b> {{data.SiteAddress}}</p>
+                     <p class="spF4"><b>Jurisdiction:</b> {{zoning.jurisdiction}} - {{data.ZipCode}}</p>
+                     <p class="spF5"><b>Sale Date:</b> {{data.SaleDate}}</p>
+                     <p class="spF6"><b>Sale Price:</b> {{data.SalePrice}}</p>
+                     <p class="spF7"><b>Estimated Lot Size:</b> {{data.CalcAcres}}</p>
+                     <p class="spF8"><b>Construction Year:</b> {{data.ConsructionYear}}</p>
+                     <p class="spF9"><b>Recorded Doc Number:</b> 
+                       <a class="infoLinks" target="_blank" href='http://gisgate.co.clark.nv.us/assessor/webimages/default.asp?appID=1&txtdocNum={{data.DocNumber}}'>{{data.DocNumber}}</a>
+                     </p>
+                     <p class="spF10"><b>Aerial Flight Date:</b> {{aerialDate}}</p>
+                 </accordion-group>
+
+                 <!-- Zoning and PLU -->
+                 <accordion-group is-open="status.open1" is-disabled='status.open1D' style="z-index:10 !important; margin-bottom:-4px !important;" class="spG2">
+                     <accordion-heading >
+                        <div>
+
+
+
+                        <!-- ionic -->
+                        <span class="iconic-adjust-11 ion-crop" data-pack="default" data-tags="images, levels, light, dark, settings"></span>
+
+                         Zoning and Planned Landuse 
+                        </div>
+                     </accordion-heading>
+                     <p>
+     
+                     <p><b>Zoning Classification:</b> 
+                       <a class="infoLinks" target="_blank" href='{{ZonePLU.ZoneLink}}'>{{zoning.zoneDescription}}</a>
+                     </p>
+
+                     <p ><b>Overlay District:</b>   </p> <!-- {{PLU.CommunityDistrict}} --> <!-- ng-show="matchCount==1" -->
+                     <p ><b>Planned Landuse:</b>   </p> <!-- {{PLU.CommunityDistrict}} -->
+                     <p ng-show="land.length"><b>Land Use Plan Area:</b> <span>{{land.LandUsePlanArea}}</span> </p> 
+                     <!-- <p ng-if="q.length === 0"><b>Land Use Plan Area:</b> {{q.LandUsePlanArea}} </p>  --><!-- {{PLU.CommunityDistrict}} --> 
+                     <!-- ng-show="!land.LandUsePlanArea" -->
+
+
+                     <!-- Contests (search active) -->
+<!--                      <p ng-show="q" class="quick">
+                         <h1>{{q.LandUsePlanArea}}</h1>
+                     </p> -->
+
+
+
+                     <p><b>Community District:</b> {{PLU.CommunityDistrict}}</p> <!-- {{PLU.CommunityDistrict}} -->
+
+
+
+
+                     <!-- <p><b>Community District:</b> {{PLU.CommunityDistrict}}</p> --> <!-- {{PLU.CommunityDistrict}} -->
+
+
+                     <!-- </p> -->
+                 </accordion-group>
+
+                 <!-- Legal Descr. -->
+                 <accordion-group is-open="status.open2" is-disabled='status.open2D' style="z-index:9; margin-bottom:-4px !important;" class="spG3">
+                     <accordion-heading>
+                        <div>
+
+
+                        <!-- ionic -->
+                        <span class="iconic-adjust-10 ion-ios-paper" data-pack="ios" data-tags="feed, paper"></span>
+
+                         Legal Description 
+                        </div>
+                     </accordion-heading>
+                     <p><b>Subdivision Name:</b> {{data.SubName}}</p>
+                     <p><b>Book Page:</b> {{data.AssessorBook}} {{data.AssessorPage}}</p>
+                     <p><b>Lot Block:</b> {{data.LotBlock}}</p>
+                     <p><b>T-R-S:</b> {{data.TownshipRangeSection}}</p>
+                     <p><b>Tax District:</b> {{data.taxDistrict}}</p>
+                     <p><b>Census Tract:</b> {{ }}</p>
+                     </p>
+                 </accordion-group>
+
+
+                  <!-- Ownership -->
+                  <accordion-group is-open="status.open3" is-disabled='status.open3D' style="z-index:8; margin-bottom:-4px !important;" class="spG4"> 
+                      <accordion-heading>
+                         <div>
+
+
+                         <!-- iconic -->
+                         <span class="iconic-adjust-11 ion-person-stalker" data-pack="default" data-tags="people, human, users, staff"></span>
+
+                          Ownership 
+                         </div>
+                      </accordion-heading>
+
+                            <div style="overflow-x:scroll; max-height:252px; overflow-y: scroll; margin:7px;">
+
+
+                                  <input class="ownershipFilter" type="search" ng-model="q" placeholder="filter owners..." aria-label="filter owners" />
+
+
+                                <table class='table table-bordered table-striped ownershipTable' > 
+                                  <tr style="background-color: #f9f9f9; height:5px !important;">
+                                    <th style="height:5px !important;">Parcel</th> 
+                                    <th style="height:5px !important;">Owners</th> 
+                                    <th style="height:5px !important;">Recorded Document</th> 
+                                    <th style="height:5px !important;">Recorded Date</th> 
+                                    <th style="height:5px !important;">Vesting</th> 
+                                    <th style="height:5px !important;">Tax District</th> 
+                                    <th style="height:5px !important;">Estimated Size</th> 
+                                  </tr>
+                                  <tr ng-repeat="result in ownershipHist | filter:q as results"> 
+
+                                    <td>{{result.parcel}}</td> <!-- {{attr.parcel}} -->
+                                    <td>{{result.priorOwners}}</td> <!-- {{data.OwnerName}} -->
+                                    <td>                     
+                                     <p>
+                                       <a class="infoLinks" target="_blank" href='http://gisgate.co.clark.nv.us/assessor/webimages/default.asp?appID=1&txtdocNum={{result.recordedDocument}}'> {{result.recordedDocument}} </a> 
+
+                                       <!-- {{result.recordedDocument}} -->
+                                       <!-- http://gisgate.co.clark.nv.us/assessor/webimages/default.asp?appID=1&txtdocNum={{result.recordedDocument}} -->
+                                     </p></td>
+                                    <td>{{result.recordedDate}}</td>
+                                    <td>{{result.vesting}}</td>
+                                    <td>{{result.taxDistrict}}</td>
+                                    <td>{{result.estimatedSize}}</td>
+
+                                  </tr>
+                                </table>
+
+
+
+                              </div>
+
+
+
+                  </accordion-group>
+
+
+                 <!-- Flood Zone -->
+                 <accordion-group is-open="status.open4" is-disabled='status.open4D' style="z-index:7; margin-bottom:-4px !important;" class="spG5">
+                     <accordion-heading>
+                        <div>
+
+                        <!-- ionic -->
+                        <span class="iconic-adjust-8 ion-waterdrop" data-pack="default" data-tags="nature, clean, recycle, fresh, wet, rain"></span>
+
+                         Flood Zone 
+                        </div>
+                     </accordion-heading>
+                     <p><b>FEMA Panel: </b> &nbsp; {{floodZone.FEMAPanel}}</p>  
+                     <p><b>Contact: </b> &nbsp; {{floodZone.CityContact}}</p>  
+                     <p><b>Jurisdiction: </b> &nbsp; {{floodZone.CityName}}</p>  
+                 </accordion-group>
+
+                  <!-- Elected Officials -->
+                  <accordion-group is-open="status.open5" is-disabled='status.open5D' style="z-index:6; margin-bottom:-4px !important;"> 
+                      <accordion-heading>
+                         <div>
+
+                         <!-- ionic -->
+                         <span class="iconic-adjust-10 ion-ribbon-b" data-pack="default" data-tags="competition, compete, win, lose, award, trophy"></span>
+
+                          Elected Officials 
+                         </div>
+                      </accordion-heading>
+
+                      <p><b>Commissioner: </b> &nbsp; {{elecOfficial.CountyCommissioner}}</p>  
+                      <p><b>City Ward: </b> &nbsp; {{elecOfficial.CityWard}}</p>  
+                      <p><b>U.S. Senate: </b> &nbsp; {{elecOfficial.Senate}}</p>  
+                      <p><b>U.S. Congress: </b> &nbsp; {{elecOfficial.Congress}}</p>  
+                      <p><b>State Senate: </b> &nbsp; {{elecOfficial.StateSenate}}</p>  
+                      <p><b>State Assembly: </b> &nbsp; {{elecOfficial.StateAssembly}}</p>  
+                      <p><b>School District: </b> &nbsp; {{elecOfficial.SchoolBoard}}</p>  
+                      <p><b>University Regent: </b> &nbsp; {{elecOfficial.UniversityRegent}}</p>  
+                      <p><b>Board of Education: </b> &nbsp; {{elecOfficial.BoardOfEducation}}</p>  
+                      <p><b>Minor Civil Division: </b> &nbsp; {{land.MinorCivilDivision}}</p>  
+
+                  </accordion-group>
+
+                   <!-- Links -->
+                   <accordion-group is-open="status.open6" is-disabled='status.open6D' style="z-index:5; margin-bottom:-4px !important;" class="spG6">
+                       <accordion-heading>
+                          <div>
+
+                          <i class="fa fa-fw" aria-hidden="true" title="Copy to use link" style="margin-left:-6px !important; margin-right:2px !important; font-size: 13px;"></i>
+                           Links 
+                          </div>
+                       </accordion-heading>
+                           <p> <a id="infoLink0" class="infoLinks" target="_blank" href='{{linkInfo.AssessorInformation}}'>Assessor's Information</a>
+                           </p>
+                           <p> <a id="infoLink1" class="infoLinks" target="_blank" href='{{linkInfo.AssessorParcelmaps}}'>Assessor's Parcel Map</a>
+                           </p>
+                           <p> <a id="infoLink2" class="infoLinks" target="_blank" href='{{linkInfo.TreasurerInformation}}'>Treasurer's Information</a>
+                           </p>
+                           <p> <a id="infoLink3" class="infoLinks" target="_blank" href='{{linkInfo.DocumnetImagingRecords}}'>Document Image Records</a>
+                           </p>
+                           <p> <a id="infoLink8" class="infoLinks" target="_blank" href='{{linkInfo.RecorderLink}}'>Recorder's Office Information</a>
+                           </p>
+                           <p> <a id="infoLink4" class="infoLinks" target="_blank" href='{{linkInfo.SoilGuidlinesLink}}'>Soil Guidelines Map</a>
+                           </p>
+                           <p> <a id="infoLink5" class="infoLinks" target="_blank" href='{{linkInfo.ExpansiveSoilGuidelinesLink}}'>Expansive Soil Guidelines Map</a>
+                           </p>
+                           <p> <a id="infoLink6" class="infoLinks" target="_blank" href='{{linkInfo.FloodZoneInformation}}'>Flood Zone Information</a>
+                           </p>
+                           <p> <a id="infoLink7" class="infoLinks" target="_blank" href='http://gisgate.co.clark.nv.us/openweb?getparcel={{attr.parcel}}'>Mail Link of Current Parcel</a>
+                           </p>
+
+                   </accordion-group>
+
+
+                   <!-- StreetView -->
+                  <div id="streetCard" class='conditionalShow_Street' ng-show="toggle" > 
+
+<!--                      <div class="StrLabel_Top" >
+                       <p></p>
+                     </div> -->
+
+<!--                      <div class="StrLabel" >
+                       <p>{{data.SiteAddress}}</p>
+                     </div> -->
+
+                   </div>
+
+                 </accordion>
+
+                </div> 
+
+<!--          </div> -->

@@ -1,34 +1,6 @@
 
 
 
-#slidepanel {
-    height: 100%;
-    width: 240px;
-    float: left;
-    /* background-color: #222; */
-    /*background: #232323;*/
-    /*background-color: #759EC9;*/
-
-    background-color: rgb(17, 63, 112);
-/*    background-color: #3f51b5;*/
-    
-    /*background-color: rgb(17, 63, 112);*/
-    /* background: #232f3e; */
-    /* border-color: #080808; */
-    z-index: 1000;
-    margin-top: 50px !important;
-}
-.sliderStyle {
-  background-color: rgb(17, 63, 112);
-  border-color: rgb(17, 63, 112);
-/*  background-color: #3f51b5;
-  border-color: #3f51b5;*/
-
-    /*background-color: #222;*/
-    /* background-color: #232f3e; */
-    /*border-color: #080808;*/
-
-}
 
 
 
@@ -99,14 +71,7 @@
 
 
 
-.cards-strong {
-  background: #0D2E56;
-/*  background: #303f9f;*/
 
-color: #DEDEDE !important;
-
-box-shadow: 0 2px 6px rgba(0,0,0,0);
-}
 
 
 

@@ -14,8 +14,12 @@
 
     #title {
         outline-style: none;
-        margin-left: -13px;
-        padding-right: 45px;
+/*        margin-left: -13px;
+        padding-right: 45px;*/
+        background-color: transparent !important;
+    }
+    .navbar-brand {
+        padding:0px;
     }
 
 
@@ -27,7 +31,7 @@
     }
 
     #tester>.dropdown-menu {
-        width: 388px !important;
+        /*width: 388px !important;*/
         margin-left: -1px;
         margin-right: 0px;
 
@@ -39,6 +43,10 @@
         box-shadow: none;
         border-bottom: 0px;
         box-sizing: border-box;
+
+        /* added */
+        width: 100% !important;
+        left:1px !important;
     }
 
     #tester>input {
@@ -51,8 +59,14 @@
         background: #fff;
         background-image: none;
         color: #545454;
-        background: #f5f5f5;
+        background: #f8f8f8;
         border: none !important;
+    }
+    .dropdown-menu > .active > a {
+        /*background-color: #f8f8f8;*/
+        background-color: #e8e9ea;
+/*        abafb5*/
+
     }
 
 
@@ -62,15 +76,20 @@
     #searchBtn {
         height: 49px;
         width: 49px;
-
-        color: #fff !important;
-        background-color: rgb(37, 83, 132) !important;
-        background: rgb(37, 83, 132) !important;
-        border-color: rgb(37, 83, 132) !important;
+        color:rgb(37, 83, 132) !important;
+        background-color: #f8f8f8 !important;
+        background: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;
     }
-
-
-
+    #hamburgerBtn {
+        height: 49px;
+        width: 49px;
+        color:rgb(37, 83, 132) !important;
+        background-color: #f8f8f8 !important;
+        background: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;
+        
+    }
 
 
     /* navbar length for non-mobile screen sizes */
@@ -81,7 +100,8 @@
 
     /* fixed search size for desktop & tablet */
     .searchSize {
-        width: 699px;
+        /*width: 699px;*/
+        width: 382px;
     }
 
     /* $body adjust */
@@ -164,8 +184,12 @@
 
     #title {
         outline-style: none;
-        margin-left: -13px;
-        padding-right: 45px;
+/*        margin-left: -13px;
+        padding-right: 45px;*/
+        background-color: transparent !important;
+    }
+    .navbar-brand {
+        padding:0px;
     }
 
 
@@ -214,15 +238,19 @@
     #searchBtn {
         height: 49px;
         width: 49px;
-        color: #fff !important;
-        background-color: rgb(37, 83, 132) !important;
-        background: rgb(37, 83, 132) !important;
-        border-color: rgb(37, 83, 132) !important;
+        color:rgb(37, 83, 132) !important;
+        background-color: #f8f8f8 !important;
+        background: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;
     }
-
-
-
-
+    #hamburgerBtn {
+        height: 49px;
+        width: 49px;
+        color:rgb(37, 83, 132) !important;
+        background-color: #f8f8f8 !important;
+        background: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;
+    }
 
     /* navbar length for non-mobile screen sizes */
     .navbar,
@@ -232,7 +260,8 @@
 
     /* fixed search size for desktop & tablet */
     .searchSize {
-        width: 699px;
+        /*width: 699px;*/
+        width: 382px;
     }
 
     /* $body adjust */
@@ -329,11 +358,11 @@
 
     #title {
         outline-style: none;
-        margin-left: -13px;
-        padding-right: 45px;
+        background-color: transparent !important;
     }
-
-
+    .navbar-brand {
+        padding:0px;
+    }
 
     /* ensures the autocomplete active list items dont 
     overlay the bottom ul with no border radius */
@@ -365,33 +394,29 @@
     #tester>input:hover {
         background: #fff;
         background-image: none;
-
         color: #545454;
         background: #f5f5f5;
-
         border: none !important;
     }
-
-
-
 
     .input-group-btn {}
 
     #searchBtn {
-        /*    left:1px !important;
-
-    height:32px !important;
-    border: 1px solid transparent !important;*/
         height: 49px;
         width: 49px;
-
-        color: #fff !important;
-        background-color: rgb(37, 83, 132) !important;
-        background: rgb(37, 83, 132) !important;
-        border-color: rgb(37, 83, 132) !important;
+        color:rgb(37, 83, 132) !important;
+        background-color: #f8f8f8 !important;
+        background: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;
     }
-
-
+    #hamburgerBtn {
+        height: 49px;
+        width: 49px;
+        color:rgb(37, 83, 132) !important;
+        background-color: #f8f8f8 !important;
+        background: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;
+    }
 
 
 
@@ -404,7 +429,8 @@
 
     /* fixed search size for desktop & tablet */
     .searchSize {
-        width: 699px;
+        /*width: 699px;*/
+        width: 382px;
     }
 
     /* $body adjust */
@@ -468,8 +494,6 @@
     .valuationList {
         pointer-events: none !important;
         opacity: 0.4 !important;
-        /*  pointer-events:auto;
-    opacity:1;*/
     }
 }
 
@@ -493,37 +517,22 @@
 
     #title {
         outline-style: none;
-        margin-left: -13px;
-        margin-right: 9px;
-
-        background-color: rgb(37, 83, 132) !important;
-        background: rgb(37, 83, 132) !important;
-        border-color: rgb(37, 83, 132) !important;
+        background-color: transparent !important;
     }
-    #imgLogo_mobile {
-        margin-left: 7px !important;
-        margin-right: 0px !important;
-    }
-
-
-    .navbar-inverse {
-        /*      background-color: rgb(17, 63, 112) !important;
-      border-color: rgb(17, 63, 112) !important;*/
-        /*      background-color: rgb(37, 83, 132) !important;
-      background: rgb(37, 83, 132) !important;
-      border-color: rgb(37, 83, 132) !important;*/
+    .navbar-brand {
+        padding:0px;
     }
 
 
 
 
-    /* disclaimer dialog, adjust dimensions for mobile display (7.28) */
-    .ui-dialog .ui-widget .ui-widget-content .ui-corner-all .ui-front .no-close .ui-draggable {}
-
-    #disclaimerDialog {}
 
 
-    #tester>.dropdown-menu {
+
+
+
+
+/*    #tester>.dropdown-menu {
         padding: 5px;
         box-shadow: none;
         border-bottom: 0px;
@@ -602,42 +611,155 @@
     }
 
     #tester>input,
-    button {}
+    button {}*/
+
+/*    .input-group-btn {}*/
 
 
 
+
+
+
+
+
+    #title {
+        outline-style: none;
+        background-color: transparent !important;
+    }
+    .navbar-brand {
+        padding:0px;
+    }
+
+    /* ensures the autocomplete active list items dont 
+    overlay the bottom ul with no border radius */
+    #tester>.dropdown-menu>.active>a {
+        border-radius: 0px !important;
+    }
+
+    #tester>.dropdown-menu {
+        width: 388px !important;
+        margin-left: -1px;
+        margin-right: 0px;
+
+        margin-top: 0px !important;
+        background-color: #fff;
+        border-bottom-left-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+        border-top: 0px !important;
+        box-shadow: none;
+        border-bottom: 0px;
+        box-sizing: border-box;
+    }
+
+    #tester>input {
+        background: #fff;
+    }
+
+    #tester>input:focus,
+    #tester>input:active,
+    #tester>input:hover {
+        background: #fff;
+        background-image: none;
+        color: #545454;
+        background: #f5f5f5;
+        border: none !important;
+    }
 
     .input-group-btn {}
 
     #searchBtn {
-        /*    left:1px !important;
-
-    height:32px !important;
-    border: 1px solid transparent !important;*/
         height: 49px;
         width: 49px;
-
-        color: #fff !important;
-        background-color: rgb(37, 83, 132) !important;
-        background: rgb(37, 83, 132) !important;
-        border-color: rgb(37, 83, 132) !important;
-
-        margin-right: -20px;
-        /* updated */
+        color:rgb(37, 83, 132) !important;
+        background-color: #f8f8f8 !important;
+        background: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;
+    }
+    #hamburgerBtn {
+        height: 49px;
+        width: 49px;
+        color:rgb(37, 83, 132) !important;
+        background-color: #f8f8f8 !important;
+        background: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;
     }
 
 
-    #closeIcon {
-        margin-right: -20px;
-        /* updated */
+
+
+    /* navbar length for non-mobile screen sizes */
+    .navbar,
+    .navbar-header {
+        width: 0px;
     }
 
+    /* fixed search size for desktop & tablet */
+    .searchSize {
+        width: 100%;
+    }
+
+    /* $body adjust */
+    .dropdown-menu {}
+
+    .u-targetting-typeahead>.dropdown-menu {}
+
+    /* isolating the autocomplete dropdown for styling */
+    body>.dropdown-menu {
+        z-index: 999999 !important;
+        font-size: 20px !important;
+        background-color: black !important;
+        width: 385px !important;
+    }
+
+    body>.dropdown-menu>li {
+        border-top-right-radius: 0 !important;
+        border-top-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+
+    #searchBtn {
+        height: 49px;
+        width: 49px;
+        color:rgb(37, 83, 132) !important;
+        background-color: #f8f8f8 !important;
+        background: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;
+/*        margin-right: -20px;*/
+
+    }
+    #hamburgerBtn {
+        height: 49px;
+        width: 49px;
+        color:rgb(37, 83, 132) !important;
+        background-color: #f8f8f8 !important;
+        background: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;
+    }
+
+
+
+    /* fixed search size for desktop & tablet */
+    .searchSize {
+        /*width: 699px;*/
+        /*width: 386px;*/
+        width: 100%;
+    }
+
+
+
+
+
+/*    #closeIcon {
+        margin-right: -20px;
+    }
+*/
 
 
 
 
     /* Navbar height */
-    .navbar,
+/*    .navbar,
     .navbar-header {
         min-height: 50px;
         border-radius: 0px !important;
@@ -652,7 +774,6 @@
         line-height: 26px;
         padding: 1px 5px;
     }
-    /* for icons */
     .navbar-nav>li>i {}
 
 
@@ -664,7 +785,7 @@
         left: 223px;
         cursor: pointer;
     }
-
+*/
 
 
 
@@ -682,7 +803,7 @@
 
 
 
-    .navbar-form {
+/*    .navbar-form {
         padding: 10px 15px;
         margin-top: 0px;
         margin-right: -15px;
@@ -709,26 +830,24 @@
         margin-top: -2px;
         margin-left: -25px !important;
         height: 50px;
-    }
+    }*/
 
 
 
 
     /* size the logo for mobile */
-    #imgLogo {
+/*    #imgLogo {
         display: none;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         background: url(../images/logos/ow/compass.png) no-repeat;
         width: 42px;
-        /* Width of new image */
         height: 42px;
-        /* Height of new image */
         padding-left: 40px;
-        /* Equal to width of new image */
-    }
 
-    #imgLogo_mobile {
+    }*/
+
+/*    #imgLogo_mobile {
         display: block;
         margin-right: 9px;
         margin-top: 1px;
@@ -738,45 +857,101 @@
 
     #search-holder {
         margin-left: 1px !important;
-    }
+    }*/
 
 
     /* Map Legend */
-    #legendDivCasing,
+/*    #legendDivCasing,
     #weatherDivCasing,
     #valuationDivCasing {
-        /*  top:70px !important;*/
-    }
+    }*/
 
-
-
-
-
-    #tester {
+/*    #tester {
         margin-top: -7px !important;
         outline: 0px !important;
-        /*border: none !important;*/
         border: 0px solid rgb(37, 83, 132) !important;
     }
 
-
-    #search-form {
+    .searchformcontainer {
 
         outline: 0 !important;
         letter-spacing: 0;
         background: #FFF;
 
-        /*border: 0px !important;*/
         border: 0px solid rgb(37, 83, 132) !important;
 
         border-radius: 0 !important;
-        box-shadow: none;
-
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
 
         margin-top: 0px;
-        /*height: 49px !important;*/
         margin-right: -11px;
     }
+*/
+
+
+
+
+    
+
+
+
+
+
+
+
+    
+
+
+
+
+        /* In Mobile view - For now just roll-up the omnibar by modifying its class and hiding/showing the hideshowBar */
+        /* In future - will do this, and in-addition display:none; for the .esripopup infoWindow class below, and
+        make it so that the omnibar's selprop contents can be viewable/scrollable */
+    
+    .omnibarcontainer {
+
+        width:100% !important;
+        height:63px !important; 
+
+        -webkit-transition: all 200ms ease-out 0ms;
+        -moz-transition: all 200ms ease-out 0ms;
+        -o-transition: all 200ms ease-out 0ms;
+        -ms-transition: all 200ms ease-out 0ms;
+        transition: all 200ms ease-out 0ms;
+
+        overflow-y:hidden !important; 
+
+
+    }
+    .hideShowBar {
+
+        display:none !important;
+
+
+/*        color:black;
+
+        height:36.25px;
+
+        background-color: rgb(37, 83, 132) !important;
+
+        width: 386px;
+        z-index: 9999;
+
+        position: absolute;
+        bottom:0px;
+        left:0px;*/
+
+        -webkit-transition: all 0ms ease-out 0ms;
+        -moz-transition: all 0ms ease-out 0ms;
+        -o-transition: all 0ms ease-out 0ms;
+        -ms-transition: all 0ms ease-out 0ms;
+        transition: all 0ms ease-out 0ms;
+
+
+    }
+
+
+
 
 
 
@@ -798,6 +973,7 @@
     /* mobile propInfo */
     .esriPopup {
         display: block;
+/*        display: none;*/
     }
     .StreetList,
     .LegList,

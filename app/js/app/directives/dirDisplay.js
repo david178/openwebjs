@@ -22,6 +22,14 @@ open.directive('displayView', function() {
               }
           });
 
+          // $( "#clickme" ).click(function() {
+          //   $( "#book" ).toggle( "slow", function() {
+          //     // Animation complete.
+          //   });
+          // });
+
+          
+
 
           //user over-ride to hide streetview widget
           $('.strViewOverrides').on('click', function(e){
@@ -568,6 +576,7 @@ open.directive('displayView', function() {
       //update output
       function outputUpdate(val) {
         val = val * 100;
+        // document.getElementById("aerialLevel").innerHTML = val;
         document.getElementById("aerialLevel").innerHTML = val;
       }
 
@@ -692,35 +701,35 @@ open.directive('displayView', function() {
 
 
 
-            //if the 'x' Toggle buttons are clicked
-            $('#displayToggle').click(function() {
+        //     //if the 'x' Toggle buttons are clicked
+        //     $('#displayToggle').click(function() {
 
-              //added--------------------------
-              panelCloseHit = true;
-
-
-
-
-               if (slidePanelOpen) {
-
-                   console.log('display slide in clicked')
+        //       //added--------------------------
+        //       panelCloseHit = true;
 
 
 
-              //-------------------------------------------
-              //Updating the Header positioning & Arrow (ALL)
-              // $("#introHeader").css("left", -194 + "px");
-              $("#introHeader").css("left", -201 + "px");
-              $("#displayHeader").css("left", -181 + "px");
-              $("#toolsHeader").css("left", -201 + "px");
-              $("#resourcesHeader").css("left", -201 + "px");
-              $(".esriScalebar").css("left", -201 + "px");
 
-              //transforms
-              $('#displayToggle').addClass('toggleAdjust');
-              $('#displayHeader').addClass('headerAdjust');
-              $('#logoTitle').addClass('titleAdjust');
-              $('#search-form').addClass('searchFormAdjust');
+        //        if (skinnyPanelOpen) {
+
+        //            console.log('display slide in clicked')
+
+
+
+        //       //-------------------------------------------
+        //       //Updating the Header positioning & Arrow (ALL)
+        //       // $("#introHeader").css("left", -194 + "px");
+        //       $("#introHeader").css("left", -201 + "px");
+        //       $("#displayHeader").css("left", -181 + "px");
+        //       $("#toolsHeader").css("left", -201 + "px");
+        //       $("#resourcesHeader").css("left", -201 + "px");
+        //       $(".esriScalebar").css("left", -201 + "px");
+
+        //       //transforms
+        //       $('#displayToggle').addClass('toggleAdjust');
+        //       $('#displayHeader').addClass('headerAdjust');
+        //       $('#logoTitle').addClass('titleAdjust');
+        //       $('#search-form').addClass('searchFormAdjust');
 
 
               
@@ -728,116 +737,116 @@ open.directive('displayView', function() {
 
 
 
-              // $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-              $('#introToggle').toggleClass('ion-chevron-left ion-navicon-round');
+        //       // $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
+        //       $('#introToggle').toggleClass('ion-chevron-left ion-navicon-round');
               
-              $('#displayToggle').toggleClass('ion-chevron-left ion-navicon-round');
-              $('#toolsToggle').toggleClass('ion-chevron-left ion-navicon-round');
-              $('#resourcesToggle').toggleClass('ion-chevron-left ion-navicon-round');
+        //       $('#displayToggle').toggleClass('ion-chevron-left ion-navicon-round');
+        //       $('#toolsToggle').toggleClass('ion-chevron-left ion-navicon-round');
+        //       $('#resourcesToggle').toggleClass('ion-chevron-left ion-navicon-round');
 
-              $('#mainTabs').css("display", "none");
-              // $('#aerialSlider_Box').css("display", "none");
-              $('.infoBlock').css("display", "none");
-              //-------------------------------------------
+        //       $('#mainTabs').css("display", "none");
+        //       // $('#aerialSlider_Box').css("display", "none");
+        //       $('.infoBlock').css("display", "none");
+        //       //-------------------------------------------
 
-                // hide panel
-                $("#slidepanel").animate({
-                    "marginLeft": "-=240px"
-                }, 0);
-                slidePanelOpen = false;
-                // change width of map to fill empty space left from collapse of sldide panel
-                $('#mapDiv').animate({
-                  // "width": "-=150px"
-                    "width": "+=230px"
-                }, 0, function() {
-              // Animation complete.
+        //         // hide panel
+        //         $("#skinnyPanel").animate({
+        //             "marginLeft": "-=240px"
+        //         }, 0);
+        //         skinnyPanelOpen = false;
+        //         // change width of map to fill empty space left from collapse of sldide panel
+        //         $('#mapDiv').animate({
+        //           // "width": "-=150px"
+        //             "width": "+=230px"
+        //         }, 0, function() {
+        //       // Animation complete.
 
-              console.log('slide complete');
-
-
-              //subtract 50pixels for now, update for full amount of side panel later
-              document.getElementById('mapDiv').style.width = document.documentElement.clientWidth + "px";
+        //       console.log('slide complete');
 
 
+        //       //subtract 50pixels for now, update for full amount of side panel later
+        //       document.getElementById('mapDiv').style.width = document.documentElement.clientWidth + "px";
 
 
 
-              //Reposition & resize
-                    //repoMap(); //commented out
-                    map.reposition();
-                    map.resize();
+
+
+        //       //Reposition & resize
+        //             //repoMap(); //commented out
+        //             map.reposition();
+        //             map.resize();
                   
-                });
+        //         });
 
-            }
-            else {
+        //     }
+        //     else {
 
-              //added--------------------------
-              panelCloseHit = false;
+        //       //added--------------------------
+        //       panelCloseHit = false;
 
-              console.log('display slide out clicked')
-
-
-
-              //-------------------------------------------
-              //Updating the Header positioning & Arrow (ALL)
-              $("#introHeader").css("left", 0 + "px");
-              $("#displayHeader").css("left", 0 + "px");
-              $("#toolsHeader").css("left", 0 + "px");
-              $("#resourcesHeader").css("left", 0 + "px");
-              $(".esriScalebar").css("left", 19 + "px");
+        //       console.log('display slide out clicked')
 
 
-              //transforms
-              $('#displayToggle').removeClass('toggleAdjust');
-              $('#displayHeader').removeClass('headerAdjust');
-              $('#logoTitle').removeClass('titleAdjust');
-              $('#search-form').removeClass('searchFormAdjust');
+
+        //       //-------------------------------------------
+        //       //Updating the Header positioning & Arrow (ALL)
+        //       $("#introHeader").css("left", 0 + "px");
+        //       $("#displayHeader").css("left", 0 + "px");
+        //       $("#toolsHeader").css("left", 0 + "px");
+        //       $("#resourcesHeader").css("left", 0 + "px");
+        //       $(".esriScalebar").css("left", 19 + "px");
+
+
+        //       //transforms
+        //       $('#displayToggle').removeClass('toggleAdjust');
+        //       $('#displayHeader').removeClass('headerAdjust');
+        //       $('#logoTitle').removeClass('titleAdjust');
+        //       $('#search-form').removeClass('searchFormAdjust');
 
 
 
               
-              // $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
-              $('#introToggle').toggleClass('ion-chevron-left ion-navicon-round');
+        //       // $('#introToggle').toggleClass('fa fa-chevron-left fa fa-chevron-right');
+        //       $('#introToggle').toggleClass('ion-chevron-left ion-navicon-round');
 
-              $('#displayToggle').toggleClass('ion-chevron-left ion-navicon-round');
-              $('#toolsToggle').toggleClass('ion-chevron-left ion-navicon-round');
-              $('#resourcesToggle').toggleClass('ion-chevron-left ion-navicon-round');
+        //       $('#displayToggle').toggleClass('ion-chevron-left ion-navicon-round');
+        //       $('#toolsToggle').toggleClass('ion-chevron-left ion-navicon-round');
+        //       $('#resourcesToggle').toggleClass('ion-chevron-left ion-navicon-round');
               
-              $('#mainTabs').css("display", "block");
-              // $('#aerialSlider_Box').css("display", "block");
-              $('.infoBlock').css("display", "block");
-              //-------------------------------------------
+        //       $('#mainTabs').css("display", "block");
+        //       // $('#aerialSlider_Box').css("display", "block");
+        //       $('.infoBlock').css("display", "block");
+        //       //-------------------------------------------
 
-                $("#slidepanel").animate({
-                  "marginLeft": "+=240px"
-                }, 0);
-                slidePanelOpen = true;
-                $('#mapDiv').animate({
-                    "width": "-=240px"
-                }, 0, function() {
-              // Animation complete.
+        //         $("#slidepanel").animate({
+        //           "marginLeft": "+=240px"
+        //         }, 0);
+        //         slidePanelOpen = true;
+        //         $('#mapDiv').animate({
+        //             "width": "-=240px"
+        //         }, 0, function() {
+        //       // Animation complete.
 
-              console.log('slide complete');
+        //       console.log('slide complete');
 
-              //subtract 50pixels for now, update for full amount of side panel later
-              document.getElementById('mapDiv').style.width = document.documentElement.clientWidth - 240 + "px";
-
-
-
-              //Reposition & resize
-                    //repoMap(); //commented out
-                    map.reposition();
-                    map.resize();
-
-
-                });
-
-            }; //end of else
+        //       //subtract 50pixels for now, update for full amount of side panel later
+        //       document.getElementById('mapDiv').style.width = document.documentElement.clientWidth - 240 + "px";
 
 
 
-        });
+        //       //Reposition & resize
+        //             //repoMap(); //commented out
+        //             map.reposition();
+        //             map.resize();
+
+
+        //         });
+
+        //     }; //end of else
+
+
+
+        // });
 
 
 

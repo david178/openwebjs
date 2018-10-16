@@ -1,243 +1,94 @@
       
-      <div id='displayDirective' style='padding:7px; border:white;'>
-        <!-- Title -->
+<!--       <div id='displayDirective' style='padding:7px; border:white;'>
         <div id='displayHeader' class='alert alert-info conditionalShow' role='alert' style='padding:7px;'>Map Display
-          <!-- <span id='displayToggle' class='fa fa-chevron-left'></span> -->
           <span id='displayToggle' class='ion-chevron-left'></span>
           
-        </div>
+        </div> -->
 
 
-        <!-- CONTENT -->
-        <div style="margin-top:60px;">
+        <!-- Title -->
+        <div id='introHeader' class='conditionalShow' role='alert' style="border-bottom:1px solid #DEDEDE;" > <!-- alert alert-info --> <!-- margin-top:0px; -->
 
 
-
-          <nav class="main-nav main-nav-desktop">
-            
-              <ul class="nav-text blue-streak">
-              
-              <!--------------- MAP VIEWS -------------->
-<!--               <li class='dropdown' id='mapviewList'>
-                <a class='dropdown-toggle' data-toggle='dropdown' href="#">Map View</a>
-                  <ul class='dropdown-menu newspaper2 dropdown-menu-form' data-columns="2" style="width:550px !important;">
-
-                <li ng-repeat="result in Views| orderBy:''">
-
-                      <a href="#">
-                      <input id="{{result.vid}}" class="icon-checkbox ViewChecks" type="checkbox" 
-                      ng-model="result.vid" ng-click="viewChange(result.vname)" /> 
-                      <label for="{{result.vid}}">
-                        <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
-                        <span style="margin-right:4.7px !important;" class='glyphicon glyphicon-ok checked chkPadding'></span>
-                        {{result.vname}}
-                      </label>
-
-                    </a>
-
-                  </ul>
-                </li> -->
-
-<!--                 <li class='dropdown' id='mapviewList'>
-                  <a class='dropdown-toggle' data-toggle='dropdown' href="#">Map View</a>
-                    <ul class='dropdown-menu newspaper2 dropdown-menu-form' data-columns="2" style="width:550px !important;">
-
-                  <li ng-repeat="result in Views| orderBy:'vname'">
-
-                        <a href="#">
-                        <input id="{{result.vid}}" class="icon-checkbox ViewChecks" type="checkbox" 
-                        ng-model="result.vid" ng-click="viewChange(result.vname)" /> 
-                        <label for="{{result.vid}}">
-                          <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
-                          <span style="margin-right:4.7px !important;" class='glyphicon glyphicon-ok checked chkPadding'></span>
-                          {{result.vname}}
-                        </label>
-
-                      </a>
-
-                    </ul>
-                  </li> -->
+               <!-- Logos -->
+               <a id="title" class="navbar-brand" href="#" style=" " > 
+                   <div id='logoTitle' style="display:inline-block;">
+                     <img id="CountyLogo" title="OpenWeb" alt="OpenWeb" src="images/county/33logobrightened.png" class="conditionalShow" />
+                         <img id="imgLogo" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/ow3.5.png" style="height:74%; width:74%;"/>
+                         <img id="imgLogo_mobile" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/compass.png" />
+                   </div>     
+               </a>
 
 
-
-<!--                   <li class='dropdown' id='mapviewList'>
-                    <a class='dropdown-toggle' data-toggle='dropdown' href="#">Map View</a>
-                      <ul class='dropdown-menu newspaper2 dropdown-menu-form' data-columns="2" style="width:550px !important;">
-
-                    <li ng-repeat="result in Views| orderBy:'vname'">
-
-                          <a href="#">
-                          <input id="{{result.vid}}" class="icon-checkbox ViewChecks" type="checkbox" 
-                          ng-model="result.vid" ng-click="viewChange(result.vname)" /> 
-                          <label for="{{result.vid}}">
-                            <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
-                            <span style="margin-right:4.7px !important;" class='glyphicon glyphicon-ok checked chkPadding'></span>
-                            {{result.vname}}
-                          </label>
-
-                        </a>
-
-                      </ul>
-                    </li>
- -->
+          <!-- Toggle -->
+          <span id='introToggle' class='ion-chevron-left'><i class='ion-chevron-left' ></i></span>
 
 
-<!-- 
-               <li class='dropdown' id='mapviewList'>
-                 <a class='dropdown-toggle' data-toggle='dropdown' href="#">Map View</a>
-                   <ul class='dropdown-menu newspaper2 dropdown-menu-form' data-columns="2" style="width:550px !important;">
-
-                 <li ng-repeat="result in Views| orderBy:'vname'">
-
-                       <a href="#">
-                       <input id="{{result.vid}}" class="icon-checkbox ViewChecks" type="checkbox" 
-                       ng-model="result.vid" ng-click="viewChange(result.vname)" /> 
-                       <label for="{{result.vid}}">
-                         <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
-                         <span style="margin-right:4.7px !important;" class='glyphicon glyphicon-ok checked chkPadding'></span>
-                         {{result.vname}}
-                       </label>
-
-                     </a>
-
-                   </ul>
-                 </li> -->
-
-
-<!--                  <div class="form-group">
-                   <label for="sel1">Map View</label>
-                   <select class="form-control" id="sel1" ng-model="selected">
-                     <option ng-repeat="result in Views| orderBy:'vname'" ng-change="viewChange(selected)">
-                     {{result.vname}}
-                     </option>
-                   </select>
-                 </div> -->
-
-
-<!--                  <div class="form-group">
-                   <label for="sel1">Map View</label>
-                   <select class="form-control" id="sel1" ng-model="selected">
-                     <option ng-repeat="result in Views| orderBy:'vname'" ng-change="viewChange(result)">
-                     {{result.vname}}
-                     </option>
-                   </select>
-                 </div> -->
-
-<!-- 
-                 $scope.Views = {
-                  model: null,
-                  availableOptions: [
-                    {id: '1', name: 'Option A'},
-                    {id: '2', name: 'Option B'},
-                    {id: '3', name: 'Option C'}
-                  ]
-                 }; -->
-
-
-  <!--                <div class="form-group">
-                  <label for="repeatSelect"> Repeat select: </label>
-                  <select name="repeatSelect" id="repeatSelect" ng-model="Views.model">
-                    <option ng-repeat="option in Views.availableOptions" value="{{option.id}}">{{option.name}}</option>
-                  </select>
-                 </div> -->
-
-
-<!--                  <div class="form-group">
-                  <label for="repeatSelect"> Repeat select: </label>
-                  <select name="repeatSelect" id="repeatSelect" ng-model="Views.model">
-                    <option ng-repeat="option in Views" value="{{option.vid}}" >{{option.vname}}</option>
-                  </select>
-                 </div> -->
+        </div> <!--/introHeader -->
 
 
 
 
 
 
+           <!-- CONTENT -->
+           <div class="skinnySection" style="margin-top:48px; border:none;" > 
 
 
+             <nav class="main-nav main-nav-desktop">
 
 
-<!-- working -->
-<!-- 
-                   <div class="row">
-                     <div class="">
-                       <label for="viewSelector">Map View</label>
-                        <select class="form-control" name="viewSelector" id="" ng-model="selected"
+               
+                 <ul class="nav-text blue-streak">
+                 
+                 <!--------------- MAP VIEWS -------------->
+
+                  <!-- OLD WAY WITH viewconfig -->
+      <!--                              <div class="dropdown customarrowVariant styled-select">
+                     <select class="coordsDropDownVariant" name="viewSelector" ng-model="selectedViewDefault"
                           ng-options="item as item.vname for item in Views"
-                          ng-change="viewChange(selected)">
-                       </select>
-                     </div>
+                          ng-change="viewChange(selectedViewDefault)">
+                     </select>
                    </div> -->
 
-
-
-<!--                           <div class="dropdown customarrow">
-                      <b>Coords in </b>
-                      <select class="coordsDropDown" ng-model="selectedOption" ng-options="coordOption.name for coordOption in coordOptions" ng-change="changeCoords(selectedOption)">
+                   <!-- NEW WAY WITH DIRECT JSON BIND -->
+ <!--                   <div class="dropdown customarrowVariant styled-select">
+                      <select class="coordsDropDownVariant" name="viewSelector" ng-model="selectedViewDefault"
+                           ng-options="item as item.vname for item in Views"
+                           ng-change="viewChange(selectedViewDefault)">
                       </select>
                     </div> -->
 
 
-
-                   <!-- backup -->
-<!--                    <li class='dropdown' id='mapviewList'>
-                     <a class='dropdown-toggle' data-toggle='dropdown' href="#">Map View</a>
-
-                          <select class="form-control" name="viewSelector" id="" ng-model="selectedViewDefault"
+                    <div class="skinnyDropDownViews" >
+                    <div class="dropdown customarrowVariant styled-select">
+                      <i class="ion-social-buffer" style=" font-size: 24px; color:#DEDEDE;"></i>
+                       <select class="coordsDropDownVariant" name="viewSelector" ng-model="selectedViewDefault" 
                             ng-options="item as item.vname for item in Views"
                             ng-change="viewChange(selectedViewDefault)">
-                         </select>
-
-                     </li> -->
-
-<!--                      <div class='dropdown customarrowVariant' id='mapviewList'>
-
-                          <b>Map View</b>
-                          <select class="dropdown-toggle coordsDropDownVariant" name="viewSelector" id="" ng-model="selectedViewDefault"
-                            ng-options="item as item.vname for item in Views"
-                            ng-change="viewChange(selectedViewDefault)">
-                         </select>
-
-                       </div> -->
-
-
-                        <!-- template -->
-<!--                             <div class="dropdown customarrowVariant styled-select">
-                               <select class="coordsDropDownVariant" name="viewSelector" ng-model="selectedViewDefault" 
-                                    ng-options="item as item.vname for item in Views"
-                                    ng-change="viewChange(selectedViewDefault)">
-                               </select>
-                             </div> -->
+                       </select>
+                     </div>
+                     </div>
 
 
 
 
 
+                   <!-- also, to incluide to save in local storage: ng-change="saveView()" -->
 
 
 
-                             <!--------------- MAP VIEWS -------------->
+                     <!--------------- MAP FLIGHTS -------------->
 
 
 
-                             <!-- OLD WAY WITH viewconfig -->
-<!--                              <div class="dropdown customarrowVariant styled-select">
-                                <select class="coordsDropDownVariant" name="viewSelector" ng-model="selectedViewDefault"
-                                     ng-options="item as item.vname for item in Views"
-                                     ng-change="viewChange(selectedViewDefault)">
-                                </select>
-                              </div> -->
-
-                              <!-- NEW WAY WITH DIRECT JSON BIND -->
-                              <div class="dropdown customarrowVariant styled-select">
-                                 <select class="coordsDropDownVariant" name="viewSelector" ng-model="selectedViewDefault"
-                                      ng-options="item as item.vname for item in Views"
-                                      ng-change="viewChange(selectedViewDefault)">
-                                 </select>
-                               </div>
-
-                              <!-- also, to incluide to save in local storage: ng-change="saveView()" -->
+                      <!-- OLD WAY WITH owl_config -->
+      <!--                   <div class="dropdown customarrowVariant styled-select">
+                       <select class="coordsDropDownVariant" name="flightSelector" ng-model="selectedFlightDefault" 
+                            ng-options="item as item.fname for item in Flights"
+                            ng-change="flightChange(selectedFlightDefault)">
+                       </select>
+                     </div> -->
 
 
 
@@ -247,16 +98,23 @@
 
 
 
-<!--                               <div class="dropdown customarrowVariant styled-select">
-                                 <select class="coordsDropDownVariant" name="viewSelector" ng-model="selectedViewDefault" 
-                                      ng-change="viewChange(selectedViewDefault)">
 
-                                      <option value="{{item}}" style="background-color:{{item}}" ng-repeat="item as item.vname for item in Views">
-                                              {{item}}
-                                      </option>
+<!--                 <ul class="skinnyDisplayUL">
 
-                                 </select>
-                               </div>
+                <li style="height:29px !important;" class="skinnyDisplayLI">  -->
+
+                  <div class="skinnyDropDownFlights" >
+                  <!-- <i class="ion-social-buffer-outline" style=" font-size: 24px; color:#DEDEDE;"></i> -->
+                  <div class="dropdown customarrowVariant styled-select">
+                    <i class="ion-social-buffer-outline" style=" font-size: 24px; color:#DEDEDE;"></i>
+                     <select class="coordsDropDownVariant" name="flightSelector" ng-model="selectedFlightDefault" 
+                          ng-options="item as item.name for item in Flights | orderBy:'item'"
+                          ng-change="flightChange(selectedFlightDefault)">
+                     </select>
+                   </div>
+                   </div>
+<!--                 </li>
+                </ul>
  -->
 
 
@@ -264,225 +122,173 @@
 
 
 
-
-
-                              <!--------------- MAP FLIGHTS -------------->
-
-
-
-                               <!-- OLD WAY WITH owl_config -->
-           <!--                   <div class="dropdown customarrowVariant styled-select">
-                                <select class="coordsDropDownVariant" name="flightSelector" ng-model="selectedFlightDefault" 
-                                     ng-options="item as item.fname for item in Flights"
-                                     ng-change="flightChange(selectedFlightDefault)">
-                                </select>
-                              </div> -->
-
-                              <!-- NEW WAY WITH DIRECT JSON BIND -->
-                              <div class="dropdown customarrowVariant styled-select">
-                                 <select class="coordsDropDownVariant" name="flightSelector" ng-model="selectedFlightDefault" 
-                                      ng-options="item as item.name for item in Flights"
-                                      ng-change="flightChange(selectedFlightDefault)">
-                                 </select>
-                               </div>
+               <!-- <div style="padding: 8px 8px 0;"></div> -->
+               <!-- <div style="padding: 88px 8px 0;"></div> -->
+               <div style="padding: 98px 8px 0;"></div>
 
 
 
+               <!--------------- AERIAL SLIDER -------------->
+
+                 <!-- works well but not in IE -->
+                 <li style="height:29px !important;"> 
+
+                     <a id="aerialLbl" href="" style="margin-left:-5px !important;"> <i class="ion-eye" style=" font-size: 24px;"></i> </a>
+
+                       <!-- <div style="margin-top:-26px !important; margin-left:75px !important; padding: 0px !important; background-color:transparent;"> -->
+                        <div style="margin-top:-30px !important; margin-left:53px !important; padding: 0px !important; background-color:transparent;">
+                         <input id="aerialSlider"  style="padding: 0px !important;"  type="range" min="0" max="1" value="1" step=.1 />
+                         </div>
+
+                         <div id="aerialLevel" for="aerialSlider">100</div>
+
+                 </li>
 
 
 
 
+                 <!-- <div style="padding: 8px 8px 0;"></div> -->
+
+
+                 <div class="skinnySection" style="" > </div>
+
+                 <!-- <div style="padding: 8px 8px 0;"></div> -->
+
+
+
+                   <!--------------- ETC CHECKS -------------->
+
+                    <!-- New checks -->
+
+
+
+                    <!-- Right of Way -->
+<!--                     <li><a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/feedback/form.html" target="_blank">Send feedback</a></li>
+ -->
+<!--                     https://stackoverflow.com/questions/17928487/angular-js-how-to-change-an-elements-css-class-on-click-and-to-remove-all-others -->
+<!--                     https://codepen.io/hbuchel/pen/xtbzc
+                    <div ng-app="classApp" ng-controller="classCtrl">
+                      <button class="button" ng-class="{'active': isActive}" ng-click="activeButton()" type="button">Click Me to Toggle Class</button> 
+                    </div> -->
 
 
 
 
 
+<!--                     <li id="streetViewList" class="StreetList"><a href="#">
+                    <input id="streetviewBox" class="icon-checkbox strViewOverrides" type="checkbox" ng-model="toggle" />
+                    <label for="streetviewBox">
+                      <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                      Street View
+                    </label>
+                    </a></li> -->
 
 
 
 
 
+<!-- 
+                    <li><a href="#">
+                    <input id="rightwayBox" class="icon-checkbox addremoveROW" type="checkbox" /> 
+                    <label for="rightwayBox">
+                      <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                      Right-of-Way
+                    </label>
+                    </a></li> -->
+
+
+                    
 
 
 
 
-<!--                 <li class='dropdown' id='flightdateList'>
-                  <a class='dropdown-toggle' data-toggle='dropdown' href="#">Flight Date</a>
-                    <ul class='dropdown-menu newspaper3 dropdown-menu-form' data-columns="3" style="width:605px !important;">
+<!--                     <li class="toolsList"><a href="#">
+                    <input id="toolsBox" class="icon-checkbox toolsPosOverrides" type="checkbox" ng-model="theTools" />
+                    <label for="toolsBox">
+                      <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                      Tools
+                    </label>
+                    </a></li>
 
-                  <li ng-repeat="result in Flights| orderBy:'fname'">
+                    <li class=" valuationList"><a href="#">
+                    <input id="valuationBox" class="icon-checkbox valuationPosOverrides" type="checkbox" ng-model="theValuation" />
+                    <label for="valuationBox">
+                      <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                      Valuation
+                    </label>
+                    </a></li>
 
-                      <a href="#">
-                      <input id="{{result.fid}}" class="icon-checkbox FlightsChecks" type="checkbox" 
-                      ng-model="result" ng-click="flightChange(result)" /> 
-                      <label for="{{result.fid}}">
-                        <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
-                        <span style="margin-right:4.7px !important;" class='glyphicon glyphicon-ok checked chkPadding'></span>
-                        {{result.fname}}
-                      </label>
+                    <li class="LegList"><a href="#">
+                    <input id="legendBox" class="icon-checkbox legPosOverrides" type="checkbox" ng-model="theLegend" ng-click="saveLegBlock(theLegend)" />
+                    <label for="legendBox">
+                      <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                      Legend
+                    </label>
+                    </a></li>
 
-                    </a>
+                    <li class="WeatherList"><a href="#">
+                    <input id="weatherBox" class="icon-checkbox weatherPosOverrides" type="checkbox" ng-model="theWeather" />
+                    <label for="weatherBox">
+                      <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
+                      <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                      Weather
+                    </label>
+                    </a></li> -->
 
-                  </ul>
-                </li>
 
+                 </ul>
+
+                 <!-- http://stackoverflow.com/questions/23793737/twitter-bootstrap-radio-checkbox-how-to-put-glyphicon -->
+                 <!-- http://getbootstrap.com/javascript/#buttons -->
+
+
+<!--                  <ul class="skinnyDisplayUL">
+                   <li ng-click="selectDisplayItem(item.id,item.name)" class="skinnyDisplayLI" ng-repeat="item in skinnyDisplayOptions" ng-class="{'active-selectionLI': item.id == activeClass}">
+                       <a ng-class="{'active-selectionA': item.id == activeClass}" >
+                                   <i class="{{item.icon}} skinnyDisplayIcon" >&nbsp;&nbsp;</i> {{item.name}}
+                       </a>
+                   </li>
+                 </ul> -->
+
+
+<!--                  <ul class="skinnyDisplayUL">
+                   <li ng-click="selectDisplayItem(item.id,item.name,item.isChecked)" class="skinnyDisplayLI" ng-repeat="item in skinnyDisplayOptions" ng-class="{'active-selectionLI': item.id == activeClass}">
+                       <a ng-class="{'active-selectionA': item.id == activeClass}" ng-model="skinnyDisplayOptions.isChecked" >
+                                   <i class="{{item.icon}} skinnyDisplayIcon" >&nbsp;&nbsp;</i> {{item.name}}
+                       </a>
+                   </li>
+                 </ul> -->
+
+
+                 <ul class="skinnyDisplayUL">
+                   <li ng-click="selectDisplayItem(item.id,item.name,item.active)" class="skinnyDisplayLI" id="{{item." ng-repeat="item in skinnyDisplayOptions" ng-class="{'active-selectionLI': item.id == activeClass}">
+                       <a ng-class="{'active-selectionA': item.id == activeClass}" >
+                               <i class="{{item.icon}} skinnyDisplayIcon" >&nbsp;&nbsp;</i> {{item.name}}
+                       </a>
+                   </li>
+                 </ul>
+
+<!--                  <a id='shareembedListItem' class='dropdown-toggle' data-toggle="modal" data-target="#shareModal" href="#">Share or embed map</a>
  -->
 
+                 
 
 
 
 
+               </nav>
 
-<!--                 <li class='dropdown' id='flightdateList'>
-                  <a class='dropdown-toggle' data-toggle='dropdown' href="#">Flight Date</a>
-                    <ul class='dropdown-menu dropdown-menu-form'>
 
-                  <li ng-repeat="result in Flights| orderBy:'fname'">
 
-                        <a href="#">
-                        <input id="{{result.flightid}}" class="icon-checkbox ViewChecks" type="checkbox" 
-                        ng-model="result.flightid" ng-click="flightChange(result)" /> 
-                        <label for="{{result.flightid}}">
-                          <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
-                          <span style="margin-right:4.7px !important;" class='glyphicon glyphicon-ok checked chkPadding'></span>
-                          {{result.fname}}
-                        </label>
 
-                      </a>
+           </div> <!--END CONTENT -->
 
-                    </ul>
-                  </li>
- -->
 
 
 
-
-<!--                 <li class='dropdown' id='flightdateList'>
-                  <a class='dropdown-toggle' data-toggle='dropdown' href="#">Flight Date</a>
-                    <ul class='dropdown-menu newspaper3 dropdown-menu-form' data-columns="3" style="width:605px !important;">
-
-                  <li ng-repeat="result in Flights| orderBy:'fname'">
-
-                      <a href="#">
-                      <input id="{{result.flightid}}" class="icon-checkbox FlightsChecks" type="checkbox" 
-                      ng-model="result.flightid" ng-click="flightChange(result)" /> 
-                      <label for="{{result.flightid}}">
-                        <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
-                        <span style="margin-right:4.7px !important;" class='glyphicon glyphicon-ok checked chkPadding'></span>
-                        {{result.name}}
-                      </label>
-
-                    </a>
-
-                  </ul>
-                </li> -->
-
-
-
-
-
-
-
-
-            <div style="padding: 8px 8px 0;"></div>
-
-
-
-            <!--------------- AERIAL SLIDER -------------->
-
-              <!-- works well but not in IE -->
-              <li style="height:29px !important;"> 
-
-                  <a id="aerialLbl" href=""> 
-                    Aerial </a>
-                    <div id="aerialLevel" for="aerialSlider">100</div>
-
-
-                    <div style="margin-top:-26px !important; margin-left:75px !important; padding: 0px !important; background-color:transparent;">
-
-
-                      <input id="aerialSlider"  style="padding: 0px !important;"  type="range" min="0" max="1" value="1" step=.1 />
-
-                      </div>
-
-              </li>
-
-
-
-
-
-
-
-
-
-
-                <div style="padding: 8px 8px 0;"></div>
-
-
-
-                <!--------------- ETC CHECKS -------------->
-
-                 <!-- New checks -->
-
-                 <li class=" valuationList"><a href="#">
-                 <input id="valuationBox" class="icon-checkbox valuationPosOverrides" type="checkbox" ng-model="theValuation" />
-                 <label for="valuationBox">
-                   <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
-                   <span class='glyphicon glyphicon-check checked chkPadding'></span>
-                   Valuation
-                 </label>
-                 </a></li>
-
-
-
-                 <li><a href="#">
-                 <input id="rightwayBox" class="icon-checkbox addremoveROW" type="checkbox" /> <!-- onchange='addremoveROW()' --><!-- onchange='addremoveROW(this)'  onclick='addremoveROW(this)' -->  <!-- rightofwayLayer --> <!-- ng-model="theRight" -->
-                 <label for="rightwayBox">
-                   <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
-                   <span class='glyphicon glyphicon-check checked chkPadding'></span>
-                   Right-of-Way
-                 </label>
-                 </a></li>
-
-                 <li id="streetViewList" class="StreetList"><a href="#">
-                 <input id="streetviewBox" class="icon-checkbox strViewOverrides" type="checkbox" ng-model="toggle" />
-                 <label for="streetviewBox">
-                   <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
-                   <span class='glyphicon glyphicon-check checked chkPadding'></span>
-                   Street View
-                 </label>
-                 </a></li>
-
-                 <li class="LegList"><a href="#">
-                 <input id="legendBox" class="icon-checkbox legPosOverrides" type="checkbox" ng-model="theLegend" ng-click="saveLegBlock(theLegend)" />
-                 <label for="legendBox">
-                   <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
-                   <span class='glyphicon glyphicon-check checked chkPadding'></span>
-                   Legend
-                 </label>
-                 </a></li>
-
-                 <li class="WeatherList"><a href="#">
-                 <input id="weatherBox" class="icon-checkbox weatherPosOverrides" type="checkbox" ng-model="theWeather" />
-                 <!-- onclick='blockPositionChk()' -->
-                 <label for="weatherBox">
-                   <span class='glyphicon glyphicon-unchecked unchecked chkPadding'></span>
-                   <span class='glyphicon glyphicon-check checked chkPadding'></span>
-                   Weather
-                 </label>
-                 </a></li>
-
-
-              </ul>
-
-              <!-- http://stackoverflow.com/questions/23793737/twitter-bootstrap-radio-checkbox-how-to-put-glyphicon -->
-              <!-- http://getbootstrap.com/javascript/#buttons -->
-
-            </nav>
-
-
-
-
-        </div> <!--END CONTENT -->
-
-      </div>
+<!--       </div> -->

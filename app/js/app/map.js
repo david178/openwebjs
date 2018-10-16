@@ -17,7 +17,8 @@ var productCode = 'OW4';
 //Map Click State Manager (default)
 var functionMode = 'identify';
 //flags
-var slidePanelOpen; // flag set if panel is open or closed
+// var skinnyPanelOpen; // flag set if skinnyPanel (formerly slidePanelOpen) is open or closed
+var skinnyPanelOpen = false; // flag set if skinnyPanel (formerly slidePanelOpen) is open or closed
 var disclaimerFlag; //localStorage 
 //basemap / layer defaults 
 var basemap, abLayer, assessorServiceLayer, assessorannoServiceLayer, transportationServiceLayer;
@@ -81,6 +82,10 @@ var bufferParms; //stores the buffer parameters for creating a buffer
 var bufferCumulativeVal = 0;
 
 var freshView = "";
+
+//This is for the 'hide/show' for hiding/rolling up and down the ombibar elements (different than hamburger btn)
+//Scoped logic resides in controllers.js
+var hiddenState = false;
 
 
 //----------------------------
@@ -1872,142 +1877,47 @@ require([
 
            //http://jsfiddle.net/andrewwhitaker/s5mgX/
 
-           var step = 25;
-           var scrolling = false;
+           // var step = 25;
+           // var scrolling = false;
 
-           // Wire up events for the 'scrollUp' link:
-           $("#scrollUp").bind("click", function(event) {
-               event.preventDefault();
-               // Animates the scrollTop property by the specified
-               // step.
-               $("#intoUpdateContainer").animate({
-                   scrollTop: "-=" + step + "px"
-               });
-           }).bind("mouseover", function(event) {
-               scrolling = true;
-               scrollContent("up");
-           }).bind("mouseout", function(event) {
-               scrolling = false;
-           });
-
-
-           $("#scrollDown").bind("click", function(event) {
-               event.preventDefault();
-               $("#intoUpdateContainer").animate({
-                   scrollTop: "+=" + step + "px"
-               });
-           }).bind("mouseover", function(event) {
-               scrolling = true;
-               scrollContent("down");
-           }).bind("mouseout", function(event) {
-               scrolling = false;
-           });
-
-           function scrollContent(direction) {
-               var amount = (direction === "up" ? "-=1px" : "+=1px");
-               $("#intoUpdateContainer").animate({
-                   scrollTop: amount
-               }, 1, function() {
-                   if (scrolling) {
-                       scrollContent(direction);
-                   }
-               });
-           }
-
-           //************************************************************************
-
-           
-           // //handles the intro panel scroll buttons logic
-
-           // if ($('#toTopBtn').length) {
-           //     var scrollTrigger = 400, // px
-           //         backToTop = function () {
-           //             var scrollTop = $(window).scrollTop();
-           //             if (scrollTop > scrollTrigger) {
-           //                 $('#toTopBtn').addClass('show');
-
-
-           //                 // $('#upperTopWell').addClass('upperTopWell_Transform');
-           //                 // $('#devsite-doc-set-nav-tab').addClass('devsite-doc-set-nav-tab_Transform');
-           //                 // $('#devsite-user-wrapper').addClass('devsite-user-wrapper_Transform');
-
-           //                 // $('#upperTopWell').addClass('smallerHead');
-           //                 // $('#devsite-doc-set-nav-tab').addClass('smallerHead');
-           //                 // $('#devsite-user-wrapper').addClass('smallerHead');
-
-           //                 // upperTopWell_Transform
-           //                 // devsite-doc-set-nav-tab_Transform
-           //                 // devsite-user-wrapper_Transform
-
-
-
-           //             } else {
-           //                 $('#toTopBtn').removeClass('show');
-
-
-           //                 // $('#upperTopWell').removeClass('upperTopWell_Transform');
-           //                 // $('#devsite-doc-set-nav-tab').removeClass('devsite-doc-set-nav-tab_Transform');
-           //                 // $('#devsite-user-wrapper').removeClass('devsite-user-wrapper_Transform');
-
-
-           //             }
-           //         };
-           //     backToTop();
-           //     $(window).on('scroll', function () {
-           //         backToTop();
+           // // Wire up events for the 'scrollUp' link:
+           // $("#scrollUp").bind("click", function(event) {
+           //     event.preventDefault();
+           //     // Animates the scrollTop property by the specified
+           //     // step.
+           //     $("#intoUpdateContainer").animate({
+           //         scrollTop: "-=" + step + "px"
            //     });
-           //     // $('#toTopBtn').on('click', function (e) {
-           //     //     e.preventDefault();
-           //     //     $('introUpdateListOutter,introUpdateListInner').animate({
-           //     //         scrollTop: 0
-           //     //     }, 700);
-
-           //     //     console.log('toTop scroll button clicked')
-           //     // });
-
-           //     // $('#toBottomBtn').on('click', function (e) {
-           //     //     // e.preventDefault();
-           //     //     // $('introUpdateListOutter,introUpdateListInner').animate({
-           //     //     //     scrollBottom: 0
-           //     //     // }, 700);
-
-           //     //     // console.log('toBottom scroll button clicked')
-           //     // });
-
-           //     // $('html,body').animate({
-
-
-           //      // $('#toTopBtn').on('click', function (e) {
-           //      //     e.preventDefault();
-           //      //     // $('html,body').animate({
-           //      //     //     scrollTop: $("#introUpdateListOutter").offset().top
-           //      //     // }, 2000);
-
-           //      //     $('introUpdateListInner').animate({
-           //      //         scrollTop: $("#introUpdateListOutter").offset().top
-           //      //     }, 2000);
-
-           //      //     // console.log('toBottom scroll button clicked')
-           //      // });
-
-
-           // }
-
-           // $('#toTopBtn').on('click', function (e) {
-           //     e.preventDefault();
-           //     // $('html,body').animate({
-           //     //     scrollTop: $("#introUpdateListOutter").offset().top
-           //     // }, 2000);
-
-           //     // $('introUpdateListInner').animate({
-           //     $('introUpdateListOutter,introUpdateListInner').animate({
-           //         scrollTop: $("#introUpdateListInner").offset().top
-           //     }, 2000);
-
-           //     // console.log('toBottom scroll button clicked')
+           // }).bind("mouseover", function(event) {
+           //     scrolling = true;
+           //     scrollContent("up");
+           // }).bind("mouseout", function(event) {
+           //     scrolling = false;
            // });
 
 
+           // $("#scrollDown").bind("click", function(event) {
+           //     event.preventDefault();
+           //     $("#intoUpdateContainer").animate({
+           //         scrollTop: "+=" + step + "px"
+           //     });
+           // }).bind("mouseover", function(event) {
+           //     scrolling = true;
+           //     scrollContent("down");
+           // }).bind("mouseout", function(event) {
+           //     scrolling = false;
+           // });
+
+           // function scrollContent(direction) {
+           //     var amount = (direction === "up" ? "-=1px" : "+=1px");
+           //     $("#intoUpdateContainer").animate({
+           //         scrollTop: amount
+           //     }, 1, function() {
+           //         if (scrolling) {
+           //             scrollContent(direction);
+           //         }
+           //     });
+           // }
 
 
 
@@ -2015,15 +1925,50 @@ require([
 
 
 
+        //    //bind a click event on the inactive overlay, to hide it if clicked, and collapse the skinnypanel
+        // $(".inactiveOverlay").bind("click", function(event) {
+        //     event.preventDefault();
+
+        //     //added--------------------------
+        //     panelCloseHit = true;
 
 
+        //     console.log('intro slide in clicked')
+
+        //     //hide the 'inactive overlay'
+        //     $(".inactiveOverlay").hide();
 
 
+        //     //-------------------------------------------
+        //     //Updating the Header positioning & Arrow (ALL)
+        //     // $("#introHeader").css("left", -181 + "px");
+        //     // $("#displayHeader").css("left", -201 + "px");
+        //     // $("#toolsHeader").css("left", -201 + "px");
+        //     // $("#resourcesHeader").css("left", -201 + "px");
+        //     // $(".esriScalebar").css("left", -201 + "px");
 
+        //     //transforms
+        //     // $('#introToggle').addClass('toggleAdjust');
+        //     // $('#introHeader').addClass('headerAdjust');
+        //     // $('#logoTitle').addClass('titleAdjust');
+        //     // $('#search-form').addClass('searchFormAdjust');
 
+        //     $('#introToggle').toggleClass('ion-chevron-left ion-navicon-round');
+        //     $('#displayToggle').toggleClass('ion-chevron-left ion-navicon-round');
+        //     $('#toolsToggle').toggleClass('ion-chevron-left ion-navicon-round');
+        //     $('#resourcesToggle').toggleClass('ion-chevron-left ion-navicon-round');
 
+        //     $('#mainTabs').css("display", "none");
+        //     $('.infoBlock').css("display", "none");
+        //     //-------------------------------------------
 
+        //     // hide panel
+        //     $(".skinnyPanel").animate({
+        //        "marginLeft": "-=240px"
+        //     }, 0);
+        //     skinnyPanelOpen = false;
 
+        // });
 
 
 

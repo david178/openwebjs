@@ -1,426 +1,88 @@
 
- <div id='introDirective' style='padding:7px; border:white;'>
-   <!-- Title -->
-   <div id='introHeader' class='alert alert-info conditionalShow' role='alert' style='padding:7px;'>Introduction
-     <!-- <span id='introToggle' class='fa fa-times'></span> -->
-     <span id='introToggle' class='ion-chevron-left'></span>
-<!--      <span id='introToggle' class='ion-ios-arrow-forward'></span> -->
-
-   </div>
-
-   <!-- CONTENT -->
-   <div style="margin-top:60px;"> 
-
-<!--     <div class='jumbotron' >
-      <h3>Aug 25, 2016</h3>
-      <p>Welcome to the new OpenWeb <small style="font-weight:bold;">(Beta)</small>
-
-        <div class="input-group-btn">
-          <button id="tourButton" type="submit" class="tourInits btn btn-primary introButton-variant"> 
-            <span>Take a tour</span>
-          </button>
-        </div>
-
-        </br><p><small style="">Note: Access the non-beta version of OpenWeb in Internet Explorer browsers:</small></p>
-
-        <small><a href="http://gisgate.co.clark.nv.us/openweb/">gisgate.co.clark.nv.us/openweb/</small>
-
-
-
-      </p>
-    </div> -->
-
-
-    <div class='jumbotron' style="" > <!-- padding-left: 20px; padding-right: 20px; -->
-      <h3 style="color: #fff;"> {{introDate}} </h3>
-      <!-- font-size: 1.35rem;  color: hsla(0,0%,100%,.9); --> 
-      <p style="font-size:16px !important;" class="introPaneText"> Welcome to OpenWeb! <small style="font-weight:bold;"> </small> </p>
-
-
-
-
-        <div style="padding-top:18px; padding-bottom:6px;" class="input-group-btn">
-          <button id="tourButton" type="submit" class="tourInits btn btn-primary introButton-variant" style="border-color: transparent; letter-spacing: .2px; text-transform: uppercase; border: none; transition: all .3s ease;border-radius: 0px !important;     font-size: 1.1875rem; background-color: rgb(37, 83, 132) !important; border: none !important; color: hsla(0,0%,100%,.9); font-weight: 300 !important; font-family: 'Open Sans', sans-serif !important; letter-spacing: .2px; -webkit-font-smoothing: antialiased;"> 
-            <span>Take a tour</span>
-          </button>
-        </div>
-
-
-
-
-
-
-        <span class="introBottomSection">
-          <!-- <p class="">guides:</p> -->
-
-          <!-- </br></br></br> -->
-
-<!--           <small><a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/wiki-local/open-web-js.html">Help Docs</a></small> -->
-
-          <small><a id="qGuideLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OW_QuickGuide.pdf">QuickGuide</a></small> |
-
-          <small><a id="dGuideLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/wiki-local/open-web-js.html">Docs</a></small> |
-
-          <small><a id="aGuideLink" href="#" ng-click="assistBasicShow()">Agent</a></small>
-
-        </span>
-
-
-        
-        <!-- </br><p><small style="">Note: Access the silverlight version of OpenWeb in Internet Explorer browsers:</small></p> -->
-<!--         </br><p class="introPaneTextSubset">legacy (ie):</p>
-        <small><a id="introLink" href="http://gisgate.co.clark.nv.us/openweb/">gisgate.co.clark.nv.us/openweb/</a></small> -->
-
-<!--         <small><a id="releasenotesLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OW_Release.docx" target="_blank">Release notes</a></small> -->
-
-        
-        <!-- Notes -->
-        </br>
-
-
-        
-        <!--ion-ios-chatbubble-outline -->
-<!--         <p class="introPaneTextSubset">
-          <span class="introPaneTextSubsetIcons iconic-adjust-11 ion-ios-chatbubble" data-pack="default"></span>
-          Most current flight updated; flight dates added
-        </p>
-
-        </br>
-
-        <p class="introPaneTextSubset">
-          <span class="introPaneTextSubsetIcons iconic-adjust-11 ion-ios-chatbubble" data-pack="default"></span>
-          Search by cross-streets, street name added
-        </p>
-
+<!--  <div id='introDirective' style='padding:7px; border:white;'>
  -->
 
 
 
 
-        <!-- overflow-y:scroll;height:200px; -->
 
 
-<!--  <div class="scrollbar" id="style-3">
-   <div class="force-overflow"></div>
- </div>
- -->
 
-        <!-- Updates list binding -->
-        <!-- style="margin-top:60px; overflow-y:scroll;height:200px;" -->
-<!--         <div class="scrollbar" id="style-3"> -->
 
 
-        <!-- class="scrollbar" id="style-3" -->
-<!--         <ul id="innerScroller" style="padding-left:0px !important; padding-right:5px !important; list-style: none; overflow-y:scroll;height:150px;"> -->
-            <!-- <div id="vertScrollBox"> -->
 
 
 
 
 
 
-              <!-- cross-browser scroll https://github.com/Grsmto/simplebar -->
-<!--               <div id="myElement" class="simplebar">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div> -->
 
+    <!-- CONTENT -->
+    <div style="margin-top:30px; border-top:1px solid rgb(37, 83, 132);"> 
 
 
+     <div class='jumbotron' style="" >
 
-              <!-- https://stackoverflow.com/questions/10944304/hiding-list-items-with-a-show-more-button -->
-<!--             <div id="introUpdateScrollBox" style="border:4px dotted blue;"> -->
 
-          <!--  https://codepen.io/haykou/pen/qbqBYM -->
-
-            <!-- <div id="myElement" class="simplebar"> -->
-<!--               <div data-simplebar="init">
-                <div class="simplebar-track vertical" style="visibility: visible;">
-                  <div class="simplebar-scrollbar visible" style="visibility: visible; top: 0px; height: 92px;">
-                  </div></div>
-                  <div class="simplebar-track horizontal" style="visibility: hidden;">
-                    <div class="simplebar-scrollbar">
-                    </div></div>
-
-
-
-            <div class="simplebar-scroll-content" style="padding-right: 17px; margin-bottom: -34px;">
-                <div class="simplebar-content" style="padding-bottom: 17px; margin-right: -17px;">
-
-
-
-                </div>
-            </div>
-          </div> -->
-
-<!--           <div id="myElement" class="simplebar">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div> -->
-
-
-<!--           <div id="introUpdateScrollBox" style="border:4px dotted blue;"> -->
-          <!-- <div id="myElement" class="simplebar" > -->
-
-
-
-            <!-- <hr class="customHR" > -->
-
-
-
-            <div id="intoUpdateContainer" >
-
-            <ul id="introUpdateList">
-
-
-
-            <!--  MAP VIEWS -->
-            <li ng-repeat="result in Updates| orderBy:'updatesid'">
-
- <!--              <p class="introPaneTextSubset">
-                <span id="{{result.update1}}" class="introPaneTextSubsetIcons iconic-adjust-11 ion-ios-chatbubble" data-pack="default"></span>
-                {{result.mainName}}
-              </p>
- -->
-
-<!--               <p class="introPaneTextSubset">
-
-                <span id="{{result.id}}" class="introPaneTextSubsetIcons iconic-adjust-11 ion-ios-chatbubble" data-pack="default"></span>
-                <i ng-class="{ion-ios-chatbubble: result.id === 1}" class="iconic-adjust-11"></i>
-                {{result.name}}
-              </p> -->
-
-              <!-- ng-class="{ion-ios-chatbubble: result.id === '1'}" class="iconic-adjust-11"></i> -->
-              <!-- iconic-adjust-11 -->
-
-
-
-
-              <p class="introPaneTextSubset" style="">
-                <!-- <span >  -->   <!-- ng-class="{extensibleMessage: result.status === 0}" -->
-
-
-
-                  <!-- <i class="far fa-comment"></i> -->
-
-                    <!-- CHANGE statusmsg TO "true" in owl_config in order to show 'status' clickable link -->
-
-                  <span id="{{result.updatesid}}" style="padding-left:8px !important; border-radius: 0px !important;" class="introPaneTextSubsetIcons iconic-adjust-11" ng-class="{showImprove: result.status === 2, showBubble: result.status === 1, showWarn: result.status === 0}" data-pack="default" ></span>  {{result.name}} 
-
-<!--                  <span id="{{result.updatesid}}" style="padding-left:8px !important; border-radius: 0px !important;" class="introPaneTextSubsetIcons iconic-adjust-11" >
-
-                 <i ng-class="{showImprove: result.status === 2, showBubble: result.status === 1, showWarn: result.status === 0}" ></i>
-
-                  </span>  {{result.name}}  -->
-
-
-
-<!--                   <div ng-show="result.statusmsg" class="alert-info-custom" style="">
-                    <a href="#" ng-click="showStatusMessage(result.statustext)" class="alert-link" style="color:white; font-size:11px; padding:7px; padding-top:10px;">more...</a>
-                  </div> -->
-
-                  <div ng-show="result.statusmsg" class="alert-info-custom" style="">
-                    <a href="#" ng-click="assistWhatsComing(result.name,result.statustext)" class="alert-link" style="color:white; font-size:11px; padding:7px; padding-top:10px;">more...</a>
-                  </div>
-
-
-
-
-<!-- 
-                  <div ng-show="result.statusmsg" class="alert-info-custom" style="">
-                    <a href="#" ng-click="showStatusMessage(result.statustext)" class="alert-link" style="color:white; font-size:11px; padding:7px; padding-top:10px;">more...</a>
-                  </div> -->
-
-
-
-                  <!-- onClick="alert(JSON.stringify(statustext))" -->
-
-
-
-<!--                   <a id='assistantListItem' class='dropdown-toggle' data-toggle="modal" data-target="#assistantModal" href="#">Help Agent</a>
-
- -->
-
-              </p>
-
-
-
-              <!-- ng-click="display = !display" -->
-
-
-              <!--                 <p ng-show="display" ng-class="{showStatus: result.status === 0}">{{result.statusmsg}}</p> -->
-
-
-
-
-
-
-
-
-
-<!-- 
-              <a href="#">
-              <input id="{{result.id1}}" class="icon-checkbox ViewChecks" type="checkbox" 
-              ng-model="result.name3" ng-click="" /> 
-              <label for="{{result.id1}}">
-                <span class='glyphicon glyphicon-none unchecked chkPadding'></span>
-                <span style="margin-right:4.7px !important;" class='glyphicon glyphicon-ok checked chkPadding'></span>
-                {{result.mainName}}
-              </label>
-            </a> -->
-
-        
-        </li>
-
-
-      
-
-
-      </ul>
-
-      </div>
-
-
-      <!-- ToTop & ToBottom buttons (Scroll Buttons) -->
-<!--       <a href="#" id="toBottomBtn" title="To Bottom"><span style="font-size:12px;" class="glyphicon glyphicon-arrow-down"></span></a>
-      <a href="#" id="toTopBtn" title="To Top"><span style="font-size:12px;" class="glyphicon glyphicon-arrow-up"></span></a>
-       -->
-
-
-<!--        <a id="scrollUp" href="#">up</a>
-       <a id="scrollDown" href="#">down</a> -->
-
-<!--        <a id="scrollUp" href="#" class="glyphicon glyphicon-chevron-up"></a>
-       <a id="scrollDown" href="#" class="glyphicon glyphicon-chevron-down"></a> -->
-<!--        <a id="scrollUp" href="#" class="fas fa-chevron-up"></a>
-       <a id="scrollDown" href="#" class="fas fa-chevron-down"></a> -->
-
-<!--        <i id="scrollUp" class="fas fa-chevron-up"></i>
-       <i id="scrollDown" class="fas fa-chevron-down"></i> -->
-
-       <!-- scroll up/down buttons -->
-       <div style="width:100%;">
-        <div style=""> <!-- float:right; -->
-         <a id="scrollUp" href="#"><i id="scrollUp" class="fas fa-chevron-up"></i></a>
-         <a id="scrollDown" href="#"><i id="scrollUp" class="fas fa-chevron-down"></i></a>
+         <div style="padding-top:18px; padding-bottom:6px;" class="input-group-btn">
+           <button id="tourButton" type="submit" class="tourInits btn btn-primary introButton-variant" style="border-color: transparent; letter-spacing: .2px; text-transform: uppercase; border: none; transition: all .3s ease;border-radius: 0px !important;     font-size: 1.1875rem; background-color: rgb(37, 83, 132) !important; border: none !important; color: hsla(0,0%,100%,.9); font-weight: 300 !important; font-family: 'Open Sans', sans-serif !important; letter-spacing: .2px; -webkit-font-smoothing: antialiased;"> 
+             <span>Take a tour</span>
+           </button>
          </div>
+
+
+
+         <span class="introBottomSection">
+
+           <small><a id="qGuideLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OW_QuickGuide.pdf">QuickGuide</a></small> |
+           <small><a id="dGuideLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/wiki-local/open-web-js.html">Docs</a></small> |
+           <small><a id="aGuideLink" href="#" ng-click="assistBasicShow()">Agent</a></small>
+
+         </span>
+
+
+
+         <!-- Notes -->
+         </br>
+
+
+
+         <div id="intoUpdateContainer" >
+
+           <ul id="introUpdateList">
+
+             <!--  MAP VIEWS -->
+             <li ng-repeat="result in Updates| orderBy:'updatesid'">
+
+               <p class="introPaneTextSubset" style="">
+
+                   <span id="{{result.updatesid}}" style="" class="introPaneTextSubsetIcons iconic-adjust-11" ng-class="{showImprove: result.status === 2, showBubble: result.status === 1, showWarn: result.status === 0}" data-pack="default" ></span>  {{result.name}} 
+
+
+                   <div ng-show="result.statusmsg" class="alert-info-custom" style="">
+                     <a href="#" ng-click="assistWhatsComing(result.name,result.statustext)" class="alert-link" style="color:white; font-size:11px; padding:7px; padding-top:10px;">more...</a>
+                   </div>
+
+               </p>
+             
+             </li>
+           </ul>
+
        </div>
 
 
+     </div>
 
+    </div> <!--END CONTENT -->
 
-<!--        <i class="far fa-chart-bar" style=""></i>
-       <i class="fas fa-chevron-down"></i>
- -->
-<!--  <i class="fas fa-chevron-down"></i> -->
-<!-- <i class="far fa-chart-bar" style="position:absolute; top:10; left:10;"></i> -->
 
 
 
 
 
-       <!-- <hr class="customHR" > -->
 
-<!--       </div> -->
 
-    <!-- </div>  --><!-- end custom cross browser scroll -->
 
-<!--       <div id="loadMore">Load more</div>
-      <div id="showLess">Show less</div> -->
 
-      <!-- <div class="force-overflow"></div> -->
-      <!-- </div> --> <!-- end of scroll wrapper -->
 
-      <a style="font-size: 85% !important;" class="introPaneTextSubset " style="" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/feedback/form.html">What features would you like to see added to OpenWeb? <br> <span style=" color: #428bca; text-decoration: none;">Let us know</span></a>
-
-    <!-- </div> --> <!-- introUpdateScrollbox end -->
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-        <!-- </br></br></br></br> -->
-
-        <!-- </br><p class="introPaneTextSubset">guides:</p> -->
-
-
-<!--         <p class="introPaneTextBottom">
-
-        <small><a href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OW_QuickGuide.pdf">QuickGuide</a></small> |
-
-        <small><a id="aGuideLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OWjs_AdvancedGuide.txt">Advanced</a></small>
-
-
-        </p> -->
-
-
-
-
-
-
-
-
-
-
-
-
-      </p>
-    </div>
-
-
-
-
-
-
-<!--          most current flight updated; flight dates added
-        <br><br>*search by cross-streets, street name added -->
-        <!-- <br>Please visit Legacy for Spring 2017 images --><!-- /small></p> -->
-
-<!--         <br><br>*Usage Guides:</small></p>
-        <a id="aGuideLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OWjs_AdvancedGuide.txt" target="_blank">Quick Guide</a>
-
-
-        <br><br>*Advanced guide published:</small></p>
-        <a id="aGuideLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OWjs_AdvancedGuide.txt" target="_blank">Advanced Guide</a> -->
-
-
-
-
-<!--         <br>*Usage Guides:
-        <a id="aGuideLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OWjs_AdvancedGuide.txt" target="_blank">Quick Guide</a>
-
-        <br>
-        <a id="aGuideLink" href="http://gisgate.co.clark.nv.us/gismo/apps/mobile/ow4/app/resources/OWjs_AdvancedGuide.txt" target="_blank">Advanced Guide</a>
-
-        </small></p>
- -->
-
-
-
-
-
-
-   </div> <!--END CONTENT -->
-
- </div>
+<!--  </div> -->
