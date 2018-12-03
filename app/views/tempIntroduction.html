@@ -54,13 +54,13 @@
              <!--  MAP VIEWS -->
              <li ng-repeat="result in Updates| orderBy:'updatesid'">
 
-               <p class="introPaneTextSubset" style="">
+               <p class="introPaneTextSubsetLight" style="">
 
                    <span id="{{result.updatesid}}" style="" class="introPaneTextSubsetIcons iconic-adjust-11" ng-class="{showImprove: result.status === 2, showBubble: result.status === 1, showWarn: result.status === 0}" data-pack="default" ></span>  {{result.name}} 
 
 
                    <div ng-show="result.statusmsg" class="alert-info-custom" style="">
-                     <a href="#" ng-click="assistWhatsComing(result.name,result.statustext)" class="alert-link" style="color:white; font-size:11px; padding:7px; padding-top:10px;">more...</a>
+                     <a href="#" ng-click="assistWhatsComing(result.name,result.statustext)" class="alert-link" style="color: #DEDEDE; font-size:11px; padding:7px; padding-top:10px;">more...</a>
                    </div>
 
                </p>

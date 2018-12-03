@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/v4-shims.css">
 
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
+
 
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700|Noto+Sans:300,400,500,700|Open+Sans:300,400,500,700|Roboto:300,400,500,700" rel="stylesheet"> 
@@ -62,7 +64,7 @@
   <!--**********************************************************************************************************-->
   <!--**********************************************************************************************************-->
   <!--**********************************************************************************************************-->
-  <body>
+  <body > <!-- class="bodyAdjust" -->
 
     <!-- Navbar -->
     <div class='navbar navbar-inverse navbar-fixed-top'>
@@ -233,7 +235,6 @@
 
 
 
-
     <!-- Main Search -->
     <div class="searchCard searchSize" ng-controller="TypeaheadCtrl"> <!-- col-sm-5 -->
 
@@ -309,10 +310,9 @@
         </li>
 
 
-        <li class="">    </li>
+        <li class="">    <!-- <button id="clear" data-dojo-type="dijit.form.Button">Clear Graphics</button> -->  </li>
 
       </ul>
-
 
 
 
@@ -340,6 +340,8 @@
     <assistant-block></assistant-block>
     <!-- InfoBlock (incl. tabs) -->
     <!-- <info-block></info-block> -->
+    <!-- Tool -->
+    <tool-block></tool-block>
     <!-- Legend -->
     <leg-block></leg-block>
     <!-- Weather -->
@@ -355,7 +357,6 @@
     <div id="loading">
           <div id="loading-image" class="loader"></div>
     </div>
-
 
 
 
@@ -391,11 +392,11 @@
     <script src="js/app/directives/dirAssistant.js"></script> <!-- directive -->
     <script src="js/app/directives/dirIntroduction.js"></script> <!-- directive -->
     <script src="js/app/directives/dirDisplay.js"></script> <!-- directive -->
-    <script src="js/app/directives/dirTools.js"></script> <!-- directive -->
+    <!-- <script src="js/app/directives/dirTools.js"></script> --> <!-- directive -->
+    <script src="js/app/directives/dirTool.js"></script> <!-- directive -->
     <script src="js/app/directives/dirResources.js"></script> <!-- directive -->
     <script src="js/app/directives/dirInformation.js"></script> <!-- directive -->
     <!-- <script src="js/app/directives/dirSelectProp.js"></script> --> <!-- directive -->
-
     <script src="js/app/directives/dirSelProp.js"></script> <!-- directive -->
     <script src="js/app/directives/dirLegend.js"></script> <!-- directive -->
     <script src="js/app/directives/dirWeather.js"></script> <!-- directive -->

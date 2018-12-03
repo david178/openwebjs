@@ -14,8 +14,12 @@
                <a id="title" class="navbar-brand" href="#" style=" " > 
                    <div id='logoTitle' style="display:inline-block;">
                      <img id="CountyLogo" title="OpenWeb" alt="OpenWeb" src="images/county/33logobrightened.png" class="conditionalShow" />
-                         <img id="imgLogo" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/ow3.5.png" style="height:74%; width:74%;"/>
-                         <img id="imgLogo_mobile" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/compass.png" />
+                     <!-- <img id="imgLogo" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/ow3.5.png" style="height:74%; width:74%;"/> -->
+                     <!-- <img id="imgLogo" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/ow3.5_invert.png" style="height:74%; width:74%;"/> -->
+                     <!-- <img id="imgLogo" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/ow3.5_invert.png"/> -->
+                     <img id="imgLogo" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/ow3.5.png"/>
+                     <!-- <img id="imgLogo_mobile" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/compass.png" /> -->
+                     <img id="imgLogo_mobile" title="OpenWeb" alt="OpenWeb" src="images/logos/ow/compass_invert.png" />
                    </div>     
                </a>
 
@@ -111,6 +115,10 @@
                           ng-options="item as item.name for item in Flights | orderBy:'item'"
                           ng-change="flightChange(selectedFlightDefault)">
                      </select>
+<!--                      <select class="coordsDropDownVariant" name="flightSelector" ng-model="selectedFlightDefault" 
+                          ng-options="item as item.Name for item in Flights"
+                          ng-change="flightChange(selectedFlightDefault)">
+                     </select> -->
                    </div>
                    </div>
 <!--                 </li>
@@ -131,15 +139,15 @@
                <!--------------- AERIAL SLIDER -------------->
 
                  <!-- works well but not in IE -->
-                 <li style="height:29px !important;"> 
+                 <li class="aerialListItem" style="height:29px !important;"> 
 
                      <a id="aerialLbl" href="" style="margin-left:-5px !important;"> <i class="ion-eye" style=" font-size: 24px;"></i> </a>
 
                        <!-- <div style="margin-top:-26px !important; margin-left:75px !important; padding: 0px !important; background-color:transparent;"> -->
                         <div style="margin-top:-30px !important; margin-left:53px !important; padding: 0px !important; background-color:transparent;">
-                         <input id="aerialSlider"  style="padding: 0px !important;"  type="range" min="0" max="1" value="1" step=.1 />
+                         <input id="aerialSlider"  style="padding: 0px !important; background-color:transparent; border:1px solid #3b454e;"  type="range" min="0" max="1" value="1" step=.1 />
                          </div>
-
+                         
                          <div id="aerialLevel" for="aerialSlider">100</div>
 
                  </li>
@@ -273,7 +281,14 @@
                    </li>
                  </ul>
 
+<!-- 
+                 class='dropdown-toggle' data-toggle="modal" data-target="#shareModal"
+ -->
 <!--                  <a id='shareembedListItem' class='dropdown-toggle' data-toggle="modal" data-target="#shareModal" href="#">Share or embed map</a>
+
+ -->                 
+
+<!--                   <a data-toggle="modal" data-target="#shareModal" href="#">Share or embed map</a>
  -->
 
                  

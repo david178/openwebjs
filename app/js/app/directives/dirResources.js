@@ -395,7 +395,7 @@ open.directive('resourcesView', function() {
 
 
             //if the 'x' Toggle buttons are clicked
-            $('#introToggle,#hamburgerBtn,.inactiveOverlay').click(function() {
+            $('#introToggle,#hamburgerBtn,.inactiveOverlay,#tourButtonListItem').click(function() {
 
               console.log('true test: ' +skinnyPanelOpen)
 
@@ -412,6 +412,9 @@ open.directive('resourcesView', function() {
                  //show the 'inactive overlay'
                  // $(".inactiveOverlay").show();
                  $('.inactiveOverlay').addClass('inactiveOverlayVisible');
+
+
+
 
 
 

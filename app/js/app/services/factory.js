@@ -47,6 +47,11 @@ open.factory('openFactory', function($http, $q){
 
 	      $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getZoning?Xcoordinate='+theX+'&Ycoordinate='+theY+'&inputSpatialReferenceWKID=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
 	      //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getZoning?Xcoordinate='+theX+'&Ycoordinate='+theY+'&inputSpatialReferenceWKID=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+          
+          console.log('getZoning :: '+JSON.stringify(resp.data));
+
+
+
           deferred.resolve(resp.data);
 	      });
 	       
@@ -63,6 +68,11 @@ open.factory('openFactory', function($http, $q){
 
 	      $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPlannedLandUse?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&returnGeom=false'+'&callback=JSON_CALLBACK').then(function(resp) {
 	      //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPlannedLandUse?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&returnGeom=false'+'&callback=JSON_CALLBACK').then(function(resp) {
+          
+
+          console.log('getPLU :: '+JSON.stringify(resp.data));
+
+
           deferred.resolve(resp.data);
           //fghh
 	      });
@@ -70,6 +80,29 @@ open.factory('openFactory', function($http, $q){
 	      return deferred.promise;
 
 	    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	    getCommunityDist: function(theX,theY) { //-----------------------------------------------------
 
         // Update & Add on Select Prop/Print Preview data (Request maps.clarkcounty location for these services from brian):
@@ -116,6 +149,13 @@ open.factory('openFactory', function($http, $q){
 
         $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/GetOverlays?xCoordinate='+theX+'&yCoordinate='+theY+'&wkid=102707&viewData=selectproperty'+'&callback=JSON_CALLBACK').then(function(resp) {
         //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getZoning?Xcoordinate='+theX+'&Ycoordinate='+theY+'&inputSpatialReferenceWKID=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+
+
+          console.log('GetOverlays (called from getCommmunityDist) :: '+JSON.stringify(resp.data));
+
+
+
+
           deferred.resolve(resp.data);
         });
 
@@ -150,8 +190,21 @@ open.factory('openFactory', function($http, $q){
 
         $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getPlaceData?xCoordinate='+theX+'&yCoordinate='+theY+'&wkid=3421'+'&callback=JSON_CALLBACK').then(function(resp) {
         //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getZoning?Xcoordinate='+theX+'&Ycoordinate='+theY+'&inputSpatialReferenceWKID=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+          
+
+ 
+
+          console.log('getPlaceData (called from getLandUse) :: '+JSON.stringify(resp.data));
+
+
+
+
+
           deferred.resolve(resp.data);
         });
+
+
+
 
 
          
@@ -166,55 +219,73 @@ open.factory('openFactory', function($http, $q){
         //http://gisgate.co.clark.nv.us/
         //http://maps.clarkcountynv.gov/
 
-			$http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getFloodZoneInfo?parcel='+attr.parcel+'&callback=JSON_CALLBACK').then(function(resp) {
-			//$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getFloodZoneInfo?parcel='+attr.parcel+'&callback=JSON_CALLBACK').then(function(resp) {
-        deferred.resolve(resp.data);
-			});
-        
-	      return deferred.promise;
+  			$http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getFloodZoneInfo?parcel='+attr.parcel+'&callback=JSON_CALLBACK').then(function(resp) {
+  			//$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getFloodZoneInfo?parcel='+attr.parcel+'&callback=JSON_CALLBACK').then(function(resp) {
+          
+
+          console.log('getFloodZoneInfo :: '+JSON.stringify(resp.data));
+
+
+
+          deferred.resolve(resp.data);
+  			});
+          
+  	      return deferred.promise;
 
 	    },
-        getArielFlightDate: function(theX,theY) { //-----------------------------------------------------
+      getArielFlightDate: function(theX,theY) { //-----------------------------------------------------
 
-          // Create the deffered object
-          var deferred = $q.defer();
+        // Create the deffered object
+        var deferred = $q.defer();
 
-          //http://gisgate.co.clark.nv.us/
-          //http://maps.clarkcountynv.gov/
+        //http://gisgate.co.clark.nv.us/
+        //http://maps.clarkcountynv.gov/
 
-          //current map
-          var currentMap = "Most Current Flight (County)";
+        //current map
+        var currentMap = "Most Current Flight (County)";
+        
+  			$http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getAerialFlightDate?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&flightName='+currentMap+'&callback=JSON_CALLBACK').then(function(resp) {
+  			//$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getAerialFlightDate?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&flightName='+currentMap+'&callback=JSON_CALLBACK').then(function(resp) {
           
-    			$http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getAerialFlightDate?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&flightName='+currentMap+'&callback=JSON_CALLBACK').then(function(resp) {
-    			//$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getAerialFlightDate?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707&flightName='+currentMap+'&callback=JSON_CALLBACK').then(function(resp) {
-            deferred.resolve(resp.data);
-    			});
+
+
+          console.log('getAerialFlightDate :: '+JSON.stringify(resp.data));
+
+
+          deferred.resolve(resp.data);
+  			});
+        
+        return deferred.promise;
+
+      },
+      getOfficials: function(theX,theY) { //-----------------------------------------------------
+        // Create the deffered object
+        var deferred = $q.defer();
+        
+        // $http.get('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+        //   deferred.resolve(resp.data);
+        // });
+
+
+        //http://maps.clarkcountynv.gov/
+
+  			$http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
+  			//$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
           
-          return deferred.promise;
 
-        },
-        getOfficials: function(theX,theY) { //-----------------------------------------------------
-          // Create the deffered object
-          var deferred = $q.defer();
-          
-          // $http.get('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
-          //   deferred.resolve(resp.data);
-          // });
+          console.log('getElectedOfficials :: '+JSON.stringify(resp.data));
 
 
-          //http://maps.clarkcountynv.gov/
 
-    			$http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
-    			//$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(resp) {
-            deferred.resolve(resp.data);
-    			});
+          deferred.resolve(resp.data);
+  			});
 
-  			// $http.get('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(data,attr) {
-  			//   deferred.resolve(data);
-  			// });
-          
-          return deferred.promise;
-        },
+			// $http.get('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getElectedOfficials?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&callback=JSON_CALLBACK').then(function(data,attr) {
+			//   deferred.resolve(data);
+			// });
+        
+        return deferred.promise;
+      },
 	    getSelectPropertyLinks: function(attr) { //-----------------------------------------------------
 	      // Create the deffered object
 	      var deferred = $q.defer();
@@ -226,23 +297,28 @@ open.factory('openFactory', function($http, $q){
 			  //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getSelectPropertyLinks?parcel='+attr.parcel+'&callback=JSON_CALLBACK').then(function(resp) {
           
           
-			    //Formatting the data object---------------------------------
+  			    //Formatting the data object---------------------------------
 
-			    var soilsLink = document.getElementById("infoLink4");
+  			    var soilsLink = document.getElementById("infoLink4");
 
-			    //SaleDate (null result)
-			    if (resp.data.SoilGuidlinesLink === null || resp.data.SoilGuidlinesLink === "") {
-			      soilsLink.innerHTML = "Soil Guidelines Map Not Available";
-			      soilsLink.target = "_self";
-			      resp.data.SoilGuidlinesLink = "javascript:void(0)";
-			    }
-			    else {
-			      soilsLink.innerHTML = "Soil Guidelines Map";
-			      soilsLink.target = "_blank";
-			    }
+  			    //SaleDate (null result)
+  			    if (resp.data.SoilGuidlinesLink === null || resp.data.SoilGuidlinesLink === "") {
+  			      soilsLink.innerHTML = "Soil Guidelines Map Not Available";
+  			      soilsLink.target = "_self";
+  			      resp.data.SoilGuidlinesLink = "javascript:void(0)";
+  			    }
+  			    else {
+  			      soilsLink.innerHTML = "Soil Guidelines Map";
+  			      soilsLink.target = "_blank";
+  			    }
 
-			  deferred.resolve(resp.data);
-			});
+
+            console.log('getSelectPropertyLinks :: '+JSON.stringify(resp.data));
+
+
+
+  			  deferred.resolve(resp.data);
+  			});
 	      
 	      return deferred.promise;
 	    },
@@ -262,6 +338,14 @@ open.factory('openFactory', function($http, $q){
 
 	      $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getSCLZip?siteAddress='+address+'&callback=JSON_CALLBACK').then(function(resp) {
 	      //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getSCLZip?siteAddress='+address+'&callback=JSON_CALLBACK').then(function(resp) {
+          
+
+
+
+          console.log('getSCLZip :: '+JSON.stringify(resp.data));
+
+
+
           deferred.resolve(resp.data);
 	      });
 	       
@@ -288,6 +372,24 @@ open.factory('openFactory', function($http, $q){
        // $http.jsonp('http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getOverlays?Xcoordinate='+theX+'&Ycoordinate='+theY+'&wkid=102707'+'&viewData=selectproperty'+&callback=JSON_CALLBACK').then(function(resp) {
        //   deferred.resolve(resp.data);
        // });
+
+       // http://gisgate.co.clark.nv.us/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/GetOverlays?xCoordinate=738242.1894&yCoordinate=26728740.750&wkid=102707&viewData=selectproperty
+
+
+        $http.jsonp(servicePrefix+'gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/GetOverlays?xCoordinate='+theX+'+&yCoordinate='+theY+'&wkid=102707&viewData=selectproperty'+'&callback=JSON_CALLBACK').then(function(resp) {
+        //$http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getSCLZip?siteAddress='+address+'&callback=JSON_CALLBACK').then(function(resp) {
+           
+
+
+          console.log('GetOverlays (called from getOverlays) :: '+JSON.stringify(resp.data));
+
+
+
+           deferred.resolve(resp.data);
+        });
+
+
+
          
        return deferred.promise;
 

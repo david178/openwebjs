@@ -75,6 +75,8 @@ var coordSystem; //state-plane-ft || lat-long
 
 var bufferFill; //bool: tracks graphics buffer fill
 
+var printTask, params; //used for the printTask Service location, print Parameters
+
 var geometry;
 //tracks how many times a buffer has been manually added using create btn
 var bufferCreateCount = 0;
@@ -302,6 +304,28 @@ require([
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //TOOLS ---------------------------------------
         // // markerSymbol is used for point and multipoint, see http://raphaeljs.com/icons/#talkq for more examples
         // var markerSymbol = new SimpleMarkerSymbol();
@@ -338,6 +362,107 @@ require([
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //NEW AS OF 11/27/2018 
+
+
+
+
+
+        //************************************************************************
+
+        //update tools designation -------------------------
+        $(".toolSelect").click(function() {
+
+            //set functionMode to draw
+            functionMode='draw';
+
+
+
+            var constCurrentTool = 'esri.toolbars.Draw.'+$(this).attr('id');
+
+
+
+            // toolbar.activate(esri.toolbars.Draw.MULTI_POINT);
+
+            //toolbar.activate(esri.toolbars.Draw.MULTI_POINT);
+
+            // 'esri.toolbars.Draw.'+$(this).attr('id')
+
+
+
+
+            //update tools designation -------------------------
+            // toolbar.activate(Draw.MULTI_POINT);
+            toolbar.activate(Draw.POINT);
+
+
+            console.log('THE TOOL ATTR is  ' + functionMode  + $(this).attr('id'));
+
+
+           $("#currentToolTag").text($(this).attr('id'));
+
+           // // toolSelect
+           //  // console.log(event.target.id);
+           //  // var id = $(this).attr('id');
+           //  console.log($(this).attr('id'));
+
+        });
+
+
+        // //************************************************************************
+
+        // //update tools designation -------------------------
+        // $(".toolSelect").click(function() {
+
+
+        //    $("#currentToolTag").text($(this).attr('id'));
+
+        //    // toolSelect
+        //     // console.log(event.target.id);
+        //     // var id = $(this).attr('id');
+        //     console.log($(this).attr('id'));
+
+        // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //---
 
 
         //Activate Measurement
@@ -562,20 +687,227 @@ require([
 
         }
 
+
+
+
+        //handles the updating of the bootstrap dropdown, to update:
+        //(1) currently active selection text, (2) the active draw-tools-container (draw/measure/buffer/sym.ann)
+        $(".dropdown-menu li a").click(function(){
+          $(this).parents(".dropdown").find('.btn').html($(this).text() + '<span class="ion-android-more-horizontal"></span>');
+          $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+
+
+        //  var shittest = $(this).parents(".dropdown").find('.btn').html($(this).text());
+
+
+          var n = $(this).parents(".dropdown").find('.btn').text();
+
+          //listen to the dropdown selection to update the current tool container visbility
+          
+          // if (n.indexOf('Draw'))
+          // {
+          //   $('.draw-tools-container').css({
+          //       // 'visibility': 'hidden'
+          //       'display': 'flex'
+          //   });
+
+          //   console.log('draw hit')
+
+          // }
+          // if (n.indexOf('Buffer'))
+          // {
+          //   $('.draw-tools-container').css({
+          //       // 'visibility': 'hidden'
+          //       'display': 'none'
+          //   });
+
+          //   console.log('buffer hit')
+
+
+          //   // $('.flex-container').css({
+          //   //     // 'visibility': 'hidden'
+          //   //     'display': 'flex'
+          //   // });
+
+          // }
+          // if (n.indexOf('Measure'))
+          // {
+          //   $('.draw-tools-container').css({
+          //       // 'visibility': 'hidden'
+          //       'display': 'none'
+          //   });
+
+          //   console.log('measure hit')
+
+
+          //   // $('.flex-container').css({
+          //   //     // 'visibility': 'hidden'
+          //   //     'display': 'flex'
+          //   // });
+
+          // }
+          // else {
+          //   // $('.draw-tools-container').css({
+          //   //     // 'visibility': 'hidden'
+          //   //     'display': 'none'
+          //   // });
+
+          //   console.log('nothing hit')
+
+          // }
+
+
+
+
+
+
+          // var n = shittest.indexOf("buffer");
+
+          console.log(n)
+
+
+          // //listen to the dropdown selection to update the current tool container visbility
+          // if ($(this).parents(".dropdown").find('.btn').html($(this).text()).indexOf('Buffer'))
+          // {
+          //   $('.draw-tools-container').css({
+          //       // 'visibility': 'hidden'
+          //       'display': 'none'
+          //   });
+
+
+          //   // $('.flex-container').css({
+          //   //     // 'visibility': 'hidden'
+          //   //     'display': 'flex'
+          //   // });
+
+          // }
+
+
+
+
+
+          // $(this).parents(".dropdown").find('.btn').html($(this).text().indexOf('Buffer')
+
+
+        // if (test.includes('Buffer')) { 
+        //   // Found Buffer
+
+        //     $('.draw-tools-container').css({
+        //         // 'visibility': 'hidden'
+        //         'display': 'none'
+        //     });
+        // }
+
+
+          // //listen to the dropdown selection to update the current tool container visbility
+          // if ()
+          // {
+          //   // $('.draw-tools-container').css({
+          //   //     // 'visibility': 'hidden'
+          //   //     'display': 'none'
+          //   // });
+
+
+          //   // $('.flex-container').css({
+          //   //     // 'visibility': 'hidden'
+          //   //     'display': 'flex'
+          //   // });
+
+          // }
+          
+
+
+
+
+          // //listen to the dropdown selection to update the current tool container visbility
+          // if ($(this).parents(".dropdown").find('.btn').html($(this).text().indexOf('Buffer'))
+          // {
+          //   // $('.draw-tools-container').css({
+          //   //     // 'visibility': 'hidden'
+          //   //     'display': 'none'
+          //   // });
+
+
+          //   // $('.flex-container').css({
+          //   //     // 'visibility': 'hidden'
+          //   //     'display': 'flex'
+          //   // });
+
+          // }
+          
+
+        });
+
+
+
+
+        $(".drawDropDownMenuItem").click(function(){
+
+          $('.draw-tools-container').css({
+              'display': 'flex'
+          });
+          $('.buffer-tools-container').css({
+              'display': 'none'
+          });
+
+            
+        });
+        $(".bufferDropDownMenuItem").click(function(){
+
+            $('.draw-tools-container').css({
+                'display': 'none'
+            });
+            $('.buffer-tools-container').css({
+                'display': 'flex'
+            });
+
+        });
+        $(".measureDropDownMenuItem").click(function(){
+
+            $('.draw-tools-container').css({
+                'display': 'none'
+            });
+            $('.buffer-tools-container').css({
+                'display': 'none'
+            });
+
+            
+        });
+
+
+
+
+
+
+
+        // // registry.byId("clear").on("click", function() {
+        // //   map.graphics.clear();
+        // // });
+
         // registry.byId("clear").on("click", function() {
         //   map.graphics.clear();
+        //   console.log('hittttt')
+
+        // //  $('.dropdown-toggle').dropdown()
+        // //  $('.dropdown-toggle').data('toggle', '');
+
         // });
 
 
+
         //Erase Graphics
-        $('#eraseBtn').click(function() {
+        $('.eraseBtn').click(function() {
             // console.log('ihtrs');
             // map.graphics.remove('highlight');
             // map.graphics.clear();
-            clearGraphics();
+            
+            map.graphics.clear();
+
+            // //one step further (only if need)
+            // clearGraphics();
         });
         //Finish Graphics
-        $('#finishDrawBtn').click(function() {
+        $('#doneDrawBtn').click(function() {
             // console.log('ihtrs');
             // map.graphics.remove('highlight');
             // map.graphics.clear();
@@ -1033,12 +1365,14 @@ require([
         template.preserveScale = true;
 
         //PrintParameters
-        var params = new esri.tasks.PrintParameters();
+        // var params = new esri.tasks.PrintParameters();
+        params = new esri.tasks.PrintParameters();
         params.map = map;
         params.template = template;
 
         //PrintTask
-         var printTask = new esri.tasks.PrintTask(servicePrefix+"arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task");
+         // var printTask = new esri.tasks.PrintTask(servicePrefix+"arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task");
+         printTask = new esri.tasks.PrintTask(servicePrefix+"arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task");
         // var printTask = new esri.tasks.PrintTask("http://maps.clarkcountynv.gov/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task");
 
 
@@ -1071,7 +1405,8 @@ require([
         $("#exportListItem").click(function() {
 
             //call to processPrint function
-            processPrint();
+            //processPrint();
+            externalPrint();
 
         });
 
@@ -1079,9 +1414,19 @@ require([
         $("#printInitLink").click(function() {
 
             //call to processPrint function
-            processPrint();
+            //processPrint();
+            externalPrint();
 
         });
+
+        // //if the 'x' Toggle buttons are clicked
+        // $('#printInitLink,# ,. ').click(function() {
+
+        //         //call to processPrint function
+        //         processPrint();
+
+        // });
+
     
 
         //------------------------------------------------
@@ -1172,49 +1517,51 @@ require([
 
 
 
-        // //call to start print, or do so on controllers
-        // startPrint();
+        // // //call to start print, or do so on controllers
+        // // startPrint();
 
-        //processPrint - creates the print friendly view
-        function processPrint() {
+        // //processPrint - creates the print friendly view
+        // function processPrint() {
 
-            //Re-show map print & export load
-            $("#printLoadingTag").show();
-            $("#printInitLink").hide();
+        //     console.log('process print just got hit')
 
-            //Pause a few seconds then call the print task      
-            //  setTimeout(function(){
-            console.log("M [[ printing to PDF ]]");
-            // printTask.execute(params, printResult, printError);
+        //     //Re-show map print & export load
+        //     $("#printLoadingTag").show();
+        //     $("#printInitLink").hide();
 
-            //Call to execute print task
-            printTask.execute(params, printResolve);
+        //     //Pause a few seconds then call the print task      
+        //     //  setTimeout(function(){
+        //     console.log("M [[ printing to PDF ]]");
+        //     // printTask.execute(params, printResult, printError);
+
+        //     //Call to execute print task
+        //     printTask.execute(params, printResolve);
 
 
 
 
-            //Print process process resolve
-            function printResolve(result) {
+        //     //Print process process resolve
+        //     function printResolve(result) {
 
-                //call to kick off the print preview url construct
-                angular.element($('#mapDiv')).scope().constructPrintFriendly(result.url);
+        //         //call to kick off the print preview url construct
+        //         angular.element($('#mapDiv')).scope().constructPrintFriendly(result.url);
                 
 
-                 //Re-show map print & export load
-                 $("#printLoadingTag").hide();
-                 $("#printFriendlyLink").show();
+        //          //Re-show map print & export load
+        //          $("#printLoadingTag").hide();
+        //          $("#printFriendlyLink").show();
 
-                 //Export Modal:
-                 $("#rawExportPNGLink").attr("href", result.url);
-                 $("#exportPreviewIframe").attr("src", result.url);
+        //          //Export Modal:
+        //          $("#rawExportPNGLink").attr("href", result.url);
+        //          $("#exportPreviewIframe").attr("src", result.url);
 
 
-                 //log result.url
-                 console.log("M [[ print: " + result.url + " ]]");
+        //          //log result.url
+        //          console.log("M [[ print: " + result.url + " ]]");
 
-            };
+        //     };
             
-        }
+        // }
 
 
 
@@ -1430,8 +1777,7 @@ require([
                 //     //Add stops
                 //     addStop(evt);
                 // } 
-                else {
-                    return; }
+                else { return; }
 
 
             });
@@ -2804,6 +3150,168 @@ function resizeMap() {
 }
 
 //************************************************************************
+
+function externalPrint() {
+    // processPrint();
+    // console.log('this is just a test')
+
+    require([
+      "esri/dijit/Print", //added for print
+      "esri/tasks/PrintTask", //added for print
+      "esri/tasks/PrintTemplate", //added for print
+    ], function(Print,PrintTask,PrintTemplate) {
+
+        console.log('process print just got hit')
+
+        //Re-show map print & export load
+        $("#printLoadingTag").show();
+        $("#printInitLink").hide();
+
+        //Pause a few seconds then call the print task      
+        //  setTimeout(function(){
+        console.log("M [[ printing to PDF ]]");
+        // printTask.execute(params, printResult, printError);
+
+        //Call to execute print task
+        printTask.execute(params, printResolve);
+
+
+
+
+        //Print process process resolve
+        function printResolve(result) {
+
+            //call to kick off the print preview url construct
+            angular.element($('#mapDiv')).scope().constructPrintFriendly(result.url);
+            
+
+             //Re-show map print & export load
+             $("#printLoadingTag").hide();
+             $("#printFriendlyLink").show();
+
+             //Export Modal:
+             $("#rawExportPNGLink").attr("href", result.url);
+             $("#exportPreviewIframe").attr("src", result.url);
+
+
+             //log result.url
+             console.log("M [[ print: " + result.url + " ]]");
+
+        };
+        
+
+    });
+
+
+
+}
+
+
+
+// //call to start print, or do so on controllers
+// startPrint();
+
+
+
+// "esri/dijit/Print", //added for print
+// "esri/tasks/PrintTask", //added for print
+// "esri/tasks/PrintTemplate", //added for print
+
+
+// require([
+//   "esri/dijit/Print", //added for print
+//   "esri/tasks/PrintTask", //added for print
+//   "esri/tasks/PrintTemplate", //added for print
+// ], function(Print,PrintTask,PrintTemplate) {
+
+//     console.log('process print just got hit')
+
+//     //Re-show map print & export load
+//     $("#printLoadingTag").show();
+//     $("#printInitLink").hide();
+
+//     //Pause a few seconds then call the print task      
+//     //  setTimeout(function(){
+//     console.log("M [[ printing to PDF ]]");
+//     // printTask.execute(params, printResult, printError);
+
+//     //Call to execute print task
+//     printTask.execute(params, printResolve);
+
+
+
+
+//     //Print process process resolve
+//     function printResolve(result) {
+
+//         //call to kick off the print preview url construct
+//         angular.element($('#mapDiv')).scope().constructPrintFriendly(result.url);
+        
+
+//          //Re-show map print & export load
+//          $("#printLoadingTag").hide();
+//          $("#printFriendlyLink").show();
+
+//          //Export Modal:
+//          $("#rawExportPNGLink").attr("href", result.url);
+//          $("#exportPreviewIframe").attr("src", result.url);
+
+
+//          //log result.url
+//          console.log("M [[ print: " + result.url + " ]]");
+
+//     };
+
+
+// });
+
+
+
+//processPrint - creates the print friendly view
+function processPrint2() {
+
+    // console.log('process print just got hit')
+
+    // //Re-show map print & export load
+    // $("#printLoadingTag").show();
+    // $("#printInitLink").hide();
+
+    // //Pause a few seconds then call the print task      
+    // //  setTimeout(function(){
+    // console.log("M [[ printing to PDF ]]");
+    // // printTask.execute(params, printResult, printError);
+
+    // //Call to execute print task
+    // printTask.execute(params, printResolve);
+
+
+
+
+    // //Print process process resolve
+    // function printResolve(result) {
+
+    //     //call to kick off the print preview url construct
+    //     angular.element($('#mapDiv')).scope().constructPrintFriendly(result.url);
+        
+
+    //      //Re-show map print & export load
+    //      $("#printLoadingTag").hide();
+    //      $("#printFriendlyLink").show();
+
+    //      //Export Modal:
+    //      $("#rawExportPNGLink").attr("href", result.url);
+    //      $("#exportPreviewIframe").attr("src", result.url);
+
+
+    //      //log result.url
+    //      console.log("M [[ print: " + result.url + " ]]");
+
+    // };
+    
+}
+
+
+
 
 //*************************** Theme **************************************
 //check the theme

@@ -18,6 +18,207 @@
     border-color: #080808;
 }
 
+.omnibarcontainer,.hideShowBar {
+    background-color: #222;
+}
+
+
+.omnibarcontainer {
+    color: hsla(0,0%,100%,.9) !important;
+    background-color: #222 !important;
+}
+.panel-body {
+    margin: 0px 4px 4px 4px !important;
+    font-color: #ffffff;
+    background-color: #222 !important;
+}
+.panel-heading {
+/*    background-image: none !important;*/
+/*    background-color: #222 !important;*/
+}
+
+
+
+/*
+.hideShowBar {
+    background-color: #222;
+}*/
+
+.coordsDropDownVariant {
+    background-color: #222;
+}
+
+
+
+.skinnySection {
+    /* margin-top: 28px; */
+/*    margin-top: 20px;*/
+    border-top: 1px solid #5b5e63;
+    /* padding-top: 20px; */
+/*    padding-top: 8px;*/
+}
+
+
+
+
+.panel-default > .panel-heading {
+/*    background-image: url(images/greyBG.jpg) !important;
+    border-top: 2px solid transparent !important;
+    border-bottom: 8px solid transparent !important;*/
+    border-right: 8px solid rgb(222, 222, 222);
+
+    background-color: #222 !important;
+
+/*    background-color: #f5f5f5;
+    border-color: #dddddd;*/
+
+
+}
+.cards-strong {
+        border-right: 8px solid rgb(222, 222, 222);
+        
+}
+
+div.panel-heading {
+    background-color: #222 !important;
+
+}
+.panel-body {
+
+/*color:#fff;*/
+color: #f5f5f5;
+border:#222;
+
+}
+.panel {
+    margin-bottom: 20px;
+    background-color: #222;
+}
+
+
+
+
+.panel-default {
+
+    background-image: url("images/darkBG.jpg") !important;
+
+}
+.panel-default>.panel-heading {
+
+    background-image: url("images/darkBG.jpg") !important;
+
+    border-top: 2px solid transparent !important;
+    border-bottom: 8px solid transparent !important;
+    border-right: 8px solid rgb(37, 83, 132);
+
+}
+
+.panel-title {
+
+    font-family: Lato, 'Noto Sans', sans-serif;
+    letter-spacing: -.0323em;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 400;
+/*    color: #3d3d3d;*/
+    color: #f5f5f5;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: none !important;
+}
+
+
+
+
+
+.searchformcontainer {
+    background-color: #222 !important;
+}
+form#search-form {
+    /* padding: 0px !important; */
+    color: #f5f5f5;
+    margin: 0px !important;
+    border-radius: 3px !important;
+    background-color: #222 !important;
+}
+#tester {
+/*    color: #f5f5f5;*/
+    margin: 0px !important;
+    border-radius: 3px !important;
+    background-color: #222 !important;
+}
+
+#search-form {
+    outline: 0 !important;
+    letter-spacing: 0;
+    /* background: #FFF; */
+    background-color: #222;
+    border: 0px;
+    border-radius: 0;
+    box-shadow: none;
+    margin-top: 0px;
+    height: 49px !important;
+    /* margin-right: 50px; */
+    /* margin-right: -11px; */
+    /* padding-bottom: 0px !important; */
+    margin: 0px !important;
+    border-radius: 3px !important;
+
+    background-color: #222 !important;
+    color: #f5f5f5 !important;
+}
+#search-form
+
+#search-form:active, #search-form:hover, #searchForm:focus {
+    background-color: #222 !important;
+    color: #f5f5f5 !important;
+
+}
+
+#searchBtn-holder2, button#hamburgerBtn, span#searchBtn-holder .input-group-btn, #searchBtn, .infoCard, .cards-strong  {
+    background-color: #222 !important;
+    color: #f5f5f5 !important;
+    border-color: #222 !important;
+    transition: none;
+}
+.omnibarcontainer {
+/*    transition: none;*/
+}
+
+.searchCard {
+/*    background-color: black;*/
+}
+
+#tester>.dropdown-menu, #tester>.dropdown-menu ul, #tester>.dropdown-menu li, #tester>.dropdown-menu li a {
+    /* width: 388px !important; */
+/*    margin-left: -1px;
+    margin-right: 0px;
+    margin-top: 0px !important;
+    background-color: #fff;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-top: 0px !important;
+    box-shadow: none;
+    border-bottom: 0px;
+    box-sizing: border-box;
+    width: 100% !important;
+    left: 1px !important;*/
+
+    background-color: #222 !important;
+    color: #f5f5f5 !important;
+    border-color: #222 !important;
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -50,7 +251,8 @@ background: #333;
 }
 
 .coordsDropDown {
-  background: #111 !important; 
+/*  background: #111 !important; */
+background: transparent; 
 }
 
 

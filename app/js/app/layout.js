@@ -566,53 +566,130 @@ function browserspecifics() {
 
 // Instance the tour
 var tour = new Tour({
+  //   storage: false,
+  //   steps: [{
+  //   element: "#imgLogo",
+  //   placement: "right",   
+  //   title: "Welcome to OpenWeb!",
+  //   content: "Click next to learn how to use this application."
+  // },
+  // {
+  //   element: "#search-holder",
+  //   placement: "bottom",   
+  //   title: "Searchbar",
+  //   content: "Type an address, parcel number, or the name of a property owner to be taken to that property. Click a property on the map and then click next!"
+  // },
+  // {
+  //   element: "#PropInfoDialog",
+  //   placement: "right",   
+  //   title: "Property Information",
+  //   content: "These tabs provide specific information about the selected property."
+  // },
+  // {
+  //   element: "#skinnyPanel",
+  //   placement: "right",   
+  //   title: "Sidebar",
+  //   content: "The icons at the bottom of this sidebar will direct you to more of OpenWeb's features."
+  // }, 
+  // { 
+  //   element: "#compassTab",
+  //   placement: "top",   
+  //   title: "Display Options Tab",
+  //   content: "Refine the map using these options."
+  // },
+  // {
+  //   element: "#pencilTab",
+  //   placement: "top",   
+  //   title: "Tools Tab",
+  //   content: "Add custom modifications to your map using these tools."
+  // },
+  // {
+  //   element: "#gearTab",
+  //   placement: "top",   
+  //   title: "Resources Tab",
+  //   content: "Leave us feedback or check out our other applications here!"
+  // },
+  // {
+  //   element: "#skinnyPanel",
+  //   placement: "right",
+  //   title: "Thank you!",
+  //   content: "Thanks for taking the tour! If you need to take it again, click the 'Take a Tour' button on the introduction panel!"
+  //   // orphan: true
+  // }],
+
     storage: false,
     steps: [{
-    element: "#imgLogo",
+    element: ".omnibarcontainer",
     placement: "right",   
     title: "Welcome to OpenWeb!",
     content: "Click next to learn how to use this application."
   },
   {
-    element: "#search-holder",
+    element: ".searchCard",
     placement: "bottom",   
-    title: "Searchbar",
+    title: "Search",
     content: "Type an address, parcel number, or the name of a property owner to be taken to that property. Click a property on the map and then click next!"
   },
   {
-    element: "#PropInfoDialog",
+    element: ".accordionStyleNew",
     placement: "right",   
     title: "Property Information",
     content: "These tabs provide specific information about the selected property."
   },
   {
-    element: "#skinnyPanel",
+    element: ".infoCard",
     placement: "right",   
-    title: "Sidebar",
-    content: "The icons at the bottom of this sidebar will direct you to more of OpenWeb's features."
-  }, 
-  { 
-    element: "#compassTab",
-    placement: "top",   
-    title: "Display Options Tab",
-    content: "Refine the map using these options."
+    title: "Information Card",
+    content: "This box will display currently selected tools, location on the map, and information related to the current view."
   },
+
+
+
+  // {
+  //   element: "#skinnyPanel",
+  //   placement: "right",   
+  //   title: "Sidebar",
+  //   content: "The icons at the bottom of this sidebar will direct you to more of OpenWeb's features."
+  // }, 
+  // { 
+  //   element: "#compassTab",
+  //   placement: "top",   
+  //   title: "Display Options Tab",
+  //   content: "Refine the map using these options."
+  // },
+  // {
+  //   element: "#pencilTab",
+  //   placement: "top",   
+  //   title: "Tools Tab",
+  //   content: "Add custom modifications to your map using these tools."
+  // },
+  // {
+  //   element: "#gearTab",
+  //   placement: "top",   
+  //   title: "Resources Tab",
+  //   content: "Leave us feedback or check out our other applications here!"
+  // },
   {
-    element: "#pencilTab",
-    placement: "top",   
-    title: "Tools Tab",
-    content: "Add custom modifications to your map using these tools."
-  },
-  {
-    element: "#gearTab",
-    placement: "top",   
-    title: "Resources Tab",
-    content: "Leave us feedback or check out our other applications here!"
-  },
-  {
-    element: "#skinnyPanel",
+    element: ".omnibarcontainer",
     placement: "right",
-    title: "Thank you!",
+    title: "Hiding and Showing",
+    content: "You can always hide or show the property information by clicking '^ Hide/ v Show', in case you need a better view of the map."
+    // orphan: true
+  },
+
+  {
+    element: ".searchCard",
+    placement: "right",
+    title: "Options",
+    content: "Whenever you need to change the map view, flight, use a tool, or get help, click the 'Hamburger' button on the top left."
+    // orphan: true
+  },
+
+
+  {
+    element: ".skinnyPanel",
+    placement: "right",
+    title: "Thank You!",
     content: "Thanks for taking the tour! If you need to take it again, click the 'Take a Tour' button on the introduction panel!"
     // orphan: true
   }],

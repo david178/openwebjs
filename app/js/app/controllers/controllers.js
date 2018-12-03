@@ -97,7 +97,8 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
         // //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         // //DYNAMIC PropInfo dialog visability onKeyUp
         // $scope.propInfoVis($event.keyCode);
-        $scope.propInfoVis(); //COMMENTED OUT
+        // $scope.propInfoVis(); //COMMENTED OUT
+        $scope.propInfoVisNew(0); //COMMENTED OUT
 
     }
 
@@ -119,6 +120,10 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
 
 
         
+        // //call to re-position the prop info window
+        // $scope.propInfoVisNew(1);
+
+
 
         // //NEW: PASSING THE MAGIC
         // //PASS THE MAGIC KEY AS PARAM TO EXECUTESEARCH METHOD
@@ -133,7 +138,7 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
     //888888888888888888888888888888888888888888888888//888888888888888888888888888888888888888888888888
     //watches suggestionsObj scope for updates
     $scope.$watch('suggestionsObj', function(newval, oldval) {
-        $scope.propInfoVis();
+        // $scope.propInfoVis();
         console.log("C [[ suggestions height: " + $('#tester ul').height() + " ]]");
     });
     //888888888888888888888888888888888888888888888888//888888888888888888888888888888888888888888888888
@@ -279,154 +284,160 @@ open.controller('TypeaheadCtrl', function($scope, $http, limitToFilter) { //limi
 
 
 
-    //dynamic propInfoVis -------------------------------------------------------------
-    // $scope.propInfoVis = function(evt) {
-    $scope.propInfoVis = function() {
-
-            //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-            //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-            // autocompleteIsShowing = $("body .dropdown-menu").is(":visible"); 
-            // autocompleteIsShowing = $("#tester .dropdown-menu").is(":visible"); 
-
-            if ($("#tester .dropdown-menu").css('display') == 'none') {
-                autocompleteIsShowing = false;
-                // true
-            } else {
-                autocompleteIsShowing = true;
-            }
 
 
 
 
 
+    // //dynamic propInfoVis -------------------------------------------------------------
+    // // $scope.propInfoVis = function(evt) {
+    // $scope.propInfoVis = function() {
 
-            if (autocompleteIsShowing === true && searchHasCompleted === false) { //AUTOCOMPLETE SHOWING - INITIAL STATE
+    //         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //         // autocompleteIsShowing = $("body .dropdown-menu").is(":visible"); 
+    //         // autocompleteIsShowing = $("#tester .dropdown-menu").is(":visible"); 
 
-                $('#PropInfoDialog').css({
-                    'visibility': 'hidden'
-                });
-                console.log('C [[ propInfoVis-a[0]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
-
-            } else if (autocompleteIsShowing === true && searchHasCompleted === true) { //AUTOCOMPLETE SHOWING & PREV SEARCH ACTIVE
-
-                // setTimeout(
-                //     function() {
-                //       //prop info results positioning
-                //       $( "#PropInfoDialog" ).position({
-                //         my: "left top",
-                //         at: "left+1 bottom+2",
-                //         of: "#tester .dropdown-menu"
-                //           // of: "#tester #search-form"
-                //       });
-                //       // $( "#PropInfoDialog" ).show();
-                //       $('#PropInfoDialog').css({
-                //         'visibility': 'visible'
-                //         });
-                //       console.log('C [[ propInfoVis-a[1]' + JSON.stringify($( "#PropInfoDialog" ).position()) + " ]]" );
-
-                //       // console.log(autocompleteIsShowing)
-                //     },
-                //     50
-                //     // 250
-                // );
-
-                //prop info results positioning
-                $("#PropInfoDialog").position({
-                    my: "left top",
-                    // at: "left+1 bottom+2",
-                    at: "left+1 bottom+0",
-                    of: "#tester .dropdown-menu"
-                        // of: "#tester #search-form"
-                });
-                // $( "#PropInfoDialog" ).show();
-                $('#PropInfoDialog').css({
-                    'visibility': 'visible'
-                });
-                console.log('C [[ propInfoVis-a[1]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
-
-            }
-
-            //autocomplete is not showing, it never has & length is min
-            else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
-
-                $('#PropInfoDialog').css({
-                    'top': 49,
-                    'left': 240
-                });
-                // $( "#PropInfoDialog" ).show();
-                $('#PropInfoDialog').css({
-                    'visibility': 'hidden'
-                });
-                console.log('C [[ propInfoVis-a[2]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
-
-            }
-            //autocomplete is not showing, it never has & length is min (SELECT PROP)
-            else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
-
-                $('#PropInfoDialog').css({
-                    'top': 49,
-                    'left': 240
-                });
-                // $( "#PropInfoDialog" ).show();
-                $('#PropInfoDialog').css({
-                    // 'visibility': 'visible'
-                    'visibility': 'hidden'
-                });
-                console.log('C [[ propInfoVis-a[3]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
-
-            }
-
-            //autocomplete is not showing, it never has & length is long
-            else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
-
-                $('#PropInfoDialog').css({
-                    'top': 49,
-                    'left': 240
-                });
-                // $( "#PropInfoDialog" ).show();
-                $('#PropInfoDialog').css({
-                    'visibility': 'hidden'
-                });
-                console.log('C [[ propInfoVis-a[4]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
-
-            }
-            //******************************diff from execute search logic******************
-            //autocomplete is not showing, it has before though & length is min (MIN KEY AFTER SEARCH - DO NOT SHOW - this is diff from execute search's logic)
-            else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
-
-                // console.log('this needs to hide')
-
-                $('#PropInfoDialog').css({
-                    'top': 49,
-                    'left': 240
-                });
-                // $( "#PropInfoDialog" ).show();
-                $('#PropInfoDialog').css({
-                    'visibility': 'hidden'
-                        // 'visibility': 'visible'
-                });
-                console.log('C [[ propInfoVis-a[5]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
-
-            }
-            //*******************************************************************************
-            //autocomplete is not showing, it has before though & length is long
-            else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
-
-                $('#PropInfoDialog').css({
-                    'top': 49,
-                    'left': 240
-                });
-                // $( "#PropInfoDialog" ).show();
-                $('#PropInfoDialog').css({
-                    'visibility': 'visible'
-                });
-                console.log('C [[ propInfoVis-a[6]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
-
-            }
+    //         if ($("#tester .dropdown-menu").css('display') == 'none') {
+    //             autocompleteIsShowing = false;
+    //             // true
+    //         } else {
+    //             autocompleteIsShowing = true;
+    //         }
 
 
-        }
-        //------------------------------------------------------------------------------
+
+
+
+    //         if (autocompleteIsShowing === true && searchHasCompleted === false) { //AUTOCOMPLETE SHOWING - INITIAL STATE
+
+    //             $('#PropInfoDialog').css({
+    //                 'visibility': 'hidden'
+    //             });
+    //             console.log('C [[ propInfoVis-a[0]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+    //         } else if (autocompleteIsShowing === true && searchHasCompleted === true) { //AUTOCOMPLETE SHOWING & PREV SEARCH ACTIVE
+
+    //             // setTimeout(
+    //             //     function() {
+    //             //       //prop info results positioning
+    //             //       $( "#PropInfoDialog" ).position({
+    //             //         my: "left top",
+    //             //         at: "left+1 bottom+2",
+    //             //         of: "#tester .dropdown-menu"
+    //             //           // of: "#tester #search-form"
+    //             //       });
+    //             //       // $( "#PropInfoDialog" ).show();
+    //             //       $('#PropInfoDialog').css({
+    //             //         'visibility': 'visible'
+    //             //         });
+    //             //       console.log('C [[ propInfoVis-a[1]' + JSON.stringify($( "#PropInfoDialog" ).position()) + " ]]" );
+
+    //             //       // console.log(autocompleteIsShowing)
+    //             //     },
+    //             //     50
+    //             //     // 250
+    //             // );
+
+    //             //prop info results positioning
+    //             $("#PropInfoDialog").position({
+    //                 my: "left top",
+    //                 // at: "left+1 bottom+2",
+    //                 at: "left+1 bottom+0",
+    //                 of: "#tester .dropdown-menu"
+    //                     // of: "#tester #search-form"
+    //             });
+    //             // $( "#PropInfoDialog" ).show();
+    //             $('#PropInfoDialog').css({
+    //                 'visibility': 'visible'
+    //             });
+    //             console.log('C [[ propInfoVis-a[1]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+    //         }
+
+    //         //autocomplete is not showing, it never has & length is min
+    //         else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
+
+    //             $('#PropInfoDialog').css({
+    //                 'top': 49,
+    //                 'left': 240
+    //             });
+    //             // $( "#PropInfoDialog" ).show();
+    //             $('#PropInfoDialog').css({
+    //                 'visibility': 'hidden'
+    //             });
+    //             console.log('C [[ propInfoVis-a[2]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+    //         }
+    //         //autocomplete is not showing, it never has & length is min (SELECT PROP)
+    //         else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
+
+    //             $('#PropInfoDialog').css({
+    //                 'top': 49,
+    //                 'left': 240
+    //             });
+    //             // $( "#PropInfoDialog" ).show();
+    //             $('#PropInfoDialog').css({
+    //                 // 'visibility': 'visible'
+    //                 'visibility': 'hidden'
+    //             });
+    //             console.log('C [[ propInfoVis-a[3]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+    //         }
+
+    //         //autocomplete is not showing, it never has & length is long
+    //         else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
+
+    //             $('#PropInfoDialog').css({
+    //                 'top': 49,
+    //                 'left': 240
+    //             });
+    //             // $( "#PropInfoDialog" ).show();
+    //             $('#PropInfoDialog').css({
+    //                 'visibility': 'hidden'
+    //             });
+    //             console.log('C [[ propInfoVis-a[4]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+    //         }
+    //         //******************************diff from execute search logic******************
+    //         //autocomplete is not showing, it has before though & length is min (MIN KEY AFTER SEARCH - DO NOT SHOW - this is diff from execute search's logic)
+    //         else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
+
+    //             // console.log('this needs to hide')
+
+    //             $('#PropInfoDialog').css({
+    //                 'top': 49,
+    //                 'left': 240
+    //             });
+    //             // $( "#PropInfoDialog" ).show();
+    //             $('#PropInfoDialog').css({
+    //                 'visibility': 'hidden'
+    //                     // 'visibility': 'visible'
+    //             });
+    //             console.log('C [[ propInfoVis-a[5]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+    //         }
+    //         //*******************************************************************************
+    //         //autocomplete is not showing, it has before though & length is long
+    //         else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
+
+    //             $('#PropInfoDialog').css({
+    //                 'top': 49,
+    //                 'left': 240
+    //             });
+    //             // $( "#PropInfoDialog" ).show();
+    //             $('#PropInfoDialog').css({
+    //                 'visibility': 'visible'
+    //             });
+    //             console.log('C [[ propInfoVis-a[6]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+    //         }
+
+
+    //     }
+    //     //------------------------------------------------------------------------------
+
+
 
 });
 
@@ -451,6 +462,10 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     //Coord System Options
     $scope.coordOptions = [{ name: 'State Plane ft. ', value: 'state-plane-ft' }, { name: 'Lat / Long', value: 'lat-long' }];
     $scope.selectedOption = $scope.coordOptions[0];
+    //Tools Options
+    $scope.toolOptions = [{ name: 'Draw ...', value: 'draw-tool' }, { name: 'Buffer ...', value: 'buffer-tool' }, { name: 'Measure ...', value: 'measure-tool' }];
+    $scope.selectedToolOption = $scope.toolOptions[0];
+
 
 
     //ChangeCoords (updates the coordinate system) -------------------------------
@@ -1002,6 +1017,44 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
     //saves the theme on a theme change
     $scope.saveTheme = function() {
+
+        //toggle the darkt theme:
+
+
+        // $scope.isActive = false;
+        // $scope.activeButton = function() {
+        //   $scope.isActive = !$scope.isActive;
+        // }  
+        // https://codepen.io/hbuchel/pen/xtbzc
+
+
+          // $scope.isActive = false;
+          // $scope.activeButton = function() {
+          //   $scope.isActive = !$scope.isActive;
+          // }  
+
+
+        
+
+        //toggle the active themeSet on click
+        if ($scope.layout === 'dark') {
+            $scope.layout = 'county';
+        }
+        else {
+            $scope.layout = 'dark';
+        }
+
+        console.log('THE CURRENTLY ACTIVE THEME IS ' + $scope.layout)
+
+
+        // $scope.layout = 'dark';
+
+
+
+        // $scope.isActive = !$scope.isActive;
+
+
+
         localStorage.setItem("theme", $scope.layout);
         // localStorage.setItem("mediatheme", $scope.medialayout);
 
@@ -1119,7 +1172,9 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
     var layerObj_new;
     var customObj_new;
-    
+
+
+
 
 
 
@@ -1403,8 +1458,24 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
         // var serviceSuffix_F = 'arcgis_images/rest/services/';
         // var serviceType_F = 'CACHED'; //E.g. CACHED / Elevations / Utilities
 
+
+
+
+
+
+
+
+
+
+
+
+
+        // LOADING THE FLIGHTS
+
         $http.jsonp(servicePrefix+serviceSuffix_F+serviceType_F+'?f=pjson'+'&callback=JSON_CALLBACK').then(function(resp) {
 
+
+            //OLD METHOD ------------------------------------------------
 
             //set the data
             flightObj_new2 = resp.data;
@@ -1437,138 +1508,64 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
                 flightObj_new2.services[i].name = /[^/]*$/.exec(flightObj_new2.services[i].name)[0];
 
-
                 // <i class="ion-social-buffer-outline" style=" font-size: 24px;"></i>
-
 
                 // fResults.push(flightObj_new2.services[i]); //need to add price to each item return
                 fResults.push(flightObj_new2.services[i]); //need to add price to each item return
             }
 
 
-
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
             //binds the Flights ang object to the fResults; sets the default select box option
             $scope.Flights = fResults;
-            $scope.selectedFlightDefault = $scope.Flights[36];
+            // $scope.selectedFlightDefault = $scope.Flights[36];
+            $scope.selectedFlightDefault = $scope.Flights[37];
             // $scope.selectedFlightDefault = $scope.Flights.name("mostcurrentflight");
-
-
-            // users.sort(function(a, b){
-            //     if(a.firstname < b.firstname) return -1;
-            //     if(a.firstname > b.firstname) return 1;
-            //     return 0;
-            // })
-
-
-            // console.log(fResults)
-
-
-            // $scope.Flights = fResults;
-
-
-            // fruits.sort();
-            // fruits.reverse();
-
-
-
-
-
-            // //set dropdown's default value
-            // function setSelectedIndex(s, valsearch)
-            // {
-            //     // Loop through all the items in drop down list
-            //     for (i = 0; i< s.options.length; i++)
-            //     { 
-            //         if (s.options[i].value == valsearch)
-            //         {
-            //             // Item is found. Set its property and exit
-            //             s.options[i].selected = true;
-            //             break;
-            //         }
-            //     }
-            //     return;
-            // }
-            // setSelectedIndex(document.getElementById("flightSelector"),"mostcurrentflight");
-
-
-            // // //set dropdown's default value
-            // // function setSelectedIndex(s, valsearch)
-            // // {
-            //     // Loop through all the items in drop down list
-            //     for (i = 0; i< document.getElementById("flightSelector").options.length; i++)
-            //     { 
-            //         if (sdocument.getElementById("flightSelector").options[i].value == "mostcurrentflight")
-            //         {
-            //             // Item is found. Set its property and exit
-            //             document.getElementById("flightSelector").options[i].selected = true;
-            //             break;
-            //         }
-            //     }
-            //     // return;
-            // // }
-            // // setSelectedIndex(document.getElementById("flightSelector"),"mostcurrentflight");
-
-
-
 
 
             console.log('SHOW ME THE JSON FOR THE FLIGHTS ' + JSON.stringify(flightObj_new2))
 
 
-
-
-            // https://stackoverflow.com/questions/16863800/javascript-regex-to-extract-the-string-before-the-last-backslash
-            // text = stringVariable.substring(0, stringVariable.lastIndexOf('/'));
-
-
-
-            // /^(.*[\\\/])/
-            // Explanation:
-
-            // ^      Start of line/string
-            // (      Start capturing group
-            // .*     Match any character greedily
-            // [\\\/] Match a backslash or a forward slash
-            // )      End the capturing group  
-
-
-            // sub(".*/", "", x)
-
-            // https://stackoverflow.com/questions/3981880/regex-for-everything-before-last-forward-or-backward-slash
-
-            // https://stackoverflow.com/questions/36683359/remove-everything-in-string-up-to-last-forward-slash/36683386
-
-
-
-
-
-
-
-
-
-            //OLD METHOD:
-
-            // //set the data
-            // flightObj_new2 = resp;
-
-            // //Constructing the flight dates -------------------------------------------
-            // $scope.Flights = [];
-
-            // //constructing the mapView List Object ----------------
-            // var fResults = [];
-
-            // for (var i = 0; i < flightObj_new.flightList.length; i++) {
-            //     fResults.push(flightObj_new.flightList[i]); //need to add price to each item return
-            // }
-            // //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-            // $scope.Flights = fResults;
-            // $scope.selectedFlightDefault = $scope.Flights[0];
-
-
         });
+
+
+
+        //NEW METHOD -------------------------------------
+        
+        // // $http.get('http://ccentsyst02l.co.clark.nv.us/theowl/flight').success(function(resp) {
+        //     $http.get('http://ccentsyst02l.co.clark.nv.us/theowl/flight/OpenDoorOnly/False').success(function(resp) {
+
+        //     // flightObj_new2 = resp.result;
+        //     // flightObj_new2 = resp.result.length;
+
+        //     flightObj_new2 = resp;
+
+
+        //     //Constructing the flight dates -------------------------------------------
+        //     $scope.Flights = [];
+
+        //     //constructing the mapView List Object ----------------
+        //     var fResults = [];
+
+        //     for (var i = 0; i < flightObj_new2.result.length; i++) {
+
+        //        // flightObj_new2.result[i].name = /[^/]*$/.exec(flightObj_new2.services[i].name)[0];
+
+        //         fResults.push(flightObj_new2.result[i]); //need to add price to each item return
+        //     }
+
+        //     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        //     //binds the Flights ang object to the fResults; sets the default select box option
+        //     $scope.Flights = fResults;
+        //     $scope.selectedFlightDefault = $scope.Flights[0];
+
+        //     console.log('SHOW ME THE JSON FOR THE FLIGHTS ' + JSON.stringify(flightObj_new2))
+        //     console.log('SHOW ME THE JSON FOR THE FLIGHT2 ' + JSON.stringify(fResults))
+
+        // });
+
 
 
     });
@@ -1579,8 +1576,42 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
+
+
     //UPDATE FlightDate on click (Layer Change EVT) ------------------------------------------------------
     function flightChange(flight) {
+
+
+
+        //NEW METHOD -------------------------------------
+        // // var flightName = flight.fname;
+        // var flightName = flight.Name;
+        // var flightPath = flight.ServiceURL
+        // var layerUrl;
+
+        // var layer = map.getLayer('basemap');
+        // map.removeLayer(layer);
+
+
+        // // //binding layerUrl
+        // // layerUrl = flight.src;
+        // //binding layerUrl
+        // // layerUrl = servicePrefix+serviceSuffix_F+'CACHED/'+flight.name+'/'+flight.type;
+        // layerUrl = flightPath;
+
+        // //re-setting basemap layer
+        // var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrl,{id:'basemap'});
+        // map.addLayer(basemap,0);
+
+        // //update the current flight tag (info box)
+        // $("#currentFlightTag").text(flightName);
+
+        // console.log('this is the flight source / layer url ' + layerUrl)
+
+
+
+
+       //OLD METHOD -------------------------------------
 
        // var flightName = flight.fname;
        var flightName = flight.name;
@@ -1734,7 +1765,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                //remove all layers
                map.removeAllLayers();
 
-               // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
                layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
 
                var basemap = new esri.layers.ArcGISTiledMapServiceLayer(layerUrlMain,{id:'basemap'});
@@ -1749,9 +1779,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                //remove all layers
                map.removeAllLayers();
 
-               // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
-               // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-               // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
                layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
                layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
@@ -1787,9 +1814,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                        //remove all layers
                        map.removeAllLayers();
 
-                       // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
-                       // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-                       // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
                        primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/';
                        secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                        tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
@@ -1817,9 +1841,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
            case 'clark county plu': //---------------------------------------
-                   
-              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
-              // layerUrlSecondary = servicePrefix+'arcgis/rest/services/GISMO/PlanedLandUse/MapServer';
+
               layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
               layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/PlanedLandUse/MapServer';
 
@@ -1858,9 +1880,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                    //remove all layers
                    map.removeAllLayers();
 
-                   // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
-                   // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-                   // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
                    primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/';
                    secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                    tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
@@ -1893,9 +1912,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
               //remove all layers
               map.removeAllLayers();
 
-              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
-              // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-              // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/con_50M/MapServer';
               layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
               layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
               layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_50M/MapServer';
@@ -1914,14 +1930,10 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
            case 'contours 2016 2ft (valley)': //---------------------------------------
-               
 
               //remove all layers
               map.removeAllLayers();
 
-              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
-              // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-              // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/con2016_2ft/MapServer';
               layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
               layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
               layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con2016_2ft/MapServer';
@@ -1944,9 +1956,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
               //remove all layers
               map.removeAllLayers();
 
-              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
-              // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-              // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/con2016_2ft/MapServer';
               layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
               layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
               layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_03_5ft/MapServer';
@@ -1969,9 +1978,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
               //remove all layers
               map.removeAllLayers();
 
-              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
-              // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-              // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/con2016_2ft/MapServer';
               layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
               layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
               layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/con_96_5ft/MapServer';
@@ -1993,9 +1999,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 //remove all layers
                 map.removeAllLayers();
 
-                // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
-                // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-                // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
                 layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
                 layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                 layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
@@ -2015,7 +2018,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
            case 'henderson zoning': //---------------------------------------
 
-
            require([
                    "esri/layers/ArcGISDynamicMapServiceLayer",
                    "esri/layers/ImageParameters"
@@ -2032,9 +2034,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                    //remove all layers
                    map.removeAllLayers();
 
-                   // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
-                   // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-                   // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
                    primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
                    secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                    tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
@@ -2064,7 +2063,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
            case 'las vegas zoning': //---------------------------------------
                
-
            require([
                    "esri/layers/ArcGISDynamicMapServiceLayer",
                    "esri/layers/ImageParameters"
@@ -2081,9 +2079,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                    //remove all layers
                    map.removeAllLayers();
 
-                   // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
-                   // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-                   // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
                    primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
                    secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                    tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
@@ -2112,7 +2107,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
            case 'mesquite zoning': //---------------------------------------
                
-
            require([
                    "esri/layers/ArcGISDynamicMapServiceLayer",
                    "esri/layers/ImageParameters"
@@ -2129,9 +2123,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                    //remove all layers
                    map.removeAllLayers();
 
-                   // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
-                   // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-                   // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
                    primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
                    secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                    tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
@@ -2176,9 +2167,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                    //remove all layers
                    map.removeAllLayers();
 
-                   // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
-                   // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-                   // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
                    primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
                    secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                    tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
@@ -2224,9 +2212,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                    //remove all layers
                    map.removeAllLayers();
 
-                   // primaryLayer = servicePrefix+'arcgis/rest/services/GISMO/Zoning/MapServer/';
-                   // secondaryLayer = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-                   // tertiaryLayer = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
                    primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
                    secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                    tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
@@ -2258,8 +2243,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
               //remove all layers
               map.removeAllLayers();
 
-              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
-              // layerUrlSecondary = servicePrefix+'arcgis/rest/services/GISMO/SoilsGuideline/MapServer';
               layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
               layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/SoilsGuideline/MapServer';
 
@@ -2283,9 +2266,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
               //remove all layers
               map.removeAllLayers();
 
-              // layerUrlMain = servicePrefix+'arcgis/rest/services/CACHED/mostcurrentflight/MapServer';
-              // layerUrlSecondary = servicePrefix+'ArcGIS/rest/services/GISMO/AssessorMap/MapServer';
-              // layerUrlTertiary = servicePrefix+'arcgis/rest/services/GISMO/scl/MapServer';
               layerUrlMain = 'http://maps.clarkcountynv.gov/arcgis_images/rest/services/CACHED/mostcurrentflight/MapServer';
               layerUrlSecondary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
               layerUrlTertiary = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
@@ -2305,7 +2285,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
        }
-
 
        console.log(' -------------------- ' + freshView + ' -------------------- ');
        console.log('layerUrlMain: ' + layerUrlMain)
@@ -2888,6 +2867,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
         }
+
 
 
 
@@ -3476,7 +3456,14 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                  map.graphics.add(currentGraphic);
 
                  //zoom to map point according to zoom factor
-                 map.centerAndZoom(point, factor)
+                 map.centerAndZoom(point, factor);
+
+
+
+
+                 // //call to re-position the prop info window - with 1 passed in to delinate a succssfull address/apn/ownersearch complete
+                 // $scope.propInfoVisNew(1);
+
 
 
 
@@ -3517,8 +3504,6 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             //+/+/+/+/+/ Calls to Data Factory /+/+/+/+/+/
             //--------------------------------------------
 
-            //call for Owner (-)
-            $scope.getOwnerRequest(data);
 
             //call for StreetView (-)
             // openFactory.getStreetView(theX,theY).then(function(data) {
@@ -3527,23 +3512,10 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             //OLD >
            // $scope.getStreetView(theX, theY); //COMMENTED OUT ON 9/4 - GOOGLE NOW CHARGES FOR STREETVIEW SVC
 
-            //call for Aerial FLight Date (-)
-            openFactory.getArielFlightDate(theX, theY).then(function(data) {
-                $scope.aerialDate = data;
-            });
-            //OLD >
-            // $scope.getAerialFlightDate(theX, theY);
 
             // //if elected officials flag is active (set from accordion expand evt)
             // if (elecOfficialsFlag === true) {
 
-            //call for Elected Officials  (-)
-            openFactory.getOfficials(theX, theY).then(function(data) {
-                $scope.elecOfficial = data;
-            });
-            //OLD >
-            // $scope.getElectedOfficials(theX, theY);
-            // }
 
             // // //call for Weather (only if weatherBlock scope active) (-)
             // //pass in the active weatherBlock scope, and current zip
@@ -3552,45 +3524,59 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             //     $scope.weather = data;
             // });
 
+
+
+            //call for Owner (-)
+            $scope.getOwnerRequest(data);
+
+            //call for Aerial FLight Date (-)
+            openFactory.getArielFlightDate(theX, theY).then(function(data) {
+                $scope.aerialDate = data;
+            });
+
+            //call for Elected Officials  (-)
+            openFactory.getOfficials(theX, theY).then(function(data) {
+                $scope.elecOfficial = data;
+            });
+
             //call for Links (-)
-            // openFactory.getSelectPropertyLinks(data).then(function(data) {
-            //     $scope.linkInfo = data;
-            // });
-            // openFactory.getSelectPropertyLinks(data).then(function(data) {
-            //     $scope.linkInfo = data;
-            // });
             openFactory.getSelectPropertyLinks(data).then(function(data) {
                 $scope.linkInfo = data;
             });
-            //OLD >
-            // $scope.getSelectPropertyLinks(data);
 
             //call for Flood Zone (-)
             openFactory.getFloodZoneInfo(data).then(function(data) {
                 $scope.floodZone = data;
             });
-            //OLD >
-            // $scope.getFloodZoneInfo(data);
 
             //call for Zoning (-)
             openFactory.getZoning(theX, theY).then(function(data) {
                 $scope.zoning = data;
-                console.log('THIS IS getZoning: ' + JSON.stringify(data))
+                //console.log('THIS IS getZoning: ' + JSON.stringify(data))
             });
 
-            // //call for PLU (-)
-            // openFactory.getCommunityDist(theX,theY).then(function(data) {
-            //   $scope.PLU = data;
-            // });
+            //call for PLU (-)
             openFactory.getCommunityDist(theX,theY).then(function(data) {
               $scope.PLU = data;
-              console.log('THIS IS getCommunityDist: ' + JSON.stringify(data))
+              //console.log('THIS IS getCommunityDist: ' + JSON.stringify(data))
             });
 
             //call for LandUse (-)
             openFactory.getLandUse(theX,theY).then(function(data) {
               $scope.land = data;
-              console.log('THIS IS LandUsePlanArea: ' + JSON.stringify(data))
+              //console.log('THIS IS LandUsePlanArea: ' + JSON.stringify(data))
+            });
+
+            //call for Overlays (-)
+            openFactory.getOverlays(theX,theY).then(function(data) {
+              $scope.Overlays = data;
+              //console.log('THIS IS getOverlays: ' + JSON.stringify(data))
+            });
+
+            //call for Overlays (-)
+            openFactory.getPLU(theX,theY).then(function(data) {
+              $scope.thePLU = data;
+              //console.log('THIS IS getOverlays: ' + JSON.stringify(data))
             });
 
 
@@ -3812,46 +3798,87 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 // } 
 
 
-                if (autocompleteIsShowing === true && searchHasCompleted === false) { //AUTOCOMPLETE SHOWING - INITIAL STATE
 
-                    $('#PropInfoDialog').css({
-                        'visibility': 'hidden'
-                    });
-                    console.log('C [[ propInfoVis-b[0]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
-                } else if (autocompleteIsShowing === true && searchHasCompleted === true) { //AUTOCOMPLETE SHOWING & PREV SEARCH ACTIVE
 
-                    //prop info results positioning
-                    $("#PropInfoDialog").position({
-                        my: "left top",
-                        // at: "left+1 bottom+2",
-                        at: "left+1 bottom+0",
-                        of: "#tester .dropdown-menu"
-                            // of: "#tester #search-form"
-                    });
-                    // $( "#PropInfoDialog" ).show();
-                    $('#PropInfoDialog').css({
-                        'visibility': 'visible'
-                    });
-                    console.log('C [[ propInfoVis-b[1]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
-                }
 
-                //autocomplete is not showing, it never has & length is min
-                else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
 
-                    $('#PropInfoDialog').css({
-                        'top': 49,
-                        'left': 240
-                    });
-                    // $( "#PropInfoDialog" ).show();
-                    $('#PropInfoDialog').css({
-                        'visibility': 'hidden'
-                    });
-                    console.log('C [[ propInfoVis-b[2]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
-                }
+
+
+
+
+
+
+
+
+
+
+                //call to re-position the prop info window - with 1 passed in to delinate a succssfull address/apn/ownersearch complete
+                $scope.propInfoVisNew(1);
+
+
+
+
+
+
+
+
+
+                // if (autocompleteIsShowing === true && searchHasCompleted === false) { //AUTOCOMPLETE SHOWING - INITIAL STATE
+
+                //     $('#PropInfoDialog').css({
+                //         'visibility': 'hidden'
+                //     });
+                //     console.log('C [[ propInfoVis-b[0]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+                // } else if (autocompleteIsShowing === true && searchHasCompleted === true) { //AUTOCOMPLETE SHOWING & PREV SEARCH ACTIVE
+
+                //     //prop info results positioning
+                //     $("#PropInfoDialog").position({
+                //         my: "left top",
+                //         // at: "left+1 bottom+2",
+                //         at: "left+1 bottom+0",
+                //         of: "#tester .dropdown-menu"
+                //             // of: "#tester #search-form"
+                //     });
+                //     // $( "#PropInfoDialog" ).show();
+                //     $('#PropInfoDialog').css({
+                //         'visibility': 'visible'
+                //     });
+                //     console.log('C [[ propInfoVis-b[1]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+                // }
+
+                // //autocomplete is not showing, it never has & length is min
+                // else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
+
+                //     $('#PropInfoDialog').css({
+                //         'top': 49,
+                //         'left': 240
+                //     });
+                //     // $( "#PropInfoDialog" ).show();
+                //     $('#PropInfoDialog').css({
+                //         'visibility': 'hidden'
+                //     });
+                //     console.log('C [[ propInfoVis-b[2]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+                // }
+                // // //autocomplete is not showing, it never has & length is min (SELECT PROP) AND SIDE PANEL IS OPEN
+                // // else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && slidePanelOpen === true && slidePanelOpen $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
+                // //     $('#PropInfoDialog').css({
+                // //         'top': 49,
+                // //         'left': 240
+                // //     });
+                // //     // $( "#PropInfoDialog" ).show();
+                // //     $('#PropInfoDialog').css({
+                // //         'visibility': 'visible'
+                // //     });
+                // //     console.log('C [[ propInfoVis-b[3]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+                // // }
+
                 // //autocomplete is not showing, it never has & length is min (SELECT PROP) AND SIDE PANEL IS OPEN
-                // else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && slidePanelOpen === true && slidePanelOpen $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
+                // else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && skinnyPanelOpen === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE && autocompleteDirty === false
+
                 //     $('#PropInfoDialog').css({
                 //         'top': 49,
                 //         'left': 240
@@ -3861,84 +3888,82 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 //         'visibility': 'visible'
                 //     });
                 //     console.log('C [[ propInfoVis-b[3]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
                 // }
 
-                //autocomplete is not showing, it never has & length is min (SELECT PROP) AND SIDE PANEL IS OPEN
-                else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && skinnyPanelOpen === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE && autocompleteDirty === false
+                // //autocomplete is not showing, it never has & length is min (SELECT PROP) AND SIDE PANEL HAS BEEN COLLAPSED
+                // else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && skinnyPanelOpen === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false && SIDE PANEL IS CLOSED
 
-                    $('#PropInfoDialog').css({
-                        'top': 49,
-                        'left': 240
-                    });
-                    // $( "#PropInfoDialog" ).show();
-                    $('#PropInfoDialog').css({
-                        'visibility': 'visible'
-                    });
-                    console.log('C [[ propInfoVis-b[3]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+                //     $('#PropInfoDialog').css({
+                //         'top': 49,
+                //         'left': 59
+                //     });
+                //     // $( "#PropInfoDialog" ).show();
+                //     $('#PropInfoDialog').css({
+                //         'visibility': 'visible'
+                //     });
+                //     console.log('C [[ propInfoVis-b[3]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
-                }
+                // }
+                // //autocomplete is not showing, it never has & length is long
+                // else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
 
-                //autocomplete is not showing, it never has & length is min (SELECT PROP) AND SIDE PANEL HAS BEEN COLLAPSED
-                else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && skinnyPanelOpen === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false && SIDE PANEL IS CLOSED
+                //     $('#PropInfoDialog').css({
+                //         'top': 49,
+                //         'left': 240
+                //     });
+                //     // $( "#PropInfoDialog" ).show();
+                //     $('#PropInfoDialog').css({
+                //         'visibility': 'hidden'
+                //     });
+                //     console.log('C [[ propInfoVis-b[4]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
-                    $('#PropInfoDialog').css({
-                        'top': 49,
-                        'left': 59
-                    });
-                    // $( "#PropInfoDialog" ).show();
-                    $('#PropInfoDialog').css({
-                        'visibility': 'visible'
-                    });
-                    console.log('C [[ propInfoVis-b[3]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+                // }
+                // //******************************diff from typeahead search logic******************
+                // //autocomplete is not showing, it has before though & length is min (SELECT PROP AFTER SEARCH)
+                // else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
 
-                }
-                //autocomplete is not showing, it never has & length is long
-                else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
+                //     //  console.log('this needs to show')
 
-                    $('#PropInfoDialog').css({
-                        'top': 49,
-                        'left': 240
-                    });
-                    // $( "#PropInfoDialog" ).show();
-                    $('#PropInfoDialog').css({
-                        'visibility': 'hidden'
-                    });
-                    console.log('C [[ propInfoVis-b[4]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+                //     $('#PropInfoDialog').css({
+                //         'top': 49,
+                //         'left': 240
+                //     });
+                //     // $( "#PropInfoDialog" ).show();
+                //     $('#PropInfoDialog').css({
+                //         // 'visibility': 'hidden'
+                //         'visibility': 'visible'
+                //     });
+                //     console.log('C [[ propInfoVis-b[5]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
-                }
-                //******************************diff from typeahead search logic******************
-                //autocomplete is not showing, it has before though & length is min (SELECT PROP AFTER SEARCH)
-                else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
+                // }
+                // //*******************************************************************************
+                // //autocomplete is not showing, it has before though & length is long
+                // else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
 
-                    //  console.log('this needs to show')
+                //     $('#PropInfoDialog').css({
+                //         'top': 49,
+                //         'left': 240
+                //     });
+                //     // $( "#PropInfoDialog" ).show();
+                //     $('#PropInfoDialog').css({
+                //         'visibility': 'visible'
+                //     });
+                //     console.log('C [[ propInfoVis-b[6]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
-                    $('#PropInfoDialog').css({
-                        'top': 49,
-                        'left': 240
-                    });
-                    // $( "#PropInfoDialog" ).show();
-                    $('#PropInfoDialog').css({
-                        // 'visibility': 'hidden'
-                        'visibility': 'visible'
-                    });
-                    console.log('C [[ propInfoVis-b[5]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+                // }
 
-                }
-                //*******************************************************************************
-                //autocomplete is not showing, it has before though & length is long
-                else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
 
-                    $('#PropInfoDialog').css({
-                        'top': 49,
-                        'left': 240
-                    });
-                    // $( "#PropInfoDialog" ).show();
-                    $('#PropInfoDialog').css({
-                        'visibility': 'visible'
-                    });
-                    console.log('C [[ propInfoVis-b[6]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
-                }
+
+
+
+
+
+
+
+
+
 
                 // //*******************************************************************************
                 // //ADDED FOR THE CASE WHEN THE SIDE PANEL COLLAPSED, AND THEN SELECT PROPERTY IS CALLED ON MAP CLICK
@@ -4097,7 +4122,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                     $scope.weather = data;
                   //  $scope.currentWeather = data;
 
-                  console.log('look at this returned weather: ' +  JSON.stringify($scope.weather))
+                  //console.log('look at this returned weather: ' +  JSON.stringify($scope.weather))
                 });
 
                 // // //call for Value (only if weatherBlock scope active) (-)
@@ -4105,7 +4130,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 openFactory.getValuation($scope.theValuation, data.SiteAddress).then(function(data) {
                     $scope.valuation = data;
 
-                 console.log('look at this returned valuation: ' +  JSON.stringify($scope.valuation))
+                 //console.log('look at this returned valuation: ' +  JSON.stringify($scope.valuation))
                 });
 
 
@@ -4120,19 +4145,15 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                 //             $scope.weather = data;
                 //           });
 
-                //call for Overlays (-)
+                // //call for Overlays (-)
                 // openFactory.getOverlays(grabAddress).then(function(data) {
                 //   $scope.Overlays = data;
                 // });
-                //OLD >
-                // $scope.getOverlays(data);
 
                 //call for SCLZip (-)
                 openFactory.getSCLZip(grabAddress).then(function(data) {
                     $scope.sclZip = data;
                 });
-                //OLD >
-                // $scope.getSCLZip(data);
 
                 //--------------------------------------------
                 //--------------------------------------------
@@ -4417,6 +4438,13 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
               //  $http.jsonp('http://maps.clarkcountynv.gov/gismo/webservice/GISDataWCF/GISDataService.svc/jsonep/getOwnershipHistory?parcel=' + attr + '&callback=JSON_CALLBACK').success(function(data, attr) {
 
 
+
+                console.log('getOwnershipHistory :: '+JSON.stringify(data));
+
+
+
+
+
                 //Set Object
                 $scope.ownershipHist = data;
 
@@ -4550,6 +4578,12 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
             $('.omnibarcontainer').removeClass('omnibarcontainerCollapsed');
 
+
+            // //re-show the prop info (only if a subsequent panel other than the main Prop Info section group panel has been clicked / activated)
+            // $('.accordionStyleNew').css({
+            //     'display': 'block'
+            // });
+
             console.log('EXPAND OUT')
 
 
@@ -4571,7 +4605,10 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             // $('.hideShowBlurb').empty().append('newcontent');
 
 
-
+            // //hide the prop info  (only if a subsequent panel other than the main Prop Info section group panel has been clicked / activated)
+            // $('.accordionStyleNew').css({
+            //     'display': 'none'
+            // });
 
             //make sure to switch over the 'hiddenState' to true, now that it has been clicked
             hiddenState = true;
@@ -4631,20 +4668,23 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
       // icon: "ion-arrow-swap",
       icon: "ion-android-car",
       active: false
-    }, {
+    }, 
+    {
       id: "2",
       name: "Tools",
       // icon: "ion-wrench",
       icon: "ion-settings",
       active: false
-    }, {
-      id: "3",
-      name: "Valuation",
-      // icon: "ion-arrow-graph-up-right",
-      icon: "ion-pricetag",
-      active: false
-      // ion-pricetag
-    }, {
+    }, 
+    // {
+    //   id: "3",
+    //   name: "Appreciation",
+    //   icon: "ion-arrow-graph-up-right",
+    //   // icon: "ion-pricetag",
+    //   active: false
+    //   // ion-pricetag
+    // }, 
+    {
       id: "4",
       name: "Legend",
       icon: "ion-android-list",
@@ -4679,6 +4719,14 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
       console.log(id);
 
 
+
+      // console.log('the initial state of the tools is: '+$scope.theLegend)
+
+
+
+      
+
+
       //toggles the active model/scoped class = bound to the element's window
       // $scope.theLegend = !$scope.theLegend;
 
@@ -4707,17 +4755,57 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
           // }  
 
 
+
+          
+
+
+        if ($scope.activeName === "Right-of-Way") {
+
+            //add in a toggle for adding/removing right of way on subsequent selects
+
+            map.addLayer(rightofwayLayer);
+
+            // //add-remove Right-of-Way Layer
+            // $('.addremoveROW').on('change', function(e){
+            //     if ($("#rightwayBox").is(':checked')) {
+            //         map.addLayer(rightofwayLayer);
+            //     }
+            //     else {
+            //         map.removeLayer(rightofwayLayer);
+            //     }
+            // });
+
+
+
+            // $scope.theTools = false;
+            // $scope.theLegend = false;
+            // $scope.theWeather = false;
+            // $scope.theValuation = false;
+
+        }
         if ($scope.activeName === "Tools") {
 
-            $scope.theTools = true;
+            map.removeLayer(rightofwayLayer);
+            $scope.theTool = true;
+            // $scope.theTools = true;
             $scope.theLegend = false;
             $scope.theWeather = false;
             $scope.theValuation = false;
 
+
+
+            // $('body').addClass('push-Body');
+
+
+
+            console.log('tool')
+
         }
         else if ($scope.activeName === "Valuation") {
 
-            $scope.theTools = false;
+            map.removeLayer(rightofwayLayer);
+            $scope.theTool = false;
+            // $scope.theTools = false;
             $scope.theLegend = false;
             $scope.theWeather = false;
             $scope.theValuation = true;
@@ -4725,7 +4813,9 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
         }
         else if ($scope.activeName === "Legend") {
 
-            $scope.theTools = false;
+            map.removeLayer(rightofwayLayer);
+            $scope.theTool = false;
+            // $scope.theTools = false;
             $scope.theLegend = true;
             $scope.theWeather = false;
             $scope.theValuation = false;
@@ -4734,10 +4824,72 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
         }
         else if ($scope.activeName === "Weather") {
 
-            $scope.theTools = false;
+            map.removeLayer(rightofwayLayer);
+            $scope.theTool = false;
+            // $scope.theTools = false;
             $scope.theLegend = false;
             $scope.theWeather = true;
             $scope.theValuation = false;
+
+        }
+        else if ($scope.activeName === "Share or embed") {
+
+            // map.removeLayer(rightofwayLayer);
+            // $scope.theTool = false;
+            // // $scope.theTools = false;
+            // $scope.theLegend = false;
+            // $scope.theWeather = true;
+            // $scope.theValuation = false;
+
+            // processPrint();
+
+            // aTest();
+
+            //iupdate for delineation, 0 or a 1 for if coming from print link on selprop, or if coming
+            //from Print on skinnylistitem
+
+
+            //shareIt();
+
+            //https://getbootstrap.com/docs/4.0/components/modal/
+
+           // $("#shareModal").show();
+
+           $('#shareModal').modal('show')
+
+
+        }
+        else if ($scope.activeName === "Print") {
+
+            // map.removeLayer(rightofwayLayer);
+            // $scope.theTool = false;
+            // // $scope.theTools = false;
+            // $scope.theLegend = false;
+            // $scope.theWeather = true;
+            // $scope.theValuation = false;
+
+            // processPrint();
+
+
+
+            if(searchHasCompleted===true) {
+                      //calls the externalPrint in map.js
+                      externalPrint();
+
+                console.log('HAS A SEARCH ALREADY BEEN COMPLETED?: '+searchHasCompleted)
+
+            }
+            else {
+
+                alert('You must first complete a search before printing a map.')
+
+            }
+
+
+
+            //iupdate for delineation, 0 or a 1 for if coming from print link on selprop, or if coming
+            //from Print on skinnylistitem
+
 
         }
         else { }
@@ -4796,6 +4948,200 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
+
+
+
+
+    //dynamic propInfoVis -------------------------------------------------------------
+    // $scope.propInfoVis = function(evt) {
+    $scope.propInfoVisNew = function(resolveState) {
+
+
+        if ($("#tester .dropdown-menu").css('display') == 'none') {
+            autocompleteIsShowing = false;
+            // true
+        } else {
+            autocompleteIsShowing = true;
+        }
+
+
+        console.log('THIS IS THE STATE OF THE AUTOCOMPLETE: '+autocompleteIsShowing)
+        console.log('THIS IS THE NUMERAL PASSED: '+resolveState)
+
+
+
+
+
+
+        if (resolveState === 0) //meaning, a search has not been resolved yet (in progress)
+        {
+
+
+            if (autocompleteIsShowing === true && searchHasCompleted === false) { //AUTOCOMPLETE SHOWING - INITIAL STATE
+
+                $('.accordionStyleNew').css({
+                    // 'visibility': 'hidden'
+                    'display': 'none'
+                });
+                console.log('C [[ propInfoVis-a[0]' + JSON.stringify($(".accordionStyleNew").position()) + " ]]");
+
+            } else if (autocompleteIsShowing === true && searchHasCompleted === true) { //AUTOCOMPLETE SHOWING & PREV SEARCH ACTIVE
+
+
+
+                // //prop info results positioning
+                // $(".accordionStyleNew").position({
+                //     my: "left top",
+                //     // at: "left+1 bottom+2",
+                //     at: "left+1 bottom+0",
+                //     of: "#tester .dropdown-menu"
+                //         // of: "#tester #search-form"
+                // });
+                $('.accordionStyleNew').css({
+                    // 'visibility': 'hidden'
+                    'display': 'block'
+                });
+                console.log('C [[ propInfoVis-a[0]' + JSON.stringify($(".accordionStyleNew").position()) + " ]]");
+
+
+
+                // //prop info results positioning
+                // $(".accordionStyleNew").position({
+                //     my: "left top",
+                //     // at: "left+1 bottom+2",
+                //     at: "left+1 bottom+0",
+                //     of: "#tester .dropdown-menu"
+                //         // of: "#tester #search-form"
+                // });
+                // // $( "#PropInfoDialog" ).show();
+                // $('.accordionStyleNew').css({
+                //     'visibility': 'visible'
+                // });
+                // console.log('C [[ propInfoVis-a[1]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+            }
+
+            //autocomplete is not showing, it never has & length is min
+            else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
+
+
+
+
+                // $('.accordionStyleNew').css({
+                //     'top': 49,
+                //     'left': 240
+                // });
+                // // $( "#PropInfoDialog" ).show();
+                // $('.accordionStyleNew').css({
+                //     'visibility': 'hidden'
+                // });
+                // console.log('C [[ propInfoVis-a[2]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+            }
+            //autocomplete is not showing, it never has & length is min (SELECT PROP)
+            else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
+
+
+
+
+
+                // $('.accordionStyleNew').css({
+                //     'top': 49,
+                //     'left': 240
+                // });
+                // // $( "#PropInfoDialog" ).show();
+                // $('.accordionStyleNew').css({
+                //     // 'visibility': 'visible'
+                //     'visibility': 'hidden'
+                // });
+                // console.log('C [[ propInfoVis-a[3]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+            }
+
+            //autocomplete is not showing, it never has & length is long
+            else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
+
+                // $('.accordionStyleNew').css({
+                //     'top': 49,
+                //     'left': 240
+                // });
+                // // $( "#PropInfoDialog" ).show();
+                // $('.accordionStyleNew').css({
+                //     'visibility': 'hidden'
+                // });
+                // console.log('C [[ propInfoVis-a[4]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+            }
+            //******************************diff from execute search logic******************
+            //autocomplete is not showing, it has before though & length is min (MIN KEY AFTER SEARCH - DO NOT SHOW - this is diff from execute search's logic)
+            else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
+
+
+// margin-top:187px;
+                $('.accordionStyleNew').css({
+                    // 'visibility': 'hidden'
+                    'display': 'none'
+                });
+                console.log('C [[ propInfoVis-a[0]' + JSON.stringify($(".accordionStyleNew").position()) + " ]]");
+
+
+                // console.log('this needs to hide')
+
+                // $('.accordionStyleNew').css({
+                //     'top': 49,
+                //     'left': 240
+                // });
+                // // $( "#PropInfoDialog" ).show();
+                // $('.accordionStyleNew').css({
+                //     'visibility': 'hidden'
+                //         // 'visibility': 'visible'
+                // });
+                // console.log('C [[ propInfoVis-a[5]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+            }
+            //*******************************************************************************
+            //autocomplete is not showing, it has before though & length is long
+            else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
+
+                // $('.accordionStyleNew').css({
+                //     'top': 49,
+                //     'left': 240
+                // });
+                // // $( "#PropInfoDialog" ).show();
+                // $('.accordionStyleNew').css({
+                //     'visibility': 'visible'
+                // });
+                // console.log('C [[ propInfoVis-a[6]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+            }
+            else { }
+
+
+
+        }
+        else //a search has been resolved
+        {
+
+            $('.accordionStyleNew').css({
+                // 'visibility': 'hidden'
+                'display': 'block'
+            });
+            console.log('C [[ propInfoVis-a[0]' + JSON.stringify($(".accordionStyleNew").position()) + " ]]");
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+    }
+    //------------------------------------------------------------------------------
 
 
 

@@ -1,14 +1,12 @@
 
 [{
         "updatesList": [
-            { "updatesid": 1, "name": "What's Coming", "status": 1, "statusmsg": true, "statustext": "Updates to Property Info Fields and Map Declarations/Classifications (to include Community Dist., Legal, Census, Overlay, PLU,etc) [Oct-Nov] • Tools, Measurements, and Annotations [Dec-Q2'19] • Market Valuation Algorithm Updates • Map, View & Flight Date Change Auto-Saving Updates [Dec-Q2'19] • Improvements to Property Search Usability [Dec-Q2'19] • Enhancements to Cross-browser and cross-device compatibility [Dec-Q2'19] • Updates to address search / property / owner search truncation (enhanced search) [Dec-Q2'19] • Updates to Print Preview functionality • Map Export Customizations [Dec-Q2'19]"},
-            { "updatesid": 1, "name": "Streetview", "status": 1, "statusmsg": true, "statustext": "Streetview has been indefinately removed from OpenWeb due to changes in Google's billing structure."},
-            { "updatesid": 2, "name": "MCD, Community & Land Use added", "status": 1, "statusmsg": false, "statustext": "none"},
-            { "updatesid": 3, "name": "Flights & Views Added", "status": 1, "statusmsg": false, "statustext": "none"},
-            { "updatesid": 4, "name": "UI Enhancements, Prop Valuation", "status": 1, "statusmsg": false, "statustext": "none"},
-            { "updatesid": 5, "name": "Updates: Map Views, Flights; Weather", "status": 1, "statusmsg": false, "statustext": "none"},
-            { "updatesid": 6, "name": "Help Docs added", "status": 1, "statusmsg": false, "statustext": "none"},
-            { "updatesid": 7, "name": "Search cross-streets, street name added", "status": 1, "statusmsg": false, "statustext": "none"}
+            { "updatesid": 1, "name": "Spring 2018 images", "status": 1, "statusmsg": true, "statustext": "Spring 2018 images are now available in the mostcurrentflight layer"},
+            { "updatesid": 2, "name": "What's Coming", "status": 1, "statusmsg": true, "statustext": "Updates to Property Info Fields and Map Declarations/Classifications (to include Community Dist., Legal, Census, Overlay, PLU,etc) [Oct-Nov] • Tools, Measurements, and Annotations [Dec-Q2'19] • Market Valuation Algorithm Updates • Map, View & Flight Date Change Auto-Saving Updates [Dec-Q2'19] • Improvements to Property Search Usability [Dec-Q2'19] • Enhancements to Cross-browser and cross-device compatibility [Dec-Q2'19] • Updates to address search / property / owner search truncation (enhanced search) [Dec-Q2'19] • Updates to Print Preview functionality • Map Export Customizations [Dec-Q2'19]"},
+            { "updatesid": 3, "name": "Streetview", "status": 1, "statusmsg": true, "statustext": "Streetview has been indefinately removed from OpenWeb due to changes in Google's billing structure."},
+            { "updatesid": 4, "name": "Property Information fields added", "status": 1, "statusmsg": false, "statustext": "none"},
+            { "updatesid": 5, "name": "Flights & Views Added", "status": 1, "statusmsg": false, "statustext": "none"},
+            { "updatesid": 6, "name": "UI Enhancements, Prop Valuation", "status": 1, "statusmsg": false, "statustext": "none"}
         ]
 },
 

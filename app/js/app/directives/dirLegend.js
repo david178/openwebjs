@@ -22,12 +22,10 @@ open.directive('legBlock', function() {
 
 
 
-
 			   	//------------------------------------------------------------
 			   	$('.closeLegIcon').on('click', function(e){
 
-			   		
-
+			   	
 
 
 
