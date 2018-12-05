@@ -429,7 +429,10 @@
         right: 92px !important;
         top: -5px !important;
 
-        background-color: rgb(37, 83, 132);
+        /*background-color: rgb(37, 83, 132);*/
+        background-color: #f8f8f8;
+
+        color: rgb(37, 83, 132) !important;
 
         padding:15px;
         padding-top:26px;

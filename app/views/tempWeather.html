@@ -1,233 +1,106 @@
 
-
-
     <!-- ********************************** -->
-    <!-- Convert to directive & template -->
-    <!-- Legend Window -->
-    <!--     <legend-window></legend-window> -->
-    <div id="weatherDivCasing" ng-show="theWeather" class="conditionalShow_LegWeather blockFade" > <!-- cssFade -->
-<!--       <div style="color: #8ED1E9; font-size:17px; font-family: "verb","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;"> </div> -->
 
-      <h6>Weather<img class="widgetClose pull-right closeWeatherIcon" ng-click="theWeather=false" border="0" src="css/images/icon-close2.png" style="display: inline;"></h6>
-
-        <!-- <button ng-click="theLegend=false">Hide</button> -->
-<!--       <input class="pull-right" type="button" ng-click="theLegend" value="x"> -->
-      <div id="weatherDiv">
+<!--     <div id="weatherDivCasing" ng-show="theWeather" class="conditionalShow_LegWeather blockFade" > -->
 
 
-        <!-- http://getbootstrap.com/javascript/#buttons-single-toggle -->
+            <div id="weatherCard" class="infoCard conditionalShow">
+                  <div class="cards-strong-weather">
 
-        <!-- http://stackoverflow.com/questions/13511368/how-to-create-a-toggle-button-in-bootstrap -->
-        <!-- https://ghinda.net/css-toggle-switch/bootstrap.html -->
+                    <div id="wxWrap" style=""> <!-- padding-top:15px !important; -->
+
+                        <!-- <p style="margin-top:5px;"><b>{{zoning.jurisdiction}} - {{data.ZipCode}}</b>   -->  
+                          <!-- <p style="margin-top:15px;"><b>{{zoning.jurisdiction}} - {{data.ZipCode}}</b>  --> 
+                          <!-- <p><b>Las Vegas - 89144</b>     -->
 
 
 
-<!--         <div style="position:absolute; top:10px; right 5px; " class="btn-group-vertical" role="group" aria-label="...">
-          <button style="color:white !important;" type="button" class="btn btn-default">f</button>
-          <button type="button" class="btn btn-default">c</button>
-        </div> -->
-<!-- 
-        <label class="switch-light" onclick="">
-          <input type="checkbox">
+                            <span >
+                              <!-- <b>{{zoning.jurisdiction}} - {{data.ZipCode}}</b> -->
+                              <b>Las Vegas - {{data.ZipCode}}</b>
+                            </span>
 
-          <span class="well">
-            <span>f</span>
-            <span>c</span>
-            <a class="btn btn-primary"></a>
-          </span>
-        </label>
+
+<!--                         <span class="drawtoolicon currentWeatherIcon fa-fw select-all fas"></span>
+
+                        <span class="fa-fw select-all fas"></span>
+ -->
+
+                        <!-- <span class="currentWeatherIcon">53°<i class="fa-fw select-all fas" ></i></span>  -->
+
+                        <!-- <i class="icon ion-ios-rainy-outline"></i> -->
+
+
+
+                        <span class="step size-28" style="float:right; padding:0px; margin-top:-5px; margin-right:-10px; color: rgba(0, 0, 0, 0.54);">
+                          <!-- <i class="icon ion-ios-rainy-outline" style="font-size:28px !important;"></i> -->
+                          <!-- <i class="icon ion-android-cloud-outline" style="font-size:20px !important;"></i> -->
+                          <i class="icon ion-ios-cloud-outline" style="font-size:22px !important;"></i>
+                        </span>
+
+
+                        <span  style="font-size:13px !important; float:right; padding:0px; margin-right:-5px; color: rgba(0, 0, 0, 0.54);">
+                          53° &nbsp;&nbsp;&nbsp;
+                        </span>
+
+
+
+
+
+
+<!--                         <span id="wxForecast">          
+                             <li id="forecastViewList" style="display:inline-block !important; margin-left:-20px !important;"><a href="#" style="display:inline-block !important; margin-left:10px !important;">
+                          <input id="forecastviewBox" class="icon-checkbox ng-pristine ng-untouched ng-valid" type="checkbox" ng-model="forecasttoggle">
+                          <label for="forecastviewBox" style="width:auto;">
+                            <span class="glyphicon glyphicon-unchecked unchecked chkPadding"></span>
+                            <span class="glyphicon glyphicon-check checked chkPadding"></span>
+                            10-day
+                          </label>
+                          </a></li>
+                        </span> -->
+                        
+
+                        <span id="wxIcon2"></span> &nbsp;
+                        <span id="wxTemp"></span>
+
+
+                    </div>
+
+
+                   <!-- ForecastView -->
+<!--                   <div id="forecastCard" ng-show="forecasttoggle" >
+
+                    <table class='table table-bordered ownershipTable' >
+                      <tr style="background-color: #f9f9f9; height:5px !important; color: #8ED1E9;">
+                        <th style="height:5px !important;"> </th> 
+                        <th style="height:5px !important;">Date</th> 
+                        <th style="height:5px !important;">Day</th> 
+                        <th style="height:5px !important;">High</th> 
+                        <th style="height:5px !important;">Low</th> 
+                        <th style="height:5px !important;">Text</th>
+                      </tr>
+                      <tr ng-repeat="currWeath in weather">
+                        <td><img src="http://gisgate.co.clark.nv.us/Gismo/apps/mobile/OW4/app/images/weather_icons/{{currWeath.code}}.gif" width="34" height="34" /></td>
+                        <td>{{currWeath.date}}</td>
+                        <td>{{currWeath.day}}</td>
+                        <td>{{currWeath.high}}</td>
+                        <td>{{currWeath.low}}</td>
+                        <td>{{currWeath.text}}</td>
+                      </tr>
+                    </table>
+
+                     <div class="forecastLabel_Top" >
+                       <p></p>
+                     </div>
+
+                   </div>
  -->
 
 
-
-<!--         <div class="btn-group-vertical" data-toggle="buttons">
-          <label class="btn btn-primary active">
-            <input type="radio" name="options" id="myToggle1" autocomplete="off" checked> Radio 1 (preselected)
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="myToggle2" autocomplete="off"> Radio 2
-          </label>
-
-        </div> -->
+                  </div> 
+                </div>
 
 
 
-<!--         <button class="btn btn-default" id="myToggleButton">Press me</button>
-
-        <script>
-
-        var $button = $('#myToggleButton'),
-            $body = $('body');
-
-        $button.on('click', function () {
-          $button.toggleClass('active');
-          
-        });
-
-
-
-        </script>
+<!--     </div>
  -->
-
-
-
-
-<!--         <p>Las Vegas, NV</p>
-        <p style="float:left;">52 F &nbsp;&nbsp;</p><p style="float:left;">54 / 43</p> -->
-
-
-
-        <div id="wxWrap">
-            <!-- <p>Las Vegas, NV</p> -->
-
-            <p>{{zoning.jurisdiction}} - {{data.ZipCode}}</p>
-            <span id="wxInitial" style="display:inline-block !important;">Select a property 
-
-
-
-              <!-- </span>   -->  
-
-            </span>
-
-            <span id="wxForecast">
-               <!-- <span style="display:inline-block !important; margin-left:10px !important;">  -->            
-                 <li id="forecastViewList" style="display:inline-block !important; margin-left:-20px !important;"><a href="#" style="display:inline-block !important; margin-left:10px !important;">
-              <input id="forecastviewBox" class="icon-checkbox ng-pristine ng-untouched ng-valid" type="checkbox" ng-model="forecasttoggle">
-              <label for="forecastviewBox" style="width:auto;">
-                <span class="glyphicon glyphicon-unchecked unchecked chkPadding"></span>
-                <span class="glyphicon glyphicon-check checked chkPadding"></span>
-                10-day
-              </label>
-              </a></li>
-
-            </span>
-
-
-
-
-
-<!--             <span id="wxIntro">
-                Las Vegas, NV
-            </span> -->
-<!--             <span style="display:inline-block;" id="wxZone">{{zoning.jurisdiction}} <p id="wxZip" ></p></span> -->
-<!--           </br> -->
-
-            <span id="wxIcon2"></span> &nbsp;
-            <span id="wxTemp"></span>
-
-            
-            <!-- 7-day forcast -->
-
-
-
-           
-
-
-
-        </div>
-
-
-
-
-         <!-- strViewOverrides -->
-
-
-
-
-       <!-- ForecastView -->
-      <div id="forecastCard" ng-show="forecasttoggle" > <!-- class='conditionalShow_Street' -->
-
-        <table class='table table-bordered ownershipTable' >
-          <tr style="background-color: #f9f9f9; height:5px !important; color: #8ED1E9;">
-            <th style="height:5px !important;"> </th> 
-            <th style="height:5px !important;">Date</th> 
-            <th style="height:5px !important;">Day</th> 
-            <th style="height:5px !important;">High</th> 
-            <th style="height:5px !important;">Low</th> 
-            <th style="height:5px !important;">Text</th>
-          </tr>
-          <tr ng-repeat="currWeath in weather">
-            <td><img src="http://gisgate.co.clark.nv.us/Gismo/apps/mobile/OW4/app/images/weather_icons/{{currWeath.code}}.gif" width="34" height="34" /></td>
-            <td>{{currWeath.date}}</td>
-            <td>{{currWeath.day}}</td>
-            <td>{{currWeath.high}}</td>
-            <td>{{currWeath.low}}</td>
-            <td>{{currWeath.text}}</td>
-          </tr>
-        </table>
-
-
-
-         <div class="forecastLabel_Top" >
-           <p></p>
-         </div>
-
-         <div id="sevendayview" style="" ></div>
-
-         <div class="viewLbl" >
-           <!-- <p>{{data.SiteAddress}}</p> -->
-         </div>
-
-       </div>
-
-
-
-
-
-
-
-
-<!--         <div class="dropdown customarrowVariant styled-select">
-           <select class="coordsDropDownVariant" name="flightSelector" ng-model="selectedFlightDefault" 
-                ng-options="item as item.fname for item in Flights"
-                ng-change="flightChange(selectedFlightDefault)">
-           </select>
-         </div> -->
-
-<!--          <table class='table table-bordered table-striped ownershipTable' >
-           <tr style="background-color: #f9f9f9; height:5px !important;">
-             <th style="height:5px !important;">Parcel</th> 
-             <th style="height:5px !important;">Owners</th> 
-             <th style="height:5px !important;">Recorded Document</th> 
-             <th style="height:5px !important;">Recorded Date</th> 
-             <th style="height:5px !important;">Vesting</th> 
-             <th style="height:5px !important;">Tax District</th> 
-             <th style="height:5px !important;">Estimated Size</th> 
-           </tr>
-           <tr ng-repeat="result in ownershipHist | filter:q as results">
-
-             <td>{{result.parcel}}</td>
-             <td>{{result.priorOwners}}</td>
-             <td>                     
-              <p>
-                <a class="infoLinks" target="_blank" href='http://gisgate.co.clark.nv.us/assessor/webimages/default.asp?appID=1&txtdocNum={{result.recordedDocument}}'> {{result.recordedDocument}} </a> 
-              </p></td>
-             <td>{{result.recordedDate}}</td>
-             <td>{{result.vesting}}</td>
-             <td>{{result.taxDistrict}}</td>
-             <td>{{result.estimatedSize}}</td>
-           </tr>
-         </table> -->
-
-
-
-
-
-
-
-
-
-        </div>
-    </div>
-
-        <!-- Weather Window -->
-    <!--     <weather-window></weather-window> -->
-<!--         <div id="weatherDivCasing" ng-show="theWeather" class="conditionalShow cssFade"  > -->
-      <!--           <div style="color: #8ED1E9; font-size:17px; font-family: "verb","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;">Weather</div> -->
-<!--       <div style="color: #8ED1E9; font-size:17px; font-family: "verb","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;">Weather</div>
-          <div id="weatherDiv"></div>
-        </div> -->
-    <!-- ********************************** -->
-
-
-

@@ -4669,13 +4669,13 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
       icon: "ion-android-car",
       active: false
     }, 
-    {
-      id: "2",
-      name: "Tools",
-      // icon: "ion-wrench",
-      icon: "ion-settings",
-      active: false
-    }, 
+    // {
+    //   id: "2",
+    //   name: "Tools",
+    //   // icon: "ion-wrench",
+    //   icon: "ion-settings",
+    //   active: false
+    // }, 
     // {
     //   id: "3",
     //   name: "Appreciation",
@@ -4689,12 +4689,14 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
       name: "Legend",
       icon: "ion-android-list",
       active: false
-    }, {
-      id: "5",
-      name: "Weather",
-      icon: "ion-android-cloud-outline",
-      active: false
-    }, {
+    }, 
+    // {
+    //   id: "5",
+    //   name: "Weather",
+    //   icon: "ion-android-cloud-outline",
+    //   active: false
+    // }, 
+    {
       id: "6",
       name: "Share or embed",
       icon: "ion-link",
@@ -5027,6 +5029,8 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
+
+
                 // $('.accordionStyleNew').css({
                 //     'top': 49,
                 //     'left': 240
@@ -5117,6 +5121,16 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
             else { }
 
 
+
+        }
+        else if (resolveState === 2) //meaning, the 'x' close icon has been clicked
+        {
+
+            $('.accordionStyleNew').css({
+                // 'visibility': 'hidden'
+                'display': 'none'
+            });
+            console.log('C [[ propInfoVis-a[0]' + JSON.stringify($(".accordionStyleNew").position()) + " ]]");
 
         }
         else //a search has been resolved

@@ -2128,6 +2128,13 @@ require([
                 //added (7.28)
                 map.infoWindow.hide();
 
+
+                //call propinfovisnew with code '2' (to reposition select property & clear out prior search results)
+                angular.element($('#mapDiv')).scope().propInfoVisNew(2);
+                // $scope.propInfoVisNew(0);    
+                // angular.element($('#mapDiv')).scope().executeQueryTask(evt.mapPoint.x, evt.mapPoint.y, 'select');
+
+
             });
 
             //throw disclaimer
