@@ -19,6 +19,17 @@ module.exports = function (grunt) {
         // read package file for properties
         pkg: grunt.file.readJSON('package.json'),
 
+
+        // 'node-minify': {
+        //   gcc: {
+        //     files: {
+        //       'dest/gcc.min.js': ['src/**/*.js']
+        //     }
+        //   }
+        // },
+
+
+
         // copy files from downloaded packages into directories
         copy: {
             bootstrap: {
@@ -374,7 +385,18 @@ module.exports = function (grunt) {
     //https://blog.credera.com/technology-insights/java/testing-angularjs-part-3-karma-grunt/
     // grunt.registerTask('unit-test', ['karma:continuous:start', 'watch:karma']);
     // grunt.registerTask('unit-test', ['copy', 'connect', 'karma:continuous:start', 'watch:karma']);
+    
+
+    // grunt.loadNpmTasks('grunt-responsive-images');
+    // grunt.loadNpmTasks('grunt-contrib-clean');
+    // grunt.loadNpmTasks('grunt-contrib-copy');
+    // grunt.loadNpmTasks('grunt-mkdir');
     grunt.registerTask('serve', ['copy', 'connect', 'karma:continuous:start', 'watch:karma']);
+
+    // grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+    grunt.registerTask('default', ['copy', 'connect', 'karma:continuous:start', 'watch:karma']);
+
+
 
     //****************************************************
     //****************************************************
