@@ -78,10 +78,16 @@ var bufferFill; //bool: tracks graphics buffer fill
 var printTask, params; //used for the printTask Service location, print Parameters
 
 var geometry;
+var constCurrentTool; //used for constructing the current draw tool type selected / activated
 //tracks how many times a buffer has been manually added using create btn
 var bufferCreateCount = 0;
 var bufferParms; //stores the buffer parameters for creating a buffer
 var bufferCumulativeVal = 0;
+
+var mapPinDrawflag = false; //used to determine if the 'map pin' draw tool is active
+var annoDrawflag = false; //used to determine if the 'anno text' state is active, to add text on click to map
+
+
 
 var freshView = "";
 
@@ -138,6 +144,7 @@ require([
         "esri/graphic", //added for tools
         "esri/toolbars/draw", //added for tools
         "esri/symbols/SimpleMarkerSymbol", //added for tools
+        "esri/symbols/PictureMarkerSymbol", //added for tools
         "esri/symbols/SimpleLineSymbol", //added for tools
         "esri/symbols/SimpleFillSymbol", //added for tools
         "esri/symbols/Font",
@@ -166,7 +173,7 @@ require([
         "dojo/domReady!"
     ],
 
-    function(dom, array, domAttr, number, Map, Measurement, Polyline, Units, Point, webMercatorUtils, ProjectParameters, geometry, Extent, SpatialReference, normalizeUtils, GeometryService, BufferParameters, Graphic, Draw, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Font, TextSymbol, Color, Print, PrintTask, PrintTemplate, Scalebar, BootstrapMap, LocateButton, ArcGISImageServiceLayer, FeatureLayer, Legend, arrayUtils, registry, parser) { //ADDED LEGEND FeatureLayer, Legend, arrayUtils, parser
+    function(dom, array, domAttr, number, Map, Measurement, Polyline, Units, Point, webMercatorUtils, ProjectParameters, geometry, Extent, SpatialReference, normalizeUtils, GeometryService, BufferParameters, Graphic, Draw, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Font, TextSymbol, Color, Print, PrintTask, PrintTemplate, Scalebar, BootstrapMap, LocateButton, ArcGISImageServiceLayer, FeatureLayer, Legend, arrayUtils, registry, parser) { //ADDED LEGEND FeatureLayer, Legend, arrayUtils, parser
 
         parser.parse(); //ADDED LEGEND
 
@@ -295,9 +302,14 @@ require([
             console.log("M [[ map loaded ]]"); 
             map.disableKeyboardNavigation();
             //call to create tools toolbar
-            initToolbar();
+            // initToolbar();
 
         });
+
+        map.on("load", initToolbar);
+
+
+
 
 
 
@@ -381,177 +393,572 @@ require([
 
 
 
+        //************************************************************************
 
-        //NEW AS OF 11/27/2018 
+        //update functionMode on Tools close Icon click -------------------------
+        $(".closeToolIcon").click(function() {
+        
+            //set functionMode back to identify
+            functionMode='identify';
+
+            //Update current tools designation
+            $("#currentToolTag").text('Select Property');
 
 
-
-
+        });
 
         //************************************************************************
+
+
 
         //update tools designation -------------------------
         $(".toolSelect").click(function() {
 
             //set functionMode to draw
             functionMode='draw';
+            //Update current tool tag
+            $("#currentToolTag").text($(this).attr('id'));
 
 
 
-            var constCurrentTool = 'esri.toolbars.Draw.'+$(this).attr('id');
+            // Line
+            // FH_Line
+            // Polygon
+            // FH_Polygon
+            // MULTI_POINT
+            // Arrow
+            // Triangle
+            // Circle
+            // Ellipse
+
+            //Update the current draw tool variable
+            // var constCurrentTool = 'esri.toolbars.Draw.'+$(this).attr('id');
+
+            // var constCurrentTool = this.label.toUpperCase().replace(/ /g, "_");
+            constCurrentTool = $(this).attr('id').toUpperCase().replace(/ /g, "_");
+
+            // //current tool
+            // constCurrentTool = $(this).attr('id').toUpperCase().replace(/ /g, "_");
+            // var pointexample = new PictureMarkerSymbol('http://static.arcgis.com/images/Symbols/Basic/RedStickpin.png', 20, 20);
+
+
+            console.log('THE COMPLETED CONSTRUCTED TOOL TYPE IS: ' + constCurrentTool)
+
+            //check for 'pin' type first, exception (because its not a valid type, it's custom)
+            if (constCurrentTool === 'PIN') {
+                mapPinDrawflag = true;
+                annoDrawflag = false;
+                console.log('test1')
+                toolbar.activate(Draw.POINT);
 
 
 
-            // toolbar.activate(esri.toolbars.Draw.MULTI_POINT);
 
-            //toolbar.activate(esri.toolbars.Draw.MULTI_POINT);
-
-            // 'esri.toolbars.Draw.'+$(this).attr('id')
+                //Update the map's drawtooltiptext
+                $('.drawtooltiptext').text('Click to add a pin');
 
 
 
+               
+                // pinflag=
 
-            //update tools designation -------------------------
-            // toolbar.activate(Draw.MULTI_POINT);
-            toolbar.activate(Draw.POINT);
-
-
-            console.log('THE TOOL ATTR is  ' + functionMode  + $(this).attr('id'));
+                //Multi_Point
 
 
-           $("#currentToolTag").text($(this).attr('id'));
 
-           // // toolSelect
-           //  // console.log(event.target.id);
-           //  // var id = $(this).attr('id');
-           //  console.log($(this).attr('id'));
+
+            } else  if (constCurrentTool === 'POINT') {
+
+                mapPinDrawflag = false;
+                annoDrawflag = false;
+                toolbar.activate(Draw[constCurrentTool]);
+     
+                //Update the map's drawtooltiptext
+                $('.drawtooltiptext').text('Click to add point');
+
+
+
+
+
+
+
+
+                // require([
+                //   "esri/symbols/TextSymbol", "esri/Color", "esri/symbols/Font", ... 
+                // ], function(TextSymbol, Color, Font, ... ) {
+                //   var textSymbol =  new TextSymbol("Hello World").setColor(
+                //     new Color([128,0,0])).setAlign(Font.ALIGN_START).setAngle(45).setFont(
+                //     new Font("12pt").setWeight(Font.WEIGHT_BOLD)) ;
+                //   ...
+                // });
+
+
+                // https://developers.arcgis.com/javascript/3/jsapi/textsymbol-amd.html
+
+                // require([
+                //   "esri/symbols/TextSymbol", "esri/Color", "esri/symbols/Font" 
+                // ], function(TextSymbol, Color, Font) {
+                //   var textSymbol =  new TextSymbol("Hello World").setColor(
+                //     new Color([128,0,0])).setAlign(Font.ALIGN_START).setAngle(45).setFont(
+                //     new Font("12pt").setWeight(Font.WEIGHT_BOLD));
+
+
+                //     // var font = new esri.symbol.Font();  
+                //     // font.setSize(parseInt(dojo.byId("tsSize").value));  
+                //     // font.setWeight(esri.symbol.Font[dojo.byId("tsWeight").value]);  
+                    
+                //     // var symbol = new esri.symbol.TextSymbol();  
+                //     // symbol.setText(dojo.byId("tsText").value);  
+                //     // symbol.setColor(new dojo.Color(dijit.byId("tsColor").value));  
+                //     // symbol.setFont(font);  
+                //     // symbol.setAngle(parseInt(dojo.byId("tsAngle").value));  
+
+
+                // });
+
+                // var graphic = new Graphic(geometry, textSymbol);
+
+                // map.graphics.add(graphic)
+
+
+
+
+
+
+                // require([
+                //   "esri/symbols/TextSymbol", "esri/symbols/Font", ... 
+                // ], function(TextSymbol, Font, ... ) {
+                //   var textSymbol = new TextSymbol( ... );
+                //   var font  = new Font();
+                //   font.setSize("12pt");
+                //   font.setWeight(Font.WEIGHT_BOLD);
+                //   textSymbol.setFont(font);
+                //   ...
+                // });
+
+
+
+
+
+            } else  if (constCurrentTool === 'MULTI_POINT') {
+
+                mapPinDrawflag = false;
+                annoDrawflag = false;
+                toolbar.activate(Draw.MULTI_POINT);
+
+            } else  if (constCurrentTool === 'FH_LINE') {
+
+                mapPinDrawflag = false;
+                annoDrawflag = false;
+                toolbar.activate(Draw.FREEHAND_POLYLINE);
+
+
+                //Update the map's drawtooltiptext
+                $('.drawtooltiptext').text('Press down to start, let go to finish');
+
+
+            } else  if (constCurrentTool === 'POLYGON') {
+
+                mapPinDrawflag = false;
+                annoDrawflag = false;
+                toolbar.activate(Draw[constCurrentTool]);
+
+
+                //Update the map's drawtooltiptext
+                $('.drawtooltiptext').text('Click to draw, double-click to complete');
+
+
+            } else  if (constCurrentTool === 'FH_POLYGON') {
+
+                mapPinDrawflag = false;
+                annoDrawflag = false;
+                toolbar.activate(Draw.FREEHAND_POLYGON);
+
+
+                //Update the map's drawtooltiptext
+                $('.drawtooltiptext').text('Press down to start, let go to finish');
+
+
+            } else  if (constCurrentTool === 'ANNO_TEXT') {
+
+                // mapPinDrawflag = false;
+                // annoDrawflag = true;
+                // toolbar.activate(Draw.POINT);
+
+
+
+
+                // // var annoVal = $('#annoTextBox').val();
+                // // // annoVal
+
+                // // // var symbolText =  new TextSymbol("Anno Text").setColor(
+                // // var symbolText =  new TextSymbol(annoVal).setColor(
+                // // new Color([255,255,255])).setAlign(Font.ALIGN_START).setAngle(0).setFont(
+                // // new Font("12pt").setWeight(Font.WEIGHT_BOLD));
+
+
+                // // // var graphic = new Graphic(geometry, symbolText);
+                // // var graphic = new Graphic(symbolText);
+                // // graphic.id = "highlight";
+
+                // // // addTheGraphics(graphic,geometry);
+
+
+                // // //Add graphics to map
+                // // // map.graphics.add(graphic, symbol)
+                // // map.graphics.add(graphic)
+
+
+
+
+                // //Update the map's drawtooltiptext
+                // $('.drawtooltiptext').text('Click on Map to add Text');
+
+
+            } else {
+                mapPinDrawflag = false;
+                annoDrawflag = false;
+                console.log('test2')
+                // toolbar.activate(Draw.POINT);
+                toolbar.activate(Draw[constCurrentTool]);
+                // toolbar.activate(Draw.LINE);
+
+
+                //Update the map's drawtooltiptext
+                $('.drawtooltiptext').text('Click to add / Click and drag to size');
+
+            }
+
+            
+
+            $(".drawtooltiptext").css("visibility", "visible");
+
+            // console.log('THE TOOL ATTR is  ' + functionMode  + $(this).attr('id'));
+            console.log('THE TOOL ATTR is  ' + constCurrentTool);
+
 
         });
 
-
-        // //************************************************************************
-
-        // //update tools designation -------------------------
-        // $(".toolSelect").click(function() {
-
-
-        //    $("#currentToolTag").text($(this).attr('id'));
-
-        //    // toolSelect
-        //     // console.log(event.target.id);
-        //     // var id = $(this).attr('id');
-        //     console.log($(this).attr('id'));
-
-        // });
+        //************************************************************************
 
 
 
 
+        // //Activate Measurement (only for WIDGET)
+        // var measurement = new Measurement({
+        //   // geometry: evt.geometry,
+        //   map: map,
+        //   defaultAreaUnit: Units.SQUARE_MILES,
+        //   defaultLengthUnit: Units.KILOMETERS
+        // }, 
 
+        // // dom.byId("themeasuretest"));
 
+        // dom.byId("measurementDiv"));
 
+        // measurement.startup();
 
-
-
-
-
-
-
-
-
-
-
-
-        //---
-
-
-        //Activate Measurement
-        var measurement = new Measurement({
-          // geometry: evt.geometry,
-          map: map
-        }, dom.byId("themeasuretest"));
-        measurement.startup();
+        // //add measure
+        // var measurement = new Measurement({
+        //   map: map,
+        //   defaultAreaUnit: Units.SQUARE_MILES,
+        //   defaultLengthUnit: Units.KILOMETERS
+        // }, dom.byId('themeasuretest'));
 
 
         //Init Draw toolbar, OnDrawEnd
+        // function initToolbar(themap) {
+        //     toolbar = new Draw(map);
+        //     toolbar.on("draw-end", addToMap);
+        // }
         function initToolbar(themap) {
-            toolbar = new Draw(map);
-            toolbar.on("draw-end", addToMap);
+          console.log('TOOLBAR INIT CALLED')
+          toolbar = new Draw(map);
+          toolbar.on("draw-end", addToMap);
         }
 
-        //Geometry Options ------------------
-        // MULTI_POINT
-        // POLYLINE
-        // POLYGON
-        // FREEHAND_POLYLINE
-        // FREEHAND_POLYGON
-        // ARROW
-        // TRIANGLE
-        // CIRCLE
-        // ELLIPSE
+
+
 
         //Add Geometry, Points to map
         function addToMap(evt) {
+            console.log('ADDTOMAP CALLED')
             var symbol;
             toolbar.deactivate();
             geometry = evt.geometry;//, symbol;
 
-            // map.showZoomSlider();
-            switch (geometry.type) {
 
-                // // figure out which symbol to use
-                // // var symbol;
-                // if ( evt.geometry.type === "point" || evt.geometry.type === "multipoint") {
-                //   symbol = markerSymbol;
-                // } else if ( evt.geometry.type === "line" || evt.geometry.type === "polyline") {
-                //   symbol = lineSymbol;
+
+
+            console.log('this is what the type is actually coming in as: ' + geometry.type)
+
+            //Geometry Options ------------------
+            // MULTI_POINT
+            // POLYLINE
+            // POLYGON
+            // FREEHAND_POLYLINE
+            // FREEHAND_POLYGON
+            // ARROW
+            // TRIANGLE
+            // CIRCLE
+            // ELLIPSE
+
+
+
+            // // map.showZoomSlider();
+            // switch (geometry.type) {
+
+
+            //     // // figure out which symbol to use
+            //     // // var symbol;
+            //     // if ( evt.geometry.type === "point" || evt.geometry.type === "multipoint") {
+            //     //   symbol = markerSymbol;
+            //     // } else if ( evt.geometry.type === "line" || evt.geometry.type === "polyline") {
+            //     //   symbol = lineSymbol;
+            //     // }
+            //     // else {
+            //     //   symbol = fillSymbol;
+            //     // }
+
+            //     case "point":
+            //         // symbol = new SimpleMarkerSymbol(new Color([221,239,167])); //new Color([255,0,0])
+            //         symbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255,0,0]), 1), new Color([0,255,0,0.25]));
+            //         console.log('drawing a point')
+            //         break;
+            //     case "multipoint":
+            //         symbol = new SimpleMarkerSymbol();
+            //         console.log('drawing a multipoint')
+            //         break;
+
+            //     case "line":
+            //         symbol = new SimpleLineSymbol();
+            //         console.log('drawing a line')
+            //         break;
+            //     case "polyline":
+            //         symbol = new SimpleLineSymbol();
+            //         console.log('drawing a polyline')
+            //         break;
+
+            //     case "FREEHAND_POLYGON":
+            //         symbol = new SimpleFillSymbol();
+            //         console.log('drawing a freehand polgon')
+            //         break;
+            //     case "ARROW":
+            //         symbol = new SimpleFillSymbol();
+            //         console.log('drawing an arrow')
+            //         break;
+            //     case "TRIANGLE":
+            //         symbol = new SimpleFillSymbol();
+            //         console.log('drawing a triangle')
+            //         break;
+            //     case "CIRCLE":
+            //         symbol = new SimpleFillSymbol();
+            //         console.log('drawing a circle')
+            //         break;
+            //     case "ELLIPSE":
+            //         symbol = new SimpleFillSymbol();
+            //         console.log('drawing an ellipse')
+            //         break;
+
+            //     // case "point":
+            //     // case "multipoint":
+            //     //     symbol = new SimpleMarkerSymbol();
+            //     //     break;
+            //     // case "polyline":
+            //     //     symbol = new SimpleLineSymbol();
+            //     //     break;
+            //     default:
+            //         symbol = new SimpleFillSymbol();
+            //         break;
+            // }
+               
+
+            //check for an active 'map pin draw tool, to draw a special point-type graphic for it'
+            if (mapPinDrawflag === true) {
+                var symbol;
+                // if ( geometry.type === "point") {
+                //     console.log('its hitting special point')
+                //     // // markerSymbol is used for point and multipoint
+                //     // var markerSymbol = new SimpleMarkerSymbol();
+                //     // markerSymbol.setPath("M16,4.938c-7.732,0-14,4.701-14,10.5c0,1.981,0.741,3.833,2.016,5.414L2,25.272l5.613-1.44c2.339,1.316,5.237,2.106,8.387,2.106c7.732,0,14-4.701,14-10.5S23.732,4.938,16,4.938zM16.868,21.375h-1.969v-1.889h1.969V21.375zM16.772,18.094h-1.777l-0.176-8.083h2.113L16.772,18.094z");
+                //     // markerSymbol.setColor(new Color("#00FFFF"));
+
+                  var pictureSymbol = new PictureMarkerSymbol({"angle":0,"xoffset":2,"yoffset":8,"type":"esriPMS","url":"http://static.arcgis.com/images/Symbols/Basic/RedShinyPin.png","imageData":"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","contentType":"image/png","width":24,"height":24});
+
+
+                  symbol = pictureSymbol;
                 // }
-                // else {
-                //   symbol = fillSymbol;
-                // }
 
-                case "point":
-                    // symbol = new SimpleMarkerSymbol(new Color([221,239,167])); //new Color([255,0,0])
-                    symbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255,0,0]), 1), new Color([0,255,0,0.25]));
-                    break;
-                case "multipoint":
-                    symbol = new SimpleMarkerSymbol();
-                    break;
+                mapPinDrawflag = false;
 
-                case "line":
-                    symbol = new SimpleLineSymbol();
-                    break;
-                case "polyline":
-                    symbol = new SimpleLineSymbol();
-                    break;
-
-                case "FREEHAND_POLYGON":
-                    symbol = new SimpleFillSymbol();
-                    break;
-                case "ARROW":
-                    symbol = new SimpleFillSymbol();
-                    break;
-                case "TRIANGLE":
-                    symbol = new SimpleFillSymbol();
-                    break;
-                case "CIRCLE":
-                    symbol = new SimpleFillSymbol();
-                    break;
-                case "ELLIPSE":
-                    symbol = new SimpleFillSymbol();
-                    break;
-
-                // case "point":
-                // case "multipoint":
-                //     symbol = new SimpleMarkerSymbol();
-                //     break;
-                // case "polyline":
-                //     symbol = new SimpleLineSymbol();
-                //     break;
-                default:
-                    symbol = new SimpleFillSymbol();
-                    break;
             }
+            //check for active 'adding anno text to map on click'
+            else if (annoDrawflag === true) {
+                var symbol;
+                // // if ( geometry.type === "point") {
+                // //     console.log('its hitting special point')
+                // //     // // markerSymbol is used for point and multipoint
+                // //     // var markerSymbol = new SimpleMarkerSymbol();
+                // //     // markerSymbol.setPath("M16,4.938c-7.732,0-14,4.701-14,10.5c0,1.981,0.741,3.833,2.016,5.414L2,25.272l5.613-1.44c2.339,1.316,5.237,2.106,8.387,2.106c7.732,0,14-4.701,14-10.5S23.732,4.938,16,4.938zM16.868,21.375h-1.969v-1.889h1.969V21.375zM16.772,18.094h-1.777l-0.176-8.083h2.113L16.772,18.094z");
+                // //     // markerSymbol.setColor(new Color("#00FFFF"));
+
+                //   var pictureSymbol = new PictureMarkerSymbol({"angle":0,"xoffset":2,"yoffset":8,"type":"esriPMS","url":"http://static.arcgis.com/images/Symbols/Basic/RedShinyPin.png","imageData":"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","contentType":"image/png","width":24,"height":24});
+
+
+                //   symbol = pictureSymbol;
+                // // }
+
+                // mapPinDrawflag = false;
+
+                var annoVal = $('#annoTextBox').val();
+                // annoVal
+
+                // var symbolText =  new TextSymbol("Anno Text").setColor(
+                // var symbolText =  new TextSymbol(annoVal).setColor(
+                var symbolText =  new TextSymbol(annoVal).setColor(
+                new Color([255,255,255])).setAlign(Font.ALIGN_START).setAngle(0).setFont(
+                new Font("12pt").setWeight(Font.WEIGHT_BOLD));
+
+                // mapPinDrawflag = false;
+
+
+                symbol = symbolText;
+
+
+                console.log('it hit the annodraw')
+
+            }
+            else { //else just draw as usual
+
+                console.log('its also hitting regular point')
+
+
+                // figure out which symbol to use
+                var symbol;
+                if ( geometry.type === "point" || geometry.type === "multipoint") {
+                  
+
+
+                 symbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 10, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,0,102]), 1), new Color([204,51,255]));
+                
+
+
+
+                  // // require([
+                  // //   "esri/symbols/TextSymbol", "esri/Color", "esri/symbols/Font" 
+                  // // ], function(TextSymbol, Color, Font) {
+
+
+                  //   // var symbolText =  new TextSymbol("Anno Text").setColor(
+                  //   // new Color([128,0,0])).setAlign(Font.ALIGN_START).setAngle(45).setFont(
+                  //   // new Font("12pt").setWeight(Font.WEIGHT_BOLD));
+
+
+                  //   // var symbolText =  new TextSymbol("Anno Text").setColor(
+                  //   // new Color([255,255,255])).setAlign(Font.ALIGN_START).setAngle(180).setFont(
+                  //   // new Font("12pt").setWeight(Font.WEIGHT_BOLD));
+
+                  //   var symbolText =  new TextSymbol("Anno Text").setColor(
+                  //   new Color([255,255,255])).setAlign(Font.ALIGN_START).setAngle(0).setFont(
+                  //   new Font("12pt").setWeight(Font.WEIGHT_BOLD));
+
+
+                  //     // var font = new esri.symbol.Font();  
+                  //     // font.setSize(parseInt(dojo.byId("tsSize").value));  
+                  //     // font.setWeight(esri.symbol.Font[dojo.byId("tsWeight").value]);  
+                      
+                  //     // var symbol = new esri.symbol.TextSymbol();  
+                  //     // symbol.setText(dojo.byId("tsText").value);  
+                  //     // symbol.setColor(new dojo.Color(dijit.byId("tsColor").value));  
+                  //     // symbol.setFont(font);  
+                  //     // symbol.setAngle(parseInt(dojo.byId("tsAngle").value));  
+
+
+                  // // });
+
+
+                  //  var graphic = new Graphic(geometry, symbolText);
+                  //  // map.graphics.add(graphic);
+                  //  graphic.id = "highlight";
+
+                  //  addTheGraphics(graphic,geometry);
+
+
+
+
+
+
+
+
+
+
+                }
+                // else if ( geometry.type === "pin" ) {
+                //     symbol = markerSymbol;
+                //} 
+                else if ( geometry.type === "line" || geometry.type === "polyline") {
+                  // symbol = lineSymbol;
+                  symbol = new SimpleLineSymbol();
+                }
+                // else if ( geometry.type === "fhline") {
+                //   // symbol = lineSymbol;
+                //   symbol = new SimpleLineSymbol();
+                // }
+                else {
+                  // symbol = fillSymbol;
+                  symbol = new SimpleFillSymbol();
+                }
+
+            }
+
+
+
+
+
+            // // map.showZoomSlider();
+            // switch (geometry.type) {
+
+            //     case "point":
+            //         // symbol = new SimpleMarkerSymbol(new Color([221,239,167])); //new Color([255,0,0])
+            //         // symbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255,0,0]), 1), new Color([0,255,0,0.25]));
+            //         symbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 10, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,0,102]), 1), new Color([204,51,255]));
+            //         // rgb(204, 51, 255)
+            //         break;
+            //     case "pin":
+            //         symbol = new SimpleMarkerSymbol(new Color([221,239,167])); //new Color([255,0,0])
+            //         break;
+            //     case "multipoint":
+            //         symbol = new SimpleMarkerSymbol();
+            //         break;
+            //     // case "multipoint":
+            //     //     symbol = new SimpleMarkerSymbol();
+            //     //     break;
+            //     // case "line":
+            //     //     symbol = new SimpleLineSymbol();
+            //     //     break;
+            //     // case "polyline":
+            //     //     symbol = new SimpleLineSymbol();
+            //     //     break;
+            //     // case "FREEHAND_POLYGON":
+            //     //     symbol = new SimpleFillSymbol();
+            //     //     break;
+            //     // case "ARROW":
+            //     //     symbol = new SimpleFillSymbol();
+            //     //     break;
+            //     // case "TRIANGLE":
+            //     //     symbol = new SimpleFillSymbol();
+            //     //     break;
+            //     // case "CIRCLE":
+            //     //     symbol = new SimpleFillSymbol();
+            //     //     break;
+            //     // case "ELLIPSE":
+            //     //     symbol = new SimpleFillSymbol();
+            //     //     break;
+
+            //     default:
+            //         symbol = new SimpleFillSymbol();
+            //         break;
+            // }
             var graphic = new Graphic(geometry, symbol);
             // map.graphics.add(graphic);
             graphic.id = "highlight";
@@ -577,7 +984,10 @@ require([
 
 
 
-            //return measurement for the graphic
+
+
+
+            // //return measurement for the graphic (ONLY FOR WIDGET METHOD)
 
             // // var measurement = new Measurement({
             // //   geometry: customPolyline,
@@ -588,7 +998,7 @@ require([
             // var measurement = new Measurement({
             //   geometry: evt.geometry,
             //   map: map
-            // }, dom.byId("measurement"));
+            // }, dom.byId("measurementDiv"));
             // measurement.startup();
 
             // // evt.geometry.type
@@ -603,7 +1013,7 @@ require([
             // var measurement = new Measurement({
             //   geometry: customPolyline,
             //   map: map
-            // }, dom.byId("themeasuretest"));
+            // }, dom.byId("measurementDiv"));
             // measurement.startup();
 
             // if (measurement)
@@ -612,13 +1022,11 @@ require([
             // }
 
             // else {
-
             //     var measurement = new Measurement({
             //       geometry: evt.geometry,
             //       map: map
-            //     }, dom.byId("themeasuretest"));
+            //     }, dom.byId("measurementDiv"));
             //     measurement.startup();
-
             // }
             
             // var customPolyline = new Polyline({"wkid":102707});
@@ -628,14 +1036,14 @@ require([
             //   new Point(-3283145.74, -618754.28)
             // ]);
 
-
-            //return measurements per current geometry
-            measurement.measure(geometry);
+            // //return measurements per current geometry
+            // measurement.measure(geometry);
 
         }
 
         //Add Graphics
         function addTheGraphics(graphic,geometry) {
+            console.log('TEST2')
        // function addTheGraphics(graphic, symbol) {
 
             //https://developers.arcgis.com/javascript/3/sandbox/sandbox.html?sample=util_label_point
@@ -697,151 +1105,21 @@ require([
           $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
 
 
-        //  var shittest = $(this).parents(".dropdown").find('.btn').html($(this).text());
-
-
           var n = $(this).parents(".dropdown").find('.btn').text();
 
           //listen to the dropdown selection to update the current tool container visbility
           
-          // if (n.indexOf('Draw'))
-          // {
-          //   $('.draw-tools-container').css({
-          //       // 'visibility': 'hidden'
-          //       'display': 'flex'
-          //   });
-
-          //   console.log('draw hit')
-
-          // }
-          // if (n.indexOf('Buffer'))
-          // {
-          //   $('.draw-tools-container').css({
-          //       // 'visibility': 'hidden'
-          //       'display': 'none'
-          //   });
-
-          //   console.log('buffer hit')
-
-
-          //   // $('.flex-container').css({
-          //   //     // 'visibility': 'hidden'
-          //   //     'display': 'flex'
-          //   // });
-
-          // }
-          // if (n.indexOf('Measure'))
-          // {
-          //   $('.draw-tools-container').css({
-          //       // 'visibility': 'hidden'
-          //       'display': 'none'
-          //   });
-
-          //   console.log('measure hit')
-
-
-          //   // $('.flex-container').css({
-          //   //     // 'visibility': 'hidden'
-          //   //     'display': 'flex'
-          //   // });
-
-          // }
-          // else {
-          //   // $('.draw-tools-container').css({
-          //   //     // 'visibility': 'hidden'
-          //   //     'display': 'none'
-          //   // });
-
-          //   console.log('nothing hit')
-
-          // }
-
-
-
-
-
-
-          // var n = shittest.indexOf("buffer");
-
           console.log(n)
-
-
-          // //listen to the dropdown selection to update the current tool container visbility
-          // if ($(this).parents(".dropdown").find('.btn').html($(this).text()).indexOf('Buffer'))
-          // {
-          //   $('.draw-tools-container').css({
-          //       // 'visibility': 'hidden'
-          //       'display': 'none'
-          //   });
-
-
-          //   // $('.flex-container').css({
-          //   //     // 'visibility': 'hidden'
-          //   //     'display': 'flex'
-          //   // });
-
-          // }
-
-
-
-
-
-          // $(this).parents(".dropdown").find('.btn').html($(this).text().indexOf('Buffer')
-
-
-        // if (test.includes('Buffer')) { 
-        //   // Found Buffer
-
-        //     $('.draw-tools-container').css({
-        //         // 'visibility': 'hidden'
-        //         'display': 'none'
-        //     });
-        // }
-
-
-          // //listen to the dropdown selection to update the current tool container visbility
-          // if ()
-          // {
-          //   // $('.draw-tools-container').css({
-          //   //     // 'visibility': 'hidden'
-          //   //     'display': 'none'
-          //   // });
-
-
-          //   // $('.flex-container').css({
-          //   //     // 'visibility': 'hidden'
-          //   //     'display': 'flex'
-          //   // });
-
-          // }
-          
-
-
-
-
-          // //listen to the dropdown selection to update the current tool container visbility
-          // if ($(this).parents(".dropdown").find('.btn').html($(this).text().indexOf('Buffer'))
-          // {
-          //   // $('.draw-tools-container').css({
-          //   //     // 'visibility': 'hidden'
-          //   //     'display': 'none'
-          //   // });
-
-
-          //   // $('.flex-container').css({
-          //   //     // 'visibility': 'hidden'
-          //   //     'display': 'flex'
-          //   // });
-
-          // }
-          
 
         });
 
-
-
-
         $(".drawDropDownMenuItem").click(function(){
+
+            //resetting the functionMode & Current Tool designation to the default
+            //(in the case of switching back/forth through tool options, we don't want prior tool states to carry over)
+            functionMode = "identify";
+            $("#currentToolTag").text('Select Property');
+
 
           $('.draw-tools-container').css({
               'display': 'flex'
@@ -849,10 +1127,20 @@ require([
           $('.buffer-tools-container').css({
               'display': 'none'
           });
+          $('.annotate-tools-container').css({
+              'display': 'none'
+          });
 
-            
         });
         $(".bufferDropDownMenuItem").click(function(){
+
+            //$(".drawtooltiptext").css("visibility", "hidden");
+
+
+            functionMode = "identify";
+            $("#currentToolTag").text('Select Property');
+
+
 
             $('.draw-tools-container').css({
                 'display': 'none'
@@ -860,9 +1148,35 @@ require([
             $('.buffer-tools-container').css({
                 'display': 'flex'
             });
+            $('.annotate-tools-container').css({
+                'display': 'none'
+            });
 
         });
-        $(".measureDropDownMenuItem").click(function(){
+        $(".annotateDropDownMenuItem").click(function(){
+
+            // //Update the map's drawtooltiptext
+            // $('.drawtooltiptext').text('Click Map to add your Text');
+
+            // //Update the map's drawtooltiptext
+            // $('.drawtooltiptext').text('Click Map to add your Text');
+
+            // console.log('ano option selected')
+
+
+            // //functionMode = "identify";
+            // $("#currentToolTag").text('Select Property');
+            // //$(".drawtooltiptext").css("visibility", "hidden");
+
+
+            // functionMode = "identify";
+            functionMode = "annotate";
+
+            $("#currentToolTag").text('Select Property');
+
+            $(".drawtooltiptext").css("visibility", "hidden");
+
+
 
             $('.draw-tools-container').css({
                 'display': 'none'
@@ -870,9 +1184,25 @@ require([
             $('.buffer-tools-container').css({
                 'display': 'none'
             });
+            $('.annotate-tools-container').css({
+                'display': 'flex'
+            });
 
-            
         });
+
+        // $('#annoTextBox').val(bla);
+
+
+        // $(".measureDropDownMenuItem").click(function(){
+
+        //     $('.draw-tools-container').css({
+        //         'display': 'none'
+        //     });
+        //     $('.buffer-tools-container').css({
+        //         'display': 'none'
+        //     });
+            
+        // });
 
 
 
@@ -895,6 +1225,18 @@ require([
 
 
 
+
+
+        //Undo Graphics
+        $('#undoBtn').click(function() {
+            // // console.log('ihtrs');
+            // // map.graphics.remove('highlight');
+            // // map.graphics.clear();
+            // functionMode = "identify";
+            // $("#currentToolTag").text('Select Property');
+            // //toolbar.deactivate();
+        });
+
         //Erase Graphics
         $('.eraseBtn').click(function() {
             // console.log('ihtrs');
@@ -907,13 +1249,14 @@ require([
             // clearGraphics();
         });
         //Finish Graphics
-        $('#doneDrawBtn').click(function() {
+        // $('#doneDrawBtn').click(function() {
+        $('.doneDrawBtn').click(function() {
             // console.log('ihtrs');
             // map.graphics.remove('highlight');
             // map.graphics.clear();
             functionMode = "identify";
             $("#currentToolTag").text('Select Property');
-            toolbar.deactivate();
+            //toolbar.deactivate();
         });
 
         //http://gis.stackexchange.com/questions/110060/remove-geometry-from-map-using-arcgis-api-for-javascript
@@ -963,6 +1306,77 @@ require([
 
         // bufferCreateBtn
         // https://developers.arcgis.com/javascript/3/samples/util_buffergraphic/
+
+
+
+
+
+
+        //Anno Text Active
+        // $('#annoCreateBtn').click(function() {
+        //     // // console.log('ihtrs');
+        //     // // map.graphics.remove('highlight');
+        //     // // map.graphics.clear();
+
+        //     // //keep track of how many times a buffer has been manually created
+        //     // bufferCreateCount = bufferCreateCount + 1;
+
+
+        //     // createBuffer(geometry,bufferCreateCount);
+
+        //    // console.log('buffer init')
+        // });
+
+        // $('input:checkbox').change(
+        //     function(){
+        //         if ($(this).is(':checked')) {
+        //             alert('checked');
+        //         }
+        //     });
+
+        // $('input:checkbox#annoCreateBtn').change(
+        // function(){
+        //     if ($(this).is(':checked')) {
+
+
+        //         //do something to add the annoText on map clicks
+
+
+        //         console.log('checked');
+        //     }
+        // });
+
+
+        $("#annoTextBox").on("change paste keyup", function() {
+           // alert($(this).val()); 
+
+
+           //set functionMode to draw
+           // functionMode='draw';
+           functionMode='annotate';
+           //Update current tool tag
+           // $("#currentToolTag").text($(this).attr('id'));
+           $("#currentToolTag").text('Anno_Text');
+
+
+
+           mapPinDrawflag = false;
+           annoDrawflag = true;
+           toolbar.activate(Draw.POINT);
+
+
+           // //Update the map's drawtooltiptext
+           // $('.drawtooltiptext').text('Click on Map to add Text');
+
+
+
+           // //Update the map's drawtooltiptext
+           // $('.drawtooltiptext').text('Click Map to add your Text');
+
+
+
+           console.log('annoText val update');
+        });
 
 
 
@@ -1051,7 +1465,7 @@ require([
 
                 bufferCumulativeVal =  bufferCumulativeVal + parseInt(dom.byId("bufferDistanceInputBox").value);
 
-               // console.log(parseInt(dom.byId("bufferDistanceInputBox").value))
+               // console.log(parseInt(dom.byId("bsufferDistanceInputBox").value))
                // console.log(newVal)
 
                 bufferParms.distances = [ bufferCumulativeVal ];
@@ -1094,7 +1508,18 @@ require([
 
             normalizeUtils.normalizeCentralMeridian([geometry]).then(function(normalizedGeometries){
               var normalizedGeometry = normalizedGeometries[0];
-              if (normalizedGeometry.type === "polygon") {
+
+
+              //log the geometry type currently to be buffered
+              console.log('THE CURRENT GEOM TYPE IS: '+ normalizedGeometry.type);
+
+              if (normalizedGeometry.type === "point") {
+                // //if geometry is a polygon then simplify polygon.  This will make the user drawn polygon topologically correct.
+                // esriConfig.defaults.geometryService.simplify([normalizedGeometry], function(geometries) {
+                //   bufferParms.geometries = geometries;
+                //   esriConfig.defaults.geometryService.buffer(bufferParms, showBuffer);
+                // });
+              } else if (normalizedGeometry.type === "polygon") {
                 //if geometry is a polygon then simplify polygon.  This will make the user drawn polygon topologically correct.
                 esriConfig.defaults.geometryService.simplify([normalizedGeometry], function(geometries) {
                   bufferParms.geometries = geometries;
@@ -1769,8 +2194,16 @@ require([
                     postMetric(productCode, sessionNumber + ":Select Property");
 
                 }
-                if (functionMode == "draw") {
-                    //Add stops
+                else if (functionMode == "draw") {
+                    // //Add stops
+                    //  addStop(evt);
+                }
+                else if (functionMode == "buffer") {
+                    // //Add stops
+                    //  addStop(evt);
+                }
+                else if (functionMode == "annotate") {
+                    // //Add stops
                     //  addStop(evt);
                 }
                 // if (functionMode == "route") {
@@ -1786,6 +2219,89 @@ require([
             dojo.connect(map, "onMouseMove", function(evt) {
 
                 angular.element($('#mapDiv')).scope().mapevtMouseMove(evt.mapPoint.x, evt.mapPoint.y);
+
+
+
+
+
+
+
+
+
+                // $('#foo').css('width','50%')
+
+                // $('.drawtooltiptext').css('visibility','visible');
+                // $('.drawtooltiptext').css('opacity',1);
+
+
+                // .map:hover .drawtooltiptext {
+                //   visibility: visible;
+                //   opacity: 1;
+                // }
+
+
+
+                //
+
+
+
+                // $('.drawtooltiptext').text('Click to add a point.');
+
+
+
+
+                // $('#abc span').text('baa baa black sheep');
+                // $('#abc span').html('baa baa <strong>black sheep</strong>');
+                // $('#drawtooltiptext').text('Click to add a point.');
+
+
+
+
+               // var tooltipSpan;
+
+
+                // var x = e.clientX,
+                //     y = e.clientY;
+                //     console.log(x)
+                // tooltipSpan.style.top = (y + 20) + 'px';
+                // tooltipSpan.style.left = (x + 20) + 'px';
+
+                // $("#divtoshow").css({top: event.clientY, left: event.clientX}).show();
+
+                // $("#divtoshow").style.top = (y + 20) + 'px';
+                // $("#divtoshow").style.left = (x + 20) + 'px';
+
+
+                // $("#divtoshow").style.top = (evt.mapPoint.y + 20) + 'px';
+                // $("#divtoshow").style.left = (evt.mapPoint.x + 20) + 'px';
+
+
+                // $("#divtoshow").css({top: evt.mapPoint.y, left: evt.mapPoint.x}).show();
+
+
+                // console.log(evt.mapPoint.y)
+
+
+
+
+
+                // $("#mapDiv").hover(function(event) {
+                //     $("#divtoshow").css({top: event.clientY, left: event.clientX}).show();
+                // }, function() {
+                //     $("#divtoshow").hide();
+                // });
+
+
+                // window.onmousemove = function (e) {
+                //     var x = e.clientX,
+                //         y = e.clientY;
+                //         console.log(x)
+                //     // tooltipSpan.style.top = (y + 20) + 'px';
+                //     // tooltipSpan.style.left = (x + 20) + 'px';
+                // };
+
+
+
 
             });
 
@@ -1856,6 +2372,106 @@ require([
 
 
             });
+
+
+            // // $( ".map" ).hover(
+            // $( "#mapDiv" ).hover(
+
+
+            //     // $('.drawtooltiptext').css('visibility': 'visible');
+            //     // $('.drawtooltiptext').css('opacity': '1');
+
+
+            //     // $("#tester .dropdown-menu").css('display') == 'none') 
+
+               
+
+            //     $('.drawtooltiptext').addClass('drawtooltiptext');
+
+            //     // $('.drawtooltiptext').css('hideShowBarCollapsed');
+
+
+            //   // function() {
+            //   //   $( this ).append( $( "<span> ***</span>" ) );
+            //   // }, function() {
+            //   //   $( this ).find( "span:last" ).remove();
+            //   // }
+            // );
+
+            // $(".map").on("mouseover", function () {
+            //     //stuff to do on mouseover
+            // });
+
+
+            //listen to map hover event, and then add / remove class appropriately to show/hide hide tooltip
+            //(only if functionMode is currently draw)
+            $(".map").hover(function () {
+
+                console.log('Current functionMode: ' +functionMode)
+
+                if (functionMode==='draw') {
+                    //stuff to do on mouse enter
+                    $('.drawtooltiptext').addClass('drawtooltiptextOnMapHover');
+                }
+
+            }, 
+            function () {
+                //stuff to do on mouse leave
+                // if (functionMode==='draw') {
+                    //stuff to do on mouse enter
+                    $('.drawtooltiptext').removeClass('drawtooltiptextOnMapHover');
+                // }
+            });
+
+
+
+
+
+
+
+            // $(".map").hover(
+
+
+            //     $('.drawtooltiptext').text('Click to add a point.');
+
+            //     //console.log('successful map hover');
+
+            //   //   // $('[data-toggle="tooltip"]').tooltip('hide')
+            //   //   $('#drawtooltiptext').text('Click to add a point.');
+            //   //   console.log('successful map hover');
+            //   // // function() {
+            //   // //   $( this ).addClass( "hover" );
+            //   // // }, function() {
+            //   // //   $( this ).removeClass( "hover" );
+            //   // // }
+            // );
+
+            // $(".map").on('hover', function(e) {
+            //     // $('[data-toggle="tooltip"]').tooltip('hide')
+            //     $('#drawtooltiptext').text('Click to add a point.');
+            //     console.log('successful map hover')
+            // })
+
+
+
+
+            // $("#img").on('mousemove', function(e) {
+            //   $("#img-tooltip").css({top: e.pageY, left: e.pageX });
+            //   $('[data-toggle="tooltip"]').tooltip('show')
+            // })
+
+            // $("#img").on('mouseleave', function(e) {
+            //     $('[data-toggle="tooltip"]').tooltip('hide')
+            // })
+
+            // $("#img").on('mousemove', function(e) {
+            //   $("#img-tooltip").css({top: e.pageY, left: e.pageX });
+            //   $('[data-toggle="tooltip"]').tooltip('show')
+            // })
+
+            // $("#img").on('mouseleave', function(e) {
+            //     $('[data-toggle="tooltip"]').tooltip('hide')
+            // })
 
 
 
@@ -3428,3 +4044,132 @@ function detectIE() {
 
 
 
+
+
+
+// $("#mapDiv").hover(function(event) {
+//     $("#divtoshow").css({top: event.clientY, left: event.clientX}).show();
+// }, function() {
+//     $("#divtoshow").hide();
+// });
+
+
+// window.onmousemove = function (e) {
+//     var x = e.clientX,
+//         y = e.clientY;
+//         console.log(x)
+//     // tooltipSpan.style.top = (y + 20) + 'px';
+//     // tooltipSpan.style.left = (x + 20) + 'px';
+// };
+
+
+
+
+
+
+// $("#spanhovering").hover(function(event) {
+//     $("#divtoshow").css({top: event.clientY, left: event.clientX}).show();
+// }, function() {
+//     $("#divtoshow").hide();
+// });
+
+
+
+
+
+
+
+
+
+
+
+// var tooltips = document.querySelectorAll('.drawingTooltip span');
+// var maptips = document.querySelectorAll('.map');
+
+// window.onmousemove = function (e) {
+//     var x = (e.clientX + 20) + 'px',
+//         y = (e.clientY + 20) + 'px';
+//     for (var i = 0; i < maptips.length; i++) {
+//         maptips[i].style.top = y;
+//         maptips[i].style.left = x;
+//     }
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var tooltips = document.querySelectorAll('.drawingTooltip span');
+// var maptips = document.querySelectorAll('.map');
+
+// window.onmousemove = function (e) {
+//     var x = (e.clientX + 20) + 'px',
+//         y = (e.clientY + 20) + 'px';
+//     for (var i = 0; i < tooltips.length; i++) {
+//         tooltips[i].style.top = y;
+//         tooltips[i].style.left = x;
+//     }
+// };
+
+
+
+// // var tooltipSpan = document.getElementById('drawingTooltip-span');
+// var maptooltipSpan = document.getElementById('mapDiv');
+
+// window.onmousemove = function (e) {
+//     var x = e.clientX,
+//         y = e.clientY;
+//     maptooltipSpan.style.top = (y + 20) + 'px';
+//     maptooltipSpan.style.left = (x + 20) + 'px';
+// };
+
+/*TOOLTIP*/
+        // $(document).ready(function(){
+        //     console.log('HW');
+        // var changeTooltipPosition = function(event) {
+        //       w=$('.tooltip').attr('style').split(';')[0].replace(/\D/g,'');
+        //       var tooltipX = event.pageX - 8 - (Math.floor(w/2));
+        //       var tooltipY = event.pageY + 8;
+        //       $('div.tooltip').css({top: tooltipY, left: tooltipX});
+        //     };
+ 
+        //     var showTooltip = function(event) {
+        //       $('div.tooltip').remove();
+        //       if ($(this).attr('data-title')){
+        //         text = $(this).attr('data-title');
+        //       } else {
+        //         text = $(this).attr('title');
+        //         $(this).attr('data-title', text);
+        //         $(this).attr('title','');
+        //       }
+        //       width=text.length * 5 + 20;
+        //       $('<div class="tooltip" style="width:'+width+'px">'+text+'</div>')
+        //             .appendTo('body');
+        //       changeTooltipPosition(event);
+
+
+        //     };
+ 
+        //     var hideTooltip = function() {
+        //        $('div.tooltip').remove();
+        //     };
+ 
+        //     $("#block-system-main-menu ul.menu li a").filter(function(idx,el){return (($(el).text().length-3)>0)?false:true;}).bind({
+        //        mousemove: changeTooltipPosition,
+        //        mouseenter: showTooltip,
+        //        mouseleave: hideTooltip
+        //     });
+
+        // });
+            
+/*END TOOLTIP*/

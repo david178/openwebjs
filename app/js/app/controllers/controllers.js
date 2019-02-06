@@ -463,7 +463,8 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
     $scope.coordOptions = [{ name: 'State Plane ft. ', value: 'state-plane-ft' }, { name: 'Lat / Long', value: 'lat-long' }];
     $scope.selectedOption = $scope.coordOptions[0];
     //Tools Options
-    $scope.toolOptions = [{ name: 'Draw ...', value: 'draw-tool' }, { name: 'Buffer ...', value: 'buffer-tool' }, { name: 'Measure ...', value: 'measure-tool' }];
+    // $scope.toolOptions = [{ name: 'Draw ...', value: 'draw-tool' }, { name: 'Buffer ...', value: 'buffer-tool' }, { name: 'Measure ...', value: 'measure-tool' }];
+    $scope.toolOptions = [{ name: 'Draw ...', value: 'draw-tool' }];
     $scope.selectedToolOption = $scope.toolOptions[0];
 
 
@@ -1807,14 +1808,16 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                       //Use the ImageParameters to set the visibleLayerIds layers in the map service 
                       //during ArcGISDynamicMapServiceLayer construction.
                       var imageParameters = new ImageParameters();
-                      imageParameters.layerIds = [5];
+                      // imageParameters.layerIds = [5];
+                      imageParameters.layerIds = [6];
                       imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
                       //can also be: LAYER_OPTION_EXCLUDE, LAYER_OPTION_HIDE, LAYER_OPTION_INCLUDE
 
                        //remove all layers
                        map.removeAllLayers();
 
-                       primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/';
+                       // primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/';
+                       primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer';
                        secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                        tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
 
@@ -1873,14 +1876,16 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                   //Use the ImageParameters to set the visibleLayerIds layers in the map service 
                   //during ArcGISDynamicMapServiceLayer construction.
                   var imageParameters = new ImageParameters();
-                  imageParameters.layerIds = [8];
+                  // imageParameters.layerIds = [8];
+                  imageParameters.layerIds = [9];
                   imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
                   //can also be: LAYER_OPTION_EXCLUDE, LAYER_OPTION_HIDE, LAYER_OPTION_INCLUDE
 
                    //remove all layers
                    map.removeAllLayers();
 
-                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/';
+                   // primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/';
+                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
                    secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                    tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
 
@@ -2027,14 +2032,16 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                   //Use the ImageParameters to set the visibleLayerIds layers in the map service 
                   //during ArcGISDynamicMapServiceLayer construction.
                   var imageParameters = new ImageParameters();
-                  imageParameters.layerIds = [6];
+                  // imageParameters.layerIds = [6];
+                  imageParameters.layerIds = [7];
                   imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
                   //can also be: LAYER_OPTION_EXCLUDE, LAYER_OPTION_HIDE, LAYER_OPTION_INCLUDE
 
                    //remove all layers
                    map.removeAllLayers();
 
-                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   // primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/';
+                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer';
                    secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                    tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
 
@@ -2072,14 +2079,16 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                   //Use the ImageParameters to set the visibleLayerIds layers in the map service 
                   //during ArcGISDynamicMapServiceLayer construction.
                   var imageParameters = new ImageParameters();
-                  imageParameters.layerIds = [4];
+                  // imageParameters.layerIds = [4];
+                  imageParameters.layerIds = [5];
                   imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
                   //can also be: LAYER_OPTION_EXCLUDE, LAYER_OPTION_HIDE, LAYER_OPTION_INCLUDE
 
                    //remove all layers
                    map.removeAllLayers();
 
-                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   // primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/';
+                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer';
                    secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                    tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
 
@@ -2116,14 +2125,16 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                   //Use the ImageParameters to set the visibleLayerIds layers in the map service 
                   //during ArcGISDynamicMapServiceLayer construction.
                   var imageParameters = new ImageParameters();
-                  imageParameters.layerIds = [9];
+                  // imageParameters.layerIds = [9];
+                  imageParameters.layerIds = [11];
                   imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
                   //can also be: LAYER_OPTION_EXCLUDE, LAYER_OPTION_HIDE, LAYER_OPTION_INCLUDE
 
                    //remove all layers
                    map.removeAllLayers();
 
-                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   // primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/';
+                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer';
                    secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                    tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
 
@@ -2160,14 +2171,16 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
                   //Use the ImageParameters to set the visibleLayerIds layers in the map service 
                   //during ArcGISDynamicMapServiceLayer construction.
                   var imageParameters = new ImageParameters();
-                  imageParameters.layerIds = [7];
+                  // imageParameters.layerIds = [7];
+                  imageParameters.layerIds = [8];
                   imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
                   //can also be: LAYER_OPTION_EXCLUDE, LAYER_OPTION_HIDE, LAYER_OPTION_INCLUDE
 
                    //remove all layers
                    map.removeAllLayers();
 
-                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer/';
+                   // primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/';
+                   primaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/Zoning/MapServer';
                    secondaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/AssessorMap/MapServer';
                    tertiaryLayer = 'https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer';
 
@@ -4669,13 +4682,13 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
       icon: "ion-android-car",
       active: false
     }, 
-    // {
-    //   id: "2",
-    //   name: "Tools",
-    //   // icon: "ion-wrench",
-    //   icon: "ion-settings",
-    //   active: false
-    // }, 
+    {
+      id: "2",
+      name: "Tools",
+      // icon: "ion-wrench",
+      icon: "ion-settings",
+      active: false
+    }, 
     // {
     //   id: "3",
     //   name: "Appreciation",
@@ -4969,7 +4982,7 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
         console.log('THIS IS THE STATE OF THE AUTOCOMPLETE: '+autocompleteIsShowing)
         console.log('THIS IS THE NUMERAL PASSED: '+resolveState)
-
+        console.log('HAS THE SEARCH COMPLETED?: '+searchHasCompleted)
 
 
 
@@ -4989,37 +5002,19 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
             } else if (autocompleteIsShowing === true && searchHasCompleted === true) { //AUTOCOMPLETE SHOWING & PREV SEARCH ACTIVE
 
-
-
-                // //prop info results positioning
-                // $(".accordionStyleNew").position({
-                //     my: "left top",
-                //     // at: "left+1 bottom+2",
-                //     at: "left+1 bottom+0",
-                //     of: "#tester .dropdown-menu"
-                //         // of: "#tester #search-form"
+                // $(".cardList").position({
+                //     my:        "right top",
+                //     at:        "right+4 bottom+5",
+                //     of:        "#tester .dropdown-menu", // or $("#otherdiv")
+                //     collision: "none"
                 // });
+
                 $('.accordionStyleNew').css({
                     // 'visibility': 'hidden'
                     'display': 'block'
                 });
-                console.log('C [[ propInfoVis-a[0]' + JSON.stringify($(".accordionStyleNew").position()) + " ]]");
 
-
-
-                // //prop info results positioning
-                // $(".accordionStyleNew").position({
-                //     my: "left top",
-                //     // at: "left+1 bottom+2",
-                //     at: "left+1 bottom+0",
-                //     of: "#tester .dropdown-menu"
-                //         // of: "#tester #search-form"
-                // });
-                // // $( "#PropInfoDialog" ).show();
-                // $('.accordionStyleNew').css({
-                //     'visibility': 'visible'
-                // });
-                // console.log('C [[ propInfoVis-a[1]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+                console.log('C [[ propInfoVis-a[1]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
             }
 
@@ -5028,97 +5023,77 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
 
 
 
-
-
-
-                // $('.accordionStyleNew').css({
-                //     'top': 49,
-                //     'left': 240
-                // });
-                // // $( "#PropInfoDialog" ).show();
-                // $('.accordionStyleNew').css({
-                //     'visibility': 'hidden'
-                // });
-                // console.log('C [[ propInfoVis-a[2]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
-
             }
             //autocomplete is not showing, it never has & length is min (SELECT PROP)
             else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
 
 
-
-
-
-                // $('.accordionStyleNew').css({
-                //     'top': 49,
-                //     'left': 240
-                // });
-                // // $( "#PropInfoDialog" ).show();
-                // $('.accordionStyleNew').css({
-                //     // 'visibility': 'visible'
-                //     'visibility': 'hidden'
-                // });
-                // console.log('C [[ propInfoVis-a[3]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+                console.log('its hitting me first')
 
             }
 
             //autocomplete is not showing, it never has & length is long
             else if (autocompleteIsShowing === false && autocompleteDirty === false && searchHasCompleted === false && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - INITIAL STATE  && autocompleteDirty === false
 
-                // $('.accordionStyleNew').css({
-                //     'top': 49,
-                //     'left': 240
-                // });
-                // // $( "#PropInfoDialog" ).show();
-                // $('.accordionStyleNew').css({
-                //     'visibility': 'hidden'
-                // });
-                // console.log('C [[ propInfoVis-a[4]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+                console.log('its hitting me')
 
             }
             //******************************diff from execute search logic******************
             //autocomplete is not showing, it has before though & length is min (MIN KEY AFTER SEARCH - DO NOT SHOW - this is diff from execute search's logic)
             else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length < 3) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
 
+                // $(".cardList").position({
+                //     my:        "right top",
+                //     at:        "right+4 bottom+5",
+                //     of:        "#tester", // or $("#otherdiv")
+                //     collision: "none"
+                // });
 
-// margin-top:187px;
                 $('.accordionStyleNew').css({
                     // 'visibility': 'hidden'
                     'display': 'none'
                 });
                 console.log('C [[ propInfoVis-a[0]' + JSON.stringify($(".accordionStyleNew").position()) + " ]]");
 
+                console.log('its hitting me2')
 
-                // console.log('this needs to hide')
+            }
+            //EXACT REPLICATE OF ONE ABOVE THIS CASE, EXCEPT WE ARE CHECKING FOR EXACTLY 3 LENGTH
+            else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length === 3) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
 
-                // $('.accordionStyleNew').css({
-                //     'top': 49,
-                //     'left': 240
+                // $(".cardList").position({
+                //     my:        "right top",
+                //     at:        "right+4 bottom+5",
+                //     of:        "#tester", // or $("#otherdiv")
+                //     collision: "none"
                 // });
-                // // $( "#PropInfoDialog" ).show();
-                // $('.accordionStyleNew').css({
-                //     'visibility': 'hidden'
-                //         // 'visibility': 'visible'
-                // });
-                // console.log('C [[ propInfoVis-a[5]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
+
+                $('.accordionStyleNew').css({
+                    // 'visibility': 'hidden'
+                    'display': 'none'
+                });
+                console.log('C [[ propInfoVis-a[0]' + JSON.stringify($(".accordionStyleNew").position()) + " ]]");
+
+                console.log('its hitting me3')
 
             }
             //*******************************************************************************
             //autocomplete is not showing, it has before though & length is long
             else if (autocompleteIsShowing === false && autocompleteDirty === true && searchHasCompleted === true && $("#tester input").val().length > 2) { //AUTOCOMPLETE HIDDEN - DIRTY STATE
 
-                // $('.accordionStyleNew').css({
-                //     'top': 49,
-                //     'left': 240
+                // $(".cardList").position({
+                //     my:        "right top",
+                //     at:        "right+4 bottom+5",
+                //     of:        "#tester", // or $("#otherdiv")
+                //     collision: "none"
                 // });
-                // // $( "#PropInfoDialog" ).show();
-                // $('.accordionStyleNew').css({
-                //     'visibility': 'visible'
-                // });
-                // console.log('C [[ propInfoVis-a[6]' + JSON.stringify($("#PropInfoDialog").position()) + " ]]");
 
             }
-            else { }
+            else { 
+
+                console.log('its hitting unhandled')
+            }
 
 
 
@@ -5126,31 +5101,46 @@ open.controller('mapController', ['$scope', '$filter', '$http', 'openFactory', f
         else if (resolveState === 2) //meaning, the 'x' close icon has been clicked
         {
 
+            // $(".cardList").position({
+            //     my:        "right top",
+            //     at:        "right+4 bottom+5",
+            //     of:        "#tester", // or $("#otherdiv")
+            //     collision: "none"
+            // });
+
+
             $('.accordionStyleNew').css({
                 // 'visibility': 'hidden'
                 'display': 'none'
             });
             console.log('C [[ propInfoVis-a[0]' + JSON.stringify($(".accordionStyleNew").position()) + " ]]");
 
+            console.log('x close clicked, received in prop info vis new')
+
         }
         else //a search has been resolved
         {
 
+            //basically, autocomplete showed before the search/autocomplete option click resolve, and so cardList position will need to be reset appropriately
+            if (autocompleteDirty === true) {
+
+                // $(".cardList").position({
+                //     my:        "right top",
+                //     at:        "right+4 bottom+5",
+                //     of:        "#tester", // or $("#otherdiv")
+                //     collision: "none"
+                // });
+            }
+
+
+            //and then just display block
             $('.accordionStyleNew').css({
                 // 'visibility': 'hidden'
                 'display': 'block'
             });
             console.log('C [[ propInfoVis-a[0]' + JSON.stringify($(".accordionStyleNew").position()) + " ]]");
 
-
-
         }
-
-
-
-
-
-
 
 
 

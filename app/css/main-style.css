@@ -4035,7 +4035,21 @@ div.cards-strong-weather {
 
 
 
-
+.omnibarcontainer {
+/*    border: 1px solid #ccc;
+    height: 150px;
+    width: 500px;*/
+}
+.omnibarcontainer > ul {
+/*    display: flex;
+    flex-flow: column wrap;
+    height: inherit;
+    width: inherit;
+    margin:0;*/
+}
+.omnibarcontainer > ul > li {
+/*    flex: 0 0 auto;*/
+}
 
 
 .cardList {
@@ -4061,6 +4075,9 @@ div.cards-strong-weather {
 
 
     border-radius: 3px !important;
+
+
+    
 
 
 /*    border-radius: 0px !important;
@@ -4177,6 +4194,8 @@ div.cards-strong-weather {
     padding-bottom: 6px;
     padding-left: 27px;
     padding-right: 27px;*/
+
+
 
 
 
@@ -4841,10 +4860,14 @@ input:checked + .slider:before {
     /*background-color: #0D2E56;*/
     /*background-color: none;*/
     /*opacity: .9;*/
-    opacity: .9;
+
 /*    transition: all .3s;*/
 
-border:1px solid #0D2E56;
+
+    /*opacity: .9;*/
+
+    /*border:1px solid #0D2E56;*/
+    border:1px solid #0ebeff;
 
 
 /*    font-size: 16px;
@@ -4882,18 +4905,19 @@ border:1px solid #0D2E56;
     color: #ffffff;
     /*color: #3b454e;*/
 
-    border-right: 4px solid #0ebeff;
+/*    border-right: 4px solid #0ebeff;
     margin-left:-4px;
     border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
+    border-top-left-radius: 3px;*/
+
 
     border-radius: 30px;
     /*transition: all .3s cubic-bezier(.25,.46,.45,.94);*/
     transition: all .3s;
     /*transition: all .1s;*/
 
-    background:#0D2E56 !important;
-
+    /*background:#0D2E56 !important;*/
+    background:#0ebeff;
     
 
 }
@@ -4926,11 +4950,19 @@ border:1px solid #0D2E56;
 .drawtoolicon {
     /*opacity: .8;*/
     /*opacity: .4;*/
-    opacity: .5;
+
+    /*opacity: .5;*/
+    /*opacity: .6;*/
+
+
+/*    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);*/
 }
 .drawtoolicon:hover, .drawtoolicon:active, .drawtoolicon:focus, {
     /*opacity: .1;*/
-    color: #ffffff;
+    /*color: #ffffff;*/
+    color: black;
 }
 
 
@@ -4979,6 +5011,57 @@ border:1px solid #0D2E56;
     
 }
 .buffer-tools-container > li a {
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+.annotate-tools-container {
+
+    /*display: flex;*/
+    display: none;
+    flex-wrap: wrap;
+    padding-right:40px;
+    margin-top:-10px;
+
+}
+.annotate-tools-container > li {
+
+    margin: 3px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 30px;
+    background-color: #0D2E56;
+    opacity: .9;
+    transition: all .3s;
+}
+
+.annotate-tools-container > li>a:hover, .annotate-tools-container > li>a:active, .annotate-tools-container > li>a:focus {
+
+    /*    background-color: rgb(37, 83, 132);
+        background: rgb(37, 83, 132);*/
+        background-color: #f8f8f8;
+        background: #f8f8f8;
+
+    opacity: 1;
+    /*color: #ffffff;*/
+    color: #3b454e;
+
+    border-right: 4px solid #0ebeff;
+    margin-left:-4px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-radius: 30px;
+    transition: all .3s cubic-bezier(.25,.46,.45,.94);
+    
+}
+.annotate-tools-container > li a {
     color: #ffffff;
 }
 
@@ -5902,9 +5985,42 @@ ul.dropdown-menu.toolsDropDownMenu {
 .ColorPallet {
     /*margin-left:15px;*/
     font-size:20px;
-    padding-left:10px;
+/*    padding-left:10px;*/
+
+/*border:none;
+*/
+
+border:0px !important;
+}
+
+/*.toolPlain > li>a:hover, .toolPlain > li>a:active, .toolPlain > li>a:focus {*/
+
+
+.ColorPallet >a:hover, .ColorPallet >a:active, .ColorPallet >a:focus {
+/*
+        opacity: 1;
+
+        color: #ffffff;
+
+        border-radius: 30px;
+
+        transition: all .3s;
+
+        background:#f8f8f8 !important;
+        background-color:#f8f8f8 !important;*/
+
+        color:#0ebeff !important;
+
+        background:#f8f8f8 !important;
+        background-color:#f8f8f8 !important;
+
+/*        background:black !important;*/
+
 
 }
+
+
+
 .ion-android-color-palette {
     font-size:20px;
 }
@@ -5917,7 +6033,14 @@ ul.dropdown-menu.toolsDropDownMenu {
     font-size:14px;*/
     font-size:12px;
 }
-.ColorPalletDropMenu {
+.ColorPalletDropMenu, .ColorPalletDropMenu a {
+
+    background: #f8f8f8 !important;
+    background-color:#f8f8f8 !important;
+    outline: 6px solid #f8f8f8 !important;
+
+    color:#f8f8f8 !important;;
+}
 /*    z-index:9999999999;
     position:absolute;
     top:0px;
@@ -5954,9 +6077,140 @@ ul.dropdown-menu.toolsDropDownMenu {
     overflow-y: scroll;*/
 
 
-}
+/*}*/
 
 
 .closeToolIcon {
     color: rgb(37, 83, 132) !important;
+}
+
+
+
+
+
+/*.drawTooltip {
+  margin: 8px;
+  padding: 8px;
+  border: 1px solid rgba(0,0,0,.8);
+  border-radius: 3px;
+  background-color: rgba(190,190,190,.95);
+  color: #444;
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+}*/
+
+/*.drawingTooltip {
+    text-decoration:none;
+    position:relative;
+}
+.drawingTooltip span {
+    display:none;
+}
+.drawingTooltip:hover span {
+    display:block;
+    position:fixed;
+    overflow:hidden;
+}*/
+
+
+
+
+
+
+/*.drawingTooltip {
+    text-decoration:none;
+    position:relative;
+}
+.drawingTooltip span {
+    display:none;
+}
+.drawingTooltip:hover span {
+    display:block;
+    position:fixed;
+    overflow:hidden;
+}*/
+
+
+
+
+
+
+
+
+
+/*#spanhovering {
+    cursor: pointer;
+}
+#divtoshow {
+    position: absolute;
+    display: none;
+    background-color:white;
+    font-color:black;
+    height:100px;
+    width:100px;
+    top:0px;
+    right:0px;
+    z-index:99999999;
+}
+body {
+    position: relative;
+}*/
+
+
+/*#img-tooltip {
+  position: absolute;
+}
+#img-tooltip + .tooltip {
+  pointer-events: none;
+}*/
+
+
+
+/* Tooltip container */
+.drawtooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 99999999999999;
+/*  bottom: 125%;
+  left: 50%;*/
+  top:80px;
+  right:80px;
+  /*margin-left: -60px;*/
+  margin-right: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.drawtooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/*.map:hover .drawtooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.drawtooltiptextOnMapHover*/
+
+.drawtooltiptextOnMapHover {
+  visibility: visible;
+  opacity: 1;
 }

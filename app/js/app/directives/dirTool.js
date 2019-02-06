@@ -11,6 +11,18 @@ open.directive('toolBlock', function() {
 
 
 
+      // //------------------------------------------------------------
+      // $('.closeToolIcon').on('click', function(e){
+
+
+
+
+
+
+
+
+
+
       // $(".drawtoolheaders").click(function() {  //use a class, since your ID gets mangled
       //   $(this).addClass("active");      //add the class to the clicked element
       // });

@@ -42,7 +42,7 @@
         <ul class="dropdown-menu toolsDropDownMenu" aria-labelledby="dropdownMenu1">
           <li class="drawDropDownMenuItem"><a href="#" data-value="another action">Draw &nbsp;</a></li>
           <li class="bufferDropDownMenuItem"><a href="#" data-value="something else here">Buffer &nbsp;</a></li>
-          <li class="measureDropDownMenuItem"><a href="#" data-value="separated link">Measure &nbsp;</a></li>
+          <li class="annotateDropDownMenuItem"><a href="#" data-value="something else here">Annotate &nbsp;</a></li>
         </ul>
 
 
@@ -92,6 +92,27 @@
 
 
       <!-- Draw Tools -->
+
+<!--       <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <input type="checkbox" aria-label="Checkbox for following text input">
+          </div>
+        </div>
+        <input type="text" class="form-control" aria-label="Text input with checkbox">
+      </div>
+
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+          <input type="radio" aria-label="Radio button for following text input">
+          </div>
+        </div>
+        <input type="text" class="form-control" aria-label="Text input with radio button">
+      </div> -->
+
+
+
       <ul class="nav nav-pills draw-tools-container pull-right" style="">
         <!-- <li role="presentation" class="active"><a href="#">Home</a></li> -->
         <!--  -->
@@ -107,19 +128,101 @@
         <li role="presentation" class="drawtoolheaders toolSelect" id="Circle"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>
         <li role="presentation" class="drawtoolheaders toolSelect" id="Ellipse"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li> -->
 
-        <li role="presentation" class="drawtoolheaders toolSelect" id="Line"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>line</a></li>
-        <li role="presentation" class="drawtoolheaders toolSelect" id="FH_Line"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>fh_line</a></li>
-        <li role="presentation" class="drawtoolheaders toolSelect" id="Polygon"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>poly</a></li>
-        <li role="presentation" class="drawtoolheaders toolSelect" id="FH_Polygon"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>fh_poly</a></li>
 
-        <li role="presentation" class="drawtoolheaders toolSelect" id="MULTI_POINT"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li> <!-- far  -->
- 
+
+
+        <li role="presentation" class="drawtoolheaders toolSelect" id="Point" ><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li> 
+        <!-- <li role="presentation" class="drawtoolheaders toolSelect" id="Multi_Point"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>  -->
+
+  <!--         <li role="presentation" class="drawtoolheaders toolSelect" id="Pin"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>   -->
+        <li role="presentation" class="drawtoolheaders toolSelect" id="Pin"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>  
+
+
+
+
         <li role="presentation" class="drawtoolheaders toolSelect" id="Arrow"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>
         <li role="presentation" class="drawtoolheaders toolSelect" id="Triangle"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas rotateIcon" ></span></a></li>
+        <li role="presentation" class="drawtoolheaders toolSelect" id="Square"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>
+        
         <li role="presentation" class="drawtoolheaders toolSelect" id="Circle"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>
         <li role="presentation" class="drawtoolheaders toolSelect" id="Ellipse"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>
 
-        <li role="presentation" class="drawtoolheaders " id="doneDrawBtn"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>done</a></li>
+
+
+        
+        <li role="presentation" class="drawtoolheaders toolSelect" id="Line" style="margin-left:20px;"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>line</a></li>
+        <li role="presentation" class="drawtoolheaders toolSelect" id="FH_Line"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>fh_line</a></li>
+        <li role="presentation" class="drawtoolheaders toolSelect" id="Polygon"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>poly</a></li>
+        <li role="presentation" class="drawtoolheaders toolSelect" id="FH_Polygon"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>fh_poly</a></li>
+
+<!--         <span class="fa-fw select-all fas"></span>
+
+
+        <span class="drawtoolicon fa-fw select-all fas" style="color: #0D2E56;"></span> -->
+
+
+
+        <!-- <br/> -->
+
+<!--         <li role="presentation" class="drawtoolheaders toolSelect" id="MULTI_POINT"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>  -->
+<!--         <li role="presentation" class="drawtoolheaders toolSelect" id="Point"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li> 
+ -->
+
+
+
+
+
+<!--         <li role="presentation" class="drawtoolheaders toolSelect" id="Pin"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>  -->
+<!--         <li role="presentation" class="drawtoolheaders toolSelect" id="MULTI_POINT"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>  -->
+
+
+        <!-- far  -->
+ 
+
+
+
+
+        <!-- <li role="presentation" class="drawtoolheaders" id="UndoBtn"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li> -->
+
+
+        <!-- 'done' button -->
+        <!-- <li role="presentation" class="drawtoolheaders doneDrawBtn"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>done</a></li> -->
+
+
+
+        <!-- Color Pallette and Erase button -->
+        <li role="presentation" class="dropdown cleantoolheaders ColorPallet" style="padding-left:20px;">
+           <a class="dropdown-toggle toolPlain" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+             <i class="drawtoolicon drawtooliconShapes ion-android-color-palette" ></i> 
+
+             <span class="ColorPalletExpand ion-android-more-vertical"></span>
+           </a>
+           <ul class="dropdown-menu ColorPalletDropMenu" style="">
+            <li class="colorSelect" id="redColor"><a href=""><span class="fa-fw select-all fas" ></span></a></li>
+            <li class="colorSelect" id="greenColor"><a href=""><span class="fa-fw select-all fas" ></span></a></li>
+            <li class="colorSelect" id="blueColor"><a href=""><span class="fa-fw select-all fas" ></span></a></li>
+           </ul>
+         </li>
+
+
+
+         <li role="presentation" class="cleantoolheaders eraseBtn"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>
+
+
+
+
+
+<!--          <div class="dropdown">
+           <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu6" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+             <span class="ColorPalletExpand ion-android-more-vertical"></span>
+           </button>
+           <div class="dropdown-menu" aria-labelledby="dropdownMenu6">
+             <a class="dropdown-item" href="#">Regular link</a>
+             <a class="dropdown-item active" href="#">Active link</a>
+             <a class="dropdown-item" href="#">Another link</a>
+           </div>
+         </div> -->
 
 
 
@@ -128,6 +231,45 @@
 
 
 
+<!--         <li id="Point" class="toolSelect"  onClick="toolbar.activate(esri.toolbars.Draw.MULTI_POINT);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Point</a></li>
+        <li id="Polyline" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.POLYLINE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Polyline</a></li>
+        <li id="Polygon" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.POLYGON);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Polygon</a></li>
+        <li id="FH_Polyline" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.FREEHAND_POLYLINE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Freehand Polyline</a></li>
+        <li id="FH_Polygon" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.FREEHAND_POLYGON);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Freehand Polygon</a></li>   
+        <li id="Arrow" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.ARROW);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Arrow</a></li>
+        <li id="Triangle" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.TRIANGLE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Triangle</a></li>
+        <li id="Circle" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.CIRCLE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Circle</a></li>
+        <li id="Ellipse" class="toolSelect" onClick="toolbar.activate(esri.toolbars.Draw.ELLIPSE);functionMode='draw';" ><a href="#"><small><span class="fa fa-pencil pull-left" style="margin-top:7px; margin-right:7px;"></span></small> Ellipse</a></li>
+
+        -Color Swatch 
+        -Erase
+
+        -X close (will finish/confirm the draw markup, execute confirm logic)
+
+        [] Measure:
+        -Uses the FH Polyline Tool
+        and then outputs a read-out to an element directly on the toolbar
+        -Note: May need to fix Measurement widget / distance bug (on initialization, numbers not set to zero?)
+
+        [] Buffer:
+        -Buffer is the same, but just lay-out the componenets with nowrap flex
+
+        [] Symb./Ann. (Symbolization, Annotation)
+        -Add symbols support (working from sample example code, has symbol var along with buffer)
+        -Add annotation text & annotation size (font size) -->
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
 
 <!--         <li role="presentation" class="drawtoolheaders toolSelect" id="Point"><a href=""><span class="drawtoolicon fa-fw select-all far" ></span>Point</a></li>
@@ -158,37 +300,11 @@
          <li role="presentation" class="drawtoolheaders" ><a href=""><span class="drawtoolicon " ></span></a></li>
  -->
 
-         <!-- Color Pallette and Erase button -->
-         <li role="presentation" class="dropdown cleantoolheaders ColorPallet" >
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-              <i class="drawtoolicon drawtooliconShapes ion-android-color-palette" ></i> 
-
-              <span class="ColorPalletExpand ion-android-more-vertical"></span>
-            </a>
-            <ul class="dropdown-menu ColorPalletDropMenu" style="">
-            </ul>
-          </li>
-          <!-- dropleft -->
-          <!-- disabled="false" -->
-
-
-          <li role="presentation" class="cleantoolheaders eraseBtn"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>
-
-
-
-
-
-
-
 
 <!--           <span class="ion-close pull-right closeToolIcon" ng-click="theTool=false; saveLegBlock(theLegend); " style="display: inline; cursor:pointer;"> </span>
  -->
 
-
-
       </ul>
-
-
 
 
 
@@ -196,41 +312,128 @@
 
 
       <!-- Buffer Tool -->
-      <ul class="nav nav-pills buffer-tools-container pull-right" style="">
+      <ul class="nav nav-pills buffer-tools-container pull-right" style="padding-top:8px;">
 
-<!--         <li role="presentation" class="drawtoolheaders toolSelect" id="Line"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>line</a></li>
-        <li role="presentation" class="drawtoolheaders toolSelect" id="FH_Line"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>fh</a></li>
-        <li role="presentation" class="drawtoolheaders toolSelect" id="Polygon"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>poly</a></li>
-        <li role="presentation" class="drawtoolheaders toolSelect" id="FH_Polygon"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>fh</a></li>
 
-        <li role="presentation" class="drawtoolheaders toolSelect" id="MULTI_POINT"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all far" ></span></a></li>
-        <li role="presentation" class="drawtoolheaders toolSelect" id="Arrow"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>
-        <li role="presentation" class="drawtoolheaders toolSelect" id="Triangle"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas rotateIcon" ></span></a></li>
-        <li role="presentation" class="drawtoolheaders toolSelect" id="Circle"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>
-        <li role="presentation" class="drawtoolheaders toolSelect" id="Ellipse"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>
 
-        <li role="presentation" class="drawtoolheaders " id="doneDrawBtn"><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span>done</a></li>
+          <!-- dist -->
+          <div style="display:inline-block; color:black; margin-right:20px;"> <!-- padding-top:8px;  -->
+            <!-- Buffer Distance Input box -->
+            <!-- Buffer Distance(Ft):  -->
+            <!-- <b>Dist.:</b>&nbsp; --><input type="text" style="font-size:24px; width:65px; outline:none; border:1px solid black;  background-color:transparent !important; padding-left:5px; border-radius:5px;" id="bufferDistanceInputBox" size="5" value="25" /> <!-- border-bottom:0px solid black; border-left:0px solid black; -->
+          </div>
+
+          <!-- units -->
+          <div style="display:inline-block; padding-bottom:2px;  padding-left:1px; color:black; margin-right:20px;">
+           <div class="dropdown" style=""> <!-- line-height:1.62; customarrow -->
+            <!-- <b>Buffer </b>  -->
+            <select id="bufferUnitsSelectBox" style="width:72px; font-size:24px; color:black; border-bottom:2px solid black; background-color:transparent !important; cursor:pointer !important;">
+              <option value="UNIT_FOOT">ft.</option>
+              <option value="UNIT_STATUTE_MILE">mi.</option>
+              <option value="UNIT_KILOMETER">km.</option>
+              <option value="UNIT_METER">m.</option>
+              <option value="UNIT_NAUTICAL_MILE">naut mi.</option>
+              <option value="UNIT_US_NAUTICAL_MILE">US naut m.</option>
+              <option value="UNIT_DEGREE">Degrees</option>
+            </select><!-- <br /> -->
+            </div>
+          </div>
+
+            <!-- Buffer Fill Checkbox -->
+            <div style="display:inline-block; color:black; font-size:18px; margin-right:35px; margin-top:6px; "> <!-- padding-top:8px; -->
+              <input id="bufferFillBox" class="icon-checkbox weatherPosOverrides" style="" type="checkbox" ng-model="theBufferFill" ng-change="bufferFillPass(theBufferFill);"/>
+              <label for="bufferFillBox" style="cursor:pointer !important; padding-left:10px;"> <!-- border-left:2px solid black; -->
+                <span class='glyphicon glyphicon-unchecked unchecked chkPadding '></span>
+                <span class='glyphicon glyphicon-check checked chkPadding'></span>
+                <span class="fa-fw select-all fas" >   </span>  <!-- Fill -->
+              </label>
+            </div>
+
+            <!-- Create / Clear Buffer -->
+            <div style="display:inline-block; color:black; float:right;"> <!-- padding-top:8px; -->
+              <input class="btn btn-primary " id="bufferCreateBtn" value="Create" type="button" style="display:inline-block;"></input> <!-- form-control --> <!-- margin-bottom:5px; -->
+              <input class="" id="bufferClearBtn" value="Clear" type="button" style="display:inline-block;"></input> <!-- form-control -->
+              <!-- <br><br> --> <br>
+              <!-- Buffer Description -->
+              <!-- <center> --><span style="font-size:10px; font-style: italic;">Buffers last geometry drawn</span><!-- </center> -->
+            </div>
+
+      </ul>
+
+
+
+
+
+      <!-- Annotate Tool -->
+      <!-- <ul class="nav nav-pills annotate-tools-container pull-right" style="padding-top:8px;"> -->
+        <ul class="nav nav-pills annotate-tools-container pull-right" style="padding-top:6px;">
+
+          <!-- dist -->
+<!--           <div style="display:inline-block; color:black; margin-right:20px;">
+            <input type="text" style="font-size:24px; width:65px; outline:none; border:1px solid black;  background-color:transparent !important; padding-left:5px; border-radius:5px;" id="bufferDistanceInputBox" size="5" value="25" /> 
+          </div> -->
+
+
+
+          <div style="display:inline-block; color:black; float:right; width:302px; margin-right:-30px;">
+
+            <!-- <span style="display:inline-block; font-size:10px; font-style: italic; float:left; padding:12px;">Click Map to add Text: </span> -->
+
+
+            <span class="drawtoolicon fa-fw select-all fas" style="color: #0D2E56; display:inline-block; float:left; font-style: italic; padding:12px;px;"></span>
+            <!-- font-size:10px; font-style: italic; -->
+
+            <div class="input-group mb-2" style="display:inline-block !important;"> <!-- mb-3 -->
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <!-- <input type="checkbox" class="toolSelect pull-right" id="Anno_Text" aria-label="Checkbox for following text input"> -->
+                  <!-- <input class="btn btn-primary " id="annoCreateBtn" value="Add" type="button" style="display:inline-block;"></input> -->
+
+
+                </div>
+              </div>
+              <input type="text" id="annoTextBox" class="form-control pull-left" aria-label="Text input with checkbox" style="width:190px;">
+
+              <span style="display:inline-block; font-size:10px; font-style: italic; float:right; padding:12px; padding-top:6px; width:80px;">Click Map to add Text</span>
+            </div>
+
+            
+
+            <!-- <span style="display:inline-block; font-size:10px; font-style: italic; float:right; padding:12px;">Click Map to add Text</span> -->
+
+
+
+            <!-- <input class="btn btn-primary doneDrawBtn"  value="done" type="button" style="display:inline-block;"></input> -->
+<!--             class="drawtoolheaders doneDrawBtn" -->
+
+
+          </div>
+
+
+
+          
+
+
+
+<!--           <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="">First and last name</span>
+            </div>
+            <input type="text" class="form-control">
+            <input type="text" class="form-control">
+          </div>
  -->
 
+          <!-- toolSelect -->
 
-         <li role="presentation" class="drawtoolheaders toolSelect" id="Buffer_Tool"><a href=""><span class="drawtoolicon drawtooliconShapes icon ion-disc" > </span></a></li>
-
-
-         <!-- Color Pallette and Erase button -->
-         <li role="presentation" class="dropdown cleantoolheaders ColorPallet" >
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-              <i class="drawtoolicon drawtooliconShapes ion-android-color-palette" ></i> 
-
-              <span class="ColorPalletExpand ion-android-more-vertical"></span>
-            </a>
-            <ul class="dropdown-menu ColorPalletDropMenu" style="">
-            </ul>
-          </li>
-          <!-- dropleft -->
-          <!-- disabled="false" -->
+          <!-- annoTextBox -->
+          <!-- $('#annoTextBox').val(bla); -->
 
 
-          <li role="presentation" class="cleantoolheaders eraseBtn"><a href=""><span class="drawtoolicon drawtooliconShapes fa-fw select-all fas" ></span></a></li>
+
+
+
+
 
 
       </ul>
@@ -242,22 +445,7 @@
 
 
 
-      
-<!--        <ul class="nav nav-pills draw-tools-container" style="">
-
-          <li role="presentation" class="dropdown">
-             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-               <i class="drawtoolicon ion-android-color-palette" ></i> <span class="caret"></span>
-             </a>
-             <ul class="dropdown-menu">
-               ...
-             </ul>
-           </li>
-
-
-           <li role="presentation" class="drawtoolheaders" ><a href=""><span class="drawtoolicon fa-fw select-all fas" ></span></a></li>
-
-      </ul> -->
+    
 
 
 
@@ -267,59 +455,10 @@
 
 
 
-<!--       <ul class="nav nav-pills draw-tools-container-secondary" style="">
-
-        <li role="presentation" class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="drawtoolicon ion-android-color-palette" ></i> <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu"> <li><a href="#">Action</a></li> <li><a href="#">Another action</a></li> <li><a href="#">Something else here</a></li> <li role="separator" class="divider"></li> <li><a href="#">Separated link</a></li> </ul>
-        </li>
-
-
-
-        <li role="presentation" class="drawtoolheaders" id="Eraser"><a href="#"><i class="drawtoolicon fa-fw select-all fas" ></i></a></li>
-
-      </ul>
- -->
-
-
-
-
-<!--       <div class="flex-container" style="position:absolute; top:7px; right:15px;"> 
-
-        <div>   <span class="ion-android-color-palette" > </span>    </div>
-        <div>   <span class="fa-fw select-all fas"></span> </div>    
-      </div>  --><!-- /draw tools -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- 
       <div class="flex-container" style="position:absolute; top:7px; right:55px; display:none; "> 
 
-        <!-- <a class="drawtoolheaders">  <i class="drawtoolicon fa-fw select-all far" ></i>Point     </a> -->
-        <!-- <div class="drawtoolheaders" >     <i class="drawtoolicon fa-fw select-all far" ></i>Point    </div> -->
-
-        <!-- <a class="drawtoolheaders" >     <i class="drawtoolicon fa-fw select-all far" ></i>Point    </a> -->
         <a class="drawtoolheaders" >     <i class="drawtoolicon fa-fw select-all fas" ></i>Point    </a>
-
         <a href="#" class="drawtoolheaders"><i class="drawtoolicon fa-fw select-all fas" ></i>Line       </a>
         <a class="drawtoolheaders"><i class="drawtoolicon fa-fw select-all fas" ></i>Polygon   </a>
 
@@ -331,19 +470,11 @@
         <div>   <span class="drawtoolheaders"><i class="drawtoolicon fa-fw select-all far" ></i>Circle</span>      </div>
         <div>   <span class="drawtoolheaders"><i class="drawtoolicon fa-fw select-all fas" ></i>Ellipse</span>      </div>
 
-
-        <!-- <div>   <span class="drawtoolheaders"><i class="drawtoolicon fa-fw select-all fas" ></i>Point</span>      </div> -->
-
-
-        <!-- <div> </div> -->
         <div>   <span class="ion-android-color-palette" > </span>    </div>
         <div>   <span class="fa-fw select-all fas"></span> </div>    
-      </div> <!-- /draw tools -->
+      </div>  -->
 
 
-
-
-      
 
    </div>
 
@@ -351,29 +482,6 @@
 
 
     <div id="toolDivCasing" ng-show="theTool" style="visibility:hidden;" class="conditionalShow_LegWeather blockFade" > <!-- cssFade -->
-<!--       <div style="color: #8ED1E9; font-size:17px; font-family: "verb","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;"> </div> -->
-
-  <!--     <h6>Tool<img class="widgetClose pull-right closeLegIcon" ng-click="theTool=false; saveLegBlock(theLegend)" border="0" src="css/images/icon-close2.png" style="display: inline;"></h6>
- -->
-
-
-
-
-
-
-
- 
-
-
-
-<!--  <span id="searchBtn-holder2" class="input-group-btn">
-                    <button id="hamburgerBtn" class="btn btn-primary" type="button">
-                      <!-- ionic -->
-<!--                       <span class="iconic-adjust-main ion-navicon-round" data-pack="default" data-tags="magnifying glass"></span>
-                    </button>
-               </span>  -->
-
-
 
 
 <!--       <div class=" panel-heading">
@@ -387,35 +495,11 @@
 
           </div> -->
 
-
-
-
   <!--       <h7>Buffer</h7> -->
 
           <!-- <button ng-click="theLegend=false">Hide</button> -->
   <!--       <input class="pull-right" type="button" ng-click="theLegend" value="x"> -->
         <div id="toolDiv">
-
-
-
-
-
-
-        <!-- DRAW TOOL --> 
-<!--         <br>
-        <div class="panel-default panel-heading">
-          <h4 class="panel-title">Draw</h4>
-        </div> -->
-        
-        <!-- <br> -->
-
-
-
-
-
-
-
-
 
 
 

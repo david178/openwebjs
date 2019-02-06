@@ -47,11 +47,16 @@
         border-bottom-left-radius: 3px !important;
         border-bottom-right-radius: 3px !important;
         border-top: 0px !important;
-        border-bottom: 1px solid #d9d9d9;
+        /*border-bottom: 1px solid #d9d9d9;*/
+        border-bottom: none !important;
         border-left: none !important;
         border-right: none !important;
         box-shadow: none;
         box-sizing: border-box;
+        box-shadow: 0 2px 5px 0 rgba(88,88,102,.07);
+
+
+
 
         /* added */
         /*width: 100% !important;*/
@@ -543,11 +548,13 @@
         border-bottom-left-radius: 3px !important;
         border-bottom-right-radius: 3px !important;
         border-top: 0px !important;
-        border-bottom: 1px solid #d9d9d9;
+        /*border-bottom: 1px solid #d9d9d9;*/
+        border-bottom: none !important;
         border-left: none !important;
         border-right: none !important;
         box-shadow: none;
         box-sizing: border-box;
+        box-shadow: 0 2px 5px 0 rgba(88,88,102,.07);
 
         /* added */
         /*width: 100% !important;*/
@@ -610,17 +617,23 @@
         height: 49px;
         width: 49px;
         color:rgb(37, 83, 132) !important;
-        background-color: #f8f8f8 !important;
+/*        background-color: #f8f8f8 !important;
         background: #f8f8f8 !important;
-        border-color: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;*/
+        background-color: #fff !important;
+        background: #fff !important;
+        border-color: #fff !important;
     }
     #hamburgerBtn {
         height: 49px;
         width: 49px;
         color:rgb(37, 83, 132) !important;
-        background-color: #f8f8f8 !important;
-        background: #f8f8f8 !important;
-        border-color: #f8f8f8 !important;
+        /*        background-color: #f8f8f8 !important;
+                background: #f8f8f8 !important;
+                border-color: #f8f8f8 !important;*/
+                background-color: #fff !important;
+                background: #fff !important;
+                border-color: #fff !important;
         
     }
 
@@ -740,11 +753,13 @@
         border-bottom-left-radius: 3px !important;
         border-bottom-right-radius: 3px !important;
         border-top: 0px !important;
-        border-bottom: 1px solid #d9d9d9;
+        /*border-bottom: 1px solid #d9d9d9;*/
+        border-bottom: none !important;
         border-left: none !important;
         border-right: none !important;
         box-shadow: none;
         box-sizing: border-box;
+        box-shadow: 0 2px 5px 0 rgba(88,88,102,.07);
 
         /* added */
         /*width: 100% !important;*/
@@ -802,17 +817,24 @@
         height: 49px;
         width: 49px;
         color:rgb(37, 83, 132) !important;
-        background-color: #f8f8f8 !important;
+/*        background-color: #f8f8f8 !important;
         background: #f8f8f8 !important;
-        border-color: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;*/
+        background-color: #fff !important;
+        background: #fff !important;
+        border-color: #fff !important;
     }
     #hamburgerBtn {
         height: 49px;
         width: 49px;
         color:rgb(37, 83, 132) !important;
-        background-color: #f8f8f8 !important;
-        background: #f8f8f8 !important;
-        border-color: #f8f8f8 !important;
+        /*        background-color: #f8f8f8 !important;
+                background: #f8f8f8 !important;
+                border-color: #f8f8f8 !important;*/
+                background-color: #fff !important;
+                background: #fff !important;
+                border-color: #fff !important;
+        
     }
 
     /* navbar length for non-mobile screen sizes */
@@ -945,11 +967,13 @@
         border-bottom-left-radius: 3px !important;
         border-bottom-right-radius: 3px !important;
         border-top: 0px !important;
-        border-bottom: 1px solid #d9d9d9;
+        /*border-bottom: 1px solid #d9d9d9;*/
+        border-bottom: none !important;
         border-left: none !important;
         border-right: none !important;
         box-shadow: none;
         box-sizing: border-box;
+        box-shadow: 0 2px 5px 0 rgba(88,88,102,.07);
 
         /* added */
         /*width: 100% !important;*/
@@ -1003,17 +1027,24 @@
         height: 49px;
         width: 49px;
         color:rgb(37, 83, 132) !important;
-        background-color: #f8f8f8 !important;
+/*        background-color: #f8f8f8 !important;
         background: #f8f8f8 !important;
-        border-color: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;*/
+        background-color: #fff !important;
+        background: #fff !important;
+        border-color: #fff !important;
     }
     #hamburgerBtn {
         height: 49px;
         width: 49px;
         color:rgb(37, 83, 132) !important;
-        background-color: #f8f8f8 !important;
-        background: #f8f8f8 !important;
-        border-color: #f8f8f8 !important;
+        /*        background-color: #f8f8f8 !important;
+                background: #f8f8f8 !important;
+                border-color: #f8f8f8 !important;*/
+                background-color: #fff !important;
+                background: #fff !important;
+                border-color: #fff !important;
+        
     }
 
 
@@ -1311,17 +1342,24 @@
         height: 49px;
         width: 49px;
         color:rgb(37, 83, 132) !important;
-        background-color: #f8f8f8 !important;
+/*        background-color: #f8f8f8 !important;
         background: #f8f8f8 !important;
-        border-color: #f8f8f8 !important;
+        border-color: #f8f8f8 !important;*/
+        background-color: #fff !important;
+        background: #fff !important;
+        border-color: #fff !important;
     }
     #hamburgerBtn {
         height: 49px;
         width: 49px;
         color:rgb(37, 83, 132) !important;
-        background-color: #f8f8f8 !important;
-        background: #f8f8f8 !important;
-        border-color: #f8f8f8 !important;
+        /*        background-color: #f8f8f8 !important;
+                background: #f8f8f8 !important;
+                border-color: #f8f8f8 !important;*/
+                background-color: #fff !important;
+                background: #fff !important;
+                border-color: #fff !important;
+        
     }
 
 
@@ -1362,19 +1400,24 @@
         height: 49px;
         width: 49px;
         color:rgb(37, 83, 132) !important;
-        background-color: #f8f8f8 !important;
+/*        background-color: #f8f8f8 !important;
         background: #f8f8f8 !important;
-        border-color: #f8f8f8 !important;
-/*        margin-right: -20px;*/
-
+        border-color: #f8f8f8 !important;*/
+        background-color: #fff !important;
+        background: #fff !important;
+        border-color: #fff !important;
     }
     #hamburgerBtn {
         height: 49px;
         width: 49px;
         color:rgb(37, 83, 132) !important;
-        background-color: #f8f8f8 !important;
-        background: #f8f8f8 !important;
-        border-color: #f8f8f8 !important;
+        /*        background-color: #f8f8f8 !important;
+                background: #f8f8f8 !important;
+                border-color: #f8f8f8 !important;*/
+                background-color: #fff !important;
+                background: #fff !important;
+                border-color: #fff !important;
+        
     }
 
 

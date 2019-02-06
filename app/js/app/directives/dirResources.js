@@ -399,6 +399,12 @@ open.directive('resourcesView', function() {
 
               console.log('true test: ' +skinnyPanelOpen)
 
+              // //NEW: First call the propinfovisNew (in case we are mid-autocomplete session); If we don't do this,
+              // //Autocomplete will disappear on the hamburger click by default, and the cardList items will hang in
+              // //same spot/position
+              // propInfoVis(0);
+
+
 
              //added--------------------------
              panelCloseHit = true;
