@@ -393,8 +393,11 @@ module.exports = function (grunt) {
     // grunt.loadNpmTasks('grunt-mkdir');
     grunt.registerTask('serve', ['copy', 'connect', 'karma:continuous:start', 'watch:karma']);
 
+    // // grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+    // grunt.registerTask('default', ['copy', 'connect', 'karma:continuous:start', 'watch:karma']);
     // grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
-    grunt.registerTask('default', ['copy', 'connect', 'karma:continuous:start', 'watch:karma']);
+    grunt.registerTask('default', ['copy', 'connect']);
+
 
 
 
