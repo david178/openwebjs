@@ -16,13 +16,20 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
 
-        //****************************************************
-        //****************************************************
         // read package file for properties
         pkg: grunt.file.readJSON('package.json'),
 
-        //****************************************************
-        //****************************************************
+
+        // 'node-minify': {
+        //   gcc: {
+        //     files: {
+        //       'dest/gcc.min.js': ['src/**/*.js']
+        //     }
+        //   }
+        // },
+
+
+
         // copy files from downloaded packages into directories
         copy: {
             bootstrap: {
@@ -41,6 +48,32 @@ module.exports = function (grunt) {
                 }
             }
         },
+
+
+
+
+
+
+        // karma: {  
+        //   unit: {
+        //     options: {
+        //       frameworks: ['jasmine'],
+        //       singleRun: true,
+        //       browsers: ['PhantomJS'],
+        //       files: [
+        //         'public/components/angular/angular.js',
+        //         'public/components/angular-mocks/angular-mocks.js',
+        //         'src/js/**/*.js'
+        //       ]
+        //     }
+        //   }
+        //   continuous: {
+        //      // keep karma running in the background
+        //      background: true
+        //   }
+        // },
+
+
         karma: {
               options: {
                 configFile: 'karma.conf.js'
@@ -53,11 +86,89 @@ module.exports = function (grunt) {
                 background: true
               }
         },
-        //****************************************************
-        //****************************************************
-        watch: {
-            //run unit tests with karma (server needs to be already running)
+
+
+
+
+        // watch: {
+        //     //run unit tests with karma (server needs to be already running)
+        //    // karma: {
+        //           //   // run these tasks when these files change
+        //           //   files: [
+        //           //   'app/js/*.js',
+        //           //   'app/js/controllers/*.js',
+        //           //   'app/js/directives/*.js',
+        //           //   'app/js/services/*.js',
+
+        //           //   'app/css/*.css',
+
+        //           //   'app/index.html',
+        //           //   'app/views/*.html',
+
+        //           //   //js scripts
+        //           //   'app/js/app/browser.js',
+        //           //   'app/js/app/controls.js',
+        //           //   'app/js/app/layout.js',
+        //           //   'app/js/app/map.js',
+        //           //   'app/js/app/metrics.js',
+        //           //   'app/js/app/modernizr.custom.js',
+        //           //   'app/js/app/slidemenu.js',
+        //           //   //angular scripts
+        //           //   'app/js/app/controllers/controllers.js',
+
+        //           //   //tests
+        //           //   'test/spec.js'
+
+        //           //   ],
+        //           //   tasks: ['karma:unit:run'] // note the :run flag
+        //           // },
+
+
+
+
+        //     // //run unit tests with karma (server needs to be already running)
+        //     // karma: {
+        //     //         // run these tasks when these files change
+        //     //         files: [
+        //     //         'app/js/*.js',
+        //     //         'app/js/controllers/*.js',
+        //     //         'app/js/directives/*.js',
+        //     //         'app/js/services/*.js',
+
+        //     //         'app/css/*.css',
+
+        //     //         'app/index.html',
+        //     //         'app/views/*.html',
+
+        //     //         //js scripts
+        //     //         'app/js/app/browser.js',
+        //     //         'app/js/app/controls.js',
+        //     //         'app/js/app/layout.js',
+        //     //         'app/js/app/map.js',
+        //     //         'app/js/app/metrics.js',
+        //     //         'app/js/app/modernizr.custom.js',
+        //     //         'app/js/app/slidemenu.js',
+        //     //         //angular scripts
+        //     //         'app/js/app/controllers/controllers.js',
+
+        //     //         //tests
+        //     //         'test/spec.js'
+
+        //     //         ],
+        //     //         tasks: ['karma:unit:run'] // note the :run flag
+        //           },
+
+            //****************************************************
+            //****************************************************
             karma: {
+
+                // karma: {
+                //     unit: {
+                //         configFile: 'karma.conf.js'
+                //     }
+                // }
+
+
                     // run these tasks when these files change
                     // files: ['test/*.js'],
                     files: [
@@ -84,12 +195,17 @@ module.exports = function (grunt) {
                         'app/js/app/controllers/controllers.js',
 
                         //tests
-                        'test/spec.js',
-                        'test/fibonacciService.tests.js'
+                        'test/spec.js'
 
                     ],
-                    tasks: ['karma:continuous:run'] // note the :run flag
+                    // tasks: ['karma:continuous:run'] // note the :run flag
+                    tasks: ['karma:unit:run'] // note the :run flag
             },
+
+            //****************************************************
+            //****************************************************
+
+
             options: {
                 spawn: false,
                 event: ['changed'],
@@ -123,14 +239,11 @@ module.exports = function (grunt) {
                     'app/js/app/controllers/controllers.js',
 
                     //tests
-                    'test/spec.js',
-                    'test/fibonacciService.tests.js'
+                    'test/spec.js'
 
                 ]
             }
         },
-        //****************************************************
-        //****************************************************
         connect: {
             options: {
                 //port: 8000, //ORIG
@@ -149,53 +262,7 @@ module.exports = function (grunt) {
                     }
                 }
             }
-        },
-        //****************************************************
-        //****************************************************
-        // // configure uglify to minify js files -------------------------------------
-        // uglify: {
-        //   options: {
-        //     banner: '/*\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n'
-        //   },
-        //   build: {
-        //     files: {
-        //       // 'dist/js/magic.min.js': 'src/js/magic.js'
-        //       'dist/js/app/browser.js': 'app/js/app/browser.js',
-        //       'dist/js/app/controls.js': 'app/js/app/controls.js',
-        //       'dist/js/app/layout.js': 'app/js/app/layout.js',
-        //       'dist/js/app/map.js': 'app/js/app/map.js',
-        //       'dist/js/app/display.js': 'app/js/app/display.js',
-        //       'dist/js/app/metrics.js': 'app/js/app/metrics.js',
-        //       'dist/js/app/modernizr.custom.js': 'app/js/app/modernizr.custom.js',
-        //       'dist/js/app/slidemenu.js': 'app/js/app/slidemenu.js',
-        //       'dist/js/app/controllers/controllers.js': 'app/js/app/controllers/controllers.js'
-        //     }
-        //   }
-        // }
-
-        // configure uglify to minify js files -------------------------------------
-        uglify: {
-          options: {
-            banner: '/*\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n'
-          },
-          build: {
-            files: {
-              // 'dist/js/magic.min.js': 'src/js/magic.js'
-              'dist/js/app/browser.js': 'app/js/app/browser.js',
-              'dist/js/app/controls.js': 'app/js/app/controls.js',
-              'dist/js/app/layout.js': 'app/js/app/layout.js',
-              'dist/js/app/map.js': 'app/js/app/map.js',
-              'dist/js/app/display.js': 'app/js/app/display.js',
-              'dist/js/app/metrics.js': 'app/js/app/metrics.js',
-              'dist/js/app/modernizr.custom.js': 'app/js/app/modernizr.custom.js',
-              'dist/js/app/slidemenu.js': 'app/js/app/slidemenu.js',
-              'dist/js/app/controllers/controllers.js': 'app/js/app/controllers/controllers.js'
-            }
-          }
         }//,
-
-
-
         // karma: {
 
         //             unit: {
@@ -282,6 +349,7 @@ module.exports = function (grunt) {
         //     }
         // //****************************************************
         // //****************************************************
+
 
         // karma: {
         //   unit: {
@@ -379,7 +447,28 @@ module.exports = function (grunt) {
     //https://blog.credera.com/technology-insights/java/testing-angularjs-part-3-karma-grunt/
     // grunt.registerTask('unit-test', ['karma:continuous:start', 'watch:karma']);
     // grunt.registerTask('unit-test', ['copy', 'connect', 'karma:continuous:start', 'watch:karma']);
-    grunt.registerTask('serve', ['copy', 'connect', 'uglify', 'karma:continuous:start', 'watch:karma']);
+    
+
+    // grunt.loadNpmTasks('grunt-responsive-images');
+    // grunt.loadNpmTasks('grunt-contrib-clean');
+    // grunt.loadNpmTasks('grunt-contrib-copy');
+    // grunt.loadNpmTasks('grunt-mkdir');
+    grunt.registerTask('serve', ['copy', 'connect', 'karma:continuous:start', 'watch:karma']);
+
+    // // grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+    // grunt.registerTask('default', ['copy', 'connect', 'karma:continuous:start', 'watch:karma']);
+    // grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+    grunt.registerTask('default', ['copy', 'connect']);
+
+
+    // grunt.registerTask('test' [ ])
+
+
+
+    // grunt.registerTask('test', ['test']);
+
+
+
 
     //****************************************************
     //****************************************************
@@ -390,8 +479,4 @@ module.exports = function (grunt) {
 
     // //server
     // grunt.registerTask('serve', ['copy', 'connect', 'watch']);
-
-
-    //added 2/14/19
-    grunt.loadNpmTasks('grunt-contrib-uglify');
 };

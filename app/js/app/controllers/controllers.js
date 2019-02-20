@@ -5208,6 +5208,145 @@ open.controller('accordionCtrl', ['$scope', '$http', 'openFactory', function($sc
 
 
 
+
+// ******************************************************************************
+// TESTING ANGULAR SERVICES/MODULES ETC FOR TESTING VIA JASMINE TEST SUITES
+
+// // //Grab the module
+// // var open = angular.module('open', ['ui.bootstrap']); //, 'ngAnimate'
+// // open.factory('openFactory', function($http, $q){
+
+//     var open = angular.module('open', ['ui.bootstrap']);
+
+
+// // //example module for testing angular JS from jasmine/karma
+// // angular.module('ExampleApp', []).service('FibonacciService', [function() {
+//     //example module for testing angular JS from jasmine/karma
+//     open.service('openService', function(){    
+
+
+//  // angular.module('ExampleApp', []).service('FibonacciService', [function() {
+
+
+//     // iterative approach
+//     this.fibonacci = function(num) {
+//       // var prev1 = 1,
+//       //     prev2 = 0,
+//       //     current = 0;
+//       // for (var n = 2; n <= num; n++) {
+//       //   current = prev1 + prev2;
+//       //   prev2 = prev1;
+//       //   prev1 = current;
+//       // }
+
+//       var current = 0;
+//       return current;
+//     };
+
+
+
+//     // var current = 1;
+//     // return current;
+
+
+
+
+
+//   // // iterative approach
+//   // this.fibonacci = function(num) {
+//   //   var prev1 = 1,
+//   //       prev2 = 0,
+//   //       current = 0;
+//   //   for (var n = 2; n <= num; n++) {
+//   //     current = prev1 + prev2;
+//   //     prev2 = prev1;
+//   //     prev1 = current;
+//   //   }
+//   //   return current;
+//   // };
+
+// // }]);
+
+
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // //Grab the module
+// // var open = angular.module('open', ['ui.bootstrap']); //, 'ngAnimate'
+// // open.factory('openFactory', function($http, $q){
+
+//     var open = angular.module('open', ['ui.bootstrap']);
+
+
+// // //example module for testing angular JS from jasmine/karma
+// // angular.module('ExampleApp', []).service('FibonacciService', [function() {
+//     //example module for testing angular JS from jasmine/karma
+//     open.service('openService', function(){    
+
+
+//  // angular.module('ExampleApp', []).service('FibonacciService', [function() {
+
+
+//     // iterative approach
+//     this.fibonacci = function(num) {
+//       // var prev1 = 1,
+//       //     prev2 = 0,
+//       //     current = 0;
+//       // for (var n = 2; n <= num; n++) {
+//       //   current = prev1 + prev2;
+//       //   prev2 = prev1;
+//       //   prev1 = current;
+//       // }
+
+//       var current = 0;
+//       return current;
+//     };
+
+
+
+//     // var current = 1;
+//     // return current;
+
+
+
+
+
+//   // // iterative approach
+//   // this.fibonacci = function(num) {
+//   //   var prev1 = 1,
+//   //       prev2 = 0,
+//   //       current = 0;
+//   //   for (var n = 2; n <= num; n++) {
+//   //     current = prev1 + prev2;
+//   //     prev2 = prev1;
+//   //     prev1 = current;
+//   //   }
+//   //   return current;
+//   // };
+
+// // }]);
+
+
+// });
+
+
+
+
+
+
 //************************************************
 //************ Custom Filters ********************
 //************************************************

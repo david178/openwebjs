@@ -116,7 +116,7 @@ module.exports = function(config){
     // autoWatch : false,
     autoWatch : false,
 
-    // port : 8000,
+    // port : 8000, //commented out
  
     // testing framework, be sure to install the karma plugin
     frameworks: ['jasmine'],
